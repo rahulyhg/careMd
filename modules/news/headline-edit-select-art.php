@@ -2,6 +2,8 @@
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require_once('./roots.php');
 require_once($root_path . 'include/inc_environment_global.php');
+$pageName = "Special Tools";
+
 /*
   CARE2X Integrated Information System Deployment 2.1 - 2004-10-02 for Hospitals and Health Care Organizations and Services
   Copyright (C) 2002,2003,2004,2005  Elpidio Latorilla & Intellin.org
@@ -43,9 +45,17 @@ $title = $_SESSION['sess_title'];
         }
     </script>
 
+
 <?php require($root_path . 'include/inc_css_a_hilitebu.php'); ?>
 
 </head>
+
+<?php 
+
+    require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+ ?>
 <body>
     <form name="selectform" method="get" action="headline-edit.php" onSubmit="return chkForm(this)">
         <FONT  SIZE=6 COLOR="#cc6600">
@@ -87,6 +97,8 @@ $title = $_SESSION['sess_title'];
         <p>
 <?php
 require($root_path . 'include/inc_load_copyrite.php');
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>
     </form>
 </body>

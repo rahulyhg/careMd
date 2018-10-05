@@ -3,6 +3,8 @@
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+$pageName = "Patient";
+
 $debug = FALSE;
 if ($debug) {
     if (!isset($externalcall))
@@ -312,6 +314,11 @@ if (isset($search_script) && $search_script != '')
 $smarty->assign('sFormParams', $sTemp);
 $smarty->assign('searchprompt', $searchprompt);
 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
+
 #
 # Prepare the hidden inputs
 #
@@ -439,4 +446,6 @@ $smarty->assign('sMainIncludeFile', 'registration_admission/admit_search_main.tp
 $smarty->assign('sMainBlockIncludeFile', 'registration_admission/admit_plain.tpl');
 
 $smarty->display('common/mainframe.tpl');
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

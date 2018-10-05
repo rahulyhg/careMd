@@ -1,10 +1,9 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.0//EN" "html.dtd">
-<HTML>
-
     <?php
     error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
     require('./roots.php');
     require($root_path . 'include/inc_environment_global.php');
+    $pageName = "Patient";
+
     /**
      * CARE2X Integrated Hospital Information System version deployment 1.1 (mysql) 2004-01-11
      * GNU General Public License
@@ -58,6 +57,7 @@
 
         <script type="text/javascript">
 <?php
+
 require($root_path . 'include/inc_checkdate_lang.php');
 ?>
         </script>
@@ -115,7 +115,13 @@ require($root_path . 'include/inc_checkdate_lang.php');
 
 
     </HEAD>
-    <BODY bgcolor=#ffffff link=#000066 alink=#cc0000 vlink=#000066  >
+
+    <?php 
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+     ?>
 
 
 
@@ -368,3 +374,4 @@ echo $$dfbuffer;
                             </table>
                             </BODY>
                             </HTML>
+<?php require_once($root_path . 'main_theme/footer.inc.php'); ?>

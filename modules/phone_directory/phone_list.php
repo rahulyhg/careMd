@@ -2,6 +2,8 @@
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require_once('./roots.php');
 require_once($root_path . 'include/inc_environment_global.php');
+$pageName = "Directory";
+
 /*
   CARE2X Integrated Information System Deployment 2.1 - 2004-10-02 for Hospitals and Health Care Organizations and Services
   Copyright (C) 2002,2003,2004,2005  Elpidio Latorilla & Intellin.org
@@ -44,6 +46,11 @@ if ($ergebnis = $db->Execute($sql)) {
     <?php echo setCharSet(); ?>
     <TITLE></TITLE>
     <?php
+
+    require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
     require($root_path . 'include/inc_css_a_hilitebu.php');
     ?>
 </HEAD>
@@ -57,6 +64,11 @@ if ($ergebnis = $db->Execute($sql)) {
         <img <?php echo createComIcon($root_path, 'phone.gif', '0', 'absmiddle') ?>>
 <?php endif; ?>
     <FONT  COLOR="<?php echo $cfg[top_txtcolor] ?>"  SIZE=6  FACE="verdana"> <b><?php echo $LDPhoneDir ?></b></font>
+
+        <?php 
+
+
+         ?>
 
     <table  border=0 cellpadding=0 cellspacing=0 width="100%">
         <tr>
@@ -243,3 +255,9 @@ require($root_path . 'include/inc_load_copyrite.php');
 ?>
 </BODY>
 </HTML>
+
+<?php 
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
+ ?>

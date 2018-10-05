@@ -16,6 +16,7 @@ require('./roots.php');
 
 require($root_path . 'include/inc_environment_global.php');
 require_once($root_path . 'include/care_api_classes/class_core.php');
+$pageName = "Pharmacy";
 
 $coreobj = new core;
 
@@ -227,6 +228,10 @@ function showPriceListTable() {
     }
     return 0;
 }
+    require_once($root_path . 'main_theme/head.inc.php');
+    require_once($root_path . 'main_theme/header.inc.php');
+    require_once($root_path . 'main_theme/topHeader.inc.php');
+    require ("gui/gui_manage_pricelist.php");
+    require_once($root_path . 'main_theme/footer.inc.php');
 
-require ("gui/gui_manage_pricelist.php");
 ?>

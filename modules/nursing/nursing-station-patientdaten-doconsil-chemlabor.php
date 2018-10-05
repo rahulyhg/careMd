@@ -7,6 +7,8 @@ require_once($root_path . 'include/care_api_classes/class_weberp.php');
 require_once($root_path . 'include/care_api_classes/class_core.php');
 require_once($root_path . 'include/care_api_classes/class_prescription.php');
 $pres_obj = new Prescription;
+$pageName = "Laboratories";
+
 //require_once($root_path.'include/care_api_classes/class_tz_drugsandservices.php');
 //$drg_obj = new DrugsAndServices;
 
@@ -931,5 +933,10 @@ $smarty->assign('sMainFrameBlockData', $sTemp);
 /**
  * show Template
  */
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 $smarty->display('common/mainframe.tpl');
 ?>
+<?php require_once($root_path . 'main_theme/footer.inc.php'); ?>

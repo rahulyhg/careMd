@@ -15,6 +15,7 @@ define('CURRENT_STOCK_ID', 1);
 #
 define('USE_PAGE_GEN_TIME', 1);
 
+
 #
 # Doctors on duty change time
 # Define the time when the doc-on-duty will change in 24 hours H.M format (eg. 3 PM = 15.00, 12 PM = 0.00)

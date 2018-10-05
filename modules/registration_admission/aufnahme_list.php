@@ -1,7 +1,8 @@
 <?php
-
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+$pageName = "Patient";
+
 /**
  * CARE2X Integrated Hospital Information System beta 2.0.1 - 2004-07-04
  * GNU General Public License
@@ -40,6 +41,7 @@ function fCond($item, $k) {
             $orwhere = $buf;
     }
 }
+
 
 define('LANG_FILE', 'aufnahme.php');
 $local_user = 'aufnahme_user';
@@ -273,6 +275,12 @@ if (!isset($rows) || !$rows) {
         $att_dr_service = $encounter_obj->AllAttDrServiceClassesObject();
     }
 }
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
 # Load GUI page
 require('./gui_bridge/default/gui_aufnahme_list.php');
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

@@ -120,14 +120,14 @@ if (!$cfg['dhtml']) {
                     #
                     # User "register new person" button
                     #
-		$sNewPatientButton = 'register_green.gif';
+    $sNewPatientButton = 'register_green.gif';
                     $sNewPatientButtonGray = 'register_gray.gif';
                 } else {
                     $sNewPatientButton = 'new_patient_green.gif';
                     $sNewPatientButtonGray = 'admit-gray.gif';
                 }
                 //if($target=="entry") echo '<img '.createLDImgSrc($root_path,'register_green.gif','0').' alt="'.$LDNewPerson.'" title="'.$LDNewPerson.'">';
-                //	else{ echo'<a href="patient_register_pass.php?sid='.$sid.'&target=entry&lang='.$lang.'"><img '.createLDImgSrc($root_path,'register_gray.gif','0').' alt="'.$LDNewPerson.'" title="'.$LDNewPerson.'" '; if($cfg['dhtml'])echo'style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)'; echo '></a>';}
+                //  else{ echo'<a href="patient_register_pass.php?sid='.$sid.'&target=entry&lang='.$lang.'"><img '.createLDImgSrc($root_path,'register_gray.gif','0').' alt="'.$LDNewPerson.'" title="'.$LDNewPerson.'" '; if($cfg['dhtml'])echo'style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)'; echo '></a>';}
                 if ($target == "entry")
                     echo '<img ' . createLDImgSrc($root_path, $sNewPatientButton, '0') . ' alt="' . $LDNewPerson . '" title="' . $LDNewPerson . '">';
                 else {

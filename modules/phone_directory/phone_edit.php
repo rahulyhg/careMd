@@ -2,6 +2,8 @@
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require_once('./roots.php');
 require_once($root_path . 'include/inc_environment_global.php');
+$pageName = "Directory";
+
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.1 - 2004-10-02
  * GNU General Public License
@@ -18,6 +20,10 @@ if (isset($user_origin) && $user_origin == 'pers') {
     $local_user = 'phonedir_user';
     $sBreakUrl = 'phone.php' . URL_APPEND;
 }
+    require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 require_once($root_path . 'include/inc_front_chain_lang.php');
 require_once($root_path . 'include/care_api_classes/class_personell.php');
 
@@ -345,3 +351,7 @@ require($root_path . 'include/inc_load_copyrite.php');
 ?></FONT>
 </BODY>
 </HTML>
+<?php 
+require_once($root_path . 'main_theme/footer.inc.php');
+
+ ?>

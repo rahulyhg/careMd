@@ -117,7 +117,7 @@ ob_end_clean();
 
 $smarty->assign('sSubMenuBlock', $sTemp);
 
-
+$pageName = "Home";
 
 
 # Assign the subframe template file name to mainframe
@@ -125,146 +125,12 @@ $smarty->assign('sSubMenuBlock', $sTemp);
 //$smarty->assign('sMainBlockIncludeFile', 'news/headline.tpl');
 ?>
 
-<TABLE CELLSPACING=3 cellpadding=0 border="0" width="{{$news_normal_display_width}}">
 
-    <tr>
-        <td VALIGN="top" width="100%">
+<?php 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'modules/dashboard/dashboard.php');
 
-            <table width=100%>
-    <tr>
-        <td>
-            <table border=0 bgcolor=#cfcfcf cellpadding=1 cellspacing=0 width="100%">
-<tr>
-<td>
+ ?>
 
-<table border=0 bgcolor=#ffffff cellpadding=1 cellspacing=0 width="100%">
-<tr>
-<td>
-<font size=6 color=#800000>
-<b>DASH BOARD</b>
-</font>
-</td>
-</tr>
-</table>
-
-</td>
-</tr>
-</table>
-        </td>
-    </tr>
-
-    <tr valign=top>
-        <td>
-
-
-        
-  
-    <script type="text/javascript" src="../../js/graph_loader/line_graph.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Month', 'Nhif', 'Cash','AAR','Jubilee'],
-          ['Jan',  1000,      400, 300, 1000],
-          ['Feb',  1170,      460, 400,500],
-          ['mar',  660,       1120, 230,350],
-          ['apr',  1030,      540,260,410],
-          ['june',  1030,      540,260,410],
-          ['july',  1030,      540,260,410],
-          ['aug',  1030,      540,260,410],
-          ['sept',  1030,      540,260,410],
-          ['nov',  1030,      540,260,410],
-          ['dec',  1030,      540,260,700],
-        ]);
-
-        var options = {
-          title: 'Patient Trends',
-          curveType: 'function',
-          legend: {position: 'bottom'}
-        };
-
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-        chart.draw(data, options);
-      }
-    </script>
-
-     <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
-
-        var options = {
-          title: 'My Daily Activities',
-          is3D: true,
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-        chart.draw(data, options);
-      }
-    </script>
-  
-  <body>
-    
-    <div id="curve_chart" style="width: 500px; height: 150px"></div>  
-    <hr>    
-        
-        
-        
-
-    <div id="piechart_3d" style="width: 550px; height: 150px;"></div>
-    <hr>
-
-
-            
-     </td>   
-    </tr>
-
-    <tr valign=top>
-        <td>
-            
-            <hr>
-        </td>
-    </tr>
-
-    <tr valign=top>
-        <td>
-            
-            <hr>
-        </td>
-    </tr>
-
-</table>
-
-        </td>
-        <!--      Vertical spacer column      -->
-        <TD   width=1  background="../../gui/img/common/biju/vert_reuna_20b.gif">&nbsp;</TD>
-
-        <TD VALIGN="top">
-
-            {{$sSubMenuBlock}}
-
-        </TD>
-    </tr>
-</table>
-</body>
-<?php
-
-
-/**
- * show Template
- */
-$smarty->display('common/mainframe.tpl');
-?>
+ <?php require_once($root_path . 'main_theme/footer.inc.php'); ?>

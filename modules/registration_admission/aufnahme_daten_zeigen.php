@@ -3,6 +3,7 @@
 //error_reporting(E_COMPILE_ERROR|E_ERROR|E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+$pageName = "Inpatient";
 
 
 /*
@@ -521,5 +522,10 @@ $smarty->assign('sArchiveLink', '<img ' . createComIcon($root_path, 'varrow.gif'
 
 $smarty->assign('sMainBlockIncludeFile', 'registration_admission/admit_show.tpl');
 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 $smarty->display('common/mainframe.tpl');
 ?>
+ <?php require_once($root_path . 'main_theme/footer.inc.php'); ?>

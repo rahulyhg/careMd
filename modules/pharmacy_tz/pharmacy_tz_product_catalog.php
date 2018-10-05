@@ -4,6 +4,9 @@ error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 
 require($root_path . 'include/inc_environment_global.php');
+
+$pageName = "Pharmacy";
+
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.1 - 2004-10-02
  * GNU General Public License
@@ -16,6 +19,12 @@ $lang_tables[] = 'pharmacy.php';
 define('NO_2LEVEL_CHK', 1);
 require($root_path . 'include/inc_front_chain_lang.php');
 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
 
 require ("gui/gui_pharmacy_tz_product_catalog.php");
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

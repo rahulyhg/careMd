@@ -4,6 +4,8 @@ define('ROW_MAX', 15); # define here the maximum number of rows for displaying t
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+$pageName = "Laboratories";
+
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.2 - 2006-07-10
  * GNU General Public License
@@ -176,5 +178,9 @@ $smarty->assign('sMainBlockIncludeFile', 'laboratory/test_groups.tpl');
 /**
  * show Template
  */
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
 $smarty->display('common/mainframe.tpl');
 ?>
+<?php require_once($root_path . 'main_theme/footer.inc.php'); ?>

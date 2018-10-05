@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2018-03-09 10:47:45
+<?php /* Smarty version 2.6.22, created on 2018-10-02 20:32:46
          compiled from common/mainframe.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'config_load', 'common/mainframe.tpl', 4, false),)), $this); ?>
@@ -62,6 +62,9 @@ unset($_smarty_tpl_vars);
 
     </tbody>
 </table>
+
+
+
 
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "common/footer.tpl", 'smarty_include_vars' => array()));

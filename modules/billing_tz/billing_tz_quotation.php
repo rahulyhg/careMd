@@ -4,6 +4,8 @@
 //error_reporting(0);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+$pageName = "Billing";
+
 
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.1 - 2004-10-02
@@ -30,5 +32,13 @@ $in_outpatient = $_REQUEST['patient'];
 
 define('LANG_FILE', 'billing.php');
 require($root_path . 'include/inc_front_chain_lang.php');
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
+
 require ('gui/gui_billing_tz_quotation.php');
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

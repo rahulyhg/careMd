@@ -2,6 +2,8 @@
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+$pageName = "Patient";
+
 /**
  * CARE2X Integrated Hospital Information System beta 2.0.1 - 2004-07-04
  * GNU General Public License
@@ -129,6 +131,11 @@ $smarty->assign('sMainDataBlock', $psearch->create());
 $smarty->assign('sMainBlockIncludeFile', 'registration_admission/reg_plain.tpl');
 
 # Show mainframe
-
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
 $smarty->display('common/mainframe.tpl');
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

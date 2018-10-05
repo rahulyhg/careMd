@@ -2,6 +2,7 @@
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+$pageName = "Inpatient";
 
 /**
  * CARE2X Integrated Hospital Information System beta 2.0.0 - 2004-05-16
@@ -31,7 +32,13 @@ $items = 'nr,name';
 $ward_info = &$ward_obj->getAllWardsItemsObject($items);
 ?>
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.0//EN" "html.dtd">
-<?php html_rtl($lang); ?>
+<?php html_rtl($lang);
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
+?>
+
 <HEAD>
     <?php echo setCharSet(); ?>
 
@@ -210,5 +217,6 @@ if (!$cfg['dhtml']) {
 </table>
 &nbsp;
 </FONT>
-</BODY>
-</HTML>
+<?php 
+require_once($root_path . 'main_theme/footer.inc.php');
+ ?>

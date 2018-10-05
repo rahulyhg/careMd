@@ -18,6 +18,7 @@
     define('SHOW_DOC_2', 1);  # Define to 1 to  show the 2nd doctor-on-duty
     define('DOC_CHANGE_TIME', '7.30'); # Define the time when the doc-on-duty will change in 24 hours H.M format (eg. 3 PM = 15.00, 12 PM = 0.00)
 
+
     $lang_tables[] = 'prompt.php';
     define('LANG_FILE', 'nursing.php');
 //define('NO_2LEVEL_CHK',1);
@@ -65,6 +66,8 @@
         <script type="text/javascript">
 <?php
 require($root_path . 'include/inc_checkdate_lang.php');
+
+
 ?>
         </script>
         <script language="javascript" src="<?php echo $root_path; ?>js/setdatetime.js"></script>
@@ -121,6 +124,16 @@ require($root_path . 'include/inc_checkdate_lang.php');
 
 
     </HEAD>
+
+    <?php 
+
+    $pageName = "Patient";
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
+     ?>
     <BODY bgcolor=#ffffff link=#000066 alink=#cc0000 vlink=#000066  >
 
 
@@ -375,5 +388,5 @@ require($root_path . 'include/inc_checkdate_lang.php');
 
         </tbody>
     </table>
-</BODY>
-</HTML>
+
+<?php require_once($root_path . 'main_theme/footer.inc.php'); ?>

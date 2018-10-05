@@ -3,6 +3,8 @@
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+$pageName = "Special Tools";
+
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.1 - 2004-10-02
  * GNU General Public License
@@ -227,8 +229,14 @@ elseif ($_COOKIE['ck_login_logged' . $sid])
 else
     $breakfile = 'personell_admin_pass.php' . URL_APPEND . '&target=' . $target;
 
+    require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
 # Prepare the photo filename
 require_once($root_path . 'include/inc_photo_filename_resolve.php');
 
 require('./gui_bridge/default/gui_' . $thisfile);
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

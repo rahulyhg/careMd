@@ -13,6 +13,9 @@ if (empty($item_classification))
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 
+$pageName = "Pharmacy";
+
+
 require($root_path . 'include/inc_environment_global.php');
 require($root_path . 'include/care_api_classes/class_tz_pharmacy.php');
 
@@ -389,5 +392,12 @@ else {
 
 //------------------------------------------------------------------------------
 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 require ("gui/gui_pharmacy_tz_new_product.php");
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

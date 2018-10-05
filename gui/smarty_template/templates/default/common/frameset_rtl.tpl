@@ -1,8 +1,6 @@
-{{* Frameset for right-to-left direction (arabic and farsi languages) *}}
+{{* Frameset for default design and normal left-to-right direction *}}
 
-<frameset cols="*,19%" border=0>
-    <FRAME NAME = "CONTENTS" {{$sContentsFrameSource}}>
-        <frameset rows="*" border=0>
-            <frame name="STARTPAGE" {{$sStartFrameSource}}>
-        </frameset>
-</frameset>
+<frameset cols="{{$gui_frame_left_nav_width}},*" border="{{$gui_frame_left_nav_border}}">
+    <FRAME  NAME = "STARTPAGE" {{$sStartFrameSource}} MARGINHEIGHT="5"	MARGINWIDTH  ="5" SCROLLING="auto" >
+        <FRAME NAME = "CONTENTS" {{$sContentsFrameSource}}>
+            </frameset>	

@@ -5,6 +5,9 @@ require('./roots.php');
 
 require($root_path . 'include/inc_environment_global.php');
 
+$pageName = "Inpatient";
+
+
 if (!empty($encounter))
     $_SESSION['sess_en'] = $encounter;
 
@@ -42,6 +45,11 @@ if ($mode == "search") {
     }
 }
 
+    require_once($root_path . 'main_theme/head.inc.php');
+    require_once($root_path . 'main_theme/header.inc.php');
+    require_once($root_path . 'main_theme/topHeader.inc.php');
 
 require ("gui/gui_icd10_quicklist.php");
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

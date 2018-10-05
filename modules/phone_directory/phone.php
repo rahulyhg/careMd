@@ -2,6 +2,8 @@
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require_once('./roots.php');
 require_once($root_path . '/include/inc_environment_global.php');
+$pageName = "Directory";
+
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.1 - 2004-10-02
  * GNU General Public License
@@ -67,6 +69,11 @@ if (($keyword) && ($keyword != ' ')) {
     <?php
     require($root_path . 'include/inc_js_gethelp.php');
     require($root_path . 'include/inc_css_a_hilitebu.php');
+
+    require_once($root_path . 'main_theme/head.inc.php');
+    require_once($root_path . 'main_theme/header.inc.php');
+    require_once($root_path . 'main_theme/topHeader.inc.php');
+
     ?>
 
 </HEAD>

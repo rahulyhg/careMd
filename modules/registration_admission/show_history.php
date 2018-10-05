@@ -3,6 +3,14 @@
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
 require($root_path . 'language/en/lang_en_aufnahme.php');
+$pageName = "Patient";
+
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
+
 ?>
 <!--<table width=15% border=0 cellspacing=0 height=15%>
     <tr>-->
@@ -207,7 +215,8 @@ require($root_path . 'language/en/lang_en_aufnahme.php');
                 echo '<td>' . $rows_lab['test_date'] . '</td>';
                 echo '<td>' . $rows_lab['paramater_name'] . '</td>';
                 echo '<td>' . $rows_lab['parameter_value'] . '</td>';
-                echo '<td colspan="2">' . $rows_lab['comment'] . '</td>';
+                // echo '<td colspan="2">' . $rows_lab['comment'] . '</td>'; Undefinded index comment
+                echo '<td colspan="2">' . '' . '</td>';
                 echo '</tr>';
                 echo '<br>';
             }
@@ -245,3 +254,5 @@ require($root_path . 'language/en/lang_en_aufnahme.php');
 
     </body>
 </html>
+
+<?php require_once($root_path . 'main_theme/footer.inc.php'); ?>

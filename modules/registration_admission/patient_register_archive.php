@@ -3,6 +3,8 @@
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+$pageName = "Patient";
+
 /**
  * CARE2X Integrated Hospital Information System beta 2.0.1 - 2004-07-04
  * GNU General Public License
@@ -340,6 +342,11 @@ if (isset($mode) && ($mode == 'search' || $mode == 'paginate')) {
  */
 # Note: it is advisable to load this after the inc_front_chain_lang.php so
 # that the smarty script can use the user configured template theme
+# 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 
 require_once($root_path . 'gui/smarty_template/smarty_care.class.php');
 $smarty = new smarty_care('common');
@@ -364,4 +371,6 @@ $smarty->assign('pbBack', FALSE);
 
 # Load GUI page
 require('./gui_bridge/default/gui_person_reg_archive.php');
+
+require_once($root_path . 'main_theme/footer.inc.php');
 ?>

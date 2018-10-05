@@ -1,4 +1,25 @@
 <?php
+
+// Initialize the session and destray all the previous session
+session_start();
+
+$_SESSION = array();
+
+if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000,
+        $params["path"], $params["domain"],
+        $params["secure"], $params["httponly"]
+    );
+}
+
+session_destroy();
+
+$_SESSION['sess_login_userid'] = '';
+$_SESSION['sess_login_username'] = '';
+$_SESSION['sess_login_pw'] = '';
+$_SESSION['sess_login_expired'] = '';
+
 //error_reporting(E_COMPILE_ERROR|E_ERROR|E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
@@ -18,7 +39,7 @@ require($root_path . 'include/inc_2level_reset.php');
 
 $fileforward = $root_path . 'modules/news/start_page.php' . URL_REDIRECT_APPEND;
 $thisfile = 'login.php';
-$breakfile = 'startframe.php' . URL_APPEND;
+// $breakfile = 'startframe.php' . URL_APPEND;
 
 if (!isset($pass)) {
     $pass = '';
@@ -122,6 +143,14 @@ require($root_path . 'include/inc_passcheck_head.php');
 ?>
 
 <?php echo setCharSet(); ?>
+
+<?php 
+
+// require_once($root_path . 'main_theme/head.inc.php');
+// require_once($root_path . 'main_theme/header.inc.php');
+// require_once($root_path . 'main_theme/topHeader.inc.php');
+
+ ?>
 
 <BODY onLoad="<?php if (isset($is_logged_out) && $is_logged_out) echo "window.parent.STARTPAGE.location.href='indexframe.php?sid=$sid&lang=$lang';"; ?>document.passwindow.userid.focus();" bgcolor=<?php echo $cfg['body_bgcolor']; ?>
       <?php if (!$cfg['dhtml']) {

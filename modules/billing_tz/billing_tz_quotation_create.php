@@ -3,6 +3,7 @@ error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 //error_reporting(0);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+$pageName = "Billing";
 
 
 /**
@@ -295,7 +296,11 @@ $ceiling = $matchingContract['Member']['ceiling'] - $matchingContract['Member'][
 $used_budget = $matchingBills;
 $insurancebudget = $ceiling - $used_budget;
 
-
+  require_once($root_path . 'main_theme/head.inc.php');
+  require_once($root_path . 'main_theme/header.inc.php');
+  require_once($root_path . 'main_theme/topHeader.inc.php');
 
 require ("gui/gui_billing_tz_quotation_create.php");
+  require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

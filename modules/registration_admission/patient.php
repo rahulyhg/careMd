@@ -131,5 +131,12 @@ $smarty->assign('sMainBlockIncludeFile', 'registration_admission/person_submenu.
 /**
  * show Template
  */
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 $smarty->display('common/mainframe.tpl');
 ?>
+
+<?php require_once($root_path . 'main_theme/footer.inc.php'); ?>

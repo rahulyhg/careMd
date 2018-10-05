@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
+$pageName = "Pharmacy";
 
 require($root_path . 'include/inc_environment_global.php');
 /**
@@ -81,6 +82,12 @@ require($root_path . 'include/inc_front_chain_lang.php');
 
 
     </HEAD>
+    <?php 
+    
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+     ?>
     <BODY bgcolor=#ffffff link=#000066 alink=#cc0000 vlink=#000066  >
 
         <!-- START HEAD OF HTML CONTENT --->
@@ -143,6 +150,7 @@ require($root_path . 'include/inc_front_chain_lang.php');
 <?php
 //echo $_POST['substore'];
 ?>
+<?php require_once($root_path . 'main_theme/footer.inc.php'); ?>
 
 
 

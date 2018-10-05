@@ -29,6 +29,7 @@ if (empty($_SESSION['sess_path_referer']) || !file_exists($root_path . $_SESSION
 
 if (!$_SESSION['sess_pid'])
     $_SESSION['sess_pid'];
+
 if (!isset($insurance_show))
     $insurance_show = true;
 
@@ -42,6 +43,9 @@ require('./gui_bridge/default/gui_std_tags.php');
 
 echo StdHeader();
 echo setCharSet();
+
+$pageName = "Patient";
+
 ?>
 
 <TITLE><?php echo $LDPatientRegister ?></TITLE>
@@ -49,6 +53,12 @@ echo setCharSet();
 <?php
 require($root_path . 'include/inc_js_gethelp.php');
 require($root_path . 'include/inc_css_a_hilitebu.php');
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
+
 ?>
 
 </HEAD>
@@ -132,4 +142,5 @@ require($root_path . 'include/inc_css_a_hilitebu.php');
         </FONT>
         <?php
         echo StdFooter();
+        require_once($root_path . 'main_theme/footer.inc.php');
         ?>

@@ -27,8 +27,10 @@ require_once($root_path . 'include/inc_img_fx.php');
             <FONT    SIZE=3 color=red  FACE="Arial">
             <b>You have no access rights to open this document!</b></font><p>
             <FORM >
-                <INPUT type="button"  value=" OK "  onClick="<?php if ($mode == "close") print 'window.close()';
-else print 'history.back()'; ?>"></FORM>
+                <a href="<?php echo $root_path ?>"> Back To Login</a>
+                <!-- <INPUT type="button"  value=" OK "  onClick="<?php if ($mode == "close") print 'window.close()'; else print 'history.back()'; ?>"> -->
+
+            </FORM>
             <p>
                 </font>
         </center>

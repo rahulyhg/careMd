@@ -11,6 +11,7 @@ require('./roots.php');
 
 require($root_path . 'include/inc_environment_global.php');
 require($root_path . 'include/care_api_classes/class_tz_pharmacy.php');
+$pageName = "Pharmacy";
 
 
 /**
@@ -332,6 +333,13 @@ if ($_POST['submit'] == 'submit') {
 
 } // end of if ($_POST['submit']=='submit')
 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
 
 require ('gui/gui_edit_pricesettings.php');
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
+
 ?>

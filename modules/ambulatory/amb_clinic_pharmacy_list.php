@@ -5,6 +5,9 @@
     error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
     require('./roots.php');
     require($root_path . 'include/inc_environment_global.php');
+
+    $pageName = "Patient";
+
     /**
      * CARE2X Integrated Hospital Information System version deployment 1.1 (mysql) 2004-01-11
      * GNU General Public License
@@ -115,6 +118,11 @@ require($root_path . 'include/inc_checkdate_lang.php');
 
 
     </HEAD>
+    <?php 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+     ?>
     <BODY bgcolor=#ffffff link=#000066 alink=#cc0000 vlink=#000066  >
 
 

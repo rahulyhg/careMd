@@ -3,6 +3,10 @@ error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 
 require($root_path . 'include/inc_environment_global.php');
+
+$pageName = "Pharmacy";
+
+
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.1 - 2004-10-02
  * GNU General Public License
@@ -240,4 +244,13 @@ else if ((($insurance_ID == '') || isset($toggle)) && $show) { // when you first
     </tr>
 </table>
 
-        <?php require ("gui/gui_pharmacy_tz_show_prescr.php"); ?>
+        <?php 
+        require_once($root_path . 'main_theme/head.inc.php');
+        require_once($root_path . 'main_theme/header.inc.php');
+        require_once($root_path . 'main_theme/topHeader.inc.php');
+
+        require ("gui/gui_pharmacy_tz_show_prescr.php");
+
+        require_once($root_path . 'main_theme/footer.inc.php');
+
+        ?>

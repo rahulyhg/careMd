@@ -442,5 +442,9 @@ if ($mask == 2) {
 #
 # Display the frame page
 #
-$smarty->display('common/baseframe.tpl');
+// $smarty->display('common/baseframe.tpl');
+
+require_once($root_path . 'main_theme/mainApp.php');
+
+
 ?>

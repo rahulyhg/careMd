@@ -2,6 +2,8 @@
 //error_reporting(E_COMPILE_ERROR|E_ERROR|E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+$pageName = "Patient";
+
 /**
  * CARE2X Integrated Hospital Information System beta 2.0.1 - 2004-07-04
  * GNU General Public License
@@ -126,5 +128,13 @@ $buffer = str_replace('~tag~', $title . ' ' . $name_last, $LDNoRecordYet);
 $norecordyet = str_replace('~obj~', strtolower($subtitle), $buffer);
 
 /* Load GUI page */
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 require('./gui_bridge/default/gui_show.php');
 ?>
+
+<?php require_once($root_path . 'main_theme/footer.inc.php'); ?>
+

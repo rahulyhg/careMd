@@ -1,0 +1,34 @@
+.nav-scroll::-webkit-scrollbar {
+    width: 2px;
+}
+
+.nav-scroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+
+.nav-scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+.sidebar .nav{
+  margin-left: 0px;
+}
+
+.sidebar .nav p{
+  line-height: 25px;
+}
+
+.sidebar-colored{
+  /*background-color: #99CCFF;*/
+}
+
+.sidebar .nav li a, .sidebar .nav li .dropdown-menu a{
+  /*color: white: ;*/
+}
+
+.sidebar .logo{
+  padding-bottom: 2px;
+}
+

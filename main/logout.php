@@ -24,9 +24,24 @@ $_SESSION['sess_login_username'] = '';
 $_SESSION['sess_login_pw'] = '';
 $_SESSION['sess_login_expired'] = '';
 
+// Initialize the session and destray all the previous session
+session_start();
+
+$_SESSION = array();
+
+if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000,
+        $params["path"], $params["domain"],
+        $params["secure"], $params["httponly"]
+    );
+}
+
+session_destroy();
+
 #
 # Redirect to login page for eventual new login
 #
-header("location: login.php" . URL_REDIRECT_APPEND . "&is_logged_out=1");
+header("location: " . $root_path . "?is_logged_out=1");
 exit;
 ?>

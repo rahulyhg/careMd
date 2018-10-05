@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2017-04-03 11:08:40
+<?php /* Smarty version 2.6.22, created on 2018-10-02 16:39:06
          compiled from common/frameset_ltr.tpl */ ?>
 
 <frameset cols="<?php echo $this->_tpl_vars['gui_frame_left_nav_width']; ?>

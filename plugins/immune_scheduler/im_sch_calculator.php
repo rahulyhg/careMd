@@ -5,6 +5,8 @@ require($root_path.'include/inc_environment_global.php');
 $lang_tables[]='table_immunization.php';
 $lang_tables[]='date_time.php';
 require($root_path.'include/inc_front_chain_lang.php');
+$pageName = "Special Tools";
+
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
@@ -22,6 +24,9 @@ require($root_path.'include/inc_front_chain_lang.php');
 </HEAD>
 <?php 
 
+    require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
 	// Capture the entered data!
 	$do = isset($_POST["do"]);
 	$theDay = isset($_POST["TheDay"]);
@@ -429,6 +434,8 @@ switch ($do)
 		{
 			echo "$term ".$LDIsNow." <b>$childAgeInYears</b> ".$LDYearAnd." <b>$childAgeInMs</b> ".$LDMonthsold." </br>";
 		}
+
+
 ?>
 </p>
 </font>

@@ -1,6 +1,12 @@
 <?php
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+$pageName = "Registration";
+
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
 
 
 /**
@@ -12,7 +18,6 @@ require($root_path . 'include/inc_environment_global.php');
  * See the file "copy_notice.txt" for the licence notice
  */
 define('SHOW_DOC_2', 1);  # Define to 1 to  show the 2nd doctor-on-duty
-define('DOC_CHANGE_TIME', '7.30'); # Define the time when the doc-on-duty will change in 24 hours H.M format (eg. 3 PM = 15.00, 12 PM = 0.00)
 
 $lang_tables[] = 'ambulatory.php';
 $lang_tables[] = 'prompt.php';
@@ -839,3 +844,6 @@ $smarty->display('common/mainframe.tpl');
             ?>
 
         </div>
+
+<?php require_once($root_path . 'main_theme/footer.inc.php'); ?>
+        

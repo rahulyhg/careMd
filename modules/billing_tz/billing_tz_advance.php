@@ -3,6 +3,8 @@
 error_reporting(0);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+$pageName = "Billing";
+
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.1 - 2004-10-02
  * GNU General Public License
@@ -48,5 +50,12 @@ if ($advance_payment) {
 
 $advancebills = $bill_obj->GetAllAdvancesForEncounter($encounter_nr);
 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 require ('gui/gui_billing_tz_advance.php');
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

@@ -2,6 +2,9 @@
 //error_reporting(0);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+$pageName = "Patient";
+
+
 /**
  * CARE2X Integrated Hospital Information System beta 2.0.1 - 2004-07-04
  * GNU General Public License
@@ -579,6 +582,11 @@ if (isset($pid) && $pid) {
 
     <?php
 } // End of if(isset(pid))
+
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
 
 require('./include/js_popsearchwindow.inc.php');
 
@@ -1195,5 +1203,7 @@ $smarty->assign('sArchiveLink', '<img ' . createComIcon($root_path, 'varrow.gif'
 
 $smarty->assign('sMainBlockIncludeFile', 'registration_admission/admit_input.tpl');
 
+
 $smarty->display('common/mainframe.tpl');
 ?>
+<?php require_once($root_path . 'main_theme/footer.inc.php'); ?>

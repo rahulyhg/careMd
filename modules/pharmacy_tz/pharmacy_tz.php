@@ -1,6 +1,7 @@
 <?php
 //error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
+$pageName = "Pharmacy";
 
 require($root_path . 'include/inc_environment_global.php');
 /**
@@ -27,5 +28,10 @@ if ($locstock_row = $locstock_result->FetchRow()) {
     $locname = $locstock_row['locationname'];
     $loccode = $locstock_row['loccode'];
 }
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 require ("gui/gui_pharmacy_tz.php");
 ?>
+<?php require_once($root_path . 'main_theme/footer.inc.php'); ?>

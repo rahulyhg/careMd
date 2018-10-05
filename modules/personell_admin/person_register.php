@@ -2,6 +2,9 @@
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+
+$pageName = "Referrer Notes";
+
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.1 - 2004-10-02
  * GNU General Public License
@@ -55,6 +58,12 @@ $smarty->assign('sWindowTitle', "$LDPersonnelManagement :: $LDPersonRegister");
 # Colllect javascript code
 
 ob_start();
+
+
+
+    require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
 ?>
 
 <table width=100% border=0 cellspacing="0" cellpadding=0>
@@ -102,4 +111,7 @@ $smarty->assign('sMainFrameBlockData', $sTemp);
  * show Template
  */
 $smarty->display('common/mainframe.tpl');
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>
