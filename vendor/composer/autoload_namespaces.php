@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Propel' => array($vendorDir . '/propel/propel/src'),
     'Pimple' => array($vendorDir . '/pimple/pimple/src'),
-    'Bcn\\Component\\Json\\' => array($vendorDir . '/bcncommerce/json-stream'),
+    'Bcn\\Component\\StreamWrapper\\' => array($vendorDir . '/bcncommerce/stream-wrapper'),
+    'Bcn\\Component\\Json\\' => array($baseDir . '/', $vendorDir . '/bcncommerce/json-stream'),
 );
