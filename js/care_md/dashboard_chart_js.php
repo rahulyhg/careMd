@@ -16,6 +16,13 @@ $.getJSON("<?php echo $root_path.'modules/dashboard/patientTrends.php' ?>").done
         title: {
           display: true,
         },
+        legend: {
+            position: 'left',
+            labels: {
+                boxWidth: 20,
+                padding: 20
+            }
+        }
       }
     };
      var ctx = document.getElementById('patienttrends').getContext('2d');
@@ -40,7 +47,11 @@ var diseaseConfig = {
       options: {
         responsive: true,
         legend: {
-          position: 'top',
+            position: 'right',
+            labels: {
+                boxWidth: 20,
+                padding: 20
+            }
         },
         title: {
           display: true,
@@ -100,7 +111,11 @@ var drugconfig = {
       options: {
         responsive: true,
         legend: {
-          position: 'top',
+            position: 'left',
+            labels: {
+                boxWidth: 20,
+                padding: 20
+            }
         },
         title: {
           display: true,
