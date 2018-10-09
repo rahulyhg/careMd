@@ -25,6 +25,7 @@
 
     "autoload": {
         "psr-0": { "Bcn\\Component\\Json\\": "" },
+        "classmap": ["propel/CareMd/CareMd/"],
         "psr-4": {"" : ""}
     },
     "extra": {

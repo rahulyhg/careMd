@@ -41,13 +41,16 @@
   <script src="<?php echo $root_path ?>/js/care_md/bootstrap-material-design.min.js" type="text/javascript"></script>
   <!-- <script src="<?php echo $root_path ?>/js/care_md/plugins/perfect-scrollbar.jquery.min.js"></script> -->
   <!-- Chartist JS -->
-  <script src="<?php echo $root_path ?>/js/care_md/plugins/chartist.min.js"></script>
+  <script src="<?php echo $root_path ?>/js/care_md/plugins/chartist.js"></script>
   <!--  Notifications Plugin    -->
   <script src="<?php echo $root_path ?>/js/care_md/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="<?php echo $root_path ?>/js/care_md/material-dashboard.js?v=2.1.0" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-  <script src="<?php echo $root_path ?>/js/care_md/main.js"></script>
+  <!-- <script src="<?php echo $root_path ?>/js/care_md/chartist-plugin-tooltip.js"></script> -->
+  <!-- <script src="<?php echo $root_path ?>/js/care_md/chartist-plugin-legend.js"></script> -->
+  <script src="<?php echo $root_path ?>/js/care_md/plugins/Chart.bundle.min.js"></script>
+  <!-- <script src="<?php echo $root_path ?>/js/care_md/main.js"></script> -->
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js

@@ -222,6 +222,7 @@ $TP_HISTORY = "<a href=\"javascript:popRecordHistory('care_encounter'," . $_SESS
 $TP_href_17 = 'javascript:getinfo(\'' . $_SESSION['sess_en'] . '\')';
 if ($data_entry) {
     $TP_CHARTSFOLDER = "<a href=\"javascript:getinfo('" . $_SESSION['sess_en'] . "')\">$LDChartsRecords</a>";
+    // $TP_CHARTSFOLDER = "<a href=\"$root_path/modules/nursing/nursing-station-patientdaten.php" . URL_APPEND . "&pid=$pid&target=$target\">$LDChartsRecords</a>";
 } else {
     $TP_CHARTSFOLDER = "<font color='#333333'>$LDChartsRecords</font>";
 }

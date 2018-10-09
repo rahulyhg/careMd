@@ -1,7 +1,7 @@
 <?php
-//$sid = $_REQUEST['sid']; //Get current session id
-//session_id($sid); //Initialize session with current session id
-//session_start();
+$sid = $_REQUEST['sid']; //Get current session id
+session_id($sid); //Initialize session with current session id
+session_start();
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
 

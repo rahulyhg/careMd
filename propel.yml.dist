@@ -12,7 +12,7 @@ propel:
         schemaDir: /var/www/html/CareMd
 
         # The directory where Propel should output generated object model classes.
-        phpDir: propel
+        phpDir: /var/www/html/CareMd/propel
 
 #   database:
 #       connections:

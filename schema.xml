@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<database name="default" defaultIdMethod="native" namespace="propel" defaultPhpNamingMethod="underscore">
-  <table name="care_address_citytown" idMethod="native" phpName="CareAddressCitytown" namespace="propel">
+<database name="default" defaultIdMethod="native" namespace="CareMd" defaultPhpNamingMethod="underscore">
+  <table name="care_address_citytown" idMethod="native" phpName="CareAddressCitytown" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="unece_modifier" phpName="UneceModifier" type="CHAR" size="2"/>
     <column name="unece_locode" phpName="UneceLocode" type="VARCHAR" size="15"/>
@@ -25,7 +25,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_appointment" idMethod="native" phpName="CareAppointment" namespace="propel">
+  <table name="care_appointment" idMethod="native" phpName="CareAppointment" namespace="CareMd">
     <column name="nr" phpName="Nr" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" required="true" defaultValue="0"/>
     <column name="date" phpName="Date" type="DATE" required="true" defaultValue="0000-00-00"/>
@@ -59,7 +59,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_billing_archive" idMethod="native" phpName="CareBillingArchive" namespace="propel">
+  <table name="care_billing_archive" idMethod="native" phpName="CareBillingArchive" namespace="CareMd">
     <column name="bill_no" phpName="BillNo" type="BIGINT" primaryKey="true" required="true" defaultValue="0"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" size="10" required="true" defaultValue="0"/>
     <column name="patient_name" phpName="PatientName" type="VARCHAR" required="true"/>
@@ -75,7 +75,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_billing_bill" idMethod="native" phpName="CareBillingBill" namespace="propel">
+  <table name="care_billing_bill" idMethod="native" phpName="CareBillingBill" namespace="CareMd">
     <column name="bill_bill_no" phpName="BillBillNo" type="BIGINT" primaryKey="true" required="true" defaultValue="0"/>
     <column name="bill_encounter_nr" phpName="BillEncounterNr" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true" defaultValue="0"/>
     <column name="bill_date_time" phpName="BillDateTime" type="DATE"/>
@@ -88,7 +88,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_billing_bill_item" idMethod="native" phpName="CareBillingBillItem" namespace="propel">
+  <table name="care_billing_bill_item" idMethod="native" phpName="CareBillingBillItem" namespace="CareMd">
     <column name="bill_item_id" phpName="BillItemId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="bill_item_encounter_nr" phpName="BillItemEncounterNr" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true" defaultValue="0"/>
     <column name="bill_item_code" phpName="BillItemCode" type="VARCHAR" size="5"/>
@@ -108,7 +108,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_billing_final" idMethod="native" phpName="CareBillingFinal" namespace="propel">
+  <table name="care_billing_final" idMethod="native" phpName="CareBillingFinal" namespace="CareMd">
     <column name="final_id" phpName="FinalId" type="TINYINT" size="3" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="final_encounter_nr" phpName="FinalEncounterNr" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true" defaultValue="0"/>
     <column name="final_bill_no" phpName="FinalBillNo" type="INTEGER"/>
@@ -125,7 +125,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_billing_item" idMethod="native" phpName="CareBillingItem" namespace="propel">
+  <table name="care_billing_item" idMethod="native" phpName="CareBillingItem" namespace="CareMd">
     <column name="item_code" phpName="ItemCode" type="VARCHAR" size="5" primaryKey="true" required="true" defaultValue=""/>
     <column name="item_description" phpName="ItemDescription" type="VARCHAR" size="100"/>
     <column name="item_unit_cost" phpName="ItemUnitCost" type="FLOAT" size="10" scale="2" defaultValue="0.00"/>
@@ -136,7 +136,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_billing_payment" idMethod="native" phpName="CareBillingPayment" namespace="propel">
+  <table name="care_billing_payment" idMethod="native" phpName="CareBillingPayment" namespace="CareMd">
     <column name="payment_id" phpName="PaymentId" type="TINYINT" size="5" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="payment_encounter_nr" phpName="PaymentEncounterNr" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true" defaultValue="0"/>
     <column name="payment_receipt_no" phpName="PaymentReceiptNo" type="INTEGER" required="true" defaultValue="0"/>
@@ -157,7 +157,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_cache" idMethod="native" phpName="CareCache" namespace="propel">
+  <table name="care_cache" idMethod="native" phpName="CareCache" namespace="CareMd">
     <column name="id" phpName="Id" type="VARCHAR" size="125" primaryKey="true" required="true" defaultValue=""/>
     <column name="ctext" phpName="Ctext" type="LONGVARCHAR"/>
     <column name="cbinary" phpName="Cbinary" type="BLOB"/>
@@ -166,7 +166,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_cafe_menu" idMethod="native" phpName="CareCafeMenu" namespace="propel">
+  <table name="care_cafe_menu" idMethod="native" phpName="CareCafeMenu" namespace="CareMd">
     <column name="item" phpName="Item" type="INTEGER" autoIncrement="true" required="true"/>
     <column name="lang" phpName="Lang" type="VARCHAR" size="10" required="true" defaultValue="en"/>
     <column name="cdate" phpName="Cdate" type="DATE" required="true" defaultValue="0000-00-00"/>
@@ -189,7 +189,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_cafe_prices" idMethod="native" phpName="CareCafePrices" namespace="propel">
+  <table name="care_cafe_prices" idMethod="native" phpName="CareCafePrices" namespace="CareMd">
     <column name="item" phpName="Item" type="INTEGER" autoIncrement="true" required="true"/>
     <column name="lang" phpName="Lang" type="VARCHAR" size="10" required="true" defaultValue="en"/>
     <column name="productgroup" phpName="Productgroup" type="VARCHAR" required="true"/>
@@ -212,7 +212,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_category_diagnosis" idMethod="native" phpName="CareCategoryDiagnosis" namespace="propel">
+  <table name="care_category_diagnosis" idMethod="native" phpName="CareCategoryDiagnosis" namespace="CareMd">
     <column name="nr" phpName="Nr" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" primaryKey="true" required="true" defaultValue="0"/>
     <column name="category" phpName="Category" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -231,7 +231,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_category_disease" idMethod="native" phpName="CareCategoryDisease" namespace="propel">
+  <table name="care_category_disease" idMethod="native" phpName="CareCategoryDisease" namespace="CareMd">
     <column name="nr" phpName="Nr" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="group_nr" phpName="GroupNr" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
     <column name="category" phpName="Category" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -246,7 +246,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_category_procedure" idMethod="native" phpName="CareCategoryProcedure" namespace="propel">
+  <table name="care_category_procedure" idMethod="native" phpName="CareCategoryProcedure" namespace="CareMd">
     <column name="nr" phpName="Nr" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" primaryKey="true" required="true" defaultValue="0"/>
     <column name="category" phpName="Category" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -265,7 +265,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_class_encounter" idMethod="native" phpName="CareClassEncounter" namespace="propel">
+  <table name="care_class_encounter" idMethod="native" phpName="CareClassEncounter" namespace="CareMd">
     <column name="class_nr" phpName="ClassNr" type="SMALLINT" sqlType="smallint(6) unsigned" primaryKey="true" required="true" defaultValue="0"/>
     <column name="class_id" phpName="ClassId" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -282,7 +282,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_class_ethnic_orig" idMethod="native" phpName="CareClassEthnicOrig" namespace="propel">
+  <table name="care_class_ethnic_orig" idMethod="native" phpName="CareClassEthnicOrig" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="LD_var" phpName="LdVar" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -295,7 +295,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_class_financial" idMethod="native" phpName="CareClassFinancial" namespace="propel">
+  <table name="care_class_financial" idMethod="native" phpName="CareClassFinancial" namespace="CareMd">
     <column name="class_nr" phpName="ClassNr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="class_id" phpName="ClassId" type="VARCHAR" size="15" required="true" defaultValue="0"/>
     <column name="type" phpName="Type" type="VARCHAR" size="25" required="true" defaultValue="0"/>
@@ -317,7 +317,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_class_insurance" idMethod="native" phpName="CareClassInsurance" namespace="propel">
+  <table name="care_class_insurance" idMethod="native" phpName="CareClassInsurance" namespace="CareMd">
     <column name="class_nr" phpName="ClassNr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="class_id" phpName="ClassId" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -333,7 +333,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_class_therapy" idMethod="native" phpName="CareClassTherapy" namespace="propel">
+  <table name="care_class_therapy" idMethod="native" phpName="CareClassTherapy" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="group_nr" phpName="GroupNr" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
     <column name="class" phpName="Class" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -349,7 +349,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_classif_neonatal" idMethod="native" phpName="CareClassifNeonatal" namespace="propel">
+  <table name="care_classif_neonatal" idMethod="native" phpName="CareClassifNeonatal" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="2" sqlType="smallint(2) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="id" phpName="Id" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -367,7 +367,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_complication" idMethod="native" phpName="CareComplication" namespace="propel">
+  <table name="care_complication" idMethod="native" phpName="CareComplication" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="group_nr" phpName="GroupNr" type="INTEGER" sqlType="int(11) unsigned" required="true" defaultValue="0"/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -383,7 +383,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_config_global" idMethod="native" phpName="CareConfigGlobal" namespace="propel">
+  <table name="care_config_global" idMethod="native" phpName="CareConfigGlobal" namespace="CareMd">
     <column name="type" phpName="Type" type="VARCHAR" size="60" primaryKey="true" required="true" defaultValue=""/>
     <column name="value" phpName="Value" type="VARCHAR" size="255"/>
     <column name="notes" phpName="Notes" type="VARCHAR" size="255"/>
@@ -397,7 +397,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_config_user" idMethod="native" phpName="CareConfigUser" namespace="propel">
+  <table name="care_config_user" idMethod="native" phpName="CareConfigUser" namespace="CareMd">
     <column name="user_id" phpName="UserId" type="VARCHAR" size="100" primaryKey="true" required="true" defaultValue=""/>
     <column name="serial_config_data" phpName="SerialConfigData" type="LONGVARCHAR" required="true"/>
     <column name="notes" phpName="Notes" type="VARCHAR" size="255"/>
@@ -411,7 +411,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_currency" idMethod="native" phpName="CareCurrency" namespace="propel">
+  <table name="care_currency" idMethod="native" phpName="CareCurrency" namespace="CareMd">
     <column name="item_no" phpName="ItemNo" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" autoIncrement="true" required="true"/>
     <column name="short_name" phpName="ShortName" type="VARCHAR" size="10" required="true" defaultValue=""/>
     <column name="long_name" phpName="LongName" type="VARCHAR" size="20" required="true" defaultValue=""/>
@@ -431,7 +431,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_department" idMethod="native" phpName="CareDepartment" namespace="propel">
+  <table name="care_department" idMethod="native" phpName="CareDepartment" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="id" phpName="Id" type="VARCHAR" size="60" required="true" defaultValue=""/>
     <column name="type" phpName="Type" type="VARCHAR" size="25" required="true" defaultValue=""/>
@@ -470,7 +470,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_diagnosis_localcode" idMethod="native" phpName="CareDiagnosisLocalcode" namespace="propel">
+  <table name="care_diagnosis_localcode" idMethod="native" phpName="CareDiagnosisLocalcode" namespace="CareMd">
     <column name="localcode" phpName="Localcode" type="VARCHAR" size="12" primaryKey="true" required="true" defaultValue=""/>
     <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
     <column name="class_sub" phpName="ClassSub" type="VARCHAR" size="5" required="true" defaultValue=""/>
@@ -498,7 +498,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_drg_intern" idMethod="native" phpName="CareDrgIntern" namespace="propel">
+  <table name="care_drg_intern" idMethod="native" phpName="CareDrgIntern" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="VARCHAR" size="12" required="true" defaultValue=""/>
     <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
@@ -523,7 +523,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_drg_quicklist" idMethod="native" phpName="CareDrgQuicklist" namespace="propel">
+  <table name="care_drg_quicklist" idMethod="native" phpName="CareDrgQuicklist" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="VARCHAR" size="25" required="true" defaultValue=""/>
     <column name="code_parent" phpName="CodeParent" type="VARCHAR" size="25" required="true" defaultValue=""/>
@@ -540,7 +540,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_drg_related_codes" idMethod="native" phpName="CareDrgRelatedCodes" namespace="propel">
+  <table name="care_drg_related_codes" idMethod="native" phpName="CareDrgRelatedCodes" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="group_nr" phpName="GroupNr" type="INTEGER" sqlType="int(11) unsigned" required="true" defaultValue="0"/>
     <column name="code" phpName="Code" type="VARCHAR" size="15" required="true" defaultValue=""/>
@@ -557,7 +557,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_dutyplan_oncall" idMethod="native" phpName="CareDutyplanOncall" namespace="propel">
+  <table name="care_dutyplan_oncall" idMethod="native" phpName="CareDutyplanOncall" namespace="CareMd">
     <column name="nr" phpName="Nr" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="dept_nr" phpName="DeptNr" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true" defaultValue="0"/>
     <column name="role_nr" phpName="RoleNr" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
@@ -580,7 +580,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_effective_day" idMethod="native" phpName="CareEffectiveDay" namespace="propel">
+  <table name="care_effective_day" idMethod="native" phpName="CareEffectiveDay" namespace="CareMd">
     <column name="eff_day_nr" phpName="EffDayNr" type="TINYINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="name" phpName="Name" type="VARCHAR" size="25" required="true" defaultValue=""/>
     <column name="description" phpName="Description" type="VARCHAR" size="255" required="true" defaultValue=""/>
@@ -594,7 +594,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_encounter" idMethod="native" phpName="CareEncounter" namespace="propel">
+  <table name="care_encounter" idMethod="native" phpName="CareEncounter" namespace="CareMd">
     <column name="encounter_nr" phpName="EncounterNr" type="BIGINT" size="11" sqlType="bigint(11) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr_prev" phpName="EncounterNrPrev" type="BIGINT" size="11" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" required="true" defaultValue="0"/>
@@ -657,7 +657,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_encounter_diagnosis" idMethod="native" phpName="CareEncounterDiagnosis" namespace="propel">
+  <table name="care_encounter_diagnosis" idMethod="native" phpName="CareEncounterDiagnosis" namespace="CareMd">
     <column name="diagnosis_nr" phpName="DiagnosisNr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" required="true" defaultValue="0"/>
     <column name="op_nr" phpName="OpNr" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true" defaultValue="0"/>
@@ -688,7 +688,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_encounter_diagnostics_report" idMethod="native" phpName="CareEncounterDiagnosticsReport" namespace="propel">
+  <table name="care_encounter_diagnostics_report" idMethod="native" phpName="CareEncounterDiagnosticsReport" namespace="CareMd">
     <column name="item_nr" phpName="ItemNr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="report_nr" phpName="ReportNr" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
     <column name="reporting_dept_nr" phpName="ReportingDeptNr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
@@ -714,7 +714,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_encounter_drg_intern" idMethod="native" phpName="CareEncounterDrgIntern" namespace="propel">
+  <table name="care_encounter_drg_intern" idMethod="native" phpName="CareEncounterDrgIntern" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" required="true" defaultValue="0"/>
     <column name="date" phpName="Date" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
@@ -734,7 +734,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_encounter_event_signaller" idMethod="native" phpName="CareEncounterEventSignaller" namespace="propel">
+  <table name="care_encounter_event_signaller" idMethod="native" phpName="CareEncounterEventSignaller" namespace="CareMd">
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" required="true" defaultValue="0"/>
     <column name="yellow" phpName="Yellow" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
     <column name="black" phpName="Black" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
@@ -793,7 +793,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_encounter_financial_class" idMethod="native" phpName="CareEncounterFinancialClass" namespace="propel">
+  <table name="care_encounter_financial_class" idMethod="native" phpName="CareEncounterFinancialClass" namespace="CareMd">
     <column name="nr" phpName="Nr" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" required="true" defaultValue="0"/>
     <column name="class_nr" phpName="ClassNr" type="SMALLINT" size="3" sqlType="smallint(3) unsigned" required="true" defaultValue="0"/>
@@ -819,7 +819,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_encounter_image" idMethod="native" phpName="CareEncounterImage" namespace="propel">
+  <table name="care_encounter_image" idMethod="native" phpName="CareEncounterImage" namespace="CareMd">
     <column name="nr" phpName="Nr" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" required="true" defaultValue="0"/>
     <column name="shot_date" phpName="ShotDate" type="DATE" required="true" defaultValue="0000-00-00"/>
@@ -841,7 +841,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_encounter_immunization" idMethod="native" phpName="CareEncounterImmunization" namespace="propel">
+  <table name="care_encounter_immunization" idMethod="native" phpName="CareEncounterImmunization" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" required="true" defaultValue="0"/>
     <column name="date" phpName="Date" type="DATE" required="true" defaultValue="0000-00-00"/>
@@ -863,7 +863,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_encounter_location" idMethod="native" phpName="CareEncounterLocation" namespace="propel">
+  <table name="care_encounter_location" idMethod="native" phpName="CareEncounterLocation" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" sqlType="int(11) unsigned" required="true" defaultValue="0"/>
     <column name="type_nr" phpName="TypeNr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
@@ -893,7 +893,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_encounter_measurement" idMethod="native" phpName="CareEncounterMeasurement" namespace="propel">
+  <table name="care_encounter_measurement" idMethod="native" phpName="CareEncounterMeasurement" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" sqlType="int(11) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="msr_date" phpName="MsrDate" type="DATE" required="true" defaultValue="0000-00-00"/>
     <column name="msr_time" phpName="MsrTime" type="VARCHAR" size="5" required="true" defaultValue="0"/>
@@ -929,7 +929,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_encounter_notes" idMethod="native" phpName="CareEncounterNotes" namespace="propel">
+  <table name="care_encounter_notes" idMethod="native" phpName="CareEncounterNotes" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true" defaultValue="0"/>
     <column name="type_nr" phpName="TypeNr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
@@ -970,7 +970,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_encounter_obstetric" idMethod="native" phpName="CareEncounterObstetric" namespace="propel">
+  <table name="care_encounter_obstetric" idMethod="native" phpName="CareEncounterObstetric" namespace="CareMd">
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" sqlType="int(11) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pregnancy_nr" phpName="PregnancyNr" type="INTEGER" sqlType="int(11) unsigned" required="true" defaultValue="0"/>
     <column name="hospital_adm_nr" phpName="HospitalAdmNr" type="INTEGER" sqlType="int(11) unsigned" required="true" defaultValue="0"/>
@@ -992,7 +992,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_encounter_op" idMethod="native" phpName="CareEncounterOp" namespace="propel">
+  <table name="care_encounter_op" idMethod="native" phpName="CareEncounterOp" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="year" phpName="Year" type="VARCHAR" size="4" required="true" defaultValue="0"/>
     <column name="dept_nr" phpName="DeptNr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
@@ -1047,7 +1047,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_encounter_prescription" idMethod="native" phpName="CareEncounterPrescription" namespace="propel">
+  <table name="care_encounter_prescription" idMethod="native" phpName="CareEncounterPrescription" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true" defaultValue="0"/>
     <column name="prescription_type_nr" phpName="PrescriptionTypeNr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
@@ -1113,7 +1113,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_encounter_prescription_notes" idMethod="native" phpName="CareEncounterPrescriptionNotes" namespace="propel">
+  <table name="care_encounter_prescription_notes" idMethod="native" phpName="CareEncounterPrescriptionNotes" namespace="CareMd">
     <column name="nr" phpName="Nr" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="date" phpName="Date" type="DATE" required="true" defaultValue="0000-00-00"/>
     <column name="prescription_nr" phpName="PrescriptionNr" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true" defaultValue="0"/>
@@ -1129,7 +1129,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_encounter_procedure" idMethod="native" phpName="CareEncounterProcedure" namespace="propel">
+  <table name="care_encounter_procedure" idMethod="native" phpName="CareEncounterProcedure" namespace="CareMd">
     <column name="procedure_nr" phpName="ProcedureNr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" required="true" defaultValue="0"/>
     <column name="op_nr" phpName="OpNr" type="INTEGER" required="true" defaultValue="0"/>
@@ -1156,7 +1156,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_encounter_sickconfirm" idMethod="native" phpName="CareEncounterSickconfirm" namespace="propel">
+  <table name="care_encounter_sickconfirm" idMethod="native" phpName="CareEncounterSickconfirm" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" required="true" defaultValue="0"/>
     <column name="date_confirm" phpName="DateConfirm" type="DATE" required="true" defaultValue="0000-00-00"/>
@@ -1178,7 +1178,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_group" idMethod="native" phpName="CareGroup" namespace="propel">
+  <table name="care_group" idMethod="native" phpName="CareGroup" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="id" phpName="Id" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -1193,7 +1193,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_icd10_bs" idMethod="native" phpName="CareIcd10Bs" namespace="propel">
+  <table name="care_icd10_bs" idMethod="native" phpName="CareIcd10Bs" namespace="CareMd">
     <column name="diagnosis_code" phpName="DiagnosisCode" type="VARCHAR" size="12" primaryKey="true" required="true" defaultValue=""/>
     <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
     <column name="class_sub" phpName="ClassSub" type="VARCHAR" size="5" required="true" defaultValue=""/>
@@ -1213,7 +1213,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_icd10_de" idMethod="native" phpName="CareIcd10De" namespace="propel">
+  <table name="care_icd10_de" idMethod="native" phpName="CareIcd10De" namespace="CareMd">
     <column name="diagnosis_code" phpName="DiagnosisCode" type="VARCHAR" size="12" required="true" defaultValue=""/>
     <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
     <column name="class_sub" phpName="ClassSub" type="VARCHAR" size="5" required="true" defaultValue=""/>
@@ -1233,7 +1233,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_icd10_en" idMethod="native" phpName="CareIcd10En" namespace="propel">
+  <table name="care_icd10_en" idMethod="native" phpName="CareIcd10En" namespace="CareMd">
     <column name="diagnosis_code" phpName="DiagnosisCode" type="VARCHAR" size="12" required="true" defaultValue=""/>
     <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
     <column name="class_sub" phpName="ClassSub" type="VARCHAR" size="5" required="true" defaultValue=""/>
@@ -1254,7 +1254,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_icd10_es" idMethod="native" phpName="CareIcd10Es" namespace="propel">
+  <table name="care_icd10_es" idMethod="native" phpName="CareIcd10Es" namespace="CareMd">
     <column name="diagnosis_code" phpName="DiagnosisCode" type="VARCHAR" size="12" primaryKey="true" required="true" defaultValue=""/>
     <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
     <column name="class_sub" phpName="ClassSub" type="VARCHAR" size="5" required="true" defaultValue=""/>
@@ -1274,7 +1274,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_icd10_pt_br" idMethod="native" phpName="CareIcd10PtBr" namespace="propel">
+  <table name="care_icd10_pt_br" idMethod="native" phpName="CareIcd10PtBr" namespace="CareMd">
     <column name="diagnosis_code" phpName="DiagnosisCode" type="VARCHAR" size="12" primaryKey="true" required="true" defaultValue=""/>
     <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
     <column name="class_sub" phpName="ClassSub" type="VARCHAR" size="5" required="true" defaultValue=""/>
@@ -1294,7 +1294,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_img_diagnostic" idMethod="native" phpName="CareImgDiagnostic" namespace="propel">
+  <table name="care_img_diagnostic" idMethod="native" phpName="CareImgDiagnostic" namespace="CareMd">
     <column name="nr" phpName="Nr" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" required="true" defaultValue="0"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" required="true" defaultValue="0"/>
@@ -1318,7 +1318,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_insurance_firm" idMethod="native" phpName="CareInsuranceFirm" namespace="propel">
+  <table name="care_insurance_firm" idMethod="native" phpName="CareInsuranceFirm" namespace="CareMd">
     <column name="firm_id" phpName="FirmId" type="VARCHAR" size="40" primaryKey="true" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="60" required="true" defaultValue=""/>
     <column name="iso_country_id" phpName="IsoCountryId" type="CHAR" size="3" required="true" defaultValue=""/>
@@ -1350,7 +1350,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_mail_private" idMethod="native" phpName="CareMailPrivate" namespace="propel">
+  <table name="care_mail_private" idMethod="native" phpName="CareMailPrivate" namespace="CareMd">
     <column name="recipient" phpName="Recipient" type="VARCHAR" size="60" required="true" defaultValue=""/>
     <column name="sender" phpName="Sender" type="VARCHAR" size="60" required="true" defaultValue=""/>
     <column name="sender_ip" phpName="SenderIp" type="VARCHAR" size="60" required="true" defaultValue=""/>
@@ -1378,7 +1378,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_mail_private_users" idMethod="native" phpName="CareMailPrivateUsers" namespace="propel">
+  <table name="care_mail_private_users" idMethod="native" phpName="CareMailPrivateUsers" namespace="CareMd">
     <column name="user_name" phpName="UserName" type="VARCHAR" size="60" required="true" defaultValue=""/>
     <column name="email" phpName="Email" type="VARCHAR" size="60" primaryKey="true" required="true" defaultValue=""/>
     <column name="alias" phpName="Alias" type="VARCHAR" size="60" required="true" defaultValue=""/>
@@ -1400,7 +1400,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_med_ordercatalog" idMethod="native" phpName="CareMedOrdercatalog" namespace="propel">
+  <table name="care_med_ordercatalog" idMethod="native" phpName="CareMedOrdercatalog" namespace="CareMd">
     <column name="item_no" phpName="ItemNo" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="dept_nr" phpName="DeptNr" type="INTEGER" size="3" required="true" defaultValue="0"/>
     <column name="hit" phpName="Hit" type="INTEGER" required="true" defaultValue="0"/>
@@ -1416,7 +1416,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_med_orderlist" idMethod="native" phpName="CareMedOrderlist" namespace="propel">
+  <table name="care_med_orderlist" idMethod="native" phpName="CareMedOrderlist" namespace="CareMd">
     <column name="order_nr" phpName="OrderNr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="dept_nr" phpName="DeptNr" type="INTEGER" size="3" required="true" defaultValue="0"/>
     <column name="order_date" phpName="OrderDate" type="DATE" required="true" defaultValue="0000-00-00"/>
@@ -1445,7 +1445,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_med_products_main" idMethod="native" phpName="CareMedProductsMain" namespace="propel">
+  <table name="care_med_products_main" idMethod="native" phpName="CareMedProductsMain" namespace="CareMd">
     <column name="bestellnum" phpName="Bestellnum" type="VARCHAR" size="25" primaryKey="true" required="true" defaultValue=""/>
     <column name="artikelnum" phpName="Artikelnum" type="VARCHAR" required="true"/>
     <column name="industrynum" phpName="Industrynum" type="VARCHAR" required="true"/>
@@ -1476,7 +1476,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_med_report" idMethod="native" phpName="CareMedReport" namespace="propel">
+  <table name="care_med_report" idMethod="native" phpName="CareMedReport" namespace="CareMd">
     <column name="report_nr" phpName="ReportNr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="dept" phpName="Dept" type="VARCHAR" size="15" required="true" defaultValue=""/>
     <column name="report" phpName="Report" type="LONGVARCHAR" required="true"/>
@@ -1497,7 +1497,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_menu_main" idMethod="native" phpName="CareMenuMain" namespace="propel">
+  <table name="care_menu_main" idMethod="native" phpName="CareMenuMain" namespace="CareMd">
     <column name="nr" phpName="Nr" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" primaryKey="true" required="true" defaultValue="0"/>
     <column name="sort_nr" phpName="SortNr" type="TINYINT" size="2" required="true" defaultValue="0"/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -1512,7 +1512,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_menu_sub" idMethod="native" phpName="CareMenuSub" namespace="propel">
+  <table name="care_menu_sub" idMethod="native" phpName="CareMenuSub" namespace="CareMd">
     <column name="s_nr" phpName="SNr" type="INTEGER" required="true" defaultValue="0"/>
     <column name="s_sort_nr" phpName="SSortNr" type="INTEGER" required="true" defaultValue="0"/>
     <column name="s_main_nr" phpName="SMainNr" type="INTEGER" required="true" defaultValue="0"/>
@@ -1532,7 +1532,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_method_induction" idMethod="native" phpName="CareMethodInduction" namespace="propel">
+  <table name="care_method_induction" idMethod="native" phpName="CareMethodInduction" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="group_nr" phpName="GroupNr" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
     <column name="method" phpName="Method" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -1548,7 +1548,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_mode_delivery" idMethod="native" phpName="CareModeDelivery" namespace="propel">
+  <table name="care_mode_delivery" idMethod="native" phpName="CareModeDelivery" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="group_nr" phpName="GroupNr" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
     <column name="mode" phpName="Mode" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -1564,7 +1564,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_neonatal" idMethod="native" phpName="CareNeonatal" namespace="propel">
+  <table name="care_neonatal" idMethod="native" phpName="CareNeonatal" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" sqlType="int(11) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" sqlType="int(11) unsigned" required="true" defaultValue="0"/>
     <column name="delivery_date" phpName="DeliveryDate" type="DATE" required="true" defaultValue="0000-00-00"/>
@@ -1611,7 +1611,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_news_article" idMethod="native" phpName="CareNewsArticle" namespace="propel">
+  <table name="care_news_article" idMethod="native" phpName="CareNewsArticle" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="lang" phpName="Lang" type="VARCHAR" size="10" required="true" defaultValue="en"/>
     <column name="dept_nr" phpName="DeptNr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
@@ -1641,7 +1641,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_op_med_doc" idMethod="native" phpName="CareOpMedDoc" namespace="propel">
+  <table name="care_op_med_doc" idMethod="native" phpName="CareOpMedDoc" namespace="CareMd">
     <column name="nr" phpName="Nr" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="op_date" phpName="OpDate" type="VARCHAR" size="12" required="true" defaultValue=""/>
     <column name="operator" phpName="Operator" type="VARCHAR" required="true"/>
@@ -1676,7 +1676,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_ops301_de" idMethod="native" phpName="CareOps301De" namespace="propel">
+  <table name="care_ops301_de" idMethod="native" phpName="CareOps301De" namespace="CareMd">
     <column name="code" phpName="Code" type="VARCHAR" size="12" required="true" defaultValue=""/>
     <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
     <column name="inclusive" phpName="Inclusive" type="LONGVARCHAR" required="true"/>
@@ -1692,7 +1692,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_ops301_es" idMethod="native" phpName="CareOps301Es" namespace="propel">
+  <table name="care_ops301_es" idMethod="native" phpName="CareOps301Es" namespace="CareMd">
     <column name="code" phpName="Code" type="VARCHAR" size="12" required="true" defaultValue=""/>
     <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
     <column name="inclusive" phpName="Inclusive" type="LONGVARCHAR" required="true"/>
@@ -1708,7 +1708,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_person" idMethod="native" phpName="CarePerson" namespace="propel">
+  <table name="care_person" idMethod="native" phpName="CarePerson" namespace="CareMd">
     <column name="pid" phpName="Pid" type="INTEGER" sqlType="int(11) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="selian_pid" phpName="SelianPid" type="BIGINT" required="true" defaultValue="0"/>
     <column name="date_reg" phpName="DateReg" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
@@ -1817,7 +1817,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_person_insurance" idMethod="native" phpName="CarePersonInsurance" namespace="propel">
+  <table name="care_person_insurance" idMethod="native" phpName="CarePersonInsurance" namespace="CareMd">
     <column name="item_nr" phpName="ItemNr" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true" defaultValue="0"/>
     <column name="type" phpName="Type" type="VARCHAR" size="60" required="true" defaultValue=""/>
@@ -1835,7 +1835,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_person_other_number" idMethod="native" phpName="CarePersonOtherNumber" namespace="propel">
+  <table name="care_person_other_number" idMethod="native" phpName="CarePersonOtherNumber" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" sqlType="int(11) unsigned" required="true" defaultValue="0"/>
     <column name="other_nr" phpName="OtherNr" type="VARCHAR" size="30" required="true" defaultValue=""/>
@@ -1856,7 +1856,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_personell" idMethod="native" phpName="CarePersonell" namespace="propel">
+  <table name="care_personell" idMethod="native" phpName="CarePersonell" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="short_id" phpName="ShortId" type="VARCHAR" size="10"/>
     <column name="pid" phpName="Pid" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
@@ -1891,7 +1891,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_personell_assignment" idMethod="native" phpName="CarePersonellAssignment" namespace="propel">
+  <table name="care_personell_assignment" idMethod="native" phpName="CarePersonellAssignment" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="personell_nr" phpName="PersonellNr" type="INTEGER" sqlType="int(11) unsigned" primaryKey="true" required="true" defaultValue="0"/>
     <column name="role_nr" phpName="RoleNr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" required="true" defaultValue="0"/>
@@ -1914,14 +1914,14 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_personell_jobs" idMethod="native" phpName="CarePersonellJobs" namespace="propel">
+  <table name="care_personell_jobs" idMethod="native" phpName="CarePersonellJobs" namespace="CareMd">
     <column name="number" phpName="Number" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="name" phpName="Name" type="VARCHAR" size="30"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_pharma_ordercatalog" idMethod="native" phpName="CarePharmaOrdercatalog" namespace="propel">
+  <table name="care_pharma_ordercatalog" idMethod="native" phpName="CarePharmaOrdercatalog" namespace="CareMd">
     <column name="item_no" phpName="ItemNo" type="INTEGER" autoIncrement="true" required="true"/>
     <column name="dept_nr" phpName="DeptNr" type="INTEGER" size="3" required="true" defaultValue="0"/>
     <column name="hit" phpName="Hit" type="INTEGER" required="true" defaultValue="0"/>
@@ -1937,7 +1937,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_pharma_orderlist" idMethod="native" phpName="CarePharmaOrderlist" namespace="propel">
+  <table name="care_pharma_orderlist" idMethod="native" phpName="CarePharmaOrderlist" namespace="CareMd">
     <column name="order_nr" phpName="OrderNr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="dept_nr" phpName="DeptNr" type="INTEGER" size="3" primaryKey="true" required="true" defaultValue="0"/>
     <column name="order_date" phpName="OrderDate" type="DATE" required="true" defaultValue="0000-00-00"/>
@@ -1963,7 +1963,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_pharma_products_main" idMethod="native" phpName="CarePharmaProductsMain" namespace="propel">
+  <table name="care_pharma_products_main" idMethod="native" phpName="CarePharmaProductsMain" namespace="CareMd">
     <column name="bestellnum" phpName="Bestellnum" type="VARCHAR" size="25" primaryKey="true" required="true" defaultValue=""/>
     <column name="artikelnum" phpName="Artikelnum" type="VARCHAR" required="true"/>
     <column name="industrynum" phpName="Industrynum" type="VARCHAR" required="true"/>
@@ -1991,7 +1991,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_phone" idMethod="native" phpName="CarePhone" namespace="propel">
+  <table name="care_phone" idMethod="native" phpName="CarePhone" namespace="CareMd">
     <column name="item_nr" phpName="ItemNr" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="title" phpName="Title" type="VARCHAR" size="25"/>
     <column name="name" phpName="Name" type="VARCHAR" size="45" required="true" defaultValue=""/>
@@ -2028,7 +2028,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_pregnancy" idMethod="native" phpName="CarePregnancy" namespace="propel">
+  <table name="care_pregnancy" idMethod="native" phpName="CarePregnancy" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" sqlType="int(11) unsigned" primaryKey="true" required="true" defaultValue="0"/>
     <column name="this_pregnancy_nr" phpName="ThisPregnancyNr" type="INTEGER" sqlType="int(11) unsigned" required="true" defaultValue="0"/>
@@ -2072,7 +2072,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_registry" idMethod="native" phpName="CareRegistry" namespace="propel">
+  <table name="care_registry" idMethod="native" phpName="CareRegistry" namespace="CareMd">
     <column name="registry_id" phpName="RegistryId" type="VARCHAR" size="35" primaryKey="true" required="true" defaultValue=""/>
     <column name="module_start_script" phpName="ModuleStartScript" type="VARCHAR" size="60" required="true" defaultValue=""/>
     <column name="news_start_script" phpName="NewsStartScript" type="VARCHAR" size="60" required="true" defaultValue=""/>
@@ -2089,7 +2089,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_role_person" idMethod="native" phpName="CareRolePerson" namespace="propel">
+  <table name="care_role_person" idMethod="native" phpName="CareRolePerson" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="group_nr" phpName="GroupNr" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" primaryKey="true" required="true" defaultValue="0"/>
     <column name="role" phpName="Role" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -2104,7 +2104,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_room" idMethod="native" phpName="CareRoom" namespace="propel">
+  <table name="care_room" idMethod="native" phpName="CareRoom" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" size="8" sqlType="int(8) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="type_nr" phpName="TypeNr" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" primaryKey="true" required="true" defaultValue="0"/>
     <column name="date_create" phpName="DateCreate" type="DATE" required="true" defaultValue="0000-00-00"/>
@@ -2135,7 +2135,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_sessions" idMethod="native" phpName="CareSessions" namespace="propel">
+  <table name="care_sessions" idMethod="native" phpName="CareSessions" namespace="CareMd">
     <column name="SESSKEY" phpName="Sesskey" type="VARCHAR" size="32" primaryKey="true" required="true" defaultValue=""/>
     <column name="EXPIRY" phpName="Expiry" type="INTEGER" sqlType="int(11) unsigned" required="true" defaultValue="0"/>
     <column name="expireref" phpName="Expireref" type="VARCHAR" size="64" required="true" defaultValue=""/>
@@ -2147,7 +2147,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_standby_duty_report" idMethod="native" phpName="CareStandbyDutyReport" namespace="propel">
+  <table name="care_standby_duty_report" idMethod="native" phpName="CareStandbyDutyReport" namespace="CareMd">
     <column name="report_nr" phpName="ReportNr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="dept" phpName="Dept" type="VARCHAR" size="15" required="true" defaultValue=""/>
     <column name="date" phpName="Date" type="DATE" required="true" defaultValue="0000-00-00"/>
@@ -2173,7 +2173,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_steri_products_main" idMethod="native" phpName="CareSteriProductsMain" namespace="propel">
+  <table name="care_steri_products_main" idMethod="native" phpName="CareSteriProductsMain" namespace="CareMd">
     <column name="bestellnum" phpName="Bestellnum" type="INTEGER" size="15" sqlType="int(15) unsigned" required="true" defaultValue="0"/>
     <column name="containernum" phpName="Containernum" type="VARCHAR" size="15" required="true" defaultValue=""/>
     <column name="industrynum" phpName="Industrynum" type="VARCHAR" required="true"/>
@@ -2194,7 +2194,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tech_questions" idMethod="native" phpName="CareTechQuestions" namespace="propel">
+  <table name="care_tech_questions" idMethod="native" phpName="CareTechQuestions" namespace="CareMd">
     <column name="batch_nr" phpName="BatchNr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="dept" phpName="Dept" type="VARCHAR" size="60" required="true" defaultValue=""/>
     <column name="query" phpName="Query" type="LONGVARCHAR" required="true"/>
@@ -2221,7 +2221,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tech_repair_done" idMethod="native" phpName="CareTechRepairDone" namespace="propel">
+  <table name="care_tech_repair_done" idMethod="native" phpName="CareTechRepairDone" namespace="CareMd">
     <column name="batch_nr" phpName="BatchNr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="dept" phpName="Dept" type="VARCHAR" size="15"/>
     <column name="dept_nr" phpName="DeptNr" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" primaryKey="true" required="true" defaultValue="0"/>
@@ -2244,7 +2244,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tech_repair_job" idMethod="native" phpName="CareTechRepairJob" namespace="propel">
+  <table name="care_tech_repair_job" idMethod="native" phpName="CareTechRepairJob" namespace="CareMd">
     <column name="batch_nr" phpName="BatchNr" type="TINYINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="dept" phpName="Dept" type="VARCHAR" size="15" required="true" defaultValue=""/>
     <column name="job" phpName="Job" type="LONGVARCHAR" required="true"/>
@@ -2275,7 +2275,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_test_findings_baclabor" idMethod="native" phpName="CareTestFindingsBaclabor" namespace="propel">
+  <table name="care_test_findings_baclabor" idMethod="native" phpName="CareTestFindingsBaclabor" namespace="CareMd">
     <column name="batch_nr" phpName="BatchNr" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" sqlType="int(11) unsigned" primaryKey="true" required="true" defaultValue="0"/>
     <column name="room_nr" phpName="RoomNr" type="VARCHAR" size="10" primaryKey="true" required="true" defaultValue=""/>
@@ -2309,7 +2309,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_test_findings_chemlab" idMethod="native" phpName="CareTestFindingsChemlab" namespace="propel">
+  <table name="care_test_findings_chemlab" idMethod="native" phpName="CareTestFindingsChemlab" namespace="CareMd">
     <column name="batch_nr" phpName="BatchNr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
     <column name="job_id" phpName="JobId" type="VARCHAR" size="25" primaryKey="true" required="true"/>
@@ -2330,7 +2330,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_test_findings_chemlab_copy" idMethod="native" phpName="CareTestFindingsChemlabCopy" namespace="propel">
+  <table name="care_test_findings_chemlab_copy" idMethod="native" phpName="CareTestFindingsChemlabCopy" namespace="CareMd">
     <column name="batch_nr" phpName="BatchNr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
     <column name="job_id" phpName="JobId" type="VARCHAR" size="25" primaryKey="true" required="true" defaultValue=""/>
@@ -2351,7 +2351,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_test_findings_chemlabor_sub" idMethod="native" phpName="CareTestFindingsChemlaborSub" namespace="propel">
+  <table name="care_test_findings_chemlabor_sub" idMethod="native" phpName="CareTestFindingsChemlaborSub" namespace="CareMd">
     <column name="sub_id" phpName="SubId" type="INTEGER" size="40" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="batch_nr" phpName="BatchNr" type="INTEGER" required="true" defaultValue="0"/>
     <column name="job_id" phpName="JobId" type="VARCHAR" size="25" required="true" defaultValue="0"/>
@@ -2373,7 +2373,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_test_findings_laboratory" idMethod="native" phpName="CareTestFindingsLaboratory" namespace="propel">
+  <table name="care_test_findings_laboratory" idMethod="native" phpName="CareTestFindingsLaboratory" namespace="CareMd">
     <column name="findings_nr" phpName="FindingsNr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="parent" phpName="Parent" type="INTEGER"/>
     <column name="task_nr" phpName="TaskNr" type="INTEGER" primaryKey="true" required="true" defaultValue="-1"/>
@@ -2389,7 +2389,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_test_findings_patho" idMethod="native" phpName="CareTestFindingsPatho" namespace="propel">
+  <table name="care_test_findings_patho" idMethod="native" phpName="CareTestFindingsPatho" namespace="CareMd">
     <column name="batch_nr" phpName="BatchNr" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" sqlType="int(11) unsigned" primaryKey="true" required="true" defaultValue="0"/>
     <column name="room_nr" phpName="RoomNr" type="VARCHAR" size="10" primaryKey="true" required="true" defaultValue=""/>
@@ -2418,7 +2418,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_test_findings_radio" idMethod="native" phpName="CareTestFindingsRadio" namespace="propel">
+  <table name="care_test_findings_radio" idMethod="native" phpName="CareTestFindingsRadio" namespace="CareMd">
     <column name="batch_nr" phpName="BatchNr" type="INTEGER" sqlType="int(11) unsigned" primaryKey="true" required="true" defaultValue="1"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" sqlType="int(11) unsigned" primaryKey="true" required="true" defaultValue="0"/>
     <column name="room_nr" phpName="RoomNr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
@@ -2444,7 +2444,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_test_group" idMethod="native" phpName="CareTestGroup" namespace="propel">
+  <table name="care_test_group" idMethod="native" phpName="CareTestGroup" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="group_id" phpName="GroupId" type="VARCHAR" size="35" primaryKey="true" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -2461,7 +2461,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_test_param" idMethod="native" phpName="CareTestParam" namespace="propel">
+  <table name="care_test_param" idMethod="native" phpName="CareTestParam" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="group_id" phpName="GroupId" type="VARCHAR" size="35" primaryKey="true" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -2484,7 +2484,7 @@
       <parameter name="Engine" value="InnoDB"/>
     </vendor>
   </table>
-  <table name="care_test_request_baclabor" idMethod="native" phpName="CareTestRequestBaclabor" namespace="propel">
+  <table name="care_test_request_baclabor" idMethod="native" phpName="CareTestRequestBaclabor" namespace="CareMd">
     <column name="batch_nr" phpName="BatchNr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" sqlType="int(11) unsigned" required="true" defaultValue="0"/>
     <column name="dept_nr" phpName="DeptNr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
@@ -2508,7 +2508,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_test_request_blood" idMethod="native" phpName="CareTestRequestBlood" namespace="propel">
+  <table name="care_test_request_blood" idMethod="native" phpName="CareTestRequestBlood" namespace="CareMd">
     <column name="batch_nr" phpName="BatchNr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" sqlType="int(11) unsigned" required="true" defaultValue="0"/>
     <column name="dept_nr" phpName="DeptNr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
@@ -2586,7 +2586,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_test_request_chemlabor" idMethod="native" phpName="CareTestRequestChemlabor" namespace="propel">
+  <table name="care_test_request_chemlabor" idMethod="native" phpName="CareTestRequestChemlabor" namespace="CareMd">
     <column name="batch_nr" phpName="BatchNr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" sqlType="int(11) unsigned" required="true" defaultValue="0"/>
     <column name="item_id" phpName="ItemId" type="VARCHAR" size="20" required="true"/>
@@ -2626,7 +2626,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_test_request_chemlabor_sub" idMethod="native" phpName="CareTestRequestChemlaborSub" namespace="propel">
+  <table name="care_test_request_chemlabor_sub" idMethod="native" phpName="CareTestRequestChemlaborSub" namespace="CareMd">
     <column name="sub_id" phpName="SubId" type="INTEGER" size="40" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="batch_nr" phpName="BatchNr" type="INTEGER" required="true" defaultValue="0"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" required="true" defaultValue="0"/>
@@ -2647,7 +2647,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_test_request_generic" idMethod="native" phpName="CareTestRequestGeneric" namespace="propel">
+  <table name="care_test_request_generic" idMethod="native" phpName="CareTestRequestGeneric" namespace="CareMd">
     <column name="batch_nr" phpName="BatchNr" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" sqlType="int(11) unsigned" required="true" defaultValue="0"/>
     <column name="testing_dept" phpName="TestingDept" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -2676,7 +2676,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_test_request_laboratory" idMethod="native" phpName="CareTestRequestLaboratory" namespace="propel">
+  <table name="care_test_request_laboratory" idMethod="native" phpName="CareTestRequestLaboratory" namespace="CareMd">
     <column name="batch_nr" phpName="BatchNr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true" defaultValue="0"/>
     <column name="room_nr" phpName="RoomNr" type="INTEGER" sqlType="int(11) unsigned" required="true" defaultValue="0"/>
@@ -2701,7 +2701,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_test_request_laboratory_tasks" idMethod="native" phpName="CareTestRequestLaboratoryTasks" namespace="propel">
+  <table name="care_test_request_laboratory_tasks" idMethod="native" phpName="CareTestRequestLaboratoryTasks" namespace="CareMd">
     <column name="task_nr" phpName="TaskNr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="batch_nr" phpName="BatchNr" type="INTEGER" required="true"/>
     <column name="test_nr" phpName="TestNr" type="INTEGER" required="true"/>
@@ -2717,7 +2717,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_test_request_patho" idMethod="native" phpName="CareTestRequestPatho" namespace="propel">
+  <table name="care_test_request_patho" idMethod="native" phpName="CareTestRequestPatho" namespace="CareMd">
     <column name="batch_nr" phpName="BatchNr" type="INTEGER" sqlType="int(11) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" sqlType="int(11) unsigned" required="true" defaultValue="0"/>
     <column name="dept_nr" phpName="DeptNr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
@@ -2768,7 +2768,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_test_request_radio" idMethod="native" phpName="CareTestRequestRadio" namespace="propel">
+  <table name="care_test_request_radio" idMethod="native" phpName="CareTestRequestRadio" namespace="CareMd">
     <column name="batch_nr" phpName="BatchNr" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
     <column name="encounter_nr" phpName="EncounterNr" type="INTEGER" sqlType="int(11) unsigned" required="true" defaultValue="0"/>
     <column name="dept_nr" phpName="DeptNr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true" defaultValue="0"/>
@@ -2823,7 +2823,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_anaesthesia" idMethod="native" phpName="CareTypeAnaesthesia" namespace="propel">
+  <table name="care_type_anaesthesia" idMethod="native" phpName="CareTypeAnaesthesia" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="2" sqlType="smallint(2) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="id" phpName="Id" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -2841,7 +2841,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_application" idMethod="native" phpName="CareTypeApplication" namespace="propel">
+  <table name="care_type_application" idMethod="native" phpName="CareTypeApplication" namespace="CareMd">
     <column name="nr" phpName="Nr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="group_nr" phpName="GroupNr" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
     <column name="type" phpName="Type" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -2857,7 +2857,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_assignment" idMethod="native" phpName="CareTypeAssignment" namespace="propel">
+  <table name="care_type_assignment" idMethod="native" phpName="CareTypeAssignment" namespace="CareMd">
     <column name="type_nr" phpName="TypeNr" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true" defaultValue="0"/>
     <column name="type" phpName="Type" type="VARCHAR" size="35" primaryKey="true" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -2872,7 +2872,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_cause_opdelay" idMethod="native" phpName="CareTypeCauseOpdelay" namespace="propel">
+  <table name="care_type_cause_opdelay" idMethod="native" phpName="CareTypeCauseOpdelay" namespace="CareMd">
     <column name="type_nr" phpName="TypeNr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="type" phpName="Type" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="cause" phpName="Cause" type="VARCHAR" size="255" required="true" defaultValue=""/>
@@ -2889,7 +2889,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_color" idMethod="native" phpName="CareTypeColor" namespace="propel">
+  <table name="care_type_color" idMethod="native" phpName="CareTypeColor" namespace="CareMd">
     <column name="color_id" phpName="ColorId" type="VARCHAR" size="25" primaryKey="true" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="LD_var" phpName="LdVar" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -2900,7 +2900,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_department" idMethod="native" phpName="CareTypeDepartment" namespace="propel">
+  <table name="care_type_department" idMethod="native" phpName="CareTypeDepartment" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="type" phpName="Type" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -2918,7 +2918,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_discharge" idMethod="native" phpName="CareTypeDischarge" namespace="propel">
+  <table name="care_type_discharge" idMethod="native" phpName="CareTypeDischarge" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="3" sqlType="smallint(3) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="type" phpName="Type" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="100" required="true" defaultValue=""/>
@@ -2932,7 +2932,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_duty" idMethod="native" phpName="CareTypeDuty" namespace="propel">
+  <table name="care_type_duty" idMethod="native" phpName="CareTypeDuty" namespace="CareMd">
     <column name="type_nr" phpName="TypeNr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="type" phpName="Type" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -2950,7 +2950,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_encounter" idMethod="native" phpName="CareTypeEncounter" namespace="propel">
+  <table name="care_type_encounter" idMethod="native" phpName="CareTypeEncounter" namespace="CareMd">
     <column name="type_nr" phpName="TypeNr" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="type" phpName="Type" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -2967,7 +2967,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_ethnic_orig" idMethod="native" phpName="CareTypeEthnicOrig" namespace="propel">
+  <table name="care_type_ethnic_orig" idMethod="native" phpName="CareTypeEthnicOrig" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="class_nr" phpName="ClassNr" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -2984,7 +2984,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_feeding" idMethod="native" phpName="CareTypeFeeding" namespace="propel">
+  <table name="care_type_feeding" idMethod="native" phpName="CareTypeFeeding" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="2" sqlType="smallint(2) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="group_nr" phpName="GroupNr" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
     <column name="type" phpName="Type" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -3000,7 +3000,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_immunization" idMethod="native" phpName="CareTypeImmunization" namespace="propel">
+  <table name="care_type_immunization" idMethod="native" phpName="CareTypeImmunization" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="type" phpName="Type" type="VARCHAR" size="20" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="20" required="true" defaultValue=""/>
@@ -3022,7 +3022,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_insurance" idMethod="native" phpName="CareTypeInsurance" namespace="propel">
+  <table name="care_type_insurance" idMethod="native" phpName="CareTypeInsurance" namespace="CareMd">
     <column name="type_nr" phpName="TypeNr" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="type" phpName="Type" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="60" required="true" defaultValue=""/>
@@ -3041,7 +3041,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_localization" idMethod="native" phpName="CareTypeLocalization" namespace="propel">
+  <table name="care_type_localization" idMethod="native" phpName="CareTypeLocalization" namespace="CareMd">
     <column name="nr" phpName="Nr" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="category" phpName="Category" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -3060,7 +3060,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_location" idMethod="native" phpName="CareTypeLocation" namespace="propel">
+  <table name="care_type_location" idMethod="native" phpName="CareTypeLocation" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="type" phpName="Type" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -3075,7 +3075,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_measurement" idMethod="native" phpName="CareTypeMeasurement" namespace="propel">
+  <table name="care_type_measurement" idMethod="native" phpName="CareTypeMeasurement" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="type" phpName="Type" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -3089,7 +3089,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_notes" idMethod="native" phpName="CareTypeNotes" namespace="propel">
+  <table name="care_type_notes" idMethod="native" phpName="CareTypeNotes" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="type" phpName="Type" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -3107,7 +3107,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_outcome" idMethod="native" phpName="CareTypeOutcome" namespace="propel">
+  <table name="care_type_outcome" idMethod="native" phpName="CareTypeOutcome" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="2" sqlType="smallint(2) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="group_nr" phpName="GroupNr" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
     <column name="type" phpName="Type" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -3123,7 +3123,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_perineum" idMethod="native" phpName="CareTypePerineum" namespace="propel">
+  <table name="care_type_perineum" idMethod="native" phpName="CareTypePerineum" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="2" sqlType="smallint(2) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="id" phpName="Id" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -3141,7 +3141,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_prescription" idMethod="native" phpName="CareTypePrescription" namespace="propel">
+  <table name="care_type_prescription" idMethod="native" phpName="CareTypePrescription" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="type" phpName="Type" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -3155,7 +3155,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_room" idMethod="native" phpName="CareTypeRoom" namespace="propel">
+  <table name="care_type_room" idMethod="native" phpName="CareTypeRoom" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="type" phpName="Type" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -3170,7 +3170,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_test" idMethod="native" phpName="CareTypeTest" namespace="propel">
+  <table name="care_type_test" idMethod="native" phpName="CareTypeTest" namespace="CareMd">
     <column name="type_nr" phpName="TypeNr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="type" phpName="Type" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -3188,7 +3188,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_time" idMethod="native" phpName="CareTypeTime" namespace="propel">
+  <table name="care_type_time" idMethod="native" phpName="CareTypeTime" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="type" phpName="Type" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -3206,7 +3206,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_type_unit_measurement" idMethod="native" phpName="CareTypeUnitMeasurement" namespace="propel">
+  <table name="care_type_unit_measurement" idMethod="native" phpName="CareTypeUnitMeasurement" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="type" phpName="Type" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -3224,7 +3224,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_adher_code" idMethod="native" phpName="CareTzArvAdherCode" namespace="propel">
+  <table name="care_tz_arv_adher_code" idMethod="native" phpName="CareTzArvAdherCode" namespace="CareMd">
     <column name="care_tz_arv_adher_code_id" phpName="CareTzArvAdherCodeId" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="CHAR"/>
     <column name="description" phpName="Description" type="VARCHAR" size="40"/>
@@ -3233,7 +3233,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_adher_reas" idMethod="native" phpName="CareTzArvAdherReas" namespace="propel">
+  <table name="care_tz_arv_adher_reas" idMethod="native" phpName="CareTzArvAdherReas" namespace="CareMd">
     <column name="care_tz_arv_adher_reas_id" phpName="CareTzArvAdherReasId" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_visit_2_id" phpName="CareTzArvVisit2Id" type="BIGINT" required="true"/>
     <column name="care_tz_arv_adher_reas_code_id" phpName="CareTzArvAdherReasCodeId" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true"/>
@@ -3242,7 +3242,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_adher_reas_code" idMethod="native" phpName="CareTzArvAdherReasCode" namespace="propel">
+  <table name="care_tz_arv_adher_reas_code" idMethod="native" phpName="CareTzArvAdherReasCode" namespace="CareMd">
     <column name="care_tz_arv_adher_reas_code_id" phpName="CareTzArvAdherReasCodeId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="TINYINT" size="3" sqlType="tinyint(3) unsigned"/>
     <column name="description" phpName="Description" type="VARCHAR" size="40"/>
@@ -3251,7 +3251,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_allergies" idMethod="native" phpName="CareTzArvAllergies" namespace="propel">
+  <table name="care_tz_arv_allergies" idMethod="native" phpName="CareTzArvAllergies" namespace="CareMd">
     <column name="care_tz_arv_allergies_id" phpName="CareTzArvAllergiesId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_registration_id" phpName="CareTzArvRegistrationId" type="BIGINT"/>
     <column name="description" phpName="Description" type="VARCHAR" size="60"/>
@@ -3259,7 +3259,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_case" idMethod="native" phpName="CareTzArvCase" namespace="propel">
+  <table name="care_tz_arv_case" idMethod="native" phpName="CareTzArvCase" namespace="CareMd">
     <column name="care_tz_arv_case_id" phpName="CareTzArvCaseId" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" sqlType="int(11) unsigned" required="true"/>
     <column name="datetime_first_hivtest" phpName="DatetimeFirstHivtest" type="TIMESTAMP"/>
@@ -3292,7 +3292,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_chairman" idMethod="native" phpName="CareTzArvChairman" namespace="propel">
+  <table name="care_tz_arv_chairman" idMethod="native" phpName="CareTzArvChairman" namespace="CareMd">
     <column name="care_tz_arv_chairman_id" phpName="CareTzArvChairmanId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_registration_id" phpName="CareTzArvRegistrationId" type="BIGINT"/>
     <column name="vname" phpName="Vname" type="VARCHAR" size="60"/>
@@ -3304,7 +3304,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_co_medi" idMethod="native" phpName="CareTzArvCoMedi" namespace="propel">
+  <table name="care_tz_arv_co_medi" idMethod="native" phpName="CareTzArvCoMedi" namespace="CareMd">
     <column name="care_tz_arv_co_medi_id" phpName="CareTzArvCoMediId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_co_medi_other_id" phpName="CareTzArvCoMediOtherId" type="INTEGER" size="10" sqlType="int(10) unsigned"/>
     <column name="item_id" phpName="ItemId" type="BIGINT"/>
@@ -3313,14 +3313,14 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_co_medi_other" idMethod="native" phpName="CareTzArvCoMediOther" namespace="propel">
+  <table name="care_tz_arv_co_medi_other" idMethod="native" phpName="CareTzArvCoMediOther" namespace="CareMd">
     <column name="care_tz_arv_co_medi_other_id" phpName="CareTzArvCoMediOtherId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="60"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_co_medications" idMethod="native" phpName="CareTzArvCoMedications" namespace="propel">
+  <table name="care_tz_arv_co_medications" idMethod="native" phpName="CareTzArvCoMedications" namespace="CareMd">
     <column name="arv_visit_co_medications_id" phpName="ArvVisitCoMedicationsId" type="INTEGER" size="2" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="INTEGER" size="2" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="100" required="true"/>
@@ -3328,7 +3328,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_districts" idMethod="native" phpName="CareTzArvDistricts" namespace="propel">
+  <table name="care_tz_arv_districts" idMethod="native" phpName="CareTzArvDistricts" namespace="CareMd">
     <column name="care_tz_arv_region_id" phpName="CareTzArvRegionId" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
     <column name="care_tz_arv_district_id" phpName="CareTzArvDistrictId" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
     <column name="district_name" phpName="DistrictName" type="VARCHAR" size="510"/>
@@ -3336,7 +3336,7 @@
       <parameter name="Engine" value="InnoDB"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_education" idMethod="native" phpName="CareTzArvEducation" namespace="propel">
+  <table name="care_tz_arv_education" idMethod="native" phpName="CareTzArvEducation" namespace="CareMd">
     <column name="care_tz_arv_education_id" phpName="CareTzArvEducationId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_education_topic_id" phpName="CareTzArvEducationTopicId" type="BIGINT" required="true"/>
     <column name="care_tz_arv_registration_id" phpName="CareTzArvRegistrationId" type="BIGINT" required="true"/>
@@ -3351,14 +3351,14 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_education_group" idMethod="native" phpName="CareTzArvEducationGroup" namespace="propel">
+  <table name="care_tz_arv_education_group" idMethod="native" phpName="CareTzArvEducationGroup" namespace="CareMd">
     <column name="care_tz_arv_education_group_id" phpName="CareTzArvEducationGroupId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="255"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_education_topic" idMethod="native" phpName="CareTzArvEducationTopic" namespace="propel">
+  <table name="care_tz_arv_education_topic" idMethod="native" phpName="CareTzArvEducationTopic" namespace="CareMd">
     <column name="care_tz_arv_education_topic_id" phpName="CareTzArvEducationTopicId" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_education_group_id" phpName="CareTzArvEducationGroupId" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="255"/>
@@ -3366,7 +3366,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_eligible_reason" idMethod="native" phpName="CareTzArvEligibleReason" namespace="propel">
+  <table name="care_tz_arv_eligible_reason" idMethod="native" phpName="CareTzArvEligibleReason" namespace="CareMd">
     <column name="care_tz_arv_eligible_reason_id" phpName="CareTzArvEligibleReasonId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_eligible_reason_code_id" phpName="CareTzArvEligibleReasonCodeId" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true"/>
     <column name="care_tz_arv_registration_id" phpName="CareTzArvRegistrationId" type="BIGINT" required="true"/>
@@ -3375,14 +3375,14 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_eligible_reason_code" idMethod="native" phpName="CareTzArvEligibleReasonCode" namespace="propel">
+  <table name="care_tz_arv_eligible_reason_code" idMethod="native" phpName="CareTzArvEligibleReasonCode" namespace="CareMd">
     <column name="care_tz_arv_eligible_reason_code_id" phpName="CareTzArvEligibleReasonCodeId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="60"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_events" idMethod="native" phpName="CareTzArvEvents" namespace="propel">
+  <table name="care_tz_arv_events" idMethod="native" phpName="CareTzArvEvents" namespace="CareMd">
     <column name="care_tz_arv_events_id" phpName="CareTzArvEventsId" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_events_code_id" phpName="CareTzArvEventsCodeId" type="BIGINT" required="true"/>
     <column name="care_tz_arv_visit_id" phpName="CareTzArvVisitId" type="BIGINT" required="true"/>
@@ -3390,7 +3390,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_events_code" idMethod="native" phpName="CareTzArvEventsCode" namespace="propel">
+  <table name="care_tz_arv_events_code" idMethod="native" phpName="CareTzArvEventsCode" namespace="CareMd">
     <column name="care_tz_arv_events_code_id" phpName="CareTzArvEventsCodeId" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="who_code" phpName="WhoCode" type="INTEGER" size="10" sqlType="int(10) unsigned"/>
     <column name="who_code_text" phpName="WhoCodeText" type="VARCHAR" size="256"/>
@@ -3399,14 +3399,14 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_exposure" idMethod="native" phpName="CareTzArvExposure" namespace="propel">
+  <table name="care_tz_arv_exposure" idMethod="native" phpName="CareTzArvExposure" namespace="CareMd">
     <column name="care_tz_arv_exposure_id" phpName="CareTzArvExposureId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="50"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_facilities" idMethod="native" phpName="CareTzArvFacilities" namespace="propel">
+  <table name="care_tz_arv_facilities" idMethod="native" phpName="CareTzArvFacilities" namespace="CareMd">
     <column name="region_code" phpName="RegionCode" type="VARCHAR" size="4" primaryKey="true" required="true"/>
     <column name="district_code" phpName="DistrictCode" type="VARCHAR" size="4" primaryKey="true" required="true"/>
     <column name="care_tz_arv_facility_id" phpName="CareTzArvFacilityId" type="VARCHAR" size="10" primaryKey="true" required="true"/>
@@ -3415,7 +3415,7 @@
       <parameter name="Engine" value="InnoDB"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_family_planning" idMethod="native" phpName="CareTzArvFamilyPlanning" namespace="propel">
+  <table name="care_tz_arv_family_planning" idMethod="native" phpName="CareTzArvFamilyPlanning" namespace="CareMd">
     <column name="arv_visit_family_planning_id" phpName="ArvVisitFamilyPlanningId" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="VARCHAR" size="15" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="150" required="true"/>
@@ -3423,7 +3423,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_follow_status" idMethod="native" phpName="CareTzArvFollowStatus" namespace="propel">
+  <table name="care_tz_arv_follow_status" idMethod="native" phpName="CareTzArvFollowStatus" namespace="CareMd">
     <column name="care_tz_arv_follow_status_id" phpName="CareTzArvFollowStatusId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_follow_status_code_id" phpName="CareTzArvFollowStatusCodeId" type="INTEGER" size="10" sqlType="int(10) unsigned"/>
     <column name="care_tz_arv_visit_2_id" phpName="CareTzArvVisit2Id" type="BIGINT" required="true"/>
@@ -3432,7 +3432,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_follow_status_code" idMethod="native" phpName="CareTzArvFollowStatusCode" namespace="propel">
+  <table name="care_tz_arv_follow_status_code" idMethod="native" phpName="CareTzArvFollowStatusCode" namespace="CareMd">
     <column name="care_tz_arv_follow_status_code_id" phpName="CareTzArvFollowStatusCodeId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="VARCHAR" size="8"/>
     <column name="description" phpName="Description" type="VARCHAR" size="200"/>
@@ -3441,7 +3441,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_functional_status" idMethod="native" phpName="CareTzArvFunctionalStatus" namespace="propel">
+  <table name="care_tz_arv_functional_status" idMethod="native" phpName="CareTzArvFunctionalStatus" namespace="CareMd">
     <column name="care_tz_arv_functional_status_id" phpName="CareTzArvFunctionalStatusId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="CHAR"/>
     <column name="description" phpName="Description" type="VARCHAR" size="60"/>
@@ -3450,7 +3450,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_illness" idMethod="native" phpName="CareTzArvIllness" namespace="propel">
+  <table name="care_tz_arv_illness" idMethod="native" phpName="CareTzArvIllness" namespace="CareMd">
     <column name="care_tz_arv_illness_id" phpName="CareTzArvIllnessId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_illness_code_id" phpName="CareTzArvIllnessCodeId" type="BIGINT" required="true"/>
     <column name="care_tz_arv_visit_2_id" phpName="CareTzArvVisit2Id" type="BIGINT" required="true"/>
@@ -3462,7 +3462,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_illness_code" idMethod="native" phpName="CareTzArvIllnessCode" namespace="propel">
+  <table name="care_tz_arv_illness_code" idMethod="native" phpName="CareTzArvIllnessCode" namespace="CareMd">
     <column name="care_tz_arv_illness_code_id" phpName="CareTzArvIllnessCodeId" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="VARCHAR" size="10" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="256" required="true"/>
@@ -3471,7 +3471,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_lab" idMethod="native" phpName="CareTzArvLab" namespace="propel">
+  <table name="care_tz_arv_lab" idMethod="native" phpName="CareTzArvLab" namespace="CareMd">
     <column name="care_tz_arv_lab_id" phpName="CareTzArvLabId" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="nr" phpName="Nr" type="BIGINT" required="true"/>
     <column name="care_tz_arv_visit_2_id" phpName="CareTzArvVisit2Id" type="BIGINT"/>
@@ -3481,7 +3481,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_lab_param" idMethod="native" phpName="CareTzArvLabParam" namespace="propel">
+  <table name="care_tz_arv_lab_param" idMethod="native" phpName="CareTzArvLabParam" namespace="CareMd">
     <column name="care_tz_arv_lab_param_id" phpName="CareTzArvLabParamId" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="lab_param" phpName="LabParam" type="INTEGER" size="10" sqlType="int(10) unsigned"/>
     <column name="unit" phpName="Unit" type="VARCHAR" size="20"/>
@@ -3491,7 +3491,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_nutritional_status" idMethod="native" phpName="CareTzArvNutritionalStatus" namespace="propel">
+  <table name="care_tz_arv_nutritional_status" idMethod="native" phpName="CareTzArvNutritionalStatus" namespace="CareMd">
     <column name="care_tz_arv_nutritional_status_id" phpName="CareTzArvNutritionalStatusId" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="VARCHAR" size="20" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="100" required="true"/>
@@ -3499,7 +3499,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_nutritional_supp" idMethod="native" phpName="CareTzArvNutritionalSupp" namespace="propel">
+  <table name="care_tz_arv_nutritional_supp" idMethod="native" phpName="CareTzArvNutritionalSupp" namespace="CareMd">
     <column name="care_tz_arv_nutritional_supp_id" phpName="CareTzArvNutritionalSuppId" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="VARCHAR" size="20" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="100" required="true"/>
@@ -3507,7 +3507,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_nutritional_supplement" idMethod="native" phpName="CareTzArvNutritionalSupplement" namespace="propel">
+  <table name="care_tz_arv_nutritional_supplement" idMethod="native" phpName="CareTzArvNutritionalSupplement" namespace="CareMd">
     <column name="care_tz_arv_nutritional_supplement_id" phpName="CareTzArvNutritionalSupplementId" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="VARCHAR" size="20" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="100" required="true"/>
@@ -3516,7 +3516,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_referred" idMethod="native" phpName="CareTzArvReferred" namespace="propel">
+  <table name="care_tz_arv_referred" idMethod="native" phpName="CareTzArvReferred" namespace="CareMd">
     <column name="care_tz_arv_referred_id" phpName="CareTzArvReferredId" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_referred_code_id" phpName="CareTzArvReferredCodeId" type="BIGINT"/>
     <column name="care_tz_arv_visit_2_id" phpName="CareTzArvVisit2Id" type="BIGINT" required="true"/>
@@ -3525,7 +3525,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_referred_code" idMethod="native" phpName="CareTzArvReferredCode" namespace="propel">
+  <table name="care_tz_arv_referred_code" idMethod="native" phpName="CareTzArvReferredCode" namespace="CareMd">
     <column name="care_tz_arv_referred_code_id" phpName="CareTzArvReferredCodeId" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="TINYINT" size="3" sqlType="tinyint(3) unsigned"/>
     <column name="description" phpName="Description" type="VARCHAR" size="60"/>
@@ -3534,7 +3534,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_referred_from" idMethod="native" phpName="CareTzArvReferredFrom" namespace="propel">
+  <table name="care_tz_arv_referred_from" idMethod="native" phpName="CareTzArvReferredFrom" namespace="CareMd">
     <column name="care_tz_arv_referred_from_id" phpName="CareTzArvReferredFromId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_referred_from_code_id" phpName="CareTzArvReferredFromCodeId" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true"/>
     <column name="care_tz_arv_registration_id" phpName="CareTzArvRegistrationId" type="BIGINT" required="true"/>
@@ -3543,14 +3543,14 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_referred_from_code" idMethod="native" phpName="CareTzArvReferredFromCode" namespace="propel">
+  <table name="care_tz_arv_referred_from_code" idMethod="native" phpName="CareTzArvReferredFromCode" namespace="CareMd">
     <column name="care_tz_arv_referred_from_code_id" phpName="CareTzArvReferredFromCodeId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="30"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_regimen" idMethod="native" phpName="CareTzArvRegimen" namespace="propel">
+  <table name="care_tz_arv_regimen" idMethod="native" phpName="CareTzArvRegimen" namespace="CareMd">
     <column name="care_tz_arv_regimen_id" phpName="CareTzArvRegimenId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_regimen_code_id" phpName="CareTzArvRegimenCodeId" type="BIGINT"/>
     <column name="care_tz_arv_visit_2_id" phpName="CareTzArvVisit2Id" type="BIGINT" required="true"/>
@@ -3560,7 +3560,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_regimen_code" idMethod="native" phpName="CareTzArvRegimenCode" namespace="propel">
+  <table name="care_tz_arv_regimen_code" idMethod="native" phpName="CareTzArvRegimenCode" namespace="CareMd">
     <column name="care_tz_arv_regimen_code_id" phpName="CareTzArvRegimenCodeId" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="VARCHAR" size="10"/>
     <column name="description" phpName="Description" type="VARCHAR" size="60"/>
@@ -3570,14 +3570,14 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_region" idMethod="native" phpName="CareTzArvRegion" namespace="propel">
+  <table name="care_tz_arv_region" idMethod="native" phpName="CareTzArvRegion" namespace="CareMd">
     <column name="care_tz_arv_region_id" phpName="CareTzArvRegionId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="region_name" phpName="RegionName" type="VARCHAR" size="400"/>
     <vendor type="mysql">
       <parameter name="Engine" value="InnoDB"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_registration" idMethod="native" phpName="CareTzArvRegistration" namespace="propel">
+  <table name="care_tz_arv_registration" idMethod="native" phpName="CareTzArvRegistration" namespace="CareMd">
     <column name="care_tz_arv_registration_id" phpName="CareTzArvRegistrationId" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_lab_id" phpName="CareTzArvLabId" type="BIGINT"/>
     <column name="care_tz_arv_functional_status_id" phpName="CareTzArvFunctionalStatusId" type="INTEGER" size="10" sqlType="int(10) unsigned"/>
@@ -3614,7 +3614,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_relatives" idMethod="native" phpName="CareTzArvRelatives" namespace="propel">
+  <table name="care_tz_arv_relatives" idMethod="native" phpName="CareTzArvRelatives" namespace="CareMd">
     <column name="care_tz_arv_registration_id" phpName="CareTzArvRegistrationId" type="INTEGER" size="10" primaryKey="true" required="true"/>
     <column name="relative_name" phpName="RelativeName" type="VARCHAR" size="100" required="true"/>
     <column name="care_tz_arv_relatives_code_id" phpName="CareTzArvRelativesCodeId" type="INTEGER" size="10" required="true"/>
@@ -3633,14 +3633,14 @@
       <parameter name="Engine" value="InnoDB"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_relatives_code" idMethod="native" phpName="CareTzArvRelativesCode" namespace="propel">
+  <table name="care_tz_arv_relatives_code" idMethod="native" phpName="CareTzArvRelativesCode" namespace="CareMd">
     <column name="care_tz_arv_relatives_code_id" phpName="CareTzArvRelativesCodeId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="50"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_rep_nacp_coh_ind" idMethod="native" phpName="CareTzArvRepNacpCohInd" namespace="propel">
+  <table name="care_tz_arv_rep_nacp_coh_ind" idMethod="native" phpName="CareTzArvRepNacpCohInd" namespace="CareMd">
     <column name="indicator_id" phpName="IndicatorId" type="INTEGER"/>
     <column name="indicator_description" phpName="IndicatorDescription" type="VARCHAR" size="510"/>
     <column name="numerator_description" phpName="NumeratorDescription" type="VARCHAR" size="510"/>
@@ -3652,7 +3652,7 @@
       <parameter name="Engine" value="InnoDB"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_status" idMethod="native" phpName="CareTzArvStatus" namespace="propel">
+  <table name="care_tz_arv_status" idMethod="native" phpName="CareTzArvStatus" namespace="CareMd">
     <column name="care_tz_arv_status_id" phpName="CareTzArvStatusId" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="BOOLEAN" size="1" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="20"/>
@@ -3661,7 +3661,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_status_txt" idMethod="native" phpName="CareTzArvStatusTxt" namespace="propel">
+  <table name="care_tz_arv_status_txt" idMethod="native" phpName="CareTzArvStatusTxt" namespace="CareMd">
     <column name="care_tz_arv_status_txt_id" phpName="CareTzArvStatusTxtId" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_visit_2_id" phpName="CareTzArvVisit2Id" type="BIGINT" required="true"/>
     <column name="care_tz_arv_status_txt_code_id" phpName="CareTzArvStatusTxtCodeId" type="BIGINT" size="50" required="true"/>
@@ -3670,7 +3670,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_status_txt_code" idMethod="native" phpName="CareTzArvStatusTxtCode" namespace="propel">
+  <table name="care_tz_arv_status_txt_code" idMethod="native" phpName="CareTzArvStatusTxtCode" namespace="CareMd">
     <column name="care_tz_arv_status_txt_code_id" phpName="CareTzArvStatusTxtCodeId" type="BIGINT" size="50" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="TINYINT" size="3" sqlType="tinyint(3) unsigned"/>
     <column name="description" phpName="Description" type="VARCHAR" size="100"/>
@@ -3680,7 +3680,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_tb_status" idMethod="native" phpName="CareTzArvTbStatus" namespace="propel">
+  <table name="care_tz_arv_tb_status" idMethod="native" phpName="CareTzArvTbStatus" namespace="CareMd">
     <column name="care_tz_arv_tb_status_id" phpName="CareTzArvTbStatusId" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="VARCHAR" size="10"/>
     <column name="description" phpName="Description" type="VARCHAR" size="70"/>
@@ -3689,7 +3689,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_tb_treatment" idMethod="native" phpName="CareTzArvTbTreatment" namespace="propel">
+  <table name="care_tz_arv_tb_treatment" idMethod="native" phpName="CareTzArvTbTreatment" namespace="CareMd">
     <column name="care_tz_arv_tb_treatment_id" phpName="CareTzArvTbTreatmentId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_tb_treatment_code_id" phpName="CareTzArvTbTreatmentCodeId" type="INTEGER" size="10" required="true"/>
     <column name="care_tz_arv_visit_2_id" phpName="CareTzArvVisit2Id" type="INTEGER" size="10" required="true"/>
@@ -3701,7 +3701,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_tb_treatment_code" idMethod="native" phpName="CareTzArvTbTreatmentCode" namespace="propel">
+  <table name="care_tz_arv_tb_treatment_code" idMethod="native" phpName="CareTzArvTbTreatmentCode" namespace="CareMd">
     <column name="care_tz_arv_tb_treatment_code_id" phpName="CareTzArvTbTreatmentCodeId" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="VARCHAR" size="10"/>
     <column name="description" phpName="Description" type="VARCHAR" size="70"/>
@@ -3710,7 +3710,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_transfer_in" idMethod="native" phpName="CareTzArvTransferIn" namespace="propel">
+  <table name="care_tz_arv_transfer_in" idMethod="native" phpName="CareTzArvTransferIn" namespace="CareMd">
     <column name="care_tz_arv_transfer_in_id" phpName="CareTzArvTransferInId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_transfer_in_code_id" phpName="CareTzArvTransferInCodeId" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true"/>
     <column name="care_tz_arv_registration_id" phpName="CareTzArvRegistrationId" type="BIGINT" required="true"/>
@@ -3719,14 +3719,14 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_transfer_in_code" idMethod="native" phpName="CareTzArvTransferInCode" namespace="propel">
+  <table name="care_tz_arv_transfer_in_code" idMethod="native" phpName="CareTzArvTransferInCode" namespace="CareMd">
     <column name="care_tz_arv_transfer_in_code_id" phpName="CareTzArvTransferInCodeId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="50"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_treatment_supporter" idMethod="native" phpName="CareTzArvTreatmentSupporter" namespace="propel">
+  <table name="care_tz_arv_treatment_supporter" idMethod="native" phpName="CareTzArvTreatmentSupporter" namespace="CareMd">
     <column name="care_tz_arv_treatment_supporter_id" phpName="CareTzArvTreatmentSupporterId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_registration_id" phpName="CareTzArvRegistrationId" type="BIGINT"/>
     <column name="vname" phpName="Vname" type="VARCHAR" size="60"/>
@@ -3740,7 +3740,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_visit" idMethod="native" phpName="CareTzArvVisit" namespace="propel">
+  <table name="care_tz_arv_visit" idMethod="native" phpName="CareTzArvVisit" namespace="CareMd">
     <column name="care_tz_arv_visit_2_id" phpName="CareTzArvVisit2Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_registration_id" phpName="CareTzArvRegistrationId" type="BIGINT" required="true"/>
     <column name="care_tz_arv_adher_code_id" phpName="CareTzArvAdherCodeId" type="BIGINT" required="true"/>
@@ -3771,7 +3771,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_visit_2" idMethod="native" phpName="CareTzArvVisit2" namespace="propel">
+  <table name="care_tz_arv_visit_2" idMethod="native" phpName="CareTzArvVisit2" namespace="CareMd">
     <column name="care_tz_arv_visit_2_id" phpName="CareTzArvVisit2Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="care_tz_arv_registration_id" phpName="CareTzArvRegistrationId" type="BIGINT" required="true"/>
     <column name="care_tz_arv_adher_code_id" phpName="CareTzArvAdherCodeId" type="BIGINT"/>
@@ -3812,7 +3812,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_arv_visit_type" idMethod="native" phpName="CareTzArvVisitType" namespace="propel">
+  <table name="care_tz_arv_visit_type" idMethod="native" phpName="CareTzArvVisitType" namespace="CareMd">
     <column name="care_tz_arv_visit_type_id" phpName="CareTzArvVisitTypeId" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="VARCHAR" size="15" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="100" required="true"/>
@@ -3820,7 +3820,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_billing" idMethod="native" phpName="CareTzBilling" namespace="propel">
+  <table name="care_tz_billing" idMethod="native" phpName="CareTzBilling" namespace="CareMd">
     <column name="nr" phpName="Nr" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="BIGINT" required="true" defaultValue="0"/>
     <column name="first_date" phpName="FirstDate" type="BIGINT" required="true" defaultValue="0"/>
@@ -3833,7 +3833,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_billing_archieve_special" idMethod="native" phpName="CareTzBillingArchieveSpecial" namespace="propel">
+  <table name="care_tz_billing_archieve_special" idMethod="native" phpName="CareTzBillingArchieveSpecial" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="VARCHAR" size="100" required="true" defaultValue=""/>
     <column name="date" phpName="Date" type="DATE" required="true" defaultValue="0000-00-00"/>
@@ -3844,7 +3844,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_billing_archive" idMethod="native" phpName="CareTzBillingArchive" namespace="propel">
+  <table name="care_tz_billing_archive" idMethod="native" phpName="CareTzBillingArchive" namespace="CareMd">
     <column name="id" phpName="Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="nr" phpName="Nr" type="BIGINT" required="true" defaultValue="0"/>
     <column name="encounter_nr" phpName="EncounterNr" type="BIGINT" required="true" defaultValue="0"/>
@@ -3868,7 +3868,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_billing_archive_elem" idMethod="native" phpName="CareTzBillingArchiveElem" namespace="propel">
+  <table name="care_tz_billing_archive_elem" idMethod="native" phpName="CareTzBillingArchiveElem" namespace="CareMd">
     <column name="ID" phpName="Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="nr" phpName="Nr" type="BIGINT" required="true" defaultValue="0"/>
     <column name="date_change" phpName="DateChange" type="BIGINT" required="true" defaultValue="0"/>
@@ -3914,7 +3914,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_billing_elem" idMethod="native" phpName="CareTzBillingElem" namespace="propel">
+  <table name="care_tz_billing_elem" idMethod="native" phpName="CareTzBillingElem" namespace="CareMd">
     <column name="ID" phpName="Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="nr" phpName="Nr" type="BIGINT" required="true" defaultValue="0"/>
     <column name="date_change" phpName="DateChange" type="BIGINT" required="true" defaultValue="0"/>
@@ -3952,7 +3952,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_billing_elem_advance" idMethod="native" phpName="CareTzBillingElemAdvance" namespace="propel">
+  <table name="care_tz_billing_elem_advance" idMethod="native" phpName="CareTzBillingElemAdvance" namespace="CareMd">
     <column name="ID" phpName="Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="nr" phpName="Nr" type="BIGINT" required="true" defaultValue="0"/>
     <column name="date_change" phpName="DateChange" type="BIGINT" required="true" defaultValue="0"/>
@@ -3981,7 +3981,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_billing_special" idMethod="native" phpName="CareTzBillingSpecial" namespace="propel">
+  <table name="care_tz_billing_special" idMethod="native" phpName="CareTzBillingSpecial" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="VARCHAR" size="100" required="true" defaultValue=""/>
     <column name="date" phpName="Date" type="DATE" required="true" defaultValue="0000-00-00"/>
@@ -3996,7 +3996,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_company" idMethod="native" phpName="CareTzCompany" namespace="propel">
+  <table name="care_tz_company" idMethod="native" phpName="CareTzCompany" namespace="CareMd">
     <column name="id" phpName="Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="name" phpName="Name" type="VARCHAR" size="255" required="true" defaultValue=""/>
     <column name="contact" phpName="Contact" type="VARCHAR" size="255" required="true" defaultValue=""/>
@@ -4017,7 +4017,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_dhis_element" idMethod="native" phpName="CareTzDhisElement" namespace="propel">
+  <table name="care_tz_dhis_element" idMethod="native" phpName="CareTzDhisElement" namespace="CareMd">
     <column name="codeid" phpName="Codeid" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="icd_code" phpName="IcdCode" type="CHAR" size="10"/>
     <column name="dataelement_id" phpName="DataelementId" type="INTEGER" size="10"/>
@@ -4031,7 +4031,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_dhis_period" idMethod="native" phpName="CareTzDhisPeriod" namespace="propel">
+  <table name="care_tz_dhis_period" idMethod="native" phpName="CareTzDhisPeriod" namespace="CareMd">
     <column name="periodid" phpName="Periodid" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="periodtypeid" phpName="Periodtypeid" type="INTEGER"/>
     <column name="startdate" phpName="Startdate" type="DATE" required="true"/>
@@ -4048,7 +4048,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_diagnosis" idMethod="native" phpName="CareTzDiagnosis" namespace="propel">
+  <table name="care_tz_diagnosis" idMethod="native" phpName="CareTzDiagnosis" namespace="CareMd">
     <column name="case_nr" phpName="CaseNr" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="parent_case_nr" phpName="ParentCaseNr" type="BIGINT" required="true" defaultValue="-1"/>
     <column name="PID" phpName="Pid" type="BIGINT" required="true" defaultValue="0"/>
@@ -4078,7 +4078,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_district" idMethod="native" phpName="CareTzDistrict" namespace="propel">
+  <table name="care_tz_district" idMethod="native" phpName="CareTzDistrict" namespace="CareMd">
     <column name="district_id" phpName="DistrictId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="district_code" phpName="DistrictCode" type="INTEGER" size="10" required="true"/>
     <column name="district_name" phpName="DistrictName" type="VARCHAR" size="100" required="true"/>
@@ -4087,7 +4087,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_druglist" idMethod="native" phpName="CareTzDruglist" namespace="propel">
+  <table name="care_tz_druglist" idMethod="native" phpName="CareTzDruglist" namespace="CareMd">
     <column name="item_id" phpName="ItemId" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="item_number" phpName="ItemNumber" type="VARCHAR" size="50" required="true" defaultValue=""/>
     <column name="is_pediatric" phpName="IsPediatric" type="SMALLINT" required="true" defaultValue="0"/>
@@ -4108,7 +4108,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_drugliststruc" idMethod="native" phpName="CareTzDrugliststruc" namespace="propel">
+  <table name="care_tz_drugliststruc" idMethod="native" phpName="CareTzDrugliststruc" namespace="CareMd">
     <column name="item_id" phpName="ItemId" type="BIGINT" required="true" defaultValue="0"/>
     <column name="item_number" phpName="ItemNumber" type="VARCHAR" size="5" primaryKey="true" required="true" defaultValue=""/>
     <column name="is_pediatric" phpName="IsPediatric" type="SMALLINT" required="true" defaultValue="0"/>
@@ -4129,14 +4129,14 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_drugs_reordering_level" idMethod="native" phpName="CareTzDrugsReorderingLevel" namespace="propel">
+  <table name="care_tz_drugs_reordering_level" idMethod="native" phpName="CareTzDrugsReorderingLevel" namespace="CareMd">
     <column name="item_id" phpName="ItemId" type="INTEGER" primaryKey="true" required="true"/>
     <column name="reordering_level" phpName="ReorderingLevel" type="INTEGER"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_drugsandservices" idMethod="native" phpName="CareTzDrugsandservices" namespace="propel">
+  <table name="care_tz_drugsandservices" idMethod="native" phpName="CareTzDrugsandservices" namespace="CareMd">
     <column name="item_id" phpName="ItemId" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="item_number" phpName="ItemNumber" type="VARCHAR" size="50" required="true" defaultValue=""/>
     <column name="partcode" phpName="Partcode" type="VARCHAR" size="255" required="true"/>
@@ -4172,7 +4172,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_drugsandservices_archive" idMethod="native" phpName="CareTzDrugsandservicesArchive" namespace="propel">
+  <table name="care_tz_drugsandservices_archive" idMethod="native" phpName="CareTzDrugsandservicesArchive" namespace="CareMd">
     <column name="item_id" phpName="ItemId" type="BIGINT" required="true"/>
     <column name="item_number" phpName="ItemNumber" type="VARCHAR" size="50" required="true" defaultValue=""/>
     <column name="partcode" phpName="Partcode" type="VARCHAR" size="255"/>
@@ -4196,7 +4196,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_drugsandservices_backup" idMethod="native" phpName="CareTzDrugsandservicesBackup" namespace="propel">
+  <table name="care_tz_drugsandservices_backup" idMethod="native" phpName="CareTzDrugsandservicesBackup" namespace="CareMd">
     <column name="item_id" phpName="ItemId" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="item_number" phpName="ItemNumber" type="VARCHAR" size="50" required="true" defaultValue=""/>
     <column name="is_pediatric" phpName="IsPediatric" type="SMALLINT" required="true" defaultValue="0"/>
@@ -4218,7 +4218,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_drugsandservices_categories" idMethod="native" phpName="CareTzDrugsandservicesCategories" namespace="propel">
+  <table name="care_tz_drugsandservices_categories" idMethod="native" phpName="CareTzDrugsandservicesCategories" namespace="CareMd">
     <column name="ID" phpName="Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="fieldname" phpName="Fieldname" type="VARCHAR" size="50" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="50" required="true"/>
@@ -4227,7 +4227,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_drugsandservices_description" idMethod="native" phpName="CareTzDrugsandservicesDescription" namespace="propel">
+  <table name="care_tz_drugsandservices_description" idMethod="native" phpName="CareTzDrugsandservicesDescription" namespace="CareMd">
     <column name="ID" phpName="Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="last_change" phpName="LastChange" type="BIGINT" required="true"/>
     <column name="UID" phpName="Uid" type="VARCHAR" size="50" required="true"/>
@@ -4239,7 +4239,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_drugsandservices_sub_categories" idMethod="native" phpName="CareTzDrugsandservicesSubCategories" namespace="propel">
+  <table name="care_tz_drugsandservices_sub_categories" idMethod="native" phpName="CareTzDrugsandservicesSubCategories" namespace="CareMd">
     <column name="ID" phpName="Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="name" phpName="Name" type="VARCHAR" size="50" required="true"/>
     <column name="parent" phpName="Parent" type="VARCHAR" size="50" required="true"/>
@@ -4248,7 +4248,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_drugsandservices_update" idMethod="native" phpName="CareTzDrugsandservicesUpdate" namespace="propel">
+  <table name="care_tz_drugsandservices_update" idMethod="native" phpName="CareTzDrugsandservicesUpdate" namespace="CareMd">
     <column name="item_id" phpName="ItemId" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="item_number" phpName="ItemNumber" type="VARCHAR" size="50" required="true" defaultValue=""/>
     <column name="partcode" phpName="Partcode" type="VARCHAR" size="255"/>
@@ -4268,7 +4268,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_eye_anterior_segment" idMethod="native" phpName="CareTzEyeAnteriorSegment" namespace="propel">
+  <table name="care_tz_eye_anterior_segment" idMethod="native" phpName="CareTzEyeAnteriorSegment" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" size="30"/>
     <column name="right_eye_test1" phpName="RightEyeTest1" type="VARCHAR" size="100"/>
@@ -4291,7 +4291,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_eye_conjunctiva" idMethod="native" phpName="CareTzEyeConjunctiva" namespace="propel">
+  <table name="care_tz_eye_conjunctiva" idMethod="native" phpName="CareTzEyeConjunctiva" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" size="30"/>
     <column name="right_eye_test1" phpName="RightEyeTest1" type="VARCHAR" size="100"/>
@@ -4316,7 +4316,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_eye_cornea" idMethod="native" phpName="CareTzEyeCornea" namespace="propel">
+  <table name="care_tz_eye_cornea" idMethod="native" phpName="CareTzEyeCornea" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" size="30"/>
     <column name="right_eye_test1" phpName="RightEyeTest1" type="VARCHAR" size="100"/>
@@ -4339,7 +4339,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_eye_eyelids" idMethod="native" phpName="CareTzEyeEyelids" namespace="propel">
+  <table name="care_tz_eye_eyelids" idMethod="native" phpName="CareTzEyeEyelids" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" size="30"/>
     <column name="right_eye_test1" phpName="RightEyeTest1" type="VARCHAR" size="100"/>
@@ -4366,7 +4366,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_eye_facial_ocular_orbitalsymmetry" idMethod="native" phpName="CareTzEyeFacialOcularOrbitalsymmetry" namespace="propel">
+  <table name="care_tz_eye_facial_ocular_orbitalsymmetry" idMethod="native" phpName="CareTzEyeFacialOcularOrbitalsymmetry" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" size="30"/>
     <column name="right_eye_test1" phpName="RightEyeTest1" type="VARCHAR" size="100"/>
@@ -4389,7 +4389,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_eye_history1" idMethod="native" phpName="CareTzEyeHistory1" namespace="propel">
+  <table name="care_tz_eye_history1" idMethod="native" phpName="CareTzEyeHistory1" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="VARCHAR" size="100" required="true"/>
     <column name="hid1" phpName="Hid1" type="VARCHAR" size="100" required="true"/>
@@ -4415,7 +4415,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_eye_history2" idMethod="native" phpName="CareTzEyeHistory2" namespace="propel">
+  <table name="care_tz_eye_history2" idMethod="native" phpName="CareTzEyeHistory2" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="VARCHAR" size="100" required="true" defaultValue=""/>
     <column name="hid1" phpName="Hid1" type="VARCHAR" size="100" required="true"/>
@@ -4447,7 +4447,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_eye_history3" idMethod="native" phpName="CareTzEyeHistory3" namespace="propel">
+  <table name="care_tz_eye_history3" idMethod="native" phpName="CareTzEyeHistory3" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="VARCHAR" size="100" required="true" defaultValue=""/>
     <column name="hid1" phpName="Hid1" type="VARCHAR" size="100" required="true"/>
@@ -4473,7 +4473,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_eye_history4" idMethod="native" phpName="CareTzEyeHistory4" namespace="propel">
+  <table name="care_tz_eye_history4" idMethod="native" phpName="CareTzEyeHistory4" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="VARCHAR" size="100" required="true" defaultValue=""/>
     <column name="hid1" phpName="Hid1" type="VARCHAR" size="100" required="true"/>
@@ -4502,7 +4502,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_eye_history5" idMethod="native" phpName="CareTzEyeHistory5" namespace="propel">
+  <table name="care_tz_eye_history5" idMethod="native" phpName="CareTzEyeHistory5" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" required="true" defaultValue="0"/>
     <column name="pid" phpName="Pid" type="VARCHAR" size="100" required="true" defaultValue=""/>
     <column name="hid1" phpName="Hid1" type="VARCHAR" size="100" required="true"/>
@@ -4533,7 +4533,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_eye_intraocularpressure" idMethod="native" phpName="CareTzEyeIntraocularpressure" namespace="propel">
+  <table name="care_tz_eye_intraocularpressure" idMethod="native" phpName="CareTzEyeIntraocularpressure" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" size="30"/>
     <column name="right_eye_test1" phpName="RightEyeTest1" type="VARCHAR" size="100"/>
@@ -4545,7 +4545,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_eye_lens" idMethod="native" phpName="CareTzEyeLens" namespace="propel">
+  <table name="care_tz_eye_lens" idMethod="native" phpName="CareTzEyeLens" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" size="30"/>
     <column name="right_eye_test1" phpName="RightEyeTest1" type="VARCHAR" size="100"/>
@@ -4572,7 +4572,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_eye_optic_disc" idMethod="native" phpName="CareTzEyeOpticDisc" namespace="propel">
+  <table name="care_tz_eye_optic_disc" idMethod="native" phpName="CareTzEyeOpticDisc" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" size="30"/>
     <column name="right_eye_test1" phpName="RightEyeTest1" type="VARCHAR" size="100"/>
@@ -4593,7 +4593,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_eye_posterior_segment" idMethod="native" phpName="CareTzEyePosteriorSegment" namespace="propel">
+  <table name="care_tz_eye_posterior_segment" idMethod="native" phpName="CareTzEyePosteriorSegment" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" size="30"/>
     <column name="right_eye_test1" phpName="RightEyeTest1" type="VARCHAR" size="100"/>
@@ -4620,7 +4620,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_eye_pupils" idMethod="native" phpName="CareTzEyePupils" namespace="propel">
+  <table name="care_tz_eye_pupils" idMethod="native" phpName="CareTzEyePupils" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" size="30"/>
     <column name="right_eye_test1" phpName="RightEyeTest1" type="VARCHAR" size="100"/>
@@ -4643,7 +4643,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_eye_squint_strabismus" idMethod="native" phpName="CareTzEyeSquintStrabismus" namespace="propel">
+  <table name="care_tz_eye_squint_strabismus" idMethod="native" phpName="CareTzEyeSquintStrabismus" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" size="30"/>
     <column name="right_eye_test1" phpName="RightEyeTest1" type="VARCHAR" size="100"/>
@@ -4662,7 +4662,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_eye_trauma" idMethod="native" phpName="CareTzEyeTrauma" namespace="propel">
+  <table name="care_tz_eye_trauma" idMethod="native" phpName="CareTzEyeTrauma" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" size="30"/>
     <column name="right_eye_test1" phpName="RightEyeTest1" type="VARCHAR" size="100"/>
@@ -4695,7 +4695,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_eye_visualacuity" idMethod="native" phpName="CareTzEyeVisualacuity" namespace="propel">
+  <table name="care_tz_eye_visualacuity" idMethod="native" phpName="CareTzEyeVisualacuity" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" size="30"/>
     <column name="right_eye_test1" phpName="RightEyeTest1" type="VARCHAR" size="100"/>
@@ -4710,7 +4710,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_hospital_doctor_history" idMethod="native" phpName="CareTzHospitalDoctorHistory" namespace="propel">
+  <table name="care_tz_hospital_doctor_history" idMethod="native" phpName="CareTzHospitalDoctorHistory" namespace="CareMd">
     <column name="date" phpName="Date" type="DATE" primaryKey="true" required="true" defaultValue="0000-00-00"/>
     <column name="doctor" phpName="Doctor" type="VARCHAR" size="45" primaryKey="true" required="true" defaultValue=" "/>
     <column name="dept" phpName="Dept" type="INTEGER" sqlType="int(11) unsigned" primaryKey="true" required="true" defaultValue="0"/>
@@ -4727,7 +4727,7 @@
       <parameter name="Engine" value="InnoDB"/>
     </vendor>
   </table>
-  <table name="care_tz_hospital_rooms" idMethod="native" phpName="CareTzHospitalRooms" namespace="propel">
+  <table name="care_tz_hospital_rooms" idMethod="native" phpName="CareTzHospitalRooms" namespace="CareMd">
     <column name="name" phpName="Name" type="VARCHAR" size="20" primaryKey="true" required="true"/>
     <column name="notes" phpName="Notes" type="VARCHAR" size="250" required="true"/>
     <column name="active" phpName="Active" type="INTEGER" size="1" sqlType="int(1) unsigned" required="true"/>
@@ -4738,7 +4738,7 @@
       <parameter name="Engine" value="InnoDB"/>
     </vendor>
   </table>
-  <table name="care_tz_hospital_rooms_conf" idMethod="native" phpName="CareTzHospitalRoomsConf" namespace="propel">
+  <table name="care_tz_hospital_rooms_conf" idMethod="native" phpName="CareTzHospitalRoomsConf" namespace="CareMd">
     <column name="name" phpName="Name" type="VARCHAR" size="45" primaryKey="true" required="true"/>
     <column name="dpt" phpName="Dpt" type="VARCHAR" size="45" primaryKey="true" required="true"/>
     <column name="users" phpName="Users" type="LONGVARCHAR" required="true"/>
@@ -4747,7 +4747,7 @@
       <parameter name="Engine" value="InnoDB"/>
     </vendor>
   </table>
-  <table name="care_tz_icd10_quicklist" idMethod="native" phpName="CareTzIcd10Quicklist" namespace="propel">
+  <table name="care_tz_icd10_quicklist" idMethod="native" phpName="CareTzIcd10Quicklist" namespace="CareMd">
     <column name="ID" phpName="Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="parent" phpName="Parent" type="BIGINT" required="true" defaultValue="0"/>
     <column name="description" phpName="Description" type="VARCHAR" size="50"/>
@@ -4759,7 +4759,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_insurance" idMethod="native" phpName="CareTzInsurance" namespace="propel">
+  <table name="care_tz_insurance" idMethod="native" phpName="CareTzInsurance" namespace="CareMd">
     <column name="id" phpName="Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="parent" phpName="Parent" type="BIGINT" required="true" defaultValue="0"/>
     <column name="company_parent" phpName="CompanyParent" type="INTEGER" required="true"/>
@@ -4784,7 +4784,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_insurance_types" idMethod="native" phpName="CareTzInsuranceTypes" namespace="propel">
+  <table name="care_tz_insurance_types" idMethod="native" phpName="CareTzInsuranceTypes" namespace="CareMd">
     <column name="id" phpName="Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="ceiling" phpName="Ceiling" type="VARCHAR" size="20" required="true" defaultValue="0"/>
     <column name="prepaid_amount" phpName="PrepaidAmount" type="INTEGER" required="true"/>
@@ -4795,7 +4795,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_insurances_admin" idMethod="native" phpName="CareTzInsurancesAdmin" namespace="propel">
+  <table name="care_tz_insurances_admin" idMethod="native" phpName="CareTzInsurancesAdmin" namespace="CareMd">
     <column name="insurance_ID" phpName="InsuranceId" type="SMALLINT" size="5" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="insurer" phpName="Insurer" type="SMALLINT" size="5" required="true" defaultValue="-1"/>
     <column name="name" phpName="Name" type="VARCHAR" size="30"/>
@@ -4820,7 +4820,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_laboratory" idMethod="native" phpName="CareTzLaboratory" namespace="propel">
+  <table name="care_tz_laboratory" idMethod="native" phpName="CareTzLaboratory" namespace="CareMd">
     <column name="id" phpName="Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="encounter_nr" phpName="EncounterNr" type="BIGINT" required="true" defaultValue="0"/>
     <column name="care_tz_laboratory_tests_id" phpName="CareTzLaboratoryTestsId" type="BIGINT" required="true" defaultValue="0"/>
@@ -4835,7 +4835,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_laboratory_param" idMethod="native" phpName="CareTzLaboratoryParam" namespace="propel">
+  <table name="care_tz_laboratory_param" idMethod="native" phpName="CareTzLaboratoryParam" namespace="CareMd">
     <column name="nr" phpName="Nr" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="group_id" phpName="GroupId" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -4902,7 +4902,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_laboratory_param_type" idMethod="native" phpName="CareTzLaboratoryParamType" namespace="propel">
+  <table name="care_tz_laboratory_param_type" idMethod="native" phpName="CareTzLaboratoryParamType" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="param_id" phpName="ParamId" type="VARCHAR" size="50" required="true"/>
     <column name="input_value" phpName="InputValue" type="VARCHAR" size="35" required="true"/>
@@ -4910,7 +4910,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_laboratory_tests" idMethod="native" phpName="CareTzLaboratoryTests" namespace="propel">
+  <table name="care_tz_laboratory_tests" idMethod="native" phpName="CareTzLaboratoryTests" namespace="CareMd">
     <column name="id" phpName="Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="parent" phpName="Parent" type="BIGINT" required="true" defaultValue="0"/>
     <column name="name" phpName="Name" type="VARCHAR" size="255" required="true" defaultValue=""/>
@@ -4923,21 +4923,21 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_mtuha_cat" idMethod="native" phpName="CareTzMtuhaCat" namespace="propel">
+  <table name="care_tz_mtuha_cat" idMethod="native" phpName="CareTzMtuhaCat" namespace="CareMd">
     <column name="cat_ID" phpName="CatId" type="INTEGER" size="50" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="100"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_mtuha_cat_key" idMethod="native" phpName="CareTzMtuhaCatKey" namespace="propel">
+  <table name="care_tz_mtuha_cat_key" idMethod="native" phpName="CareTzMtuhaCatKey" namespace="CareMd">
     <column name="cat_ID" phpName="CatId" type="INTEGER" size="50" required="true"/>
     <column name="icd10_key" phpName="Icd10Key" type="VARCHAR" size="50" required="true"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_person_insurance" idMethod="native" phpName="CareTzPersonInsurance" namespace="propel">
+  <table name="care_tz_person_insurance" idMethod="native" phpName="CareTzPersonInsurance" namespace="CareMd">
     <column name="person_insurance_id" phpName="PersonInsuranceId" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="insurance" phpName="Insurance" type="SMALLINT" size="5" required="true"/>
     <column name="person" phpName="Person" type="INTEGER" sqlType="int(11) unsigned" required="true"/>
@@ -4945,14 +4945,14 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_pricedescription" idMethod="native" phpName="CareTzPricedescription" namespace="propel">
+  <table name="care_tz_pricedescription" idMethod="native" phpName="CareTzPricedescription" namespace="CareMd">
     <column name="account_nr" phpName="AccountNr" type="BIGINT" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="50" required="true"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_region" idMethod="native" phpName="CareTzRegion" namespace="propel">
+  <table name="care_tz_region" idMethod="native" phpName="CareTzRegion" namespace="CareMd">
     <column name="region_id" phpName="RegionId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="region_code" phpName="RegionCode" type="INTEGER" size="10" required="true"/>
     <column name="region_name" phpName="RegionName" type="VARCHAR" size="100" required="true"/>
@@ -4961,14 +4961,14 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_regions" idMethod="native" phpName="CareTzRegions" namespace="propel">
+  <table name="care_tz_regions" idMethod="native" phpName="CareTzRegions" namespace="CareMd">
     <column name="CODE" phpName="Code" type="VARCHAR" size="6" primaryKey="true" required="true"/>
     <column name="NAME" phpName="Name" type="VARCHAR" size="30"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_religion" idMethod="native" phpName="CareTzReligion" namespace="propel">
+  <table name="care_tz_religion" idMethod="native" phpName="CareTzReligion" namespace="CareMd">
     <column name="nr" phpName="Nr" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="code" phpName="Code" type="VARCHAR" size="6"/>
     <column name="name" phpName="Name" type="VARCHAR" size="30"/>
@@ -4980,7 +4980,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_stock_item_amount" idMethod="native" phpName="CareTzStockItemAmount" namespace="propel">
+  <table name="care_tz_stock_item_amount" idMethod="native" phpName="CareTzStockItemAmount" namespace="CareMd">
     <column name="ID" phpName="Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="Drugsandservices_id" phpName="DrugsandservicesId" type="BIGINT" required="true" defaultValue="0"/>
     <column name="Amount" phpName="Amount" type="BIGINT" required="true" defaultValue="0"/>
@@ -4989,7 +4989,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_stock_item_properties" idMethod="native" phpName="CareTzStockItemProperties" namespace="propel">
+  <table name="care_tz_stock_item_properties" idMethod="native" phpName="CareTzStockItemProperties" namespace="CareMd">
     <column name="ID" phpName="Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="Drugsandservices_id" phpName="DrugsandservicesId" type="VARCHAR" size="25" required="true" defaultValue="0"/>
     <column name="item_description" phpName="ItemDescription" type="VARCHAR" size="25" required="true" defaultValue="0"/>
@@ -5004,14 +5004,14 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_stock_place" idMethod="native" phpName="CareTzStockPlace" namespace="propel">
+  <table name="care_tz_stock_place" idMethod="native" phpName="CareTzStockPlace" namespace="CareMd">
     <column name="ID" phpName="Id" type="BIGINT" primaryKey="true" required="true"/>
     <column name="Stockname" phpName="Stockname" type="VARCHAR" size="255" required="true"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_stock_supplier_lists" idMethod="native" phpName="CareTzStockSupplierLists" namespace="propel">
+  <table name="care_tz_stock_supplier_lists" idMethod="native" phpName="CareTzStockSupplierLists" namespace="CareMd">
     <column name="ID" phpName="Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="Supplier_id" phpName="SupplierId" type="BIGINT" required="true"/>
     <column name="Supplier_item_id1" phpName="SupplierItemId1" type="VARCHAR" size="30" required="true"/>
@@ -5023,7 +5023,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_stock_suppliers" idMethod="native" phpName="CareTzStockSuppliers" namespace="propel">
+  <table name="care_tz_stock_suppliers" idMethod="native" phpName="CareTzStockSuppliers" namespace="CareMd">
     <column name="ID" phpName="Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="Name" phpName="Name" type="VARCHAR" size="50" required="true"/>
     <column name="Comment" phpName="Comment" type="VARCHAR" size="255" required="true"/>
@@ -5031,7 +5031,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_stock_transfer" idMethod="native" phpName="CareTzStockTransfer" namespace="propel">
+  <table name="care_tz_stock_transfer" idMethod="native" phpName="CareTzStockTransfer" namespace="CareMd">
     <column name="ID" phpName="Id" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="Drugsandservices_id" phpName="DrugsandservicesId" type="BIGINT" required="true"/>
     <column name="Amount" phpName="Amount" type="BIGINT" required="true"/>
@@ -5044,7 +5044,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_supplier_deatail" idMethod="native" phpName="CareTzSupplierDeatail" namespace="propel">
+  <table name="care_tz_supplier_deatail" idMethod="native" phpName="CareTzSupplierDeatail" namespace="CareMd">
     <column name="Suplier_id" phpName="SuplierId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="Company_Name" phpName="CompanyName" type="VARCHAR" size="50" required="true"/>
     <column name="Contact_Person" phpName="ContactPerson" type="VARCHAR" size="50" required="true"/>
@@ -5068,7 +5068,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_tracker" idMethod="native" phpName="CareTzTracker" namespace="propel">
+  <table name="care_tz_tracker" idMethod="native" phpName="CareTzTracker" namespace="CareMd">
     <column name="tracker_ID" phpName="TrackerId" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="time" phpName="Time" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
     <column name="module" phpName="Module" type="VARCHAR" size="255" required="true"/>
@@ -5090,7 +5090,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_tribes" idMethod="native" phpName="CareTzTribes" namespace="propel">
+  <table name="care_tz_tribes" idMethod="native" phpName="CareTzTribes" namespace="CareMd">
     <column name="tribe_id" phpName="TribeId" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="tribe_code" phpName="TribeCode" type="VARCHAR" size="10" required="true" defaultValue=""/>
     <column name="tribe_name" phpName="TribeName" type="VARCHAR" size="20" required="true" defaultValue=""/>
@@ -5102,7 +5102,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_village" idMethod="native" phpName="CareTzVillage" namespace="propel">
+  <table name="care_tz_village" idMethod="native" phpName="CareTzVillage" namespace="CareMd">
     <column name="village_id" phpName="VillageId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="village_code" phpName="VillageCode" type="VARCHAR" size="10" required="true"/>
     <column name="village_name" phpName="VillageName" type="VARCHAR" size="50" required="true"/>
@@ -5111,7 +5111,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_tz_ward" idMethod="native" phpName="CareTzWard" namespace="propel">
+  <table name="care_tz_ward" idMethod="native" phpName="CareTzWard" namespace="CareMd">
     <column name="ward_id" phpName="WardId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="ward_code" phpName="WardCode" type="INTEGER" size="10" required="true"/>
     <column name="ward_name" phpName="WardName" type="VARCHAR" size="100" required="true"/>
@@ -5120,7 +5120,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_unit_measurement" idMethod="native" phpName="CareUnitMeasurement" namespace="propel">
+  <table name="care_unit_measurement" idMethod="native" phpName="CareUnitMeasurement" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="unit_type_nr" phpName="UnitTypeNr" type="SMALLINT" size="2" sqlType="smallint(2) unsigned" required="true" defaultValue="0"/>
     <column name="id" phpName="Id" type="VARCHAR" size="15" required="true" defaultValue=""/>
@@ -5140,7 +5140,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_user_roles" idMethod="native" phpName="CareUserRoles" namespace="propel">
+  <table name="care_user_roles" idMethod="native" phpName="CareUserRoles" namespace="CareMd">
     <column name="role_id" phpName="RoleId" type="INTEGER" size="2" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="50" required="true"/>
     <column name="permission" phpName="Permission" type="VARCHAR" size="435"/>
@@ -5155,7 +5155,7 @@
       <parameter name="Engine" value="InnoDB"/>
     </vendor>
   </table>
-  <table name="care_users" idMethod="native" phpName="CareUsers" namespace="propel">
+  <table name="care_users" idMethod="native" phpName="CareUsers" namespace="CareMd">
     <column name="name" phpName="Name" type="VARCHAR" size="60" required="true" defaultValue=""/>
     <column name="login_id" phpName="LoginId" type="VARCHAR" size="35" primaryKey="true" required="true" defaultValue=""/>
     <column name="password" phpName="Password" type="VARCHAR" size="255"/>
@@ -5180,7 +5180,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_version" idMethod="native" phpName="CareVersion" namespace="propel">
+  <table name="care_version" idMethod="native" phpName="CareVersion" namespace="CareMd">
     <column name="name" phpName="Name" type="VARCHAR" size="20" required="true" defaultValue=""/>
     <column name="type" phpName="Type" type="VARCHAR" size="20" required="true" defaultValue=""/>
     <column name="number" phpName="Number" type="VARCHAR" size="10" required="true" defaultValue=""/>
@@ -5192,7 +5192,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="care_ward" idMethod="native" phpName="CareWard" namespace="propel">
+  <table name="care_ward" idMethod="native" phpName="CareWard" namespace="CareMd">
     <column name="nr" phpName="Nr" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="ward_id" phpName="WardId" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="name" phpName="Name" type="VARCHAR" size="35" required="true" defaultValue=""/>
@@ -5218,7 +5218,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="custom_care_person_add_field" idMethod="native" phpName="CustomCarePersonAddField" namespace="propel">
+  <table name="custom_care_person_add_field" idMethod="native" phpName="CustomCarePersonAddField" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="parent" phpName="Parent" type="INTEGER" required="true"/>
     <column name="sort_nr" phpName="SortNr" type="INTEGER" required="true"/>
@@ -5231,7 +5231,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="custom_field_select_options" idMethod="native" phpName="CustomFieldSelectOptions" namespace="propel">
+  <table name="custom_field_select_options" idMethod="native" phpName="CustomFieldSelectOptions" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="parent_id" phpName="ParentId" type="INTEGER" required="true"/>
     <column name="option_value" phpName="OptionValue" type="VARCHAR" size="255" required="true"/>
@@ -5240,7 +5240,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="custom_person_add_field_value" idMethod="native" phpName="CustomPersonAddFieldValue" namespace="propel">
+  <table name="custom_person_add_field_value" idMethod="native" phpName="CustomPersonAddFieldValue" namespace="CareMd">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="VARCHAR" size="255" required="true"/>
     <column name="field_id" phpName="FieldId" type="INTEGER" required="true"/>
@@ -5249,7 +5249,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="his_cybow_reader" idMethod="native" phpName="HisCybowReader" namespace="propel">
+  <table name="his_cybow_reader" idMethod="native" phpName="HisCybowReader" namespace="CareMd">
     <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="SampleID" phpName="Sampleid" type="VARCHAR" size="8"/>
     <column name="DateNTime" phpName="Datentime" type="TIMESTAMP"/>
@@ -5267,7 +5267,7 @@
       <parameter name="Engine" value="InnoDB"/>
     </vendor>
   </table>
-  <table name="his_ms4" idMethod="native" phpName="HisMs4" namespace="propel">
+  <table name="his_ms4" idMethod="native" phpName="HisMs4" namespace="CareMd">
     <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="SampleID" phpName="Sampleid" type="VARCHAR" size="8"/>
     <column name="DateNTime" phpName="Datentime" type="TIMESTAMP"/>
@@ -5292,7 +5292,7 @@
       <parameter name="Engine" value="InnoDB"/>
     </vendor>
   </table>
-  <table name="his_swelab_alfa" idMethod="native" phpName="HisSwelabAlfa" namespace="propel">
+  <table name="his_swelab_alfa" idMethod="native" phpName="HisSwelabAlfa" namespace="CareMd">
     <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="SampleID" phpName="Sampleid" type="VARCHAR" size="8"/>
     <column name="DateNTime" phpName="Datentime" type="TIMESTAMP"/>
@@ -5320,7 +5320,7 @@
       <parameter name="Engine" value="InnoDB"/>
     </vendor>
   </table>
-  <table name="locations" idMethod="native" phpName="Locations" namespace="propel">
+  <table name="locations" idMethod="native" phpName="Locations" namespace="CareMd">
     <column name="loccode" phpName="Loccode" type="VARCHAR" size="5" primaryKey="true" required="true" defaultValue=""/>
     <column name="locationname" phpName="Locationname" type="VARCHAR" size="50" required="true" defaultValue=""/>
     <column name="deladd1" phpName="Deladd1" type="VARCHAR" size="40" required="true" defaultValue=""/>
@@ -5344,7 +5344,7 @@
       <parameter name="Engine" value="InnoDB"/>
     </vendor>
   </table>
-  <table name="sessions" idMethod="native" phpName="Sessions" namespace="propel">
+  <table name="sessions" idMethod="native" phpName="Sessions" namespace="CareMd">
     <column name="SESSKEY" phpName="Sesskey" type="CHAR" size="32" primaryKey="true" required="true"/>
     <column name="EXPIRY" phpName="Expiry" type="INTEGER" sqlType="int(11) unsigned" required="true"/>
     <column name="EXPIREREF" phpName="Expireref" type="VARCHAR" size="64"/>
@@ -5353,7 +5353,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="tbl_who_icd10" idMethod="native" phpName="TblWhoIcd10" namespace="propel">
+  <table name="tbl_who_icd10" idMethod="native" phpName="TblWhoIcd10" namespace="CareMd">
     <column name="Ebene" phpName="Ebene" type="VARCHAR" size="255" required="true" defaultValue=""/>
     <column name="Ort" phpName="Ort" type="VARCHAR" size="255" required="true" defaultValue=""/>
     <column name="Art" phpName="Art" type="VARCHAR" size="255" required="true" defaultValue=""/>
@@ -5373,7 +5373,7 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
-  <table name="temp" idMethod="native" phpName="Temp" namespace="propel">
+  <table name="temp" idMethod="native" phpName="Temp" namespace="CareMd">
     <column name="prescription_nr" phpName="PrescriptionNr" type="INTEGER" size="25" required="true"/>
     <vendor type="mysql">
       <parameter name="Engine" value="InnoDB"/>
