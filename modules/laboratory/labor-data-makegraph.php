@@ -5,6 +5,8 @@ define('LAB_MAX_DAY_DISPLAY', 7); # define the max number or days displayed at o
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+
+$pageName = "Registration";
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.2 - 2006-07-10
  * GNU General Public License
@@ -323,5 +325,13 @@ $smarty->assign('sMainBlockIncludeFile', 'laboratory/chemlab_data_results_graph.
 /**
  * show Template
  */
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 $smarty->display('common/mainframe.tpl');
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

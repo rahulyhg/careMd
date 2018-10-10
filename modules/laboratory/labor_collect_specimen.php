@@ -272,5 +272,11 @@ $smarty->assign('sMainBlockIncludeFile', 'laboratory/chemlab_data_sample.tpl');
 /**
  * show Template
  */
+        require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 $smarty->display('common/mainframe.tpl');
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

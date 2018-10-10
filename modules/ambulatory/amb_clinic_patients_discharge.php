@@ -2,6 +2,8 @@
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+
+$pageName = "Discharge";
 /**
  * CARE2X Integrated Hospital Information System version deployment 1.1 (mysql) 2004-01-11
  * GNU General Public License
@@ -320,7 +322,8 @@ ob_start();
     echo "&pday=$pday&pmonth=$pmonth&pyear=$pyear&edit=$edit&station=" . $ward_info['name'];
     echo '";';
     echo '
-        patientwin=window.open(urlholder,pn,"width=700,height=600,menubar=no,resizable=yes,scrollbars=yes");
+        // patientwin=window.open(urlholder,pn,"width=700,height=600,menubar=no,resizable=yes,scrollbars=yes");
+        patientwin=window.open(urlholder,"_self");
         ';
 }
 
@@ -336,14 +339,21 @@ ob_start();
     function release(nr)
     {
         urlholder = "amb_clinic_discharge.php<?php echo URL_REDIRECT_APPEND; ?>&pn=" + nr + "<?php echo "&pyear=" . $pyear . "&pmonth=" . $pmonth . "&pday=" . $pday . "&tb=" . str_replace("#", "", $cfg['top_bgcolor']) . "&tt=" . str_replace("#", "", $cfg['top_txtcolor']) . "&bb=" . str_replace("#", "", $cfg['body_bgcolor']) . "&d=" . $cfg['dhtml']; ?>&station=<?php echo $station; ?>&dept_nr=<?php echo $dept_nr; ?>&backpath=<?php echo $breakfile; ?>";
-                indatawin = window.open(urlholder, "bedroom", "width=700,height=730,menubar=no,resizable=yes,scrollbars=yes");
+
+                // indatawin = window.open(urlholder, "bedroom", "width=700,height=730,menubar=no,resizable=yes,scrollbars=yes");
+                indatawin = window.open(urlholder, "_self");
+                
                 //window.location.href=urlholder;
             }
 
             function release_info(nr)
             {
                 urlholder = "amb_clinic_discharge_info.php<?php echo URL_REDIRECT_APPEND; ?>&pn=" + nr + "<?php echo "&pyear=" . $pyear . "&pmonth=" . $pmonth . "&pday=" . $pday . "&tb=" . str_replace("#", "", $cfg['top_bgcolor']) . "&tt=" . str_replace("#", "", $cfg['top_txtcolor']) . "&bb=" . str_replace("#", "", $cfg['body_bgcolor']) . "&d=" . $cfg['dhtml']; ?>&station=<?php echo $station; ?>&dept_nr=<?php echo $dept_nr; ?>&backpath=<?php echo $breakfile; ?>";
-                        indatawin = window.open(urlholder, "bedroom", "width=700,height=730,menubar=no,resizable=yes,scrollbars=yes");
+                        // indatawin = window.open(urlholder, "bedroom", "width=700,height=730,menubar=no,resizable=yes,scrollbars=yes");
+                        
+                        indatawin = window.open(urlholder, "_self");
+
+
                         //window.location.href=urlholder;
                     }
 
@@ -955,6 +965,15 @@ $smarty->assign('sMainBlockIncludeFile', 'ambulatory/outpatients.tpl');
 /**
  * show Template
  */
+
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 $smarty->display('common/mainframe.tpl');
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>
 

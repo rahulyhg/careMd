@@ -13,6 +13,8 @@ $lang_tables = array('departments.php');
 define('LANG_FILE', 'konsil.php');
 $local_user = 'ck_lab_user';
 
+$pageName = "Registration";
+
 require_once($root_path . 'include/inc_front_chain_lang.php');
 require_once($root_path . 'global_conf/inc_global_address.php');
 //require_once($root_path . 'include/inc_diagnostics_report_fx.php');
@@ -292,4 +294,11 @@ $smarty->assign('sMainFrameBlockData', $sTemp);
 /**
  * show Template
  */
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 $smarty->display('common/mainframe.tpl');
+
+require_once($root_path . 'main_theme/footer.inc.php');

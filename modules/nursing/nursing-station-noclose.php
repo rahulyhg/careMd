@@ -2,6 +2,8 @@
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+
+$pageName = "Nursing";
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.1 - 2004-10-02
  * GNU General Public License
@@ -26,7 +28,12 @@ require_once($root_path . 'include/inc_front_chain_lang.php');
         <p>
             &nbsp;
         <p>
+<?php 
 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+ ?>
         <table border=0>
             <tr>
                 <td><img <?php echo createMascot($root_path, 'mascot1_r.gif') ?>></td>
@@ -50,3 +57,5 @@ require_once($root_path . 'include/inc_front_chain_lang.php');
 </center>
 </body>
 </html>
+<?php require_once($root_path . 'main_theme/footer.inc.php'); ?>
+

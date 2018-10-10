@@ -15,8 +15,7 @@
                 if (!x)
                     x = "";
                 urlholder = "../../main/help-router.php?sid=<?php echo $sid; ?>&lang=en&helpidx=" + x + "&src=" + s + "&x1=" + x1 + "&x2=" + x2 + "&x3=" + x3 + "&x4=" + x4;
-                helpwin = window.open(urlholder, "helpwin", "width=790,height=540,menubar=no,resizable=yes,scrollbars=yes");
-                window.helpwin.moveTo(0, 0);
+                helpwin = window.open(urlholder, "_self");
             }
 
             function printOut()

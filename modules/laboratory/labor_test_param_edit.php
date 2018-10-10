@@ -1,6 +1,7 @@
 <?php
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+$pageName = "Laboratories";
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.2 - 2006-07-10
  * GNU General Public License
@@ -211,6 +212,12 @@ require($root_path . 'include/inc_css_a_hilitebu.php');
     <script src="../../js/SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
     <link href="../../js/SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
 </HEAD>
+
+<?php 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+ ?>
 
 <BODY topmargin=0 leftmargin=0 marginwidth=0 marginheight=0
 <?php
@@ -557,3 +564,9 @@ if (!$cfg['dhtml']) {
 
                                 </BODY>
                                 </HTML>
+
+                                <?php 
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
+                                 ?>

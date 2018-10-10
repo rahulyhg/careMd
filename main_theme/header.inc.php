@@ -1,5 +1,7 @@
 <?php
 
+require('./roots.php');
+
 $sql="SELECT nr,sort_nr,name,LD_var AS \"LD_var\",url,is_visible FROM care_menu_main WHERE is_visible=1 OR LD_var='LDEDP' OR LD_var='LDLogin' ORDER by sort_nr";
 
 $result=$db->Execute($sql);
@@ -29,11 +31,17 @@ if($result){
             'url' => $root_path.$menu['url'].URL_APPEND,
         );
 
+        if ($menu['name'] == "Appointments") {
+          array_push($navigationMenus, array('name' => 'Discharge', 'url' =>$root_path. "modules/ambulatory/amb_clinic_patients_discharge.php" . URL_APPEND ));
+        }
+
         array_push($navigationMenus, $menu);
 
     }
     
 }
+
+
 ?>
 
 <body class="">
@@ -68,6 +76,14 @@ if($result){
             <li class="nav-item  <?php if($pageName == "Registration") echo 'active'; ?> ">
               <a class="nav-link" href="<?php echo $menu['url'] ?>">
                 <i class="material-icons">perm_identity</i>
+                <p><?php echo $menu['name'] ?></p>
+              </a>
+            </li>
+
+            <?php elseif ($menu['name'] == "Discharge"): ?>
+            <li class="nav-item  <?php if($pageName == "Discharge") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+                <i class="material-icons">check_circle_outline</i>
                 <p><?php echo $menu['name'] ?></p>
               </a>
             </li>

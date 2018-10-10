@@ -25,8 +25,10 @@ if (empty($_SESSION['sess_path_referer']) || !file_exists($root_path . $_SESSION
     $breakfile = $root_path . $_SESSION['sess_path_referer'] . URL_APPEND;
 }
 
-if (!$_SESSION['sess_pid'])
-    $_SESSION['sess_pid'];
+if ($_COOKIE['ck_login_logged' . $sid])
+    $breakfile = $root_path . 'modules/news/start_page.php' . URL_APPEND;
+else
+    $breakfile = 'aufnahme_pass.php' . URL_APPEND . '&target=entry';
 
 $dept_nr = 1; # 1 = press relations
 # Get the maximum number of headlines to be displayed

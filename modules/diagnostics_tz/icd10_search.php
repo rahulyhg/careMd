@@ -4,6 +4,8 @@ require('./roots.php');
 
 require($root_path . 'include/inc_environment_global.php');
 
+$pageName = "Registration";
+
 if (empty($_REQUEST['key'])) {
   $_REQUEST['key']='';
 }
@@ -52,5 +54,14 @@ if (!empty($keyword)) {
 //}
 
 $diagnostic_obj->Display_Search_Results($keyword, $search_mode);
+
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
+
 require ("gui/gui_icd10_search.php");
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

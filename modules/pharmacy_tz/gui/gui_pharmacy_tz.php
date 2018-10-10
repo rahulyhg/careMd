@@ -45,9 +45,7 @@
 
             function open_pending_prescriptions(admission_type) {
                 urlholder = "<?php echo $root_path; ?>modules/pharmacy_tz/pharmacy_tz_pending_prescriptions.php?sid=<?php echo $sid . "&lang=" . $lang; ?>&prescrServ=prescr&admission=" + admission_type + "&comming_from=pharmacy&loccode=<?php echo $loccode; ?>&locname=<?php echo $locname; ?>";
-                patientwin = window.open(urlholder, "Ziel", "width=1000,height=800,status=yes,menubar=no,resizable=yes,scrollbars=yes,statusbar=yes,top=0,left=0");
-                patientwin.moveTo(0, 0);
-                patientwin.resizeTo(screen.availWidth, screen.availHeight);
+                window.open(urlholder , '_self');
 
             }
 

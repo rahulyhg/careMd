@@ -5,15 +5,11 @@
 
         function open_drug_services() {
             urlholder = "<?php echo $root_path; ?>modules/pharmacy_tz/pharmacy_tz_pass.php<?php echo URL_APPEND; ?>&target=drugsnservices&prescrServ=serv&task=newprescription&back_path=billing";
-            patientwin = window.open(urlholder, "Ziel", "width=750,height=550,status=yes,menubar=no,resizable=yes,scrollbars=yes");
-            patientwin.moveTo(0, 0);
-            patientwin.resizeTo(screen.availWidth, screen.availHeight);
+            patientwin = window.open(urlholder, "_self");
         }
         function open_lab_request() {
             urlholder = "<?php echo $root_path; ?>modules/laboratory/labor_test_request_pass.php?<?php echo URL_APPEND; ?>&target=chemlabor&user_origin=bill";
-            patientwin = window.open(urlholder, "Ziel", "width=750,height=550,status=yes,menubar=no,resizable=yes,scrollbars=yes");
-            patientwin.moveTo(0, 0);
-            patientwin.resizeTo(screen.availWidth, screen.availHeight);
+            patientwin = window.open(urlholder, "_self");
         }
 
     </script>

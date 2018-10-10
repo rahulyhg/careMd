@@ -3,6 +3,7 @@ require('./roots.php');
 require($root_path.'include/inc_environment_global.php');
 $lang_tables[]='plugins_VitalCalc.php';
 require($root_path.'include/inc_front_chain_lang.php');
+$pageName = "Special Tools";
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
@@ -67,6 +68,12 @@ function wtinlbs()
 }
 </script>
 </head>
+
+<?php 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+ ?>
 
 <BODY bgColor=#ffffff onload=cursorOn(frmgpv.age)>
 <H1 align=center><FONT color=#000080><?php echo $LDVitalStatisticsCalc; ?></FONT></H1><FONT color=#008000>
@@ -159,3 +166,8 @@ function wtinlbs()
 <P align=center><FONT size=1 face="Verdana">©Sudisa - 2004 to 2014</FONT></P>
 <FONT color=#008000>
 <DIV></DIV></FONT></BODY></HTML>
+
+<?php
+
+require_once($root_path . 'main_theme/footer.inc.php');
+?>

@@ -264,9 +264,7 @@ ob_start();
     echo '";';
 //    echo 'patientwin=window.open(urlholder,pn,"width=800,height=600,menubar=no,resizable=yes,scrollbars=yes");
 
-    echo 'patientwin=window.open(urlholder,pn,"width=840,height=650,menubar=no,resizable=yes,scrollbars=yes");
-        patientwin.moveTo(0,0);
-        patientwin.resizeTo(screen.availWidth,screen.availHeight)';
+    echo 'patientwin=window.open(urlholder, "_self");';
 }
 /* else echo '
   window.location.href=\'nursing-station-pass.php'.URL_APPEND.'&rt=pflege&edit=1&station='.$station.'\''; */

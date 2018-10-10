@@ -4,6 +4,7 @@ require($root_path . 'include/inc_environment_global.php');
 require_once($root_path . 'include/care_api_classes/class_globalconfig.php');
 require_once($root_path . 'include/inc_init_xmlrpc.php');
 require_once($root_path . 'include/care_api_classes/class_tz_billing.php');
+$pageName = "Pharmacy";
 
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.1 - 2004-10-02
@@ -378,5 +379,12 @@ $lang_tables[] = 'billing.php';
 require($root_path . 'include/inc_front_chain_lang.php');
 
 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader2.inc.php');
+
 require ("gui/gui_pharmacy_tz_pending_prescriptions.php");
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

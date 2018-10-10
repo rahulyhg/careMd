@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2018-01-08 08:41:15
+<?php /* Smarty version 2.6.22, created on 2018-10-09 16:53:23
          compiled from nursing/ward_occupancy_list_row.tpl */ ?>
 
 <?php if ($this->_tpl_vars['bToggleRowClass']): ?>

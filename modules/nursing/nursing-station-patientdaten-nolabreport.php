@@ -7,6 +7,8 @@ define('LANG_FILE', 'nursing.php');
 define('NO_2LEVEL_CHK', 1);
 require_once($root_path . 'include/inc_front_chain_lang.php');
 
+$pageName = "Inpatient";
+
 # Start Smarty templating here
 /**
  * LOAD Smarty
@@ -55,5 +57,13 @@ $smarty->assign('sMainFrameBlockData', $sTemp);
 /**
  * show Template
  */
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 $smarty->display('common/mainframe.tpl');
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

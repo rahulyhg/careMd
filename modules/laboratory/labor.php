@@ -57,9 +57,7 @@ require_once($root_path . 'main_theme/topHeader.inc.php');
             function open_request()
             {
                 urlholder = ("\labor_test_request_pass.php?sid=<?php echo $sid . "&lang=" . $lang; ?>&target=admin&subtarget=chemlabor&user_origin=lab");
-                requestwin = window.open(urlholder, "requestwin_2", "menubar=no,resizable=yes,scrollbars=yes,status=yes");
-                requestwin.moveTo(0, 0);
-                requestwin_2.resizeTo(screen.availWidth, screen.availHeight);
+                requestwin = window.open(urlholder, "_self");
             }
 
         </script>

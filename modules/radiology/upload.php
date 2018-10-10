@@ -14,7 +14,8 @@ define('FILE_DISCRIM', '.dcm'); # define here the file discrimator string
 
 $thisfile = basename($_SERVER['PHP_SELF']);
 
-$returnfile = $_SESSION['sess_file_return'];
+$returnfile = @($_SESSION['sess_file_return'])?$_SESSION['sess_file_return']:"";
+$pageName = 'Registration';
 
 //$db->debug=1;
 # Load paths und dirs
@@ -214,5 +215,12 @@ require('include/inc_breakfile.php');
 if ($mode == 'show')
     $glob_obj->getConfig('medocs_%');
 /* Load GUI page */
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 require('./gui_bridge/default/gui_show_upload.php');
+
+require_once($root_path . 'main_theme/footer.inc.php');
 ?>

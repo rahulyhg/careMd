@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2017-12-20 10:48:41
+<?php /* Smarty version 2.6.22, created on 2018-10-09 19:00:13
          compiled from registration_admission/admit_form.tpl */ ?>
 
 <?php if ($this->_tpl_vars['bSetAsForm']): ?>

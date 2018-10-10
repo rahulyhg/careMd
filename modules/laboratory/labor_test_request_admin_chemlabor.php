@@ -1,6 +1,8 @@
 <?php
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+$pageName = "Laboratories";
+
 /**
  * CARE2X Integrated Hospital Information System version deployment 1.1 (mysql) 2004-01-11
  * GNU General Public License
@@ -512,5 +514,11 @@ if ($edit) {
         /**
          * show Template
          */
+        require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
         $smarty->display('common/mainframe.tpl');
+
+        require_once($root_path . 'main_theme/footer.inc.php');
+
         ?>

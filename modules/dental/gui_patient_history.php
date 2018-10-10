@@ -13,6 +13,9 @@ require('./roots.php');
 
 require($root_path . 'include/inc_environment_global.php');
 
+$pageName = "Registration";
+
+
 $lang_tables[] = 'search.php';
 define('LANG_FILE', 'dental.php');
 define('NO_2LEVEL_CHK', 1);
@@ -67,6 +70,8 @@ $records = '15';
  * Double-Check for File No.
  */
 (!isset($_GET['filenr'])) ? $fileno = $fileno_obj->GetFileNoFromPID($pid) : $fileno = $_GET['filenr'];
+
+
 ?>
 
 
@@ -124,6 +129,12 @@ $records = '15';
     </head>
 
     <?php
+
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
     print '<body ';
 
     (isset($mode) == 'new') ? print 'onload="' .
@@ -241,3 +252,8 @@ $records = '15';
     </table>
 </body>
 </html>
+
+<?php 
+
+require_once($root_path . 'main_theme/footer.inc.php');
+ ?>

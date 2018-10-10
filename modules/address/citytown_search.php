@@ -114,11 +114,6 @@ $smarty->assign('sOnLoadJs', 'onLoad="document.searchform.searchkey.select()"');
 
 ob_start();
 
-
-    require_once($root_path . 'main_theme/head.inc.php');
-require_once($root_path . 'main_theme/header.inc.php');
-require_once($root_path . 'main_theme/topHeader.inc.php');
-
 ?>
 
 <ul>
@@ -233,8 +228,17 @@ $smarty->assign('sMainFrameBlockData', $sTemp);
 /**
  * show Template
  */
+
+
+    require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 $smarty->display('common/mainframe.tpl');
 
+
 require_once($root_path . 'main_theme/footer.inc.php');
+
+
 
 ?>
