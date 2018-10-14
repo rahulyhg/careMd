@@ -611,7 +611,7 @@ class GuiPersonShow extends Person {
             </table>
             <?php
         } else {
-            echo 'Invalid PID number or the data is not available from the databank! Please report this to <a  href="mailto:care2x@luico.co.tz">info@care2x.org</a>. Thank you.';
+            echo 'Invalid PID number or the data is not available from the databank! Please report this to <a  href="mailto:care2x@care2x.org">info@care2x.org</a>. Thank you.';
         }
     }
 

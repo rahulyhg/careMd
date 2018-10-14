@@ -30,7 +30,7 @@ error_reporting(0);
 
   Copy of GNU General Public License at: http://www.gnu.org/
 
-  Source code home page: http://www.luico.co.tz
+  Source code home page: http://www.care2x.org
   Contact author at: elpidio@care2x.org
 
   This notice also applies to other scripts which are integral to the functioning of CARE 2X within this directory and its top level directory

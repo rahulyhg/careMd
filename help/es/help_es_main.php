@@ -20,7 +20,7 @@
             <p>
                 <a href="../help/en/help_en_basic_usage.php"><u>Introducci�n a CARE2X</u></a><p>
                 <a href="../help/en/help_en_onlineman.php"><u>Busque informaci�n</u></a><p>
-                <a href="http://www.luico.co.tz?lang=es"><u>Informaci�n acerca de CARE2X.</u></a><br>
+                <a href="http://www.care2x.org?lang=es"><u>Informaci�n acerca de CARE2X.</u></a><br>
                 Si CARE2X es totalmente nuevo para usted, podr� hallar aqu� toda la informaci�n que quiere conocer. 
                 <!--
                 <p>

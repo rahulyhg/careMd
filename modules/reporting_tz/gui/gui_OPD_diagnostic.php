@@ -176,8 +176,8 @@ $rep_obj->Display_OPD_Diagnostic($start, $end);
 					</script>
 
 	
-					 <a href="http://www.luico.co.tz" target=_new>CARE2X 3rd Generation pre-deployment 3.3</a> :: <a href="../../legal_gnu_gpl.htm" target=_new> License</a> ::
-					 <a href=mailto:care2x@luico.co.tz>Contact</a>  :: <a href="../../language/en/en_privacy.htm" target="pp"> Our Privacy Policy </a> ::
+					 <a href="http://www.care2x.org" target=_new>CARE2X 3rd Generation pre-deployment 3.3</a> :: <a href="../../legal_gnu_gpl.htm" target=_new> License</a> ::
+					 <a href=mailto:care2x@care2x.org>Contact</a>  :: <a href="../../language/en/en_privacy.htm" target="pp"> Our Privacy Policy </a> ::
 					 <a href="../../docs/show_legal.php?lang=$lang" target="lgl"> Legal </a> ::
 					 <a href="javascript:openCreditsWindow()"> Credits </a> ::.<br>
 

@@ -11,7 +11,7 @@
     <p>
         <a href="<?php echo $root_path ?>main/help-info.php?helpidx=basic_usage.php&src=Basic usage"><u>Basic usage</u></a><br>
     <p>
-        <a href="http://www.luico.co.tz/wiki/index.php/Main_Page" target="_blank"><u>Care2x Documentation</u></a><p>
+        <a href="http://www.care2x.org/wiki/index.php/Main_Page" target="_blank"><u>Care2x Documentation</u></a><p>
         <a href="http://care2x.org/index.php?lang=<?php echo $lang ?>" target="_blank"><u>Information about the CARE 2X project.</u></a> (needs internet access)<br>
         If you are new to the CARE 2X project, you can find here the information you need. 
         <!-- <p>

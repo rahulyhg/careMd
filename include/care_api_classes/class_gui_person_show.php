@@ -456,7 +456,7 @@ class GuiPersonShow {
 		$this->smarty->assign('sRegByInput',$buffer);
 
 		}else{
-			$this->smarty->assign('pretext','Invalid PID number or the data is not available from the databank! Please report this to <a  href="mailto:care2x@luico.co.tz">info@care2x.org</a>. Thank you.');
+			$this->smarty->assign('pretext','Invalid PID number or the data is not available from the databank! Please report this to <a  href="mailto:care2x@care2x.org">info@care2x.org</a>. Thank you.');
 		}
 
 		# If data is to be returned only, buffer output, get the buffer contents, end and clean buffer and return contents.
