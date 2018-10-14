@@ -103,10 +103,6 @@ $smarty->assign('sSubMenuBlock', $sTemp);
 
 $pageName = "Home";
 
-
-# Assign the subframe template file name to mainframe
-
-//$smarty->assign('sMainBlockIncludeFile', 'news/headline.tpl');
 ?>
 
 
@@ -183,7 +179,21 @@ require_once($root_path . 'main_theme/header.inc.php');
             <div class="col-md-12">
               <div class="card card-chart">
                 <div class="card-header">
-                  <h4 class="card-title">Top Diseases</h4>
+                  <div class="row">
+                    <div class="col-md-6 d-flex justify-content-start">
+                      <h4 class="card-title">Top Diseases</h4> 
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-end">
+                        <select class="custom-select input-sm col-md-3" id="topdiseasesselect">
+                          <option >Select View</option>
+                          <option value="5">5</option>
+                          <option selected value="10">10</option>
+                          <option value="15">15</option>
+                          <option value="20">20</option>
+                          <option value="25">25</option>
+                        </select>
+                    </div>
+                  </div>
                 </div>
                 <div class="card-body">
                   <canvas id="topdiseases"></canvas>
@@ -197,8 +207,24 @@ require_once($root_path . 'main_theme/header.inc.php');
 
             <div class="col-md-12">
               <div class="card card-chart">
+
                 <div class="card-header ">
-                  <h4 class="card-title">Patient Trends</h4>
+                 <div class="row">
+                    <div class="col-md-6 d-flex justify-content-start">
+                      <h4 class="card-title">Patient Trends</h4> 
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-end">
+                        <select class="custom-select input-sm col-md-3" id="patienttrendselect">
+                          <option >Select View</option>
+                          <option selected value="ThisWeek">This Week</option>
+                          <option  value="LastWeek">Last Week</option>
+                          <option value="ThisMonth">This Month</option>
+                          <option value="LastMonth">Last Month</option>
+                          <option value="ThisYear">This Year</option>
+                          <option value="LastYear">Last Year</option>
+                        </select>
+                    </div>
+                  </div>
                 </div>
                 <div class="card-body">
                   <canvas class="" id="patienttrends" style="max-height: 400px;min-height: 300px;"></canvas>
@@ -213,7 +239,22 @@ require_once($root_path . 'main_theme/header.inc.php');
             <div class="col-md-12">
               <div class="card card-chart">
                 <div class="card-header ">
-                  <h4 class="card-title">Served & Unserved Patients</h4>
+                   <div class="row">
+                    <div class="col-md-6 d-flex justify-content-start">
+                      <h4 class="card-title">Served & Unserved Patients</h4> 
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-end">
+                        <select class="custom-select input-sm col-md-3" id="servedpatientselect">
+                          <option >Select View</option>
+                          <option selected value="ThisWeek">This Week</option>
+                          <option  value="LastWeek">Last Week</option>
+                          <option value="ThisMonth">This Month</option>
+                          <option value="LastMonth">Last Month</option>
+                          <option value="ThisYear">This Year</option>
+                          <option value="LastYear">Last Year</option>
+                        </select>
+                    </div>
+                  </div>
                 </div>
                 <div class="card-body">
                   <canvas class="" id="servedpatients" style="max-height: 400px;min-height: 300px;"></canvas>
@@ -228,7 +269,21 @@ require_once($root_path . 'main_theme/header.inc.php');
             <div class="col-md-12">
               <div class="card card-chart">
                 <div class="card-header">
-                  <h4 class="card-title">Frequently used drags</h4>
+                   <div class="row">
+                    <div class="col-md-6 d-flex justify-content-start">
+                      <h4 class="card-title">Frequently used drugs</h4> 
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-end">
+                        <select class="custom-select input-sm col-md-3" id="frequentdrugsselect">
+                          <option >Select View</option>
+                          <option value="5">5</option>
+                          <option selected value="10">10</option>
+                          <option value="15">15</option>
+                          <option value="20">20</option>
+                          <option value="25">25</option>-    
+                        </select>
+                    </div>
+                  </div>
                 </div>
                 <div class="card-body">
                   <canvas id="frequentdrugs"></canvas>

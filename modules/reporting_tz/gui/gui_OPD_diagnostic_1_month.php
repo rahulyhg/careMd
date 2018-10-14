@@ -13,6 +13,8 @@ echo '<html><body>';
 	<p><?php echo $LDCreationTime; ?><?php echo date("F j, Y, g:i a");?></p>
 </DIV>
   <br><br>
+
+
 <table width="600" border="1" cellspacing="0" cellpadding="0" align="center" bgcolor=#ffffdd>
                             
                             <tr bgcolor="orange" >
@@ -119,8 +121,10 @@ function popPic(pid,nm){
   </td>
  </tr>
  </table>	
- 
-             
+ <?php require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
+    <?php 
+require_once($root_path . 'main_theme/footer.inc.php');
+   ?>         
   <!-- END HEAD OF HTML CONTENT --->
 
 

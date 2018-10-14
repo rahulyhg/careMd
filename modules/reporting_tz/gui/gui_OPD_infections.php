@@ -58,6 +58,8 @@ echo '<html><body>';
 			  $total_paediatrics= $total_underage+$total_age5_14;			  
 			  
 		  ?>
+
+      
 		    <table width="644" border="1" cellspacing="0" cellpadding="0" align="center" bgcolor=#ffffdd>
           <tr> 
             <td width="79" bgcolor="#ffffaa" widtd="220"><?php echo $v['REGISTRATION_DATE']; ?></td>
@@ -165,6 +167,7 @@ function popPic(pid,nm){
   </td>
  </tr>
  </table>	
+ <?php require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
  
 <!-- END HEAD OF HTML CONTENT -->
 

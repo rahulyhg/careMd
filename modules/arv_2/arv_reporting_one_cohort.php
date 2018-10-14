@@ -7,6 +7,7 @@ require($root_path . 'include/inc_environment_global.php');
 require($root_path . 'include/inc_front_chain_lang.php');
 require($root_path . 'include/inc_date_format_functions.php');
 require_once($root_path . 'include/care_api_classes/class_tz_arv_report_cohort.php');
+$pageName = "Reporting";
 //------------------------------------------------------------------------------------------------------
 $debug = false;
 $curr_month = date("m", time());
@@ -27,5 +28,12 @@ if ($printout) {
 
 //------------------------------------------------------------------------------------------------------
 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 require ("gui/gui_arv_reporting_cohort_6yrs.php");
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

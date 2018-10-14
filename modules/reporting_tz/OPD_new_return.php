@@ -10,6 +10,7 @@ require_once($root_path . 'include/care_api_classes/class_tz_reporting.php');
 require_once($root_path . 'include/care_api_classes/class_department.php');
 $dept_obj = new Department;
 
+$pageName = "Reporting";
 
 /**
  * getting summary of OPD...
@@ -56,6 +57,13 @@ $debug = FALSE;
 
 
 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 
 require_once('gui/gui_OPD_new_return.php');
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

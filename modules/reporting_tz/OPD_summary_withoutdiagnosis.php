@@ -11,6 +11,8 @@ $lang_tables[] = 'aufnahme.php';
 $lang_tables[] = 'reporting.php';
 require($root_path . 'include/inc_front_chain_lang.php');
 
+$pageName = "Reporting";
+
 require_once($root_path . 'include/care_api_classes/class_tz_reporting.php');
 /**
  * getting summary of OPD...
@@ -71,6 +73,13 @@ $row = $result->FetchRow();
 $numrows = $row[0];
 
 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 
 require_once('gui/gui_OPD_summary_withoutdiagnosis.php');
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

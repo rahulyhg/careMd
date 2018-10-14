@@ -137,6 +137,7 @@ $rep_obj->SurgicalOp_Revenue($_GET['start'], $_GET['end'], $_GET['company'], $_G
                                 </td>
                             </tr>
                         </table>
+ <?php require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
 
 
                         <form name="form1" method="post" action="" onSubmit="javascript:validate()">        

@@ -145,6 +145,7 @@ border-collapse:collapse;
                                 </td>
                             </tr>
                         </table>
+ <?php require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
 
 
                         <form name="form1" method="post" action="" onSubmit="javascript:validate()">				

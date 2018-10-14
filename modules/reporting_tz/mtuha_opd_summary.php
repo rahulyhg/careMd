@@ -3,6 +3,8 @@
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
 
+$pageName = "Reporting";
+
 
 #Load and create paginator object
 require_once($root_path . 'include/care_api_classes/class_tz_reporting.php');
@@ -34,5 +36,14 @@ $arr_new = $rep_obj->Get_FirstTime_Reg_Count();
 $arr_newreg = $rep_obj->Get_New_Reg_Count();
 $arr_ret = $rep_obj->Get_Return_Reg_Count();
 
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
+
 require_once('gui/gui_mtuha_opd_summary.php');
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

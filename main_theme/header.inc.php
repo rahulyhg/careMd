@@ -88,7 +88,7 @@ if($result){
               </a>
             </li>
 
-            <?php elseif ($menu['name'] == "Patient"): ?>
+            <?php elseif ($menu['name'] == "Patient" || $menu['name'] == "Patient/ID"): ?>
             <li class="nav-item <?php if($pageName == "Patient") echo 'active'; ?> ">
               <a class="nav-link" href="<?php echo $menu['url'] ?>">
                 <i class="material-icons">perm_identity</i>

@@ -32,3 +32,40 @@
   padding-bottom: 2px;
 }
 
+.navbar .collapse .navbar-nav .nav-item .nav-link{
+  font-size: 12px;
+  padding: 5px;
+  padding-bottom: 5px;
+}
+
+.dropdown-menu .dropdown-item, .dropdown-menu li > a {
+  font-size: 11px;
+  line-height: 10px;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu a::after {
+  transform: rotate(-90deg);
+  position: absolute;
+  right: 6px;
+  top: .8em;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-left: .1rem;
+  margin-right: .1rem;
+}
+
+.font-sm{
+  font-size: 11px;
+  font-style: italic;
+}
+
+.report-link{
+  font-size: 13px;
+}

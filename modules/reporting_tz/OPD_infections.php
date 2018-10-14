@@ -3,6 +3,7 @@
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+$pageName = "Reporting";
 //require('con_db.php');
 //connect_db();
 #Load and create paginator object
@@ -63,7 +64,12 @@ $db_ptr = $db->Execute($sql);
 $res_array = $db_ptr->GetArray();
 
 
-
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
 
 require_once('gui/gui_OPD_infections.php');
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

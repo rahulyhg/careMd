@@ -7,6 +7,8 @@ require($root_path . 'include/inc_environment_global.php');
 //connect_db();
 #Load and create paginator object
 require_once($root_path . 'include/care_api_classes/class_tz_selianreporting.php');
+
+$pageName = "Reporting";
 /**
  * getting summary of OPD...
  */
@@ -57,6 +59,12 @@ $sql_tmp_enc = "CREATE TEMPORARY TABLE tmp_table  (SELECT encounter_nr,encounter
 WHERE UNIX_TIMESTAMP(encounter_date) >= '$start' AND UNIX_TIMESTAMP(encounter_date) <= '$end')";
 $db->Execute($sql_tmp_enc);
 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
 
 require_once('gui/gui_OPD_Department_Admission.php');
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

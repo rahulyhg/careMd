@@ -7,6 +7,8 @@ require($root_path . 'include/inc_environment_global.php');
 require($root_path . 'language/en/lang_en_date_time.php');
 require($root_path . 'include/inc_date_format_functions.php');
 
+$pageName = "Reporting";
+
 #Load and create paginator object
 require_once($root_path . 'include/care_api_classes/class_tz_reporting.php');
 /**
@@ -314,4 +316,12 @@ if ($count_t > 0) {
 //print_r($db_docs_patients);
 print_r($data['patients_list']);
 
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 require_once('gui/gui_docs_presc.php');
+
+require_once($root_path . 'main_theme/footer.inc.php');
+

@@ -1,23 +1,11 @@
-FROM:,"01.Sep.2018 00:00:00",TO:,"20.Sep.2018 23:59:59","ALL CUSTOMERS"
+FROM:,"01.Jan.1970 02:00:00",TO:,"01.Jan.1970 02:00:00","ALL CUSTOMERS"
 "Billed Date","Admission date",Patient/ID,"Birth Date","File NR",Membership_NR,Form_NR,,Description,Category,"No.Of Items",Price,Deposit
-20.Sep.2018,20.Sep.2018,"Shindo Kilawa",01.Jul.1988,564444,,,XMINOR_PROC_OP,"Bartholins cyst/Abscess Marsupualization","MINOR PROCEDURE",1,200000,Null
-20.Sep.2018,20.Sep.2018,"Shindo Kilawa",01.Jul.1988,564444,,,XMINOR_PROC_OP,"Bartholins Abscess-Marsupilization","MINOR PROCEDURE",1,200000,Null
-20.Sep.2018,20.Sep.2018,"Shindo Kilawa",01.Jul.1988,564444,,,20-01-01-357,"Dihydroartemisinin&piperaquine (ridmal40/320) ",DRUG,6,9000,Null
-" "," "," "," "," "," "," "," "," "," "," "," "," "
-20.Sep.2018,20.Sep.2018,"Shindo Kilawa",01.Jul.1988,564444,,,20-01-01-39,"Paracetamol Tab B/100",DRUG,36,1800,Null
-20.Sep.2018,20.Sep.2018,"Shindo Kilawa",01.Jul.1988,564444,,,XRADIOLOGY,CHEST,RADIOLOGY,1,25000,Null
-" "," "," "," "," "," "," "," "," "," "," "," "," "
-20.Sep.2018,20.Sep.2018,"Shindo Kilawa",01.Jul.1988,564444,,,XSERVICE-C5,Cons-Specialist,SERVICE,1,20000,Null
-" "," "," "," "," "," "," "," "," "," "," "," "," "
-20.Sep.2018,20.Sep.2018,"Shindo Kilawa",01.Jul.1988,564444,,,"XLAB TEST","mRDT Test","LAB TEST",1,2000,Null
-20.Sep.2018,20.Sep.2018,"Shindo Kilawa",01.Jul.1988,564444,,,"XLAB TEST"," B/S-HEMOPARASITES","LAB TEST",1,2000,Null
-" "," "," "," "," "," "," "," "," "," "," "," "," "
 "PATIENTS WITH DEPOSITS"
 "PATIENTS WITH DEPOSIT BUT NO FINAL BILL YET"
 "PATIENTS WITH TOPUP"
 Lab,Drugs,Radio,Dental,Eye,Min.Proc,Major.proc,"Consult and services",Supplies.,"Laboratory Supplies",Other,"TOTAL WITH DEPOSIT ITEMS"
-"4,000","10,800","25,000",0,0,"400,000",0,"20,000",0,0,0,"459,800"
-"GRAND TOTAL:","459,800"
+0,0,0,0,0,0,0,0,0,0,0,0
+"GRAND TOTAL:",0
 "MAIN SUMMARY"
 "TOTAL DEPOSIT:",0
 "TOTAL TOPUP:",0

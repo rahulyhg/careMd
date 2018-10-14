@@ -183,6 +183,7 @@ echo '</table>';
                                 </td>
                             </tr>
                         </table>	
+ <?php require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
 
                         <!-- END HEAD OF HTML CONTENT -->
 

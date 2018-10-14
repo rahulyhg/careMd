@@ -6,6 +6,9 @@ require_once('./colorHelper.php');
 require_once $root_path.'vendor/autoload.php';
 require_once $root_path.'generated-conf/config.php';
 
+$period = @$_GET['period']?$_GET['period']:"ThisYear";
+
+
 use  CareMd\CareMd\CareEncounterQuery;
 use  CareMd\CareMd\CareEncounterEventSignallerQuery;
 
@@ -25,7 +28,10 @@ $months = array(
 	'12' => 'Dec'
 );
 
-$data['labels'] = array_values($months);
+if ($period == "ThisYear") {
+	$data['labels'] = array_values($months);	
+}
+
 
 $legendNames = array();
 $patientsStatus = array();
@@ -34,31 +40,34 @@ $unservedPatients = array();
 
 $colorHelper = new ColorHelper();
 
-foreach ($months as $keyMonth => $month) {
-	$minDate = $year."-".$keyMonth.'-01';
-	$maxDate = $year."-".$keyMonth.'-31';
-	$patients = CareEncounterQuery::create()
-	->filterByEncounterDate(array("min" => $minDate." 00:00:00", "max" => $maxDate." 23:59:59"))
-	->orderBy('CareEncounter.EncounterDate', 'desc')
-	->limit(10000)
-	->find()
-	->toArray();
 
-	$patientsNumbers = array();
-	foreach ($patients as $patient) {
-		array_push($patientsNumbers, $patient['EncounterNr']);
-	}
-	$totalServedPatients = CareEncounterEventSignallerQuery::create()
-	->filterByEncounterNr($patientsNumbers)
-	->find()
-	->count();
-	$totalPatients = count($patients);
-	$totalUnservedPatients = $totalPatients - $totalServedPatients;
+if ($period == "ThisYear") {
+	foreach ($months as $keyMonth => $month) {
+		$minDate = $year."-".$keyMonth.'-01';
+		$maxDate = $year."-".$keyMonth.'-31';
+		$patients = CareEncounterQuery::create()
+		->filterByEncounterDate(array("min" => $minDate." 00:00:00", "max" => $maxDate." 23:59:59"))
+		->orderBy('CareEncounter.EncounterDate', 'desc')
+		->limit(10000)
+		->find()
+		->toArray();
 
-	array_push($servedPatients, $totalServedPatients);
-	array_push($unservedPatients, $totalUnservedPatients);
+		$patientsNumbers = array();
+		foreach ($patients as $patient) {
+			array_push($patientsNumbers, $patient['EncounterNr']);
+		}
+		$totalServedPatients = CareEncounterEventSignallerQuery::create()
+		->filterByEncounterNr($patientsNumbers)
+		->find()
+		->count();
+		$totalPatients = count($patients);
+		$totalUnservedPatients = $totalPatients - $totalServedPatients;
 
+		array_push($servedPatients, $totalServedPatients);
+		array_push($unservedPatients, $totalUnservedPatients);
+	}	
 }
+
 
 $data['datasets'] = array(
 	array(

@@ -7,6 +7,7 @@ require($root_path . 'include/inc_environment_global.php');
 require($root_path . 'include/inc_front_chain_lang.php');
 require($root_path . 'include/inc_date_format_functions.php');
 require_once($root_path . 'include/care_api_classes/class_tz_arv_report_cohort.php');
+$pageName = "Reporting";
 //------------------------------------------------------------------------------------------------------
 $debug = false;
 $curr_month = date("m", time());
@@ -16,12 +17,12 @@ $s_month = $date_arr1[1];
 $s_year = $date_arr1[2];
 
 
-$cohort_ind = &new Cohort_report($s_month, $s_year, 6);
+$cohort_ind = new Cohort_report($s_month, $s_year, 6);
 $arr_facility = $cohort_ind->getFacilityInfo();
 $arr_ind = $cohort_ind->get_cohort_indicators();
 $sep = "/";
-$start_date = $cohort_ind->formatDate2STD(str_replace("%2F", "/", $_GET['start_date']), "dd/mm/yyyy", &$sep);
-$end_date = $cohort_ind->formatDate2STD(str_replace("%2F", "/", $_GET['end_date']), "dd/mm/yyyy", &$sep);
+$start_date = $cohort_ind->formatDate2STD(str_replace("%2F", "/", $_GET['start_date']), "dd/mm/yyyy", $sep);
+$end_date = $cohort_ind->formatDate2STD(str_replace("%2F", "/", $_GET['end_date']), "dd/mm/yyyy", $sep);
 
 if ($printout) {
 //    $cohort_rpt->calc_timeframe();
@@ -32,5 +33,12 @@ if ($printout) {
 
 //------------------------------------------------------------------------------------------------------
 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 require ("gui/gui_arv_reporting_cohort_ind.php");
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

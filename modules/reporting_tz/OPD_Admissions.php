@@ -8,6 +8,9 @@ require($root_path . 'include/inc_environment_global.php');
 #Load and create paginator object
 require_once($root_path . 'include/care_api_classes/class_tz_reporting.php');
 require_once($root_path . 'include/care_api_classes/class_department.php');
+
+$pageName = "Reporting";
+
 $dept_obj = new Department;
 
 
@@ -56,10 +59,13 @@ $debug = FALSE;
 
 
 
-
-
-
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
 
 
 require_once('gui/gui_OPD_Admission.php');
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

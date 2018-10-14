@@ -7,6 +7,7 @@ require($root_path . 'include/inc_environment_global.php');
 //connect_db();
 #Load and create paginator object
 require_once($root_path . 'include/care_api_classes/class_tz_reporting.php');
+$pageName = "Reporting";
 /**
  * getting summary of OPD...
  */
@@ -57,6 +58,11 @@ $sql = "SELECT count( encounter_nr ) AS AMOUNT_ENCOUTERS , date_format( discharg
 $db_ptr = $db->Execute($sql);
 $res_array = $db_ptr->GetArray();
 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
 
 require_once('gui/gui_IPD_discharge_types.php');
+
+
 ?>

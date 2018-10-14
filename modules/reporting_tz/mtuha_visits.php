@@ -11,6 +11,9 @@ require($root_path . 'include/inc_date_format_functions.php');
 require_once($root_path . 'include/care_api_classes/class_tz_insurance.php');
 require_once($root_path . 'include/care_api_classes/class_tz_reporting.php');
 require_once($root_path . 'include/care_api_classes/class_ward.php');
+
+$pageName = "Reporting";
+
 $ward_obj = new Ward;
 $items = 'nr,name';
 $TP_SELECT_BLOCK_IN = '';
@@ -57,5 +60,12 @@ if (isset($_POST['date1']) || !empty($_POST['date1'])) {
 $rep_obj = new selianreport();
 $insurance_obj = new Insurance_tz;
 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 require_once('gui/gui_mtuha_visits.php');
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

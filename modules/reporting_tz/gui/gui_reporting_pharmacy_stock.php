@@ -163,6 +163,7 @@ border-collapse:collapse;
                                 </td>
                             </tr>
                         </table>
+                        <?php  require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
 
                               <?php
                               $msg=(isset($msg) ? $msg : null);

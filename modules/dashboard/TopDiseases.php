@@ -34,7 +34,8 @@ usort($diseases, function($a, $b) {
     return $b['total'] - $a['total'];
 });
 
-$count = 10;
+$count = @$_GET['count']?$_GET['count']:10;
+
 
 $topDiseases = array();
 

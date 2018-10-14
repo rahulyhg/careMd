@@ -5,6 +5,8 @@ require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
 #Load and create paginator object
 require_once($root_path . 'include/care_api_classes/class_tz_reporting.php');
+
+$pageName = "Reporting";
 /**
  * getting the amunt of different Diagnostic Codes
  */
@@ -26,5 +28,12 @@ if ($_GET['printout']) {
 $lang_tables[] = 'reporting.php';
 $lang_tables[] = 'date_time.php';
 require($root_path . 'include/inc_front_chain_lang.php');
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 require_once('gui/gui_OPD_diagnostic_1_month.php');
+
+
 ?>

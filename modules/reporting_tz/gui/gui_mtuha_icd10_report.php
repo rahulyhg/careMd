@@ -57,6 +57,7 @@ if ($PRINTOUT) {
         $rep_obj->Display_OPD_Diagnostic_month($start, $end,$_GET['admission_nr'],$_GET['hf'],$_GET['current_ward_nr'],$_GET['dept_nr']);
         ?>                            
     </table>
+
     </form>			
     <?php
     exit();
@@ -155,6 +156,11 @@ if ($PRINTOUT) {
                             </tr>
                         </table>	
 
+                <?php 
+                    require_once($root_path . 'main_theme/reportingNav.inc.php');
+                    require_once($root_path . 'main_theme/footer.inc.php');
+
+                 ?>
 
                         
 
@@ -307,7 +313,9 @@ if ($PRINTOUT) {
 //$rep_obj->Display_OPD_ICD10($start, $end);
                                 ?>     
                             </table>
-                        </form>			
+                            
+                        </form>		
+
                         <a href="javascript:printOut()"><img border=0 src=<?php echo $root_path; ?>/gui/img/common/default/billing_print_out.gif></a><br>					  
                         <br><br><br>						  
                         <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#cfcfcf">

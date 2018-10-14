@@ -3,6 +3,7 @@
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+$pageName = "Reporting";
 //require('con_db.php');
 //connect_db();
 #Load and create paginator object
@@ -60,6 +61,12 @@ $sql_tmp_enc = "CREATE TEMPORARY TABLE tmp_table  (SELECT encounter_nr,current_w
 WHERE UNIX_TIMESTAMP(discharge_date) >= '$start' AND UNIX_TIMESTAMP(discharge_date) <= '$end')";
 $db->Execute($sql_tmp_enc);
 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
 
 require_once('gui/gui_IPD_discharge.php');
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

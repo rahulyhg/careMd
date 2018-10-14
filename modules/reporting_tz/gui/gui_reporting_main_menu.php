@@ -1,4 +1,7 @@
+<?php 
+require('./roots.php');
 
+ ?>
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.0//EN" "html.dtd">
 <HTML>
 <HEAD>
@@ -70,9 +73,355 @@ function getARV(path) {
   					 </tr>
  </table>
 
+ <?php require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
+
 <!-- END HEAD OF HTML CONTENT -->
 
-<br><br><br>
+<div class="row">
+
+    <div class="col-md-6">
+    <div class="card">
+       <div class="card-header bg-light">
+          <h4 class="card-title">Clinical Reports</h4>
+        </div>
+
+      <div class="card-body">
+
+         <div class="table-responsive">
+          <table class="table table-condensed table-striped table-hover">
+            <tbody>
+
+              <tr>
+                <td with="70%"><a href="<?php echo $root_path ?>modules/reporting_tz/OPD_diagnostic.php">OPD - Diagnostic <5 >5</a></td>
+                <td><small class="font-sm">All diagnostics group by ICD-10 code</small></td>
+              </tr>
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/OPD_diagnostic_1_month.php">OPD - Diagnostic_1_month</a></td>
+                <td><small class="font-sm">All diagnostics group by ICD-10 code</small></td>
+              </tr>
+
+               <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/OPD_summary.php">OPD - Summary</a></td>
+                <td><small class="font-sm">All visits (with diagnostic) to this clinic</small></td>
+              </tr>
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/OPD_summary_withoutdiagnosis.php">OPD - Summary</a></td>
+                <td><small class="font-sm">All visits (without diagnostic) to this clinic</small></td>
+              </tr>
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/OPD_infections.php">OPD - Infections-Summary</a></td>
+                <td><small class="font-sm"></small></td>
+              </tr>
+
+               <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/mtuha_icd10.php">Mtuha-ICD10-Summary</a></td>
+                <td><small class="font-sm"></small></td>
+              </tr>
+
+               <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/mtuha_icd10_report.php">MTUHA ICD10 Report</a></td>
+                <td><small class="font-sm"></small></td>
+              </tr>
+               <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/mtuha_detailed.php">Detailed MTUHA Report</a></td>
+                <td><small class="font-sm"></small></td>
+              </tr>
+               <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/mtuha_visits.php">New and Return Patients</a></td>
+                <td><small class="font-sm"></small></td>
+              </tr>
+              
+                <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/mtuha_opd_summary.php">MTUHA OPD SUMMARY REPORT</a></td>
+                <td><small class="font-sm"></small></td>
+              </tr>
+
+                <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/OPD_Admissions.php">OPD Admission Summary</a></td>
+                <td><small class="font-sm">OPD Admissions Report</small></td>
+              </tr>
+
+                <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/OPD_new_return.php">New and Return with Gender</a></td>
+                <td><small class="font-sm">OPD Admissions Report</small></td>
+              </tr>
+                <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/OPD_Department_Admissions.php">OPD Departments Admission Summary</a></td>
+                <td><small class="font-sm">OPD Admissions Department Summary Report</small></td>
+              </tr>
+                <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/IPD_admissions.php">IPD Admission Summary</a></td>
+                <td><small class="font-sm">IPD Admission Summary Report</small></td>
+              </tr>
+
+                <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/IPD_discharge.php">IPD Discharge Summary</a></td>
+                <td><small class="font-sm">IPD Discharge Summary Report</small></td>
+              </tr>
+                <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/IPD_discharge_types.php">IPD Discharge Types Summary  </a></td>
+                <td><small class="font-sm">IPD Discharge Report by types</small></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+ <div class="col-md-6">
+   
+   <div class="row">
+      <div class="col-md-12">
+    <div class="card">
+       <div class="card-header bg-light">
+          <h4 class="card-title">Laboratory Reports</h4>
+        </div>
+
+      <div class="card-body">
+        
+        <div class="table-responsive">
+          <table class="table table-condensed table-striped table-hover">
+            <tbody>
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/laboratory_summary.php">Laboratory Summary</a></td>
+                <td><small class="font-sm"></small></td>
+              </tr>
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/detailed_lab.php">Detailed Laboratory</a></td>
+                <td><small class="font-sm"></small></td>
+              </tr>
+
+               <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/lab_mtuha.php">Laboratory NTUHA</a></td>
+                <td><small class="font-sm"></small></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="card">
+       <div class="card-header bg-light">
+          <h4 class="card-title">CTC Reports</h4>
+        </div>
+
+      <div class="card-body">
+        
+        <div class="table-responsive">
+          <table class="table table-condensed table-striped table-hover">
+            <tbody>
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/arv_2/arv_reporting_cohort_quarterly.php"> NACP Cross Sectional Report</a></td>
+                <td><small class="font-sm"></small>Quarterly Facility Based HIV Care/ART Reporting</td>
+              </tr>
+
+               <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/arv_2/arv_reporting_cohort_quarterly.php">NACP Quarterly Cohort Report</a></td>
+                <td><small class="font-sm">Quarterly Cohort Reporting</small></td>
+              </tr>
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/arv_2/arv_reporting_one_cohort.php">One Cohort Report</a></td>
+                <td><small class="font-sm">Six Years Cohort Reporting</small></td>
+              </tr>
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/arv_2/arv_reporting_six_cohorts.php">Six Cohorts Report</a></td>
+                <td><small class="font-sm">Two Years Cohort Reporting</small></td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="card">
+
+        <div class="card-header bg-light">
+          <h4 class="card-title">Pharmacy Reports</h4>
+        </div>
+
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-condensed table-striped table-hover">
+            <tbody>
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/reporting_pharmacy_stock.php">Pharmacy with stock information</a></td>
+                <td><small class="font-sm">Pharmacy Report (with stock information and cost)</small></td>
+              </tr>
+
+               <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/reporting_consumables.php">Consumables/Supplies Report</a></td>
+                <td><small class="font-sm">Monthly Utilization of consumables and supplies</small></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+   </div>
+
+ </div>
+
+
+
+  <div class="col-md-6">
+     
+    <div class="card">
+      <div class="card-header bg-light">
+          <h4 class="card-title">Revenue Reports</h4>
+        </div>
+      <div class="card-body">
+
+        <div class="table-responsive">
+          <table class="table table-condensed table-striped table-hover">
+            <tbody>
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/DetailedRevenue.php">Detailed_Revenue</a></td>
+                <td><small class="font-sm">Detailed Revenue Report</small></td>
+              </tr>
+
+               <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/DailySummary.php">Daily Summary </a></td>
+                <td><small class="font-sm"></small>Daily Summary Report</td>
+              </tr>
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/services.php">Consultations/Services Report  </a></td>
+                <td><small class="font-sm">Consultation and Services</small></td>
+              </tr>
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/laboratory_income.php">Laboratory Revenue Report  </a></td>
+                <td><small class="font-sm">Laboratory Revenue Report</small></td>
+              </tr>
+
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/reporting_radiology.php">Radiology Report </a></td>
+                <td><small class="font-sm">Monthly Radiology Report</small></td>
+              </tr>
+
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/general_surgeries_report.php">General Surgeries Report </a></td>
+                <td><small class="font-sm"></small>Monthly general Surgeries Report</td>
+              </tr>
+
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/obgyne_surgeries_report.php">OB Gyne Report </a></td>
+                <td><small class="font-sm"></small>Monthly OB Gyne Surgeries Report</td>
+              </tr>
+
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/ortho_surgeries_report.php">Orthopedics Surgeries Report</a></td>
+                <td><small class="font-sm">Orthopedics Surgeries Report</small></td>
+              </tr>
+
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/minor_procedures_report.php">Dressings and Minor Procedures </a></td>
+                <td><small class="font-sm">Reporting::Minor Procedures/Dressings Report</small></td>
+              </tr>
+
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/blockpayment_financial_summary.php">Block payment financial summary</a></td>
+                <td><small class="font-sm"></small>Block Payment Summary</td>
+              </tr>
+
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/pending_quotations_report.php">Pending Quotations Report  </a></td>
+                <td><small class="font-sm"></small>Montly Report of value of daily pending quotations</td>
+              </tr>
+
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/deleted_quotations_report.php">Deleted Quotations Report  </a></td>
+                <td><small class="font-sm">Monthly Report of deleted bill quotations</small></td>
+              </tr>
+
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/tracking_summary.php">Audit Report </a></td>
+                <td><small class="font-sm">Monthly Audit Trail Report</small></td>
+              </tr>
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/reporting_weberp.php">WebERP Report </a></td>
+                <td><small class="font-sm">Failed WebERP Transactions</small></td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+   <div class="col-md-6">
+    <div class="card">
+       <div class="card-header bg-light">
+          <h4 class="card-title">System Reports</h4>
+        </div>
+
+      <div class="card-body">
+
+         <div class="table-responsive">
+          <table class="table table-condensed table-striped table-hover">
+            <tbody>
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/docs_util_report.php">Doctors' Patients Consultation Report Summary</a></td>
+                <td><small class="font-sm">Doctors' Patients Consultation Report Summary</small></td>
+              </tr>
+
+               <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/docs_presc_report.php">Number of Patients seen by doctors'(counted by First to take history)  </a></td>
+                <td><small class="font-sm">Number of Patients seen by doctors'(counted by First to take history)</small></td>
+              </tr>             
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- 
 <TABLE cellSpacing=0 cellPadding=0 border=0 class="submenu_frame">
 	<TBODY>
 	<TR>
@@ -149,12 +498,8 @@ function getARV(path) {
             </table></TD>
 	</TR>
 	</TBODY>
-</TABLE>
+</TABLE> -->
 <br><br><br>
-
-
-
-
 
 
 <!-- START BOTTIOM OF HTML CONTENT --->

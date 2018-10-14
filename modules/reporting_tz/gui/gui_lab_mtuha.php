@@ -104,6 +104,8 @@
                                 </td>
                             </tr>
                         </table>
+ <?php require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
+                        
                         <script>
 			 function inputvalue(){
 			 var date1=document.forms["form1"]["date_from"].value;

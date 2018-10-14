@@ -154,6 +154,8 @@
                     </td>
                 </tr>
             </table>
+            <?php  require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
+            
             <form method="get" action="" name="select_form">
                 <h1>One Cohort-Six Years, Cohort Tracking Reporting Form</h1>																
                 <div class="timeframe">

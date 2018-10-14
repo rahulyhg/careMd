@@ -5,7 +5,7 @@ require($root_path . 'include/inc_environment_global.php');
 require($root_path . 'language/en/lang_en_date_time.php');
 require($root_path . 'include/inc_date_format_functions.php');
 
-
+$pageName = "Reporting";
 
 
 
@@ -14,6 +14,11 @@ require($root_path . 'include/inc_date_format_functions.php');
 //israel.pascal10@gmail.com, +255719709660, +255767809660
 ?>
 
+<?php 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+ ?>
 
 <script language="javascript" src="../../js/datetimepicker.js"></script>
 <table width=100% border=0 cellspacing=0 height=100%>
@@ -36,6 +41,8 @@ require($root_path . 'include/inc_date_format_functions.php');
                         </td>
                     </tr>
                 </table>
+ <?php require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
+                
                 <p>&nbsp; </p>
 
                 <form id="form1" name="form1" method="post" action="">
@@ -59,6 +66,8 @@ echo '</SELECT>';
                             <td><input type="submit" name="show" value="SHOW" /></td>
                         </tr>
                     </table>
+
+
                 </form>
                 <?php
                 $dfrom = $_POST['dfrom'];
@@ -522,7 +531,6 @@ WHERE item_number='IPDS' AND purchasing_class='service'";
                 }
                 ?>
 
-
                 <form id="form2" name="form2" method="post" action="">
                     <table width="605" border="1" >
 
@@ -630,17 +638,9 @@ WHERE item_number='IPDS' AND purchasing_class='service'";
 
                 </form>
 
-
-
-
-
-
-
-
-
-
-
-
+<?php 
+require_once($root_path . 'main_theme/footer.inc.php');
+ ?>
 
 
 

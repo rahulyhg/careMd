@@ -15,6 +15,7 @@ $colorHelper = new ColorHelper();
 
 $drugCodes = CareEncounterPrescriptionQuery::create()
 				->select(array('article', 'article_item_number'))
+				->where('CareEncounterPrescription.drug_class LIKE ?', '%drug_list%')
 				->distinct()
 				->find()
 				->toArray();
@@ -34,7 +35,7 @@ usort($drugs, function($a, $b) {
     return $b['total'] - $a['total'];
 });
 
-$count = 10;
+$count = @$_GET['count']?$_GET['count']:10;
 
 $topDiseases = array();
 

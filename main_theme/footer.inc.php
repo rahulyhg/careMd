@@ -51,10 +51,3 @@
   <!-- <script src="<?php echo $root_path ?>/js/care_md/chartist-plugin-legend.js"></script> -->
   <script src="<?php echo $root_path ?>/js/care_md/plugins/Chart.bundle.min.js"></script>
   <!-- <script src="<?php echo $root_path ?>/js/care_md/main.js"></script> -->
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      md.initDashboardPageCharts();
-
-    });
-  </script>

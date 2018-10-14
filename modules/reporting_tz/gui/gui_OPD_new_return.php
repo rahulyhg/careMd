@@ -234,7 +234,7 @@ function popPic(pid,nm){
 		<td  valign="top" align="middle" height="35">
 			 <table cellspacing="0"  class="titlebar" border=0>
  <tr valign=top  class="titlebar" >
-          <td width="202" bgcolor="#99ccff" > &nbsp;&nbsp;<font color="#330066"><?php echo $LDReportingOPDAdmissionSummary; ?></font></td>
+          <td width="302" bgcolor="#99ccff" > &nbsp;&nbsp;<font color="#330066"><?php echo $LDReportingOPDAdmissionSummary; ?></font></td>
   <td width="408" align=right bgcolor="#99ccff">
    <a href="javascript: history.back();"><img src="../../gui/img/control/default/en/en_back2.gif" border=0 width="110" height="24" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this,1)" onMouseOut="hilite(this,0)" ></a>
    <a href="javascript:gethelp('reporting_overview.php','Reporting :: Overview')"><img src="../../gui/img/control/default/en/en_hilfe-r.gif" border=0 width="75" height="24" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this,1)" onMouseOut="hilite(this,0)"></a>
@@ -242,6 +242,7 @@ function popPic(pid,nm){
   </td>
  </tr>
  </table>
+ <?php require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
 
 
 <!-- END HEAD OF HTML CONTENT -->

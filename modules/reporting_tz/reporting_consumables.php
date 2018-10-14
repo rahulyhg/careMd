@@ -10,6 +10,8 @@ require($root_path . 'language/en/lang_en_reporting.php');
 require($root_path . 'language/en/lang_en_date_time.php');
 require($root_path . 'include/inc_date_format_functions.php');
 
+$pageName = "Reporting";
+
 #Load and create paginator object
 require_once($root_path . 'include/care_api_classes/class_tz_reporting.php');
 /**
@@ -55,5 +57,11 @@ if (empty($_GET['printout'])) {
 } // end of if (empty($_GET['printout']))
 
 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 require_once('gui/gui_reporting_consumables.php');
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

@@ -9,6 +9,9 @@ $lang_tables[] = 'reporting.php';
 require($root_path . 'include/inc_front_chain_lang.php');
 #Load and create paginator object
 require_once($root_path . 'include/care_api_classes/class_tz_selianreporting.php');
+
+$pageName = "Reporting";
+
 /**
  * getting summary of OPD...
  */
@@ -38,5 +41,13 @@ if (empty($_GET['printout'])) {
     $PRINTOUT = TRUE;
 } // end of if (empty($_GET['printout']))
 
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 require_once('gui/gui_tracking_summary.php');
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

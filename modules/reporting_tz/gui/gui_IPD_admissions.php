@@ -184,6 +184,8 @@ function popPic(pid,nm){
  </tr>
  </table>	
  
+ <?php require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
+ 
 <!-- END HEAD OF HTML CONTENT -->
 
 <form name="form1" method="post" action=""></p>

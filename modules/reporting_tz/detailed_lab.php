@@ -10,6 +10,7 @@ require($root_path . 'language/en/lang_en_date_time.php');
 require($root_path . 'include/inc_date_format_functions.php');
 require_once($root_path . 'include/care_api_classes/class_tz_reporting.php');
 require_once($root_path . 'include/care_api_classes/class_ward.php');
+$pageName = "Reporting";
 $ward_obj = new Ward;
 $items = 'nr,name';
 $TP_SELECT_BLOCK_IN = '';
@@ -57,5 +58,12 @@ if (isset($_POST['date1']) || !empty($_POST['date1'])) {
 }
 $rep_obj = new selianreport();
 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 require_once('gui/gui_detailed_lab.php');
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>

@@ -15,6 +15,8 @@ $providers = CareTzCompanyQuery::create()->find()->toArray();
 $startDate = time();
 $num = 1;
 
+$period = @$_GET['period']?$_GET['period']:"ThisYear";
+
 $year = date('Y');
 $months = array(
 	'01' => 'Jan', 
@@ -31,7 +33,9 @@ $months = array(
 	'12' => 'Dec'
 );
 
-$data['labels'] = array_values($months);
+if ($period == "ThisYear") {
+	$data['labels'] = array_values($months);
+}
 
 
 foreach ($providers as $key => $provider) {
@@ -53,18 +57,20 @@ $colorHelper = new ColorHelper();
 
 foreach ($activeProviders as $activeProvider) {
 	$row = array();
-	foreach ($months as $keyMonth => $month) {
-		$minDate = $year."-".$keyMonth.'-01';
-		$maxDate = $year."-".$keyMonth.'-31';
-		$totalPatients = CarePersonQuery::create()
-		->filterByCreateTime(array("min" => $minDate." 00:00:00", "max" => $maxDate." 23:59:59"))
-		->filterByInsuranceId($activeProvider['Id'])
-		->orderBy('CarePerson.CreateTime', 'desc')
-		->limit(2500)
-		->find()
-		->count();
+	if($period == "ThisYear"){
+		foreach ($months as $keyMonth => $month) {
+			$minDate = $year."-".$keyMonth.'-01';
+			$maxDate = $year."-".$keyMonth.'-31';
+			$totalPatients = CarePersonQuery::create()
+			->filterByCreateTime(array("min" => $minDate." 00:00:00", "max" => $maxDate." 23:59:59"))
+			->filterByInsuranceId($activeProvider['Id'])
+			->orderBy('CarePerson.CreateTime', 'desc')
+			->limit(2500)
+			->find()
+			->count();
 
-		array_push($row, $totalPatients);
+			array_push($row, $totalPatients);
+		}
 	}
 	$numPatient = 0;
 	foreach ($row as $value) {
