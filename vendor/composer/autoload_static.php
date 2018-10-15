@@ -87,6 +87,7 @@ class ComposerStaticInit63067037bc5a418d6430c4a63a12047f
 
     public static $fallbackDirsPsr4 = array (
         0 => __DIR__ . '/../..' . '/',
+        1 => __DIR__ . '/..' . '/nesbot/carbon/src',
     );
 
     public static $prefixesPsr0 = array (

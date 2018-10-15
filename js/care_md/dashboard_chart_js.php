@@ -26,7 +26,7 @@ $.getJSON("<?php echo $root_path.'modules/dashboard/patientTrends.php' ?>").done
       }
     };
      var ctx = document.getElementById('patienttrends').getContext('2d');
-      window.patients = new Chart(ctx, config);
+     patients = new Chart(ctx, config);
 
 }).fail(function(data){
   console.log(data);
@@ -58,8 +58,9 @@ $("#patienttrendselect").change(function(){
         }
       }
     };
-     var ctx = document.getElementById('patienttrends').getContext('2d');
-      window.patients = new Chart(ctx, config);
+      patients.destroy();
+      var ctx = document.getElementById('patienttrends').getContext('2d');
+      patients = new Chart(ctx, config);
 
 }).fail(function(data){
   console.log(data);
@@ -124,7 +125,7 @@ var diseaseConfig = {
     //       return randomScalingFactor();
     //     });
     //   });
-    //   window.topDiseasesChart.update();
+    //  frequentdrugs.update();
     // });
 
 
@@ -180,7 +181,7 @@ var diseaseConfig = {
                 }
               }
             };
-            topDiseasesChart.update()
+              topDiseasesChart.destroy();
               var dcht = document.getElementById('topdiseases').getContext('2d');
               topDiseasesChart = new Chart(dcht, diseaseConfig);
 
@@ -237,7 +238,7 @@ var drugconfig = {
     };
 
     var freqntdchart = document.getElementById('frequentdrugs').getContext('2d');
-    window.topDiseasesChart = new Chart(freqntdchart, drugconfig);
+   frequentdrugs = new Chart(freqntdchart, drugconfig);
 });
 
 
@@ -289,9 +290,9 @@ $('#frequentdrugsselect').change(function(){
         }
       }
     };
-
+   frequentdrugs.destroy();
     var freqntdchart = document.getElementById('frequentdrugs').getContext('2d');
-    window.topDiseasesChart = new Chart(freqntdchart, drugconfig);
+   frequentdrugs = new Chart(freqntdchart, drugconfig);
 });
 
 })
@@ -304,7 +305,7 @@ var barChartData = {
     };
     
    var servedctx = document.getElementById('servedpatients').getContext('2d');
-    window.servedPatientBar = new Chart(servedctx, {
+    servedPatientBar = new Chart(servedctx, {
       type: 'bar',
       data: barChartData,
       options: {
@@ -342,8 +343,9 @@ $('#servedpatientselect').change(function(){
           datasets: response.datasets
         };
         
-       var servedctx = document.getElementById('servedpatients').getContext('2d');
-        window.servedPatientBar = new Chart(servedctx, {
+        servedPatientBar.destroy();
+        var servedctx = document.getElementById('servedpatients').getContext('2d');
+        servedPatientBar = new Chart(servedctx, {
           type: 'bar',
           data: barChartData,
           options: {

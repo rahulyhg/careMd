@@ -18,5 +18,5 @@ return array(
     'Symfony\\Bridge\\PhpUnit\\' => array($vendorDir . '/symfony/phpunit-bridge'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
-    '' => array($baseDir . '/'),
+    '' => array($baseDir . '/', $vendorDir . '/nesbot/carbon/src'),
 );

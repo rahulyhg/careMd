@@ -5,34 +5,30 @@ require_once('./colorHelper.php');
 require_once $root_path.'vendor/autoload.php';
 require_once $root_path.'generated-conf/config.php';
 
-use  CareMd\CareMd\CareTzBillingArchiveElemQuery;
-use  CareMd\CareMd\CareTzDrugsandservicesQuery;
+// care_tz_billing_archive_elem
+// care_tz_drugsandservices
+
+use  CareMd\CareMd\CareEncounterPrescriptionQuery;
 
 $drugs = array();
 $labels = array();
 $drugData = array();
 $background = array();
 $colorHelper = new ColorHelper();
-$startTime = strtotime(date('Y-' .'01-01'));
 
-
-$drugCodes = CareTzDrugsandservicesQuery::create()
-	->select(array('item_id', 'item_full_description'))
-	->where('CareTzDrugsandservices.purchasing_class LIKE ?', '%drug_list%')
-	->where("CareTzDrugsandservices.not_in_use	=?", 0)
-	->distinct()
-	->find()
-	->toArray();
-
+$drugCodes = CareEncounterPrescriptionQuery::create()
+				->select(array('article', 'article_item_number'))
+				->where('CareEncounterPrescription.drug_class LIKE ?', '%drug_list%')
+				->distinct()
+				->find()
+				->toArray();
 
 foreach ($drugCodes as $code) {
-	$drug = CareTzBillingArchiveElemQuery::create()->filterByItemNumber($code['item_id'])
-	// ->where("CareTzBillingArchiveElem.date_change >=?", $startTime)
-	->count();
+	$drug = CareEncounterPrescriptionQuery::create()->filterByArticleItemNumber($code['article_item_number'])->count();
 	array_push($drugs, 
 		array(
-			'name' => $code['item_full_description'],
-			'code' => $code['item_id'],
+			'name' => $code['article'],
+			'code' => $code['article_item_number'],
 			'total'=> $drug,
 		)
 	);
