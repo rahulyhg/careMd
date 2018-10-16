@@ -2,6 +2,8 @@
 
 require('./roots.php');
 
+
+
 $sql="SELECT nr,sort_nr,name,LD_var AS \"LD_var\",url,is_visible FROM care_menu_main WHERE is_visible=1 OR LD_var='LDEDP' OR LD_var='LDLogin' ORDER by sort_nr";
 
 $result=$db->Execute($sql);

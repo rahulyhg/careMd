@@ -217,10 +217,10 @@ require_once($root_path . 'main_theme/header.inc.php');
                         <select class="custom-select input-sm col-md-3" id="patienttrendselect">
                           <option >Select View</option>
                           <option selected value="ThisWeek">This Week</option>
-                          <option  value="LastWeek">Last Week</option>
                           <option value="ThisMonth">This Month</option>
-                          <option value="LastMonth">Last Month</option>
                           <option value="ThisYear">This Year</option>
+                          <option  value="LastWeek">Last Week</option>
+                          <option value="LastMonth">Last Month</option>
                           <option value="LastYear">Last Year</option>
                         </select>
                     </div>
@@ -247,10 +247,10 @@ require_once($root_path . 'main_theme/header.inc.php');
                         <select class="custom-select input-sm col-md-3" id="servedpatientselect">
                           <option >Select View</option>
                           <option selected value="ThisWeek">This Week</option>
-                          <option  value="LastWeek">Last Week</option>
                           <option value="ThisMonth">This Month</option>
-                          <option value="LastMonth">Last Month</option>
                           <option value="ThisYear">This Year</option>
+                          <option  value="LastWeek">Last Week</option>
+                          <option value="LastMonth">Last Month</option>
                           <option value="LastYear">Last Year</option>
                         </select>
                     </div>

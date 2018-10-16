@@ -1,13 +1,16 @@
-<?php /* Smarty version 2.6.22, created on 2018-10-16 09:30:32
+<?php /* Smarty version 2.6.22, created on 2018-10-16 10:45:32
          compiled from main/passcheck_entry_mask.tpl */ ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">CareMD</a>
+  <a class="navbar-brand" href="#"><?php echo $this->_tpl_vars['companyName']; ?>
+</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+        <li><?php echo $this->_tpl_vars['companyAddress']; ?>
+</li>
     </ul>
   </div>
 </nav>
@@ -16,7 +19,7 @@
     <div class="row col-md-4">
         <div class="card ">
             <div class="card-header bg-light">
-                Login
+                CareMD ~ Login
             </div>
             <div class="card-body">
 

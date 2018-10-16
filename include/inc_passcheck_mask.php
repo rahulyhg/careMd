@@ -1,5 +1,15 @@
 <?php
 
+
+require_once $root_path.'vendor/autoload.php';
+require_once $root_path.'generated-conf/config.php';
+
+use  CareMd\CareMd\CareConfigGlobalQuery;
+
+
+$companyName = CareConfigGlobalQuery::create()->filterByType('main_info_name')->select('value')->findOne();
+$companyAddress = CareConfigGlobalQuery::create()->filterByType('main_info_address')->select('value')->findOne();
+
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 
 /* ------begin------ This protection code was suggested by Luki R. luki@karet.org ---- */
@@ -113,7 +123,8 @@ $smarty->assign('sPassHiddenInputs', $sHiddenTemp);
 
 $smarty->assign('sPassSubmitButton', '<INPUT type="image"  ' . createLDImgSrc($root_path, 'continue.gif', '0') . '>');
 $smarty->assign('sCancelButton', '<a href="' . $breakfile . '"><img ' . createLDImgSrc($root_path, 'cancel.gif', '0') . '></a>');
-
+$smarty->assign('companyName', $companyName);
+$smarty->assign('companyAddress', $companyAddress);
 #
 # Display this page if necessary
 #
