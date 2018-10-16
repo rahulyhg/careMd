@@ -25,7 +25,7 @@ $bill_obj = new Bill;
 require_once($root_path . 'include/care_api_classes/class_tz_drugsandservices.php');
 $drg_obj = new DrugsAndServices;
 
-$in_outpatient = $_REQUEST['patient'];
+$in_outpatient = @$_REQUEST['patient']?$_REQUEST['patient']:"";
 
 
 

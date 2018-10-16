@@ -20,6 +20,7 @@ $_SESSION['sess_login_username'] = '';
 $_SESSION['sess_login_pw'] = '';
 $_SESSION['sess_login_expired'] = '';
 
+
 //error_reporting(E_COMPILE_ERROR|E_ERROR|E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
@@ -144,13 +145,21 @@ require($root_path . 'include/inc_passcheck_head.php');
 
 <?php echo setCharSet(); ?>
 
-<?php 
+<?php require($root_path . 'include/inc_passcheck_mask.php') ?>
 
-// require_once($root_path . 'main_theme/head.inc.php');
-// require_once($root_path . 'main_theme/header.inc.php');
-// require_once($root_path . 'main_theme/topHeader.inc.php');
 
- ?>
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">
+<?php require($root_path . 'include/inc_load_copyrite.php'); ?>
+        
+
+    </span>
+  </div>
+</footer>
+
+
+
 
 <BODY onLoad="<?php if (isset($is_logged_out) && $is_logged_out) echo "window.parent.STARTPAGE.location.href='indexframe.php?sid=$sid&lang=$lang';"; ?>document.passwindow.userid.focus();" bgcolor=<?php echo $cfg['body_bgcolor']; ?>
       <?php if (!$cfg['dhtml']) {
@@ -164,22 +173,3 @@ require($root_path . 'include/inc_passcheck_head.php');
         }
         ?>
     <p>
-    <table width=100% border=0 cellpadding="0" cellspacing="0">
-        <tr>
-            <td colspan=3><img <?php echo createLDImgSrc($root_path, 'login-b.gif') ?>></td>
-        </tr>
-
-<?php require($root_path . 'include/inc_passcheck_mask.php') ?>
-
-        <p><!--
-        <img src="../img/small_help.gif" > <a href="<?php // echo $root_path;  ?>main/ucons.php<?php // echo URL_APPEND;  ?>">Was ist login?</a><br>
-        <img src="../img/small_help.gif" > <a href="<?php // echo $root_path;  ?>main/ucons.php<?php // echo URL_APPEND;  ?>">Wieso soll ich mich einloggen?</a><br>
-        <img src="../img/small_help.gif" > <a href="<?php // echo $root_path;  ?>main/ucons.php<?php // echo URL_APPEND;  ?>">Was bewirkt das einloggen?</a><br>
-            -->
-        <p>
-            <?php
-            require($root_path . 'include/inc_load_copyrite.php');
-            ?>
-            </FONT>
-            </BODY>
-            </HTML>

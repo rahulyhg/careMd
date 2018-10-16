@@ -1,92 +1,70 @@
-<?php /* Smarty version 2.6.22, created on 2017-04-03 11:08:42
+<?php /* Smarty version 2.6.22, created on 2018-10-16 09:30:32
          compiled from main/passcheck_entry_mask.tpl */ ?>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">CareMD</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<!--<table width=100% border=0 cellpadding="0" cellspacing="0">-->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+  </div>
+</nav>
 
-<?php echo $this->_tpl_vars['sTopDisplayRow']; ?>
+<div class="container-fluid d-flex justify-content-end">
+    <div class="row col-md-4">
+        <div class="card ">
+            <div class="card-header bg-light">
+                Login
+            </div>
+            <div class="card-body">
 
-
-<tr>
-    <td class="passborder" colspan=3>&nbsp;</td>
-</tr>
-
-<tr>
-    <td class="passborder" width=1%></td>
-    <td class="passbody">
-        <p><br>
-<center>
-
-    <?php if ($this->_tpl_vars['bShowErrorPrompt']): ?>
-    <table border=0>
-        <tr>
-            <td><?php echo $this->_tpl_vars['sMascotImg']; ?>
+                <?php if ($this->_tpl_vars['bShowErrorPrompt']): ?>
+                    <table border=0>
+                        <tr>
+                            <td><?php echo $this->_tpl_vars['sMascotImg']; ?>
 </td>
-            <td align="center"><?php echo $this->_tpl_vars['sErrorMsg']; ?>
+                            <td align="center"><?php echo $this->_tpl_vars['sErrorMsg']; ?>
 </td>
-        </tr>
-    </table>
-    <?php endif; ?>
+                        </tr>
+                    </table>
+                <?php endif; ?>
 
-    <table border=0 cellpadding=0  cellspacing=0>
-        <tr>
-            <?php echo $this->_tpl_vars['sMascotColumn']; ?>
 
-            <td valign=top>
-                <table cellspacing=0 class="passmaskframe">
-                    <tr>
-                        <td>
-                            <table cellpadding=20 cellspacing=0 class="passmask">
-                                <tr>
-                                    <td>
-
-                                        <p>
-                                        <FORM <?php echo $this->_tpl_vars['sPassFormParams']; ?>
+                <form <?php echo $this->_tpl_vars['sPassFormParams']; ?>
 >
-                                            <div class="prompt">
-                                                <?php echo $this->_tpl_vars['LDPwNeeded']; ?>
-!<p>
-                                            </div>
-                                            <nobr><?php echo $this->_tpl_vars['LDUserPrompt']; ?>
-:</nobr>
-                                            <br>
-                                            <INPUT type="text" name="userid" size="14" maxlength="25"> <?php echo $this->_tpl_vars['sDemoLoginInfo']; ?>
-<p>
-                                            <nobr><?php echo $this->_tpl_vars['LDPwPrompt']; ?>
-:<br>
-                                                <INPUT type="password" name="keyword" size="14" maxlength="25"> <?php echo $this->_tpl_vars['sDemoPasswordInfo']; ?>
+                    <div class="form-group">
+                        <label class="">
+                            <?php echo $this->_tpl_vars['LDUserPrompt']; ?>
+:
+                        </label>
+                            <input class="form-control" type="text" name="userid" size="14" maxlength="25">
+                    </div>
+                    <div class="form-group">
+                        <label class="">
+                            <?php echo $this->_tpl_vars['LDPwPrompt']; ?>
+:
+                        </label>
+                            <input class="form-control" name="keyword" type="password">
+                        
+                    </div>
+                   
+                     <?php echo $this->_tpl_vars['sPassHiddenInputs']; ?>
 
 
-                                                                                                <?php echo $this->_tpl_vars['sPassHiddenInputs']; ?>
+                    <div class="form-group">
+                        <div class="col-md-8">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-btn fa-sign-in">
+                                </i>
+                                Login
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-
-                                            </nobr><p>
-                                                <?php echo $this->_tpl_vars['sPassSubmitButton']; ?>
-&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $this->_tpl_vars['sCancelButton']; ?>
-
-                                        </form>
-
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-
-    <p>
-        <br>
-</center>
-
-</td>
-<td class="passborder">
-    &nbsp;
-</td>
-</tr>
-
-<tr >
-    <td class="passborder" colspan=3>&nbsp;</td>
-</tr>
-
-</table>

@@ -1,80 +1,63 @@
-{{* pass_entry_mask.tpl  Password check entry template *}}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">CareMD</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<!--<table width=100% border=0 cellpadding="0" cellspacing="0">-->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+  </div>
+</nav>
 
-{{* Any eventuall display content for the top part of the mask (sTopDisplayRow) must be packaged as a table row *}}
-{{$sTopDisplayRow}}
+<div class="container-fluid d-flex justify-content-end">
+    <div class="row col-md-4">
+        <div class="card ">
+            <div class="card-header bg-light">
+                Login
+            </div>
+            <div class="card-body">
 
-<tr>
-    <td class="passborder" colspan=3>&nbsp;</td>
-</tr>
+                {{if $bShowErrorPrompt}}
+                    <table border=0>
+                        <tr>
+                            <td>{{$sMascotImg}}</td>
+                            <td align="center">{{$sErrorMsg}}</td>
+                        </tr>
+                    </table>
+                {{/if}}
 
-<tr>
-    <td class="passborder" width=1%></td>
-    <td class="passbody">
-        <p><br>
-<center>
 
-    {{if $bShowErrorPrompt}}
-    <table border=0>
-        <tr>
-            <td>{{$sMascotImg}}</td>
-            <td align="center">{{$sErrorMsg}}</td>
-        </tr>
-    </table>
-    {{/if}}
+                <form {{$sPassFormParams}}>
+                    <div class="form-group">
+                        <label class="">
+                            {{$LDUserPrompt}}:
+                        </label>
+                            <input class="form-control" type="text" name="userid" size="14" maxlength="25">
+                    </div>
+                    <div class="form-group">
+                        <label class="">
+                            {{$LDPwPrompt}}:
+                        </label>
+                            <input class="form-control" name="keyword" type="password">
+                        
+                    </div>
+                   
+                     {{$sPassHiddenInputs}}
 
-    <table border=0 cellpadding=0  cellspacing=0>
-        <tr>
-            {{$sMascotColumn}}
-            <td valign=top>
-                <table cellspacing=0 class="passmaskframe">
-                    <tr>
-                        <td>
-                            <table cellpadding=20 cellspacing=0 class="passmask">
-                                <tr>
-                                    <td>
+                    <div class="form-group">
+                        <div class="col-md-8">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-btn fa-sign-in">
+                                </i>
+                                Login
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-                                        <p>
-                                        <FORM {{$sPassFormParams}}>
-                                            <div class="prompt">
-                                                {{$LDPwNeeded}}!<p>
-                                            </div>
-                                            <nobr>{{$LDUserPrompt}}:</nobr>
-                                            <br>
-                                            <INPUT type="text" name="userid" size="14" maxlength="25"> {{$sDemoLoginInfo}}<p>
-                                            <nobr>{{$LDPwPrompt}}:<br>
-                                                <INPUT type="password" name="keyword" size="14" maxlength="25"> {{$sDemoPasswordInfo}}
 
-                                                {{* Do not move the sPassHiddenInputs outside of the <form></form> block *}}
-                                                {{$sPassHiddenInputs}}
-
-                                            </nobr><p>
-                                                {{$sPassSubmitButton}}&nbsp;&nbsp;&nbsp;&nbsp;{{$sCancelButton}}
-                                        </form>
-
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-
-    <p>
-        <br>
-</center>
-
-</td>
-<td class="passborder">
-    &nbsp;
-</td>
-</tr>
-
-<tr >
-    <td class="passborder" colspan=3>&nbsp;</td>
-</tr>
-
-</table>

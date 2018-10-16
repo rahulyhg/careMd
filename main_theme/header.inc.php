@@ -35,9 +35,11 @@ if($result){
           array_push($navigationMenus, array('name' => 'Discharge', 'url' =>$root_path. "modules/ambulatory/amb_clinic_patients_discharge.php" . URL_APPEND ));
         }
 
+
         array_push($navigationMenus, $menu);
 
     }
+    array_push($navigationMenus, array('name' => 'Accounting & Inventory', 'url' => "http://localhost/weberp"));
     
 }
 
@@ -67,7 +69,7 @@ if($result){
             <?php if ($menu['name'] == "Home"): ?>
             <li class="nav-item <?php if($pageName == "Home") echo 'active'; ?> ">
               <a class="nav-link" href="<?php echo $root_path ?>modules/dashboard/dashboard.php<?php echo URL_APPEND ?>">
-                <i class="material-icons">dashboard</i>
+                <i class="material-icons">home</i>
                 <p><?php echo $menu['name'] ?></p>
               </a>
             </li>
@@ -202,7 +204,7 @@ if($result){
 
             <?php elseif ($menu['name'] == "Intranet Email"): ?>
             <li class="nav-item <?php if($pageName == "Intranet Email") echo 'active'; ?> ">
-              <a class="nav-link" target="_blank" href="<?php echo $menu['url'] ?>">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>">
                 <i class="material-icons">email</i>
                 <p><?php echo $menu['name'] ?></p>
               </a>
@@ -210,7 +212,7 @@ if($result){
 
             <?php elseif ($menu['name'] == "Special Tools"): ?>
             <li class="nav-item <?php if($pageName == "Special Tools") echo 'active'; ?> ">
-              <a class="nav-link" target="_blank" href="<?php echo $menu['url'] ?>">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>">
                 <i class="material-icons">perm_data_setting</i>
                 <p><?php echo $menu['name'] ?></p>
               </a>
@@ -229,6 +231,14 @@ if($result){
             <li class="nav-item <?php if($pageName == "Login") echo 'active'; ?> ">
               <a class="nav-link" href="<?php echo $menu['url'] ?>">
                 <i class="material-icons">lock</i>
+                <p><?php echo $menu['name'] ?></p>
+              </a>
+            </li>
+
+            <?php elseif ($menu['name'] == "Accounting & Inventory"): ?>
+            <li class="nav-item <?php if($pageName == "Accounting & Inventory") echo 'active'; ?> ">
+              <a class="nav-link" target="_blank" href="<?php echo $menu['url'] ?>">
+                <i class="material-icons">shop_two</i>
                 <p><?php echo $menu['name'] ?></p>
               </a>
             </li>

@@ -118,5 +118,8 @@ $smarty->assign('sCancelButton', '<a href="' . $breakfile . '"><img ' . createLD
 # Display this page if necessary
 #
 if ($bShowThisPage)
+
+    require_once($root_path . 'main_theme/head.inc.php');
+
     $smarty->display('main/passcheck_entry_mask.tpl');
 ?>
