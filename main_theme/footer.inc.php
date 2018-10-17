@@ -50,4 +50,8 @@
   <!-- <script src="<?php echo $root_path ?>/js/care_md/chartist-plugin-tooltip.js"></script> -->
   <!-- <script src="<?php echo $root_path ?>/js/care_md/chartist-plugin-legend.js"></script> -->
   <script src="<?php echo $root_path ?>/js/care_md/plugins/Chart.bundle.min.js"></script>
-  <script src="<?php echo $root_path ?>/js/care_md/main.js"></script>
+  <script src="<?php echo $root_path ?>/js/care_md/plugins/idle-timer.js"></script>
+
+<?php 
+(@include_once ( $root_path.'modules/main_js.php'));
+ ?>

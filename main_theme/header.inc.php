@@ -227,15 +227,15 @@ $userNavigations = array_unique($userNavigationMenus, SORT_REGULAR);
             <?php if ($menu['name'] == "Home"): ?>
             <li class="nav-item colorOne <?php if($pageName == "Home") echo 'active'; ?> " >
               <a class="nav-link " href="<?php echo $root_path ?>modules/dashboard/dashboard.php<?php echo URL_APPEND ?>">
-                <i class="material-icons">home</i>
-                <p><?php echo $menu['name'] ?></p>
+               
+                <p> <i class="fa fa-home fa-fw"></i><?php echo $menu['name'] ?></p>
               </a>
             </li>
 
             <?php elseif ($menu['name'] == "Registration"): ?>
             <li class="nav-item colorOne <?php if($pageName == "Registration") echo 'active'; ?> " >
               <a class="nav-link " href="<?php echo $menu['url'] ?>" >
-                <i class="material-icons colorOne">perm_identity</i>
+                 <i class="fa fa-user fa-fw"></i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>

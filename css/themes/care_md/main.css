@@ -17,7 +17,8 @@
 }
 
 .sidebar .nav p{
-  line-height: 25px;
+  line-height: 8px;
+  /*font-size: 6px;*/
 }
 
 .sidebar-colored{
@@ -115,3 +116,23 @@
 .sidebar[data-color="danger"] li.active > a {
     background-color: red;
 }*/
+
+.sidebar .nav i{
+  font-size: 16px;
+  line-height: 8px;
+}
+
+.sidebar .nav{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.sidebar .nav li a, .sidebar .nav li .dropdown-menu a{
+  margin-bottom: 0px;
+  /*padding-top: 5px;
+  padding-bottom: 5px;*/
+}
+
+.sidebar[data-color="azure"] li.active > a{
+  box-shadow: none;
+}
