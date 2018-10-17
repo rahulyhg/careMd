@@ -79,3 +79,39 @@
   background-color: #f5f5f5;
 }
 
+
+
+/*.backgroundOne{
+  background-color: #2A58AD;
+}
+
+.colorOne{
+  color: #BEC8E0;
+  font-weight: 600; 
+}*/
+
+/*.backgroundOne{
+  background-color: #02E1DE;
+}
+
+.colorOne{
+  color: #ECFCFB;
+  font-weight: 600; 
+
+.sidebar[data-color="lightgreen"] li.active > a {
+    background-color: red;
+}*/
+
+
+/*.backgroundOne{
+  background-color: #FF7632;
+}
+
+.colorOne{
+  color: #fff;
+  font-weight: 600; 
+}
+
+.sidebar[data-color="danger"] li.active > a {
+    background-color: red;
+}*/

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2018-10-16 10:45:32
+<?php /* Smarty version 2.6.22, created on 2018-10-16 15:27:23
          compiled from main/passcheck_entry_mask.tpl */ ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#"><?php echo $this->_tpl_vars['companyName']; ?>
@@ -15,7 +15,7 @@
   </div>
 </nav>
 
-<div class="container-fluid d-flex justify-content-end">
+<div class="container-fluid d-flex justify-content-center">
     <div class="row col-md-4">
         <div class="card ">
             <div class="card-header bg-light">

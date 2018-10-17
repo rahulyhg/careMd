@@ -224,7 +224,7 @@ ob_start();
     echo '&pn=" + pn + "';
     echo "&pday=$pday&pmonth=$pmonth&pyear=$pyear&edit=$edit&station=" . $ward_info['name'];
     echo '";';
-    echo 'patientwin=window.open(urlholder,pn,"width=840,height=650,menubar=no,resizable=yes,scrollbars=yes");
+    echo 'patientwin=window.open(urlholder,"_self");
         patientwin.moveTo(0,0);
         patientwin.resizeTo(screen.availWidth, screen.availHeight)';
 }
@@ -338,19 +338,19 @@ $smarty->append('JavaScript', $sTemp);
 if (($occup == 'template') && (!$mode) && (!isset($list) || !$list)) {
 
     $smarty->assign('sWarningPrompt' . $LDNoListYet . '<br>
-			 <form action="nursing-station.php" method=post>
-			<input type="hidden" name="sid" value="' . $sid . '">
-   			<input type="hidden" name="lang" value="' . $lang . '">
-   			<input type="hidden" name="pyear" value="' . $pyear . '">
- 			<input type="hidden" name="pmonth" value="' . $pmonth . '">
-  			<input type="hidden" name="pday" value="' . $pday . '">
-			<input type="hidden" name="station" value="' . $station . '">
-			<input type="hidden" name="ward_nr" value="' . $ward_nr . '">
-			<input type="hidden" name="mode" value="getlast">
-			<input type="hidden" name="c" value="1">
-			<input type="hidden" name="edit" value="' . $edit . '">
-   			<input type="submit" value="' . $LDShowLastList . '" >
- 			</form>');
+             <form action="nursing-station.php" method=post>
+            <input type="hidden" name="sid" value="' . $sid . '">
+            <input type="hidden" name="lang" value="' . $lang . '">
+            <input type="hidden" name="pyear" value="' . $pyear . '">
+            <input type="hidden" name="pmonth" value="' . $pmonth . '">
+            <input type="hidden" name="pday" value="' . $pday . '">
+            <input type="hidden" name="station" value="' . $station . '">
+            <input type="hidden" name="ward_nr" value="' . $ward_nr . '">
+            <input type="hidden" name="mode" value="getlast">
+            <input type="hidden" name="c" value="1">
+            <input type="hidden" name="edit" value="' . $edit . '">
+            <input type="submit" value="' . $LDShowLastList . '" >
+            </form>');
 } elseif ($mode == "getlast") {
 
     $sWarnBuffer = $LDLastList;
@@ -358,25 +358,25 @@ if (($occup == 'template') && (!$mode) && (!isset($list) || !$list)) {
         $sWarnBuffer = $sWarnBuffer . '<font color=red><b>' . $LDNotToday . '</b></font><br>' . str_replace("~nr~", $c, $LDListFrom);
     else
         $sWarnBuffer = $sWarnBuffer . '<font color=red><b>' . $LDFromYesterday . '</b></font><br>
-				';
+                ';
     $sWarnBuffer = $sWarnBuffer . '
-			<form action="nursing-station.php" method=post>
-			<input type="hidden" name="sid" value="' . $sid . '">
-    		<input type="hidden" name="lang" value="' . $lang . '">
-  			<input type="hidden" name="pyear" value="' . $pyear . '">
- 			<input type="hidden" name="pmonth" value="' . $pmonth . '">
-  			<input type="hidden" name="pday" value="' . $pday . '">
-			<input type="hidden" name="station" value="' . $station . '">
-			<input type="hidden" name="ward_nr" value="' . $ward_nr . '">
-			<input type="hidden" name="mode" value="copylast">&nbsp;&nbsp;&nbsp;';
+            <form action="nursing-station.php" method=post>
+            <input type="hidden" name="sid" value="' . $sid . '">
+            <input type="hidden" name="lang" value="' . $lang . '">
+            <input type="hidden" name="pyear" value="' . $pyear . '">
+            <input type="hidden" name="pmonth" value="' . $pmonth . '">
+            <input type="hidden" name="pday" value="' . $pday . '">
+            <input type="hidden" name="station" value="' . $station . '">
+            <input type="hidden" name="ward_nr" value="' . $ward_nr . '">
+            <input type="hidden" name="mode" value="copylast">&nbsp;&nbsp;&nbsp;';
     if ($c > 2)
         $sWarnBuffer = $sWarnBuffer . '<input type="submit" value="' . $LDCopyAnyway . '">';
     else
         $sWarnBuffer = $sWarnBuffer . '
-   					<input type="submit" value="' . $LDTakeoverList . '" >';
+                    <input type="submit" value="' . $LDTakeoverList . '" >';
     $sWarnBuffer = $sWarnBuffer . '
-			&nbsp;&nbsp;&nbsp;<input type="button" value="' . $LDDoNotCopy . '" onClick="javascript:window.location.href=\'nursing-station.php?sid=' . $sid . '&edit=1&list=1&station=' . $station . '&mode=fresh\'">
- 			</form>';
+            &nbsp;&nbsp;&nbsp;<input type="button" value="' . $LDDoNotCopy . '" onClick="javascript:window.location.href=\'nursing-station.php?sid=' . $sid . '&edit=1&list=1&station=' . $station . '&mode=fresh\'">
+            </form>';
 
     $smarty->assign('sWarningPrompt', $sWarnBuffer);
 }
@@ -386,7 +386,7 @@ if (($occup == 'template') && (!$mode) && (!isset($list) || !$list)) {
 if ($ward_ok) {
     if ($pyear . $pmonth . $pday < date('Ymd')) {
         $smarty->assign('sWarningPrompt', '
-		<img ' . createComIcon($root_path, 'warn.gif', '0', 'absmiddle', TRUE) . '> <font color="#ff0000"><b>' . $LDAttention . '</font> ' . $LDOldList . '</b>');
+        <img ' . createComIcon($root_path, 'warn.gif', '0', 'absmiddle', TRUE) . '> <font color="#ff0000"><b>' . $LDAttention . '</font> ' . $LDOldList . '</b>');
 
         # Prevent adding new patients to the list  if list is old
         $edit = FALSE;
@@ -509,9 +509,9 @@ if ($ward_ok) {
             # If patient and edit show small color bars
 //            if ($is_patient && $edit) {
             if ($is_patient) {
-                $smarty->assign('sMiniColorBars', '<a href="'.$root_path.'modules/nursing/nursing-station-patientdaten.php'.URL_APPEND.'">
-			 		<img src="' . $root_path . 'main/imgcreator/imgcreate_colorbar_small.php' . URL_APPEND . '&pn=' . $bed['encounter_nr'] . '" alt="' . $LDSetColorRider . '" align="absmiddle" border=0 width=80 height=18>
-			 		</a>');
+                $smarty->assign('sMiniColorBars', '<a href="javascript:getinfo(\'' . $bed['encounter_nr'] . '\')">
+                    <img src="' . $root_path . 'main/imgcreator/imgcreate_colorbar_small.php' . URL_APPEND . '&pn=' . $bed['encounter_nr'] . '" alt="' . $LDSetColorRider . '" align="absmiddle" border=0 width=80 height=18>
+                    </a>');
             }
 
             # If bed nr  is 1, show the room number
@@ -795,26 +795,26 @@ if ($ward_ok) {
 
     # Create the legend block
     $TP_Legend1_BLOCK.='
-	&nbsp;<img ' . createComIcon($root_path, 'green_dot.gif', '0', 'absmiddle', TRUE) . '>&nbsp;<b>' . $LDOwnPatient . '</b><br>
-	&nbsp;<img ' . createComIcon($root_path, 'red_dot.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDNonOwnPatient . '</b><br>
-	&nbsp;<img ' . createComIcon($root_path, 'plus2.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDFreeOccupy . '</b><br>
-	&nbsp;<img ' . createComIcon($root_path, 'delete2.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDLocked . '</b><br>';
+    &nbsp;<img ' . createComIcon($root_path, 'green_dot.gif', '0', 'absmiddle', TRUE) . '>&nbsp;<b>' . $LDOwnPatient . '</b><br>
+    &nbsp;<img ' . createComIcon($root_path, 'red_dot.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDNonOwnPatient . '</b><br>
+    &nbsp;<img ' . createComIcon($root_path, 'plus2.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDFreeOccupy . '</b><br>
+    &nbsp;<img ' . createComIcon($root_path, 'delete2.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDLocked . '</b><br>';
 
     if ($edit && $patients_ok) {
         $TP_Legend1_BLOCK.= '&nbsp;<img ' . createComIcon($root_path, 'pdata.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDAdmissionData . '</b><br>
-		&nbsp;<img ' . createComIcon($root_path, 'open.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDOpenFile . '</b><br>
-		&nbsp;<img ' . createComIcon($root_path, 'bubble2.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDNotesEmpty . '</b><br>
-		&nbsp;<img ' . createComIcon($root_path, 'bubble3.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDNotes . '</b><br>
-		&nbsp;<nobr><img ' . createComIcon($root_path, 'xchange.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDTransferPatient. '</b></nobr><br>
+        &nbsp;<img ' . createComIcon($root_path, 'open.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDOpenFile . '</b><br>
+        &nbsp;<img ' . createComIcon($root_path, 'bubble2.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDNotesEmpty . '</b><br>
+        &nbsp;<img ' . createComIcon($root_path, 'bubble3.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDNotes . '</b><br>
+        &nbsp;<nobr><img ' . createComIcon($root_path, 'xchange.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDTransferPatient. '</b></nobr><br>
                 &nbsp;<nobr><img ' . createComIcon($root_path, 'monitor.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDTreatmentSheet . '</b></nobr><br>
-		&nbsp;<img ' . createComIcon($root_path, 'bestell.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDRelease . '</b><br>
-		';
+        &nbsp;<img ' . createComIcon($root_path, 'bestell.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDRelease . '</b><br>
+        ';
         
         
 
         $TP_Legend2_BLOCK = '
-		&nbsp;<img ' . createComIcon($root_path, 'spf.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDFemale . '</b><br>
-		&nbsp;<img ' . createComIcon($root_path, 'spm.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDMale . '</b><br>';
+        &nbsp;<img ' . createComIcon($root_path, 'spf.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDFemale . '</b><br>
+        &nbsp;<img ' . createComIcon($root_path, 'spm.gif', '0', 'absmiddle', TRUE) . '> <b>' . $LDMale . '</b><br>';
     }
     # Load the quick info block template
     $tp = $TP_obj->load('nursing/tp_ward_quickinfo.htm');
@@ -829,15 +829,15 @@ if ($ward_ok) {
 } else {
 
     $smarty->assign('sNewWardLink', '<ul><div class="prompt"><img ' . createMascot($root_path, 'mascot1_r.gif', '0', 'absmiddle') . '>
-			' . str_replace("~station~", strtoupper($station), $LDNoInit) . '</b></font><br>
-			<a href="nursing-station-new.php' . URL_APPEND . '&station=' . $station . '&edit=' . $edit . '">' . $LDIfInit . ' <img ' . createComIcon($root_path, 'bul_arrowgrnlrg.gif', '0', '', TRUE) . '></a><p>
-			</div></ul>');
+            ' . str_replace("~station~", strtoupper($station), $LDNoInit) . '</b></font><br>
+            <a href="nursing-station-new.php' . URL_APPEND . '&station=' . $station . '&edit=' . $edit . '">' . $LDIfInit . ' <img ' . createComIcon($root_path, 'bul_arrowgrnlrg.gif', '0', '', TRUE) . '></a><p>
+            </div></ul>');
 } // end of if ward_ok
 
 if ($pday . $pmonth . $pyear <> date('dmY'))
     $smarty->assign('sToArchiveLink', '<p>
-			<a href="nursing-station-archiv.php' . URL_APPEND . '">' . $LDClk2Archive . ' <img ' . createComIcon($root_path, 'bul_arrowgrnlrg.gif', '0', '', TRUE) . '></a>
-			<p>');
+            <a href="nursing-station-archiv.php' . URL_APPEND . '">' . $LDClk2Archive . ' <img ' . createComIcon($root_path, 'bul_arrowgrnlrg.gif', '0', '', TRUE) . '></a>
+            <p>');
 
 $stationName = $ward_info['name'];
 
@@ -873,7 +873,9 @@ require_once($root_path . 'main_theme/head.inc.php');
 require_once($root_path . 'main_theme/header.inc.php');
 require_once($root_path . 'main_theme/topHeader.inc.php');
 
+
 $smarty->display('common/mainframe.tpl');
 
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>
-<?php require_once($root_path . 'main_theme/footer.inc.php'); ?>

@@ -1,9 +1,10 @@
 <?php
-$sid = $_REQUEST['sid']; //Get current session id
-session_id($sid); //Initialize session with current session id
-session_start();
+//$sid = $_REQUEST['sid']; //Get current session id
+//session_id($sid); //Initialize session with current session id
+//session_start();
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+
 $pageName = "Inpatient";
 
 
@@ -96,7 +97,7 @@ if ($dblink_ok) {
     include_once($root_path . 'include/inc_date_format_functions.php');
     $enc_obj->where = " encounter_nr=$pn";
     if ($enc_obj->loadEncounterData($pn)) {
-        /* 			switch ($enc_obj->EncounterClass())
+        /*          switch ($enc_obj->EncounterClass())
           {
           case '1': $full_en = ($pn + $GLOBAL_CONFIG['patient_inpatient_nr_adder']);
           break;
@@ -140,8 +141,8 @@ if ($dblink_ok) {
                 /* append the additional color event signallers */
 
                 $sql_buf .= "yellow='$yellow', black='$black', blue_pale='$blue_pale', brown='$brown',
-						                   pink='$pink', yellow_pale='$yellow_pale', red='$red', green_pale='$green_pale',
-										   violet='$violet', blue='$blue', biege='$biege', orange='$orange'";
+                                           pink='$pink', yellow_pale='$yellow_pale', red='$red', green_pale='$green_pale',
+                                           violet='$violet', blue='$blue', biege='$biege', orange='$orange'";
 
 
                 $sql = "UPDATE $event_table SET $sql_buf WHERE encounter_nr='$pn'";
@@ -179,14 +180,14 @@ if ($dblink_ok) {
                         /* append the additional color event signallers */
 
                         $set_str .= 'yellow, black, blue_pale, brown,
-						                   pink, yellow_pale, red, green_pale,
-										   violet, blue, biege, orange';
+                                           pink, yellow_pale, red, green_pale,
+                                           violet, blue, biege, orange';
 
                         /* prepare the values part */
 
                         $sql_buf .= "'$yellow', '$black', '$blue_pale', '$brown',
-						                   '$pink', '$yellow_pale', '$red', '$green_pale',
-										   '$violet', '$blue', '$biege', '$orange'";
+                                           '$pink', '$yellow_pale', '$red', '$green_pale',
+                                           '$violet', '$blue', '$biege', '$orange'";
 
                         $sql = "INSERT INTO $event_table (encounter_nr, $set_str) VALUES ('$pn', $sql_buf)";
 
@@ -339,7 +340,7 @@ ob_start();
 
     function xmakekonsil(v) {
         var x = v;
-        /*	if((v=="patho")||(v=="inmed")||(v=="radio")||(v=="baclabor")||(v=="blood")||(v=="chemlabor"))
+        /*  if((v=="patho")||(v=="inmed")||(v=="radio")||(v=="baclabor")||(v=="blood")||(v=="chemlabor"))
          {
          */
         if ((v == "inmed") || (v == "allamb") || (v == "unfamb") || (v == "sono") || (v == "nuklear"))
@@ -347,12 +348,12 @@ ob_start();
             v = "generic";
         }
         location.href = "nursing-station-patientdaten-doconsil-" + v + ".php?sid=<?php echo "$sid&lang=$lang&edit=$edit&station=$station&pn=$pn&konsil="; ?>" + x + "&target=" + v;
-        /*	}
+        /*  }
          else
          {v="radio";
          location.href="ucons.php?sid=<?php echo "$sid&lang=$lang&station=$station&pn=$pn&konsil="; ?>"+v;
          }
-         */	//enlargewin();
+         */ //enlargewin();
     }
     function makekonsil(d) {
         if (d != "") {
@@ -614,8 +615,8 @@ ob_start();
 // PRESCRIPTIONS
                                         if ($dept_nr == '43') {
                                             echo '<input style="width:220px; overflow:hidden; border:1px solid white; margin:0px 0px 7px 6px;" type="button" onClick="window.location.href=\'' . $root_path . 'modules/registration_admission/show_prescription_doc.php' . URL_REDIRECT_APPEND . '$sid=' . $SID . '&pn=' . $pn . '&lang=en&ntid=false&externalcall=true&help_site=patient_charts&target=search&1=1&prescrServ=&backpath=' . urlencode($_SERVER["PHP_SELF"] . URL_APPEND . '&pn=' . $pn . '&edit=1') . '\'" value="' . $LDPrescrWithoutServices . '"><br>
-						  <input style="width:220px; overflow:hidden; border:1px solid white; margin:0px 0px 7px 6px;" type="button" onClick="window.location.href=\'' . $root_path . 'modules/registration_admission/show_prescription_doc.php' . URL_REDIRECT_APPEND . '$sid=' . $SID . '&pn=' . $pn . '&lang=en&ntid=false&externalcall=true&help_site=patient_charts&target=search&1=1&prescrServ=&backpath=' . urlencode($_SERVER["PHP_SELF"] . URL_APPEND . '&pn=' . $pn . '&edit=1') . '\'" value="' . $LDServices . '"><br>
-						  <input style="width:220px; overflow:hidden; border:1px solid white; margin:0px 0px 7px 6px;" type="button" onClick="window.location.href=\'' . $root_path . 'modules/registration_admission/show_prescription_doc.php' . URL_REDIRECT_APPEND . '$sid=' . $SID . '&pn=' . $pn . '&lang=en&ntid=false&externalcall=true&help_site=patient_charts&target=search&1=1&prescrServ=proc&backpath=' . urlencode($_SERVER["PHP_SELF"] . URL_APPEND . '&pn=' . $pn . '&edit=1') . '\'" value="' . $LDProcedures . '">';
+                          <input style="width:220px; overflow:hidden; border:1px solid white; margin:0px 0px 7px 6px;" type="button" onClick="window.location.href=\'' . $root_path . 'modules/registration_admission/show_prescription_doc.php' . URL_REDIRECT_APPEND . '$sid=' . $SID . '&pn=' . $pn . '&lang=en&ntid=false&externalcall=true&help_site=patient_charts&target=search&1=1&prescrServ=&backpath=' . urlencode($_SERVER["PHP_SELF"] . URL_APPEND . '&pn=' . $pn . '&edit=1') . '\'" value="' . $LDServices . '"><br>
+                          <input style="width:220px; overflow:hidden; border:1px solid white; margin:0px 0px 7px 6px;" type="button" onClick="window.location.href=\'' . $root_path . 'modules/registration_admission/show_prescription_doc.php' . URL_REDIRECT_APPEND . '$sid=' . $SID . '&pn=' . $pn . '&lang=en&ntid=false&externalcall=true&help_site=patient_charts&target=search&1=1&prescrServ=proc&backpath=' . urlencode($_SERVER["PHP_SELF"] . URL_APPEND . '&pn=' . $pn . '&edit=1') . '\'" value="' . $LDProcedures . '">';
                                         } else {
                                             echo '<input style="width:220px; overflow:hidden; border:1px solid white; margin:0px 0px 7px 6px;" type="button" onClick="window.location.href=\'' . $root_path . 'modules/registration_admission/show_prescription_doc.php' . URL_REDIRECT_APPEND . '$sid=' . $SID . '&pn=' . $pn . '&lang=en&ntid=false&externalcall=false&help_site=patient_charts&target=search&1=1&prescrServ=&backpath=' . urlencode($_SERVER["PHP_SELF"] . URL_APPEND . '&pn=' . $pn . '&edit=1') . '\'" value="' . $LDPrescrWithoutServices . '"><br>' .
                                             '<input style="width:220px; overflow:hidden; border:1px solid white; margin:0px 0px 7px 6px;" type="button" onClick="window.location.href=\'' . $root_path . 'modules/registration_admission/show_prescription_doc.php' . URL_REDIRECT_APPEND . '$sid=' . $SID . '&pn=' . $pn . '&lang=en&ntid=false&externalcall=true&help_site=patient_charts&target=search&1=1&prescrServ=serv&backpath=' . urlencode($_SERVER["PHP_SELF"] . URL_APPEND . '&pn=' . $pn . '&edit=1') . '\'" value="' . $LDServices . '"><br>' .
@@ -640,22 +641,22 @@ ob_start();
 
                                 /* Now create the first group of color event signaller */
                                 echo ha() . '<img
-		' . createComIcon($root_path, 'qbar_' . $event['yellow'] . '_yellow.gif', '0') . ' name="yellow" ' . he() . '<img
-		' . createComIcon($root_path, 'qbar_' . $event['black'] . '_black.gif', '0') . ' name="black" ' . he() . '<img
-		' . createComIcon($root_path, 'qbar_' . $event['blue_pale'] . '_blue_pale.gif', '0') . ' name="blue_pale" ' . he() . '<img
-		' . createComIcon($root_path, 'qbar_' . $event['brown'] . '_brown.gif', '0') . ' name="brown" ' . he() . '<img
-		' . createComIcon($root_path, 'qbar_' . $event['pink'] . '_pink.gif', '0') . ' name="pink" ' . he() . '<img
-		' . createComIcon($root_path, 'qbar_' . $event['yellow_pale'] . '_yellow_pale.gif', '0') . ' name="yellow_pale" ' . he() . '<img
-		' . createComIcon($root_path, 'qbar_' . $event['red'] . '_red.gif', '0') . ' name="red" ' . he() . '<img
-		' . createComIcon($root_path, 'qbar_' . $event['green_pale'] . '_green_pale.gif', '0') . ' name="green_pale" ' . he() . '<img
-		' . createComIcon($root_path, 'qbar_' . $event['violet'] . '_violet.gif', '0') . ' name="violet" ' . he() . '<img
-		' . createComIcon($root_path, 'qbar_' . $event['blue'] . '_blue.gif', '0') . ' name="blue" ' . he() . '<img
-		' . createComIcon($root_path, 'qbar_' . $event['biege'] . '_biege.gif', '0') . ' name="biege" ' . hx() . '<img
-		' . createComIcon($root_path, 'qbar_trans.gif', '0') . '>' . ha() . '<img
-		' . createComIcon($root_path, 'qbar_' . $event['orange'] . '_orange.gif', '0') . ' name="orange" ' . hx() . '<img
-		' . createComIcon($root_path, 'qbar_trans.gif', '0') . '><img
-		' . createComIcon($root_path, 'qbar_trans.gif', '0') . '><img
-		' . createComIcon($root_path, 'qbar_trans.gif', '0') . '>';
+        ' . createComIcon($root_path, 'qbar_' . $event['yellow'] . '_yellow.gif', '0') . ' name="yellow" ' . he() . '<img
+        ' . createComIcon($root_path, 'qbar_' . $event['black'] . '_black.gif', '0') . ' name="black" ' . he() . '<img
+        ' . createComIcon($root_path, 'qbar_' . $event['blue_pale'] . '_blue_pale.gif', '0') . ' name="blue_pale" ' . he() . '<img
+        ' . createComIcon($root_path, 'qbar_' . $event['brown'] . '_brown.gif', '0') . ' name="brown" ' . he() . '<img
+        ' . createComIcon($root_path, 'qbar_' . $event['pink'] . '_pink.gif', '0') . ' name="pink" ' . he() . '<img
+        ' . createComIcon($root_path, 'qbar_' . $event['yellow_pale'] . '_yellow_pale.gif', '0') . ' name="yellow_pale" ' . he() . '<img
+        ' . createComIcon($root_path, 'qbar_' . $event['red'] . '_red.gif', '0') . ' name="red" ' . he() . '<img
+        ' . createComIcon($root_path, 'qbar_' . $event['green_pale'] . '_green_pale.gif', '0') . ' name="green_pale" ' . he() . '<img
+        ' . createComIcon($root_path, 'qbar_' . $event['violet'] . '_violet.gif', '0') . ' name="violet" ' . he() . '<img
+        ' . createComIcon($root_path, 'qbar_' . $event['blue'] . '_blue.gif', '0') . ' name="blue" ' . he() . '<img
+        ' . createComIcon($root_path, 'qbar_' . $event['biege'] . '_biege.gif', '0') . ' name="biege" ' . hx() . '<img
+        ' . createComIcon($root_path, 'qbar_trans.gif', '0') . '>' . ha() . '<img
+        ' . createComIcon($root_path, 'qbar_' . $event['orange'] . '_orange.gif', '0') . ' name="orange" ' . hx() . '<img
+        ' . createComIcon($root_path, 'qbar_trans.gif', '0') . '><img
+        ' . createComIcon($root_path, 'qbar_trans.gif', '0') . '><img
+        ' . createComIcon($root_path, 'qbar_trans.gif', '0') . '>';
 
 
                                 /* Create the maroon bars */
@@ -666,109 +667,109 @@ ob_start();
                                 /* Note $h is used here as counter  */
 //for ($h = 1; $h < 8; $h++) {
 //    echo ha() . '<img
-//		 ' . createComIcon($root_path, 'qbar_' . $event['rose_' . $h] . '_green.gif', '0') . ' alt="' . $LDFullDayName[$h] . '"  name="green_' . $h . '" ' . gx();
+//       ' . createComIcon($root_path, 'qbar_' . $event['rose_' . $h] . '_green.gif', '0') . ' alt="' . $LDFullDayName[$h] . '"  name="green_' . $h . '" ' . gx();
 //}
 //echo '<img
-//		' . createComIcon($root_path, 'qbar_trans.gif', '0') . '>';
+//      ' . createComIcon($root_path, 'qbar_trans.gif', '0') . '>';
 //
                                 /* Create the rose bars */
                                 /* Note $h is used here as counter  */
 //for ($h = 1; $h < 25; $h++) {
 //    echo ha() . '<img
-//			 ' . createComIcon($root_path, 'qbar_' . $event['rose_' . $h] . '_rose.gif', '0') . ' alt="' . $h . ' ' . $LDHour . '"  name="rose_' . $h . '" ' . rx();
+//           ' . createComIcon($root_path, 'qbar_' . $event['rose_' . $h] . '_rose.gif', '0') . ' alt="' . $h . ' ' . $LDHour . '"  name="rose_' . $h . '" ' . rx();
 //    if (($h == 6) || ($h == 12) || ($h == 18))
 //        echo'<img
-//			  ' . createComIcon($root_path, 'qbar_trans.gif', '0') . '>';
+//            ' . createComIcon($root_path, 'qbar_trans.gif', '0') . '>';
 //}
 
 
                                 echo '
-			 <tr bgcolor="#696969" >
-			 <td colspan=3   background="' . createBgSkin($root_path, 'folderskin2.jpg') . '">&nbsp;</td>
-			 </tr>' .
+             <tr bgcolor="#696969" >
+             <td colspan=3   background="' . createBgSkin($root_path, 'folderskin2.jpg') . '">&nbsp;</td>
+             </tr>' .
                                 '' .
                                 '';
 
                                 echo '</nobr></td></tr>';
 
                                 echo '<tr  bgcolor="#696969" >
-			<td  background="' . createBgSkin($root_path, 'folderskin2.jpg') . '" width="10px">&nbsp;</td>
-				<td valign="top" bgcolor="#ffffff">';
+            <td  background="' . createBgSkin($root_path, 'folderskin2.jpg') . '" width="10px">&nbsp;</td>
+                <td valign="top" bgcolor="#ffffff">';
 
 
                                 echo '<img src="' . $root_path . 'main/imgcreator/barcode_label_single_large.php?sid=' . $sid . '&lang=' . $lang . '&fen=' . $full_en . '&en=' . $pn . '&pid=' . $pid . '" width=282 height=178 align="left" hspace=5 vspace=5>';
 
                                 echo '
-		<table border=0 cellspacing=1 cellpadding=0 width="140px" style="border:0px solid black;">
-		  <tr>
-		    <td bgcolor="#ffff00"><font size=1>&nbsp;&nbsp;&nbsp;</font></td>
-		    <td><font size=1><nobr>&nbsp;' . $LDQueryDoctor . '</nobr></font></td>
-		  </tr>
-		  <tr>
-		  <tr>
-		    <td bgcolor="#000000"><font size=1>&nbsp;</td>
-		    <td><font size=1><nobr>&nbsp;' . $LDDoctorInfo . '</nobr></font></td>
-		  </tr>
-		  <tr>
-		  <tr>
-		    <td bgcolor="#81eff5"><font size=1>&nbsp;</td>
-		    <td><font size=1><nobr>&nbsp;' . $LDTestConsultRequested . '</nobr></td>
-		  </tr>
-		  <tr>
-		  <tr>
-		    <td bgcolor="#804408"><font size=1>&nbsp;</td>
-		    <td><font size=1><nobr>&nbsp;' . $LDDiagnosticsReport . '</nobr></td>
-		  </tr>
-		  <tr>
-		  <tr>
-		    <td bgcolor="#f598cb"><font size=1>&nbsp;</td>
-		    <td><font size=1>&nbsp;' . $LDInfusionTherapy . '</td>
-		  </tr>
-		  <tr>
-		  <tr>
-		    <td bgcolor="#ebf58d"><font size=1>&nbsp;</td>
-		    <td><font size=1>&nbsp;' . $LDMonitorFluidDischarge . '</td>
-		  </tr>
-		  <tr>
-		  <tr>
-		    <td bgcolor="#ff0000"><font size=1>&nbsp;</td>
-		    <td><font size=1>&nbsp;' . $LDBloodProgram . '</td>
-		  </tr>
-		  <tr>
-		  <tr>
-		    <td bgcolor="#00ff00"><font size=1>&nbsp;</td>
-		    <td><font size=1><nobr>&nbsp;' . $LDAntibioticsProgram . '</nobr></td>
-		  </tr>
-		  <tr>
-		  <tr>
-		    <td bgcolor="#dd36fc"><font size=1>&nbsp;</td>
-		    <td><font size=1>&nbsp;' . $LDAnticoagProgram . '</td>
-		  </tr>
-		  <tr>
-		  <tr>
-		    <td bgcolor="#0000ff"><font size=1>&nbsp;</td>
-		    <td><font size=1>&nbsp;' . $LDNurseReport . '</td>
-		  </tr>
-		  <tr>
-		  <tr>
-		    <td bgcolor="#f5ddc6"><font size=1>&nbsp;</td>
-		    <td><font size=1><nobr>&nbsp;' . $LDSpecialCare . '</nobr></td>
-		  </tr>
-		  <tr>
-		  <tr>
-		    <td bgcolor="#fdad29"><font size=1>&nbsp;</td>
-		    <td><font size=1>&nbsp;' . $LDDaily . '</td>
-		  </tr>
-		  <tr>
+        <table border=0 cellspacing=1 cellpadding=0 width="140px" style="border:0px solid black;">
+          <tr>
+            <td bgcolor="#ffff00"><font size=1>&nbsp;&nbsp;&nbsp;</font></td>
+            <td><font size=1><nobr>&nbsp;' . $LDQueryDoctor . '</nobr></font></td>
+          </tr>
+          <tr>
+          <tr>
+            <td bgcolor="#000000"><font size=1>&nbsp;</td>
+            <td><font size=1><nobr>&nbsp;' . $LDDoctorInfo . '</nobr></font></td>
+          </tr>
+          <tr>
+          <tr>
+            <td bgcolor="#81eff5"><font size=1>&nbsp;</td>
+            <td><font size=1><nobr>&nbsp;' . $LDTestConsultRequested . '</nobr></td>
+          </tr>
+          <tr>
+          <tr>
+            <td bgcolor="#804408"><font size=1>&nbsp;</td>
+            <td><font size=1><nobr>&nbsp;' . $LDDiagnosticsReport . '</nobr></td>
+          </tr>
+          <tr>
+          <tr>
+            <td bgcolor="#f598cb"><font size=1>&nbsp;</td>
+            <td><font size=1>&nbsp;' . $LDInfusionTherapy . '</td>
+          </tr>
+          <tr>
+          <tr>
+            <td bgcolor="#ebf58d"><font size=1>&nbsp;</td>
+            <td><font size=1>&nbsp;' . $LDMonitorFluidDischarge . '</td>
+          </tr>
+          <tr>
+          <tr>
+            <td bgcolor="#ff0000"><font size=1>&nbsp;</td>
+            <td><font size=1>&nbsp;' . $LDBloodProgram . '</td>
+          </tr>
+          <tr>
+          <tr>
+            <td bgcolor="#00ff00"><font size=1>&nbsp;</td>
+            <td><font size=1><nobr>&nbsp;' . $LDAntibioticsProgram . '</nobr></td>
+          </tr>
+          <tr>
+          <tr>
+            <td bgcolor="#dd36fc"><font size=1>&nbsp;</td>
+            <td><font size=1>&nbsp;' . $LDAnticoagProgram . '</td>
+          </tr>
+          <tr>
+          <tr>
+            <td bgcolor="#0000ff"><font size=1>&nbsp;</td>
+            <td><font size=1>&nbsp;' . $LDNurseReport . '</td>
+          </tr>
+          <tr>
+          <tr>
+            <td bgcolor="#f5ddc6"><font size=1>&nbsp;</td>
+            <td><font size=1><nobr>&nbsp;' . $LDSpecialCare . '</nobr></td>
+          </tr>
+          <tr>
+          <tr>
+            <td bgcolor="#fdad29"><font size=1>&nbsp;</td>
+            <td><font size=1>&nbsp;' . $LDDaily . '</td>
+          </tr>
+          <tr>
 
-		</table>
-		';
+        </table>
+        ';
 
                                 echo '</td>
-			<td background="' . createBgSkin($root_path, 'folderskin2.jpg') . '" width="10px">&nbsp;
-			</td>
-			</tr>
-			</table>';
+            <td background="' . createBgSkin($root_path, 'folderskin2.jpg') . '" width="10px">&nbsp;
+            </td>
+            </tr>
+            </table>';
                                 ?>
 
 
@@ -930,14 +931,14 @@ ob_start();
                                         //if($edit){
 
                                         echo '<select style="margin:0px 6px 7px 0px; width:220px; border:1px solid maroon;"
-					name="konsiltyp" size="1" onChange=makekonsil(this.value)>
-					<option value="">ConsultationRequest</option>';
+                    name="konsiltyp" size="1" onChange=makekonsil(this.value)>
+                    <option value="">ConsultationRequest</option>';
 
                                         while (list($x, $v) = each($medical_depts)) {
                                             //echo'
                                             //<option value="'.$v['nr'].'">';
                                             echo'
-						<option value="' . $v['nr'] . '~' . $v['id'] . '">';
+                        <option value="' . $v['nr'] . '~' . $v['id'] . '">';
                                             $buffer = $v['LD_var'];
                                             if (isset($$buffer) && !empty($$buffer))
                                                 echo $$buffer;
@@ -946,7 +947,7 @@ ob_start();
                                             echo '</option>';
                                         }
                                         echo '
-					</select>';
+                    </select>';
                                         //}
                                         ?>
 
@@ -1128,5 +1129,6 @@ require_once($root_path . 'main_theme/topHeader.inc.php');
 $smarty->display('common/mainframe.tpl');
 
 require_once($root_path . 'main_theme/footer.inc.php');
+
 
 ?>

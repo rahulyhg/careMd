@@ -51,7 +51,7 @@ $bill_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                       
 
               ?>
-              FROM DATE: <input name="date_from" class="datepicker" type="text" size=10 maxlength=10 value="<?php echo $_POST['date_from'];?>">
+              FROM DATE: <input name="date_from" class="datepicker" type="date" size=10 maxlength=10 value="<?php echo $_POST['date_from'];?>">
 
 <a href="javascript:show_calendar('form1.date_from','<?php echo date('d-m-Y',strtotime($date_from)); ?>')">
 
@@ -61,7 +61,7 @@ $bill_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
 
 
 
-              TO: <input type="text" name="date_to" class="datepicker" id="date_to" size="10" maxlength="10" value="<?php echo $date_to;?>" ><a href="javascript:show_calendar('form1.date_to','<?php echo $date_format;?>')"><img <?php echo createComIcon($root_path,'show-calendar.gif','0','absmiddle'); ?>></a><input type="submit" name="show" value="show">
+              TO: <input type="date" name="date_to" class="datepicker" id="date_to" size="10" maxlength="10" value="<?php echo $date_to;?>" ><a href="javascript:show_calendar('form1.date_to','<?php echo $date_format;?>')"><img <?php echo createComIcon($root_path,'show-calendar.gif','0','absmiddle'); ?>></a><input type="submit" name="show" value="show">
               </td>
               
           </tr>

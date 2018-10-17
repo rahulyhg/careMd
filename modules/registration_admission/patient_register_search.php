@@ -4,6 +4,11 @@ require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
 $pageName = "Patient";
 
+if (empty($_SESSION['sess_login_userid'])) {
+    header("location: " . $root_path . "?is_logged_out=1");
+    exit;
+}
+
 /**
  * CARE2X Integrated Hospital Information System beta 2.0.1 - 2004-07-04
  * GNU General Public License

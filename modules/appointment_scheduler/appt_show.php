@@ -5,6 +5,10 @@ require($root_path . 'include/inc_environment_global.php');
 
 $pageName = "Appointments";
 
+if (empty($_SESSION['sess_login_userid'])) {
+    header("location: " . $root_path . "?is_logged_out=1");
+    exit;
+}
 
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.1 - 2004-10-02

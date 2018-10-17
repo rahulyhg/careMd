@@ -11,7 +11,7 @@
   </div>
 </nav>
 
-<div class="container-fluid d-flex justify-content-end">
+<div class="container-fluid d-flex justify-content-center">
     <div class="row col-md-4">
         <div class="card ">
             <div class="card-header bg-light">

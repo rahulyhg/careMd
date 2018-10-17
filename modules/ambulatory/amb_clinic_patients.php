@@ -3,6 +3,10 @@ require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
 $pageName = "Registration";
 
+if (empty($_SESSION['sess_login_userid'])) {
+    header("location: " . $root_path . "?is_logged_out=1");
+    exit;
+}
 
 require_once($root_path . 'main_theme/head.inc.php');
 require_once($root_path . 'main_theme/header.inc.php');
