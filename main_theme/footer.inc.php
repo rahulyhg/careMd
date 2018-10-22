@@ -52,6 +52,8 @@
   <script src="<?php echo $root_path ?>/js/care_md/plugins/Chart.bundle.min.js"></script>
   <script src="<?php echo $root_path ?>/js/care_md/plugins/moment.min.js"></script>
   <script src="<?php echo $root_path ?>/js/care_md/plugins/date-time-picker.min.js"></script>
+  <script src="<?php echo $root_path ?>/js/care_md/plugins/jquery.Wload.js"></script>
+
   <script src="<?php echo $root_path ?>/js/care_md/plugins/idle-timer.js"></script>
 
 <?php 

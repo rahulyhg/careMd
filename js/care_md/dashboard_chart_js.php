@@ -3,6 +3,11 @@ require_once('./roots.php');
  ?>
 <script>
 
+  $('.topdiseases').Wload({text:' Loading'})
+  $('.patienttrends').Wload({text:' Loading'})
+  $('.servedpatients').Wload({text:' Loading'})
+  $('.frequentdrugs').Wload({text:' Loading'})
+
 $.getJSON("<?php echo $root_path.'modules/dashboard/patientTrends.php' ?>").done(function(data){
 
     var config = {
@@ -25,6 +30,8 @@ $.getJSON("<?php echo $root_path.'modules/dashboard/patientTrends.php' ?>").done
         }
       }
     };
+     $('.patienttrends').Wload('hide',{time:0})
+
      var ctx = document.getElementById('patienttrends').getContext('2d');
      patients = new Chart(ctx, config);
 
@@ -33,7 +40,7 @@ $.getJSON("<?php echo $root_path.'modules/dashboard/patientTrends.php' ?>").done
 })
 
 $("#patienttrendselect").change(function(){
-  
+  $('.patienttrends').Wload({text:' Loading'});
   var period = $('#patienttrendselect').val();
 
   $.getJSON("<?php echo $root_path.'modules/dashboard/patientTrends.php?period=' ?>"+period).done(function(data){
@@ -58,6 +65,8 @@ $("#patienttrendselect").change(function(){
         }
       }
     };
+     $('.patienttrends').Wload('hide',{time:0})
+
       patients.destroy();
       var ctx = document.getElementById('patienttrends').getContext('2d');
       patients = new Chart(ctx, config);
@@ -118,21 +127,13 @@ var diseaseConfig = {
 
     var dcht = document.getElementById('topdiseases').getContext('2d');
     topDiseasesChart = new Chart(dcht, diseaseConfig);
+     $('.topdiseases').Wload('hide',{time:0})
 
-    // document.getElementById('randomizeData').addEventListener('click', function() {
-    //   config.data.datasets.forEach(function(dataset) {
-    //     dataset.data = dataset.data.map(function() {
-    //       return randomScalingFactor();
-    //     });
-    //   });
-    //  frequentdrugs.update();
-    // });
-
-
-});
+ });
 
 
     $('#topdiseasesselect').change(function(){
+       $('.topdiseases').Wload({text:' Loading'})
       var count = $('#topdiseasesselect').val();
 
       $.getJSON("<?php echo $root_path.'modules/dashboard/TopDiseases.php/?count=' ?>"+count).done(function(responseselect){
@@ -181,6 +182,7 @@ var diseaseConfig = {
                 }
               }
             };
+              $('.topdiseases').Wload('hide',{time:0})
               topDiseasesChart.destroy();
               var dcht = document.getElementById('topdiseases').getContext('2d');
               topDiseasesChart = new Chart(dcht, diseaseConfig);
@@ -237,12 +239,14 @@ var drugconfig = {
       }
     };
 
+    $('.frequentdrugs').Wload('hide',{time:0})
     var freqntdchart = document.getElementById('frequentdrugs').getContext('2d');
    frequentdrugs = new Chart(freqntdchart, drugconfig);
 });
 
 
 $('#frequentdrugsselect').change(function(){
+  $('.frequentdrugs').Wload({text:' Loading'})
    var count = $('#frequentdrugsselect').val();
   $.getJSON("<?php echo $root_path.'modules/dashboard/FrequentDrugs.php?count=' ?>"+count).done(function(response){
   var drugconfig = {
@@ -290,9 +294,10 @@ $('#frequentdrugsselect').change(function(){
         }
       }
     };
-   frequentdrugs.destroy();
+    $('.frequentdrugs').Wload('hide',{time:0})
+    frequentdrugs.destroy();
     var freqntdchart = document.getElementById('frequentdrugs').getContext('2d');
-   frequentdrugs = new Chart(freqntdchart, drugconfig);
+    frequentdrugs = new Chart(freqntdchart, drugconfig);
 });
 
 })
@@ -328,6 +333,7 @@ var barChartData = {
         }
       }
     });
+    $('.servedpatients').Wload('hide',{time:0})
 
 
 }).fail(function(){
@@ -336,7 +342,7 @@ var barChartData = {
 
 $('#servedpatientselect').change(function(){
    var period = $('#servedpatientselect').val();
-
+   $('.servedpatients').Wload({text:' Loading'})
    $.getJSON("<?php echo $root_path.'modules/dashboard/ServedPatients.php?period=' ?>"+period).done(function(response){
     var barChartData = {
           labels: response.labels,
@@ -368,7 +374,7 @@ $('#servedpatientselect').change(function(){
             }
           }
         });
-
+      $('.servedpatients').Wload('hide',{time:0})
 
     }).fail(function(){
       console.log('error');
