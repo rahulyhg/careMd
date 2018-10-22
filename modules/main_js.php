@@ -4,6 +4,7 @@ $(function() {
 
 	var timeOut = 1000000;
     // $( document ).idleTimer("destroy");
+    
 
 	$.getJSON("<?php echo $root_path ?>modules/sessionSetting.php").done(function(response){
 
@@ -19,13 +20,31 @@ $(function() {
 	 
       console.log(data);
 	})
-    
+    console.log(timeOut)
 
     $( document ).on( "idle.idleTimer", function(event, elem, obj){
-
-        window.location.href = window.loginUrl;
+        console.log(timeOut)
+        // window.location.href = window.loginUrl;
 
     });
+
+    $('#datepicker').dateTimePicker({
+        mode: 'date',
+        format: 'dd/MM/yyyy'
+    });
+
+
+    $('#datepicker1').dateTimePicker({
+        mode: 'date',
+        format: 'dd/MM/yyyy'
+    });
+
+
+    $('#datepicker2').dateTimePicker({
+        mode: 'date',
+        format: 'dd/MM/yyyy'
+    });
+
 });
 
 </script>

@@ -113,7 +113,7 @@ require_once($root_path . 'main_theme/header.inc.php');
  ?>
 
 
- <div class="main-panel" >
+ <div class="main-panel" style="margin-left: 400px;" >
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">

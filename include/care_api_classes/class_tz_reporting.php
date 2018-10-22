@@ -8934,15 +8934,15 @@ $sum_all=$total_lab+$total_drugs+$total_xray+$total_dental+$total_eye_service+$t
             <form name="form1" method="post" action="" onsubmit="return inputvalue()">
                 <table width="100%" border="0" align="center">
                     <tr>
-                        <td><?php echo $LDDateFrom; ?><input name="date_from" type="text" size=10 maxlength=10 value="<?php echo $_POST['date_from'] ?>">
-                            <a href="javascript:show_calendar('form1.date_from','<?php echo $date_format ?>')">
+                        <td><?php echo $LDDateFrom; ?><input name="date_from" id="datepicker"  type="text" size=10 maxlength=10 value="<?php echo $_POST['date_from'] ?>">
+                           <!--  <a href="javascript:show_calendar('form1.date_from','<?php echo $date_format ?>')">
                                 <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
-
+ -->
 
                             <?php echo $LDDateTo; ?>
-                            <input name="date_to" type="text" size=10 maxlength=10 value="<?php echo $_POST['date_to'] ?>" >
-                            <a href="javascript:show_calendar('form1.date_to','<?php echo $date_format ?>')">
-                                <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                            <input name="date_to" type="text" id="datepicker1"  size=10 maxlength=10 value="<?php echo $_POST['date_to'] ?>" >
+                           <!--  <a href="javascript:show_calendar('form1.date_to','<?php echo $date_format ?>')">
+                                <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a> -->
                             <font size=1>[dd/mm/yyyy]
 
                             <?php echo $companies; ?>  
@@ -9159,15 +9159,15 @@ $sum_all=$total_lab+$total_drugs+$total_xray+$total_dental+$total_eye_service+$t
             <form name="form1" method="post" action="" onsubmit="return inputvalue()">
                 <table width="100%" border="0" align="center">
                     <tr>
-                        <td><?php echo $LDDateFrom; ?><input name="date_from" type="text" size=10 maxlength=10 value="<?php echo $_POST['date_from'] ?>">
-                            <a href="javascript:show_calendar('form1.date_from','<?php echo $date_format ?>')">
+                        <td><?php echo $LDDateFrom; ?><input name="date_from" id="datepicker"  type="text" size=10 maxlength=10 value="<?php echo $_POST['date_from'] ?>">
+                          <!--   <a href="javascript:show_calendar('form1.date_from','<?php echo $date_format ?>')">
                                 <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
-
+ -->
 
                             <?php echo $LDDateTo; ?>
-                            <input name="date_to" type="text" size=10 maxlength=10 value="<?php echo $_POST['date_to'] ?>" >
-                            <a href="javascript:show_calendar('form1.date_to','<?php echo $date_format ?>')">
-                                <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                            <input name="date_to" type="text" size=10 maxlength=10 id="datepicker1"  value="<?php echo $_POST['date_to'] ?>" >
+                          <!--   <a href="javascript:show_calendar('form1.date_to','<?php echo $date_format ?>')">
+                                <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a> -->
                             <font size=1>[dd/mm/yyyy]
 
 
@@ -9407,15 +9407,15 @@ $sum_all=$total_lab+$total_drugs+$total_xray+$total_dental+$total_eye_service+$t
             <form name="form1" method="post" action="" onsubmit="return inputvalue()">
                 <table width="100%" border="0" align="center">
                     <tr>
-                        <td><?php echo $LDDateFrom; ?><input name="date_from" type="text" size=10 maxlength=10 value="<?php echo $_POST['date_from'] ?>">
-                            <a href="javascript:show_calendar('form1.date_from','<?php echo $date_format ?>')">
+                           <!--  <a href="javascript:show_calendar('form1.date_from','<?php echo $date_format ?>')">
                                 <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
-
+ -->
 
                             <?php echo $LDDateTo; ?>
-                            <input name="date_to" type="text" size=10 maxlength=10 value="<?php echo $_POST['date_to'] ?>" >
-                            <a href="javascript:show_calendar('form1.date_to','<?php echo $date_format ?>')">
+                            <input name="date_to" type="text" size=10 maxlength=10 id="datepicker1" value="<?php echo $_POST['date_to'] ?>" >
+                         <!--    <a href="javascript:show_calendar('form1.date_to','<?php echo $date_format ?>')">
                                 <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                           -->
                             <font size=1>[dd/mm/yyyy]
 
 
@@ -9433,9 +9433,7 @@ $sum_all=$total_lab+$total_drugs+$total_xray+$total_dental+$total_eye_service+$t
 
                         </td>
                     </tr>
-                    <tr>
-                        <td><?php echo $insurance_obj->ShowAllInsurancesForQuotatuion();?></td>
-                    </tr>
+                   
 
                 </table>
 
@@ -9678,18 +9676,17 @@ $sum_all=$total_lab+$total_drugs+$total_xray+$total_dental+$total_eye_service+$t
             <form name="form1" method="post" action="" onsubmit="return inputvalue()">
                 <table width="100%" border="0" align="center">
                     <tr>
-                        <td><?php echo $LDDateFrom; ?><input name="date_from" type="text" size=10 maxlength=10 value="<?php echo $_POST['date_from'] ?>">
-                            <a href="javascript:show_calendar('form1.date_from','<?php echo $date_format ?>')">
+                        <td><?php echo $LDDateFrom; ?><input name="date_from"  size=15 maxlength=15 id="datepicker" type="text" value="<?php echo $_POST['date_from'] ?>">
+                           <!--  <a href="javascript:show_calendar('form1.date_from','<?php echo $date_format ?>')">
                                 <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
-
+ -->
 
                             <?php echo $LDDateTo; ?>
-                            <input name="date_to" type="text" size=10 maxlength=10 value="<?php echo $_POST['date_to'] ?>" >
-                            <a href="javascript:show_calendar('form1.date_to','<?php echo $date_format ?>')">
+                            <input name="date_to" type="text" size=15 maxlength=15 id="datepicker1" value="<?php echo $_POST['date_to'] ?>" >
+                           <!--  <a href="javascript:show_calendar('form1.date_to','<?php echo $date_format ?>')">
                                 <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+ -->
                             <font size=1>[dd/mm/yyyy]
-
-
                             <select name="admission_id" id="admission_id" onChange="javascript:popdepts()">
                                 <OPTION selected value="all_opd_ipd" >All</OPTION>
                                 <OPTION value="2">Outpatient</OPTION>

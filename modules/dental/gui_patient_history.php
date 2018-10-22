@@ -13,7 +13,7 @@ require('./roots.php');
 
 require($root_path . 'include/inc_environment_global.php');
 
-$pageName = "Registration";
+$pageName = "Inpatient";
 
 
 $lang_tables[] = 'search.php';

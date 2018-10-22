@@ -16,7 +16,6 @@
             <!-- CSS Files -->
             <link href="<?php echo $root_path ?>css/themes/care_md/material-dashboard.css?v=2.1.0" rel="stylesheet"/>
             <link href="<?php echo $root_path ?>css/themes/care_md/font-awesome.min.css" rel="stylesheet"/>
-            <link href="<?php echo $root_path ?>css/themes/care_md/chartist-plugin-tooltip.css" rel="stylesheet"/>
             <link href="<?php echo $root_path ?>css/themes/care_md/main.css" rel="stylesheet"/>
     </head>
 

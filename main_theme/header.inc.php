@@ -193,7 +193,7 @@ if ($userPermissions[0] == "System_Admin" || $userPermissions[0] == "_a_0_all " 
 
 }
 
-    array_push($userNavigationMenus, array('name' => 'Accounting & Inventory', 'url' => "http://localhost/weberp"));
+    array_push($userNavigationMenus, array('name' => 'Accounting & Stock', 'url' => "http://localhost/weberp"));
 
 
  // echo "<pre>"; print_r($userPermissions);echo "</pre>";
@@ -354,7 +354,7 @@ $userNavigations = array_unique($userNavigationMenus, SORT_REGULAR);
 
             <?php elseif ($menu['name'] == "System Admin"): ?>
             <li class="nav-item <?php if($pageName == "System Admin") echo 'active'; ?> ">
-              <a class="nav-link" target="_blank" href="<?php echo $menu['url'] ?>">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>">
                 <i class="material-icons colorOne">settings</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>

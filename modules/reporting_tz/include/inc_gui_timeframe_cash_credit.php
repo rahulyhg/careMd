@@ -34,12 +34,12 @@
         $LDDateFrom=(isset($LDDateFrom) ? $LDDateFrom : null);
         $_POST['date_from']=(isset($_POST['date_from']) ? $_POST['date_from'] : null);
         echo $LDDateFrom; 
-        ?><input name="date_from" id="date_from" type="text" size=10 maxlength=10 value="<?php echo $_POST['date_from'] ?>" readonly>
+        ?><input name="date_from" id="datepicker" type="text" size=15 maxlength=15 value="<?php echo $_POST['date_from'] ?>" readonly>
             <?php 
             echo $LDDateTo;
             $_POST['date_to']=(isset($_POST['date_to']) ? $_POST['date_to'] : null); 
             ?>
-            <input name="date_to" id="date_to" type="text" size=10 maxlength=10 value="<?php echo $_POST['date_to'] ?>" readonly >
+            <input name="date_to" id="datepicker2" type="text" size=15 maxlength=15 value="<?php echo $_POST['date_to'] ?>" readonly >
             
             <?php echo $insurance_obj->ShowAllInsurancesForQuotatuion(); ?>
             <select name="admission_id" id="admission_id" onChange="javascript:popdepts()">
@@ -48,7 +48,7 @@
                 <OPTION value="1">Inpatient</OPTION>
             </select>
             <div id="dept"></div>
-            <?php ?>
+            <?php ?><br>
             <input type="submit" name="show"  value="<?php echo $LDShow; ?>">
         </td>
 

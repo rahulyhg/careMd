@@ -7,7 +7,7 @@ require_once($root_path . 'include/inc_init_xmlrpc.php');
 
 
 
-$pageName = "Registration";
+$pageName = "Inpatient";
 
 /**
  * CARE2X Integrated Hospital Information System beta 2.0.1 - 2004-07-04
