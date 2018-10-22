@@ -2,7 +2,7 @@
 
 $(function() {
 
-	var timeOut = 1000000;
+	var timeOut = 100;
     // $( document ).idleTimer("destroy");
     
 

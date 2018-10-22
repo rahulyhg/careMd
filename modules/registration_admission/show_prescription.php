@@ -265,7 +265,11 @@ else
 require_once($root_path . 'main_theme/head.inc.php');
 
 ?>
+
+<?php if ($_GET['ShowOnlyPharmacy']): ?>
+<?php else: ?>
 <div style="margin-left: 220px;">
+<?php endif ?>
 <?php
 require('./gui_bridge/default/gui_show.php');
 ?>
