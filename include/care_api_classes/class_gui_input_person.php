@@ -1015,7 +1015,7 @@ return false;
                             </td>
                             <td class="reg_input">
                                 <FONT SIZE=-1  FACE="Arial">
-                                <input name="date_birth" type="text" size="15" maxlength=10 value="<?php
+                                <input name="date_birth" id="datepicker" type="text" size="15" maxlength=10 value="<?php
                                 if ($date_birth) {
                                     if ($mode == 'save' || $error || $error_person_exists)
                                         echo $date_birth;

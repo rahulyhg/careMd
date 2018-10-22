@@ -1,27 +1,26 @@
-<?php /* Smarty version 2.6.22, created on 2012-08-15 18:28:48
-  compiled from registration_admission/reg_form.tpl */ ?>
+<?php /* Smarty version 2.6.22, created on 2018-10-22 09:32:23
+         compiled from registration_admission/reg_form.tpl */ ?>
 <?php echo $this->_tpl_vars['sRegFormJavaScript']; ?>
 
 
 <?php if ($this->_tpl_vars['error'] || $this->_tpl_vars['errorDupPerson']): ?>
-    <?php
-    $_smarty_tpl_vars = $this->_tpl_vars;
-    $this->_smarty_include(array('smarty_include_tpl_file' => "registration_admission/reg_error_duplicate.tpl", 'smarty_include_vars' => array()));
-    $this->_tpl_vars = $_smarty_tpl_vars;
-    unset($_smarty_tpl_vars);
-    ?>
+<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "registration_admission/reg_error_duplicate.tpl", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
 <?php endif; ?>
 
 <?php echo $this->_tpl_vars['pretext']; ?>
 
 
 <?php if ($this->_tpl_vars['bSetAsForm']): ?>
-    <form method="post" action="<?php echo $this->_tpl_vars['thisfile']; ?>
-          " name="aufnahmeform" ENCTYPE="multipart/form-data" onSubmit="return chkform(this)">
-          <?php endif; ?>
+<form method="post" action="<?php echo $this->_tpl_vars['thisfile']; ?>
+" name="aufnahmeform" ENCTYPE="multipart/form-data" onSubmit="return chkform(this)">
+    <?php endif; ?>
 
     <table border=0 cellspacing=0 cellpadding=0 <?php echo $this->_tpl_vars['sFormWidth']; ?>
-           >
+>
         <tr>
             <td class="reg_item">
                 <?php echo $this->_tpl_vars['LDRegistryNr']; ?>
@@ -35,9 +34,9 @@
 
             </td>
             <td <?php echo $this->_tpl_vars['sPicTdRowSpan']; ?>
-                class="photo_id" align="center">
+ class="photo_id" align="center">
                 <a href="#"  onClick="showpic(document.aufnahmeform.photo_filename)"><img <?php echo $this->_tpl_vars['img_source']; ?>
-                        name="headpic"></a>
+ name="headpic"></a>
                 <br>
                 <?php echo $this->_tpl_vars['LDPhoto']; ?>
 
@@ -72,7 +71,7 @@
             </td>
         </tr>
 
-
+        
 
         <?php echo $this->_tpl_vars['sPersonTitle']; ?>
 
@@ -87,20 +86,20 @@
         <?php echo $this->_tpl_vars['sNameMiddle']; ?>
 
         <?php if ($this->_tpl_vars['bShowTribeSelection']): ?>
-            <tr>
-                <td class="reg_item">
-                    <?php echo $this->_tpl_vars['sNameTribe']; ?>
+                <tr>
+            <td class="reg_item">
+                <?php echo $this->_tpl_vars['sNameTribe']; ?>
 
-                </td>
-                <td class="reg_input">
-                    <?php echo $this->_tpl_vars['sTribeSelect']; ?>
+            </td>
+            <td class="reg_input">
+                <?php echo $this->_tpl_vars['sTribeSelect']; ?>
 
-                </td>
-                </td>
-            </tr>
+            </td>
+            </td>
+        </tr>
 
         <?php else: ?>
-            <?php echo $this->_tpl_vars['sNameTribe']; ?>
+        <?php echo $this->_tpl_vars['sNameTribe']; ?>
 
         <?php endif; ?>
 
@@ -124,71 +123,71 @@
             </td>
             <td class="reg_input">
                 <?php echo $this->_tpl_vars['sBdayInput']; ?>
-                &nbsp;<?php echo $this->_tpl_vars['sCrossImg']; ?>
-                <?php echo $this->_tpl_vars['sDeathDate']; ?>
+&nbsp;<?php echo $this->_tpl_vars['sCrossImg']; ?>
+ <?php echo $this->_tpl_vars['sDeathDate']; ?>
 
             </td>
             <td class="reg_input">
                 <?php echo $this->_tpl_vars['LDSex']; ?>
-                <?php echo $this->_tpl_vars['sSexM']; ?>
-                <?php echo $this->_tpl_vars['LDMale']; ?>
-                &nbsp;&nbsp; <?php echo $this->_tpl_vars['sSexF']; ?>
-                <?php echo $this->_tpl_vars['LDFemale']; ?>
+ <?php echo $this->_tpl_vars['sSexM']; ?>
+ <?php echo $this->_tpl_vars['LDMale']; ?>
+&nbsp;&nbsp; <?php echo $this->_tpl_vars['sSexF']; ?>
+ <?php echo $this->_tpl_vars['LDFemale']; ?>
 
             </td>
         </tr>
 
         <?php if ($this->_tpl_vars['LDBloodGroup']): ?>
-            <tr>
-                <td class="reg_item">
-                    <?php echo $this->_tpl_vars['LDBloodGroup']; ?>
+        <tr>
+            <td class="reg_item">
+                <?php echo $this->_tpl_vars['LDBloodGroup']; ?>
 
-                </td>
-                <td colspan=2 class="reg_input">
-                    <?php echo $this->_tpl_vars['sBGAInput']; ?>
-                    <?php echo $this->_tpl_vars['LDA']; ?>
-                    &nbsp;&nbsp; <?php echo $this->_tpl_vars['sBGBInput']; ?>
-                    <?php echo $this->_tpl_vars['LDB']; ?>
-                    &nbsp;&nbsp; <?php echo $this->_tpl_vars['sBGABInput']; ?>
-                    <?php echo $this->_tpl_vars['LDAB']; ?>
-                    &nbsp;&nbsp; <?php echo $this->_tpl_vars['sBGOInput']; ?>
-                    <?php echo $this->_tpl_vars['LDO']; ?>
+            </td>
+            <td colspan=2 class="reg_input">
+                <?php echo $this->_tpl_vars['sBGAInput']; ?>
+<?php echo $this->_tpl_vars['LDA']; ?>
+  &nbsp;&nbsp; <?php echo $this->_tpl_vars['sBGBInput']; ?>
+<?php echo $this->_tpl_vars['LDB']; ?>
+ &nbsp;&nbsp; <?php echo $this->_tpl_vars['sBGABInput']; ?>
+<?php echo $this->_tpl_vars['LDAB']; ?>
+  &nbsp;&nbsp; <?php echo $this->_tpl_vars['sBGOInput']; ?>
+<?php echo $this->_tpl_vars['LDO']; ?>
 
-                    &nbsp;&nbsp;
-                    | <?php echo $this->_tpl_vars['RHfactor']; ?>
-                    <?php echo $this->_tpl_vars['sBRHposInput']; ?>
-                    <?php echo $this->_tpl_vars['RHpos']; ?>
-                    &nbsp;&nbsp; <?php echo $this->_tpl_vars['sBRHnegInput']; ?>
-                    <?php echo $this->_tpl_vars['RHneg']; ?>
+                &nbsp;&nbsp;
+                | <?php echo $this->_tpl_vars['RHfactor']; ?>
+ <?php echo $this->_tpl_vars['sBRHposInput']; ?>
+<?php echo $this->_tpl_vars['RHpos']; ?>
+  &nbsp;&nbsp; <?php echo $this->_tpl_vars['sBRHnegInput']; ?>
+<?php echo $this->_tpl_vars['RHneg']; ?>
 
-                    <br>
-                </td>
-            </tr>
+                <br>
+            </td>
+        </tr>
         <?php endif; ?>
         <?php if ($this->_tpl_vars['LDCivilStatus']): ?>
-            <tr>
-                <td class="reg_item">
-                    <?php echo $this->_tpl_vars['LDCivilStatus']; ?>
+        <tr>
+            <td class="reg_item">
+                <?php echo $this->_tpl_vars['LDCivilStatus']; ?>
 
-                </td>
-                <td colspan=2 class="reg_input">
-                    <?php echo $this->_tpl_vars['sCSSingleInput']; ?>
-                    <?php echo $this->_tpl_vars['LDSingle']; ?>
-                    &nbsp;&nbsp;
-                    <?php echo $this->_tpl_vars['sCSMarriedInput']; ?>
-                    <?php echo $this->_tpl_vars['LDMarried']; ?>
-                    &nbsp;&nbsp;
-                    <?php echo $this->_tpl_vars['sCSDivorcedInput']; ?>
-                    <?php echo $this->_tpl_vars['LDDivorced']; ?>
-                    &nbsp;&nbsp;
-                    <?php echo $this->_tpl_vars['sCSWidowedInput']; ?>
-                    <?php echo $this->_tpl_vars['LDWidowed']; ?>
-                    &nbsp;&nbsp;
-                    <?php echo $this->_tpl_vars['sCSSeparatedInput']; ?>
-                    <?php echo $this->_tpl_vars['LDSeparated']; ?>
+            </td>
+            <td colspan=2 class="reg_input">
+                <?php echo $this->_tpl_vars['sCSSingleInput']; ?>
+<?php echo $this->_tpl_vars['LDSingle']; ?>
+  &nbsp;&nbsp;
+                <?php echo $this->_tpl_vars['sCSMarriedInput']; ?>
+<?php echo $this->_tpl_vars['LDMarried']; ?>
+ &nbsp;&nbsp;
+                <?php echo $this->_tpl_vars['sCSDivorcedInput']; ?>
+<?php echo $this->_tpl_vars['LDDivorced']; ?>
+  &nbsp;&nbsp;
+                <?php echo $this->_tpl_vars['sCSWidowedInput']; ?>
+<?php echo $this->_tpl_vars['LDWidowed']; ?>
+ &nbsp;&nbsp;
+                <?php echo $this->_tpl_vars['sCSSeparatedInput']; ?>
+<?php echo $this->_tpl_vars['LDSeparated']; ?>
 
-                </td>
-            </tr>
+            </td>
+        </tr>
         <?php endif; ?>
 
         <tr>
@@ -208,7 +207,7 @@
 
             </td>
             <td class="reg_input">
-                &nbsp;&nbsp; 					</td>
+                 &nbsp;&nbsp;             </td>
         </tr>
 
         <tr>
@@ -218,7 +217,7 @@
             </td>
             <td class="reg_input">
                 <?php echo $this->_tpl_vars['sTownCityInput']; ?>
-                <?php echo $this->_tpl_vars['sTownCityMiniCalendar']; ?>
+ <?php echo $this->_tpl_vars['sTownCityMiniCalendar']; ?>
 
             </td>
             <td class="reg_input">
@@ -233,7 +232,7 @@
             </td>
             <td class="reg_input">
                 <?php echo $this->_tpl_vars['sTribe']; ?>
-                &nbsp;
+ &nbsp;
             </td>
             <td class="reg_input">
                 &nbsp;&nbsp;
@@ -245,58 +244,50 @@
 
         <?php if ($this->_tpl_vars['bShowInsurance']): ?>
 
-            <?php echo $this->_tpl_vars['sInsuranceNr']; ?>
+        <?php echo $this->_tpl_vars['sInsuranceNr']; ?>
 
 
-            <tr>
-                <td>
-                    &nbsp;
-                </td>
-                <td colspan=2 class="reg_input">
-                    <?php echo $this->_tpl_vars['sErrorInsClass']; ?>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+            <td colspan=2 class="reg_input">
+                <?php echo $this->_tpl_vars['sErrorInsClass']; ?>
 
-                    <?php
-                    $_from = $this->_tpl_vars['sInsClasses'];
-                    if (!is_array($_from) && !is_object($_from)) {
-                        settype($_from, 'array');
-                    }if (count($_from)):
-                        foreach ($_from as $this->_tpl_vars['InsClass']):
-                            ?>
-                            <?php echo $this->_tpl_vars['InsClass']; ?>
+                <?php $_from = $this->_tpl_vars['sInsClasses']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['InsClass']):
+?>
+                <?php echo $this->_tpl_vars['InsClass']; ?>
 
-                            <?php
-                        endforeach;
-                    endif;
-                    unset($_from);
-                    ?>
-                </td>
-            </tr>
+                <?php endforeach; endif; unset($_from); ?>
+            </td>
+        </tr>
 
-            <tr>
-                <td class="reg_item">
-                    <?php echo $this->_tpl_vars['LDInsuranceCo']; ?>
+        <tr>
+            <td class="reg_item">
+                <?php echo $this->_tpl_vars['LDInsuranceCo']; ?>
 
-                </td>
-                <td colspan=2 class="reg_input">
-                    <?php echo $this->_tpl_vars['sInsCoNameInput']; ?>
-                    <?php echo $this->_tpl_vars['sInsCoMiniCalendar']; ?>
+            </td>
+            <td colspan=2 class="reg_input">
+                <?php echo $this->_tpl_vars['sInsCoNameInput']; ?>
+ <?php echo $this->_tpl_vars['sInsCoMiniCalendar']; ?>
 
-                </td>
-            </tr>
+            </td>
+        </tr>
         <?php endif; ?>
 
         <?php if ($this->_tpl_vars['bNoInsurance']): ?>
-            <tr>
-                <td>
-                    &nbsp;
-                </td>
-                <td colspan=2 class="reg_input">
-                    <?php echo $this->_tpl_vars['LDSeveralInsurances']; ?>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+            <td colspan=2 class="reg_input">
+                <?php echo $this->_tpl_vars['LDSeveralInsurances']; ?>
 
-                </td>
-            </tr>
+            </td>
+        </tr>
         <?php endif; ?>
-        <?php echo $this->_tpl_vars['sPhone1']; ?>
+                <?php echo $this->_tpl_vars['sPhone1']; ?>
 
         <?php echo $this->_tpl_vars['sPhone2']; ?>
 
@@ -324,24 +315,24 @@
             </td>
             <td colspan=2 class="reg_input">
                 <?php echo $this->_tpl_vars['sEthnicOrigInput']; ?>
-                <?php echo $this->_tpl_vars['sEthnicOrigMiniCalendar']; ?>
+ <?php echo $this->_tpl_vars['sEthnicOrigMiniCalendar']; ?>
 
             </td>
         </tr>
 
         <?php if ($this->_tpl_vars['bShowOtherHospNr']): ?>
-            <tr>
-                <td class="reg_item" valign=top class="reg_input">
-                    <?php echo $this->_tpl_vars['LDOtherHospitalNr']; ?>
+        <tr>
+            <td class="reg_item" valign=top class="reg_input">
+                <?php echo $this->_tpl_vars['LDOtherHospitalNr']; ?>
 
-                </td>
-                <td colspan=2 class="reg_input">
-                    <?php echo $this->_tpl_vars['sOtherNr']; ?>
+            </td>
+            <td colspan=2 class="reg_input">
+                <?php echo $this->_tpl_vars['sOtherNr']; ?>
 
-                    <?php echo $this->_tpl_vars['sOtherNrSelect']; ?>
+                <?php echo $this->_tpl_vars['sOtherNrSelect']; ?>
 
-                </td>
-            </tr>
+            </td>
+        </tr>
         <?php endif; ?>
 
         <tr>
@@ -362,12 +353,12 @@
 
     <p>
         <?php echo $this->_tpl_vars['pbSubmit']; ?>
-        &nbsp;&nbsp; <?php echo $this->_tpl_vars['pbReset']; ?>
-        <?php echo $this->_tpl_vars['pbForceSave']; ?>
+ &nbsp;&nbsp; <?php echo $this->_tpl_vars['pbReset']; ?>
+ <?php echo $this->_tpl_vars['pbForceSave']; ?>
 
 
         <?php if ($this->_tpl_vars['bSetAsForm']): ?>
-    </form>
+</form>
 <?php endif; ?>
 
 <?php echo $this->_tpl_vars['sNewDataForm']; ?>

@@ -1,6 +1,6 @@
 
 
-<table border=0 cellpadding=4 cellspacing=1 width=100% class="frame">
+<table border=1 cellpadding=4 cellspacing=1 width=100% class="frame">
 <?php
 
 $bgc=(isset($bgc) ? $bgc : null);
@@ -315,4 +315,9 @@ $bgc=(isset($bgc) ? $bgc : null);
         </a>
     <?php
 }
+?>
+
+<?php
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
 ?>

@@ -203,12 +203,12 @@ else
 
 /* Load GUI page */
 
-require_once($root_path . 'main_theme/head.inc.php');
-require_once($root_path . 'main_theme/header.inc.php');
-require_once($root_path . 'main_theme/topHeader.inc.php');
-
+?>
+<div style="margin-left: 215px;">
+<?php
 require('./gui_bridge/default/gui_show.php');
 
 require_once($root_path . 'main_theme/footer.inc.php');
 
 ?>
+</div>
