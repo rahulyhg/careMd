@@ -4,9 +4,9 @@ $serviceContainer->checkVersion('2.0.0-dev');
 $serviceContainer->setAdapterClass('default', 'mysql');
 $manager = new \Propel\Runtime\Connection\ConnectionManagerSingle();
 $manager->setConfiguration(array (
-  'dsn' => 'mysql:host=localhost;port=3306;dbname=careMd',
+  'dsn' => 'mysql:host=localhost;port=3306;dbname=caredb_aicc',
   'user' => 'root',
-  'password' => 'r gk',
+  'password' => '20Kukzan09',
   'settings' =>
   array (
     'charset' => 'utf8',

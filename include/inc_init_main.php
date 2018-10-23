@@ -1,12 +1,12 @@
 <?php
 # This is the database name
 #$dbname = 'caredb_kibongoto';
-$dbname = 'careMd';
+$dbname = 'caredb_aicc';
 $weberp_db='weberp_aicc';
 # Database user name, default is root or httpd for mysql, or postgres for postgresql
 $dbusername = 'root';
 # Database user password, default is empty char
-$dbpassword = 'r gk';
+$dbpassword = '20Kukzan09';
 # Database host name, default = localhost
 $dbhost = 'localhost';
 
