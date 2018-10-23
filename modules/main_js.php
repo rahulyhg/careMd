@@ -2,31 +2,32 @@
 
 $(function() {
 
-	var timeOut = 100;
+	var timeOut = 100000;
     // $( document ).idleTimer("destroy");
     
+    window.loginUrl = "<?php echo $root_path ?>"+ "main/login.php";
 
 	$.getJSON("<?php echo $root_path ?>modules/sessionSetting.php").done(function(response){
 
         timeOut = response.timeout;
-        window.loginUrl = response.loginUrl;
+        console.log(response)
 
         $( document ).idleTimer( {
             timeout: timeOut, 
             idle: true
         });
 
+       
+
 	}).fail(function(data){
 	 
       console.log(data);
 	})
-    console.log(timeOut)
 
     $( document ).on( "idle.idleTimer", function(event, elem, obj){
-        console.log(timeOut)
-        // window.location.href = window.loginUrl;
-
+        window.location.href = window.loginUrl;
     });
+    
 
     $('#datepicker').dateTimePicker({
         mode: 'date',
