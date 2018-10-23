@@ -70,7 +70,11 @@ $aSubMenuIcon = array(createComIcon($root_path, 'notepad.gif', '0'),
     //createComIcon($root_path,'calendar.gif','0'),
     //createComIcon($root_path,'settings_tree.gif','0'),
     createComIcon($root_path, 'padlock.gif', '0'),
-        //createComIcon($root_path,'discussions.gif','0')
+        //createComIcon($root_path,'discussions.gif','0'),
+        //
+    createComIcon($root_path,'camera_s.gif','0'),
+    
+    
 );
 
 # Prepare the submenu item descriptions
@@ -88,6 +92,7 @@ $aSubMenuText = array($LDPluginsTxt,
     //$LDCalcTxt,
     //$LDUserConfigOptTxt,
     $LDAccessPwTxt,
+    'Change current theme here'
         //$LDNewsgroupTxt
 );
 
@@ -105,7 +110,10 @@ $aSubMenuItem = array('LDPlugins' => '<a href="' . $root_path . 'plugins/plugins
     'LDNews' => '<a href="' . $root_path . 'modules/news/editor-pass.php' . URL_APPEND . '&dept_nr=1&title=' . $LDEditTitle . '">' . $LDNews . '</a>'/* ,
       'LDCalc' => '<a href="'.$root_path.'modules/tools/calculator.php'.URL_APPEND.'">'. $LDCalc.'</a>',
       'LDUserConfigOpt' => '<a href="config_options.php'.URL_APPEND.'">'. $LDUserConfigOpt.'</a>' */,
-    'LDAccessPw' => '<a href="' . $root_path . 'modules/myintranet/my-passw-change.php' . URL_APPEND . '">' . $LDAccessPw . '</a>'/* ,
+    'LDAccessPw' => '<a href="' . $root_path . 'modules/myintranet/my-passw-change.php' . URL_APPEND . '">' . $LDAccessPw . '</a>',
+    'ChangeTheme' => '<a href="' . $root_path . 'modules/myintranet/my-theme-change.php' . URL_APPEND . '">Change Theme</a>'
+
+    /* ,
           'LDNewsgroup' => '<a href="http://www.mail-archive.com/care2002-developers@lists.sourceforge.net/">'.$LDNewsgroup.'</a>' */
 );
 

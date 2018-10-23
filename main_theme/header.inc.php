@@ -62,6 +62,7 @@ $roleId = $user['RoleId'];
 // $roleId = 13;
 
 $userRole = CareUserRolesQuery::create()->filterByRoleId($roleId)->findOne()->toArray();
+$themeName = $user['ThemeName'];
 
 $userPermissions = explode(" ", $userRole['Permission']);
 
@@ -193,7 +194,7 @@ if ($userPermissions[0] == "System_Admin" || $userPermissions[0] == "_a_0_all " 
 
 }
 
-    array_push($userNavigationMenus, array('name' => 'Accounting & Inventory', 'url' => "http://localhost/weberp"));
+    array_push($userNavigationMenus, array('name' => 'Accounting & Stock', 'url' => "http://localhost/weberp"));
 
 
  // echo "<pre>"; print_r($userPermissions);echo "</pre>";
@@ -204,12 +205,10 @@ $userNavigations = array_unique($userNavigationMenus, SORT_REGULAR);
 
 ?>
 
-<body class="">
-  <div class="wrapper ">
 
-
-
+  
     <div class="sidebar" data-color="azure" data-background-color="white">
+
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -228,7 +227,7 @@ $userNavigations = array_unique($userNavigationMenus, SORT_REGULAR);
             <li class="nav-item colorOne <?php if($pageName == "Home") echo 'active'; ?> " >
               <a class="nav-link " href="<?php echo $root_path ?>modules/dashboard/dashboard.php<?php echo URL_APPEND ?>">
                
-                <p> <i class="fa fa-home fa-fw"></i><?php echo $menu['name'] ?></p>
+                <p class="colorOne" > <i class="fa fa-home fa-fw"></i><?php echo $menu['name'] ?></p>
               </a>
             </li>
 
@@ -354,7 +353,7 @@ $userNavigations = array_unique($userNavigationMenus, SORT_REGULAR);
 
             <?php elseif ($menu['name'] == "System Admin"): ?>
             <li class="nav-item <?php if($pageName == "System Admin") echo 'active'; ?> ">
-              <a class="nav-link" target="_blank" href="<?php echo $menu['url'] ?>">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>">
                 <i class="material-icons colorOne">settings</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>

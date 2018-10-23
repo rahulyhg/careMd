@@ -19,7 +19,7 @@ if (empty($_SESSION['sess_login_userid'])) {
  */
 # The language table
 define('LANG_FILE', 'aufnahme.php');
-$local_user = 'aufnahme_user';
+// $local_user = 'aufnahme_user';
 require($root_path . 'include/inc_front_chain_lang.php');
 
 if (empty($target))

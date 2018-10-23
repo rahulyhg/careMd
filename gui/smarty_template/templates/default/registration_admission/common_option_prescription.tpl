@@ -1,11 +1,11 @@
 {{* Frame template for displaying admission data *}}
 {{* Used by  *}}
 {{* Elpidio Latorilla 2004-06-07 *}}
-<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<table width="100%" cellspacing="0" cellpadding="0" border="1">
     <tbody>
         <tr>
             <td>
-                <table cellspacing="0" cellpadding="0" width="100%" border="0">
+                <table cellspacing="0" cellpadding="0" width="100%" border="1" class="table table-bordered table-condensed">
                     <tr valign="top">
                         <td>
                             {{include file="registration_admission/basic_data_in_line.tpl"}}

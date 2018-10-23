@@ -1,10 +1,10 @@
-<?php /* Smarty version 2.6.22, created on 2017-05-08 17:55:49
+<?php /* Smarty version 2.6.22, created on 2018-10-22 11:06:06
          compiled from registration_admission/common_option_prescription.tpl */ ?>
-<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<table width="100%" cellspacing="0" cellpadding="0" border="1">
     <tbody>
         <tr>
             <td>
-                <table cellspacing="0" cellpadding="0" width="100%" border="0">
+                <table cellspacing="0" cellpadding="0" width="100%" border="1" class="table table-bordered table-condensed">
                     <tr valign="top">
                         <td>
                             <?php $_smarty_tpl_vars = $this->_tpl_vars;

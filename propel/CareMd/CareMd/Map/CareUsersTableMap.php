@@ -59,7 +59,7 @@ class CareUsersTableMap extends TableMap
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 17;
+    const NUM_COLUMNS = 18;
 
     /**
      * The number of lazy-loaded columns
@@ -69,7 +69,7 @@ class CareUsersTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 17;
+    const NUM_HYDRATE_COLUMNS = 18;
 
     /**
      * the column name for the name field
@@ -157,6 +157,11 @@ class CareUsersTableMap extends TableMap
     const COL_CREATE_TIME = 'care_users.create_time';
 
     /**
+     * the column name for the theme_name field
+     */
+    const COL_THEME_NAME = 'care_users.theme_name';
+
+    /**
      * The default string format for model objects of the related table
      */
     const DEFAULT_STRING_FORMAT = 'YAML';
@@ -168,11 +173,11 @@ class CareUsersTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('Name', 'LoginId', 'Password', 'PersonellNr', 'Lockflag', 'RoleId', 'Exc', 'SDate', 'STime', 'ExpireDate', 'ExpireTime', 'Status', 'History', 'ModifyId', 'ModifyTime', 'CreateId', 'CreateTime', ),
-        self::TYPE_CAMELNAME     => array('name', 'loginId', 'password', 'personellNr', 'lockflag', 'roleId', 'exc', 'sDate', 'sTime', 'expireDate', 'expireTime', 'status', 'history', 'modifyId', 'modifyTime', 'createId', 'createTime', ),
-        self::TYPE_COLNAME       => array(CareUsersTableMap::COL_NAME, CareUsersTableMap::COL_LOGIN_ID, CareUsersTableMap::COL_PASSWORD, CareUsersTableMap::COL_PERSONELL_NR, CareUsersTableMap::COL_LOCKFLAG, CareUsersTableMap::COL_ROLE_ID, CareUsersTableMap::COL_EXC, CareUsersTableMap::COL_S_DATE, CareUsersTableMap::COL_S_TIME, CareUsersTableMap::COL_EXPIRE_DATE, CareUsersTableMap::COL_EXPIRE_TIME, CareUsersTableMap::COL_STATUS, CareUsersTableMap::COL_HISTORY, CareUsersTableMap::COL_MODIFY_ID, CareUsersTableMap::COL_MODIFY_TIME, CareUsersTableMap::COL_CREATE_ID, CareUsersTableMap::COL_CREATE_TIME, ),
-        self::TYPE_FIELDNAME     => array('name', 'login_id', 'password', 'personell_nr', 'lockflag', 'role_id', 'exc', 's_date', 's_time', 'expire_date', 'expire_time', 'status', 'history', 'modify_id', 'modify_time', 'create_id', 'create_time', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, )
+        self::TYPE_PHPNAME       => array('Name', 'LoginId', 'Password', 'PersonellNr', 'Lockflag', 'RoleId', 'Exc', 'SDate', 'STime', 'ExpireDate', 'ExpireTime', 'Status', 'History', 'ModifyId', 'ModifyTime', 'CreateId', 'CreateTime', 'ThemeName', ),
+        self::TYPE_CAMELNAME     => array('name', 'loginId', 'password', 'personellNr', 'lockflag', 'roleId', 'exc', 'sDate', 'sTime', 'expireDate', 'expireTime', 'status', 'history', 'modifyId', 'modifyTime', 'createId', 'createTime', 'themeName', ),
+        self::TYPE_COLNAME       => array(CareUsersTableMap::COL_NAME, CareUsersTableMap::COL_LOGIN_ID, CareUsersTableMap::COL_PASSWORD, CareUsersTableMap::COL_PERSONELL_NR, CareUsersTableMap::COL_LOCKFLAG, CareUsersTableMap::COL_ROLE_ID, CareUsersTableMap::COL_EXC, CareUsersTableMap::COL_S_DATE, CareUsersTableMap::COL_S_TIME, CareUsersTableMap::COL_EXPIRE_DATE, CareUsersTableMap::COL_EXPIRE_TIME, CareUsersTableMap::COL_STATUS, CareUsersTableMap::COL_HISTORY, CareUsersTableMap::COL_MODIFY_ID, CareUsersTableMap::COL_MODIFY_TIME, CareUsersTableMap::COL_CREATE_ID, CareUsersTableMap::COL_CREATE_TIME, CareUsersTableMap::COL_THEME_NAME, ),
+        self::TYPE_FIELDNAME     => array('name', 'login_id', 'password', 'personell_nr', 'lockflag', 'role_id', 'exc', 's_date', 's_time', 'expire_date', 'expire_time', 'status', 'history', 'modify_id', 'modify_time', 'create_id', 'create_time', 'theme_name', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, )
     );
 
     /**
@@ -182,11 +187,11 @@ class CareUsersTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('Name' => 0, 'LoginId' => 1, 'Password' => 2, 'PersonellNr' => 3, 'Lockflag' => 4, 'RoleId' => 5, 'Exc' => 6, 'SDate' => 7, 'STime' => 8, 'ExpireDate' => 9, 'ExpireTime' => 10, 'Status' => 11, 'History' => 12, 'ModifyId' => 13, 'ModifyTime' => 14, 'CreateId' => 15, 'CreateTime' => 16, ),
-        self::TYPE_CAMELNAME     => array('name' => 0, 'loginId' => 1, 'password' => 2, 'personellNr' => 3, 'lockflag' => 4, 'roleId' => 5, 'exc' => 6, 'sDate' => 7, 'sTime' => 8, 'expireDate' => 9, 'expireTime' => 10, 'status' => 11, 'history' => 12, 'modifyId' => 13, 'modifyTime' => 14, 'createId' => 15, 'createTime' => 16, ),
-        self::TYPE_COLNAME       => array(CareUsersTableMap::COL_NAME => 0, CareUsersTableMap::COL_LOGIN_ID => 1, CareUsersTableMap::COL_PASSWORD => 2, CareUsersTableMap::COL_PERSONELL_NR => 3, CareUsersTableMap::COL_LOCKFLAG => 4, CareUsersTableMap::COL_ROLE_ID => 5, CareUsersTableMap::COL_EXC => 6, CareUsersTableMap::COL_S_DATE => 7, CareUsersTableMap::COL_S_TIME => 8, CareUsersTableMap::COL_EXPIRE_DATE => 9, CareUsersTableMap::COL_EXPIRE_TIME => 10, CareUsersTableMap::COL_STATUS => 11, CareUsersTableMap::COL_HISTORY => 12, CareUsersTableMap::COL_MODIFY_ID => 13, CareUsersTableMap::COL_MODIFY_TIME => 14, CareUsersTableMap::COL_CREATE_ID => 15, CareUsersTableMap::COL_CREATE_TIME => 16, ),
-        self::TYPE_FIELDNAME     => array('name' => 0, 'login_id' => 1, 'password' => 2, 'personell_nr' => 3, 'lockflag' => 4, 'role_id' => 5, 'exc' => 6, 's_date' => 7, 's_time' => 8, 'expire_date' => 9, 'expire_time' => 10, 'status' => 11, 'history' => 12, 'modify_id' => 13, 'modify_time' => 14, 'create_id' => 15, 'create_time' => 16, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, )
+        self::TYPE_PHPNAME       => array('Name' => 0, 'LoginId' => 1, 'Password' => 2, 'PersonellNr' => 3, 'Lockflag' => 4, 'RoleId' => 5, 'Exc' => 6, 'SDate' => 7, 'STime' => 8, 'ExpireDate' => 9, 'ExpireTime' => 10, 'Status' => 11, 'History' => 12, 'ModifyId' => 13, 'ModifyTime' => 14, 'CreateId' => 15, 'CreateTime' => 16, 'ThemeName' => 17, ),
+        self::TYPE_CAMELNAME     => array('name' => 0, 'loginId' => 1, 'password' => 2, 'personellNr' => 3, 'lockflag' => 4, 'roleId' => 5, 'exc' => 6, 'sDate' => 7, 'sTime' => 8, 'expireDate' => 9, 'expireTime' => 10, 'status' => 11, 'history' => 12, 'modifyId' => 13, 'modifyTime' => 14, 'createId' => 15, 'createTime' => 16, 'themeName' => 17, ),
+        self::TYPE_COLNAME       => array(CareUsersTableMap::COL_NAME => 0, CareUsersTableMap::COL_LOGIN_ID => 1, CareUsersTableMap::COL_PASSWORD => 2, CareUsersTableMap::COL_PERSONELL_NR => 3, CareUsersTableMap::COL_LOCKFLAG => 4, CareUsersTableMap::COL_ROLE_ID => 5, CareUsersTableMap::COL_EXC => 6, CareUsersTableMap::COL_S_DATE => 7, CareUsersTableMap::COL_S_TIME => 8, CareUsersTableMap::COL_EXPIRE_DATE => 9, CareUsersTableMap::COL_EXPIRE_TIME => 10, CareUsersTableMap::COL_STATUS => 11, CareUsersTableMap::COL_HISTORY => 12, CareUsersTableMap::COL_MODIFY_ID => 13, CareUsersTableMap::COL_MODIFY_TIME => 14, CareUsersTableMap::COL_CREATE_ID => 15, CareUsersTableMap::COL_CREATE_TIME => 16, CareUsersTableMap::COL_THEME_NAME => 17, ),
+        self::TYPE_FIELDNAME     => array('name' => 0, 'login_id' => 1, 'password' => 2, 'personell_nr' => 3, 'lockflag' => 4, 'role_id' => 5, 'exc' => 6, 's_date' => 7, 's_time' => 8, 'expire_date' => 9, 'expire_time' => 10, 'status' => 11, 'history' => 12, 'modify_id' => 13, 'modify_time' => 14, 'create_id' => 15, 'create_time' => 16, 'theme_name' => 17, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, )
     );
 
     /**
@@ -223,6 +228,7 @@ class CareUsersTableMap extends TableMap
         $this->addColumn('modify_time', 'ModifyTime', 'TIMESTAMP', true, null, 'CURRENT_TIMESTAMP');
         $this->addColumn('create_id', 'CreateId', 'VARCHAR', true, 35, '');
         $this->addColumn('create_time', 'CreateTime', 'TIMESTAMP', true, null, 'CURRENT_TIMESTAMP');
+        $this->addColumn('theme_name', 'ThemeName', 'VARCHAR', true, 40, null);
     } // initialize()
 
     /**
@@ -390,6 +396,7 @@ class CareUsersTableMap extends TableMap
             $criteria->addSelectColumn(CareUsersTableMap::COL_MODIFY_TIME);
             $criteria->addSelectColumn(CareUsersTableMap::COL_CREATE_ID);
             $criteria->addSelectColumn(CareUsersTableMap::COL_CREATE_TIME);
+            $criteria->addSelectColumn(CareUsersTableMap::COL_THEME_NAME);
         } else {
             $criteria->addSelectColumn($alias . '.name');
             $criteria->addSelectColumn($alias . '.login_id');
@@ -408,6 +415,7 @@ class CareUsersTableMap extends TableMap
             $criteria->addSelectColumn($alias . '.modify_time');
             $criteria->addSelectColumn($alias . '.create_id');
             $criteria->addSelectColumn($alias . '.create_time');
+            $criteria->addSelectColumn($alias . '.theme_name');
         }
     }
 

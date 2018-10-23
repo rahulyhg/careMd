@@ -9,7 +9,7 @@
  
 <link rel="stylesheet" type="text/css" href="../../js/time_picker/dist/bootstrap-clockpicker.min.css">
 
-<script type="text/javascript" src="../../js/time_picker/assets/js/bootstrap.min.js"></script>
+<!-- <script type="text/javascript" src="../../js/time_picker/assets/js/bootstrap.min.js"></script> -->
 
 
 
@@ -22,7 +22,7 @@
   <script>
     
    $( function() {
-    $( "#date" ).datepicker({ dateFormat: 'dd/mm/yy' }).val();
+    // $( "#date" ).datepicker({ dateFormat: 'dd/mm/yy' }).val();
   } );
 
      
@@ -91,7 +91,7 @@
     <table border=0 cellpadding=2 width=100%>
         <tr bgcolor="#f6f6f6">
             <td><font color="red"><b>*</b><FONT SIZE=-1  FACE="Arial" color="#000066"><?php echo $LDDate; ?></td>
-            <td><input type="text" name="date" id="date"   readonly="readonly">                     
+            <td><input type="text" name="date" id="datepicker"   readonly="readonly">                     
             
             </td>
         </tr>

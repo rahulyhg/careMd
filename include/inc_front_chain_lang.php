@@ -8,7 +8,7 @@ if (preg_match('/inc_front_chain_lang.php/i', $_SERVER['PHP_SELF'])) {
 #------end-----
 # Set  to TRUE if you want to disable the time-out feature,
 # Once this value is taken from the database, this will be used as the last resort default value
-$TIME_OUT_INACTIVE = FALSE;
+$TIME_OUT_INACTIVE = TRUE;
 # Set for  the time out value. The format is MinutesSeconds, e.g.  530 = 5 minutes, 20 seconds or e.g. 2000 = 20 minutes, 00 seconds
 # Once the time-out value is taken from the database, this will be used as the last resort default value
 $TIME_OUT_TIME = 1500;
@@ -116,8 +116,10 @@ if (!defined('NO_CHAIN') || NO_CHAIN != 1) {
                     //echo $TIME_OUT_TIME."<br>";
                     //echo $_SESSION['sess_user_id'];
                     # Show session time out warning and exit the script to stop the module
-                    include($root_path . "include/inc_session_timeout_warning.php");
-                    exit;
+                    # 
+                    
+                    // include($root_path . "include/inc_session_timeout_warning.php");
+                   // exit;
                 } else {
                     # Reset the time-out start time
                     #print_r($_GET);

@@ -37,6 +37,13 @@ if ($todo == 'submit') {
 
     $diagnostic_obj->EnterNewCase($_POST);
 }
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
 
 require ("gui/gui_icd10_diagnose.php");
+
+require_once($root_path . 'main_theme/footer.inc.php');
+
+
 ?>

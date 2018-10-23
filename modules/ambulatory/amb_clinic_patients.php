@@ -1,7 +1,7 @@
 <?php
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
-$pageName = "Outpatient";
+$pageName = "Inpatient";
 
 if (empty($_SESSION['sess_login_userid'])) {
     header("location: " . $root_path . "?is_logged_out=1");

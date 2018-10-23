@@ -113,7 +113,7 @@ require_once($root_path . 'main_theme/header.inc.php');
  ?>
 
 
- <div class="main-panel" >
+ <div class="main-panel" style="margin-left: 400px;" >
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
@@ -195,7 +195,7 @@ require_once($root_path . 'main_theme/header.inc.php');
                     </div>
                   </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body topdiseases" style="min-height: 500px;">
                   <canvas id="topdiseases"></canvas>
                 </div>
                 <div class="card-footer">
@@ -226,8 +226,8 @@ require_once($root_path . 'main_theme/header.inc.php');
                     </div>
                   </div>
                 </div>
-                <div class="card-body">
-                  <canvas class="" id="patienttrends" style="max-height: 400px;min-height: 300px;"></canvas>
+                <div class="card-body patienttrends" style="min-height: 500px;">
+                  <canvas class="" id="patienttrends"></canvas>
 
                   <p class="card-category">
                 </div>
@@ -256,7 +256,7 @@ require_once($root_path . 'main_theme/header.inc.php');
                     </div>
                   </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body servedpatients" style="min-height: 500px;">
                   <canvas class="" id="servedpatients" style="max-height: 400px;min-height: 300px;"></canvas>
 
                   <p class="card-category">
@@ -285,7 +285,7 @@ require_once($root_path . 'main_theme/header.inc.php');
                     </div>
                   </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body frequentdrugs" style="min-height: 500px;">
                   <canvas id="frequentdrugs"></canvas>
                 </div>
                 <div class="card-footer">

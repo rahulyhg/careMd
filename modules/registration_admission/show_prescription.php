@@ -5,8 +5,6 @@ require('./roots.php');
 //require($root_path.'include/inc_environment_global.php');
 require_once($root_path . 'include/care_api_classes/class_weberp_c2x.php');
 require_once($root_path . 'include/inc_init_xmlrpc.php');
-$pageName = "Inpatient";
-
 /**
  * CARE2X Integrated Hospital Information System beta 2.0.1 - 2004-07-04
  * GNU General Public License
@@ -20,6 +18,8 @@ $lang_tables[] = 'pharmacy.php';
 require($root_path . 'include/inc_front_chain_lang.php');
 require_once($root_path . 'include/care_api_classes/class_person.php');
 $person_obj = new Person;
+
+$pageName = "Inpatient";
 
 require_once($root_path . 'include/care_api_classes/class_tz_insurance.php');
 $ins_obj= new Insurance_tz;
@@ -125,56 +125,56 @@ if ($parent_admit) {
     if ($glob_obj->getConfigValue("restrict_unbilled_items") === "1" && $externalcall) {
         $sql = "SELECT pr.*, e.encounter_class_nr FROM care_encounter AS e, care_person AS p,"
                 . "care_encounter_prescription AS pr, care_tz_drugsandservices as service
-		WHERE p.pid=" . $_SESSION['sess_pid'] . "
-			AND p.pid=e.pid
-			AND e.encounter_nr=" . $_SESSION['sess_en'] . "
-			AND e.encounter_nr=pr.encounter_nr
-			AND pr.prescribe_date = '" . $prescription_date . "'
-			AND service.item_id=pr.article_item_number
-			AND service.is_labtest=0
+        WHERE p.pid=" . $_SESSION['sess_pid'] . "
+            AND p.pid=e.pid
+            AND e.encounter_nr=" . $_SESSION['sess_en'] . "
+            AND e.encounter_nr=pr.encounter_nr
+            AND pr.prescribe_date = '" . $prescription_date . "'
+            AND service.item_id=pr.article_item_number
+            AND service.is_labtest=0
                         AND (pr.bill_number >'0' OR e.encounter_class_nr = '1')
-		ORDER BY pr.modify_time DESC";
+        ORDER BY pr.modify_time DESC";
     } else {
         $sql = "SELECT pr.*, e.encounter_class_nr FROM care_encounter AS e, care_person AS p,"
                 . "care_encounter_prescription AS pr, care_tz_drugsandservices as service
-		WHERE p.pid=" . $_SESSION['sess_pid'] . "
-			AND p.pid=e.pid
-			AND e.encounter_nr=" . $_SESSION['sess_en'] . "
-			AND e.encounter_nr=pr.encounter_nr
-			AND pr.prescribe_date = '" . $prescription_date . "'
-			AND service.item_id=pr.article_item_number
-			AND service.is_labtest=0
-		ORDER BY pr.modify_time DESC";
+        WHERE p.pid=" . $_SESSION['sess_pid'] . "
+            AND p.pid=e.pid
+            AND e.encounter_nr=" . $_SESSION['sess_en'] . "
+            AND e.encounter_nr=pr.encounter_nr
+            AND pr.prescribe_date = '" . $prescription_date . "'
+            AND service.item_id=pr.article_item_number
+            AND service.is_labtest=0
+        ORDER BY pr.modify_time DESC";
     }
 } else {
     if ($ShowOnlyPharmacy) {
         if ($glob_obj->getConfigValue("restrict_unbilled_items") === "1" && $externalcall) {
             $sql = "SELECT pr.*, e.encounter_class_nr FROM care_encounter AS e, care_person AS p, care_encounter_prescription AS pr, care_tz_drugsandservices
-		  WHERE p.pid=" . $_SESSION['sess_pid'] . " AND p.pid=e.pid AND e.encounter_nr=pr.encounter_nr 
+          WHERE p.pid=" . $_SESSION['sess_pid'] . " AND p.pid=e.pid AND e.encounter_nr=pr.encounter_nr 
                       AND pr.article_item_number=care_tz_drugsandservices.item_id 
                       AND pr.mark_os='0' AND (pr.bill_number > '0'  OR e.encounter_class_nr = '1' OR p.insurance_ID>0) 
                       AND ( purchasing_class = 'drug_list' 
                       OR purchasing_class ='supplies' OR purchasing_class ='dental' OR purchasing_class ='special_others_list' 
                       OR purchasing_class ='drug_list_ctc' OR purchasing_class='drug_list_nhif') AND pr.status IN('pending','')
-		  ORDER BY pr.modify_time DESC";
+          ORDER BY pr.modify_time DESC";
 
 
 
           
         } else {
             $sql = "SELECT pr.*, e.encounter_class_nr FROM care_encounter AS e, care_person AS p, care_encounter_prescription AS pr, care_tz_drugsandservices
-		  WHERE p.pid=" . $_SESSION['sess_pid'] . " AND p.pid=e.pid AND e.encounter_nr=pr.encounter_nr 
+          WHERE p.pid=" . $_SESSION['sess_pid'] . " AND p.pid=e.pid AND e.encounter_nr=pr.encounter_nr 
                       AND pr.mark_os='0' AND pr.article_item_number=care_tz_drugsandservices.item_id AND ( purchasing_class = 'drug_list' 
                       OR purchasing_class ='supplies' OR purchasing_class ='dental' OR purchasing_class ='special_others_list' 
                       OR purchasing_class ='drug_list_ctc' OR purchasing_class='drug_list_nhif' ) AND pr.status IN ('pending','')
-		  ORDER BY pr.modify_time DESC";
+          ORDER BY pr.modify_time DESC";
         }
         
     } else {
         //echo '$prescr = '.$_GET['prescrServ'];
         if ($_GET['prescrServ'] == "serv") {
             $SQLCrit = "( service.purchasing_class = 'service' OR service.purchasing_class = 'xray' OR service.purchasing_class ='dental' OR service.purchasing_class ='eye-service' OR service.purchasing_class ='obgyne_op' OR
-			service.purchasing_class ='ortho_op' OR service.purchasing_class ='surgical_op')";
+            service.purchasing_class ='ortho_op' OR service.purchasing_class ='surgical_op')";
         } else {
 
             if ($_GET['prescrServ'] == "proc") {
@@ -261,10 +261,16 @@ else
 
 
 /* Load GUI page */
-require_once($root_path . 'main_theme/head.inc.php');
-require_once($root_path . 'main_theme/header.inc.php');
-require_once($root_path . 'main_theme/topHeader.inc.php');
 
+require_once($root_path . 'main_theme/head.inc.php');
+
+?>
+
+<?php if ($_GET['ShowOnlyPharmacy']): ?>
+<?php else: ?>
+<div style="margin-left: 220px;">
+<?php endif ?>
+<?php
 require('./gui_bridge/default/gui_show.php');
 ?>
-<?php require_once($root_path . 'main_theme/footer.inc.php'); ?>
+</div>

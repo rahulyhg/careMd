@@ -69,7 +69,7 @@ function openpopup(URL, target,content,id)
 	</table>
 	    <table width="100%" border="0" cellpadding="0" cellspacing="1">
           <tr> 
-            <td width="100%" bgcolor="#CAD3EC"><table width="300" border="0">
+            <td width="100%" bgcolor="#CAD3EC"><table width="300" border="1">
               <tr>
                 <td><?php echo $LDPID; ?></td>
                 <td><?php echo $diagnostic_obj->ShowPid($encounter_arr['pid']); ?></td>

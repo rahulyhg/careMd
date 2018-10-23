@@ -709,7 +709,7 @@ class Diagnostics extends Encounter {
   	global $LDDate,$LDCase,$LDDiagnoses,$LDType,$LDComment,$LDNoComment,$LDRevisitOfCase,$LDfrom,$LDSHOW;
     $this->icd_old_array = $this->GetAllCasesFromPIDbyDate($pid);
     echo '<form action="" method="post">
-				<table width="100%" border="0" cellpadding="1" cellspacing="1">
+				<table width="100%" border="1" cellpadding="1" cellspacing="1">
           <tr bgcolor="#99ccff">
 
 						<td width="20%"><div align="center">'.$LDDate.'</div></td>

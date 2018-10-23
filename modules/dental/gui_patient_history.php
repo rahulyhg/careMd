@@ -13,7 +13,7 @@ require('./roots.php');
 
 require($root_path . 'include/inc_environment_global.php');
 
-$pageName = "Registration";
+$pageName = "Inpatient";
 
 
 $lang_tables[] = 'search.php';
@@ -147,7 +147,12 @@ require_once($root_path . 'main_theme/topHeader.inc.php');
         <tr valign=top><td bgcolor="<?php echo $cfg['top_bgcolor']; ?>" height="10">
                 <FONT  COLOR="<?php echo $cfg['top_txtcolor']; ?>"  SIZE=+2  FACE="Arial"><STRONG>&nbsp;&nbsp;&nbsp;Patient Notes</STRONG></FONT></td>
             <td bgcolor="<?php echo $cfg['top_bgcolor']; ?>" height="10" align='right' style='padding-top:5px;'>
-                <?php if ($cfg['dhtml']) echo'<a href="javascript:window.history.back()"><img ' . createLDImgSrc($root_path, 'back2.gif', '0') . '  style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?></a><a href="javascript:gethelp('dental.php')"><img <?php echo createLDImgSrc($root_path, 'hilfe-r.gif', '0') ?>  <?php if ($cfg['dhtml']) echo'style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?></a></td>
+               <?php 
+echo ' <a href="'.$root_path.'modules"><img ' . createLDImgSrc($root_path, 'back2.gif', '0') . '  style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>';
+                ?>dsfdsf<a>
+                <?php if ($cfg['dhtml']) echo'<a href="javascript:window.history.back()"><img ' . createLDImgSrc($root_path, 'back2.gif', '0') . '  style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?></a>
+
+                <a href="javascript:gethelp('dental.php')"><img <?php echo createLDImgSrc($root_path, 'hilfe-r.gif', '0') ?>  <?php if ($cfg['dhtml']) echo'style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?></a></td>
         </tr>
 
         <tr align="left" valign=bottom>
@@ -156,7 +161,7 @@ require_once($root_path . 'main_theme/topHeader.inc.php');
         </tr>
     </table>
 
-    <table width="600"  border="0" align="center" cellpadding="4" cellspacing="1" class="style3">
+    <table width="600"  border="1" align="center" cellpadding="4" cellspacing="1" class="style3">
         <tr bgcolor="#FFFFFF">
             <td height="36" colspan="2" id="min">
                 <div id="prnttop">
@@ -215,7 +220,7 @@ require_once($root_path . 'main_theme/topHeader.inc.php');
         <tr align="left" valign="top">
             <td colspan="2" style="padding-top:9px;">
 
-                <table width="590"  border="0" align="center" cellpadding="4" cellspacing="1" bgcolor="#A6BFA2" class="style3">
+                <table width="590"  border="1" align="center" cellpadding="4" cellspacing="1" bgcolor="#A6BFA2" class="style3">
                     <tr bgcolor="#D2DFD0">
                         <td width="93"><strong>Date</strong></td>
                         <td width="368"><strong>Patient Notes </strong></td>
