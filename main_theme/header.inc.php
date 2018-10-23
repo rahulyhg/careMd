@@ -384,18 +384,18 @@ $userNavigations = array_unique($userNavigationMenus, SORT_REGULAR);
               </a>
             </li>
 
-            <?php elseif ($menu['name'] == "Login"): ?>
-            <li class="nav-item <?php if($pageName == "Login") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
-                <i class="material-icons colorOne">lock</i>
+            <?php elseif ($menu['name'] == "Accounting & Stock"): ?>
+            <li class="nav-item <?php if($pageName == "Accounting & Stock") echo 'active'; ?> ">
+              <a class="nav-link" target="_blank" href="<?php echo $menu['url'] ?>">
+                <i class="material-icons colorOne">shop_two</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>
 
-            <?php elseif ($menu['name'] == "Accounting & Inventory"): ?>
-            <li class="nav-item <?php if($pageName == "Accounting & Inventory") echo 'active'; ?> ">
-              <a class="nav-link" target="_blank" href="<?php echo $menu['url'] ?>">
-                <i class="material-icons colorOne">shop_two</i>
+            <?php elseif ($menu['name'] == "Login"): ?>
+            <li class="nav-item <?php if($pageName == "Login") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+                <i class="material-icons colorOne">lock</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>
@@ -418,6 +418,14 @@ $userNavigations = array_unique($userNavigationMenus, SORT_REGULAR);
           <?php endif ?>
           <?php endforeach ?>
         
+
+        <li class="nav-item ">
+            <a class="nav-link"  href="">
+              <i class="material-icons colorOne">dashboard</i>
+              <p class="colorOne">User: <?php echo $_SESSION['sess_login_userid'] ?></p>
+            </a>
+            </li>
+
         </ul>
       </div>
     </div>
