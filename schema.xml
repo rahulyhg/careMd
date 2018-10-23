@@ -3910,6 +3910,9 @@
     <index name="nr_2">
       <index-column name="nr"/>
     </index>
+    <index name="item_number">
+      <index-column name="item_number"/>
+    </index>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
@@ -5143,7 +5146,7 @@
   <table name="care_user_roles" idMethod="native" phpName="CareUserRoles" namespace="CareMd">
     <column name="role_id" phpName="RoleId" type="INTEGER" size="2" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="50" required="true"/>
-    <column name="permission" phpName="Permission" type="VARCHAR" size="435"/>
+    <column name="permission" phpName="Permission" type="CLOB"/>
     <column name="modify_id" phpName="ModifyId" type="VARCHAR" size="50" required="true"/>
     <column name="modify_time" phpName="ModifyTime" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
     <column name="create_id" phpName="CreateId" type="VARCHAR" size="50" required="true"/>
@@ -5173,6 +5176,7 @@
     <column name="modify_time" phpName="ModifyTime" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
     <column name="create_id" phpName="CreateId" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="create_time" phpName="CreateTime" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="theme_name" phpName="ThemeName" type="VARCHAR" size="40" required="true"/>
     <index name="login_id">
       <index-column name="login_id"/>
     </index>

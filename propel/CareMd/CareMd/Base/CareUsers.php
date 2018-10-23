@@ -196,6 +196,13 @@ abstract class CareUsers implements ActiveRecordInterface
     protected $create_time;
 
     /**
+     * The value for the theme_name field.
+     *
+     * @var        string
+     */
+    protected $theme_name;
+
+    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
@@ -694,6 +701,16 @@ abstract class CareUsers implements ActiveRecordInterface
     }
 
     /**
+     * Get the [theme_name] column value.
+     *
+     * @return string
+     */
+    public function getThemeName()
+    {
+        return $this->theme_name;
+    }
+
+    /**
      * Set the value of [name] column.
      *
      * @param string $v new value
@@ -1050,6 +1067,26 @@ abstract class CareUsers implements ActiveRecordInterface
     } // setCreateTime()
 
     /**
+     * Set the value of [theme_name] column.
+     *
+     * @param string $v new value
+     * @return $this|\CareMd\CareMd\CareUsers The current object (for fluent API support)
+     */
+    public function setThemeName($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->theme_name !== $v) {
+            $this->theme_name = $v;
+            $this->modifiedColumns[CareUsersTableMap::COL_THEME_NAME] = true;
+        }
+
+        return $this;
+    } // setThemeName()
+
+    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -1199,6 +1236,9 @@ abstract class CareUsers implements ActiveRecordInterface
                 $col = null;
             }
             $this->create_time = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 17 + $startcol : CareUsersTableMap::translateFieldName('ThemeName', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->theme_name = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -1207,7 +1247,7 @@ abstract class CareUsers implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 17; // 17 = CareUsersTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 18; // 18 = CareUsersTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\CareMd\\CareMd\\CareUsers'), 0, $e);
@@ -1455,6 +1495,9 @@ abstract class CareUsers implements ActiveRecordInterface
         if ($this->isColumnModified(CareUsersTableMap::COL_CREATE_TIME)) {
             $modifiedColumns[':p' . $index++]  = 'create_time';
         }
+        if ($this->isColumnModified(CareUsersTableMap::COL_THEME_NAME)) {
+            $modifiedColumns[':p' . $index++]  = 'theme_name';
+        }
 
         $sql = sprintf(
             'INSERT INTO care_users (%s) VALUES (%s)',
@@ -1516,6 +1559,9 @@ abstract class CareUsers implements ActiveRecordInterface
                         break;
                     case 'create_time':
                         $stmt->bindValue($identifier, $this->create_time ? $this->create_time->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
+                        break;
+                    case 'theme_name':
+                        $stmt->bindValue($identifier, $this->theme_name, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -1623,6 +1669,9 @@ abstract class CareUsers implements ActiveRecordInterface
             case 16:
                 return $this->getCreateTime();
                 break;
+            case 17:
+                return $this->getThemeName();
+                break;
             default:
                 return null;
                 break;
@@ -1669,6 +1718,7 @@ abstract class CareUsers implements ActiveRecordInterface
             $keys[14] => $this->getModifyTime(),
             $keys[15] => $this->getCreateId(),
             $keys[16] => $this->getCreateTime(),
+            $keys[17] => $this->getThemeName(),
         );
         if ($result[$keys[7]] instanceof \DateTimeInterface) {
             $result[$keys[7]] = $result[$keys[7]]->format('c');
@@ -1783,6 +1833,9 @@ abstract class CareUsers implements ActiveRecordInterface
             case 16:
                 $this->setCreateTime($value);
                 break;
+            case 17:
+                $this->setThemeName($value);
+                break;
         } // switch()
 
         return $this;
@@ -1859,6 +1912,9 @@ abstract class CareUsers implements ActiveRecordInterface
         }
         if (array_key_exists($keys[16], $arr)) {
             $this->setCreateTime($arr[$keys[16]]);
+        }
+        if (array_key_exists($keys[17], $arr)) {
+            $this->setThemeName($arr[$keys[17]]);
         }
     }
 
@@ -1951,6 +2007,9 @@ abstract class CareUsers implements ActiveRecordInterface
         }
         if ($this->isColumnModified(CareUsersTableMap::COL_CREATE_TIME)) {
             $criteria->add(CareUsersTableMap::COL_CREATE_TIME, $this->create_time);
+        }
+        if ($this->isColumnModified(CareUsersTableMap::COL_THEME_NAME)) {
+            $criteria->add(CareUsersTableMap::COL_THEME_NAME, $this->theme_name);
         }
 
         return $criteria;
@@ -2055,6 +2114,7 @@ abstract class CareUsers implements ActiveRecordInterface
         $copyObj->setModifyTime($this->getModifyTime());
         $copyObj->setCreateId($this->getCreateId());
         $copyObj->setCreateTime($this->getCreateTime());
+        $copyObj->setThemeName($this->getThemeName());
         if ($makeNew) {
             $copyObj->setNew(true);
         }
@@ -2106,6 +2166,7 @@ abstract class CareUsers implements ActiveRecordInterface
         $this->modify_time = null;
         $this->create_id = null;
         $this->create_time = null;
+        $this->theme_name = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->applyDefaultValues();

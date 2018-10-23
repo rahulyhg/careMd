@@ -4723,7 +4723,8 @@ CREATE TABLE `care_tz_billing_archive_elem`
     INDEX `nr` (`nr`),
     INDEX `date_change` (`date_change`),
     INDEX `prescriptions_nr` (`prescriptions_nr`),
-    INDEX `nr_2` (`nr`)
+    INDEX `nr_2` (`nr`),
+    INDEX `item_number` (`item_number`)
 ) ENGINE=MyISAM;
 
 -- ---------------------------------------------------------------------
@@ -6296,7 +6297,7 @@ CREATE TABLE `care_user_roles`
 (
     `role_id` INTEGER(2) NOT NULL AUTO_INCREMENT,
     `description` VARCHAR(50) NOT NULL,
-    `permission` VARCHAR(435),
+    `permission` LONGTEXT,
     `modify_id` VARCHAR(50) NOT NULL,
     `modify_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `create_id` VARCHAR(50) NOT NULL,
@@ -6330,6 +6331,7 @@ CREATE TABLE `care_users`
     `modify_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `create_id` VARCHAR(35) DEFAULT '' NOT NULL,
     `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `theme_name` VARCHAR(40) NOT NULL,
     PRIMARY KEY (`login_id`),
     INDEX `login_id` (`login_id`)
 ) ENGINE=MyISAM;

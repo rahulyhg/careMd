@@ -38,6 +38,10 @@
                             {{$LDAccessPw}}
                             <!--{{include file='common/submenu_row_spacer.tpl'}}-->
                             <!--{{$LDNewsgroup}}-->
+                            {{include file='common/submenu_row_spacer.tpl'}}
+
+                            {{$ChangeTheme}}
+                            sdfkj
 
                         </TBODY>
                     </TABLE>

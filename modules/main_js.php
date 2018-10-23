@@ -10,7 +10,7 @@ $(function() {
 	$.getJSON("<?php echo $root_path ?>modules/sessionSetting.php").done(function(response){
 
         timeOut = response.timeout;
-        console.log(response)
+        console.log(response.timeout)
 
         $( document ).idleTimer( {
             timeout: timeOut, 

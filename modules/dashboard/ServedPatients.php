@@ -177,10 +177,12 @@ if ($period == "ThisWeek") {
 		foreach ($patients as $patient) {
 			array_push($patientsNumbers, $patient['EncounterNr']);
 		}
+
 		$totalServedPatients = CareEncounterEventSignallerQuery::create()
 		->filterByEncounterNr($patientsNumbers)
 		->find()
 		->count();
+		
 		$totalPatients = count($patients);
 		$totalUnservedPatients = $totalPatients - $totalServedPatients;
 

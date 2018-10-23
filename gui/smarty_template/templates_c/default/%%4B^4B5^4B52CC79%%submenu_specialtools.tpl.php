@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2017-07-16 12:10:34
+<?php /* Smarty version 2.6.22, created on 2018-10-23 12:46:13
          compiled from common/submenu_specialtools.tpl */ ?>
 <blockquote>
     <TABLE cellSpacing=0 cellPadding=0 border=0 class="submenu_frame">
@@ -111,6 +111,15 @@ unset($_smarty_tpl_vars);
  ?>-->
                             <!--<?php echo $this->_tpl_vars['LDNewsgroup']; ?>
 -->
+                            <?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => 'common/submenu_row_spacer.tpl', 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+
+                            <?php echo $this->_tpl_vars['ChangeTheme']; ?>
+
+                            sdfkj
 
                         </TBODY>
                     </TABLE>

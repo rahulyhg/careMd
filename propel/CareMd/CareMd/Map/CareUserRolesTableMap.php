@@ -158,7 +158,7 @@ class CareUserRolesTableMap extends TableMap
         // columns
         $this->addPrimaryKey('role_id', 'RoleId', 'INTEGER', true, 2, null);
         $this->addColumn('description', 'Description', 'VARCHAR', true, 50, null);
-        $this->addColumn('permission', 'Permission', 'VARCHAR', false, 435, null);
+        $this->addColumn('permission', 'Permission', 'CLOB', false, null, null);
         $this->addColumn('modify_id', 'ModifyId', 'VARCHAR', true, 50, null);
         $this->addColumn('modify_time', 'ModifyTime', 'TIMESTAMP', true, null, 'CURRENT_TIMESTAMP');
         $this->addColumn('create_id', 'CreateId', 'VARCHAR', true, 50, null);

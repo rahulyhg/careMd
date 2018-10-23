@@ -62,6 +62,7 @@ $roleId = $user['RoleId'];
 // $roleId = 13;
 
 $userRole = CareUserRolesQuery::create()->filterByRoleId($roleId)->findOne()->toArray();
+$themeName = $user['ThemeName'];
 
 $userPermissions = explode(" ", $userRole['Permission']);
 
@@ -204,12 +205,10 @@ $userNavigations = array_unique($userNavigationMenus, SORT_REGULAR);
 
 ?>
 
-<body class="">
-  <div class="wrapper ">
 
-
-
+  
     <div class="sidebar" data-color="azure" data-background-color="white">
+
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -228,7 +227,7 @@ $userNavigations = array_unique($userNavigationMenus, SORT_REGULAR);
             <li class="nav-item colorOne <?php if($pageName == "Home") echo 'active'; ?> " >
               <a class="nav-link " href="<?php echo $root_path ?>modules/dashboard/dashboard.php<?php echo URL_APPEND ?>">
                
-                <p> <i class="fa fa-home fa-fw"></i><?php echo $menu['name'] ?></p>
+                <p class="colorOne" > <i class="fa fa-home fa-fw"></i><?php echo $menu['name'] ?></p>
               </a>
             </li>
 
