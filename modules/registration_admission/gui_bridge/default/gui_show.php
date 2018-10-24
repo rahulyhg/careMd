@@ -461,9 +461,11 @@ if (empty($externalcall)) {
 
 $smarty->assign('sMainBlockIncludeFile', 'registration_admission/common_option_prescription.tpl');
 
-$smarty->display('common/mainframe.tpl');
 
+
+$pageName = "Registration";
 require_once($root_path . 'main_theme/head.inc.php');
 require_once($root_path . 'main_theme/header.inc.php');
 require_once($root_path . 'main_theme/topHeader.inc.php');
 
+$smarty->display('common/mainframe.tpl');
