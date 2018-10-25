@@ -317,7 +317,3 @@ $bgc=(isset($bgc) ? $bgc : null);
 }
 ?>
 
-<?php
-require_once($root_path . 'main_theme/header.inc.php');
-require_once($root_path . 'main_theme/topHeader.inc.php');
-?>

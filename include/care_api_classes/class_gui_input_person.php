@@ -1032,7 +1032,7 @@ return false;
                                        onBlur="IsValidDate(this, '<?php echo $date_format ?>')"
                                        onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>');">
                                 <a href="javascript:show_calendar('aufnahmeform.date_birth','<?php echo $date_format ?>')">
-                                    <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                                   <!--  <img <?php //echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
 
 
                                 <font size=1>[
@@ -1200,7 +1200,7 @@ return false;
                                        onBlur="IsValidDate(this, '<?php echo $date_format ?>')"
                                        onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>');">
                                 <a href="javascript:show_calendar('aufnahmeform.expire_date','<?php echo $date_format ?>')">
-                                    <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                                  <!--   <img <?php //echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
 
 
                                 <font size=1>[

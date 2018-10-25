@@ -500,8 +500,8 @@ switch ($retpath) {
                 echo'
 	<input type=text name="date' . $i . '" size=9 maxlength=10 value="" onBlur="IsValidDate(this,\'' . $date_format . '\')" onKeyUp="setDate(this,\'' . $date_format . '\',\'' . $lang . '\')">';
             ?>
-            <a href="javascript:show_calendar('reportform.date<?php echo $i ?>','<?php echo $date_format ?>')">
-                <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+            <a id="datepicker" href="javascript:show_calendar('reportform.date<?php echo $i ?>','<?php echo $date_format ?>')">
+                <!-- <img <?php //echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
             <?php
             echo '
 </td>

@@ -2,7 +2,7 @@
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
-$pageName = "Patient";
+$PageName = "Registration";
 
 if (empty($_SESSION['sess_login_userid'])) {
     header("location: " . $root_path . "?is_logged_out=1");

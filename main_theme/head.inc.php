@@ -1,7 +1,7 @@
 <html lang="en">
     <head>
         <title>
-        <?php echo @($pageName)?$pageName:"" ?> - CareMd
+        <?php echo @($PageName)?$PageName:"" ?> - CareMd
         </title>
         <meta charset="utf-8"/>
         <link href="img/apple-icon.png" rel="apple-touch-icon" sizes="76x76">

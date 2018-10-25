@@ -1,7 +1,29 @@
+<script>
+  
+
+  function SetSelectedPage(pageName) {
+      createCookie("PageName", '', "-1");
+      createCookie("PageName", pageName, "10");
+
+  }
+  function createCookie(name, value, days) {
+  var expires;
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toGMTString();
+  } else {
+   expires = "";
+  }
+  document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
+}
+
+</script>
+
 <?php
 
 require('./roots.php');
-
+$PageName = $_COOKIE['PageName'];
 require_once $root_path.'vendor/autoload.php';
 require_once $root_path.'generated-conf/config.php';
 
@@ -224,152 +246,144 @@ $userNavigations = array_unique($userNavigationMenus, SORT_REGULAR);
 
           <?php foreach ($userNavigations as $menu): ?>
             <?php if ($menu['name'] == "Home"): ?>
-            <li class="nav-item colorOne <?php if($pageName == "Home") echo 'active'; ?> " >
-              <a class="nav-link " href="<?php echo $root_path ?>modules/dashboard/dashboard.php<?php echo URL_APPEND ?>">
-               
+            <li class="nav-item colorOne <?php if($PageName == "Home") echo 'active'; ?> " >
+              <a class="nav-link  " onclick="SetSelectedPage('Home')" href="<?php echo $root_path ?>modules/dashboard/dashboard.php<?php echo URL_APPEND ?>">
                 <p class="colorOne" > <i class="fa fa-home fa-fw"></i><?php echo $menu['name'] ?></p>
               </a>
             </li>
 
-            <?php elseif ($menu['name'] == "Registration"): ?>
-            <li class="nav-item colorOne <?php if($pageName == "Registration") echo 'active'; ?> " >
-              <a class="nav-link " href="<?php echo $menu['url'] ?>" >
+            <?php elseif ($menu['name'] == "Registration" || $menu['name'] == "Patient" || $menu['name'] == "Patient/ID" ): ?>
+            <li class="nav-item colorOne <?php if($PageName == "Registration" || $PageName == "Patient" || $PageName == "Patient/ID") echo 'active'; ?> " >
+              <a class="nav-link " onclick="SetSelectedPage('Registration')" href="<?php echo $menu['url'] ?>" >
                  <i class="fa fa-user fa-fw"></i>
-                <p class="colorOne"><?php echo $menu['name'] ?></p>
+                <p class="colorOne">Registration</p>
               </a>
             </li>
 
             <?php elseif ($menu['name'] == "Discharge"): ?>
-            <li class="nav-item  <?php if($pageName == "Discharge") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+            <li class="nav-item  <?php if($PageName == "Discharge") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Discharge')">
                 <i class="material-icons colorOne">check_circle_outline</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>
 
-            <?php elseif ($menu['name'] == "Patient" || $menu['name'] == "Patient/ID"): ?>
-            <li class="nav-item <?php if($pageName == "Patient") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
-                <i class="material-icons colorOne">perm_identity</i>
-                <p class="colorOne">Registration</p>
-              </a>
-            </li>
-
+           
             <?php elseif ($menu['name'] == "Appointments"): ?>
-            <li class="nav-item <?php if($pageName == "Appointments") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+            <li class="nav-item <?php if($PageName == "Appointments") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Appointments')">
                 <i class="material-icons colorOne">calendar_today</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>   
 
             <?php elseif ($menu['name'] == "Ambulatory"): ?>
-            <li class="nav-item <?php if($pageName == "Ambulatory") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+            <li class="nav-item <?php if($PageName == "Ambulatory") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Ambulatory')">
                 <i class="material-icons colorOne">departure_board</i>
                 <p class="colorOne">Outpatient</p>
               </a>
             </li>
 
             <?php elseif ($menu['name'] == "Inpatient"): ?>
-            <li class="nav-item <?php if($pageName == "Inpatient") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+            <li class="nav-item <?php if($PageName == "Inpatient") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Inpatient')">
                 <i class="material-icons colorOne">airline_seat_flat</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>   
 
             <?php elseif ($menu['name'] == "Doctors"): ?>
-            <li class="nav-item <?php if($pageName == "Doctors") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+            <li class="nav-item <?php if($PageName == "Doctors") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Doctors')">
                 <i class="material-icons colorOne">streetview</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li> 
 
             <?php elseif ($menu['name'] == "Nursing"): ?>
-            <li class="nav-item <?php if($pageName == "Nursing") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+            <li class="nav-item <?php if($PageName == "Nursing") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Nursing')">
                 <i class="material-icons colorOne">exposure</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>
 
             <?php elseif ($menu['name'] == "OR"): ?>
-            <li class="nav-item <?php if($pageName == "OR") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+            <li class="nav-item <?php if($PageName == "OR") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('OR')">
                 <i class="material-icons colorOne">account_balance</i>
                 <p class="colorOne">OP Room</p>
               </a>
             </li>
             
             <?php elseif ($menu['name'] == "Laboratories"): ?>
-            <li class="nav-item <?php if($pageName == "Laboratories") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+            <li class="nav-item <?php if($PageName == "Laboratories") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Laboratories')">
                 <i class="material-icons colorOne">gavel</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>
 
             <?php elseif ($menu['name'] == "Radiology"): ?>
-            <li class="nav-item <?php if($pageName == "Radiology") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+            <li class="nav-item <?php if($PageName == "Radiology") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Radiology')">
                 <i class="material-icons colorOne">picture_in_picture</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>
 
             <?php elseif ($menu['name'] == "Pharmacy"): ?>
-            <li class="nav-item <?php if($pageName == "Pharmacy") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+            <li class="nav-item <?php if($PageName == "Pharmacy") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Pharmacy')">
                 <i class="material-icons colorOne">enhanced_encryption</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>
 
             <?php elseif ($menu['name'] == "Billing"): ?>
-            <li class="nav-item <?php if($pageName == "Billing") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+            <li class="nav-item <?php if($PageName == "Billing") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Billing')">
                 <i class="material-icons colorOne">art_track</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>
 
             <?php elseif ($menu['name'] == "Reporting"): ?>
-            <li class="nav-item <?php if($pageName == "Reporting") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+            <li class="nav-item <?php if($PageName == "Reporting") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Reporting')">
                 <i class="material-icons colorOne">file_copy</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>
 
             <?php elseif ($menu['name'] == "Directory"): ?>
-            <li class="nav-item <?php if($pageName == "Directory") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+            <li class="nav-item <?php if($PageName == "Directory") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Directory')">
                 <i class="material-icons colorOne">list</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>
 
             <?php elseif ($menu['name'] == "System Admin"): ?>
-            <li class="nav-item <?php if($pageName == "System Admin") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+            <li class="nav-item <?php if($PageName == "System Admin") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('System Admin')">
                 <i class="material-icons colorOne">settings</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>
 
             <?php elseif ($menu['name'] == "Intranet Email"): ?>
-            <li class="nav-item <?php if($pageName == "Intranet Email") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+            <li class="nav-item <?php if($PageName == "Intranet Email") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Intranet Email')">
                 <i class="material-icons colorOne">email</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>
 
             <?php elseif ($menu['name'] == "Special Tools"): ?>
-            <li class="nav-item <?php if($pageName == "Special Tools") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+            <li class="nav-item <?php if($PageName == "Special Tools") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Special Tools')">
                 <i class="material-icons colorOne">perm_data_setting</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
@@ -377,32 +391,32 @@ $userNavigations = array_unique($userNavigationMenus, SORT_REGULAR);
 
 
             <?php elseif ($menu['name'] == "Referrer Notes"): ?>
-            <li class="nav-item <?php if($pageName == "Referrer Notes") echo 'active'; ?> ">
-              <a class="nav-link"  href="<?php echo $menu['url'] ?>">
+            <li class="nav-item <?php if($PageName == "Referrer Notes") echo 'active'; ?> ">
+              <a class="nav-link"  href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Referrer Notes')">
                 <i class="material-icons colorOne">perm_data_setting</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>
 
             <?php elseif ($menu['name'] == "Accounting & Stock"): ?>
-            <li class="nav-item <?php if($pageName == "Accounting & Stock") echo 'active'; ?> ">
-              <a class="nav-link" target="_blank" href="<?php echo $menu['url'] ?>">
+            <li class="nav-item <?php if($PageName == "Accounting & Stock") echo 'active'; ?> ">
+              <a class="nav-link" target="_blank" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Accounting & Stock')">
                 <i class="material-icons colorOne">shop_two</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>
 
             <?php elseif ($menu['name'] == "Login"): ?>
-            <li class="nav-item <?php if($pageName == "Login") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+            <li class="nav-item <?php if($PageName == "Login") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Login')">
                 <i class="material-icons colorOne">lock</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>
 
             <?php elseif ($menu['name'] == "Logout"): ?>
-            <li class="nav-item <?php if($pageName == "Logout") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>">
+            <li class="nav-item <?php if($PageName == "Logout") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Logout')">
                 <i class="material-icons colorOne">exit_to_app</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
@@ -410,7 +424,7 @@ $userNavigations = array_unique($userNavigationMenus, SORT_REGULAR);
 
             <?php else: ?>
             <li class="nav-item ">
-            <a class="nav-link"  href="<?php echo $menu['url'] ?>">
+            <a class="nav-link"  href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Home')">
               <i class="material-icons colorOne">dashboard</i>
               <p class="colorOne"><?php echo $menu['name'] ?></p>
             </a>
@@ -429,3 +443,5 @@ $userNavigations = array_unique($userNavigationMenus, SORT_REGULAR);
         </ul>
       </div>
     </div>
+
+

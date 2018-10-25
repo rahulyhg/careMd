@@ -616,7 +616,7 @@ for ($n = 0; $n < 8; $n++) {
                                                 echo '" onBlur="IsValidDate(this,\'' . $date_format . '\')"  onKeyUp="setDate(this,\'' . $date_format . '\',\'' . $lang . '\')">';
                                                 ?>
                                 <a href="javascript:show_calendar('form_test_request.rec_date','<?php echo $date_format ?>')">
-                                    <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                                    <<!-- img <?php //echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
     <?php
 }
 else {
