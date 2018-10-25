@@ -72,8 +72,10 @@ if ($debug) {
     //echo "loccode: ".$loccode."<br>";
 }
 
-if (empty($back_path))
-    $RETURN_PATH = $root_path . "modules/pharmacy_tz/pharmacy_tz.php?ntid=false&lang=$lang";
+if (empty($back_path)){
+  $RETURN_PATH = $root_path . "modules/pharmacy_tz/pharmacy_tz_substore.php";
+  // $RETURN_PATH = $root_path . "modules/pharmacy_tz/pharmacy_tz.php?ntid=false&lang=$lang"; 
+}   
 else {
     if ($back_path == "billing")
         $RETURN_PATH = $root_path . "modules/billing_tz/billing_tz.php";

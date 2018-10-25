@@ -283,18 +283,18 @@ if (!empty($rows)) {
                 <td background="<?php echo createBgSkin($root_path, 'tableHeaderbg3.gif'); ?>">&nbsp;<?php echo $LDAdmitDate ?>:
                 </td>
                 <td bgcolor="#eeeeee">
-                    <input name="date_start" type="text" size=10 maxlength=10  value="<?php if (!empty($date_start)) echo @formatDate2Local($date_start, $date_format); ?>"  onBlur="IsValidDate(this, '<?php echo $date_format ?>')" onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
+                    <input name="date_start" id="datepicker" type="text" size=10 maxlength=10  value="<?php if (!empty($date_start)) echo @formatDate2Local($date_start, $date_format); ?>"  onBlur="IsValidDate(this, '<?php echo $date_format ?>')" onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
                     <a href="javascript:show_calendar('aufnahmeform.date_start','<?php echo $date_format ?>')">
-                        <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a><font size=1>[<?php
+                       <!--  <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a><font size=1>[<?php
                     $dfbuffer = "LD_" . strtr($date_format, ".-/", "phs");
                     echo $$dfbuffer;
                     ?>] </font>
                 </td>
                 <td bgcolor="#eeeeee">
             <nobr>&nbsp;<?php echo $LDTo ?>:
-                <input name="date_end" type="text" size=10 maxlength=10 value="<?php if (!empty($date_end)) echo @formatDate2Local($date_end, $date_format); ?>"  onBlur="IsValidDate(this, '<?php echo $date_format ?>')" onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
+                <input name="date_end" type="text" id="datepicker2" size=10 maxlength=10 value="<?php if (!empty($date_end)) echo @formatDate2Local($date_end, $date_format); ?>"  onBlur="IsValidDate(this, '<?php echo $date_format ?>')" onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
                 <a href="javascript:show_calendar('aufnahmeform.date_end','<?php echo $date_format ?>')">
-                    <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a><font size=1>[<?php
+                    <<!-- img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a> --><font size=1>[<?php
                 $dfbuffer = "LD_" . strtr($date_format, ".-/", "phs");
                 echo $$dfbuffer;
                 ?>] </font>
@@ -343,10 +343,10 @@ if (!empty($rows)) {
                 <td background="<?php echo createBgSkin($root_path, 'tableHeaderbg3.gif'); ?>">&nbsp;<?php echo $LDBday ?>:
                 </td>
                 <td bgcolor="#eeeeee" colspan=2>
-                    <input name="date_birth" type="text" size="15" maxlength=10 value="<?php if (!empty($date_birth)) echo @formatDate2Local($date_birth, $date_format); ?>"
+                    <input name="date_birth" id="datepicker3" type="text" size="15" maxlength=10 value="<?php if (!empty($date_birth)) echo @formatDate2Local($date_birth, $date_format); ?>"
                            onFocus="this.select();"  onBlur="IsValidDate(this, '<?php echo $date_format ?>')" onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
                     <a href="javascript:show_calendar('aufnahmeform.date_birth','<?php echo $date_format ?>')">
-                        <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                        <<!-- img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
                     <font size=1>[<?php
                     $dfbuffer = "LD_" . strtr($date_format, ".-/", "phs");
                     echo $$dfbuffer;
@@ -441,10 +441,10 @@ if (!empty($rows)) {
                 <td background="<?php echo createBgSkin($root_path, 'tableHeaderbg3.gif'); ?>">&nbsp;<?php echo 'Discharge Date' ?>:
                 </td>
                 <td bgcolor="#eeeeee" colspan=2>
-                    <input name="date_discharge" type="text" size="15" maxlength=10 value="<?php if (!empty($date_discharge)) echo @formatDate2Local($date_discharge, $date_format); ?>"
+                    <input name="date_discharge" id="datepicker" type="text" size="15" maxlength=10 value="<?php if (!empty($date_discharge)) echo @formatDate2Local($date_discharge, $date_format); ?>"
                            onFocus="this.select();"  onBlur="IsValidDate(this, '<?php echo $date_format ?>')" onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
                     <a href="javascript:show_calendar('aufnahmeform.date_discharge','<?php echo $date_format ?>')">
-                        <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                        <!-- <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
                     <font size=1>[<?php
                     $dfbuffer = "LD_" . strtr($date_format, ".-/", "phs");
                     echo $$dfbuffer;

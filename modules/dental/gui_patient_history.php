@@ -147,9 +147,9 @@ require_once($root_path . 'main_theme/topHeader.inc.php');
         <tr valign=top><td bgcolor="<?php echo $cfg['top_bgcolor']; ?>" height="10">
                 <FONT  COLOR="<?php echo $cfg['top_txtcolor']; ?>"  SIZE=+2  FACE="Arial"><STRONG>&nbsp;&nbsp;&nbsp;Patient Notes</STRONG></FONT></td>
             <td bgcolor="<?php echo $cfg['top_bgcolor']; ?>" height="10" align='right' style='padding-top:5px;'>
-               <?php 
-echo ' <a href="'.$root_path.'modules"><img ' . createLDImgSrc($root_path, 'back2.gif', '0') . '  style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>';
-                ?>dsfdsf<a>
+             
+             <a href="<?php echo $root_path ?>modules/ambulatory/amb_clinic_patients_discharge.php" class="btn btn-primary btn-sm">Back to List</a>
+                <a>
                 <?php if ($cfg['dhtml']) echo'<a href="javascript:window.history.back()"><img ' . createLDImgSrc($root_path, 'back2.gif', '0') . '  style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?></a>
 
                 <a href="javascript:gethelp('dental.php')"><img <?php echo createLDImgSrc($root_path, 'hilfe-r.gif', '0') ?>  <?php if ($cfg['dhtml']) echo'style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?></a></td>

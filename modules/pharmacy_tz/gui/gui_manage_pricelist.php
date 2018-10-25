@@ -57,7 +57,7 @@ function popPic(pid,nm){
     					&nbsp;&nbsp;<font color="#330066"><?php echo $LDManagePriceList; ?></font>
     				</td>
        			    <td bgcolor="#99ccff" align=right>
-       			    	<a href="javascript:window.history.back()">
+       			    	<a href="<?php echo $root_path ?>modules/pharmacy_tz/pharmacy_tz_substore.php">
        			    		<img src="../../gui/img/control/default/en/en_back2.gif" border=0 width="110" height="24" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this,1)" onMouseOut="hilite(this,0)" >
        			    	</a>
        			    	<a href="javascript:gethelp('pharmacy_product_edit.php','Pharmacy :: My Product Catalog :: Search')">

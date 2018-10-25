@@ -776,7 +776,7 @@ ob_start();
         if ($mode == 'saveok') {
             echo '<b>' . formatDate2Local($opdoc['op_date'], $date_format) . '</b>';
         } else {
-            echo '<input name="op_date" type="text" size="10" maxlength=10 value="';
+            echo '<input name="op_date"  id="datepicker" type="text" size="10" maxlength=10 value="';
             if ($err_data) {
                 echo $op_date;
             } else {
@@ -785,7 +785,7 @@ ob_start();
 
             echo '"  onBlur="IsValidDate(this,\'' . $date_format . '\')"  onKeyUp="setDate(this,\'' . $date_format . '\',\'' . $lang . '\')">';
             ?>
-                                            <a href="javascript:show_calendar('opdoc.op_date','<?php echo $date_format; ?>')"><img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                                            <a href="javascript:show_calendar('opdoc.op_date','<?php echo $date_format; ?>')"><!-- <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
             <?php
             echo ' [';
             $dfbuffer = "LD_" . strtr($date_format, ".-/", "phs");

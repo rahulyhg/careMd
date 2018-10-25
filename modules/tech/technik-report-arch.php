@@ -175,13 +175,13 @@ ob_start();
             </tr>
             <tr bgcolor=#ffffdd>
                 <td align=right><?php echo "$LDDate $LDFrom" ?>:</td>
-                <td><input type="text" name="sdate" size=10 maxlength=10   onBlur="IsValidDate(this, '<?php echo $date_format ?>')" onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
+                <td><input type="text" name="sdate" size=10 id="datepicker" maxlength=10   onBlur="IsValidDate(this, '<?php echo $date_format ?>')" onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
                     <a href="javascript:show_calendar('suchform.sdate','<?php echo $date_format ?>')">
-                        <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                        <!-- <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
 
-<?php echo $LDTo ?>&nbsp;<input type="text" name="edate" size=10 maxlength=10   onBlur="IsValidDate(this, '<?php echo $date_format ?>')" onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
+<?php echo $LDTo ?>&nbsp;<input type="text" name="edate" id="datepicker1" size=10 maxlength=10   onBlur="IsValidDate(this, '<?php echo $date_format ?>')" onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
                     <a href="javascript:show_calendar('suchform.edate','<?php echo $date_format ?>')">
-                        <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                        <!-- <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
                 </td>
             </tr>
 

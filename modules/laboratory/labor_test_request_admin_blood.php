@@ -578,14 +578,14 @@ if ($batchrows) {
                                                 <td><input type="text" name="x_test_2_count" size=5 maxlength=5 <?php if ($stored_request['x_test_2_count']) echo 'value="' . $stored_request['x_test_2_count'] . '"'; ?>></td>
                                                 <td><input type="text" name="x_test_2_price" size=7 maxlength=7 <?php echo 'value="' . $stored_request['x_test_2_price'] . '"'; ?>></td>
                                                 <td>&nbsp;<font size=1 face="arial"><?php echo $LDBookedOn ?></td>
-                                                <td><input type="text" name="mainlog_date" size=8 maxlength=10  value="<?php if ($stored_request['mainlog_date'] != DBF_NODATE) echo formatDate2Local($stored_request['mainlog_date'], $date_format); ?>"  onBlur="IsValidDate(this, '<?php echo $date_format ?>')"  onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
+                                                <td><input type="text" id="datepicker" name="mainlog_date" size=8 maxlength=10  value="<?php if ($stored_request['mainlog_date'] != DBF_NODATE) echo formatDate2Local($stored_request['mainlog_date'], $date_format); ?>"  onBlur="IsValidDate(this, '<?php echo $date_format ?>')"  onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
                                                     <a href="javascript:show_calendar('form_test_request.mainlog_date','<?php echo $date_format ?>')">
-                                                        <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a><font size=1 face="arial">
+                                                       <!--  <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a><font size=1 face="arial">
                                                 </td>
                                                 <td>&nbsp;<font size=1 face="arial"><?php echo $LDDate ?></td>
-                                                <td><input type="text" name="lab_date" size=8 maxlength=10  value="<?php if ($stored_request['lab_date'] != DBF_NODATE) echo formatDate2Local($stored_request['lab_date'], $date_format); ?>"  onBlur="IsValidDate(this, '<?php echo $date_format ?>')"   onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
+                                                <td><input type="text" id="datepicker" name="lab_date" size=8 maxlength=10  value="<?php if ($stored_request['lab_date'] != DBF_NODATE) echo formatDate2Local($stored_request['lab_date'], $date_format); ?>"  onBlur="IsValidDate(this, '<?php echo $date_format ?>')"   onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
                                                     <a href="javascript:show_calendar('form_test_request.lab_date','<?php echo $date_format ?>')">
-                                                        <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                                                        <!-- <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
                                                 </td>
                                             </tr>
                                             <tr bgcolor="<?php echo $bgc1 ?>">
