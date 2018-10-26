@@ -166,7 +166,7 @@ require($root_path . 'include/inc_checkdate_lang.php');
                                         <TD bgcolor=#ffffff align="center">
                                             <b>Filter by Date: </b>
                                             <!--</TD><TD>-->
-                                            <input name="prescr_date" type="text" size="15" maxlength=10 value="<?php {
+                                            <input name="prescr_date" id="datepicker" type="text" size="15" maxlength=10 value="<?php {
                                                 echo $prescr_date;
                                             }
                                             ?>"
@@ -174,8 +174,7 @@ require($root_path . 'include/inc_checkdate_lang.php');
                                                    onBlur="IsValidDate(this, 'dd/MM/yyyy')"
                                                    onKeyUp="setDate(this, 'dd/MM/yyyy', 'en');">
                                             <a href="javascript:show_calendar('nursingform.prescr_date','dd/MM/yyyy')">
-                                                <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
-
+                                               
 
                                             <font size=1>[
                                             <?php

@@ -357,9 +357,12 @@ function CheckCategory(){
               </tr>
             </tbody>
           </table>
+
+          <a href="../../modules/pharmacy_tz/pharmacy_tz.php"><img src="../../gui/img/control/default/en/en_cancel.gif" border=0 align="left" width="103" height="24" alt="Go back to databank menu"></a>
+          
   </form>
 
-<a href="../../modules/pharmacy_tz/pharmacy_tz.php"><img src="../../gui/img/control/default/en/en_cancel.gif" border=0 align="left" width="103" height="24" alt="Go back to databank menu"></a>
+
 		</td>
 	</tr>
 

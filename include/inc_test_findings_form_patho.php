@@ -120,7 +120,7 @@ function createInputBlock($param, $value) {
                 if ($edit) {
                     ?>
                     <a href="javascript:show_calendar('form_test_request.findings_date','<?php echo $date_format ?>')">
-                        <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                        <!-- <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
                     <?php
                 }
                 ?>

@@ -325,7 +325,7 @@ if ($mode == 'show' /* && !isset($externalcall) */) {
 
             if (!isset($printout) && !isset($_GET['ShowOnlyPharmacy'])) {
 
-                // $smarty->assign('sPromptLink', '<a href="' . $thisfile . URL_APPEND . '&disablebuttons=' . $disablebuttons . '&pid=' . $_SESSION['sess_pid'] . '&target=' . $target . '&mode=new&help_site=' . $help_site . '&externalcall=' . $externalcall . '&prescrServ=' . $prescrServ . '&backpath=' . urlencode($backpath) . '"><img ' . createComIcon($root_path, 'createnew_tz.gif', '0') . ' ></a>');
+                $smarty->assign('sPromptLink', '<a href="' . $thisfile . URL_APPEND . '&disablebuttons=' . $disablebuttons . '&pid=' . $_SESSION['sess_pid'] . '&target=' . $target . '&mode=new&help_site=' . $help_site . '&externalcall=' . $externalcall . '&prescrServ=' . $prescrServ . '&backpath=' . urlencode($backpath) . '"><img ' . createComIcon($root_path, 'createnew_tz.gif', '0') . ' ></a>');
             }
         } else {
 
@@ -461,9 +461,7 @@ if (empty($externalcall)) {
 
 $smarty->assign('sMainBlockIncludeFile', 'registration_admission/common_option_prescription.tpl');
 
+
+
+
 $smarty->display('common/mainframe.tpl');
-
-require_once($root_path . 'main_theme/head.inc.php');
-require_once($root_path . 'main_theme/header.inc.php');
-require_once($root_path . 'main_theme/topHeader.inc.php');
-

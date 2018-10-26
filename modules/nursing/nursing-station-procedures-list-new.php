@@ -272,7 +272,7 @@ foreach ($coreObjOuter->result as $rowEncounter) {
 
 
                                                         <!--NOTE: no date on procedures list
-                                                        <input name="prescr_date" type="text" size="15" maxlength=10 value="<?php echo $prescr_date; ?>"
+                                                        <input name="prescr_date" id="datepicker" type="text" size="15" maxlength=10 value="<?php echo $prescr_date; ?>"
                                                                 onFocus="this.select();"
                                                                 onBlur="IsValidDate(this,'dd/MM/yyyy')"
                                                                 onKeyUp="setDate(this,'dd/MM/yyyy','en');">

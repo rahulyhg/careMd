@@ -2,7 +2,6 @@
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
-$pageName = "OR";
 
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.1 - 2004-10-02
@@ -500,8 +499,8 @@ switch ($retpath) {
                 echo'
 	<input type=text name="date' . $i . '" size=9 maxlength=10 value="" onBlur="IsValidDate(this,\'' . $date_format . '\')" onKeyUp="setDate(this,\'' . $date_format . '\',\'' . $lang . '\')">';
             ?>
-            <a href="javascript:show_calendar('reportform.date<?php echo $i ?>','<?php echo $date_format ?>')">
-                <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+            <a id="datepicker" href="javascript:show_calendar('reportform.date<?php echo $i ?>','<?php echo $date_format ?>')">
+                <!-- <img <?php //echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
             <?php
             echo '
 </td>

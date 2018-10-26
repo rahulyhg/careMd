@@ -7,6 +7,10 @@ if (preg_match('/save_admission_data.inc.php/i', $_SERVER['PHP_SELF']))
 include_once($root_path . 'include/care_api_classes/class_multi.php');
 $multi = new multi;
 
+if (empty($encounter_nr)) {
+    $encounter_nr = $_GET['nr'];
+}
+
 if($encounter_nr){
     $multi->doctorSTAT($_SESSION['sess_login_userid'], $encounter_nr);
 }

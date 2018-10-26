@@ -56,7 +56,7 @@ function gethelp(x,s,x1,x2,x3,x4)
 	  <tr  class="titlebar" >
 	  	<td>&nbsp;&nbsp;<font color="#330066"><?php echo $LDICD10Description; ?>
 (<?php echo $_SESSION['sess_en']; ?>)</font></td>
-	  	<td align="right"><a href="<?php echo $_SESSION['backpath_diag'];?>"><img src="../../gui/img/control/default/en/en_back2.gif" border=0 width="110" height="24" alt="" style="filter:alpha(opacity=70)"></a><?php if($_SESSION['ispopup']=="true")
+	  	<td align="right"><a href="javascript:history.back()"><img src="../../gui/img/control/default/en/en_back2.gif" border=0 width="110" height="24" alt="" style="filter:alpha(opacity=70)"></a><?php if($_SESSION['ispopup']=="true")
 	  		$closelink='javascript:window.close();';
 	  	else
 	  		$closelink='../../main/startframe.php?ntid=false&lang=$lang';
@@ -82,7 +82,7 @@ function gethelp(x,s,x1,x2,x3,x4)
 		</div></td>
 	  </tr>
 	</table>
-<table width="100%" border="0" bgcolor="#CAD3EC" cellpadding="1" cellspacing="1">
+<table width="100%" border="0" style="height: 570px;" bgcolor="#CAD3EC" cellpadding="1" cellspacing="1">
           <tr>
             <td width="100%" align="center">
                   <table border="0" cellpadding="0" cellspacing="0">
@@ -102,7 +102,7 @@ function gethelp(x,s,x1,x2,x3,x4)
                   	</tr>-->
                   </table>
                   <br>
-              <select name="itemlist[]" id="itemlist[]" size="17" style="width:600px;" onDblClick="javascript:item_add();">
+              <select name="itemlist[]" id="itemlist[]" size="14" style="width:600px;" onDblClick="javascript:item_add();">
   
                   <!-- dynamically managed content -->
                   
@@ -112,7 +112,7 @@ function gethelp(x,s,x1,x2,x3,x4)
               </select>
             </td>
           </tr>
-          <tr>
+          <tr style="margin-top: 0px !important;">
             <td align="center">
             	<table border="0" cellpadding="0" cellspacing="0" align="center" width="500">
             		<tr>
@@ -126,7 +126,7 @@ function gethelp(x,s,x1,x2,x3,x4)
           <tr>
             <td>
 <div align="center">
-                <select name="selected_item_list[]" size="5" style="width:600px;" onDblClick="javascript:item_delete();">
+                <select name="selected_item_list[]" size="10" style="width:600px;" onDblClick="javascript:item_delete();">
                   <!-- dynamically managed content -->
                   <?php $diagnostic_obj->Display_Selected_Elements($item_no); ?>
                   <!-- dynamically managed content -->

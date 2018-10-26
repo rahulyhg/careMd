@@ -96,9 +96,9 @@ require($root_path . 'include/inc_checkdate_lang.php');
                     <input type="text" name="author" size=30 maxlength=40><br>
                     <FONT color="#0000cc" size=2><b><?php echo $LDPublishDate ?>:</b><br>
                     <!-- <input type="text" name="publishdate" size=10 maxlength=10 onKeyUp="setDate(this)"> -->
-                    <input type="text" name="publishdate" size=10 maxlength=10 onBlur="IsValidDate(this, '<?php echo $date_format ?>')" onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
+                    <input type="text" name="publishdate" id="datepicker" size=10 maxlength=10 onBlur="IsValidDate(this, '<?php echo $date_format ?>')" onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
                     <a href="javascript:show_calendar('selectform.publishdate','<?php echo $date_format ?>')">
-                        <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                        <!-- <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
                     [<?php
                     $dfbuffer = "LD_" . strtr($date_format, ".-/", "phs");
                     echo $$dfbuffer;

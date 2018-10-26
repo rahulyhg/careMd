@@ -158,13 +158,13 @@ border-collapse:collapse;
                           <input type="text" name="date_from" id="datepicker" size=10 maxlength=10 value="<?php echo $_POST['date_from'] ?>" >
 
                            <a href="javascript:show_calendar('form2.date_from','<?php echo date_format('d-m-Y'); ?>')">
-                           <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                           <!-- <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
 
 
                            <input type="text" name="date_to" id="datepicker2" size=10 maxlength=10 value="<?php echo $_POST['date_to'] ?>" >
 
                            <a href="javascript:show_calendar('form2.date_to','<?php echo date_format('d-m-Y'); ?>')">
-                           <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                           <!-- <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
 
                            <input type="text" name="nr" id="nr" placeholder="Receipt#" size=5 value="<?php echo $_POST['nr'];?>">
                            

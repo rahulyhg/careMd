@@ -280,7 +280,7 @@ echo $LDEnterInfo;
                         echo formatDate2Local($date_create, $date_format);
                     } else {
                         ?>
-                        <input type="text" name="date_create" size=10 maxlength=10  
+                        <input type="text" id="datepicker" name="date_create" size=10 maxlength=10  
                                value="<?php
                     if (isset($inputerror) && $inputerror) {
                         echo $date_create;
@@ -292,7 +292,7 @@ echo $LDEnterInfo;
                         ?>" 
                                onBlur="IsValidDate(this, '<?php echo $date_format ?>')" onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
                         <a href="javascript:show_calendar('newstat.date_create','<?php echo $date_format ?>')">
-                            <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a> 
+                            <!-- <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a> 
                         <font size=1>[ <?php
                         $dfbuffer = "LD_" . strtr($date_format, ".-/", "phs");
                         echo $$dfbuffer;

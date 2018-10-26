@@ -1,5 +1,27 @@
 <?php
 
+?>
+
+<script>
+    
+    function createCookie(name, value, days) {
+  var expires;
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toGMTString();
+  } else {
+   expires = "";
+  }
+  document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
+}
+
+      createCookie("PageName", "Home", "10");
+
+</script>
+
+<?php
+
 // Initialize the session and destray all the previous session
 session_start();
 
@@ -157,8 +179,6 @@ require($root_path . 'include/inc_passcheck_head.php');
     </span>
   </div>
 </footer>
-
-
 
 
 <BODY onLoad="<?php if (isset($is_logged_out) && $is_logged_out) echo "window.parent.STARTPAGE.location.href='indexframe.php?sid=$sid&lang=$lang';"; ?>document.passwindow.userid.focus();" bgcolor=<?php echo $cfg['body_bgcolor']; ?>

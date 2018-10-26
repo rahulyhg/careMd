@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2018-10-22 11:06:06
+<?php /* Smarty version 2.6.22, created on 2018-10-24 13:07:01
          compiled from registration_admission/common_option_prescription.tpl */ ?>
 <table width="100%" cellspacing="0" cellpadding="0" border="1">
     <tbody>

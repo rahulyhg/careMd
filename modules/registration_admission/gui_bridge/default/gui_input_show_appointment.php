@@ -9,7 +9,7 @@
  
 <link rel="stylesheet" type="text/css" href="../../js/time_picker/dist/bootstrap-clockpicker.min.css">
 
-<!-- <script type="text/javascript" src="../../js/time_picker/assets/js/bootstrap.min.js"></script> -->
+<script type="text/javascript" src="../../js/time_picker/assets/js/bootstrap.min.js"></script>
 
 
 
@@ -22,7 +22,7 @@
   <script>
     
    $( function() {
-    // $( "#date" ).datepicker({ dateFormat: 'dd/mm/yy' }).val();
+    $( "#date" ).datepicker({ dateFormat: 'dd/mm/yy' }).val();
   } );
 
      
@@ -296,22 +296,5 @@ $('#time').clockpicker({
  
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

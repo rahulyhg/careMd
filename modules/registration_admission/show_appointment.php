@@ -2,8 +2,6 @@
 //error_reporting(E_COMPILE_ERROR|E_ERROR|E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
-$pageName = "Patient";
-
 /**
  * CARE2X Integrated Hospital Information System beta 2.0.1 - 2004-07-04
  * GNU General Public License
@@ -19,12 +17,15 @@ $obj = new Appointment();
 
 $bPastDateError = FALSE;
 
+
 #
 # Save PID to session. Patch as result of bug report from Francesco and Marco.
 #
+
+
+$pid = $_GET['pid'];
+
 $_SESSION['sess_pid'] = $pid;
-
-
 
 
 if (!isset($mode)) {
@@ -35,7 +36,7 @@ if (!isset($mode)) {
     #
 
 
-	if ($mode == 'create' || $mode == 'update') {
+    if ($mode == 'create' || $mode == 'update') {
 
 
         include_once($root_path . 'include/inc_date_format_functions.php');
@@ -46,7 +47,7 @@ if (!isset($mode)) {
         #
         # If date in the past, force mode to "select" and erase date data
         #
-		if ($sBufDate < 0) {
+        if ($sBufDate < 0) {
             $bPastDateError = TRUE;
             $mode = 'select';
             $date = '';
@@ -135,6 +136,4 @@ require_once($root_path . 'main_theme/topHeader.inc.php');
 
 require('./gui_bridge/default/gui_show.php');
 ?>
-
 <?php require_once($root_path . 'main_theme/footer.inc.php'); ?>
-

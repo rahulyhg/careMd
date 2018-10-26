@@ -648,9 +648,9 @@ if ($read_form && $stored_request['xray_date'] != DBF_NODATE) {
     } else {
         echo formatDate2Local(date('Y-m-d'), $date_format);
     }
-    ?>" size=10 maxlength=10 onBlur="IsValidDate(this, '<?php echo $date_format ?>')"  onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
+    ?>" size=10 maxlength=10 id="datepicker" onBlur="IsValidDate(this, '<?php echo $date_format ?>')"  onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
                                                      <a href="javascript:show_calendar('form_test_request.xray_date','<?php echo $date_format ?>')">
-                                                 <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                                               <!--   <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
                                                                                 </nobr>
                                                                             </div>
                                                                     </tr>
@@ -674,10 +674,10 @@ if ($read_form && $stored_request['results_date'] != DBF_NODATE) {
     } else {
         echo formatDate2Local(date('Y-m-d'), $date_format);
     }
-    ?>" size=10 maxlength=10 onBlur="IsValidDate(this, '<?php echo $date_format ?>')"  onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
+    ?>" size=10 maxlength=10 id="datepicker1" onBlur="IsValidDate(this, '<?php echo $date_format ?>')"  onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
 
                                                                                 <a href="javascript:show_calendar('form_test_request.results_date','<?php echo $date_format ?>')">
-                                                                                    <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a><font size=1 face="arial">
+                                                                                   <!--  <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a><font size=1 face="arial">
 
 
                                                                                 <font

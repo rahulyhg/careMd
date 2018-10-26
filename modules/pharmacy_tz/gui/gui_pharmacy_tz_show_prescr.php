@@ -89,7 +89,7 @@ require($root_path . 'include/inc_checkdate_lang.php');
                                     &nbsp;&nbsp;<font color="#330066"><?php echo $LDPrescrWard; ?></font>
                                 </td>
                                 <td bgcolor="#99ccff" align=right><a
-                                        href="javascript:window.history.back()"><img src="../../gui/img/control/default/en/en_back2.gif" border=0 width="110" height="24" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)" ></a><a
+                                        href="<?php echo $root_path ?>modules/pharmacy_tz/pharmacy_tz_substore.php"><img src="../../gui/img/control/default/en/en_back2.gif" border=0 width="110" height="24" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)" ></a><a
                                         href="javascript:gethelp('insurance_companies_overview.php','Administrative Companies :: Overview')"><img src="../../gui/img/control/default/en/en_hilfe-r.gif" border=0 width="75" height="24" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)"></a><a
                                         href="pharmacy_tz_pass.php?ntid=false&lang=$lang" ><img src="../../gui/img/control/default/en/en_close2.gif" border=0 width="103" height="24" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)"></a>  </td>
                             </tr>
@@ -247,7 +247,7 @@ echo $prescr;
 
 
 
-                                                    <input name="prescr_date" type="text" size="15" maxlength=10 value="<?php {
+                                                    <input name="prescr_date" id="datepicker" type="text" size="15" maxlength=10 value="<?php {
                                                 echo $prescr_date;
                                             }
                                             ?>"
@@ -255,7 +255,7 @@ echo $prescr;
                                                            onBlur="IsValidDate(this, 'dd/MM/yyyy')"
                                                            onKeyUp="setDate(this, 'dd/MM/yyyy', 'en');">
                                                     <a href="javascript:show_calendar('inputform.prescr_date','dd/MM/yyyy')">
-                                                        <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                                                        <!-- <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
 
 
                                                     <font size=1>[

@@ -340,7 +340,7 @@ while ($rows = $RESULT_TOTALDOSE->FetchRow()) {
                         <!--<input type="image" src="../../gui/img/control/default/en/en_savedisc.gif" value="button"  name="save">
                         <br><br><br>-->
 
-                                                        <input name="prescr_date" type="text" size="15" maxlength=10 value="<?php {
+                                                        <input name="prescr_date" id="datepicker" type="text" size="15" maxlength=10 value="<?php {
                                                                 echo $prescr_date;
                                                             }
                                                             ?>"
@@ -348,7 +348,7 @@ while ($rows = $RESULT_TOTALDOSE->FetchRow()) {
                                                                onBlur="IsValidDate(this, 'dd/MM/yyyy')"
                                                                onKeyUp="setDate(this, 'dd/MM/yyyy', 'en');">
                                                         <a href="javascript:show_calendar('nursingform.prescr_date','dd/MM/yyyy')">
-                                                            <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                                                            <!-- <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
 
 
                                                         <font size=1>[

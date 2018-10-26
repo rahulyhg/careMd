@@ -1,28 +1,28 @@
 <script>
 
 $(function() {
+    $( document ).idleTimer("destroy");
 
-	var timeOut = 100000;
-    // $( document ).idleTimer("destroy");
+	var timeOut = 200000;
     
     window.loginUrl = "<?php echo $root_path ?>"+ "main/login.php";
 
-	$.getJSON("<?php echo $root_path ?>modules/sessionSetting.php").done(function(response){
 
-        timeOut = response.timeout;
-        console.log(response.timeout)
+    $.getJSON("<?php echo $root_path ?>modules/sessionSetting.php", function(data) {
+        
+        timeOut = data.timeout;
+        console.log(data.timeout)
 
         $( document ).idleTimer( {
             timeout: timeOut, 
             idle: true
         });
 
-       
 
-	}).fail(function(data){
-	 
-      console.log(data);
-	})
+    }).fail( function(data, textStatus, error) {
+         console.log(error);
+    });
+
 
     $( document ).on( "idle.idleTimer", function(event, elem, obj){
         window.location.href = window.loginUrl;
@@ -45,6 +45,9 @@ $(function() {
         mode: 'date',
         format: 'dd/MM/yyyy'
     });
+
+
+
 
 });
 

@@ -547,8 +547,8 @@ while (list($x, $v) = each($surgery_arr)) {
                 }
                 ?>
             </select>
-            <input type="text" name="sdate" size=8 maxlength=10 value="<?php if ($thisday) echo formatDate2Local($thisday, $date_format); ?>" onBlur="IsValidDate(this, '<?php echo $date_format ?>')" onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
-            <a href="javascript:show_calendar('chgdept.sdate','<?php echo $date_format; ?>')"><img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+            <input type="text" name="sdate" id="datepicker" size=8 maxlength=10 value="<?php if ($thisday) echo formatDate2Local($thisday, $date_format); ?>" onBlur="IsValidDate(this, '<?php echo $date_format ?>')" onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
+            <a href="javascript:show_calendar('chgdept.sdate','<?php echo $date_format; ?>')"><!-- <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
 
         </nobr>
         <input type="submit" value="<?php echo $LDChange ?>">
