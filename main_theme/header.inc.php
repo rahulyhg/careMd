@@ -38,15 +38,15 @@ if (empty($_SESSION['sess_login_userid'])) {
 
 $sql="SELECT nr,sort_nr,name,LD_var AS \"LD_var\",url,is_visible FROM care_menu_main WHERE is_visible=1 OR LD_var='LDEDP' OR LD_var='LDLogin' ORDER by sort_nr";
 
-$result=$db->Execute($sql);
+$resultMenus=$db->Execute($sql);
 $navigationMenus = [];
 $userNavigationMenus = [];
 
-if($result){
+if($resultMenus){
 
     include_once($root_path.'main/menu/big_icon/tags.php');
 
-    while($menu=$result->FetchRow()){
+    while($menu=$resultMenus->FetchRow()){
 
         if (preg_match('/LDLogin/i',$menu['LD_var'])){
             if ($_COOKIE['ck_login_logged'.$sid]=='true'){
