@@ -218,8 +218,8 @@ if ($released) {
     $smarty->assign('released', TRUE);
     $smarty->assign('x_date', nl2br($x_date));
 } else {
-    $smarty->assign('sDateInput', '<input type="text" name="x_date" size=12 maxlength=10 value="' . formatdate2Local(date('Y-m-d'), $date_format) . '"  onBlur="IsValidDate(this,\'' . $date_format . '\')"  onKeyUp="setDate(this,\'' . $date_format . '\',\'' . $lang . '\')">');
-    $smarty->assign('sDateMiniCalendar', "<a href=\"javascript:show_calendar('discform.x_date','$date_format')\"><img " . createComIcon($root_path, 'show-calendar.gif', '0', 'top') . "></a>");
+    $smarty->assign('sDateInput', '<input type="text" name="x_date" id="datepicker" size=12 maxlength=10 value="' . formatdate2Local(date('Y-m-d'), $date_format) . '"  onBlur="IsValidDate(this,\'' . $date_format . '\')"  onKeyUp="setDate(this,\'' . $date_format . '\',\'' . $lang . '\')">');
+ 
 }
 $smarty->assign('LDClockTime', $LDClockTime);
 
@@ -320,7 +320,7 @@ if (($mode == 'release') && ($released))
 else
     $sBreakButton = '<img ' . createLDImgSrc($root_path, 'cancel.gif', '0') . ' border="0">';
 
-$smarty->assign('pbCancel', '<a href="' . $breakfile . '">' . $sBreakButton . '</a>');
+$smarty->assign('pbCancel', '<a href="javascript: history.back()">' . $sBreakButton . '</a>');
 
 $smarty->assign('sMainBlockIncludeFile', 'nursing/discharge_patient_form.tpl');
 

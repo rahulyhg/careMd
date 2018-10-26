@@ -362,7 +362,7 @@ ob_start();
             {
                 if (confirm("<?php echo $LDSureTransferPatient . "-" ?>")) {
                     urlholder = "amb_clinic_transfer_select.php<?php echo URL_REDIRECT_APPEND ?>&pn=" + pn + "&pat_station=" + pw + "&dept_nr=<?php echo $dept_nr ?>&station=<?php echo $station ?>&patnr=" + patnr;
-                    transwin<?php echo $sid ?> = window.open(urlholder, "transwin<?php echo $sid ?>", "width=800,height=620,menubar=no,resizable=yes,scrollbars=yes");
+                    transwin<?php echo $sid ?> = window.open(urlholder, "_self");
                 }
             }
 
