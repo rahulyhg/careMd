@@ -57,5 +57,11 @@
   <script src="<?php echo $root_path ?>/js/care_md/plugins/idle-timer.js"></script>
 
 <?php 
+
+if (empty($_SESSION['sess_login_userid'])) {
+    header("location: " . $root_path . "main/login.php");
+    exit;
+}
+
 (@include_once ( $root_path.'modules/main_js.php'));
  ?>

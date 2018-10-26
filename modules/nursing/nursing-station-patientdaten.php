@@ -278,7 +278,7 @@ $smarty->assign('pbBack', FALSE);
 $smarty->assign('pbHelp', "javascript:gethelp('patient_charts.php','Patient&acute;s chart folder :: Overview','','$station','Main folder')");
 
 # href for close button
-$smarty->assign('breakfile', 'javascript:window.close()');
+$smarty->assign('breakfile', 'javascript:history.back()');
 
 # Window bar title
 $smarty->assign('sWindowTitle', ucfirst($result[name_last]) . "," . ucwords($result[name_first]) . " " . $result[date_birth] . " " . $LDPatDataFolder);

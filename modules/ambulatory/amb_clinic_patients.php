@@ -12,6 +12,10 @@ require_once($root_path . 'main_theme/head.inc.php');
 require_once($root_path . 'main_theme/header.inc.php');
 require_once($root_path . 'main_theme/topHeader.inc.php');
 
+if (@$_GET['dept_nr']) {
+   $_SESSION['dept_nr'] = $_GET['dept_nr'];
+}
+
 
 /**
  * CARE2X Integrated Hospital Information System version deployment 1.1 (mysql) 2004-01-11
@@ -335,7 +339,7 @@ ob_start();
 
     function getrem(pn) {
         urlholder = "<?php echo $root_path ?>modules/nursing/nursing-station-remarks.php<?php echo URL_REDIRECT_APPEND; ?>&pn=" + pn + "<?php echo "&dept_nr=$dept_nr&pday=$pday&pmonth=$pmonth&pyear=$pyear"; ?>";
-        patientwin = window.open(urlholder, pn, "width=700,height=500,menubar=no,resizable=yes,scrollbars=yes");
+        patientwin = window.open(urlholder, "_self");
     }
 
     function release(nr)
@@ -840,7 +844,7 @@ $smarty->display('common/mainframe.tpl');
                 $url = $root_path . "modules/nursing/nursing-station-patientdaten.php" . URL_REDIRECT_APPEND . "&pn=$encounter" . "&pday=$pday" . "&pmonth=$pmonth" . "&pyear=$pyear&edit=$edit&station=$dept_nr&open=1&report_nr=$report_nr";
 
                 echo "<p>";
-                echo '<a href="javascript:openPat(\'' . $url . '\')">' . $nameR . '</a> </br>';
+                echo '<a href="'.$url.'">' . $nameR . '</a> </br>';
                 echo "</p>";
             }
             ?>

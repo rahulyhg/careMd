@@ -13,8 +13,6 @@ require('./roots.php');
 
 require($root_path . 'include/inc_environment_global.php');
 
-$pageName = "Inpatient";
-
 
 $lang_tables[] = 'search.php';
 define('LANG_FILE', 'dental.php');
@@ -130,7 +128,6 @@ $records = '15';
 
     <?php
 
-
 require_once($root_path . 'main_theme/head.inc.php');
 require_once($root_path . 'main_theme/header.inc.php');
 require_once($root_path . 'main_theme/topHeader.inc.php');
@@ -148,7 +145,7 @@ require_once($root_path . 'main_theme/topHeader.inc.php');
                 <FONT  COLOR="<?php echo $cfg['top_txtcolor']; ?>"  SIZE=+2  FACE="Arial"><STRONG>&nbsp;&nbsp;&nbsp;Patient Notes</STRONG></FONT></td>
             <td bgcolor="<?php echo $cfg['top_bgcolor']; ?>" height="10" align='right' style='padding-top:5px;'>
              
-             <a href="<?php echo $root_path ?>modules/ambulatory/amb_clinic_patients.php".<?php URL_REDIRECT_APPEND ?> class="btn btn-primary btn-sm">Back to List</a>
+             <a href="<?php echo $root_path . 'modules/ambulatory/amb_clinic_patients.php'.URL_REDIRECT_APPEND.'&dept_nr=' . $_SESSION['dept_nr'] ?> " class="btn btn-primary btn-sm">Back to List</a>
                 <a>
                 <?php if ($cfg['dhtml']) echo'<a href="javascript:window.history.back()"><img ' . createLDImgSrc($root_path, 'back2.gif', '0') . '  style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?></a>
 
@@ -251,7 +248,7 @@ require_once($root_path . 'main_theme/topHeader.inc.php');
             </td>
         </tr>
         <tr align="left" valign="top">
-            <td height="22" colspan="2">&nbsp;	  </td>
+            <td height="22" colspan="2">&nbsp;    </td>
         </tr>
 
     </table>
@@ -261,4 +258,7 @@ require_once($root_path . 'main_theme/topHeader.inc.php');
 <?php 
 
 require_once($root_path . 'main_theme/footer.inc.php');
+
+
+
  ?>

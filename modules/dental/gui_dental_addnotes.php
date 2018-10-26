@@ -1,8 +1,3 @@
-<style>
-    textarea {
-    resize: none;
-}
-</style>
 <?php
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
@@ -36,6 +31,14 @@ if ($_GET['mode'] == 'edit') {
 
 #print_r($_GET);
 ?>
+
+<style>
+textarea { 
+    resize: auto;
+    overflow: auto;
+}
+
+</style>
 <div id="mimix">
     <form name="form1" method="get" action="dental_billing_.php">
         <table width="400" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -66,7 +69,7 @@ if ($_GET['mode'] == 'edit') {
                         <tr align="center" valign="top" bgcolor="#FFFFFF">
                             <td align="right" valign="top" nowrap bgcolor="#E7EEE6"><strong>Full Description:</strong></td>
                             <td width="265" align="left" nowrap bgcolor="#FFFFFF" class="style7">
-                                <textarea name="notes" cols="50" rows="5" id="notes"><?php print $yy[3]; ?></textarea>
+                                <textarea name="notes" cols="50" rows="10" id="notes"><?php print $yy[3]; ?></textarea>
                             </td>
                             <td width="66" align="left" nowrap bgcolor="#FFFFFF" class="style7">*Required</td>
                         </tr>
@@ -97,8 +100,3 @@ if ($_GET['mode'] == 'edit') {
     </form>
 </div>
 
-<script src="<?php echo $root_path ?>/js/care_md/plugins/autoresize.jquery.js"></script>
-
-<script>
-    $("textarea").autoresize()
-</script>
