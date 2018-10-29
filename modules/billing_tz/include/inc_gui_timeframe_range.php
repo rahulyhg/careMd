@@ -8,11 +8,11 @@
 
 							</label>
 
-						      <input name="selected_date" type="text" size=10 maxlength=10  value="<?php if(!empty($selected_date)) 
+						      <input name="selected_date" type="text" id="datepicker" size=10 maxlength=10  value="<?php if(!empty($selected_date)) 
  echo @formatDate2Local($selected_date,$date_format);  ?>"  onBlur="IsValidDate(this,'<?php echo $date_format ?>')" 
 onKeyUp="setDate(this,'<?php echo $date_format ?>','<?php echo $lang ?>')">
 							  <a href="javascript:show_calendar('form1.selected_date','<?php echo $date_format ?>')">
-			<img <?php echo createComIcon($root_path,'show-calendar.gif','0','absmiddle'); ?>></a><font size=1>[<?php
+			</a><font size=1>[<?php
 			$dfbuffer="LD_".strtr($date_format,".-/","phs");
 			echo $$dfbuffer;
 			?>]			 

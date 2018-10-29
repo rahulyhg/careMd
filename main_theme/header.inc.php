@@ -176,6 +176,15 @@ if ($userPermissions[0] == "System_Admin" || $userPermissions[0] == "_a_0_all " 
       }
     }
 
+    if ($navigationMenu['name'] == "NHIF Claims") {
+      foreach ($userPermissions as $userPermission) { 
+        if ($userPermission == "NHIF Claims")  {
+          array_push($userNavigationMenus, $navigationMenu);
+        }
+      }
+    }
+
+
     if ($navigationMenu['name'] == "Reporting") {
       foreach ($userPermissions as $userPermission) { 
         if ($userPermission == "billreports" || $userPermission == "allreportingread" || $userPermission == "reportingread" || $userPermission == "clinicreportingread"  || $userPermission == "financialreportingread" || $userPermission == "systemreportingread" )  {
@@ -238,7 +247,8 @@ $userNavigations = array_unique($userNavigationMenus, SORT_REGULAR);
     -->
       <div class="logo">
         <a href="#" class="simple-text logo-normal" style="text-transform: none;">
-          CareMd
+          <img style="height: 38px; "src="<?php echo $root_path  ?>img/caremd.png" alt="CareMd">
+          
         </a>
       </div>
       <div class="sidebar-wrapper nav-scroll backgroundOne " >
@@ -345,6 +355,14 @@ $userNavigations = array_unique($userNavigationMenus, SORT_REGULAR);
             <li class="nav-item <?php if($PageName == "Billing") echo 'active'; ?> ">
               <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('Billing')">
                 <i class="material-icons colorOne">art_track</i>
+                <p class="colorOne"><?php echo $menu['name'] ?></p>
+              </a>
+            </li>
+
+            <?php elseif ($menu['name'] == "NHIF Claims"): ?>
+            <li class="nav-item <?php if($PageName == "NHIF Claims") echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('NHIF Claims')">
+                <i class="fa fa-user"></i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>

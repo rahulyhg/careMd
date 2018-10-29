@@ -56,6 +56,22 @@
 
   <script src="<?php echo $root_path ?>/js/care_md/plugins/idle-timer.js"></script>
 
+  <?php if ($_COOKIE['PageName'] == "NHIF Claims"): ?>
+      <!--datatables-->
+    <script src="<?php echo $root_path; ?>assets/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="<?php echo $root_path; ?>assets/datatables/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+ 
+    <!--Bootstrap-->
+    <!-- <script src="<?php echo $root_path; ?>assets/bootstrap/js/bootstrap.min.js"></script> -->
+    <script src="<?php echo $root_path; ?>assets/datatables/plugins/fixedHeader/js/dataTables.fixedHeader.min.js" type="text/javascript"></script>
+    <script src="<?php echo $root_path; ?>assets/bootstrap/js/popper.min.js" ></script>
+
+    <script src="<?php echo $root_path; ?>assets/datatables/plugins/responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
+    <!-- <script src="<?php echo $root_path; ?>assets/datatables/plugins/responsive/js/responsive.bootstrap4.min.js" type="text/javascript"></script> -->
+    <!-- <script src="<?php echo $root_path; ?>assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script> -->
+    
+  <?php endif ?>
+
 <?php 
 
 if (empty($_SESSION['sess_login_userid'])) {

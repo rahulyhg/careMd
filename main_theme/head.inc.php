@@ -13,10 +13,23 @@
             <!--     Fonts and icons     -->
             <link href="<?php echo $root_path ?>css/themes/care_md/material-font.css" rel="stylesheet"/>
             <!-- CSS Files -->
+
+
             <link href="<?php echo $root_path ?>css/themes/care_md/material-dashboard.css?v=2.1.0" rel="stylesheet"/>
             <link href="<?php echo $root_path ?>css/themes/care_md/font-awesome.min.css" rel="stylesheet"/>
             <link href="<?php echo $root_path ?>css/themes/care_md/jquery.Wload.css" rel="stylesheet"/>
             <link href="<?php echo $root_path ?>css/themes/care_md/main.css" rel="stylesheet"/>
+
+            <?php if ($_COOKIE['PageName'] == "NHIF Claims"): ?>
+                
+            <!-- <link rel="stylesheet" href="<?php echo $root_path; ?>assets/bootstrap/css/bootstrap.min.css" > -->
+            <link href="<?php echo $root_path; ?>assets/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
+            <link href="<?php echo $root_path; ?>assets/datatables/plugins/fixedHeader/css/fixedHeader.dataTables.min.css" rel="stylesheet" type="text/css"/>
+            <!-- <link href="<?php echo $root_path; ?>assets/datatables/plugins/responsive/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css"/> -->
+                
+            <?php endif ?>
+          
+
     </head>
 
     <noframes>

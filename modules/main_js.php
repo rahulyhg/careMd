@@ -46,6 +46,37 @@ $(function() {
         format: 'dd/MM/yyyy'
     });
 
+$(document).ready(function () {
+    $('.datatable').DataTable(
+    {
+        scrollX: true,
+        scrollCollapse: true,
+        fixedHeader: {
+            header: false,
+            footer: false
+        },
+        responsive: true,
+        columnDefs: [
+            {responsivePriority: 1, targets: 0},
+            {responsivePriority: 2, targets: -1},
+            {responsivePriority: 3, targets: -2}
+        ]
+    });
+
+     // var date_from = $('input[name="date_from"]'); //our date input has the name "date"
+     //    var date_to = $('input[name="date_to"]'); //our date input has the name "date"
+     //    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+     //    var options = {
+     //        format: 'yyyy-mm-dd',
+     //        container: container,
+     //        todayHighlight: true,
+     //        autoclose: true,
+     //        showDropdowns: true,
+     //    };
+     //    date_from.datepicker(options);
+     //    date_to.datepicker(options);
+
+});
 
 
 

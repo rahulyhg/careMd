@@ -55,7 +55,6 @@ $bill_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
 
 <a href="javascript:show_calendar('form1.date_from','<?php echo date('d-m-Y',strtotime($date_from)); ?>')">
 
-    <<!-- img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> -->
 
 </a>
 

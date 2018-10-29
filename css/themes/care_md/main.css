@@ -110,3 +110,18 @@
 .sidebar[data-color="azure"] li.active > a{
   box-shadow: none;
 }
+
+
+.alert1 {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.alert1-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
