@@ -4,6 +4,7 @@
 {{* - /modules/registration_admission/aufnahme_daten_zeigen.php *}}
 
 {{if $bSetAsForm}}
+
 <form method="post" action="{{$thisfile}}" name="aufnahmeform" onSubmit="return chkform(this)">
     {{/if}}
 
@@ -255,11 +256,13 @@
             </td>
         </tr>
         {{/if}}
+
         <tr>
             <td class="adm_item">&nbsp;</td>
             <td colspan=2 class="adm_input">&nbsp;</td>
         </tr>
-        <tr>
+
+         <tr>
             <td class="adm_item">
                 {{$LDForm_nr}}:
             </td>
@@ -268,7 +271,41 @@
             </td>
         </tr>
 
+
         <tr>
+            <td class="adm_item">&nbsp;</td>
+            <td colspan=2 class="adm_input">&nbsp;</td>
+        </tr>
+       
+
+        <tr>
+
+          <tr>
+            <td class="adm_item">
+                <font color="red"> {{$LDVisitType}}:</font>
+            </td>
+            <td colspan=2 class="adm_input visitType">
+                {{$VisitTypeInput}}
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adm_item">&nbsp;</td>
+            <td colspan=2 class="adm_input">&nbsp;</td>
+        </tr>
+       
+
+        <tr  class="referalInputs">
+            <td class="adm_item">
+                Referrer Number:
+            </td>
+            <td colspan=2 class="adm_input">
+
+                <input name="referrer_number" type="text" size="60" value="">
+            </td>
+        </tr>
+
+        <tr  class="referalInputs">
             <td class="adm_item">
                 {{$LDSpecials}}:
             </td>
@@ -277,7 +314,7 @@
             </td>
         </tr>
 
-        <tr>
+        <tr  class="referalInputs">
             <td class="adm_item">
                 {{$LDRefFrom}}:
             </td>
@@ -286,9 +323,15 @@
             </td>
         </tr>
 
+         <tr class="referalInputs">
+            <td class="adm_item">&nbsp;</td>
+            <td colspan=2 class="adm_input">&nbsp;</td>
+        </tr>
+       
+
         <!-- The insurance class  -->
         <!--done by d.r. from merotech -->
-        <tr>
+        <!-- tr>
             <td class="adm_item">
                 {{$LDBillType}}:
             </td>
@@ -312,7 +355,6 @@
                 {{$insurance_firm_name}}
             </td>
         </tr>
-        <!--}} -->
         {{if $LDCareServiceClass}}
         <tr>
             <td class="adm_item">
@@ -345,7 +387,7 @@
             </td>
         </tr>
         {{/if}}
-
+ -->
         <tr>
             <td class="adm_item">
                 {{$LDAdmitBy}}:

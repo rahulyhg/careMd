@@ -362,7 +362,7 @@ $userNavigations = array_unique($userNavigationMenus, SORT_REGULAR);
             <?php elseif ($menu['name'] == "NHIF Claims"): ?>
             <li class="nav-item <?php if($PageName == "NHIF Claims") echo 'active'; ?> ">
               <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('NHIF Claims')">
-                <i class="fa fa-user"></i>
+                <i class="fa fa-microchip"></i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>
             </li>

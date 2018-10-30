@@ -221,6 +221,7 @@ class Encounter extends Notes {
         'encounter_status',
         'referrer_diagnosis',
         'referrer_recom_therapy',
+        'referrer_number',
         'referrer_dr',
         'referrer_dept',
         'referrer_institution',

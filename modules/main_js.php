@@ -45,7 +45,7 @@ $(function() {
         mode: 'date',
         format: 'dd/MM/yyyy'
     });
-
+<?php if($_COOKIE['PageName'] == "NHIF Claims"): ?>
 $(document).ready(function () {
     $('.datatable').DataTable(
     {
@@ -77,9 +77,26 @@ $(document).ready(function () {
      //    date_to.datepicker(options);
 
 });
-
+<?php endif ?>
 
 
 });
 
+
+$('.referalInputs').hide();
+
+
+$('.visitType').change(function(){
+
+    var isNHIF = $(".nhifRadio").is(':checked');
+
+    if (isNHIF) 
+    {
+        $('.referalInputs').show();
+
+    }else
+    {
+        $('.referalInputs').hide();
+    }
+})
 </script>

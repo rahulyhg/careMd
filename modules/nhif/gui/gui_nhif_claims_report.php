@@ -76,7 +76,7 @@ $bat_nr = (isset($bat_nr) ? $bat_nr : null);
                                             </div>
                                             <div class="col-md-4 col-sm-4 col-xs-12">
                                                 <div class="form-group">
-                                                    <label class="control-label" for="date">To</label>
+                                                    <label class="" for="date">To</label>
                                                     <input class="form-control" id="datepicker2" name="date_to" placeholder="DD/MM/YYY" type="text" value="<?php echo $date_to; ?>" />
                                                 </div>
                                             </div>

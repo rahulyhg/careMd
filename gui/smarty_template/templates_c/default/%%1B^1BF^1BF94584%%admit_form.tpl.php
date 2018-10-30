@@ -1,7 +1,8 @@
-<?php /* Smarty version 2.6.22, created on 2018-10-09 19:00:13
+<?php /* Smarty version 2.6.22, created on 2018-10-30 09:32:50
          compiled from registration_admission/admit_form.tpl */ ?>
 
 <?php if ($this->_tpl_vars['bSetAsForm']): ?>
+
 <form method="post" action="<?php echo $this->_tpl_vars['thisfile']; ?>
 " name="aufnahmeform" onSubmit="return chkform(this)">
     <?php endif; ?>
@@ -300,11 +301,13 @@
             </td>
         </tr>
         <?php endif; ?>
+
         <tr>
             <td class="adm_item">&nbsp;</td>
             <td colspan=2 class="adm_input">&nbsp;</td>
         </tr>
-        <tr>
+
+         <tr>
             <td class="adm_item">
                 <?php echo $this->_tpl_vars['LDForm_nr']; ?>
 :
@@ -315,7 +318,43 @@
             </td>
         </tr>
 
+
         <tr>
+            <td class="adm_item">&nbsp;</td>
+            <td colspan=2 class="adm_input">&nbsp;</td>
+        </tr>
+       
+
+        <tr>
+
+          <tr>
+            <td class="adm_item">
+                <font color="red"> <?php echo $this->_tpl_vars['LDVisitType']; ?>
+:</font>
+            </td>
+            <td colspan=2 class="adm_input visitType">
+                <?php echo $this->_tpl_vars['VisitTypeInput']; ?>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adm_item">&nbsp;</td>
+            <td colspan=2 class="adm_input">&nbsp;</td>
+        </tr>
+       
+
+        <tr  class="referalInputs">
+            <td class="adm_item">
+                Referrer Number:
+            </td>
+            <td colspan=2 class="adm_input">
+
+                <input name="referrer_number" type="text" size="60" value="">
+            </td>
+        </tr>
+
+        <tr  class="referalInputs">
             <td class="adm_item">
                 <?php echo $this->_tpl_vars['LDSpecials']; ?>
 :
@@ -326,7 +365,7 @@
             </td>
         </tr>
 
-        <tr>
+        <tr  class="referalInputs">
             <td class="adm_item">
                 <?php echo $this->_tpl_vars['LDRefFrom']; ?>
 :
@@ -337,9 +376,15 @@
             </td>
         </tr>
 
+         <tr class="referalInputs">
+            <td class="adm_item">&nbsp;</td>
+            <td colspan=2 class="adm_input">&nbsp;</td>
+        </tr>
+       
+
         <!-- The insurance class  -->
         <!--done by d.r. from merotech -->
-        <tr>
+        <!-- tr>
             <td class="adm_item">
                 <?php echo $this->_tpl_vars['LDBillType']; ?>
 :
@@ -369,7 +414,6 @@
 
             </td>
         </tr>
-        <!--}} -->
         <?php if ($this->_tpl_vars['LDCareServiceClass']): ?>
         <tr>
             <td class="adm_item">
@@ -423,7 +467,7 @@
             </td>
         </tr>
         <?php endif; ?>
-
+ -->
         <tr>
             <td class="adm_item">
                 <?php echo $this->_tpl_vars['LDAdmitBy']; ?>
