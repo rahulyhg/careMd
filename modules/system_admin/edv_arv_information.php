@@ -18,6 +18,7 @@ if (isset($_POST['mode']) && $_POST['mode'] == 'save') {
     $numeric = FALSE; # Values are not strictly numeric
     $addslash = TRUE; # Slashes should be added to the stored values
     # Save the configuration
+    
 
     $glob_obj->saveConfigArray($_POST, $filter, $numeric, '', $addslash);
 

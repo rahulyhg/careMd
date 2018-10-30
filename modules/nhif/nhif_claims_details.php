@@ -34,6 +34,14 @@ define('LANG_FILE', 'nhif.php');
 require($root_path . 'include/inc_front_chain_lang.php');
 
 
+
+require_once $root_path.'vendor/autoload.php';
+require_once $root_path.'generated-conf/config.php';
+use  CareMd\CareMd\CareConfigGlobalQuery;
+$companyName = CareConfigGlobalQuery::create()->filterByType('main_info_name')->select('value')->findOne();
+$companyAddress = CareConfigGlobalQuery::create()->filterByType('main_info_address')->select('value')->findOne();
+
+
 require_once($root_path . 'main_theme/head.inc.php');
 require_once($root_path . 'main_theme/header.inc.php');
 require_once($root_path . 'main_theme/topHeader.inc.php');

@@ -34,7 +34,8 @@ $date_to = $_REQUEST['date_to'];
 
 
 
-
+//      echo "<pre>"; print_r($target);echo "</pre>";
+// die();
 switch ($target) {
     case 'review':
         $allowedarea = $allow_area['nhif_write'];

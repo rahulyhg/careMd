@@ -41,8 +41,10 @@ class Nhif_claims extends Nhif {
 
     function GetPendingClaims($filter_data = array()) {
         global $db;
-        $this->debug = FALSE;
+        $this->debug = false;
         ($this->debug) ? $db->debug = true : $db->debug = FALSE;
+        $date_from = date('Y-m-d', strtotime(str_replace('/', '-', $filter_data['date_from'])));
+        $date_to = date('Y-m-d', strtotime(str_replace('/', '-', $filter_data['date_to'])));
         if ($this->debug)
             echo "<br><b>Method class_nhif_claims::ShowPendingClaims()</b><br>";
 
@@ -59,10 +61,10 @@ class Nhif_claims extends Nhif {
             $sql .= " AND care_encounter.encounter_class_nr = '" . $filter_data['in_outpatient'] . "'";
         }
         if (isset($filter_data['date_from'])) {
-            $sql .= " AND discharge_date >= '" . $filter_data['date_from'] . "'";
+            $sql .= " AND discharge_date >= '" . $date_from . "'";
         }
         if (isset($filter_data['date_to'])) {
-            $sql .= " AND discharge_date <= '" . $filter_data['date_to'] . "'";
+            $sql .= " AND discharge_date <= '" . $date_to . "'";
         }
         $sql .= 'GROUP BY care_encounter.encounter_nr';
 
@@ -282,7 +284,7 @@ class Nhif_claims extends Nhif {
         $this->debug = FALSE;
         ($this->debug) ? $db->debug = true : $db->debug = FALSE;
         if ($this->debug)
-            echo "<br><b>Method class_nhif_claims::ShowPendingClaims()</b><br>";
+            echo "<br><b>Method class_nhif_claimsfs::ShowPendingClaims()</b><br>";
 
 //        $globalconfig_obj = new Globalconfig();
         $sql_encounter = "SELECT *,care_encounter.encounter_nr AS visit_no,if(care_encounter.encounter_class_nr = 1,'IN','OUT'),care_tz_diagnosis.timestamp as DateCreated, min(care_tz_diagnosis.timestamp) as PatientTypeCode "
@@ -422,6 +424,8 @@ class Nhif_claims extends Nhif {
         $this->debug = FALSE;
         ($this->debug) ? $db->debug = true : $db->debug = FALSE;
         if ($this->debug)
+
+            // xray, labtest, medicine drug_list% surgery minor_proc_op, surgical_op
             echo "<br><b>Method class_nhif_claims::get_labtest()</b><br>";
         $sql_diagnosis = "SELECT care_tz_drugsandservices.nhif_item_code,care_tz_drugsandservices.item_number,care_tz_drugsandservices.unit_price_1, IF(care_test_request_chemlabor_sub.bill_number>0,1,0) as  bill_status "
                 . " FROM care_test_request_chemlabor_sub,care_test_findings_chemlabor_sub,care_tz_drugsandservices"

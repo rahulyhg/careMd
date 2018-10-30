@@ -19,6 +19,7 @@
 <?php
 $bat_nr = (isset($bat_nr) ? $bat_nr : null);
 $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
+
 ?>
 
 <BODY bgcolor="#ffffff" link="#000066" alink="#cc0000" vlink="#000066">
@@ -74,9 +75,8 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
     if (!is_null($claims_details_query)) {
         $claims_details = $claims_details_query->fields;
 
+        // echo "<pre>"; print_r($claims_details);echo "</pre>";
 
-
-//        print_r($claims_details);
         ?>
 
         <style>
@@ -92,7 +92,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
             .right{
                 text-align: right;
             }
-            .logo{
+            .logonhif{
                 width: 24mm;
             }
             .title1{
@@ -132,7 +132,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
 
         </style>
         <?php
-//        print_r($claims_details);
+ // echo "<pre>"; print_r($claims_details);echo "</pre>";
 //
 //        echo $encounter_nr;
         ?>
@@ -162,13 +162,13 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
             </div>
         </div>
         <div class="row">
-            <table border="0" width="100%" cellspacing="1" cellpadding="1" style="background-color: azure" >
+            <table border="0" width="100%" cellspacing="1" cellpadding="1" style="background-color: azure; margin-left: 15px;" >
                 <tr>
                     <td>
                         <table border="0" width="100%" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td rowspan="3" class="left logo" >
-                                    <img class="logo" src="<?php echo $root_path; ?>modules/nhif/images/NHIF_logo.jpg" alt="NHIF Logo"/>
+                                <td rowspan="3" class="left logonhif" >
+                                    <img class="logonhif" src="<?php echo $root_path; ?>modules/nhif/images/NHIF_logo.jpg" alt="NHIF Logo"/>
                                 </td>
                                 <td class="center title1">CONFIDENTIAL</td>
                                 <td class="center" rowspan="2">Form NHIF 2A&B<br> Regulation 18(1)</td>
@@ -192,24 +192,108 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                         <table border="0" width="100%" cellspacing="0" cellpadding="0">
 
                             <tr>
-                                <td><table class="table-lebel" ><tr><td>1. Name of Hospital/Health Centers/Disp</td> <td></td></tr></table></td>
-                                <td><table class="table-lebel" ><tr><td>2. NHIF Acredition No:</td> <td><?= $_SESSION['facility_code'] ?></td></tr></table></td>
+                                <td>
+                                    <table class="table-lebel" >
+                                        <tr>
+                                            <td>1. Name of Hospital/Health Centers/Disp</td>
+                                             <td><?php echo $companyName ?></td>
+                                         </tr>
+                                     </table>
+                                </td>
+
+                                <td>
+                                    <table class="table-lebel" >
+                                        <tr>
+                                            <td>2. NHIF Acredition No:</td>
+                                             <td><?= $_SESSION['facility_code'] ?></td>
+                                         </tr>
+                                     </table>
+                                </td>
                             </tr>
                             <tr>
-                                <td><table class="table-lebel" ><tr><td>3. Address:</td> <td></td></tr></table></td>
-                                <td><table class="table-lebel" ><tr><td>4. Registration Fees:</td> <td></td></tr></table></td>
+                                <td>
+                                    <table class="table-lebel" >
+                                        <tr>
+                                            <td>3. Address:</td> 
+                                            <td><?php echo $companyAddress ?></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table class="table-lebel" >
+                                        <tr>
+                                            <td>4. Registration Fees:</td>
+                                            <td>
+
+                                                 <?php
+                                                $surgery_service_total_cost = 0;
+                                                $claims_surgery_service_query = $claims_obj->get_claimed_surgery_and_services(array('pid' => $claims_details['pid'], 'encounter_nr' => $encounter_nr));
+                                                if (!is_null($claims_surgery_service_query)) {
+
+
+                                                    while ($row = $claims_surgery_service_query->FetchRow()) {
+                                                        $surgery_service_total_cost = $surgery_service_total_cost + intval($row['unit_price_1'] * $row['total_dosage']);
+                                                        ?>
+                                                        <?php echo number_format($row['unit_price_1']) ?>
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
+                                                
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
                                     <table width="100%">
                                         <tr>
-                                            <td><table class="table-lebel" ><tr><td>5. Name of Patient:</td> <td><?= strtoupper($claims_details['name_first']) ?> <?= strtoupper($claims_details['name_middle']) ?> <?= strtoupper($claims_details['name_last']) ?></td></tr></table></td>
-                                            <td><table class="table-lebel" ><tr><td>6. Age:</td> <td></td></tr></table></td>
-                                            <td> <table class="table-lebel" ><tr><td>7. Sex:</td> <td><?= strtoupper($claims_details['sex']) ?></td></tr></table></td>
+                                            <td>
+                                                <table class="table-lebel" >
+                                                    <tr>
+                                                        <td>5. Name of Patient:</td>
+                                                        <td><?= strtoupper($claims_details['name_first']) ?> <?= strtoupper($claims_details['name_middle']) ?> <?= strtoupper($claims_details['name_last']) ?>
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td>
+                                                <table class="table-lebel" >
+                                                    <tr>
+                                                        <td>6. Age:</td>
+                                                        <td>
+                                                            <?php 
+                                                            $yearOfBirth = $claims_details['date_birth'];
+                                                            if (@$yearOfBirth) {
+                                                                echo date('Y') - date('Y', strtotime($yearOfBirth));
+                                                            }
+                                                            ?>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+
+                                            <td> 
+                                                <table class="table-lebel" >
+                                                    <tr><td>7. Sex:</td>
+                                                        <td><?= strtoupper($claims_details['sex']) ?></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
                                         </tr>
                                     </table>
                                 </td>
-                                <td><table class="table-lebel" ><tr><td>8. Membership No.:</td> <td><?= $claims_details['membership_nr'] ?></td></tr></table></td>
+                                <td>
+                                    <table class="table-lebel" >
+                                        <tr>
+                                            <td>8. Membership No.:</td>
+                                            <td><?= $claims_details['membership_nr'] ?></td>
+                                        </tr>
+                                    </table>
+                                </td>
+
                             </tr>
                         </table>
                     </td>
@@ -218,8 +302,21 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                     <td>
                         <table width="100%">
                             <tr>
-                                <td><table class="table-lebel" ><tr><td>9. Occupation:</td> <td></td></tr></table></td>
-                                <td><table class="table-lebel" ><tr><td>10. Type of illness(code):</td> <td>
+                                <td>
+                                    <table class="table-lebel" >
+                                        <tr>
+                                            <td>9. Occupation:</td>
+                                            <td>
+                                                <?php echo $claims_details['title'] ?>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table class="table-lebel" >
+                                        <tr>
+                                            <td>10. Type of illness(code):</td> 
+                                            <td>
                                                 <?php
                                                 $claims_diagnosis_query = $claims_obj->get_diagnosis(array('pid' => $claims_details['pid'], 'encounter_nr' => $encounter_nr));
                                                 if (!is_null($claims_diagnosis_query)) {
@@ -228,9 +325,18 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                                     }
                                                 }
                                                 ?>
-                                            </td></tr></table>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </td>
-                                <td> <table class="table-lebel" ><tr><td>11. Date of Attendance:</td> <td><?= $claims_details['encounter_date'] ?></td></tr></table></td>
+                                <td> 
+                                    <table class="table-lebel" >
+                                        <tr>
+                                            <td>11. Date of Attendance:</td>
+                                            <td><?= $claims_details['encounter_date'] ?></td>
+                                        </tr>
+                                    </table>
+                                </td>
                             </tr>
                         </table>
                     </td>
@@ -421,7 +527,14 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                     <td>
                         <table border="0" width="100%" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td><table class="table-lebel" ><tr><td>I certify that I received the above named services. Name:</td><td><?= strtoupper($claims_details['name_first']) ?> <?= strtoupper($claims_details['name_middle']) ?> <?= strtoupper($claims_details['name_last']) ?></td></tr></table></td>
+                                <td>
+                                    <table class="table-lebel" >
+                                        <tr>
+                                            <td>I certify that I received the above named services. Name:</td>
+                                            <td><?= strtoupper($claims_details['name_first']) ?> <?= strtoupper($claims_details['name_middle']) ?> <?= strtoupper($claims_details['name_last']) ?></td>
+                                        </tr>
+                                    </table>
+                                </td>
                                 <td><table class="table-lebel" ><tr><td>Signature:</td> <td></td></tr></table></td>
                                 <td><table class="table-lebel" ><tr><td>Tel. No:</td> <td><?= $claims_details['phone_1_nr'] ?></td></tr></table></td>
                             </tr>

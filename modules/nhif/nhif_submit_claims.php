@@ -27,11 +27,18 @@ $drg_obj = new DrugsAndServices;
 
 $in_outpatient = $_REQUEST['patient'];
 $encounter_nr = $_REQUEST['encounter_nr'];
-$page_action = $_REQUEST['page_action'];
+$page_action = @($_REQUEST['page_action'])?$_REQUEST['page_action']:"";
 $date_from = $_REQUEST['date_from'];
 $date_to = $_REQUEST['date_to'];
 
 define('LANG_FILE', 'nhif.php');
 require($root_path . 'include/inc_front_chain_lang.php');
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 require ('gui/gui_nhif_submit_claims.php');
+require_once($root_path . 'main_theme/footer.inc.php');
+
 ?>
