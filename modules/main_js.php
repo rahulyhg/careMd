@@ -99,4 +99,42 @@ $('.visitType').change(function(){
         $('.referalInputs').hide();
     }
 })
+
+function chooseDiagnosisType(url) {
+    window.diagnosisUrl = url;
+    $('#diagnosisTypeModal').modal('show');
+}
+
+function setSelectedOption(diagnosisType) {
+    createCookie('DiagnosisType', diagnosisType, '10');
+    window.location.href = window.diagnosisUrl;
+}
 </script>
+
+<div class="modal" id="diagnosisTypeModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Choose Diagnosis Type</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="custom-control custom-radio" onclick="setSelectedOption('preliminary')">
+          <input type="radio" class="custom-control-input" id="preliminarydiag"  name="diagnosis">
+          <label class="custom-control-label preliminarydiag" for="preliminarydiag">Preliminary Diagnosis</label>
+        </div> <br>
+         <div class="custom-control custom-radio" onclick="setSelectedOption('final')">
+          <input type="radio" class="custom-control-input" id="finaldiag" name="diagnosis">
+          <label class="custom-control-label finaldiag" for="finaldiag">Final Diagnosis</label>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

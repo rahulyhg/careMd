@@ -2,7 +2,6 @@
     function popNotes(d) {
         alert(d);
     }
-    -- >
 </script>
 <table border=0 cellpadding=4 cellspacing=1 width=100% class="frame">
 

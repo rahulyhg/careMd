@@ -604,9 +604,13 @@ ob_start();
 // DIAGNOSIS
 
                                         if ($dept_nr == '43') {
-                                            echo '<input style="width:220px; overflow:hidden; border:1px solid white; margin:0px 0px 7px 6px;" type="button" onClick="window.location.href=\'' . $root_path . 'modules/diagnostics_tz/icd10_search.php?sid=' . $sid . '&encounter=' . $pn . '&reference=quicklist&quicklist=160\'" value="' . $LDDentaldiagnoses . '">';
+                                            $diagnosisUrl =  $root_path . 'modules/diagnostics_tz/icd10_search.php?sid=' . $sid . '&encounter=' . $pn . '&reference=quicklist&quicklist=160';
+                                            echo '<input style="width:220px; overflow:hidden; border:1px solid white; margin:0px 0px 7px 6px;" type="button" onClick="chooseDiagnosisType(\''.$diagUrl.'\')" value="' . $LDDentaldiagnoses . '">';
                                         } else {
-                                            echo '<input style="width:220px; overflow:hidden; border:1px solid white; margin:0px 0px 7px 6px;" type="button" onClick="window.location.href=\'' . $root_path . 'modules/diagnostics_tz/icd10_search.php?sid=' . $sid . '&encounter=' . $pn . '&lang=en&ntid=false&externalcall=true&target=search&1=1&ispopup=true&backpath_diag=' . urlencode($_SERVER["PHP_SELF"] . URL_APPEND . '&pn=' . $pn) . '\'" value="' . $LDDiagnoses . '">';
+
+                                            $diagUrl = $root_path . 'modules/diagnostics_tz/icd10_search.php?sid=' . $sid . '&encounter=' . $pn . '&lang=en&ntid=false&externalcall=true&target=search&1=1&ispopup=true&backpath_diag=' . urlencode($_SERVER["PHP_SELF"] . URL_APPEND . '&pn=' . $pn);
+
+                                            echo '<input style="width:220px; overflow:hidden; border:1px solid white; margin:0px 0px 7px 6px;" type="button" onClick="chooseDiagnosisType(\' '.$diagUrl.'\')" value="' . $LDDiagnoses . '">';
                                         }
 
                                         echo '<br />';
