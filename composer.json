@@ -13,6 +13,7 @@
         "php": ">=5.5",
         "ext-tokenizer": "*",
         "propel/propel": "~2.0@dev",
+        "monolog/monolog": ">=1.1.0",
 	    "pimple/pimple": "~3.0",
 	    "nikic/php-parser": "~1.4",
 	    "bcncommerce/json-stream": "0.3.0",

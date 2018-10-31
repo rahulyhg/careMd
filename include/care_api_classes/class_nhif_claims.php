@@ -3,6 +3,13 @@
 $root_path = '../../';
 include_once($root_path . 'include/care_api_classes/class_nhif.php');
 
+require_once $root_path.'vendor/autoload.php';
+(include_once ($root_path.'generated-conf/config.php')) or die();
+
+use  CareMd\Cared\CareDepartmentQuery;
+use  CareMd\CareMd\CareTzCompanyQuery;
+use  CareMd\CareMd\CareTzDiagnosisQuery;
+
 class Nhif_claims extends Nhif {
 
     function Nhif_claims($token_url = '', $service_url = '', $nhif_username = '', $nhif_pass = '') {
@@ -20,6 +27,12 @@ class Nhif_claims extends Nhif {
         if (!empty($nhif_pass)) {
             $this->nhif_pass = $nhif_pass;
         }
+    }
+
+    public function GetDepartmentName($deptId)
+    {
+        $sql = "SELECT * FROM care_department where nr = $deptId"; 
+        $result = $db->Execute($sql);
     }
 
     var $fld_care_nhif_claims = array(
