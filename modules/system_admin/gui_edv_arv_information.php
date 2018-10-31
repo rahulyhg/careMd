@@ -91,6 +91,13 @@
                                         <td class="adm_input"><input type="text" name="main_info_facility_code" size=40 maxlength=40 value="<?php echo $GLOBAL_CONFIG['main_info_facility_code'] ?>">
                                         </td>
                                     </tr>
+                                     <tr>
+                                        <td class="adm_item" align="right"><FONT  color="#0000cc"><b>NHIF Acreditation Account Number:</b> </FONT></td>
+
+                                        <td class="adm_input"><input type="text" name="main_info_facility_nhif_acreditation" size=40 maxlength=40 value="<?php echo $GLOBAL_CONFIG['main_info_facility_nhif_acreditation'] ?>">
+                                        </td>
+                                    </tr>
+
                                     <tr>
                                         <td class="adm_item" align="right"><FONT  color="#0000cc"><b>District</b> </FONT></td>
                                         <td class="adm_input"><input type="text" name="main_info_facility_district" size=40 maxlength=40 value="<?php echo $GLOBAL_CONFIG['main_info_facility_district'] ?>">

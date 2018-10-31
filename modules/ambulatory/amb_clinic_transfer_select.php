@@ -42,7 +42,7 @@ $smarty->assign('pbBack', FALSE);
 $smarty->assign('pbHelp', "javascript:gethelp('outpatient_transfer.php','Outpatient Clinic :: Transfer')");
 
 # href for close button
-$smarty->assign('breakfile', "javascript:window.close();");
+$smarty->assign('breakfile', "javascript:history.back();");
 
 # OnLoad Javascript code
 $smarty->assign('sOnLoadJs', 'onLoad="if (window.focus) window.focus();"');
@@ -182,5 +182,11 @@ $smarty->assign('sMainFrameBlockData', $sTemp);
 /**
  * show Template
  */
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
 $smarty->display('common/mainframe.tpl');
 ?>
+<?php require_once($root_path . 'main_theme/footer.inc.php'); ?>

@@ -1,5 +1,5 @@
 <?php
-//error_reporting(0);
+error_reporting(-1);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
 $pageName = "Patient";
@@ -325,10 +325,7 @@ if ($pid != '' || $encounter_nr != '') {
                     $_POST['history'] = 'Create: ' . date('Y-m-d H:i:s') . ' = ' . $encoder;
                     if (isset($_POST['encounter_nr']))
                         unset($_POST['encounter_nr']);
-                    //print_r($_POST);
                     $encounter_obj->setDataArray($_POST);
-
-
 
 
                     if ($encounter_obj->insertDataFromInternalArray()) {
@@ -523,6 +520,9 @@ if (isset($pid) && $pid) {
         echo '0';
     }
     ?>;
+
+    var isNHIF = $(".nhifRadio").is(':checked');
+
             if (d.encounter_class_nr[0] && d.encounter_class_nr[1] && !d.encounter_class_nr[0].checked && !d.encounter_class_nr[1].checked) {
                 alert("<?php echo $LDPlsSelectAdmissionType; ?>");
                 return false;
@@ -560,7 +560,23 @@ if (isset($pid) && $pid) {
                 alert("<?php echo $LDPlsEnterFullName; ?>");
                 d.encoder.focus();
                 return false;
-            } else {
+            } 
+            else if (isNHIF && d.referrer_number.value == "") {
+                alert("Please enter Referrer Number");
+                d.encoder.focus();
+                return false;
+            }
+            else if (isNHIF && d.referrer_notes.value == "") {
+                alert("Please enter Referrer notes");
+                d.encoder.focus();
+                return false;
+            }
+            else if (isNHIF && d.referrer_institution.value == "") {
+                alert("Please enter Referred From");
+                d.encoder.focus();
+                return false;
+            }
+            else {
                 return true;
             }
         }
@@ -958,6 +974,33 @@ if (!isset($pid) || !$pid) {
     $smarty->assign('ambulance_fee', $aTemp);
 
     $smarty->assign('LDAmbulance', $LDAmbulance);
+
+
+    $smarty->assign('LDVisitType', $LDVisitType);
+
+    $vTemp = '<input name="encounter_type" type="radio" value="1" ';
+    if ($encounter_type == "1" || (isset($_SESSION['nhif_visit_type']) && $_SESSION['nhif_visit_type'] == '1')) {
+        $vTemp .= "checked=checked";
+    }
+    $vTemp .= '>';
+    $vTemp .= $LDNormalVisit . '&nbsp;&nbsp;';
+
+    $vTemp .= '<input name="encounter_type" type="radio" value="2" ';
+    if ($encounter_type == "2" || (isset($_SESSION['nhif_visit_type']) && $_SESSION['nhif_visit_type'] == '2')) {
+        $vTemp .= "checked=checked";
+    }
+    $vTemp .= '>';
+    $vTemp .= $LDEmergencyCase . '&nbsp;&nbsp;';
+
+    $vTemp .= '<input name="encounter_type" class="nhifRadio" type="radio" value="3" ';
+    if ($encounter_type == "3" || (isset($_SESSION['nhif_visit_type']) && $_SESSION['nhif_visit_type'] == '3')) {
+        $vTemp .= "checked=checked";
+    }
+    $vTemp .= '>';
+    $vTemp .= $LDReferralCase . '&nbsp;&nbsp;';
+
+
+    $smarty->assign('VisitTypeInput', $vTemp);
 
 
 

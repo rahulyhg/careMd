@@ -25,7 +25,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 	  	<td align="right" width="213"><a href="<?php echo $_SESSION['backpath_diag'];?>"><img src="../../gui/img/control/default/en/en_back2.gif" border=0 width="110" height="24" alt="" style="filter:alpha(opacity=70)"></a><?php if($_SESSION['ispopup']=="true")
 	  		$closelink='javascript:window.close();';
 	  	else
-	  		$closelink='../../main/startframe.php?ntid=false&lang=$lang';
+	  		$closelink='javascript:history.back()';
 	  	?><a href="<?php echo $closelink; ?>"><img src="../../gui/img/control/default/en/en_close2.gif" border=0 width="103" height="24" alt="" style="filter:alpha(opacity=70)"></a>
 	  	</td>
 	  </tr>

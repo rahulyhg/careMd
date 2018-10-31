@@ -260,13 +260,13 @@ function treatmentsheet(pn) {
 
     function getrem(pn) {
         urlholder = "nursing-station-remarks.php<?php echo URL_REDIRECT_APPEND; ?>&pn=" + pn + "<?php echo "&dept_nr=$ward_nr&location_nr=$ward_nr&pday=$pday&pmonth=$pmonth&pyear=$pyear&station=$station"; ?>";
-        patientwin = window.open(urlholder, pn, "width=700,height=500,menubar=no,resizable=yes,scrollbars=yes");
+        patientwin = window.open(urlholder, "_self");
     }
 
     function indata(room, bed)
     {
         urlholder = "nursing-station-bettbelegen.php<?php echo URL_REDIRECT_APPEND; ?>&rm=" + room + "&bd=" + bed + "<?php echo "&py=" . $pyear . "&pm=" . $pmonth . "&pd=" . $pday . "&tb=" . str_replace("#", "", $cfg['top_bgcolor']) . "&tt=" . str_replace("#", "", $cfg['top_txtcolor']) . "&bb=" . str_replace("#", "", $cfg['body_bgcolor']) . "&d=" . $cfg['dhtml']; ?>&s=<?php echo $station; ?>&wnr=<?php echo $ward_nr; ?>";
-                indatawin = window.open(urlholder, "bedroom", "width=700,height=450,menubar=no,resizable=yes,scrollbars=yes");
+                indatawin = window.open(urlholder, "_self");
             }
             function release(room, bed, pid)
             {

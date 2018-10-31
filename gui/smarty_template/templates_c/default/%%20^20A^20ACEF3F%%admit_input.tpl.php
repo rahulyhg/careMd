@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2017-05-08 18:25:00
+<?php /* Smarty version 2.6.22, created on 2018-10-29 14:02:33
          compiled from registration_admission/admit_input.tpl */ ?>
 <table width="100%" cellspacing="0" cellpadding="0">
     <tbody>

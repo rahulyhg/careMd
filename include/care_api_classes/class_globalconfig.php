@@ -100,13 +100,14 @@ class GlobalConfig extends Core {
      * @return boolean
      */
     function saveConfigItem($type = '', $value = '') {
+
+ echo "<pre>"; print_r($type);echo "</pre>";
         global $db;
         //$db->debug=1;
         if (empty($type))
             return false;
 
         $buf = $this->getConfigValue($type);
-
         if ($buf != '_config_no_exists') {
 
             # Update if values differ

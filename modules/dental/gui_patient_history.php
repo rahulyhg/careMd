@@ -13,8 +13,6 @@ require('./roots.php');
 
 require($root_path . 'include/inc_environment_global.php');
 
-$pageName = "Inpatient";
-
 
 $lang_tables[] = 'search.php';
 define('LANG_FILE', 'dental.php');
@@ -130,7 +128,6 @@ $records = '15';
 
     <?php
 
-
 require_once($root_path . 'main_theme/head.inc.php');
 require_once($root_path . 'main_theme/header.inc.php');
 require_once($root_path . 'main_theme/topHeader.inc.php');
@@ -148,7 +145,7 @@ require_once($root_path . 'main_theme/topHeader.inc.php');
                 <FONT  COLOR="<?php echo $cfg['top_txtcolor']; ?>"  SIZE=+2  FACE="Arial"><STRONG>&nbsp;&nbsp;&nbsp;Patient Notes</STRONG></FONT></td>
             <td bgcolor="<?php echo $cfg['top_bgcolor']; ?>" height="10" align='right' style='padding-top:5px;'>
              
-             <a href="<?php echo $root_path ?>modules/ambulatory/amb_clinic_patients_discharge.php" class="btn btn-primary btn-sm">Back to List</a>
+             <a href="<?php echo $root_path . 'modules/ambulatory/amb_clinic_patients.php'.URL_REDIRECT_APPEND.'&dept_nr=' . $_SESSION['dept_nr'] ?> " class="btn btn-primary btn-sm">Back to List</a>
                 <a>
                 <?php if ($cfg['dhtml']) echo'<a href="javascript:window.history.back()"><img ' . createLDImgSrc($root_path, 'back2.gif', '0') . '  style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?></a>
 
@@ -161,14 +158,14 @@ require_once($root_path . 'main_theme/topHeader.inc.php');
         </tr>
     </table>
 
-    <table width="600"  border="1" align="center" cellpadding="4" cellspacing="1" class="style3">
+    <table width="800"  border="1" align="center" cellpadding="4" cellspacing="1" class="style3">
         <tr bgcolor="#FFFFFF">
             <td height="36" colspan="2" id="min">
                 <div id="prnttop">
                     <div id="prntcc">
                         <input name="New" type="button" id="Close2" value="Add Notes &raquo;" class="button" onClick="navigate('<?php echo $encounter_nr; ?>&url=<?php echo '../dental/gui_patient_history.php|' . $pid; ?>', '../dental/gui_dental_addnotes.php')" >
                         <input name="Print" type="button" id="Print2" value="Print this &raquo;" class="button" onClick="printPage();" >
-                        <input name="Close" type="button" id="Close2" value="Close" class="button2" onClick="javascript:window.close();" >
+                        <input name="Close" type="button" id="Close2" value="Close" class="button2" onClick="javascript:history.back();" >
                     </div>
                 </div>
             </td>
@@ -251,7 +248,7 @@ require_once($root_path . 'main_theme/topHeader.inc.php');
             </td>
         </tr>
         <tr align="left" valign="top">
-            <td height="22" colspan="2">&nbsp;	  </td>
+            <td height="22" colspan="2">&nbsp;    </td>
         </tr>
 
     </table>
@@ -261,4 +258,7 @@ require_once($root_path . 'main_theme/topHeader.inc.php');
 <?php 
 
 require_once($root_path . 'main_theme/footer.inc.php');
+
+
+
  ?>

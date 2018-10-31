@@ -15,6 +15,19 @@ use Carbon\CarbonPeriod;
 $activeProviders = array();
 $activePatientProviders = array();
 $providers = CareTzCompanyQuery::create()->find()->toArray();
+
+$cash = array(
+"Id" => 0,
+"Name" => "Cash",
+"Contact" => "",
+"Email" => "",
+"StartDate" => 0,
+"EndDate" => 0,
+"PrepaidAmount" => 0,
+"EnableMemberExpiry" => 0
+);
+array_push($providers, $cash);
+
 $startDate = time();
 $num = 1;
 
@@ -168,6 +181,7 @@ foreach ($providers as $key => $provider) {
 	}
 }
 
+array_push($activeProviders, $cash);
 $series = array();
 $legendNames = array();
 

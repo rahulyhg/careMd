@@ -5,10 +5,6 @@ require('./roots.php');
 require_once($root_path . 'include/care_api_classes/class_weberp_c2x.php');
 require_once($root_path . 'include/inc_init_xmlrpc.php');
 
-
-
-$pageName = "Inpatient";
-
 /**
  * CARE2X Integrated Hospital Information System beta 2.0.1 - 2004-07-04
  * GNU General Public License

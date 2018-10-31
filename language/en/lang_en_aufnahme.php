@@ -40,6 +40,13 @@ $LDSelianPID = 'Hospital PID';
 $LDCTCID = 'Unique CTC ID';
 $LDLocation='Pharmacy';
 
+$LDNhifAuthNo = 'NHIF Authorization No';
+$LDVisitType = 'Visit Type';
+$LDNormalVisit = 'Normal';
+$LDEmergencyCase = 'Emergency';
+$LDReferralCase = 'Referral';
+$LDReferralNo = 'Referral No';
+
 $LDPatientSearch = 'Search patient\'s data';
 $LDAdmit = 'Admission';
 $LDSearch = 'Search';

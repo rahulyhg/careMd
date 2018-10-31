@@ -155,12 +155,8 @@ if ($activated_tab == 'druglist' || $activated_tab == 'Supplies' || $activated_t
     ?>
                 <table width="100%" border="0" align="center" bordercolor="#330066" cellpadding="0" cellspacing="0">
                     <tr>
-                        <td height="10">
-                            <!-- additional filter (label)
-                            <font color="black"><?php echo $LDCommonItemOf; ?> </font>
-                            -->
-                        </td>
-                        <td bgcolor="#CAD3EC" width="130">
+                       
+                        <div bgcolor="#CAD3EC" width="130">
     <?php
     if ($is_transmit_to_weberp_enable == 1) {
         ?>
@@ -182,7 +178,7 @@ if ($activated_tab == 'druglist' || $activated_tab == 'Supplies' || $activated_t
         <?php
     }
     ?>
-                        </td><!-- additional filter (radiobuttons)
+                        </div><!-- additional filter (radiobuttons)
                         <td bgcolor="#CAD3EC" width="130">
                 
                               <input type="radio"

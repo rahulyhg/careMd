@@ -114,7 +114,7 @@ $_SESSION['item_array'] = NULL;
                 ?>
                 <table width="100%" border="0" align="center" bordercolor="#330066" cellpadding="0" cellspacing="0">
                     <tr>
-                        <td height="10">
+                        <td height="1">
                             <!-- additional filter (label)
                             <font color="black"><?php echo $LDCommonItemOf; ?> </font>
                             -->

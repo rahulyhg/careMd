@@ -440,6 +440,7 @@ class Diagnostics extends Encounter {
   //------------------------------------------------------------------------------
 
   function EnterNewCase($dataarray) {
+
     global $db;
     $debug=FALSE;
     ($debug) ? $db->debug=TRUE : $db->debug=FALSE;
@@ -455,6 +456,7 @@ class Diagnostics extends Encounter {
     		if($dataarray['diagnosistype_'.$form_id]=="revisit")
     			$return = $this->insert_diagnosis_as_revisit($dataarray['parentcase_'.$form_id], $dataarray['pid'], $dataarray['encounter'], $dataarray['icd_'.$form_id], $dataarray['icddesc_'.$form_id], $dataarray['comment_'.$form_id], $dataarray['diagnosistype_'.$form_id], $dataarray['doctor_'.$form_id]);
     		else
+
     			$return = $this->insert_diagnosis_as_new($dataarray['pid'], $dataarray['encounter'], $dataarray['icd_'.$form_id], $dataarray['icddesc_'.$form_id], $dataarray['comment_'.$form_id], $dataarray['diagnosistype_'.$form_id], $dataarray['doctor_'.$form_id]);
 
     	}
@@ -486,12 +488,14 @@ class Diagnostics extends Encounter {
     global $db;
     $debug=FALSE;
     ($debug) ? $db->debug=TRUE : $db->debug=FALSE;
+    $diagnosisType = ($_COOKIE['DiagnosisType'])?$_COOKIE['DiagnosisType']:"";
+
     if($debug)
     	echo $pid.' - '.$encounter_nr.' - '.$ICD10_code.' - '.$ICD10_description.' - '.$comment.' - '.$doctor.'<br>';
     if (empty($pid) || empty($encounter_nr) || empty( $ICD10_code) || empty( $ICD10_description))
       return FALSE;
     $this->timestamp = time();
-
+  
     $this->sql = "INSERT INTO `$this->tbl_diagnosis` (
                       `$this->tbl_diagnosis_casenr` ,
                       `$this->tbl_diagnosis_parent_casenr` ,
@@ -502,7 +506,8 @@ class Diagnostics extends Encounter {
                       `$this->tbl_diagnosis_ICD_10_description` ,
                       `$this->tbl_diagnosis_type`,
                       `$this->tbl_diagnosis_comment`,
-					  `$this->tbl_diagnosis_doctor_name`
+					           `$this->tbl_diagnosis_doctor_name`,
+                     `diagnosis_type`
                   ) VALUES (
                       '',
                       '-1',
@@ -513,7 +518,8 @@ class Diagnostics extends Encounter {
                       '$ICD10_description',
                       '$type',
                       '$comment',
-					   '$doctor'
+					           '$doctor',
+                     '$diagnosisType'
                   );";
     $db->Execute($this->sql);
     if ($db->Affected_Rows())
@@ -528,6 +534,8 @@ class Diagnostics extends Encounter {
     global $db;
     $debug=false;
     ($debug) ? $db->debug=TRUE : $db->debug=FALSE;
+
+    $diagnosisType = ($_COOKIE['DiagnosisType'])?$_COOKIE['DiagnosisType']:"";
 
     if (empty($parent_case_nr) || empty($pid) || empty($encounter_nr) || empty( $ICD10_code) || empty( $ICD10_description))
       return FALSE;
@@ -544,7 +552,8 @@ class Diagnostics extends Encounter {
                       `$this->tbl_diagnosis_ICD_10_description` ,
                       `$this->tbl_diagnosis_type`,
                       `$this->tbl_diagnosis_comment`,
-					  `$this->tbl_diagnosis_doctor_name`
+					            `$this->tbl_diagnosis_doctor_name`,
+                      `diagnosis_type`
                   ) VALUES (
                       '',
                       '$parent_case_nr',
@@ -555,7 +564,8 @@ class Diagnostics extends Encounter {
                       '$ICD10_description',
                       '$type',
                       '$comment',
-					  '$doctor'
+					           '$doctor',
+                     '$diagnosisType'
                   );";
     $db->Execute($this->sql);
     if ($db->Affected_Rows())
