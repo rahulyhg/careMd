@@ -185,6 +185,8 @@ class Person extends Core {
         'allergy',
         'insurance_ID',
         'membership_nr',
+        'national_id',
+        'employee_id',
     );
 
     /**
@@ -351,6 +353,7 @@ class Person extends Core {
      * @return boolean
      */
     function insertDataFromArray($array) {
+          
         global $db;
         $x = '';
         $v = '';
@@ -414,6 +417,7 @@ class Person extends Core {
     function insertDataFromInternalArray() {
         //$this->data_array=NULL;
         $this->prepInsertArray();
+
         # Check if  "create_time" key has a value, if no, create a new value
         if (!isset($this->buffer_array['create_time']) || empty($this->buffer_array['create_time']))
             $this->buffer_array['create_time'] = date('YmdHis');

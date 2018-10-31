@@ -112,7 +112,7 @@ class GuiInputPerson {
      */
     function display() {
         global $db, $sid, $lang, $root_path, $pid, $insurance_show, $user_id, $mode, $dbtype, $no_tribe, $no_region, $membership_nr,
-        $update, $photo_filename, $name_maiden, $religion, $name_others, $citizenship, $town_array, $addr_zip, $title; #, $_FILES $_POST, $_SESSION;
+        $update, $photo_filename, $name_maiden, $religion, $name_others, $citizenship, $town_array, $addr_zip, $title, $national_id, $employee_id ; #, $_FILES $_POST, $_SESSION;
 
 //global error;
         
@@ -294,7 +294,9 @@ class GuiInputPerson {
                                                          nat_id_nr='',
                                                          religion='$religion',
                                                          ethnic_orig='$ethnic_orig',
-							                             insurance_ID='$insurance_ID',
+							                                           insurance_ID='$insurance_ID',
+                                                         national_id = '$national_id',
+                                                         employee_id = '$employee_id',
                                                          date_update='" . date('Y-m-d H:i:s') . "',";
 
 
@@ -395,6 +397,7 @@ class GuiInputPerson {
                     //echo $person_obj->getLastQuery();
 
                     if (!$error_person_exists || $mode == 'forcesave') {
+
                         if ($person_obj->insertDataFromInternalArray()) {
                             # If data was newly inserted, get the insert id if mysq, else get the pid number)
                             if (!$update) {
@@ -1237,9 +1240,28 @@ return false;
                                 <FONT SIZE=-1  FACE="Arial"><?php echo $LDOccupation ?>:
                             </td>
                             <td class="reg_input">
-                                <input type="text" name="title" size=14 maxlength=25 value="<?php echo $title ?>" onFocu                                                        s="this.select();">
+                                <input type="text" name="title" size=20 maxlength=25 value="<?php echo $title ?>" onFocu                                                        s="this.select();">
                             </td>
                         </tr>
+
+                         <tr>
+                            <td class="reg_item">
+                                <FONT SIZE=-1  FACE="Arial">National ID:
+                            </td>
+                            <td class="reg_input">
+                                <input type="text" name="national_id" size=20 maxlength=25 5value="<?php echo $national_id ?>" >
+                            </td>
+                        </tr>
+
+                         <tr>
+                            <td class="reg_item">
+                                <FONT SIZE=-1  FACE="Arial">Employee ID:
+                            </td>
+                            <td class="reg_input">
+                                <input type="text" name="employee_id" size=20 maxlength=255 value="<?php echo $employee_id ?>" >
+                            </td>
+                        </tr>
+
 
                                                                                                                 <!--<tr>
                                                                                                                 <td class="reg_item">
