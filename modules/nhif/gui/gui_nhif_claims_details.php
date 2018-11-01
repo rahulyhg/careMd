@@ -198,7 +198,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                     <table class="table-lebel" >
                                         <tr>
                                             <td>1. Name of Health Facility</td>
-                                             <td><?php echo $companyName ?></td>
+                                             <td><strong><?php echo $companyName ?></strong></td>
                                          </tr>
                                      </table>
                                 </td>
@@ -207,7 +207,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                     <table class="table-lebel" >
                                         <tr>
                                             <td>2. Address:</td> 
-                                            <td><?php echo $companyAddress ?></td>
+                                            <td><strong><?php echo $companyAddress ?></strong></td>
                                         </tr>
                                     </table>
                                 </td>
@@ -232,7 +232,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                                     }
                                                 }
                                                 ?>
-                                                        <?php echo number_format($total_consultation_fee) ?>
+                                                <strong> <?php echo number_format($total_consultation_fee) ?></strong>
                                                 
                                             </td>
                                         </tr>
@@ -247,7 +247,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                     <table class="table-lebel" >
                                         <tr>
                                             <td>4. Department:</td> 
-                                            <td><?php echo $claims_obj->GetDepartmentName($claims_details['current_dept_nr']) ?></td>
+                                            <td><strong><?php echo $claims_obj->GetDepartmentName($claims_details['current_dept_nr']) ?></strong></td>
                                         </tr>
                                     </table>
                                 </td>
@@ -255,7 +255,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                     <table class="table-lebel" >
                                         <tr>
                                             <td>5. Date of Attendance:</td>
-                                            <td><?php echo date('d/m/Y', strtotime($claims_details['encounter_date'])) ?></td>
+                                            <td><strong><?php echo date('d/m/Y', strtotime($claims_details['encounter_date'])) ?></strong></td>
                                         </tr>
                                     </table>
                                    
@@ -265,7 +265,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                     <table class="table-lebel" >
                                         <tr>
                                             <td>6. Patient File No:</td>
-                                            <td><?php echo $claims_details['selian_pid'] ?></td>
+                                            <td><strong><?php echo $claims_details['selian_pid'] ?></strong></td>
                                         </tr>
                                     </table>
                                    
@@ -285,8 +285,8 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                     <table class="table-lebel" >
                                         <tr>
                                             <td>7. Name of Patient:</td>
-                                            <td><?= strtoupper($claims_details['name_first']) ?> <?= strtoupper($claims_details['name_middle']) ?> <?= strtoupper($claims_details['name_last']) ?>
-                                                
+                                            <td>
+                                                <strong><?= strtoupper($claims_details['name_first']) ?> <?= strtoupper($claims_details['name_middle']) ?> <?= strtoupper($claims_details['name_last']) ?></strong>
                                             </td>
                                         </tr>
                                     </table>
@@ -296,9 +296,9 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                         <tr>
                                             <td>8. DOB:</td>
                                             <td>
-                                                <?php 
+                                                <strong><?php 
                                                 echo date("d/m/Y", strtotime($claims_details['date_birth']))
-                                                ?>
+                                                ?></strong>
                                             </td>
                                         </tr>
                                     </table>
@@ -307,7 +307,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                 <td> 
                                     <table class="table-lebel" >
                                         <tr><td>9. Sex M/F:</td>
-                                            <td><?= strtoupper($claims_details['sex']) ?></td>
+                                            <td><strong><?php echo strtoupper($claims_details['sex']) ?></strong></td>
                                         </tr>
                                     </table>
                                 </td>
@@ -315,7 +315,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                     <table class="table-lebel" >
                                         <tr>
                                             <td>10. Vote:</td>
-                                            <td><?php echo  $claims_details['employee_id'] ?></td>
+                                            <td><strong><?php echo  $claims_details['employee_id'] ?></strong></td>
                                         </tr>
                                     </table>
                                 </td>
@@ -335,7 +335,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                         <tr>
                                             <td>13. Patient Physical Address:</td>
                                             <td>
-                                                <?php echo $claims_obj->GetPatientPhysicalAddress($claims_details['ward'], $claims_details['district']) ?>
+                                                <strong><?php echo $claims_obj->GetPatientPhysicalAddress($claims_details['ward'], $claims_details['district']) ?></strong>
                                             </td>
                                         </tr>
                                     </table>
@@ -345,8 +345,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                         <tr>
                                             <td>14. Preliminary Diagnosis (Code):</td> 
                                             <td>
-
-                                              <?php echo  $claims_obj->GetDignosisCodesByType($encounter_nr, 'preliminary');?>  
+                                              <strong><?php echo  $claims_obj->GetDignosisCodesByType($encounter_nr, 'preliminary');?> </strong> 
                                             </td>
                                         </tr>
                                     </table>
@@ -360,7 +359,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                                     <tr>
                                                         <td>15. Final Diagnosis (Code):</td>
                                                         <td>
-                                                           <?php echo  $claims_obj->GetDignosisCodesByType($encounter_nr, 'final') ?>  
+                                                           <strong><?php echo  $claims_obj->GetDignosisCodesByType($encounter_nr, 'final') ?>  </strong>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -421,9 +420,9 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                                 </tr>
                                                 <?php ?>
 
-                                                <tr class="shade-light" >
+                                                <tr class="" >
                                                     <th  class="center">SUB TOTAL</th>
-                                                    <th class="right"><?= $investigation_total_cost != 0 ? number_format($investigation_total_cost) : '' ?></th>                                                
+                                                    <th class="right shade-light"><?= $investigation_total_cost != 0 ? number_format($investigation_total_cost) : '' ?></th>                                                
                                                 </tr>
                                             </tbody>
                                         </table>                                    
@@ -495,32 +494,32 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                                         <table class="table-lebel" >
                                                             <tr >
                                                                 <td>Admitted on</td>
-                                                                 <td><?php echo date('d/m/Y', strtotime($claims_details['encounter_date'])) ?></td>
+                                                                 <td><strong><?php echo date('d/m/Y', strtotime($claims_details['encounter_date'])) ?></strong></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Discharged on</td>
-                                                                 <td><?php echo date('d/m/Y', strtotime($claims_details['discharge_date'])) ?></td>
+                                                                 <td><strong><?php echo date('d/m/Y', strtotime($claims_details['discharge_date'])) ?></strong></td>
                                                             </tr>
 
                                                             <tr>
                                                                 <td>No. of Days</td>
-                                                                 <td><?php
+                                                                 <td><strong><?php
 
                                                                 $encounter = strtotime($claims_details['encounter_date']);
                                                                 $datediff = strtotime($claims_details['discharge_date']) - $encounter;
                                                                 echo round($datediff / (60 * 60 * 24))+1;
-                                                                ?></td>
+                                                                ?></strong></td>
                                                             </tr>
                                                         </table>
                                                     </td>
                                                </tr>
                                                 <tr>
                                                     <td>Costs</td>
-                                                    <td><?php echo $displayBedAmount ?></td>
+                                                    <td class="right"><?php echo $displayBedAmount ?></td>
                                                 </tr>
-                                               <tr class="shade-light" >
+                                               <tr class="" >
                                                     <th  class="center">SUB TOTAL</th>
-                                                    <th class="right"><?php echo $displayBedAmount ?></th>                                                
+                                                    <th class="right shade-light"><strong><?php echo $displayBedAmount ?></strong></th>                                                
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -553,9 +552,9 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                                     <td></td>
                                                 </tr>
 
-                                                <tr class="shade-light" >
+                                                <tr class="" >
                                                     <th  class="center">SUB TOTAL</th>
-                                                    <th class="right"><?= $surgery_service_total_cost != 0 ? number_format($surgery_service_total_cost) : '' ?></th>                                                
+                                                    <th class="right shade-light"><?= $surgery_service_total_cost != 0 ? number_format($surgery_service_total_cost) : '' ?></th>                                                
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -566,11 +565,11 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                     <td colspan="3"></td>
                                     <td>
                                         <table cellpadding=5 cellspacing=0 border=1 height="100%" style="width:100% !important;">
-                                            <tr class="shade-light">
+                                            <tr class="">
                                                 <th>
                                                     GRAND TOTAL                                                
                                                 </th>
-                                                <th class="right">
+                                                <th class="right shade-light">
                                                     <?= number_format($investigation_total_cost + $drugs_total_cost + $surgery_service_total_cost + $total_bed_services + $total_consultation_fee) ?>
                                                 </th>
                                             </tr>
@@ -592,7 +591,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                 <th>
                                     <table class="table-lebel" >
                                         <tr>
-                                            <td>C: Namesd of attending Clinician:
+                                            <td>C: Name of attending Clinician:
                                             </td> 
                                             <td></td>
                                         </tr>
@@ -655,9 +654,9 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                 <?php else: ?>
                 <?php 
                 $doctor = $claims_obj->GetDignosisDocName($encounter_nr);
-                // $personelNumber = $claims_obj->GetDocPersonelNumber($doctor);
-                // $patientId = $claims_obj->GetPersonel($personelNumber);
-                // $person = $claims_obj->GetPerson($patientId);
+                $personelNumber = $claims_obj->GetDocPersonelNumber($doctor);
+                $patientId = $claims_obj->GetPersonel($personelNumber);
+                $person = $claims_obj->GetPerson($patientId);
                  ?>
                 <tr>
                     <td>
@@ -667,7 +666,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                     <table class="table-lebel" >
                                         <tr>
                                             <td>C: Name of attending Clinician:</td> 
-                                            <td><?php echo ucfirst($doctor) ?></td>
+                                            <td><strong><?php echo ucfirst($doctor) ?></strong></td>
                                         </tr>
                                     </table>
                                 </th>
@@ -676,7 +675,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                     <table class="table-lebel" >
                                         <tr>
                                             <td>Qualification:</td>
-                                            <td><?php echo ($person)?$person['Title']:"" ?></td>
+                                            <td><strong><?php echo ($person)?$person['Title']:"" ?></strong></td>
                                         </tr>
                                     </table>
                                 </td>
@@ -706,12 +705,12 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                     <table class="table-lebel" >
                                         <tr>
                                             <td>I certify that I received the above named services. Name:</td>
-                                            <td><?php echo ucfirst($doctor) ?></td>
+                                            <td><strong><?php echo ucfirst($doctor) ?></strong></td>
                                         </tr>
                                     </table>
                                 </td>
                                 <td><table class="table-lebel" ><tr><td>Signature:</td> <td></td></tr></table></td>
-                                <td><table class="table-lebel" ><tr><td>Tel. No:</td> <td><?= ($person)?$person['Phone1Nr']:"" ?></td></tr></table></td>
+                                <td><table class="table-lebel" ><tr><td>Tel. No:</td> <td><strong><?= ($person)?$person['Phone1Nr']:"" ?></strong></td></tr></table></td>
                             </tr>
                         </table>
                     </td>

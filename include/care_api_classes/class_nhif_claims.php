@@ -1030,12 +1030,12 @@ class Nhif_claims extends Nhif {
         echo '<table cellspacing="0" class="titlebar" border=0 height="35" width="100%>
                                                                          <tr valign=top  class="titlebar" >
                                                                          <td bgcolor="#99ccff" ><font color="#330066"> &nbsp;&nbsp;' . $Headline . ' ' . $Headline_Tag . ' ' . $Headline_phpTag . ' </font></td>
-                                                                <td bgcolor="#99ccff" align=right> <a href="javascript:window.history.back()"><img src="../../gui/img/control/default/en/en_back2.gif" border=0 width="110" height="24" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)" ></a>';
+                                                                <td bgcolor="#99ccff" align=right> <a href="nhif_claims.php"><img src="../../gui/img/control/default/en/en_back2.gif" border=0 width="110" height="24" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)" ></a>';
         $_SESSION['ispopup'] = (isset($_SESSION['ispopup']) ? $_SESSION['ispopup'] : null);
         if ($_SESSION['ispopup'] == "true")
-            $closelink = 'javascript:window.close()';
+            $closelink = 'javascript:history.back()';
         else
-            $closelink = 'insurance_tz.php?ntid=false&lang=$lang';
+            $closelink = 'javascript: history.back()';
 
         echo '<a href="javascript:gethelp(\'' . $Help_file . '\',\'' . $Help_Tag . '\')"><img src="../../gui/img/control/default/en/en_hilfe-r.gif" border=0 width="75" height="24" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)"></a><a href="nhif_claims.php" ><img src="../../gui/img/control/default/en/en_close2.gif" border=0 width="103" height="24" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)"></a></td>
                                                                 </tr>
@@ -1054,7 +1054,7 @@ class Nhif_claims extends Nhif {
                                                                 <td bgcolor="#99ccff" align=right> <a href="javascript:window.history.back()"><img src="../../gui/img/control/default/en/en_back2.gif" border=0 width="110" height="24" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)"></a>';
 
         if ($_SESSION['ispopup'] == "true")
-            $closelink = 'javascript:window.close()';
+            $closelink = 'javascript:history.back()';
         else
             $closelink = 'insurance_tz.php?ntid=false&lang=$lang';
 
