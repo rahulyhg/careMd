@@ -385,7 +385,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                     <th class="center">INVESTIGATIONS</th>
                                     <th class="center">MEDICINE/DRUGS</th>
                                     <th class="center">IN - PATIENT</th>
-                                    <th class="center">SURGERY/SERVICES</th>
+                                    <th class="center">SURGERY</th>
                                 </tr>
                             </thead>
                             <tbody>
