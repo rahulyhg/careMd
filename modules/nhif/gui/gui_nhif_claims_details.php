@@ -20,8 +20,8 @@
 $bat_nr = (isset($bat_nr) ? $bat_nr : null);
 $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
 
-?>
 
+?>
 <BODY bgcolor="#ffffff" link="#000066" alink="#cc0000" vlink="#000066">
 
     <?php $claims_obj->Display_Headline($LDPendingClaims, '', '', 'Nhif_pending_claims.php', 'Claims :: Pending Claims'); ?>
@@ -135,6 +135,8 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
  // echo "<pre>"; print_r($claims_details);echo "</pre>";
 //
 //        echo $encounter_nr;
+
+
         ?>
 
         <div class="row">
@@ -218,19 +220,19 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                             <td>
 
                                                  <?php
-                                                $surgery_service_total_cost = 0;
+                                                $total_consultation_fee = 0;
                                                 $claims_surgery_service_query = $claims_obj->get_claimed_surgery_and_services(array('pid' => $claims_details['pid'], 'encounter_nr' => $encounter_nr));
                                                 if (!is_null($claims_surgery_service_query)) {
 
 
                                                     while ($row = $claims_surgery_service_query->FetchRow()) {
-                                                        $surgery_service_total_cost = $surgery_service_total_cost + intval($row['unit_price_1'] * $row['total_dosage']);
+                                                        $total_consultation_fee = $total_consultation_fee + intval($row['unit_price_1'] * $row['total_dosage']);
                                                         ?>
-                                                        <?php echo number_format($row['unit_price_1']) ?>
                                                         <?php
                                                     }
                                                 }
                                                 ?>
+                                                        <?php echo number_format($total_consultation_fee) ?>
                                                 
                                             </td>
                                         </tr>
@@ -333,7 +335,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                         <tr>
                                             <td>13. Patient Physical Address:</td>
                                             <td>
-                                                <?php echo $claims_details['title'] ?>
+                                                <?php echo $claims_obj->GetPatientPhysicalAddress($claims_details['ward'], $claims_details['district']) ?>
                                             </td>
                                         </tr>
                                     </table>
@@ -343,7 +345,8 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                         <tr>
                                             <td>14. Preliminary Diagnosis (Code):</td> 
                                             <td>
-                                              <?php echo  '' ?>  
+
+                                              <?php echo  $claims_obj->GetDignosisCodesByType($encounter_nr, 'preliminary');?>  
                                             </td>
                                         </tr>
                                     </table>
@@ -357,7 +360,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                                     <tr>
                                                         <td>15. Final Diagnosis (Code):</td>
                                                         <td>
-                                                            <?php echo "" ?>
+                                                           <?php echo  $claims_obj->GetDignosisCodesByType($encounter_nr, 'final') ?>  
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -393,38 +396,33 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                             <THEAD>
                                                 <tr style="height:10mm;">
                                                     <th class="center">Type</th>
-                                                    <th class="center">Codes</th>
                                                     <th class="center">Costs</th>
                                                 </tr>
                                             </THEAD>
                                             <tbody>
                                                 <?php
                                                 $investigation_total_cost = 0;
-                                                $claims_diagnosis_query = $claims_obj->get_labtest(array('pid' => $claims_details['pid'], 'encounter_nr' => $encounter_nr));
-                                                if (!is_null($claims_diagnosis_query)) {
 
-                                                    while ($row = $claims_diagnosis_query->FetchRow()) {
-                                                        $investigation_total_cost = $investigation_total_cost + intval($row['unit_price_1']);
-                                                        ?>
-                                                        <tr style="height:7mm;">
-                                                            <td ></td>
-                                                            <td><?= $row['item_number'] ?></td>
-                                                            <!--<td><?ph $row['nhif_item_code']?></td>-->
-                                                            <td class="right"><?= number_format($row['unit_price_1']) ?></td>
-                                                        </tr>
-                                                        <?php
-                                                    }
+                                                $investigations = $claims_obj->GetInvestigations($encounter_nr);
+
+                                                foreach ($investigations as $investigation) {
+                                                    $investigation_total_cost += $investigation['amount'];
                                                 }
                                                 ?>
+                                                <?php foreach ($investigations as $investigation): ?>
+                                                    <tr style="height:7mm;">
+                                                            <td><?= $investigation['Description'] ?></td>
+                                                            <td class="right"><?= number_format($investigation['amount']) ?></td>
+                                                        </tr>
+                                                <?php endforeach ?>
                                                 <tr>
-                                                    <td></td>
                                                     <td></td>
                                                     <td></td>
                                                 </tr>
                                                 <?php ?>
 
                                                 <tr class="shade-light" >
-                                                    <th colspan="2"  class="center">SUB TOTAL</th>
+                                                    <th  class="center">SUB TOTAL</th>
                                                     <th class="right"><?= $investigation_total_cost != 0 ? number_format($investigation_total_cost) : '' ?></th>                                                
                                                 </tr>
                                             </tbody>
@@ -434,31 +432,29 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                         <table cellpadding=5 cellspacing=0 border=1 height="100%" style="width:100% !important;">
                                             <THEAD>
                                                 <tr style="height:10mm;">
-                                                    <th class="center">Type(Generic)</th>
-                                                    <th class="center">Codes</th>
+                                                    <th class="center">Name/Strength Formulation/Duration</th>
                                                     <th class="center">Quantity of Drugs</th>
+                                                    <th class="center">Unit Price</th>
                                                     <th class="center">Costs</th>
                                                 </tr>
                                             </THEAD>
                                             <tbody>
                                                 <?php
                                                 $drugs_total_cost = 0;
-                                                $claims_drugs_details_query = $claims_obj->get_claimed_drugs(array('pid' => $claims_details['pid'], 'encounter_nr' => $encounter_nr));
-                                                if (!is_null($claims_drugs_details_query)) {
-                                                    while ($claims_drugs_row = $claims_drugs_details_query->FetchRow()) {
-                                                        $drugs_total_cost = $drugs_total_cost + intval($claims_drugs_row['unit_price_1'] * $claims_drugs_row['total_dosage']);
-                                                        ?>
-                                                        <tr style="height:7mm;">
-                                                            <td ><?= $claims_drugs_row['item_full_description']. $claims_drugs_row['encounter_nr']?></td>
-                                                            <td class="center"><?= $claims_drugs_row['item_number'] ?></td>
-                                                            <!--<td><?ph $row['nhif_item_code']?></td>-->
-                                                            <td class="center"><?= $claims_drugs_row['total_dosage'] ?></td>
-                                                            <td class="right"><?= number_format($claims_drugs_row['unit_price_1'] * $claims_drugs_row['total_dosage']) ?></td>
-                                                        </tr>
-                                                        <?php
-                                                    }
+                                                $medicines = $claims_obj->GetMedicines($encounter_nr);
+
+                                                foreach ($medicines as $medicine) {
+                                                    $drugs_total_cost += $medicine['amount'];
                                                 }
                                                 ?>
+                                                <?php foreach ($medicines as $medicine): ?>
+                                                    <tr style="height:7mm;">
+                                                        <td ><?php echo $medicine['Description']?></td>
+                                                        <td class="center"><?php echo $medicine['Amount'] ?></td>
+                                                        <td class="center"><?php echo  $medicine['Price'] ?></td>
+                                                        <td class="right"><?php echo number_format($medicine['amount']) ?></td>
+                                                    </tr>
+                                                <?php endforeach ?>
                                                 <tr>
                                                     <td></td>
                                                     <td></td>
@@ -474,46 +470,91 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                         </table>
 
                                     </td>
+
                                     <td>
-                                        
+
+                                        <?php 
+                                        $total_bed_services = 0;
+                                        $bedServices = $claims_obj->GetBedServices($encounter_nr);
+                                        foreach ($bedServices as $service) {
+                                            $total_bed_services += $service['amount'];
+                                        }
+                                        $displayBedAmount = ($total_bed_services >0)?number_format($total_bed_services):"";
+                                       
+                                        ?>
+                                        <table cellpadding=5 cellspacing=0 border=1 height="100%" style="width:100% !important;">
+                                            <THEAD>
+                                                <tr style="height:10mm;">
+                                                    <th colspan="2" class="center">Admission (Date)</th>
+                                                </tr>
+                                            </THEAD>
+                                            <tbody>
+
+                                               <tr>
+                                                    <td colspan="2">
+                                                        <table class="table-lebel" >
+                                                            <tr >
+                                                                <td>Admitted on</td>
+                                                                 <td><?php echo date('d/m/Y', strtotime($claims_details['encounter_date'])) ?></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Discharged on</td>
+                                                                 <td><?php echo date('d/m/Y', strtotime($claims_details['discharge_date'])) ?></td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>No. of Days</td>
+                                                                 <td><?php
+
+                                                                $encounter = strtotime($claims_details['encounter_date']);
+                                                                $datediff = strtotime($claims_details['discharge_date']) - $encounter;
+                                                                echo round($datediff / (60 * 60 * 24))+1;
+                                                                ?></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                               </tr>
+                                                <tr>
+                                                    <td>Costs</td>
+                                                    <td><?php echo $displayBedAmount ?></td>
+                                                </tr>
+                                               <tr class="shade-light" >
+                                                    <th  class="center">SUB TOTAL</th>
+                                                    <th class="right"><?php echo $displayBedAmount ?></th>                                                
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </td>
+
                                     <td>
                                         <table cellpadding=5 cellspacing=0 border=1 height="100%" style="width:100% !important;">
                                             <THEAD>
                                                 <tr style="height:10mm;">
                                                     <th class="center">Type of surgery</th>
-                                                    <th class="center">Codes</th>
                                                     <th class="center">Costs</th>
                                                 </tr>
                                             </THEAD>
                                             <tbody>
                                                 <?php
                                                 $surgery_service_total_cost = 0;
-                                                $claims_surgery_service_query = $claims_obj->get_claimed_surgery_and_services(array('pid' => $claims_details['pid'], 'encounter_nr' => $encounter_nr));
-                                                if (!is_null($claims_surgery_service_query)) {
-
-
-                                                    while ($row = $claims_surgery_service_query->FetchRow()) {
-                                                        $surgery_service_total_cost = $surgery_service_total_cost + intval($row['unit_price_1'] * $row['total_dosage']);
-                                                        ?>
-                                                        <tr style="height:7mm;">
-                                                            <td ><?= $row['item_full_description'] ?></td>
-                                                            <td class="center"><?= $row['item_number'] ?></td>
-                                                            <!--<td><?ph $row['nhif_item_code']?></td>-->
-                                                            <td class="right"><?= number_format($row['unit_price_1']) ?></td>
-                                                        </tr>
-                                                        <?php
-                                                    }
+                                                $surgeries = $claims_obj->Getsurgeries($encounter_nr);
+                                                foreach ($$surgeries as $surgery) {
+                                                    $surgery_service_total_cost += $surgery['amount'];
                                                 }
                                                 ?>
+                                                <?php foreach ($surgeries as $surgery): ?>
+                                                    <tr style="height:7mm;">
+                                                        <td ><?php echo $surgery['Description'] ?></td>
+                                                        <td class="right"><?php echo number_format($surgery['amount']) ?></td>
+                                                        </tr>
+                                                <?php endforeach ?>
                                                 <tr>
-                                                    <td></td>
                                                     <td></td>
                                                     <td></td>
                                                 </tr>
 
                                                 <tr class="shade-light" >
-                                                    <th colspan="2"  class="center">SUB TOTAL</th>
+                                                    <th  class="center">SUB TOTAL</th>
                                                     <th class="right"><?= $surgery_service_total_cost != 0 ? number_format($surgery_service_total_cost) : '' ?></th>                                                
                                                 </tr>
                                             </tbody>
@@ -530,7 +571,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                                     GRAND TOTAL                                                
                                                 </th>
                                                 <th class="right">
-                                                    <?= number_format($investigation_total_cost + $drugs_total_cost + $surgery_service_total_cost) ?>
+                                                    <?= number_format($investigation_total_cost + $drugs_total_cost + $surgery_service_total_cost + $total_bed_services + $total_consultation_fee) ?>
                                                 </th>
                                             </tr>
                                         </table>
@@ -541,13 +582,40 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                         </table>
                     </td>
                 </tr>
+
+
+                <?php if (empty($claims_obj->GetDignosisCodes($encounter_nr))): ?>
                 <tr>
                     <td>
                         <table border="0" width="100%" cellspacing="0" cellpadding="0">
                             <tr>
-                                <th><table class="table-lebel" ><tr><td>C: Name of attending Clinician:</td> <td></td></tr></table></th>
-                                <td><table class="table-lebel" ><tr><td>Qualification:</td> <td></td></tr></table></td>
-                                <td><table class="table-lebel" ><tr><td>Signature:</td> <td></td></tr></table></td>
+                                <th>
+                                    <table class="table-lebel" >
+                                        <tr>
+                                            <td>C: Namesd of attending Clinician:
+                                            </td> 
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </th>
+
+                                <td>
+                                    <table class="table-lebel" >
+                                        <tr>
+                                            <td>Qualification:</td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td>
+                                    <table class="table-lebel" >
+                                        <tr>
+                                            <td>Signature:</td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </td>
                             </tr>
 
                         </table>
@@ -565,12 +633,12 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                     <table class="table-lebel" >
                                         <tr>
                                             <td>I certify that I received the above named services. Name:</td>
-                                            <td><?= strtoupper($claims_details['name_first']) ?> <?= strtoupper($claims_details['name_middle']) ?> <?= strtoupper($claims_details['name_last']) ?></td>
+                                            <td></td>
                                         </tr>
                                     </table>
                                 </td>
                                 <td><table class="table-lebel" ><tr><td>Signature:</td> <td></td></tr></table></td>
-                                <td><table class="table-lebel" ><tr><td>Tel. No:</td> <td><?= $claims_details['phone_1_nr'] ?></td></tr></table></td>
+                                <td><table class="table-lebel" ><tr><td>Tel. No:</td> <td></td></tr></table></td>
                             </tr>
                         </table>
                     </td>
@@ -583,6 +651,81 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                         F: Claimant Certification:
                     </th>
                 </tr>
+                
+                <?php else: ?>
+                <?php 
+                $doctor = $claims_obj->GetDignosisDocName($encounter_nr);
+                // $personelNumber = $claims_obj->GetDocPersonelNumber($doctor);
+                // $patientId = $claims_obj->GetPersonel($personelNumber);
+                // $person = $claims_obj->GetPerson($patientId);
+                 ?>
+                <tr>
+                    <td>
+                        <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <th>
+                                    <table class="table-lebel" >
+                                        <tr>
+                                            <td>C: Name of attending Clinician:</td> 
+                                            <td><?php echo ucfirst($doctor) ?></td>
+                                        </tr>
+                                    </table>
+                                </th>
+
+                                <td>
+                                    <table class="table-lebel" >
+                                        <tr>
+                                            <td>Qualification:</td>
+                                            <td><?php echo ($person)?$person['Title']:"" ?></td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td>
+                                    <table class="table-lebel" >
+                                        <tr>
+                                            <td>Signature:</td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>D: Patient Certification</th>
+                </tr>
+                <tr>
+                    <td>
+                        <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td>
+                                    <table class="table-lebel" >
+                                        <tr>
+                                            <td>I certify that I received the above named services. Name:</td>
+                                            <td><?php echo ucfirst($doctor) ?></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td><table class="table-lebel" ><tr><td>Signature:</td> <td></td></tr></table></td>
+                                <td><table class="table-lebel" ><tr><td>Tel. No:</td> <td><?= ($person)?$person['Phone1Nr']:"" ?></td></tr></table></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <th><table class="table-lebel" ><tr><td>E: Description of Out/In-patient Management/any Other additional information (a separate sheet can be used):</td> <td></td></tr></table></th>
+                </tr>
+                <tr>
+                    <th>
+                        F: Claimant Certification:
+                    </th>
+                </tr>
+               
+                <?php endif ?>
                 <tr>
                     <td>
                         <table border="0" width="100%" cellspacing="0" cellpadding="0">
@@ -595,6 +738,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
 
                     </td>
                 </tr>
+
                 <tr>
                     <td>
                         <table border="0" width="100%" cellspacing="0" cellpadding="0">

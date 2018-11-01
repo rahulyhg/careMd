@@ -29,6 +29,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareTzDiagnosisQuery orderByType($order = Criteria::ASC) Order by the type column
  * @method     ChildCareTzDiagnosisQuery orderByComment($order = Criteria::ASC) Order by the comment column
  * @method     ChildCareTzDiagnosisQuery orderByDoctorName($order = Criteria::ASC) Order by the doctor_name column
+ * @method     ChildCareTzDiagnosisQuery orderByDiagnosisType($order = Criteria::ASC) Order by the diagnosis_type column
  *
  * @method     ChildCareTzDiagnosisQuery groupByCaseNr() Group by the case_nr column
  * @method     ChildCareTzDiagnosisQuery groupByParentCaseNr() Group by the parent_case_nr column
@@ -40,6 +41,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareTzDiagnosisQuery groupByType() Group by the type column
  * @method     ChildCareTzDiagnosisQuery groupByComment() Group by the comment column
  * @method     ChildCareTzDiagnosisQuery groupByDoctorName() Group by the doctor_name column
+ * @method     ChildCareTzDiagnosisQuery groupByDiagnosisType() Group by the diagnosis_type column
  *
  * @method     ChildCareTzDiagnosisQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildCareTzDiagnosisQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -61,7 +63,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareTzDiagnosis findOneByIcd10Description(string $ICD_10_description) Return the first ChildCareTzDiagnosis filtered by the ICD_10_description column
  * @method     ChildCareTzDiagnosis findOneByType(string $type) Return the first ChildCareTzDiagnosis filtered by the type column
  * @method     ChildCareTzDiagnosis findOneByComment(string $comment) Return the first ChildCareTzDiagnosis filtered by the comment column
- * @method     ChildCareTzDiagnosis findOneByDoctorName(string $doctor_name) Return the first ChildCareTzDiagnosis filtered by the doctor_name column *
+ * @method     ChildCareTzDiagnosis findOneByDoctorName(string $doctor_name) Return the first ChildCareTzDiagnosis filtered by the doctor_name column
+ * @method     ChildCareTzDiagnosis findOneByDiagnosisType(string $diagnosis_type) Return the first ChildCareTzDiagnosis filtered by the diagnosis_type column *
 
  * @method     ChildCareTzDiagnosis requirePk($key, ConnectionInterface $con = null) Return the ChildCareTzDiagnosis by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildCareTzDiagnosis requireOne(ConnectionInterface $con = null) Return the first ChildCareTzDiagnosis matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -76,6 +79,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareTzDiagnosis requireOneByType(string $type) Return the first ChildCareTzDiagnosis filtered by the type column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildCareTzDiagnosis requireOneByComment(string $comment) Return the first ChildCareTzDiagnosis filtered by the comment column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildCareTzDiagnosis requireOneByDoctorName(string $doctor_name) Return the first ChildCareTzDiagnosis filtered by the doctor_name column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildCareTzDiagnosis requireOneByDiagnosisType(string $diagnosis_type) Return the first ChildCareTzDiagnosis filtered by the diagnosis_type column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildCareTzDiagnosis[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildCareTzDiagnosis objects based on current ModelCriteria
  * @method     ChildCareTzDiagnosis[]|ObjectCollection findByCaseNr(string $case_nr) Return ChildCareTzDiagnosis objects filtered by the case_nr column
@@ -88,6 +92,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareTzDiagnosis[]|ObjectCollection findByType(string $type) Return ChildCareTzDiagnosis objects filtered by the type column
  * @method     ChildCareTzDiagnosis[]|ObjectCollection findByComment(string $comment) Return ChildCareTzDiagnosis objects filtered by the comment column
  * @method     ChildCareTzDiagnosis[]|ObjectCollection findByDoctorName(string $doctor_name) Return ChildCareTzDiagnosis objects filtered by the doctor_name column
+ * @method     ChildCareTzDiagnosis[]|ObjectCollection findByDiagnosisType(string $diagnosis_type) Return ChildCareTzDiagnosis objects filtered by the diagnosis_type column
  * @method     ChildCareTzDiagnosis[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -186,7 +191,7 @@ abstract class CareTzDiagnosisQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT case_nr, parent_case_nr, PID, encounter_nr, timestamp, ICD_10_code, ICD_10_description, type, comment, doctor_name FROM care_tz_diagnosis WHERE case_nr = :p0';
+        $sql = 'SELECT case_nr, parent_case_nr, PID, encounter_nr, timestamp, ICD_10_code, ICD_10_description, type, comment, doctor_name, diagnosis_type FROM care_tz_diagnosis WHERE case_nr = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_INT);
@@ -604,6 +609,31 @@ abstract class CareTzDiagnosisQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(CareTzDiagnosisTableMap::COL_DOCTOR_NAME, $doctorName, $comparison);
+    }
+
+    /**
+     * Filter the query on the diagnosis_type column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByDiagnosisType('fooValue');   // WHERE diagnosis_type = 'fooValue'
+     * $query->filterByDiagnosisType('%fooValue%', Criteria::LIKE); // WHERE diagnosis_type LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $diagnosisType The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildCareTzDiagnosisQuery The current query, for fluid interface
+     */
+    public function filterByDiagnosisType($diagnosisType = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($diagnosisType)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(CareTzDiagnosisTableMap::COL_DIAGNOSIS_TYPE, $diagnosisType, $comparison);
     }
 
     /**

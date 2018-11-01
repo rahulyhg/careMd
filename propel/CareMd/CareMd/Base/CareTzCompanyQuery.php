@@ -35,6 +35,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareTzCompanyQuery orderByPrepaidAmount($order = Criteria::ASC) Order by the prepaid_amount column
  * @method     ChildCareTzCompanyQuery orderByModifyId($order = Criteria::ASC) Order by the modify_id column
  * @method     ChildCareTzCompanyQuery orderByEnableMemberExpiry($order = Criteria::ASC) Order by the enable_member_expiry column
+ * @method     ChildCareTzCompanyQuery orderByCompanyCode($order = Criteria::ASC) Order by the company_code column
  *
  * @method     ChildCareTzCompanyQuery groupById() Group by the id column
  * @method     ChildCareTzCompanyQuery groupByName() Group by the name column
@@ -52,6 +53,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareTzCompanyQuery groupByPrepaidAmount() Group by the prepaid_amount column
  * @method     ChildCareTzCompanyQuery groupByModifyId() Group by the modify_id column
  * @method     ChildCareTzCompanyQuery groupByEnableMemberExpiry() Group by the enable_member_expiry column
+ * @method     ChildCareTzCompanyQuery groupByCompanyCode() Group by the company_code column
  *
  * @method     ChildCareTzCompanyQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildCareTzCompanyQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -79,7 +81,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareTzCompany findOneByHideCompanyFlag(int $hide_company_flag) Return the first ChildCareTzCompany filtered by the hide_company_flag column
  * @method     ChildCareTzCompany findOneByPrepaidAmount(int $prepaid_amount) Return the first ChildCareTzCompany filtered by the prepaid_amount column
  * @method     ChildCareTzCompany findOneByModifyId(string $modify_id) Return the first ChildCareTzCompany filtered by the modify_id column
- * @method     ChildCareTzCompany findOneByEnableMemberExpiry(int $enable_member_expiry) Return the first ChildCareTzCompany filtered by the enable_member_expiry column *
+ * @method     ChildCareTzCompany findOneByEnableMemberExpiry(int $enable_member_expiry) Return the first ChildCareTzCompany filtered by the enable_member_expiry column
+ * @method     ChildCareTzCompany findOneByCompanyCode(string $company_code) Return the first ChildCareTzCompany filtered by the company_code column *
 
  * @method     ChildCareTzCompany requirePk($key, ConnectionInterface $con = null) Return the ChildCareTzCompany by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildCareTzCompany requireOne(ConnectionInterface $con = null) Return the first ChildCareTzCompany matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -100,6 +103,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareTzCompany requireOneByPrepaidAmount(int $prepaid_amount) Return the first ChildCareTzCompany filtered by the prepaid_amount column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildCareTzCompany requireOneByModifyId(string $modify_id) Return the first ChildCareTzCompany filtered by the modify_id column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildCareTzCompany requireOneByEnableMemberExpiry(int $enable_member_expiry) Return the first ChildCareTzCompany filtered by the enable_member_expiry column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildCareTzCompany requireOneByCompanyCode(string $company_code) Return the first ChildCareTzCompany filtered by the company_code column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildCareTzCompany[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildCareTzCompany objects based on current ModelCriteria
  * @method     ChildCareTzCompany[]|ObjectCollection findById(string $id) Return ChildCareTzCompany objects filtered by the id column
@@ -118,6 +122,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareTzCompany[]|ObjectCollection findByPrepaidAmount(int $prepaid_amount) Return ChildCareTzCompany objects filtered by the prepaid_amount column
  * @method     ChildCareTzCompany[]|ObjectCollection findByModifyId(string $modify_id) Return ChildCareTzCompany objects filtered by the modify_id column
  * @method     ChildCareTzCompany[]|ObjectCollection findByEnableMemberExpiry(int $enable_member_expiry) Return ChildCareTzCompany objects filtered by the enable_member_expiry column
+ * @method     ChildCareTzCompany[]|ObjectCollection findByCompanyCode(string $company_code) Return ChildCareTzCompany objects filtered by the company_code column
  * @method     ChildCareTzCompany[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -216,7 +221,7 @@ abstract class CareTzCompanyQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT id, name, contact, email, phone_code, phone_nr, po_box, city, start_date, end_date, invoice_flag, credit_preselection_flag, hide_company_flag, prepaid_amount, modify_id, enable_member_expiry FROM care_tz_company WHERE id = :p0';
+        $sql = 'SELECT id, name, contact, email, phone_code, phone_nr, po_box, city, start_date, end_date, invoice_flag, credit_preselection_flag, hide_company_flag, prepaid_amount, modify_id, enable_member_expiry, company_code FROM care_tz_company WHERE id = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_INT);
@@ -848,6 +853,31 @@ abstract class CareTzCompanyQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(CareTzCompanyTableMap::COL_ENABLE_MEMBER_EXPIRY, $enableMemberExpiry, $comparison);
+    }
+
+    /**
+     * Filter the query on the company_code column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByCompanyCode('fooValue');   // WHERE company_code = 'fooValue'
+     * $query->filterByCompanyCode('%fooValue%', Criteria::LIKE); // WHERE company_code LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $companyCode The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildCareTzCompanyQuery The current query, for fluid interface
+     */
+    public function filterByCompanyCode($companyCode = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($companyCode)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(CareTzCompanyTableMap::COL_COMPANY_CODE, $companyCode, $comparison);
     }
 
     /**

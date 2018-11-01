@@ -59,7 +59,7 @@ class CareTzDrugsandservicesTableMap extends TableMap
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 28;
+    const NUM_COLUMNS = 29;
 
     /**
      * The number of lazy-loaded columns
@@ -69,7 +69,7 @@ class CareTzDrugsandservicesTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 28;
+    const NUM_HYDRATE_COLUMNS = 29;
 
     /**
      * the column name for the item_id field
@@ -212,6 +212,11 @@ class CareTzDrugsandservicesTableMap extends TableMap
     const COL_UNIT_COST = 'care_tz_drugsandservices.unit_cost';
 
     /**
+     * the column name for the nhif_item_code field
+     */
+    const COL_NHIF_ITEM_CODE = 'care_tz_drugsandservices.nhif_item_code';
+
+    /**
      * The default string format for model objects of the related table
      */
     const DEFAULT_STRING_FORMAT = 'YAML';
@@ -223,11 +228,11 @@ class CareTzDrugsandservicesTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('ItemId', 'ItemNumber', 'Partcode', 'IsPediatric', 'IsAdult', 'IsOther', 'IsConsumable', 'IsLabtest', 'IsRadioTest', 'ItemDescription', 'ItemFullDescription', 'UnitPrice', 'UnitPrice1', 'UnitPrice2', 'UnitPrice3', 'PurchasingClass', 'SubClass', 'NotInUse', 'MinLevel', 'UnitPrice4', 'UnitPrice5', 'UnitPrice6', 'UnitPrice7', 'UnitPrice8', 'UnitPrice9', 'UnitPrice10', 'UnitPrice11', 'UnitCost', ),
-        self::TYPE_CAMELNAME     => array('itemId', 'itemNumber', 'partcode', 'isPediatric', 'isAdult', 'isOther', 'isConsumable', 'isLabtest', 'isRadioTest', 'itemDescription', 'itemFullDescription', 'unitPrice', 'unitPrice1', 'unitPrice2', 'unitPrice3', 'purchasingClass', 'subClass', 'notInUse', 'minLevel', 'unitPrice4', 'unitPrice5', 'unitPrice6', 'unitPrice7', 'unitPrice8', 'unitPrice9', 'unitPrice10', 'unitPrice11', 'unitCost', ),
-        self::TYPE_COLNAME       => array(CareTzDrugsandservicesTableMap::COL_ITEM_ID, CareTzDrugsandservicesTableMap::COL_ITEM_NUMBER, CareTzDrugsandservicesTableMap::COL_PARTCODE, CareTzDrugsandservicesTableMap::COL_IS_PEDIATRIC, CareTzDrugsandservicesTableMap::COL_IS_ADULT, CareTzDrugsandservicesTableMap::COL_IS_OTHER, CareTzDrugsandservicesTableMap::COL_IS_CONSUMABLE, CareTzDrugsandservicesTableMap::COL_IS_LABTEST, CareTzDrugsandservicesTableMap::COL_IS_RADIO_TEST, CareTzDrugsandservicesTableMap::COL_ITEM_DESCRIPTION, CareTzDrugsandservicesTableMap::COL_ITEM_FULL_DESCRIPTION, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_1, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_2, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_3, CareTzDrugsandservicesTableMap::COL_PURCHASING_CLASS, CareTzDrugsandservicesTableMap::COL_SUB_CLASS, CareTzDrugsandservicesTableMap::COL_NOT_IN_USE, CareTzDrugsandservicesTableMap::COL_MIN_LEVEL, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_4, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_5, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_6, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_7, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_8, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_9, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_10, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_11, CareTzDrugsandservicesTableMap::COL_UNIT_COST, ),
-        self::TYPE_FIELDNAME     => array('item_id', 'item_number', 'partcode', 'is_pediatric', 'is_adult', 'is_other', 'is_consumable', 'is_labtest', 'is_radio_test', 'item_description', 'item_full_description', 'unit_price', 'unit_price_1', 'unit_price_2', 'unit_price_3', 'purchasing_class', 'sub_class', 'not_in_use', 'min_level', 'unit_price_4', 'unit_price_5', 'unit_price_6', 'unit_price_7', 'unit_price_8', 'unit_price_9', 'unit_price_10', 'unit_price_11', 'unit_cost', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, )
+        self::TYPE_PHPNAME       => array('ItemId', 'ItemNumber', 'Partcode', 'IsPediatric', 'IsAdult', 'IsOther', 'IsConsumable', 'IsLabtest', 'IsRadioTest', 'ItemDescription', 'ItemFullDescription', 'UnitPrice', 'UnitPrice1', 'UnitPrice2', 'UnitPrice3', 'PurchasingClass', 'SubClass', 'NotInUse', 'MinLevel', 'UnitPrice4', 'UnitPrice5', 'UnitPrice6', 'UnitPrice7', 'UnitPrice8', 'UnitPrice9', 'UnitPrice10', 'UnitPrice11', 'UnitCost', 'NhifItemCode', ),
+        self::TYPE_CAMELNAME     => array('itemId', 'itemNumber', 'partcode', 'isPediatric', 'isAdult', 'isOther', 'isConsumable', 'isLabtest', 'isRadioTest', 'itemDescription', 'itemFullDescription', 'unitPrice', 'unitPrice1', 'unitPrice2', 'unitPrice3', 'purchasingClass', 'subClass', 'notInUse', 'minLevel', 'unitPrice4', 'unitPrice5', 'unitPrice6', 'unitPrice7', 'unitPrice8', 'unitPrice9', 'unitPrice10', 'unitPrice11', 'unitCost', 'nhifItemCode', ),
+        self::TYPE_COLNAME       => array(CareTzDrugsandservicesTableMap::COL_ITEM_ID, CareTzDrugsandservicesTableMap::COL_ITEM_NUMBER, CareTzDrugsandservicesTableMap::COL_PARTCODE, CareTzDrugsandservicesTableMap::COL_IS_PEDIATRIC, CareTzDrugsandservicesTableMap::COL_IS_ADULT, CareTzDrugsandservicesTableMap::COL_IS_OTHER, CareTzDrugsandservicesTableMap::COL_IS_CONSUMABLE, CareTzDrugsandservicesTableMap::COL_IS_LABTEST, CareTzDrugsandservicesTableMap::COL_IS_RADIO_TEST, CareTzDrugsandservicesTableMap::COL_ITEM_DESCRIPTION, CareTzDrugsandservicesTableMap::COL_ITEM_FULL_DESCRIPTION, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_1, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_2, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_3, CareTzDrugsandservicesTableMap::COL_PURCHASING_CLASS, CareTzDrugsandservicesTableMap::COL_SUB_CLASS, CareTzDrugsandservicesTableMap::COL_NOT_IN_USE, CareTzDrugsandservicesTableMap::COL_MIN_LEVEL, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_4, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_5, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_6, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_7, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_8, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_9, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_10, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_11, CareTzDrugsandservicesTableMap::COL_UNIT_COST, CareTzDrugsandservicesTableMap::COL_NHIF_ITEM_CODE, ),
+        self::TYPE_FIELDNAME     => array('item_id', 'item_number', 'partcode', 'is_pediatric', 'is_adult', 'is_other', 'is_consumable', 'is_labtest', 'is_radio_test', 'item_description', 'item_full_description', 'unit_price', 'unit_price_1', 'unit_price_2', 'unit_price_3', 'purchasing_class', 'sub_class', 'not_in_use', 'min_level', 'unit_price_4', 'unit_price_5', 'unit_price_6', 'unit_price_7', 'unit_price_8', 'unit_price_9', 'unit_price_10', 'unit_price_11', 'unit_cost', 'nhif_item_code', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, )
     );
 
     /**
@@ -237,11 +242,11 @@ class CareTzDrugsandservicesTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('ItemId' => 0, 'ItemNumber' => 1, 'Partcode' => 2, 'IsPediatric' => 3, 'IsAdult' => 4, 'IsOther' => 5, 'IsConsumable' => 6, 'IsLabtest' => 7, 'IsRadioTest' => 8, 'ItemDescription' => 9, 'ItemFullDescription' => 10, 'UnitPrice' => 11, 'UnitPrice1' => 12, 'UnitPrice2' => 13, 'UnitPrice3' => 14, 'PurchasingClass' => 15, 'SubClass' => 16, 'NotInUse' => 17, 'MinLevel' => 18, 'UnitPrice4' => 19, 'UnitPrice5' => 20, 'UnitPrice6' => 21, 'UnitPrice7' => 22, 'UnitPrice8' => 23, 'UnitPrice9' => 24, 'UnitPrice10' => 25, 'UnitPrice11' => 26, 'UnitCost' => 27, ),
-        self::TYPE_CAMELNAME     => array('itemId' => 0, 'itemNumber' => 1, 'partcode' => 2, 'isPediatric' => 3, 'isAdult' => 4, 'isOther' => 5, 'isConsumable' => 6, 'isLabtest' => 7, 'isRadioTest' => 8, 'itemDescription' => 9, 'itemFullDescription' => 10, 'unitPrice' => 11, 'unitPrice1' => 12, 'unitPrice2' => 13, 'unitPrice3' => 14, 'purchasingClass' => 15, 'subClass' => 16, 'notInUse' => 17, 'minLevel' => 18, 'unitPrice4' => 19, 'unitPrice5' => 20, 'unitPrice6' => 21, 'unitPrice7' => 22, 'unitPrice8' => 23, 'unitPrice9' => 24, 'unitPrice10' => 25, 'unitPrice11' => 26, 'unitCost' => 27, ),
-        self::TYPE_COLNAME       => array(CareTzDrugsandservicesTableMap::COL_ITEM_ID => 0, CareTzDrugsandservicesTableMap::COL_ITEM_NUMBER => 1, CareTzDrugsandservicesTableMap::COL_PARTCODE => 2, CareTzDrugsandservicesTableMap::COL_IS_PEDIATRIC => 3, CareTzDrugsandservicesTableMap::COL_IS_ADULT => 4, CareTzDrugsandservicesTableMap::COL_IS_OTHER => 5, CareTzDrugsandservicesTableMap::COL_IS_CONSUMABLE => 6, CareTzDrugsandservicesTableMap::COL_IS_LABTEST => 7, CareTzDrugsandservicesTableMap::COL_IS_RADIO_TEST => 8, CareTzDrugsandservicesTableMap::COL_ITEM_DESCRIPTION => 9, CareTzDrugsandservicesTableMap::COL_ITEM_FULL_DESCRIPTION => 10, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE => 11, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_1 => 12, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_2 => 13, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_3 => 14, CareTzDrugsandservicesTableMap::COL_PURCHASING_CLASS => 15, CareTzDrugsandservicesTableMap::COL_SUB_CLASS => 16, CareTzDrugsandservicesTableMap::COL_NOT_IN_USE => 17, CareTzDrugsandservicesTableMap::COL_MIN_LEVEL => 18, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_4 => 19, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_5 => 20, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_6 => 21, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_7 => 22, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_8 => 23, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_9 => 24, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_10 => 25, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_11 => 26, CareTzDrugsandservicesTableMap::COL_UNIT_COST => 27, ),
-        self::TYPE_FIELDNAME     => array('item_id' => 0, 'item_number' => 1, 'partcode' => 2, 'is_pediatric' => 3, 'is_adult' => 4, 'is_other' => 5, 'is_consumable' => 6, 'is_labtest' => 7, 'is_radio_test' => 8, 'item_description' => 9, 'item_full_description' => 10, 'unit_price' => 11, 'unit_price_1' => 12, 'unit_price_2' => 13, 'unit_price_3' => 14, 'purchasing_class' => 15, 'sub_class' => 16, 'not_in_use' => 17, 'min_level' => 18, 'unit_price_4' => 19, 'unit_price_5' => 20, 'unit_price_6' => 21, 'unit_price_7' => 22, 'unit_price_8' => 23, 'unit_price_9' => 24, 'unit_price_10' => 25, 'unit_price_11' => 26, 'unit_cost' => 27, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, )
+        self::TYPE_PHPNAME       => array('ItemId' => 0, 'ItemNumber' => 1, 'Partcode' => 2, 'IsPediatric' => 3, 'IsAdult' => 4, 'IsOther' => 5, 'IsConsumable' => 6, 'IsLabtest' => 7, 'IsRadioTest' => 8, 'ItemDescription' => 9, 'ItemFullDescription' => 10, 'UnitPrice' => 11, 'UnitPrice1' => 12, 'UnitPrice2' => 13, 'UnitPrice3' => 14, 'PurchasingClass' => 15, 'SubClass' => 16, 'NotInUse' => 17, 'MinLevel' => 18, 'UnitPrice4' => 19, 'UnitPrice5' => 20, 'UnitPrice6' => 21, 'UnitPrice7' => 22, 'UnitPrice8' => 23, 'UnitPrice9' => 24, 'UnitPrice10' => 25, 'UnitPrice11' => 26, 'UnitCost' => 27, 'NhifItemCode' => 28, ),
+        self::TYPE_CAMELNAME     => array('itemId' => 0, 'itemNumber' => 1, 'partcode' => 2, 'isPediatric' => 3, 'isAdult' => 4, 'isOther' => 5, 'isConsumable' => 6, 'isLabtest' => 7, 'isRadioTest' => 8, 'itemDescription' => 9, 'itemFullDescription' => 10, 'unitPrice' => 11, 'unitPrice1' => 12, 'unitPrice2' => 13, 'unitPrice3' => 14, 'purchasingClass' => 15, 'subClass' => 16, 'notInUse' => 17, 'minLevel' => 18, 'unitPrice4' => 19, 'unitPrice5' => 20, 'unitPrice6' => 21, 'unitPrice7' => 22, 'unitPrice8' => 23, 'unitPrice9' => 24, 'unitPrice10' => 25, 'unitPrice11' => 26, 'unitCost' => 27, 'nhifItemCode' => 28, ),
+        self::TYPE_COLNAME       => array(CareTzDrugsandservicesTableMap::COL_ITEM_ID => 0, CareTzDrugsandservicesTableMap::COL_ITEM_NUMBER => 1, CareTzDrugsandservicesTableMap::COL_PARTCODE => 2, CareTzDrugsandservicesTableMap::COL_IS_PEDIATRIC => 3, CareTzDrugsandservicesTableMap::COL_IS_ADULT => 4, CareTzDrugsandservicesTableMap::COL_IS_OTHER => 5, CareTzDrugsandservicesTableMap::COL_IS_CONSUMABLE => 6, CareTzDrugsandservicesTableMap::COL_IS_LABTEST => 7, CareTzDrugsandservicesTableMap::COL_IS_RADIO_TEST => 8, CareTzDrugsandservicesTableMap::COL_ITEM_DESCRIPTION => 9, CareTzDrugsandservicesTableMap::COL_ITEM_FULL_DESCRIPTION => 10, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE => 11, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_1 => 12, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_2 => 13, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_3 => 14, CareTzDrugsandservicesTableMap::COL_PURCHASING_CLASS => 15, CareTzDrugsandservicesTableMap::COL_SUB_CLASS => 16, CareTzDrugsandservicesTableMap::COL_NOT_IN_USE => 17, CareTzDrugsandservicesTableMap::COL_MIN_LEVEL => 18, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_4 => 19, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_5 => 20, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_6 => 21, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_7 => 22, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_8 => 23, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_9 => 24, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_10 => 25, CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_11 => 26, CareTzDrugsandservicesTableMap::COL_UNIT_COST => 27, CareTzDrugsandservicesTableMap::COL_NHIF_ITEM_CODE => 28, ),
+        self::TYPE_FIELDNAME     => array('item_id' => 0, 'item_number' => 1, 'partcode' => 2, 'is_pediatric' => 3, 'is_adult' => 4, 'is_other' => 5, 'is_consumable' => 6, 'is_labtest' => 7, 'is_radio_test' => 8, 'item_description' => 9, 'item_full_description' => 10, 'unit_price' => 11, 'unit_price_1' => 12, 'unit_price_2' => 13, 'unit_price_3' => 14, 'purchasing_class' => 15, 'sub_class' => 16, 'not_in_use' => 17, 'min_level' => 18, 'unit_price_4' => 19, 'unit_price_5' => 20, 'unit_price_6' => 21, 'unit_price_7' => 22, 'unit_price_8' => 23, 'unit_price_9' => 24, 'unit_price_10' => 25, 'unit_price_11' => 26, 'unit_cost' => 27, 'nhif_item_code' => 28, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, )
     );
 
     /**
@@ -289,6 +294,7 @@ class CareTzDrugsandservicesTableMap extends TableMap
         $this->addColumn('unit_price_10', 'UnitPrice10', 'INTEGER', true, 10, null);
         $this->addColumn('unit_price_11', 'UnitPrice11', 'INTEGER', true, 10, null);
         $this->addColumn('unit_cost', 'UnitCost', 'VARCHAR', true, 50, null);
+        $this->addColumn('nhif_item_code', 'NhifItemCode', 'VARCHAR', false, 20, null);
     } // initialize()
 
     /**
@@ -467,6 +473,7 @@ class CareTzDrugsandservicesTableMap extends TableMap
             $criteria->addSelectColumn(CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_10);
             $criteria->addSelectColumn(CareTzDrugsandservicesTableMap::COL_UNIT_PRICE_11);
             $criteria->addSelectColumn(CareTzDrugsandservicesTableMap::COL_UNIT_COST);
+            $criteria->addSelectColumn(CareTzDrugsandservicesTableMap::COL_NHIF_ITEM_CODE);
         } else {
             $criteria->addSelectColumn($alias . '.item_id');
             $criteria->addSelectColumn($alias . '.item_number');
@@ -496,6 +503,7 @@ class CareTzDrugsandservicesTableMap extends TableMap
             $criteria->addSelectColumn($alias . '.unit_price_10');
             $criteria->addSelectColumn($alias . '.unit_price_11');
             $criteria->addSelectColumn($alias . '.unit_cost');
+            $criteria->addSelectColumn($alias . '.nhif_item_code');
         }
     }
 

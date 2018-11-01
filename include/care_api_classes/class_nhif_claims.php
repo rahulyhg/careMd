@@ -6,9 +6,20 @@ include_once($root_path . 'include/care_api_classes/class_nhif.php');
 require_once $root_path.'vendor/autoload.php';
 (include_once ($root_path.'generated-conf/config.php')) or die();
 
+ini_set('memory_limit', '-1');
+ini_set('max_execution_time', 300);
+
 use  CareMd\Cared\CareDepartmentQuery;
-use  CareMd\CareMd\CareTzCompanyQuery;
 use  CareMd\CareMd\CareTzDiagnosisQuery;
+use  CareMd\CareMd\CareTzDistrictQuery;
+use  CareMd\CareMd\CareTzWardQuery;
+use  CareMd\CareMd\CareUsersQuery;
+use  CareMd\CareMd\CarePersonellQuery;
+use  CareMd\CareMd\CarePersonQuery;
+use  CareMd\CareMd\CareTzBillingArchiveQuery;
+use  CareMd\CareMd\CareTzBillingArchiveElemQuery;
+use  CareMd\CareMd\CareTzDrugsandservicesQuery;
+
 
 class Nhif_claims extends Nhif {
 
@@ -31,9 +42,208 @@ class Nhif_claims extends Nhif {
 
     public function GetDepartmentName($deptId)
     {
-        $sql = "SELECT * FROM care_department where nr = $deptId"; 
-        $result = $db->Execute($sql);
+        global $db;
+        $sql = "SELECT * FROM care_department where nr = $deptId LiMIT 1"; 
+        $departmentResult = $db->Execute($sql);
+        $name = "";
+        while ($row = $departmentResult->FetchRow()) {
+            $name = $row['name_formal'];
+        }
+        return $name;
     }
+
+    public function GetPatientPhysicalAddress($wardId, $districtId)
+    {
+        $district = CareTzDistrictQuery::create()->filterByDistrictId($districtId)->findOne()->toArray();
+        $ward = CareTzWardQuery::create()->filterByWardId($wardId)->findOne()->toArray();
+
+        $districtName = ($district)?$district['DistrictName']:"";
+        $wardName = ($ward)?$ward['WardName']:"";
+
+        return $wardName . " " . $districtName;
+    }
+
+    public function GetDignosisCodesByType($encounterNumber, $type)
+    {
+        $name = "";
+        $dignosises = CareTzDiagnosisQuery::create()
+        ->filterByEncounterNr($encounterNumber)
+        ->filterByDiagnosisType($type)
+        ->find()
+        ->toArray();
+        foreach ($dignosises as $dignosis) {
+            $name = $name . $dignosis['Icd10Code'] . ", ";
+        }
+        if (empty($name)) {
+            $name = '<span style="color: red">No diagnosis entered</span>';
+        }
+        return $name;
+
+    }
+
+    public function GetDignosisCodes($encounterNumber)
+    {
+        $dignosises = CareTzDiagnosisQuery::create()
+        ->filterByEncounterNr($encounterNumber)
+        ->find()
+        ->toArray();
+        return $dignosises;
+    }
+
+    public function GetDignosisDocName($encounterNumber)
+    {
+        $dignosis = CareTzDiagnosisQuery::create()
+        ->filterByEncounterNr($encounterNumber)
+        ->limit(1)
+        ->findOne()
+        ->toArray();
+        $name = ($dignosis)?$dignosis['DoctorName']:"";
+        return $name;        
+    }
+
+    public function GetDocPersonelNumber($name)
+    {
+        $user = CareUsersQuery::create()->filterbyLoginId($name)->findOne()->toArray();
+
+        $personelId = ($user)?$user['PersonellNr']:0;
+        return $personelId;
+
+    }
+
+    public function GetPersonel($Number)
+    {
+        $user = CarePersonellQuery::create()->filterbyNr($Number)->findOne()->toArray();
+
+        $pId = ($user)?$user['Pid']:0;
+        return $pId;
+    }
+
+    public function GetPerson($pid)
+    {
+        $person = CarePersonQuery::create()->filterbyPid($pid)->findOne()->toArray();
+        return $person;        
+    }
+
+    public function GetInvestigationDrugItems()
+    {
+        $items = array();
+        $drugs = CareTzDrugsandservicesQuery::create()
+        ->where('CareTzDrugsandservices.PurchasingClass = ?', 'xray')
+        ->_or()
+        ->where('CareTzDrugsandservices.PurchasingClass = ?', 'labtest')
+        ->find()
+        ->toArray();
+
+        foreach ($drugs as $drug) {
+            array_push($items, $drug['ItemId']);
+        }
+        return $items;
+    }
+
+    public function GetMedicineItems()
+    {
+        $items = array();
+        $drugs = CareTzDrugsandservicesQuery::create()
+        ->where('CareTzDrugsandservices.PurchasingClass LIKE ?', 'drug_list%')
+        ->find()
+        ->toArray();
+
+        foreach ($drugs as $drug) {
+            array_push($items, $drug['ItemId']);
+        }
+        return $items;
+    }
+
+    public function GetSurgerytems()
+    {
+        $items = array();
+        $drugs = CareTzDrugsandservicesQuery::create()
+        ->where('CareTzDrugsandservices.PurchasingClass = ?', 'minor_proc_op')
+        ->_or()
+        ->where('CareTzDrugsandservices.PurchasingClass = ?', 'minor_proc_op')
+        ->find()
+        ->toArray();
+
+        foreach ($drugs as $drug) {
+            array_push($items, $drug['ItemId']);
+        }
+        return $items;
+    }
+
+    public function GetBedItems()
+    {
+        $items = array();
+        $drugs = CareTzDrugsandservicesQuery::create()
+        ->where('CareTzDrugsandservices.ItemNumber LIKE ?', 'B0%')
+        ->find()
+        ->toArray();
+
+        foreach ($drugs as $drug) {
+            array_push($items, $drug['ItemId']);
+        }
+        return $items;
+    }
+
+    public function GetInvestigations($encounterNumber)
+    {
+        $investigations = array();
+        $itemNumbers = $this->GetInvestigationDrugItems();
+        $billingAchives = CareTzBillingArchiveQuery::create()->filterByEncounterNr($encounterNumber)->find()->toArray();
+        foreach ($billingAchives as $archive) {
+            $items = CareTzBillingArchiveElemQuery::create()->filterbyNr($archive['Nr'])->filterByItemNumber($itemNumbers)->find()->toArray();
+            foreach ($items as $item) {
+                 $item['amount'] = $item['Amount'] * $item['Price'];
+                array_push($investigations, $item);                
+            }
+        }
+        return $investigations;
+    }
+
+    public function GetMedicines($encounterNumber)
+    {
+        $medicines = array();
+        $itemNumbers = $this->GetMedicineItems();
+        $billingAchives = CareTzBillingArchiveQuery::create()->filterByEncounterNr($encounterNumber)->find()->toArray();
+        foreach ($billingAchives as $archive) {
+            $items = CareTzBillingArchiveElemQuery::create()->filterbyNr($archive['Nr'])->filterByItemNumber($itemNumbers)->find()->toArray();
+            foreach ($items as $item) {
+                 $item['amount'] = $item['Amount'] * $item['Price'];
+                array_push($medicines, $item);                
+            }
+        }
+        return $medicines;
+    }
+
+    public function Getsurgeries($encounterNumber)
+    {
+        $surguries = array();
+        $itemNumbers = $this->GetSurgerytems();
+        $billingAchives = CareTzBillingArchiveQuery::create()->filterByEncounterNr($encounterNumber)->find()->toArray();
+        foreach ($billingAchives as $archive) {
+            $items = CareTzBillingArchiveElemQuery::create()->filterbyNr($archive['Nr'])->filterByItemNumber($itemNumbers)->find()->toArray();
+            foreach ($items as $item) {
+                 $item['amount'] = $item['Amount'] * $item['Price'];
+                array_push($surguries, $item);                
+            }
+        }
+        return $surguries;
+    }
+
+    public function GetBedServices($encounterNumber)
+    {
+        $bedServices = array();
+        $itemNumbers = $this->GetBedItems();
+        $billingAchives = CareTzBillingArchiveQuery::create()->filterByEncounterNr($encounterNumber)->find()->toArray();
+        foreach ($billingAchives as $archive) {
+            $items = CareTzBillingArchiveElemQuery::create()->filterbyNr($archive['Nr'])->filterByItemNumber($itemNumbers)->find()->toArray();
+            foreach ($items as $item) {
+                 $item['amount'] = $item['Amount'] * $item['Price'];
+                array_push($bedServices, $item);                
+            }
+        }
+        return $bedServices;
+    }
+
 
     var $fld_care_nhif_claims = array(
         'FolioID',
@@ -440,6 +650,7 @@ class Nhif_claims extends Nhif {
 
             // xray, labtest, medicine drug_list% surgery minor_proc_op, surgical_op
             echo "<br><b>Method class_nhif_claims::get_labtest()</b><br>";
+
         $sql_diagnosis = "SELECT care_tz_drugsandservices.nhif_item_code,care_tz_drugsandservices.item_number,care_tz_drugsandservices.unit_price_1, IF(care_test_request_chemlabor_sub.bill_number>0,1,0) as  bill_status "
                 . " FROM care_test_request_chemlabor_sub,care_test_findings_chemlabor_sub,care_tz_drugsandservices"
                 . " WHERE care_test_request_chemlabor_sub.item_id = care_tz_drugsandservices.item_id "

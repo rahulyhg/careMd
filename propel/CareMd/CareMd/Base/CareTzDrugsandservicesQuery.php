@@ -47,6 +47,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareTzDrugsandservicesQuery orderByUnitPrice10($order = Criteria::ASC) Order by the unit_price_10 column
  * @method     ChildCareTzDrugsandservicesQuery orderByUnitPrice11($order = Criteria::ASC) Order by the unit_price_11 column
  * @method     ChildCareTzDrugsandservicesQuery orderByUnitCost($order = Criteria::ASC) Order by the unit_cost column
+ * @method     ChildCareTzDrugsandservicesQuery orderByNhifItemCode($order = Criteria::ASC) Order by the nhif_item_code column
  *
  * @method     ChildCareTzDrugsandservicesQuery groupByItemId() Group by the item_id column
  * @method     ChildCareTzDrugsandservicesQuery groupByItemNumber() Group by the item_number column
@@ -76,6 +77,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareTzDrugsandservicesQuery groupByUnitPrice10() Group by the unit_price_10 column
  * @method     ChildCareTzDrugsandservicesQuery groupByUnitPrice11() Group by the unit_price_11 column
  * @method     ChildCareTzDrugsandservicesQuery groupByUnitCost() Group by the unit_cost column
+ * @method     ChildCareTzDrugsandservicesQuery groupByNhifItemCode() Group by the nhif_item_code column
  *
  * @method     ChildCareTzDrugsandservicesQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildCareTzDrugsandservicesQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -115,7 +117,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareTzDrugsandservices findOneByUnitPrice9(int $unit_price_9) Return the first ChildCareTzDrugsandservices filtered by the unit_price_9 column
  * @method     ChildCareTzDrugsandservices findOneByUnitPrice10(int $unit_price_10) Return the first ChildCareTzDrugsandservices filtered by the unit_price_10 column
  * @method     ChildCareTzDrugsandservices findOneByUnitPrice11(int $unit_price_11) Return the first ChildCareTzDrugsandservices filtered by the unit_price_11 column
- * @method     ChildCareTzDrugsandservices findOneByUnitCost(string $unit_cost) Return the first ChildCareTzDrugsandservices filtered by the unit_cost column *
+ * @method     ChildCareTzDrugsandservices findOneByUnitCost(string $unit_cost) Return the first ChildCareTzDrugsandservices filtered by the unit_cost column
+ * @method     ChildCareTzDrugsandservices findOneByNhifItemCode(string $nhif_item_code) Return the first ChildCareTzDrugsandservices filtered by the nhif_item_code column *
 
  * @method     ChildCareTzDrugsandservices requirePk($key, ConnectionInterface $con = null) Return the ChildCareTzDrugsandservices by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildCareTzDrugsandservices requireOne(ConnectionInterface $con = null) Return the first ChildCareTzDrugsandservices matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -148,6 +151,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareTzDrugsandservices requireOneByUnitPrice10(int $unit_price_10) Return the first ChildCareTzDrugsandservices filtered by the unit_price_10 column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildCareTzDrugsandservices requireOneByUnitPrice11(int $unit_price_11) Return the first ChildCareTzDrugsandservices filtered by the unit_price_11 column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildCareTzDrugsandservices requireOneByUnitCost(string $unit_cost) Return the first ChildCareTzDrugsandservices filtered by the unit_cost column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildCareTzDrugsandservices requireOneByNhifItemCode(string $nhif_item_code) Return the first ChildCareTzDrugsandservices filtered by the nhif_item_code column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildCareTzDrugsandservices[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildCareTzDrugsandservices objects based on current ModelCriteria
  * @method     ChildCareTzDrugsandservices[]|ObjectCollection findByItemId(string $item_id) Return ChildCareTzDrugsandservices objects filtered by the item_id column
@@ -178,6 +182,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareTzDrugsandservices[]|ObjectCollection findByUnitPrice10(int $unit_price_10) Return ChildCareTzDrugsandservices objects filtered by the unit_price_10 column
  * @method     ChildCareTzDrugsandservices[]|ObjectCollection findByUnitPrice11(int $unit_price_11) Return ChildCareTzDrugsandservices objects filtered by the unit_price_11 column
  * @method     ChildCareTzDrugsandservices[]|ObjectCollection findByUnitCost(string $unit_cost) Return ChildCareTzDrugsandservices objects filtered by the unit_cost column
+ * @method     ChildCareTzDrugsandservices[]|ObjectCollection findByNhifItemCode(string $nhif_item_code) Return ChildCareTzDrugsandservices objects filtered by the nhif_item_code column
  * @method     ChildCareTzDrugsandservices[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -276,7 +281,7 @@ abstract class CareTzDrugsandservicesQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT item_id, item_number, partcode, is_pediatric, is_adult, is_other, is_consumable, is_labtest, is_radio_test, item_description, item_full_description, unit_price, unit_price_1, unit_price_2, unit_price_3, purchasing_class, sub_class, not_in_use, min_level, unit_price_4, unit_price_5, unit_price_6, unit_price_7, unit_price_8, unit_price_9, unit_price_10, unit_price_11, unit_cost FROM care_tz_drugsandservices WHERE item_id = :p0';
+        $sql = 'SELECT item_id, item_number, partcode, is_pediatric, is_adult, is_other, is_consumable, is_labtest, is_radio_test, item_description, item_full_description, unit_price, unit_price_1, unit_price_2, unit_price_3, purchasing_class, sub_class, not_in_use, min_level, unit_price_4, unit_price_5, unit_price_6, unit_price_7, unit_price_8, unit_price_9, unit_price_10, unit_price_11, unit_cost, nhif_item_code FROM care_tz_drugsandservices WHERE item_id = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_INT);
@@ -1400,6 +1405,31 @@ abstract class CareTzDrugsandservicesQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(CareTzDrugsandservicesTableMap::COL_UNIT_COST, $unitCost, $comparison);
+    }
+
+    /**
+     * Filter the query on the nhif_item_code column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByNhifItemCode('fooValue');   // WHERE nhif_item_code = 'fooValue'
+     * $query->filterByNhifItemCode('%fooValue%', Criteria::LIKE); // WHERE nhif_item_code LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $nhifItemCode The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildCareTzDrugsandservicesQuery The current query, for fluid interface
+     */
+    public function filterByNhifItemCode($nhifItemCode = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($nhifItemCode)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(CareTzDrugsandservicesTableMap::COL_NHIF_ITEM_CODE, $nhifItemCode, $comparison);
     }
 
     /**

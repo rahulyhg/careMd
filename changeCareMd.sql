@@ -40,3 +40,7 @@ ALTER TABLE `care_person` ADD `national_id` VARCHAR(255) NULL DEFAULT NULL AFTER
 INSERT INTO `care_config_global` (`type`, `value`, `notes`, `status`, `history`, `modify_id`, `modify_time`, `create_id`, `create_time`) VALUES ('nhif_acreditation', NULL, NULL, '', '', '', CURRENT_TIMESTAMP, '', '0000-00-00 00:00:00.000000');
 
 ALTER TABLE `care_tz_diagnosis` ADD `diagnosis_type` ENUM('final','preliminary') NOT NULL DEFAULT 'final' AFTER `doctor_name`;
+
+
+ALTER TABLE `care_tz_diagnosis` ADD INDEX(`encounter_nr`);
+ALTER TABLE `care_tz_diagnosis` ADD INDEX(`type`);

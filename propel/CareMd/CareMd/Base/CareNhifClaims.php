@@ -2,10 +2,11 @@
 
 namespace CareMd\CareMd\Base;
 
+use \DateTime;
 use \Exception;
 use \PDO;
-use CareMd\CareMd\CareTzCompanyQuery as ChildCareTzCompanyQuery;
-use CareMd\CareMd\Map\CareTzCompanyTableMap;
+use CareMd\CareMd\CareNhifClaimsQuery as ChildCareNhifClaimsQuery;
+use CareMd\CareMd\Map\CareNhifClaimsTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
@@ -17,20 +18,21 @@ use Propel\Runtime\Exception\LogicException;
 use Propel\Runtime\Exception\PropelException;
 use Propel\Runtime\Map\TableMap;
 use Propel\Runtime\Parser\AbstractParser;
+use Propel\Runtime\Util\PropelDateTime;
 
 /**
- * Base class that represents a row from the 'care_tz_company' table.
+ * Base class that represents a row from the 'care_nhif_claims' table.
  *
  *
  *
  * @package    propel.generator.CareMd.CareMd.Base
  */
-abstract class CareTzCompany implements ActiveRecordInterface
+abstract class CareNhifClaims implements ActiveRecordInterface
 {
     /**
      * TableMap class name
      */
-    const TABLE_MAP = '\\CareMd\\CareMd\\Map\\CareTzCompanyTableMap';
+    const TABLE_MAP = '\\CareMd\\CareMd\\Map\\CareNhifClaimsTableMap';
 
 
     /**
@@ -60,132 +62,102 @@ abstract class CareTzCompany implements ActiveRecordInterface
     protected $virtualColumns = array();
 
     /**
-     * The value for the id field.
+     * The value for the folioid field.
      *
      * @var        string
      */
-    protected $id;
+    protected $folioid;
 
     /**
-     * The value for the name field.
-     *
-     * Note: this column has a database default value of: ''
-     * @var        string
-     */
-    protected $name;
-
-    /**
-     * The value for the contact field.
-     *
-     * Note: this column has a database default value of: ''
-     * @var        string
-     */
-    protected $contact;
-
-    /**
-     * The value for the email field.
-     *
-     * @var        string
-     */
-    protected $email;
-
-    /**
-     * The value for the phone_code field.
+     * The value for the claimyear field.
      *
      * @var        int
      */
-    protected $phone_code;
+    protected $claimyear;
 
     /**
-     * The value for the phone_nr field.
-     *
-     * @var        string
-     */
-    protected $phone_nr;
-
-    /**
-     * The value for the po_box field.
-     *
-     * Note: this column has a database default value of: ''
-     * @var        string
-     */
-    protected $po_box;
-
-    /**
-     * The value for the city field.
-     *
-     * Note: this column has a database default value of: ''
-     * @var        string
-     */
-    protected $city;
-
-    /**
-     * The value for the start_date field.
-     *
-     * Note: this column has a database default value of: '0'
-     * @var        string
-     */
-    protected $start_date;
-
-    /**
-     * The value for the end_date field.
-     *
-     * Note: this column has a database default value of: '0'
-     * @var        string
-     */
-    protected $end_date;
-
-    /**
-     * The value for the invoice_flag field.
-     *
-     * Note: this column has a database default value of: 0
-     * @var        int
-     */
-    protected $invoice_flag;
-
-    /**
-     * The value for the credit_preselection_flag field.
-     *
-     * Note: this column has a database default value of: 0
-     * @var        int
-     */
-    protected $credit_preselection_flag;
-
-    /**
-     * The value for the hide_company_flag field.
-     *
-     * Note: this column has a database default value of: 0
-     * @var        int
-     */
-    protected $hide_company_flag;
-
-    /**
-     * The value for the prepaid_amount field.
+     * The value for the claimmonth field.
      *
      * @var        int
      */
-    protected $prepaid_amount;
+    protected $claimmonth;
 
     /**
-     * The value for the modify_id field.
-     *
-     * @var        string
-     */
-    protected $modify_id;
-
-    /**
-     * The value for the enable_member_expiry field.
+     * The value for the foliono field.
      *
      * @var        int
      */
-    protected $enable_member_expiry;
+    protected $foliono;
 
     /**
-     * The value for the company_code field.
+     * The value for the serialno field.
      *
      * @var        string
      */
-    protected $company_code;
+    protected $serialno;
+
+    /**
+     * The value for the cardno field.
+     *
+     * @var        string
+     */
+    protected $cardno;
+
+    /**
+     * The value for the age field.
+     *
+     * @var        int
+     */
+    protected $age;
+
+    /**
+     * The value for the telephoneno field.
+     *
+     * @var        string
+     */
+    protected $telephoneno;
+
+    /**
+     * The value for the encounter_nr field.
+     *
+     * @var        string
+     */
+    protected $encounter_nr;
+
+    /**
+     * The value for the claim_status field.
+     *
+     * @var        string
+     */
+    protected $claim_status;
+
+    /**
+     * The value for the createdby field.
+     *
+     * @var        string
+     */
+    protected $createdby;
+
+    /**
+     * The value for the datecreated field.
+     *
+     * @var        DateTime
+     */
+    protected $datecreated;
+
+    /**
+     * The value for the lastmodifiedby field.
+     *
+     * @var        string
+     */
+    protected $lastmodifiedby;
+
+    /**
+     * The value for the lastmodified field.
+     *
+     * @var        string
+     */
+    protected $lastmodified;
 
     /**
      * Flag to prevent endless save loop, if this object is referenced
@@ -196,31 +168,10 @@ abstract class CareTzCompany implements ActiveRecordInterface
     protected $alreadyInSave = false;
 
     /**
-     * Applies default values to this object.
-     * This method should be called from the object's constructor (or
-     * equivalent initialization method).
-     * @see __construct()
-     */
-    public function applyDefaultValues()
-    {
-        $this->name = '';
-        $this->contact = '';
-        $this->po_box = '';
-        $this->city = '';
-        $this->start_date = '0';
-        $this->end_date = '0';
-        $this->invoice_flag = 0;
-        $this->credit_preselection_flag = 0;
-        $this->hide_company_flag = 0;
-    }
-
-    /**
-     * Initializes internal state of CareMd\CareMd\Base\CareTzCompany object.
-     * @see applyDefaults()
+     * Initializes internal state of CareMd\CareMd\Base\CareNhifClaims object.
      */
     public function __construct()
     {
-        $this->applyDefaultValues();
     }
 
     /**
@@ -312,9 +263,9 @@ abstract class CareTzCompany implements ActiveRecordInterface
     }
 
     /**
-     * Compares this with another <code>CareTzCompany</code> instance.  If
-     * <code>obj</code> is an instance of <code>CareTzCompany</code>, delegates to
-     * <code>equals(CareTzCompany)</code>.  Otherwise, returns <code>false</code>.
+     * Compares this with another <code>CareNhifClaims</code> instance.  If
+     * <code>obj</code> is an instance of <code>CareNhifClaims</code>, delegates to
+     * <code>equals(CareNhifClaims)</code>.  Otherwise, returns <code>false</code>.
      *
      * @param  mixed   $obj The object to compare to.
      * @return boolean Whether equal to the object specified.
@@ -380,7 +331,7 @@ abstract class CareTzCompany implements ActiveRecordInterface
      * @param string $name  The virtual column name
      * @param mixed  $value The value to give to the virtual column
      *
-     * @return $this|CareTzCompany The current object, for fluid interface
+     * @return $this|CareNhifClaims The current object, for fluid interface
      */
     public function setVirtualColumn($name, $value)
     {
@@ -442,514 +393,434 @@ abstract class CareTzCompany implements ActiveRecordInterface
     }
 
     /**
-     * Get the [id] column value.
+     * Get the [folioid] column value.
      *
      * @return string
      */
-    public function getId()
+    public function getFolioid()
     {
-        return $this->id;
+        return $this->folioid;
     }
 
     /**
-     * Get the [name] column value.
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Get the [contact] column value.
-     *
-     * @return string
-     */
-    public function getContact()
-    {
-        return $this->contact;
-    }
-
-    /**
-     * Get the [email] column value.
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Get the [phone_code] column value.
+     * Get the [claimyear] column value.
      *
      * @return int
      */
-    public function getPhoneCode()
+    public function getClaimyear()
     {
-        return $this->phone_code;
+        return $this->claimyear;
     }
 
     /**
-     * Get the [phone_nr] column value.
-     *
-     * @return string
-     */
-    public function getPhoneNr()
-    {
-        return $this->phone_nr;
-    }
-
-    /**
-     * Get the [po_box] column value.
-     *
-     * @return string
-     */
-    public function getPoBox()
-    {
-        return $this->po_box;
-    }
-
-    /**
-     * Get the [city] column value.
-     *
-     * @return string
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * Get the [start_date] column value.
-     *
-     * @return string
-     */
-    public function getStartDate()
-    {
-        return $this->start_date;
-    }
-
-    /**
-     * Get the [end_date] column value.
-     *
-     * @return string
-     */
-    public function getEndDate()
-    {
-        return $this->end_date;
-    }
-
-    /**
-     * Get the [invoice_flag] column value.
+     * Get the [claimmonth] column value.
      *
      * @return int
      */
-    public function getInvoiceFlag()
+    public function getClaimmonth()
     {
-        return $this->invoice_flag;
+        return $this->claimmonth;
     }
 
     /**
-     * Get the [credit_preselection_flag] column value.
+     * Get the [foliono] column value.
      *
      * @return int
      */
-    public function getCreditPreselectionFlag()
+    public function getFoliono()
     {
-        return $this->credit_preselection_flag;
+        return $this->foliono;
     }
 
     /**
-     * Get the [hide_company_flag] column value.
-     *
-     * @return int
-     */
-    public function getHideCompanyFlag()
-    {
-        return $this->hide_company_flag;
-    }
-
-    /**
-     * Get the [prepaid_amount] column value.
-     *
-     * @return int
-     */
-    public function getPrepaidAmount()
-    {
-        return $this->prepaid_amount;
-    }
-
-    /**
-     * Get the [modify_id] column value.
+     * Get the [serialno] column value.
      *
      * @return string
      */
-    public function getModifyId()
+    public function getSerialno()
     {
-        return $this->modify_id;
+        return $this->serialno;
     }
 
     /**
-     * Get the [enable_member_expiry] column value.
-     *
-     * @return int
-     */
-    public function getEnableMemberExpiry()
-    {
-        return $this->enable_member_expiry;
-    }
-
-    /**
-     * Get the [company_code] column value.
+     * Get the [cardno] column value.
      *
      * @return string
      */
-    public function getCompanyCode()
+    public function getCardno()
     {
-        return $this->company_code;
+        return $this->cardno;
     }
 
     /**
-     * Set the value of [id] column.
+     * Get the [age] column value.
+     *
+     * @return int
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * Get the [telephoneno] column value.
+     *
+     * @return string
+     */
+    public function getTelephoneno()
+    {
+        return $this->telephoneno;
+    }
+
+    /**
+     * Get the [encounter_nr] column value.
+     *
+     * @return string
+     */
+    public function getEncounterNr()
+    {
+        return $this->encounter_nr;
+    }
+
+    /**
+     * Get the [claim_status] column value.
+     *
+     * @return string
+     */
+    public function getClaimStatus()
+    {
+        return $this->claim_status;
+    }
+
+    /**
+     * Get the [createdby] column value.
+     *
+     * @return string
+     */
+    public function getCreatedby()
+    {
+        return $this->createdby;
+    }
+
+    /**
+     * Get the [optionally formatted] temporal [datecreated] column value.
+     *
+     *
+     * @param      string|null $format The date/time format string (either date()-style or strftime()-style).
+     *                            If format is NULL, then the raw DateTime object will be returned.
+     *
+     * @return string|DateTime Formatted date/time value as string or DateTime object (if format is NULL), NULL if column is NULL, and 0 if column value is 0000-00-00 00:00:00
+     *
+     * @throws PropelException - if unable to parse/validate the date/time value.
+     */
+    public function getDatecreated($format = NULL)
+    {
+        if ($format === null) {
+            return $this->datecreated;
+        } else {
+            return $this->datecreated instanceof \DateTimeInterface ? $this->datecreated->format($format) : null;
+        }
+    }
+
+    /**
+     * Get the [lastmodifiedby] column value.
+     *
+     * @return string
+     */
+    public function getLastmodifiedby()
+    {
+        return $this->lastmodifiedby;
+    }
+
+    /**
+     * Get the [lastmodified] column value.
+     *
+     * @return string
+     */
+    public function getLastmodified()
+    {
+        return $this->lastmodified;
+    }
+
+    /**
+     * Set the value of [folioid] column.
      *
      * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzCompany The current object (for fluent API support)
+     * @return $this|\CareMd\CareMd\CareNhifClaims The current object (for fluent API support)
      */
-    public function setId($v)
+    public function setFolioid($v)
     {
         if ($v !== null) {
             $v = (string) $v;
         }
 
-        if ($this->id !== $v) {
-            $this->id = $v;
-            $this->modifiedColumns[CareTzCompanyTableMap::COL_ID] = true;
+        if ($this->folioid !== $v) {
+            $this->folioid = $v;
+            $this->modifiedColumns[CareNhifClaimsTableMap::COL_FOLIOID] = true;
         }
 
         return $this;
-    } // setId()
+    } // setFolioid()
 
     /**
-     * Set the value of [name] column.
-     *
-     * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzCompany The current object (for fluent API support)
-     */
-    public function setName($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->name !== $v) {
-            $this->name = $v;
-            $this->modifiedColumns[CareTzCompanyTableMap::COL_NAME] = true;
-        }
-
-        return $this;
-    } // setName()
-
-    /**
-     * Set the value of [contact] column.
-     *
-     * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzCompany The current object (for fluent API support)
-     */
-    public function setContact($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->contact !== $v) {
-            $this->contact = $v;
-            $this->modifiedColumns[CareTzCompanyTableMap::COL_CONTACT] = true;
-        }
-
-        return $this;
-    } // setContact()
-
-    /**
-     * Set the value of [email] column.
-     *
-     * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzCompany The current object (for fluent API support)
-     */
-    public function setEmail($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->email !== $v) {
-            $this->email = $v;
-            $this->modifiedColumns[CareTzCompanyTableMap::COL_EMAIL] = true;
-        }
-
-        return $this;
-    } // setEmail()
-
-    /**
-     * Set the value of [phone_code] column.
+     * Set the value of [claimyear] column.
      *
      * @param int $v new value
-     * @return $this|\CareMd\CareMd\CareTzCompany The current object (for fluent API support)
+     * @return $this|\CareMd\CareMd\CareNhifClaims The current object (for fluent API support)
      */
-    public function setPhoneCode($v)
+    public function setClaimyear($v)
     {
         if ($v !== null) {
             $v = (int) $v;
         }
 
-        if ($this->phone_code !== $v) {
-            $this->phone_code = $v;
-            $this->modifiedColumns[CareTzCompanyTableMap::COL_PHONE_CODE] = true;
+        if ($this->claimyear !== $v) {
+            $this->claimyear = $v;
+            $this->modifiedColumns[CareNhifClaimsTableMap::COL_CLAIMYEAR] = true;
         }
 
         return $this;
-    } // setPhoneCode()
+    } // setClaimyear()
 
     /**
-     * Set the value of [phone_nr] column.
-     *
-     * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzCompany The current object (for fluent API support)
-     */
-    public function setPhoneNr($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->phone_nr !== $v) {
-            $this->phone_nr = $v;
-            $this->modifiedColumns[CareTzCompanyTableMap::COL_PHONE_NR] = true;
-        }
-
-        return $this;
-    } // setPhoneNr()
-
-    /**
-     * Set the value of [po_box] column.
-     *
-     * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzCompany The current object (for fluent API support)
-     */
-    public function setPoBox($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->po_box !== $v) {
-            $this->po_box = $v;
-            $this->modifiedColumns[CareTzCompanyTableMap::COL_PO_BOX] = true;
-        }
-
-        return $this;
-    } // setPoBox()
-
-    /**
-     * Set the value of [city] column.
-     *
-     * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzCompany The current object (for fluent API support)
-     */
-    public function setCity($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->city !== $v) {
-            $this->city = $v;
-            $this->modifiedColumns[CareTzCompanyTableMap::COL_CITY] = true;
-        }
-
-        return $this;
-    } // setCity()
-
-    /**
-     * Set the value of [start_date] column.
-     *
-     * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzCompany The current object (for fluent API support)
-     */
-    public function setStartDate($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->start_date !== $v) {
-            $this->start_date = $v;
-            $this->modifiedColumns[CareTzCompanyTableMap::COL_START_DATE] = true;
-        }
-
-        return $this;
-    } // setStartDate()
-
-    /**
-     * Set the value of [end_date] column.
-     *
-     * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzCompany The current object (for fluent API support)
-     */
-    public function setEndDate($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->end_date !== $v) {
-            $this->end_date = $v;
-            $this->modifiedColumns[CareTzCompanyTableMap::COL_END_DATE] = true;
-        }
-
-        return $this;
-    } // setEndDate()
-
-    /**
-     * Set the value of [invoice_flag] column.
+     * Set the value of [claimmonth] column.
      *
      * @param int $v new value
-     * @return $this|\CareMd\CareMd\CareTzCompany The current object (for fluent API support)
+     * @return $this|\CareMd\CareMd\CareNhifClaims The current object (for fluent API support)
      */
-    public function setInvoiceFlag($v)
+    public function setClaimmonth($v)
     {
         if ($v !== null) {
             $v = (int) $v;
         }
 
-        if ($this->invoice_flag !== $v) {
-            $this->invoice_flag = $v;
-            $this->modifiedColumns[CareTzCompanyTableMap::COL_INVOICE_FLAG] = true;
+        if ($this->claimmonth !== $v) {
+            $this->claimmonth = $v;
+            $this->modifiedColumns[CareNhifClaimsTableMap::COL_CLAIMMONTH] = true;
         }
 
         return $this;
-    } // setInvoiceFlag()
+    } // setClaimmonth()
 
     /**
-     * Set the value of [credit_preselection_flag] column.
+     * Set the value of [foliono] column.
      *
      * @param int $v new value
-     * @return $this|\CareMd\CareMd\CareTzCompany The current object (for fluent API support)
+     * @return $this|\CareMd\CareMd\CareNhifClaims The current object (for fluent API support)
      */
-    public function setCreditPreselectionFlag($v)
+    public function setFoliono($v)
     {
         if ($v !== null) {
             $v = (int) $v;
         }
 
-        if ($this->credit_preselection_flag !== $v) {
-            $this->credit_preselection_flag = $v;
-            $this->modifiedColumns[CareTzCompanyTableMap::COL_CREDIT_PRESELECTION_FLAG] = true;
+        if ($this->foliono !== $v) {
+            $this->foliono = $v;
+            $this->modifiedColumns[CareNhifClaimsTableMap::COL_FOLIONO] = true;
         }
 
         return $this;
-    } // setCreditPreselectionFlag()
+    } // setFoliono()
 
     /**
-     * Set the value of [hide_company_flag] column.
-     *
-     * @param int $v new value
-     * @return $this|\CareMd\CareMd\CareTzCompany The current object (for fluent API support)
-     */
-    public function setHideCompanyFlag($v)
-    {
-        if ($v !== null) {
-            $v = (int) $v;
-        }
-
-        if ($this->hide_company_flag !== $v) {
-            $this->hide_company_flag = $v;
-            $this->modifiedColumns[CareTzCompanyTableMap::COL_HIDE_COMPANY_FLAG] = true;
-        }
-
-        return $this;
-    } // setHideCompanyFlag()
-
-    /**
-     * Set the value of [prepaid_amount] column.
-     *
-     * @param int $v new value
-     * @return $this|\CareMd\CareMd\CareTzCompany The current object (for fluent API support)
-     */
-    public function setPrepaidAmount($v)
-    {
-        if ($v !== null) {
-            $v = (int) $v;
-        }
-
-        if ($this->prepaid_amount !== $v) {
-            $this->prepaid_amount = $v;
-            $this->modifiedColumns[CareTzCompanyTableMap::COL_PREPAID_AMOUNT] = true;
-        }
-
-        return $this;
-    } // setPrepaidAmount()
-
-    /**
-     * Set the value of [modify_id] column.
+     * Set the value of [serialno] column.
      *
      * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzCompany The current object (for fluent API support)
+     * @return $this|\CareMd\CareMd\CareNhifClaims The current object (for fluent API support)
      */
-    public function setModifyId($v)
+    public function setSerialno($v)
     {
         if ($v !== null) {
             $v = (string) $v;
         }
 
-        if ($this->modify_id !== $v) {
-            $this->modify_id = $v;
-            $this->modifiedColumns[CareTzCompanyTableMap::COL_MODIFY_ID] = true;
+        if ($this->serialno !== $v) {
+            $this->serialno = $v;
+            $this->modifiedColumns[CareNhifClaimsTableMap::COL_SERIALNO] = true;
         }
 
         return $this;
-    } // setModifyId()
+    } // setSerialno()
 
     /**
-     * Set the value of [enable_member_expiry] column.
-     *
-     * @param int $v new value
-     * @return $this|\CareMd\CareMd\CareTzCompany The current object (for fluent API support)
-     */
-    public function setEnableMemberExpiry($v)
-    {
-        if ($v !== null) {
-            $v = (int) $v;
-        }
-
-        if ($this->enable_member_expiry !== $v) {
-            $this->enable_member_expiry = $v;
-            $this->modifiedColumns[CareTzCompanyTableMap::COL_ENABLE_MEMBER_EXPIRY] = true;
-        }
-
-        return $this;
-    } // setEnableMemberExpiry()
-
-    /**
-     * Set the value of [company_code] column.
+     * Set the value of [cardno] column.
      *
      * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzCompany The current object (for fluent API support)
+     * @return $this|\CareMd\CareMd\CareNhifClaims The current object (for fluent API support)
      */
-    public function setCompanyCode($v)
+    public function setCardno($v)
     {
         if ($v !== null) {
             $v = (string) $v;
         }
 
-        if ($this->company_code !== $v) {
-            $this->company_code = $v;
-            $this->modifiedColumns[CareTzCompanyTableMap::COL_COMPANY_CODE] = true;
+        if ($this->cardno !== $v) {
+            $this->cardno = $v;
+            $this->modifiedColumns[CareNhifClaimsTableMap::COL_CARDNO] = true;
         }
 
         return $this;
-    } // setCompanyCode()
+    } // setCardno()
+
+    /**
+     * Set the value of [age] column.
+     *
+     * @param int $v new value
+     * @return $this|\CareMd\CareMd\CareNhifClaims The current object (for fluent API support)
+     */
+    public function setAge($v)
+    {
+        if ($v !== null) {
+            $v = (int) $v;
+        }
+
+        if ($this->age !== $v) {
+            $this->age = $v;
+            $this->modifiedColumns[CareNhifClaimsTableMap::COL_AGE] = true;
+        }
+
+        return $this;
+    } // setAge()
+
+    /**
+     * Set the value of [telephoneno] column.
+     *
+     * @param string $v new value
+     * @return $this|\CareMd\CareMd\CareNhifClaims The current object (for fluent API support)
+     */
+    public function setTelephoneno($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->telephoneno !== $v) {
+            $this->telephoneno = $v;
+            $this->modifiedColumns[CareNhifClaimsTableMap::COL_TELEPHONENO] = true;
+        }
+
+        return $this;
+    } // setTelephoneno()
+
+    /**
+     * Set the value of [encounter_nr] column.
+     *
+     * @param string $v new value
+     * @return $this|\CareMd\CareMd\CareNhifClaims The current object (for fluent API support)
+     */
+    public function setEncounterNr($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->encounter_nr !== $v) {
+            $this->encounter_nr = $v;
+            $this->modifiedColumns[CareNhifClaimsTableMap::COL_ENCOUNTER_NR] = true;
+        }
+
+        return $this;
+    } // setEncounterNr()
+
+    /**
+     * Set the value of [claim_status] column.
+     *
+     * @param string $v new value
+     * @return $this|\CareMd\CareMd\CareNhifClaims The current object (for fluent API support)
+     */
+    public function setClaimStatus($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->claim_status !== $v) {
+            $this->claim_status = $v;
+            $this->modifiedColumns[CareNhifClaimsTableMap::COL_CLAIM_STATUS] = true;
+        }
+
+        return $this;
+    } // setClaimStatus()
+
+    /**
+     * Set the value of [createdby] column.
+     *
+     * @param string $v new value
+     * @return $this|\CareMd\CareMd\CareNhifClaims The current object (for fluent API support)
+     */
+    public function setCreatedby($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->createdby !== $v) {
+            $this->createdby = $v;
+            $this->modifiedColumns[CareNhifClaimsTableMap::COL_CREATEDBY] = true;
+        }
+
+        return $this;
+    } // setCreatedby()
+
+    /**
+     * Sets the value of [datecreated] column to a normalized version of the date/time value specified.
+     *
+     * @param  mixed $v string, integer (timestamp), or \DateTimeInterface value.
+     *               Empty strings are treated as NULL.
+     * @return $this|\CareMd\CareMd\CareNhifClaims The current object (for fluent API support)
+     */
+    public function setDatecreated($v)
+    {
+        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
+        if ($this->datecreated !== null || $dt !== null) {
+            if ($this->datecreated === null || $dt === null || $dt->format("Y-m-d H:i:s.u") !== $this->datecreated->format("Y-m-d H:i:s.u")) {
+                $this->datecreated = $dt === null ? null : clone $dt;
+                $this->modifiedColumns[CareNhifClaimsTableMap::COL_DATECREATED] = true;
+            }
+        } // if either are not null
+
+        return $this;
+    } // setDatecreated()
+
+    /**
+     * Set the value of [lastmodifiedby] column.
+     *
+     * @param string $v new value
+     * @return $this|\CareMd\CareMd\CareNhifClaims The current object (for fluent API support)
+     */
+    public function setLastmodifiedby($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->lastmodifiedby !== $v) {
+            $this->lastmodifiedby = $v;
+            $this->modifiedColumns[CareNhifClaimsTableMap::COL_LASTMODIFIEDBY] = true;
+        }
+
+        return $this;
+    } // setLastmodifiedby()
+
+    /**
+     * Set the value of [lastmodified] column.
+     *
+     * @param string $v new value
+     * @return $this|\CareMd\CareMd\CareNhifClaims The current object (for fluent API support)
+     */
+    public function setLastmodified($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->lastmodified !== $v) {
+            $this->lastmodified = $v;
+            $this->modifiedColumns[CareNhifClaimsTableMap::COL_LASTMODIFIED] = true;
+        }
+
+        return $this;
+    } // setLastmodified()
 
     /**
      * Indicates whether the columns in this object are only set to default values.
@@ -961,42 +832,6 @@ abstract class CareTzCompany implements ActiveRecordInterface
      */
     public function hasOnlyDefaultValues()
     {
-            if ($this->name !== '') {
-                return false;
-            }
-
-            if ($this->contact !== '') {
-                return false;
-            }
-
-            if ($this->po_box !== '') {
-                return false;
-            }
-
-            if ($this->city !== '') {
-                return false;
-            }
-
-            if ($this->start_date !== '0') {
-                return false;
-            }
-
-            if ($this->end_date !== '0') {
-                return false;
-            }
-
-            if ($this->invoice_flag !== 0) {
-                return false;
-            }
-
-            if ($this->credit_preselection_flag !== 0) {
-                return false;
-            }
-
-            if ($this->hide_company_flag !== 0) {
-                return false;
-            }
-
         // otherwise, everything was equal, so return TRUE
         return true;
     } // hasOnlyDefaultValues()
@@ -1023,56 +858,50 @@ abstract class CareTzCompany implements ActiveRecordInterface
     {
         try {
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : CareTzCompanyTableMap::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->id = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : CareNhifClaimsTableMap::translateFieldName('Folioid', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->folioid = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : CareTzCompanyTableMap::translateFieldName('Name', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->name = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : CareNhifClaimsTableMap::translateFieldName('Claimyear', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->claimyear = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : CareTzCompanyTableMap::translateFieldName('Contact', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->contact = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : CareNhifClaimsTableMap::translateFieldName('Claimmonth', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->claimmonth = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : CareTzCompanyTableMap::translateFieldName('Email', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->email = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : CareNhifClaimsTableMap::translateFieldName('Foliono', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->foliono = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : CareTzCompanyTableMap::translateFieldName('PhoneCode', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->phone_code = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : CareNhifClaimsTableMap::translateFieldName('Serialno', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->serialno = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : CareTzCompanyTableMap::translateFieldName('PhoneNr', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->phone_nr = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : CareNhifClaimsTableMap::translateFieldName('Cardno', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->cardno = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : CareTzCompanyTableMap::translateFieldName('PoBox', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->po_box = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : CareNhifClaimsTableMap::translateFieldName('Age', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->age = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : CareTzCompanyTableMap::translateFieldName('City', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->city = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : CareNhifClaimsTableMap::translateFieldName('Telephoneno', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->telephoneno = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 8 + $startcol : CareTzCompanyTableMap::translateFieldName('StartDate', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->start_date = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 8 + $startcol : CareNhifClaimsTableMap::translateFieldName('EncounterNr', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->encounter_nr = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 9 + $startcol : CareTzCompanyTableMap::translateFieldName('EndDate', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->end_date = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 9 + $startcol : CareNhifClaimsTableMap::translateFieldName('ClaimStatus', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->claim_status = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 10 + $startcol : CareTzCompanyTableMap::translateFieldName('InvoiceFlag', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->invoice_flag = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 10 + $startcol : CareNhifClaimsTableMap::translateFieldName('Createdby', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->createdby = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 11 + $startcol : CareTzCompanyTableMap::translateFieldName('CreditPreselectionFlag', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->credit_preselection_flag = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 11 + $startcol : CareNhifClaimsTableMap::translateFieldName('Datecreated', TableMap::TYPE_PHPNAME, $indexType)];
+            if ($col === '0000-00-00 00:00:00') {
+                $col = null;
+            }
+            $this->datecreated = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 12 + $startcol : CareTzCompanyTableMap::translateFieldName('HideCompanyFlag', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->hide_company_flag = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 12 + $startcol : CareNhifClaimsTableMap::translateFieldName('Lastmodifiedby', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->lastmodifiedby = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 13 + $startcol : CareTzCompanyTableMap::translateFieldName('PrepaidAmount', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->prepaid_amount = (null !== $col) ? (int) $col : null;
-
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 14 + $startcol : CareTzCompanyTableMap::translateFieldName('ModifyId', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->modify_id = (null !== $col) ? (string) $col : null;
-
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 15 + $startcol : CareTzCompanyTableMap::translateFieldName('EnableMemberExpiry', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->enable_member_expiry = (null !== $col) ? (int) $col : null;
-
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 16 + $startcol : CareTzCompanyTableMap::translateFieldName('CompanyCode', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->company_code = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 13 + $startcol : CareNhifClaimsTableMap::translateFieldName('Lastmodified', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->lastmodified = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -1081,10 +910,10 @@ abstract class CareTzCompany implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 17; // 17 = CareTzCompanyTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 14; // 14 = CareNhifClaimsTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
-            throw new PropelException(sprintf('Error populating %s object', '\\CareMd\\CareMd\\CareTzCompany'), 0, $e);
+            throw new PropelException(sprintf('Error populating %s object', '\\CareMd\\CareMd\\CareNhifClaims'), 0, $e);
         }
     }
 
@@ -1126,13 +955,13 @@ abstract class CareTzCompany implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getReadConnection(CareTzCompanyTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getReadConnection(CareNhifClaimsTableMap::DATABASE_NAME);
         }
 
         // We don't need to alter the object instance pool; we're just modifying this instance
         // already in the pool.
 
-        $dataFetcher = ChildCareTzCompanyQuery::create(null, $this->buildPkeyCriteria())->setFormatter(ModelCriteria::FORMAT_STATEMENT)->find($con);
+        $dataFetcher = ChildCareNhifClaimsQuery::create(null, $this->buildPkeyCriteria())->setFormatter(ModelCriteria::FORMAT_STATEMENT)->find($con);
         $row = $dataFetcher->fetch();
         $dataFetcher->close();
         if (!$row) {
@@ -1151,8 +980,8 @@ abstract class CareTzCompany implements ActiveRecordInterface
      * @param      ConnectionInterface $con
      * @return void
      * @throws PropelException
-     * @see CareTzCompany::setDeleted()
-     * @see CareTzCompany::isDeleted()
+     * @see CareNhifClaims::setDeleted()
+     * @see CareNhifClaims::isDeleted()
      */
     public function delete(ConnectionInterface $con = null)
     {
@@ -1161,11 +990,11 @@ abstract class CareTzCompany implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getWriteConnection(CareTzCompanyTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(CareNhifClaimsTableMap::DATABASE_NAME);
         }
 
         $con->transaction(function () use ($con) {
-            $deleteQuery = ChildCareTzCompanyQuery::create()
+            $deleteQuery = ChildCareNhifClaimsQuery::create()
                 ->filterByPrimaryKey($this->getPrimaryKey());
             $ret = $this->preDelete($con);
             if ($ret) {
@@ -1200,7 +1029,7 @@ abstract class CareTzCompany implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getWriteConnection(CareTzCompanyTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(CareNhifClaimsTableMap::DATABASE_NAME);
         }
 
         return $con->transaction(function () use ($con) {
@@ -1219,7 +1048,7 @@ abstract class CareTzCompany implements ActiveRecordInterface
                     $this->postUpdate($con);
                 }
                 $this->postSave($con);
-                CareTzCompanyTableMap::addInstanceToPool($this);
+                CareNhifClaimsTableMap::addInstanceToPool($this);
             } else {
                 $affectedRows = 0;
             }
@@ -1276,66 +1105,53 @@ abstract class CareTzCompany implements ActiveRecordInterface
         $modifiedColumns = array();
         $index = 0;
 
-        $this->modifiedColumns[CareTzCompanyTableMap::COL_ID] = true;
-        if (null !== $this->id) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key (' . CareTzCompanyTableMap::COL_ID . ')');
-        }
 
          // check the columns in natural order for more readable SQL queries
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_ID)) {
-            $modifiedColumns[':p' . $index++]  = 'id';
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_FOLIOID)) {
+            $modifiedColumns[':p' . $index++]  = 'FolioID';
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_NAME)) {
-            $modifiedColumns[':p' . $index++]  = 'name';
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_CLAIMYEAR)) {
+            $modifiedColumns[':p' . $index++]  = 'ClaimYear';
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_CONTACT)) {
-            $modifiedColumns[':p' . $index++]  = 'contact';
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_CLAIMMONTH)) {
+            $modifiedColumns[':p' . $index++]  = 'ClaimMonth';
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_EMAIL)) {
-            $modifiedColumns[':p' . $index++]  = 'email';
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_FOLIONO)) {
+            $modifiedColumns[':p' . $index++]  = 'FolioNo';
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_PHONE_CODE)) {
-            $modifiedColumns[':p' . $index++]  = 'phone_code';
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_SERIALNO)) {
+            $modifiedColumns[':p' . $index++]  = 'SerialNo';
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_PHONE_NR)) {
-            $modifiedColumns[':p' . $index++]  = 'phone_nr';
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_CARDNO)) {
+            $modifiedColumns[':p' . $index++]  = 'CardNo';
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_PO_BOX)) {
-            $modifiedColumns[':p' . $index++]  = 'po_box';
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_AGE)) {
+            $modifiedColumns[':p' . $index++]  = 'Age';
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_CITY)) {
-            $modifiedColumns[':p' . $index++]  = 'city';
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_TELEPHONENO)) {
+            $modifiedColumns[':p' . $index++]  = 'TelephoneNo';
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_START_DATE)) {
-            $modifiedColumns[':p' . $index++]  = 'start_date';
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_ENCOUNTER_NR)) {
+            $modifiedColumns[':p' . $index++]  = 'encounter_nr';
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_END_DATE)) {
-            $modifiedColumns[':p' . $index++]  = 'end_date';
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_CLAIM_STATUS)) {
+            $modifiedColumns[':p' . $index++]  = 'claim_status';
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_INVOICE_FLAG)) {
-            $modifiedColumns[':p' . $index++]  = 'invoice_flag';
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_CREATEDBY)) {
+            $modifiedColumns[':p' . $index++]  = 'CreatedBy';
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_CREDIT_PRESELECTION_FLAG)) {
-            $modifiedColumns[':p' . $index++]  = 'credit_preselection_flag';
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_DATECREATED)) {
+            $modifiedColumns[':p' . $index++]  = 'DateCreated';
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_HIDE_COMPANY_FLAG)) {
-            $modifiedColumns[':p' . $index++]  = 'hide_company_flag';
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_LASTMODIFIEDBY)) {
+            $modifiedColumns[':p' . $index++]  = 'LastModifiedBy';
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_PREPAID_AMOUNT)) {
-            $modifiedColumns[':p' . $index++]  = 'prepaid_amount';
-        }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_MODIFY_ID)) {
-            $modifiedColumns[':p' . $index++]  = 'modify_id';
-        }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_ENABLE_MEMBER_EXPIRY)) {
-            $modifiedColumns[':p' . $index++]  = 'enable_member_expiry';
-        }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_COMPANY_CODE)) {
-            $modifiedColumns[':p' . $index++]  = 'company_code';
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_LASTMODIFIED)) {
+            $modifiedColumns[':p' . $index++]  = 'LastModified';
         }
 
         $sql = sprintf(
-            'INSERT INTO care_tz_company (%s) VALUES (%s)',
+            'INSERT INTO care_nhif_claims (%s) VALUES (%s)',
             implode(', ', $modifiedColumns),
             implode(', ', array_keys($modifiedColumns))
         );
@@ -1344,56 +1160,47 @@ abstract class CareTzCompany implements ActiveRecordInterface
             $stmt = $con->prepare($sql);
             foreach ($modifiedColumns as $identifier => $columnName) {
                 switch ($columnName) {
-                    case 'id':
-                        $stmt->bindValue($identifier, $this->id, PDO::PARAM_INT);
+                    case 'FolioID':
+                        $stmt->bindValue($identifier, $this->folioid, PDO::PARAM_STR);
                         break;
-                    case 'name':
-                        $stmt->bindValue($identifier, $this->name, PDO::PARAM_STR);
+                    case 'ClaimYear':
+                        $stmt->bindValue($identifier, $this->claimyear, PDO::PARAM_INT);
                         break;
-                    case 'contact':
-                        $stmt->bindValue($identifier, $this->contact, PDO::PARAM_STR);
+                    case 'ClaimMonth':
+                        $stmt->bindValue($identifier, $this->claimmonth, PDO::PARAM_INT);
                         break;
-                    case 'email':
-                        $stmt->bindValue($identifier, $this->email, PDO::PARAM_STR);
+                    case 'FolioNo':
+                        $stmt->bindValue($identifier, $this->foliono, PDO::PARAM_INT);
                         break;
-                    case 'phone_code':
-                        $stmt->bindValue($identifier, $this->phone_code, PDO::PARAM_INT);
+                    case 'SerialNo':
+                        $stmt->bindValue($identifier, $this->serialno, PDO::PARAM_STR);
                         break;
-                    case 'phone_nr':
-                        $stmt->bindValue($identifier, $this->phone_nr, PDO::PARAM_STR);
+                    case 'CardNo':
+                        $stmt->bindValue($identifier, $this->cardno, PDO::PARAM_STR);
                         break;
-                    case 'po_box':
-                        $stmt->bindValue($identifier, $this->po_box, PDO::PARAM_STR);
+                    case 'Age':
+                        $stmt->bindValue($identifier, $this->age, PDO::PARAM_INT);
                         break;
-                    case 'city':
-                        $stmt->bindValue($identifier, $this->city, PDO::PARAM_STR);
+                    case 'TelephoneNo':
+                        $stmt->bindValue($identifier, $this->telephoneno, PDO::PARAM_STR);
                         break;
-                    case 'start_date':
-                        $stmt->bindValue($identifier, $this->start_date, PDO::PARAM_INT);
+                    case 'encounter_nr':
+                        $stmt->bindValue($identifier, $this->encounter_nr, PDO::PARAM_INT);
                         break;
-                    case 'end_date':
-                        $stmt->bindValue($identifier, $this->end_date, PDO::PARAM_INT);
+                    case 'claim_status':
+                        $stmt->bindValue($identifier, $this->claim_status, PDO::PARAM_STR);
                         break;
-                    case 'invoice_flag':
-                        $stmt->bindValue($identifier, $this->invoice_flag, PDO::PARAM_INT);
+                    case 'CreatedBy':
+                        $stmt->bindValue($identifier, $this->createdby, PDO::PARAM_STR);
                         break;
-                    case 'credit_preselection_flag':
-                        $stmt->bindValue($identifier, $this->credit_preselection_flag, PDO::PARAM_INT);
+                    case 'DateCreated':
+                        $stmt->bindValue($identifier, $this->datecreated ? $this->datecreated->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
                         break;
-                    case 'hide_company_flag':
-                        $stmt->bindValue($identifier, $this->hide_company_flag, PDO::PARAM_INT);
+                    case 'LastModifiedBy':
+                        $stmt->bindValue($identifier, $this->lastmodifiedby, PDO::PARAM_STR);
                         break;
-                    case 'prepaid_amount':
-                        $stmt->bindValue($identifier, $this->prepaid_amount, PDO::PARAM_INT);
-                        break;
-                    case 'modify_id':
-                        $stmt->bindValue($identifier, $this->modify_id, PDO::PARAM_STR);
-                        break;
-                    case 'enable_member_expiry':
-                        $stmt->bindValue($identifier, $this->enable_member_expiry, PDO::PARAM_INT);
-                        break;
-                    case 'company_code':
-                        $stmt->bindValue($identifier, $this->company_code, PDO::PARAM_STR);
+                    case 'LastModified':
+                        $stmt->bindValue($identifier, $this->lastmodified, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -1402,13 +1209,6 @@ abstract class CareTzCompany implements ActiveRecordInterface
             Propel::log($e->getMessage(), Propel::LOG_ERR);
             throw new PropelException(sprintf('Unable to execute INSERT statement [%s]', $sql), 0, $e);
         }
-
-        try {
-            $pk = $con->lastInsertId();
-        } catch (Exception $e) {
-            throw new PropelException('Unable to get autoincrement id.', 0, $e);
-        }
-        $this->setId($pk);
 
         $this->setNew(false);
     }
@@ -1441,7 +1241,7 @@ abstract class CareTzCompany implements ActiveRecordInterface
      */
     public function getByName($name, $type = TableMap::TYPE_PHPNAME)
     {
-        $pos = CareTzCompanyTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
+        $pos = CareNhifClaimsTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
         $field = $this->getByPosition($pos);
 
         return $field;
@@ -1458,55 +1258,46 @@ abstract class CareTzCompany implements ActiveRecordInterface
     {
         switch ($pos) {
             case 0:
-                return $this->getId();
+                return $this->getFolioid();
                 break;
             case 1:
-                return $this->getName();
+                return $this->getClaimyear();
                 break;
             case 2:
-                return $this->getContact();
+                return $this->getClaimmonth();
                 break;
             case 3:
-                return $this->getEmail();
+                return $this->getFoliono();
                 break;
             case 4:
-                return $this->getPhoneCode();
+                return $this->getSerialno();
                 break;
             case 5:
-                return $this->getPhoneNr();
+                return $this->getCardno();
                 break;
             case 6:
-                return $this->getPoBox();
+                return $this->getAge();
                 break;
             case 7:
-                return $this->getCity();
+                return $this->getTelephoneno();
                 break;
             case 8:
-                return $this->getStartDate();
+                return $this->getEncounterNr();
                 break;
             case 9:
-                return $this->getEndDate();
+                return $this->getClaimStatus();
                 break;
             case 10:
-                return $this->getInvoiceFlag();
+                return $this->getCreatedby();
                 break;
             case 11:
-                return $this->getCreditPreselectionFlag();
+                return $this->getDatecreated();
                 break;
             case 12:
-                return $this->getHideCompanyFlag();
+                return $this->getLastmodifiedby();
                 break;
             case 13:
-                return $this->getPrepaidAmount();
-                break;
-            case 14:
-                return $this->getModifyId();
-                break;
-            case 15:
-                return $this->getEnableMemberExpiry();
-                break;
-            case 16:
-                return $this->getCompanyCode();
+                return $this->getLastmodified();
                 break;
             default:
                 return null;
@@ -1531,30 +1322,31 @@ abstract class CareTzCompany implements ActiveRecordInterface
     public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array())
     {
 
-        if (isset($alreadyDumpedObjects['CareTzCompany'][$this->hashCode()])) {
+        if (isset($alreadyDumpedObjects['CareNhifClaims'][$this->hashCode()])) {
             return '*RECURSION*';
         }
-        $alreadyDumpedObjects['CareTzCompany'][$this->hashCode()] = true;
-        $keys = CareTzCompanyTableMap::getFieldNames($keyType);
+        $alreadyDumpedObjects['CareNhifClaims'][$this->hashCode()] = true;
+        $keys = CareNhifClaimsTableMap::getFieldNames($keyType);
         $result = array(
-            $keys[0] => $this->getId(),
-            $keys[1] => $this->getName(),
-            $keys[2] => $this->getContact(),
-            $keys[3] => $this->getEmail(),
-            $keys[4] => $this->getPhoneCode(),
-            $keys[5] => $this->getPhoneNr(),
-            $keys[6] => $this->getPoBox(),
-            $keys[7] => $this->getCity(),
-            $keys[8] => $this->getStartDate(),
-            $keys[9] => $this->getEndDate(),
-            $keys[10] => $this->getInvoiceFlag(),
-            $keys[11] => $this->getCreditPreselectionFlag(),
-            $keys[12] => $this->getHideCompanyFlag(),
-            $keys[13] => $this->getPrepaidAmount(),
-            $keys[14] => $this->getModifyId(),
-            $keys[15] => $this->getEnableMemberExpiry(),
-            $keys[16] => $this->getCompanyCode(),
+            $keys[0] => $this->getFolioid(),
+            $keys[1] => $this->getClaimyear(),
+            $keys[2] => $this->getClaimmonth(),
+            $keys[3] => $this->getFoliono(),
+            $keys[4] => $this->getSerialno(),
+            $keys[5] => $this->getCardno(),
+            $keys[6] => $this->getAge(),
+            $keys[7] => $this->getTelephoneno(),
+            $keys[8] => $this->getEncounterNr(),
+            $keys[9] => $this->getClaimStatus(),
+            $keys[10] => $this->getCreatedby(),
+            $keys[11] => $this->getDatecreated(),
+            $keys[12] => $this->getLastmodifiedby(),
+            $keys[13] => $this->getLastmodified(),
         );
+        if ($result[$keys[11]] instanceof \DateTimeInterface) {
+            $result[$keys[11]] = $result[$keys[11]]->format('c');
+        }
+
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
             $result[$key] = $virtualColumn;
@@ -1573,11 +1365,11 @@ abstract class CareTzCompany implements ActiveRecordInterface
      *                one of the class type constants TableMap::TYPE_PHPNAME, TableMap::TYPE_CAMELNAME
      *                TableMap::TYPE_COLNAME, TableMap::TYPE_FIELDNAME, TableMap::TYPE_NUM.
      *                Defaults to TableMap::TYPE_PHPNAME.
-     * @return $this|\CareMd\CareMd\CareTzCompany
+     * @return $this|\CareMd\CareMd\CareNhifClaims
      */
     public function setByName($name, $value, $type = TableMap::TYPE_PHPNAME)
     {
-        $pos = CareTzCompanyTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
+        $pos = CareNhifClaimsTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
 
         return $this->setByPosition($pos, $value);
     }
@@ -1588,61 +1380,52 @@ abstract class CareTzCompany implements ActiveRecordInterface
      *
      * @param  int $pos position in xml schema
      * @param  mixed $value field value
-     * @return $this|\CareMd\CareMd\CareTzCompany
+     * @return $this|\CareMd\CareMd\CareNhifClaims
      */
     public function setByPosition($pos, $value)
     {
         switch ($pos) {
             case 0:
-                $this->setId($value);
+                $this->setFolioid($value);
                 break;
             case 1:
-                $this->setName($value);
+                $this->setClaimyear($value);
                 break;
             case 2:
-                $this->setContact($value);
+                $this->setClaimmonth($value);
                 break;
             case 3:
-                $this->setEmail($value);
+                $this->setFoliono($value);
                 break;
             case 4:
-                $this->setPhoneCode($value);
+                $this->setSerialno($value);
                 break;
             case 5:
-                $this->setPhoneNr($value);
+                $this->setCardno($value);
                 break;
             case 6:
-                $this->setPoBox($value);
+                $this->setAge($value);
                 break;
             case 7:
-                $this->setCity($value);
+                $this->setTelephoneno($value);
                 break;
             case 8:
-                $this->setStartDate($value);
+                $this->setEncounterNr($value);
                 break;
             case 9:
-                $this->setEndDate($value);
+                $this->setClaimStatus($value);
                 break;
             case 10:
-                $this->setInvoiceFlag($value);
+                $this->setCreatedby($value);
                 break;
             case 11:
-                $this->setCreditPreselectionFlag($value);
+                $this->setDatecreated($value);
                 break;
             case 12:
-                $this->setHideCompanyFlag($value);
+                $this->setLastmodifiedby($value);
                 break;
             case 13:
-                $this->setPrepaidAmount($value);
-                break;
-            case 14:
-                $this->setModifyId($value);
-                break;
-            case 15:
-                $this->setEnableMemberExpiry($value);
-                break;
-            case 16:
-                $this->setCompanyCode($value);
+                $this->setLastmodified($value);
                 break;
         } // switch()
 
@@ -1668,58 +1451,49 @@ abstract class CareTzCompany implements ActiveRecordInterface
      */
     public function fromArray($arr, $keyType = TableMap::TYPE_PHPNAME)
     {
-        $keys = CareTzCompanyTableMap::getFieldNames($keyType);
+        $keys = CareNhifClaimsTableMap::getFieldNames($keyType);
 
         if (array_key_exists($keys[0], $arr)) {
-            $this->setId($arr[$keys[0]]);
+            $this->setFolioid($arr[$keys[0]]);
         }
         if (array_key_exists($keys[1], $arr)) {
-            $this->setName($arr[$keys[1]]);
+            $this->setClaimyear($arr[$keys[1]]);
         }
         if (array_key_exists($keys[2], $arr)) {
-            $this->setContact($arr[$keys[2]]);
+            $this->setClaimmonth($arr[$keys[2]]);
         }
         if (array_key_exists($keys[3], $arr)) {
-            $this->setEmail($arr[$keys[3]]);
+            $this->setFoliono($arr[$keys[3]]);
         }
         if (array_key_exists($keys[4], $arr)) {
-            $this->setPhoneCode($arr[$keys[4]]);
+            $this->setSerialno($arr[$keys[4]]);
         }
         if (array_key_exists($keys[5], $arr)) {
-            $this->setPhoneNr($arr[$keys[5]]);
+            $this->setCardno($arr[$keys[5]]);
         }
         if (array_key_exists($keys[6], $arr)) {
-            $this->setPoBox($arr[$keys[6]]);
+            $this->setAge($arr[$keys[6]]);
         }
         if (array_key_exists($keys[7], $arr)) {
-            $this->setCity($arr[$keys[7]]);
+            $this->setTelephoneno($arr[$keys[7]]);
         }
         if (array_key_exists($keys[8], $arr)) {
-            $this->setStartDate($arr[$keys[8]]);
+            $this->setEncounterNr($arr[$keys[8]]);
         }
         if (array_key_exists($keys[9], $arr)) {
-            $this->setEndDate($arr[$keys[9]]);
+            $this->setClaimStatus($arr[$keys[9]]);
         }
         if (array_key_exists($keys[10], $arr)) {
-            $this->setInvoiceFlag($arr[$keys[10]]);
+            $this->setCreatedby($arr[$keys[10]]);
         }
         if (array_key_exists($keys[11], $arr)) {
-            $this->setCreditPreselectionFlag($arr[$keys[11]]);
+            $this->setDatecreated($arr[$keys[11]]);
         }
         if (array_key_exists($keys[12], $arr)) {
-            $this->setHideCompanyFlag($arr[$keys[12]]);
+            $this->setLastmodifiedby($arr[$keys[12]]);
         }
         if (array_key_exists($keys[13], $arr)) {
-            $this->setPrepaidAmount($arr[$keys[13]]);
-        }
-        if (array_key_exists($keys[14], $arr)) {
-            $this->setModifyId($arr[$keys[14]]);
-        }
-        if (array_key_exists($keys[15], $arr)) {
-            $this->setEnableMemberExpiry($arr[$keys[15]]);
-        }
-        if (array_key_exists($keys[16], $arr)) {
-            $this->setCompanyCode($arr[$keys[16]]);
+            $this->setLastmodified($arr[$keys[13]]);
         }
     }
 
@@ -1740,7 +1514,7 @@ abstract class CareTzCompany implements ActiveRecordInterface
      * @param string $data The source data to import from
      * @param string $keyType The type of keys the array uses.
      *
-     * @return $this|\CareMd\CareMd\CareTzCompany The current object, for fluid interface
+     * @return $this|\CareMd\CareMd\CareNhifClaims The current object, for fluid interface
      */
     public function importFrom($parser, $data, $keyType = TableMap::TYPE_PHPNAME)
     {
@@ -1760,58 +1534,49 @@ abstract class CareTzCompany implements ActiveRecordInterface
      */
     public function buildCriteria()
     {
-        $criteria = new Criteria(CareTzCompanyTableMap::DATABASE_NAME);
+        $criteria = new Criteria(CareNhifClaimsTableMap::DATABASE_NAME);
 
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_ID)) {
-            $criteria->add(CareTzCompanyTableMap::COL_ID, $this->id);
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_FOLIOID)) {
+            $criteria->add(CareNhifClaimsTableMap::COL_FOLIOID, $this->folioid);
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_NAME)) {
-            $criteria->add(CareTzCompanyTableMap::COL_NAME, $this->name);
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_CLAIMYEAR)) {
+            $criteria->add(CareNhifClaimsTableMap::COL_CLAIMYEAR, $this->claimyear);
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_CONTACT)) {
-            $criteria->add(CareTzCompanyTableMap::COL_CONTACT, $this->contact);
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_CLAIMMONTH)) {
+            $criteria->add(CareNhifClaimsTableMap::COL_CLAIMMONTH, $this->claimmonth);
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_EMAIL)) {
-            $criteria->add(CareTzCompanyTableMap::COL_EMAIL, $this->email);
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_FOLIONO)) {
+            $criteria->add(CareNhifClaimsTableMap::COL_FOLIONO, $this->foliono);
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_PHONE_CODE)) {
-            $criteria->add(CareTzCompanyTableMap::COL_PHONE_CODE, $this->phone_code);
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_SERIALNO)) {
+            $criteria->add(CareNhifClaimsTableMap::COL_SERIALNO, $this->serialno);
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_PHONE_NR)) {
-            $criteria->add(CareTzCompanyTableMap::COL_PHONE_NR, $this->phone_nr);
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_CARDNO)) {
+            $criteria->add(CareNhifClaimsTableMap::COL_CARDNO, $this->cardno);
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_PO_BOX)) {
-            $criteria->add(CareTzCompanyTableMap::COL_PO_BOX, $this->po_box);
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_AGE)) {
+            $criteria->add(CareNhifClaimsTableMap::COL_AGE, $this->age);
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_CITY)) {
-            $criteria->add(CareTzCompanyTableMap::COL_CITY, $this->city);
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_TELEPHONENO)) {
+            $criteria->add(CareNhifClaimsTableMap::COL_TELEPHONENO, $this->telephoneno);
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_START_DATE)) {
-            $criteria->add(CareTzCompanyTableMap::COL_START_DATE, $this->start_date);
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_ENCOUNTER_NR)) {
+            $criteria->add(CareNhifClaimsTableMap::COL_ENCOUNTER_NR, $this->encounter_nr);
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_END_DATE)) {
-            $criteria->add(CareTzCompanyTableMap::COL_END_DATE, $this->end_date);
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_CLAIM_STATUS)) {
+            $criteria->add(CareNhifClaimsTableMap::COL_CLAIM_STATUS, $this->claim_status);
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_INVOICE_FLAG)) {
-            $criteria->add(CareTzCompanyTableMap::COL_INVOICE_FLAG, $this->invoice_flag);
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_CREATEDBY)) {
+            $criteria->add(CareNhifClaimsTableMap::COL_CREATEDBY, $this->createdby);
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_CREDIT_PRESELECTION_FLAG)) {
-            $criteria->add(CareTzCompanyTableMap::COL_CREDIT_PRESELECTION_FLAG, $this->credit_preselection_flag);
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_DATECREATED)) {
+            $criteria->add(CareNhifClaimsTableMap::COL_DATECREATED, $this->datecreated);
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_HIDE_COMPANY_FLAG)) {
-            $criteria->add(CareTzCompanyTableMap::COL_HIDE_COMPANY_FLAG, $this->hide_company_flag);
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_LASTMODIFIEDBY)) {
+            $criteria->add(CareNhifClaimsTableMap::COL_LASTMODIFIEDBY, $this->lastmodifiedby);
         }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_PREPAID_AMOUNT)) {
-            $criteria->add(CareTzCompanyTableMap::COL_PREPAID_AMOUNT, $this->prepaid_amount);
-        }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_MODIFY_ID)) {
-            $criteria->add(CareTzCompanyTableMap::COL_MODIFY_ID, $this->modify_id);
-        }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_ENABLE_MEMBER_EXPIRY)) {
-            $criteria->add(CareTzCompanyTableMap::COL_ENABLE_MEMBER_EXPIRY, $this->enable_member_expiry);
-        }
-        if ($this->isColumnModified(CareTzCompanyTableMap::COL_COMPANY_CODE)) {
-            $criteria->add(CareTzCompanyTableMap::COL_COMPANY_CODE, $this->company_code);
+        if ($this->isColumnModified(CareNhifClaimsTableMap::COL_LASTMODIFIED)) {
+            $criteria->add(CareNhifClaimsTableMap::COL_LASTMODIFIED, $this->lastmodified);
         }
 
         return $criteria;
@@ -1829,8 +1594,7 @@ abstract class CareTzCompany implements ActiveRecordInterface
      */
     public function buildPkeyCriteria()
     {
-        $criteria = ChildCareTzCompanyQuery::create();
-        $criteria->add(CareTzCompanyTableMap::COL_ID, $this->id);
+        throw new LogicException('The CareNhifClaims object has no primary key');
 
         return $criteria;
     }
@@ -1843,7 +1607,7 @@ abstract class CareTzCompany implements ActiveRecordInterface
      */
     public function hashCode()
     {
-        $validPk = null !== $this->getId();
+        $validPk = false;
 
         $validPrimaryKeyFKs = 0;
         $primaryKeyFKs = [];
@@ -1858,23 +1622,27 @@ abstract class CareTzCompany implements ActiveRecordInterface
     }
 
     /**
-     * Returns the primary key for this object (row).
-     * @return string
+     * Returns NULL since this table doesn't have a primary key.
+     * This method exists only for BC and is deprecated!
+     * @return null
      */
     public function getPrimaryKey()
     {
-        return $this->getId();
+        return null;
     }
 
     /**
-     * Generic method to set the primary key (id column).
+     * Dummy primary key setter.
      *
-     * @param       string $key Primary key.
-     * @return void
+     * This function only exists to preserve backwards compatibility.  It is no longer
+     * needed or required by the Persistent interface.  It will be removed in next BC-breaking
+     * release of Propel.
+     *
+     * @deprecated
      */
-    public function setPrimaryKey($key)
+    public function setPrimaryKey($pk)
     {
-        $this->setId($key);
+        // do nothing, because this object doesn't have any primary keys
     }
 
     /**
@@ -1883,7 +1651,7 @@ abstract class CareTzCompany implements ActiveRecordInterface
      */
     public function isPrimaryKeyNull()
     {
-        return null === $this->getId();
+        return ;
     }
 
     /**
@@ -1892,32 +1660,29 @@ abstract class CareTzCompany implements ActiveRecordInterface
      * If desired, this method can also make copies of all associated (fkey referrers)
      * objects.
      *
-     * @param      object $copyObj An object of \CareMd\CareMd\CareTzCompany (or compatible) type.
+     * @param      object $copyObj An object of \CareMd\CareMd\CareNhifClaims (or compatible) type.
      * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
      * @param      boolean $makeNew Whether to reset autoincrement PKs and make the object new.
      * @throws PropelException
      */
     public function copyInto($copyObj, $deepCopy = false, $makeNew = true)
     {
-        $copyObj->setName($this->getName());
-        $copyObj->setContact($this->getContact());
-        $copyObj->setEmail($this->getEmail());
-        $copyObj->setPhoneCode($this->getPhoneCode());
-        $copyObj->setPhoneNr($this->getPhoneNr());
-        $copyObj->setPoBox($this->getPoBox());
-        $copyObj->setCity($this->getCity());
-        $copyObj->setStartDate($this->getStartDate());
-        $copyObj->setEndDate($this->getEndDate());
-        $copyObj->setInvoiceFlag($this->getInvoiceFlag());
-        $copyObj->setCreditPreselectionFlag($this->getCreditPreselectionFlag());
-        $copyObj->setHideCompanyFlag($this->getHideCompanyFlag());
-        $copyObj->setPrepaidAmount($this->getPrepaidAmount());
-        $copyObj->setModifyId($this->getModifyId());
-        $copyObj->setEnableMemberExpiry($this->getEnableMemberExpiry());
-        $copyObj->setCompanyCode($this->getCompanyCode());
+        $copyObj->setFolioid($this->getFolioid());
+        $copyObj->setClaimyear($this->getClaimyear());
+        $copyObj->setClaimmonth($this->getClaimmonth());
+        $copyObj->setFoliono($this->getFoliono());
+        $copyObj->setSerialno($this->getSerialno());
+        $copyObj->setCardno($this->getCardno());
+        $copyObj->setAge($this->getAge());
+        $copyObj->setTelephoneno($this->getTelephoneno());
+        $copyObj->setEncounterNr($this->getEncounterNr());
+        $copyObj->setClaimStatus($this->getClaimStatus());
+        $copyObj->setCreatedby($this->getCreatedby());
+        $copyObj->setDatecreated($this->getDatecreated());
+        $copyObj->setLastmodifiedby($this->getLastmodifiedby());
+        $copyObj->setLastmodified($this->getLastmodified());
         if ($makeNew) {
             $copyObj->setNew(true);
-            $copyObj->setId(NULL); // this is a auto-increment column, so set to default value
         }
     }
 
@@ -1930,7 +1695,7 @@ abstract class CareTzCompany implements ActiveRecordInterface
      * objects.
      *
      * @param  boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-     * @return \CareMd\CareMd\CareTzCompany Clone of current object.
+     * @return \CareMd\CareMd\CareNhifClaims Clone of current object.
      * @throws PropelException
      */
     public function copy($deepCopy = false)
@@ -1950,26 +1715,22 @@ abstract class CareTzCompany implements ActiveRecordInterface
      */
     public function clear()
     {
-        $this->id = null;
-        $this->name = null;
-        $this->contact = null;
-        $this->email = null;
-        $this->phone_code = null;
-        $this->phone_nr = null;
-        $this->po_box = null;
-        $this->city = null;
-        $this->start_date = null;
-        $this->end_date = null;
-        $this->invoice_flag = null;
-        $this->credit_preselection_flag = null;
-        $this->hide_company_flag = null;
-        $this->prepaid_amount = null;
-        $this->modify_id = null;
-        $this->enable_member_expiry = null;
-        $this->company_code = null;
+        $this->folioid = null;
+        $this->claimyear = null;
+        $this->claimmonth = null;
+        $this->foliono = null;
+        $this->serialno = null;
+        $this->cardno = null;
+        $this->age = null;
+        $this->telephoneno = null;
+        $this->encounter_nr = null;
+        $this->claim_status = null;
+        $this->createdby = null;
+        $this->datecreated = null;
+        $this->lastmodifiedby = null;
+        $this->lastmodified = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
-        $this->applyDefaultValues();
         $this->resetModified();
         $this->setNew(true);
         $this->setDeleted(false);
@@ -1997,7 +1758,7 @@ abstract class CareTzCompany implements ActiveRecordInterface
      */
     public function __toString()
     {
-        return (string) $this->exportTo(CareTzCompanyTableMap::DEFAULT_STRING_FORMAT);
+        return (string) $this->exportTo(CareNhifClaimsTableMap::DEFAULT_STRING_FORMAT);
     }
 
     /**

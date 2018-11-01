@@ -658,6 +658,20 @@ abstract class CarePerson implements ActiveRecordInterface
     protected $insurance_ceiling_for_families;
 
     /**
+     * The value for the national_id field.
+     *
+     * @var        string
+     */
+    protected $national_id;
+
+    /**
+     * The value for the employee_id field.
+     *
+     * @var        string
+     */
+    protected $employee_id;
+
+    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
@@ -1802,6 +1816,26 @@ abstract class CarePerson implements ActiveRecordInterface
     public function getInsuranceCeilingForFamilies()
     {
         return $this->insurance_ceiling_for_families;
+    }
+
+    /**
+     * Get the [national_id] column value.
+     *
+     * @return string
+     */
+    public function getNationalId()
+    {
+        return $this->national_id;
+    }
+
+    /**
+     * Get the [employee_id] column value.
+     *
+     * @return string
+     */
+    public function getEmployeeId()
+    {
+        return $this->employee_id;
     }
 
     /**
@@ -3404,6 +3438,46 @@ abstract class CarePerson implements ActiveRecordInterface
     } // setInsuranceCeilingForFamilies()
 
     /**
+     * Set the value of [national_id] column.
+     *
+     * @param string $v new value
+     * @return $this|\CareMd\CareMd\CarePerson The current object (for fluent API support)
+     */
+    public function setNationalId($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->national_id !== $v) {
+            $this->national_id = $v;
+            $this->modifiedColumns[CarePersonTableMap::COL_NATIONAL_ID] = true;
+        }
+
+        return $this;
+    } // setNationalId()
+
+    /**
+     * Set the value of [employee_id] column.
+     *
+     * @param string $v new value
+     * @return $this|\CareMd\CareMd\CarePerson The current object (for fluent API support)
+     */
+    public function setEmployeeId($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->employee_id !== $v) {
+            $this->employee_id = $v;
+            $this->modifiedColumns[CarePersonTableMap::COL_EMPLOYEE_ID] = true;
+        }
+
+        return $this;
+    } // setEmployeeId()
+
+    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -3867,6 +3941,12 @@ abstract class CarePerson implements ActiveRecordInterface
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 78 + $startcol : CarePersonTableMap::translateFieldName('InsuranceCeilingForFamilies', TableMap::TYPE_PHPNAME, $indexType)];
             $this->insurance_ceiling_for_families = (null !== $col) ? (int) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 79 + $startcol : CarePersonTableMap::translateFieldName('NationalId', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->national_id = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 80 + $startcol : CarePersonTableMap::translateFieldName('EmployeeId', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->employee_id = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -3875,7 +3955,7 @@ abstract class CarePerson implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 79; // 79 = CarePersonTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 81; // 81 = CarePersonTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\CareMd\\CareMd\\CarePerson'), 0, $e);
@@ -4318,6 +4398,12 @@ abstract class CarePerson implements ActiveRecordInterface
         if ($this->isColumnModified(CarePersonTableMap::COL_INSURANCE_CEILING_FOR_FAMILIES)) {
             $modifiedColumns[':p' . $index++]  = 'insurance_ceiling_for_families';
         }
+        if ($this->isColumnModified(CarePersonTableMap::COL_NATIONAL_ID)) {
+            $modifiedColumns[':p' . $index++]  = 'national_id';
+        }
+        if ($this->isColumnModified(CarePersonTableMap::COL_EMPLOYEE_ID)) {
+            $modifiedColumns[':p' . $index++]  = 'employee_Id';
+        }
 
         $sql = sprintf(
             'INSERT INTO care_person (%s) VALUES (%s)',
@@ -4568,6 +4654,12 @@ abstract class CarePerson implements ActiveRecordInterface
                         break;
                     case 'insurance_ceiling_for_families':
                         $stmt->bindValue($identifier, $this->insurance_ceiling_for_families, PDO::PARAM_INT);
+                        break;
+                    case 'national_id':
+                        $stmt->bindValue($identifier, $this->national_id, PDO::PARAM_STR);
+                        break;
+                    case 'employee_Id':
+                        $stmt->bindValue($identifier, $this->employee_id, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -4868,6 +4960,12 @@ abstract class CarePerson implements ActiveRecordInterface
             case 78:
                 return $this->getInsuranceCeilingForFamilies();
                 break;
+            case 79:
+                return $this->getNationalId();
+                break;
+            case 80:
+                return $this->getEmployeeId();
+                break;
             default:
                 return null;
                 break;
@@ -4976,6 +5074,8 @@ abstract class CarePerson implements ActiveRecordInterface
             $keys[76] => $this->getInsuranceCeilingByFamily(),
             $keys[77] => $this->getInsuranceCeilingAmount(),
             $keys[78] => $this->getInsuranceCeilingForFamilies(),
+            $keys[79] => $this->getNationalId(),
+            $keys[80] => $this->getEmployeeId(),
         );
         if ($result[$keys[2]] instanceof \DateTimeInterface) {
             $result[$keys[2]] = $result[$keys[2]]->format('c');
@@ -5276,6 +5376,12 @@ abstract class CarePerson implements ActiveRecordInterface
             case 78:
                 $this->setInsuranceCeilingForFamilies($value);
                 break;
+            case 79:
+                $this->setNationalId($value);
+                break;
+            case 80:
+                $this->setEmployeeId($value);
+                break;
         } // switch()
 
         return $this;
@@ -5538,6 +5644,12 @@ abstract class CarePerson implements ActiveRecordInterface
         }
         if (array_key_exists($keys[78], $arr)) {
             $this->setInsuranceCeilingForFamilies($arr[$keys[78]]);
+        }
+        if (array_key_exists($keys[79], $arr)) {
+            $this->setNationalId($arr[$keys[79]]);
+        }
+        if (array_key_exists($keys[80], $arr)) {
+            $this->setEmployeeId($arr[$keys[80]]);
         }
     }
 
@@ -5817,6 +5929,12 @@ abstract class CarePerson implements ActiveRecordInterface
         if ($this->isColumnModified(CarePersonTableMap::COL_INSURANCE_CEILING_FOR_FAMILIES)) {
             $criteria->add(CarePersonTableMap::COL_INSURANCE_CEILING_FOR_FAMILIES, $this->insurance_ceiling_for_families);
         }
+        if ($this->isColumnModified(CarePersonTableMap::COL_NATIONAL_ID)) {
+            $criteria->add(CarePersonTableMap::COL_NATIONAL_ID, $this->national_id);
+        }
+        if ($this->isColumnModified(CarePersonTableMap::COL_EMPLOYEE_ID)) {
+            $criteria->add(CarePersonTableMap::COL_EMPLOYEE_ID, $this->employee_id);
+        }
 
         return $criteria;
     }
@@ -5981,6 +6099,8 @@ abstract class CarePerson implements ActiveRecordInterface
         $copyObj->setInsuranceCeilingByFamily($this->getInsuranceCeilingByFamily());
         $copyObj->setInsuranceCeilingAmount($this->getInsuranceCeilingAmount());
         $copyObj->setInsuranceCeilingForFamilies($this->getInsuranceCeilingForFamilies());
+        $copyObj->setNationalId($this->getNationalId());
+        $copyObj->setEmployeeId($this->getEmployeeId());
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setPid(NULL); // this is a auto-increment column, so set to default value
@@ -6095,6 +6215,8 @@ abstract class CarePerson implements ActiveRecordInterface
         $this->insurance_ceiling_by_family = null;
         $this->insurance_ceiling_amount = null;
         $this->insurance_ceiling_for_families = null;
+        $this->national_id = null;
+        $this->employee_id = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->applyDefaultValues();
