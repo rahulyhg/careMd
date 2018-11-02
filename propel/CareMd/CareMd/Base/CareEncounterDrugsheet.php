@@ -2,10 +2,11 @@
 
 namespace CareMd\CareMd\Base;
 
+use \DateTime;
 use \Exception;
 use \PDO;
-use CareMd\CareMd\CareTzDiagnosisQuery as ChildCareTzDiagnosisQuery;
-use CareMd\CareMd\Map\CareTzDiagnosisTableMap;
+use CareMd\CareMd\CareEncounterDrugsheetQuery as ChildCareEncounterDrugsheetQuery;
+use CareMd\CareMd\Map\CareEncounterDrugsheetTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
@@ -17,20 +18,21 @@ use Propel\Runtime\Exception\LogicException;
 use Propel\Runtime\Exception\PropelException;
 use Propel\Runtime\Map\TableMap;
 use Propel\Runtime\Parser\AbstractParser;
+use Propel\Runtime\Util\PropelDateTime;
 
 /**
- * Base class that represents a row from the 'care_tz_diagnosis' table.
+ * Base class that represents a row from the 'care_encounter_drugsheet' table.
  *
  *
  *
  * @package    propel.generator.CareMd.CareMd.Base
  */
-abstract class CareTzDiagnosis implements ActiveRecordInterface
+abstract class CareEncounterDrugsheet implements ActiveRecordInterface
 {
     /**
      * TableMap class name
      */
-    const TABLE_MAP = '\\CareMd\\CareMd\\Map\\CareTzDiagnosisTableMap';
+    const TABLE_MAP = '\\CareMd\\CareMd\\Map\\CareEncounterDrugsheetTableMap';
 
 
     /**
@@ -60,89 +62,62 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
     protected $virtualColumns = array();
 
     /**
-     * The value for the case_nr field.
+     * The value for the prescr_nr field.
      *
-     * @var        string
+     * @var        int
      */
-    protected $case_nr;
+    protected $prescr_nr;
 
     /**
-     * The value for the parent_case_nr field.
+     * The value for the chart_date field.
      *
-     * Note: this column has a database default value of: '-1'
-     * @var        string
+     * @var        DateTime
      */
-    protected $parent_case_nr;
+    protected $chart_date;
 
     /**
-     * The value for the pid field.
+     * The value for the chart_time field.
      *
-     * Note: this column has a database default value of: '0'
      * @var        string
      */
-    protected $pid;
+    protected $chart_time;
 
     /**
-     * The value for the encounter_nr field.
+     * The value for the amount field.
      *
-     * Note: this column has a database default value of: '0'
      * @var        string
      */
-    protected $encounter_nr;
+    protected $amount;
 
     /**
-     * The value for the timestamp field.
+     * The value for the status field.
      *
-     * Note: this column has a database default value of: '0'
-     * @var        string
+     * Note: this column has a database default value of: 0
+     * @var        int
      */
-    protected $timestamp;
+    protected $status;
 
     /**
-     * The value for the icd_10_code field.
+     * The value for the create_time field.
      *
-     * Note: this column has a database default value of: ''
-     * @var        string
+     * Note: this column has a database default value of: (expression) CURRENT_TIMESTAMP
+     * @var        DateTime
      */
-    protected $icd_10_code;
+    protected $create_time;
 
     /**
-     * The value for the icd_10_description field.
+     * The value for the create_id field.
      *
-     * Note: this column has a database default value of: ''
      * @var        string
      */
-    protected $icd_10_description;
+    protected $create_id;
 
     /**
-     * The value for the type field.
-     *
-     * Note: this column has a database default value of: ''
-     * @var        string
-     */
-    protected $type;
-
-    /**
-     * The value for the comment field.
+     * The value for the modify_id field.
      *
      * @var        string
      */
-    protected $comment;
-
-    /**
-     * The value for the doctor_name field.
-     *
-     * @var        string
-     */
-    protected $doctor_name;
-
-    /**
-     * The value for the diagnosis_type field.
-     *
-     * Note: this column has a database default value of: 'final'
-     * @var        string
-     */
-    protected $diagnosis_type;
+    protected $modify_id;
 
     /**
      * Flag to prevent endless save loop, if this object is referenced
@@ -160,18 +135,11 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
      */
     public function applyDefaultValues()
     {
-        $this->parent_case_nr = '-1';
-        $this->pid = '0';
-        $this->encounter_nr = '0';
-        $this->timestamp = '0';
-        $this->icd_10_code = '';
-        $this->icd_10_description = '';
-        $this->type = '';
-        $this->diagnosis_type = 'final';
+        $this->status = 0;
     }
 
     /**
-     * Initializes internal state of CareMd\CareMd\Base\CareTzDiagnosis object.
+     * Initializes internal state of CareMd\CareMd\Base\CareEncounterDrugsheet object.
      * @see applyDefaults()
      */
     public function __construct()
@@ -268,9 +236,9 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
     }
 
     /**
-     * Compares this with another <code>CareTzDiagnosis</code> instance.  If
-     * <code>obj</code> is an instance of <code>CareTzDiagnosis</code>, delegates to
-     * <code>equals(CareTzDiagnosis)</code>.  Otherwise, returns <code>false</code>.
+     * Compares this with another <code>CareEncounterDrugsheet</code> instance.  If
+     * <code>obj</code> is an instance of <code>CareEncounterDrugsheet</code>, delegates to
+     * <code>equals(CareEncounterDrugsheet)</code>.  Otherwise, returns <code>false</code>.
      *
      * @param  mixed   $obj The object to compare to.
      * @return boolean Whether equal to the object specified.
@@ -336,7 +304,7 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
      * @param string $name  The virtual column name
      * @param mixed  $value The value to give to the virtual column
      *
-     * @return $this|CareTzDiagnosis The current object, for fluid interface
+     * @return $this|CareEncounterDrugsheet The current object, for fluid interface
      */
     public function setVirtualColumn($name, $value)
     {
@@ -398,334 +366,264 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
     }
 
     /**
-     * Get the [case_nr] column value.
+     * Get the [prescr_nr] column value.
      *
-     * @return string
+     * @return int
      */
-    public function getCaseNr()
+    public function getPrescrNr()
     {
-        return $this->case_nr;
+        return $this->prescr_nr;
     }
 
     /**
-     * Get the [parent_case_nr] column value.
+     * Get the [optionally formatted] temporal [chart_date] column value.
      *
-     * @return string
+     *
+     * @param      string|null $format The date/time format string (either date()-style or strftime()-style).
+     *                            If format is NULL, then the raw DateTime object will be returned.
+     *
+     * @return string|DateTime Formatted date/time value as string or DateTime object (if format is NULL), NULL if column is NULL, and 0 if column value is 0000-00-00
+     *
+     * @throws PropelException - if unable to parse/validate the date/time value.
      */
-    public function getParentCaseNr()
+    public function getChartDate($format = NULL)
     {
-        return $this->parent_case_nr;
+        if ($format === null) {
+            return $this->chart_date;
+        } else {
+            return $this->chart_date instanceof \DateTimeInterface ? $this->chart_date->format($format) : null;
+        }
     }
 
     /**
-     * Get the [pid] column value.
+     * Get the [chart_time] column value.
      *
      * @return string
      */
-    public function getPid()
+    public function getChartTime()
     {
-        return $this->pid;
+        return $this->chart_time;
     }
 
     /**
-     * Get the [encounter_nr] column value.
+     * Get the [amount] column value.
      *
      * @return string
      */
-    public function getEncounterNr()
+    public function getAmount()
     {
-        return $this->encounter_nr;
+        return $this->amount;
     }
 
     /**
-     * Get the [timestamp] column value.
+     * Get the [status] column value.
+     *
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Get the [optionally formatted] temporal [create_time] column value.
+     *
+     *
+     * @param      string|null $format The date/time format string (either date()-style or strftime()-style).
+     *                            If format is NULL, then the raw DateTime object will be returned.
+     *
+     * @return string|DateTime Formatted date/time value as string or DateTime object (if format is NULL), NULL if column is NULL, and 0 if column value is 0000-00-00 00:00:00
+     *
+     * @throws PropelException - if unable to parse/validate the date/time value.
+     */
+    public function getCreateTime($format = NULL)
+    {
+        if ($format === null) {
+            return $this->create_time;
+        } else {
+            return $this->create_time instanceof \DateTimeInterface ? $this->create_time->format($format) : null;
+        }
+    }
+
+    /**
+     * Get the [create_id] column value.
      *
      * @return string
      */
-    public function getTimestamp()
+    public function getCreateId()
     {
-        return $this->timestamp;
+        return $this->create_id;
     }
 
     /**
-     * Get the [icd_10_code] column value.
+     * Get the [modify_id] column value.
      *
      * @return string
      */
-    public function getIcd10Code()
+    public function getModifyId()
     {
-        return $this->icd_10_code;
+        return $this->modify_id;
     }
 
     /**
-     * Get the [icd_10_description] column value.
+     * Set the value of [prescr_nr] column.
      *
-     * @return string
+     * @param int $v new value
+     * @return $this|\CareMd\CareMd\CareEncounterDrugsheet The current object (for fluent API support)
      */
-    public function getIcd10Description()
+    public function setPrescrNr($v)
     {
-        return $this->icd_10_description;
-    }
+        if ($v !== null) {
+            $v = (int) $v;
+        }
+
+        if ($this->prescr_nr !== $v) {
+            $this->prescr_nr = $v;
+            $this->modifiedColumns[CareEncounterDrugsheetTableMap::COL_PRESCR_NR] = true;
+        }
+
+        return $this;
+    } // setPrescrNr()
 
     /**
-     * Get the [type] column value.
+     * Sets the value of [chart_date] column to a normalized version of the date/time value specified.
      *
-     * @return string
+     * @param  mixed $v string, integer (timestamp), or \DateTimeInterface value.
+     *               Empty strings are treated as NULL.
+     * @return $this|\CareMd\CareMd\CareEncounterDrugsheet The current object (for fluent API support)
      */
-    public function getType()
+    public function setChartDate($v)
     {
-        return $this->type;
-    }
+        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
+        if ($this->chart_date !== null || $dt !== null) {
+            if ($this->chart_date === null || $dt === null || $dt->format("Y-m-d") !== $this->chart_date->format("Y-m-d")) {
+                $this->chart_date = $dt === null ? null : clone $dt;
+                $this->modifiedColumns[CareEncounterDrugsheetTableMap::COL_CHART_DATE] = true;
+            }
+        } // if either are not null
+
+        return $this;
+    } // setChartDate()
 
     /**
-     * Get the [comment] column value.
-     *
-     * @return string
-     */
-    public function getComment()
-    {
-        return $this->comment;
-    }
-
-    /**
-     * Get the [doctor_name] column value.
-     *
-     * @return string
-     */
-    public function getDoctorName()
-    {
-        return $this->doctor_name;
-    }
-
-    /**
-     * Get the [diagnosis_type] column value.
-     *
-     * @return string
-     */
-    public function getDiagnosisType()
-    {
-        return $this->diagnosis_type;
-    }
-
-    /**
-     * Set the value of [case_nr] column.
+     * Set the value of [chart_time] column.
      *
      * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzDiagnosis The current object (for fluent API support)
+     * @return $this|\CareMd\CareMd\CareEncounterDrugsheet The current object (for fluent API support)
      */
-    public function setCaseNr($v)
+    public function setChartTime($v)
     {
         if ($v !== null) {
             $v = (string) $v;
         }
 
-        if ($this->case_nr !== $v) {
-            $this->case_nr = $v;
-            $this->modifiedColumns[CareTzDiagnosisTableMap::COL_CASE_NR] = true;
+        if ($this->chart_time !== $v) {
+            $this->chart_time = $v;
+            $this->modifiedColumns[CareEncounterDrugsheetTableMap::COL_CHART_TIME] = true;
         }
 
         return $this;
-    } // setCaseNr()
+    } // setChartTime()
 
     /**
-     * Set the value of [parent_case_nr] column.
+     * Set the value of [amount] column.
      *
      * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzDiagnosis The current object (for fluent API support)
+     * @return $this|\CareMd\CareMd\CareEncounterDrugsheet The current object (for fluent API support)
      */
-    public function setParentCaseNr($v)
+    public function setAmount($v)
     {
         if ($v !== null) {
             $v = (string) $v;
         }
 
-        if ($this->parent_case_nr !== $v) {
-            $this->parent_case_nr = $v;
-            $this->modifiedColumns[CareTzDiagnosisTableMap::COL_PARENT_CASE_NR] = true;
+        if ($this->amount !== $v) {
+            $this->amount = $v;
+            $this->modifiedColumns[CareEncounterDrugsheetTableMap::COL_AMOUNT] = true;
         }
 
         return $this;
-    } // setParentCaseNr()
+    } // setAmount()
 
     /**
-     * Set the value of [pid] column.
+     * Set the value of [status] column.
+     *
+     * @param int $v new value
+     * @return $this|\CareMd\CareMd\CareEncounterDrugsheet The current object (for fluent API support)
+     */
+    public function setStatus($v)
+    {
+        if ($v !== null) {
+            $v = (int) $v;
+        }
+
+        if ($this->status !== $v) {
+            $this->status = $v;
+            $this->modifiedColumns[CareEncounterDrugsheetTableMap::COL_STATUS] = true;
+        }
+
+        return $this;
+    } // setStatus()
+
+    /**
+     * Sets the value of [create_time] column to a normalized version of the date/time value specified.
+     *
+     * @param  mixed $v string, integer (timestamp), or \DateTimeInterface value.
+     *               Empty strings are treated as NULL.
+     * @return $this|\CareMd\CareMd\CareEncounterDrugsheet The current object (for fluent API support)
+     */
+    public function setCreateTime($v)
+    {
+        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
+        if ($this->create_time !== null || $dt !== null) {
+            if ($this->create_time === null || $dt === null || $dt->format("Y-m-d H:i:s.u") !== $this->create_time->format("Y-m-d H:i:s.u")) {
+                $this->create_time = $dt === null ? null : clone $dt;
+                $this->modifiedColumns[CareEncounterDrugsheetTableMap::COL_CREATE_TIME] = true;
+            }
+        } // if either are not null
+
+        return $this;
+    } // setCreateTime()
+
+    /**
+     * Set the value of [create_id] column.
      *
      * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzDiagnosis The current object (for fluent API support)
+     * @return $this|\CareMd\CareMd\CareEncounterDrugsheet The current object (for fluent API support)
      */
-    public function setPid($v)
+    public function setCreateId($v)
     {
         if ($v !== null) {
             $v = (string) $v;
         }
 
-        if ($this->pid !== $v) {
-            $this->pid = $v;
-            $this->modifiedColumns[CareTzDiagnosisTableMap::COL_PID] = true;
+        if ($this->create_id !== $v) {
+            $this->create_id = $v;
+            $this->modifiedColumns[CareEncounterDrugsheetTableMap::COL_CREATE_ID] = true;
         }
 
         return $this;
-    } // setPid()
+    } // setCreateId()
 
     /**
-     * Set the value of [encounter_nr] column.
+     * Set the value of [modify_id] column.
      *
      * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzDiagnosis The current object (for fluent API support)
+     * @return $this|\CareMd\CareMd\CareEncounterDrugsheet The current object (for fluent API support)
      */
-    public function setEncounterNr($v)
+    public function setModifyId($v)
     {
         if ($v !== null) {
             $v = (string) $v;
         }
 
-        if ($this->encounter_nr !== $v) {
-            $this->encounter_nr = $v;
-            $this->modifiedColumns[CareTzDiagnosisTableMap::COL_ENCOUNTER_NR] = true;
+        if ($this->modify_id !== $v) {
+            $this->modify_id = $v;
+            $this->modifiedColumns[CareEncounterDrugsheetTableMap::COL_MODIFY_ID] = true;
         }
 
         return $this;
-    } // setEncounterNr()
-
-    /**
-     * Set the value of [timestamp] column.
-     *
-     * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzDiagnosis The current object (for fluent API support)
-     */
-    public function setTimestamp($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->timestamp !== $v) {
-            $this->timestamp = $v;
-            $this->modifiedColumns[CareTzDiagnosisTableMap::COL_TIMESTAMP] = true;
-        }
-
-        return $this;
-    } // setTimestamp()
-
-    /**
-     * Set the value of [icd_10_code] column.
-     *
-     * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzDiagnosis The current object (for fluent API support)
-     */
-    public function setIcd10Code($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->icd_10_code !== $v) {
-            $this->icd_10_code = $v;
-            $this->modifiedColumns[CareTzDiagnosisTableMap::COL_ICD_10_CODE] = true;
-        }
-
-        return $this;
-    } // setIcd10Code()
-
-    /**
-     * Set the value of [icd_10_description] column.
-     *
-     * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzDiagnosis The current object (for fluent API support)
-     */
-    public function setIcd10Description($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->icd_10_description !== $v) {
-            $this->icd_10_description = $v;
-            $this->modifiedColumns[CareTzDiagnosisTableMap::COL_ICD_10_DESCRIPTION] = true;
-        }
-
-        return $this;
-    } // setIcd10Description()
-
-    /**
-     * Set the value of [type] column.
-     *
-     * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzDiagnosis The current object (for fluent API support)
-     */
-    public function setType($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->type !== $v) {
-            $this->type = $v;
-            $this->modifiedColumns[CareTzDiagnosisTableMap::COL_TYPE] = true;
-        }
-
-        return $this;
-    } // setType()
-
-    /**
-     * Set the value of [comment] column.
-     *
-     * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzDiagnosis The current object (for fluent API support)
-     */
-    public function setComment($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->comment !== $v) {
-            $this->comment = $v;
-            $this->modifiedColumns[CareTzDiagnosisTableMap::COL_COMMENT] = true;
-        }
-
-        return $this;
-    } // setComment()
-
-    /**
-     * Set the value of [doctor_name] column.
-     *
-     * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzDiagnosis The current object (for fluent API support)
-     */
-    public function setDoctorName($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->doctor_name !== $v) {
-            $this->doctor_name = $v;
-            $this->modifiedColumns[CareTzDiagnosisTableMap::COL_DOCTOR_NAME] = true;
-        }
-
-        return $this;
-    } // setDoctorName()
-
-    /**
-     * Set the value of [diagnosis_type] column.
-     *
-     * @param string $v new value
-     * @return $this|\CareMd\CareMd\CareTzDiagnosis The current object (for fluent API support)
-     */
-    public function setDiagnosisType($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->diagnosis_type !== $v) {
-            $this->diagnosis_type = $v;
-            $this->modifiedColumns[CareTzDiagnosisTableMap::COL_DIAGNOSIS_TYPE] = true;
-        }
-
-        return $this;
-    } // setDiagnosisType()
+    } // setModifyId()
 
     /**
      * Indicates whether the columns in this object are only set to default values.
@@ -737,35 +635,7 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
      */
     public function hasOnlyDefaultValues()
     {
-            if ($this->parent_case_nr !== '-1') {
-                return false;
-            }
-
-            if ($this->pid !== '0') {
-                return false;
-            }
-
-            if ($this->encounter_nr !== '0') {
-                return false;
-            }
-
-            if ($this->timestamp !== '0') {
-                return false;
-            }
-
-            if ($this->icd_10_code !== '') {
-                return false;
-            }
-
-            if ($this->icd_10_description !== '') {
-                return false;
-            }
-
-            if ($this->type !== '') {
-                return false;
-            }
-
-            if ($this->diagnosis_type !== 'final') {
+            if ($this->status !== 0) {
                 return false;
             }
 
@@ -795,38 +665,35 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
     {
         try {
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : CareTzDiagnosisTableMap::translateFieldName('CaseNr', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->case_nr = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : CareEncounterDrugsheetTableMap::translateFieldName('PrescrNr', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->prescr_nr = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : CareTzDiagnosisTableMap::translateFieldName('ParentCaseNr', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->parent_case_nr = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : CareEncounterDrugsheetTableMap::translateFieldName('ChartDate', TableMap::TYPE_PHPNAME, $indexType)];
+            if ($col === '0000-00-00') {
+                $col = null;
+            }
+            $this->chart_date = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : CareTzDiagnosisTableMap::translateFieldName('Pid', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->pid = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : CareEncounterDrugsheetTableMap::translateFieldName('ChartTime', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->chart_time = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : CareTzDiagnosisTableMap::translateFieldName('EncounterNr', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->encounter_nr = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : CareEncounterDrugsheetTableMap::translateFieldName('Amount', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->amount = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : CareTzDiagnosisTableMap::translateFieldName('Timestamp', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->timestamp = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : CareEncounterDrugsheetTableMap::translateFieldName('Status', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->status = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : CareTzDiagnosisTableMap::translateFieldName('Icd10Code', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->icd_10_code = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : CareEncounterDrugsheetTableMap::translateFieldName('CreateTime', TableMap::TYPE_PHPNAME, $indexType)];
+            if ($col === '0000-00-00 00:00:00') {
+                $col = null;
+            }
+            $this->create_time = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : CareTzDiagnosisTableMap::translateFieldName('Icd10Description', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->icd_10_description = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : CareEncounterDrugsheetTableMap::translateFieldName('CreateId', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->create_id = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : CareTzDiagnosisTableMap::translateFieldName('Type', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->type = (null !== $col) ? (string) $col : null;
-
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 8 + $startcol : CareTzDiagnosisTableMap::translateFieldName('Comment', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->comment = (null !== $col) ? (string) $col : null;
-
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 9 + $startcol : CareTzDiagnosisTableMap::translateFieldName('DoctorName', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->doctor_name = (null !== $col) ? (string) $col : null;
-
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 10 + $startcol : CareTzDiagnosisTableMap::translateFieldName('DiagnosisType', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->diagnosis_type = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : CareEncounterDrugsheetTableMap::translateFieldName('ModifyId', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->modify_id = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -835,10 +702,10 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 11; // 11 = CareTzDiagnosisTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 8; // 8 = CareEncounterDrugsheetTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
-            throw new PropelException(sprintf('Error populating %s object', '\\CareMd\\CareMd\\CareTzDiagnosis'), 0, $e);
+            throw new PropelException(sprintf('Error populating %s object', '\\CareMd\\CareMd\\CareEncounterDrugsheet'), 0, $e);
         }
     }
 
@@ -880,13 +747,13 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getReadConnection(CareTzDiagnosisTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getReadConnection(CareEncounterDrugsheetTableMap::DATABASE_NAME);
         }
 
         // We don't need to alter the object instance pool; we're just modifying this instance
         // already in the pool.
 
-        $dataFetcher = ChildCareTzDiagnosisQuery::create(null, $this->buildPkeyCriteria())->setFormatter(ModelCriteria::FORMAT_STATEMENT)->find($con);
+        $dataFetcher = ChildCareEncounterDrugsheetQuery::create(null, $this->buildPkeyCriteria())->setFormatter(ModelCriteria::FORMAT_STATEMENT)->find($con);
         $row = $dataFetcher->fetch();
         $dataFetcher->close();
         if (!$row) {
@@ -905,8 +772,8 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
      * @param      ConnectionInterface $con
      * @return void
      * @throws PropelException
-     * @see CareTzDiagnosis::setDeleted()
-     * @see CareTzDiagnosis::isDeleted()
+     * @see CareEncounterDrugsheet::setDeleted()
+     * @see CareEncounterDrugsheet::isDeleted()
      */
     public function delete(ConnectionInterface $con = null)
     {
@@ -915,11 +782,11 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getWriteConnection(CareTzDiagnosisTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(CareEncounterDrugsheetTableMap::DATABASE_NAME);
         }
 
         $con->transaction(function () use ($con) {
-            $deleteQuery = ChildCareTzDiagnosisQuery::create()
+            $deleteQuery = ChildCareEncounterDrugsheetQuery::create()
                 ->filterByPrimaryKey($this->getPrimaryKey());
             $ret = $this->preDelete($con);
             if ($ret) {
@@ -954,7 +821,7 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getWriteConnection(CareTzDiagnosisTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(CareEncounterDrugsheetTableMap::DATABASE_NAME);
         }
 
         return $con->transaction(function () use ($con) {
@@ -973,7 +840,7 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
                     $this->postUpdate($con);
                 }
                 $this->postSave($con);
-                CareTzDiagnosisTableMap::addInstanceToPool($this);
+                CareEncounterDrugsheetTableMap::addInstanceToPool($this);
             } else {
                 $affectedRows = 0;
             }
@@ -1030,48 +897,35 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
         $modifiedColumns = array();
         $index = 0;
 
-        $this->modifiedColumns[CareTzDiagnosisTableMap::COL_CASE_NR] = true;
-        if (null !== $this->case_nr) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key (' . CareTzDiagnosisTableMap::COL_CASE_NR . ')');
-        }
 
          // check the columns in natural order for more readable SQL queries
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_CASE_NR)) {
-            $modifiedColumns[':p' . $index++]  = 'case_nr';
+        if ($this->isColumnModified(CareEncounterDrugsheetTableMap::COL_PRESCR_NR)) {
+            $modifiedColumns[':p' . $index++]  = 'prescr_nr';
         }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_PARENT_CASE_NR)) {
-            $modifiedColumns[':p' . $index++]  = 'parent_case_nr';
+        if ($this->isColumnModified(CareEncounterDrugsheetTableMap::COL_CHART_DATE)) {
+            $modifiedColumns[':p' . $index++]  = 'chart_date';
         }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_PID)) {
-            $modifiedColumns[':p' . $index++]  = 'PID';
+        if ($this->isColumnModified(CareEncounterDrugsheetTableMap::COL_CHART_TIME)) {
+            $modifiedColumns[':p' . $index++]  = 'chart_time';
         }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_ENCOUNTER_NR)) {
-            $modifiedColumns[':p' . $index++]  = 'encounter_nr';
+        if ($this->isColumnModified(CareEncounterDrugsheetTableMap::COL_AMOUNT)) {
+            $modifiedColumns[':p' . $index++]  = 'amount';
         }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_TIMESTAMP)) {
-            $modifiedColumns[':p' . $index++]  = 'timestamp';
+        if ($this->isColumnModified(CareEncounterDrugsheetTableMap::COL_STATUS)) {
+            $modifiedColumns[':p' . $index++]  = 'status';
         }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_ICD_10_CODE)) {
-            $modifiedColumns[':p' . $index++]  = 'ICD_10_code';
+        if ($this->isColumnModified(CareEncounterDrugsheetTableMap::COL_CREATE_TIME)) {
+            $modifiedColumns[':p' . $index++]  = 'create_time';
         }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_ICD_10_DESCRIPTION)) {
-            $modifiedColumns[':p' . $index++]  = 'ICD_10_description';
+        if ($this->isColumnModified(CareEncounterDrugsheetTableMap::COL_CREATE_ID)) {
+            $modifiedColumns[':p' . $index++]  = 'create_id';
         }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_TYPE)) {
-            $modifiedColumns[':p' . $index++]  = 'type';
-        }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_COMMENT)) {
-            $modifiedColumns[':p' . $index++]  = 'comment';
-        }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_DOCTOR_NAME)) {
-            $modifiedColumns[':p' . $index++]  = 'doctor_name';
-        }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_DIAGNOSIS_TYPE)) {
-            $modifiedColumns[':p' . $index++]  = 'diagnosis_type';
+        if ($this->isColumnModified(CareEncounterDrugsheetTableMap::COL_MODIFY_ID)) {
+            $modifiedColumns[':p' . $index++]  = 'modify_id';
         }
 
         $sql = sprintf(
-            'INSERT INTO care_tz_diagnosis (%s) VALUES (%s)',
+            'INSERT INTO care_encounter_drugsheet (%s) VALUES (%s)',
             implode(', ', $modifiedColumns),
             implode(', ', array_keys($modifiedColumns))
         );
@@ -1080,38 +934,29 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
             $stmt = $con->prepare($sql);
             foreach ($modifiedColumns as $identifier => $columnName) {
                 switch ($columnName) {
-                    case 'case_nr':
-                        $stmt->bindValue($identifier, $this->case_nr, PDO::PARAM_INT);
+                    case 'prescr_nr':
+                        $stmt->bindValue($identifier, $this->prescr_nr, PDO::PARAM_INT);
                         break;
-                    case 'parent_case_nr':
-                        $stmt->bindValue($identifier, $this->parent_case_nr, PDO::PARAM_INT);
+                    case 'chart_date':
+                        $stmt->bindValue($identifier, $this->chart_date ? $this->chart_date->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
                         break;
-                    case 'PID':
-                        $stmt->bindValue($identifier, $this->pid, PDO::PARAM_INT);
+                    case 'chart_time':
+                        $stmt->bindValue($identifier, $this->chart_time, PDO::PARAM_STR);
                         break;
-                    case 'encounter_nr':
-                        $stmt->bindValue($identifier, $this->encounter_nr, PDO::PARAM_INT);
+                    case 'amount':
+                        $stmt->bindValue($identifier, $this->amount, PDO::PARAM_STR);
                         break;
-                    case 'timestamp':
-                        $stmt->bindValue($identifier, $this->timestamp, PDO::PARAM_INT);
+                    case 'status':
+                        $stmt->bindValue($identifier, $this->status, PDO::PARAM_INT);
                         break;
-                    case 'ICD_10_code':
-                        $stmt->bindValue($identifier, $this->icd_10_code, PDO::PARAM_STR);
+                    case 'create_time':
+                        $stmt->bindValue($identifier, $this->create_time ? $this->create_time->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
                         break;
-                    case 'ICD_10_description':
-                        $stmt->bindValue($identifier, $this->icd_10_description, PDO::PARAM_STR);
+                    case 'create_id':
+                        $stmt->bindValue($identifier, $this->create_id, PDO::PARAM_STR);
                         break;
-                    case 'type':
-                        $stmt->bindValue($identifier, $this->type, PDO::PARAM_STR);
-                        break;
-                    case 'comment':
-                        $stmt->bindValue($identifier, $this->comment, PDO::PARAM_STR);
-                        break;
-                    case 'doctor_name':
-                        $stmt->bindValue($identifier, $this->doctor_name, PDO::PARAM_STR);
-                        break;
-                    case 'diagnosis_type':
-                        $stmt->bindValue($identifier, $this->diagnosis_type, PDO::PARAM_STR);
+                    case 'modify_id':
+                        $stmt->bindValue($identifier, $this->modify_id, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -1120,13 +965,6 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
             Propel::log($e->getMessage(), Propel::LOG_ERR);
             throw new PropelException(sprintf('Unable to execute INSERT statement [%s]', $sql), 0, $e);
         }
-
-        try {
-            $pk = $con->lastInsertId();
-        } catch (Exception $e) {
-            throw new PropelException('Unable to get autoincrement id.', 0, $e);
-        }
-        $this->setCaseNr($pk);
 
         $this->setNew(false);
     }
@@ -1159,7 +997,7 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
      */
     public function getByName($name, $type = TableMap::TYPE_PHPNAME)
     {
-        $pos = CareTzDiagnosisTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
+        $pos = CareEncounterDrugsheetTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
         $field = $this->getByPosition($pos);
 
         return $field;
@@ -1176,37 +1014,28 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
     {
         switch ($pos) {
             case 0:
-                return $this->getCaseNr();
+                return $this->getPrescrNr();
                 break;
             case 1:
-                return $this->getParentCaseNr();
+                return $this->getChartDate();
                 break;
             case 2:
-                return $this->getPid();
+                return $this->getChartTime();
                 break;
             case 3:
-                return $this->getEncounterNr();
+                return $this->getAmount();
                 break;
             case 4:
-                return $this->getTimestamp();
+                return $this->getStatus();
                 break;
             case 5:
-                return $this->getIcd10Code();
+                return $this->getCreateTime();
                 break;
             case 6:
-                return $this->getIcd10Description();
+                return $this->getCreateId();
                 break;
             case 7:
-                return $this->getType();
-                break;
-            case 8:
-                return $this->getComment();
-                break;
-            case 9:
-                return $this->getDoctorName();
-                break;
-            case 10:
-                return $this->getDiagnosisType();
+                return $this->getModifyId();
                 break;
             default:
                 return null;
@@ -1231,24 +1060,29 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
     public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array())
     {
 
-        if (isset($alreadyDumpedObjects['CareTzDiagnosis'][$this->hashCode()])) {
+        if (isset($alreadyDumpedObjects['CareEncounterDrugsheet'][$this->hashCode()])) {
             return '*RECURSION*';
         }
-        $alreadyDumpedObjects['CareTzDiagnosis'][$this->hashCode()] = true;
-        $keys = CareTzDiagnosisTableMap::getFieldNames($keyType);
+        $alreadyDumpedObjects['CareEncounterDrugsheet'][$this->hashCode()] = true;
+        $keys = CareEncounterDrugsheetTableMap::getFieldNames($keyType);
         $result = array(
-            $keys[0] => $this->getCaseNr(),
-            $keys[1] => $this->getParentCaseNr(),
-            $keys[2] => $this->getPid(),
-            $keys[3] => $this->getEncounterNr(),
-            $keys[4] => $this->getTimestamp(),
-            $keys[5] => $this->getIcd10Code(),
-            $keys[6] => $this->getIcd10Description(),
-            $keys[7] => $this->getType(),
-            $keys[8] => $this->getComment(),
-            $keys[9] => $this->getDoctorName(),
-            $keys[10] => $this->getDiagnosisType(),
+            $keys[0] => $this->getPrescrNr(),
+            $keys[1] => $this->getChartDate(),
+            $keys[2] => $this->getChartTime(),
+            $keys[3] => $this->getAmount(),
+            $keys[4] => $this->getStatus(),
+            $keys[5] => $this->getCreateTime(),
+            $keys[6] => $this->getCreateId(),
+            $keys[7] => $this->getModifyId(),
         );
+        if ($result[$keys[1]] instanceof \DateTimeInterface) {
+            $result[$keys[1]] = $result[$keys[1]]->format('c');
+        }
+
+        if ($result[$keys[5]] instanceof \DateTimeInterface) {
+            $result[$keys[5]] = $result[$keys[5]]->format('c');
+        }
+
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
             $result[$key] = $virtualColumn;
@@ -1267,11 +1101,11 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
      *                one of the class type constants TableMap::TYPE_PHPNAME, TableMap::TYPE_CAMELNAME
      *                TableMap::TYPE_COLNAME, TableMap::TYPE_FIELDNAME, TableMap::TYPE_NUM.
      *                Defaults to TableMap::TYPE_PHPNAME.
-     * @return $this|\CareMd\CareMd\CareTzDiagnosis
+     * @return $this|\CareMd\CareMd\CareEncounterDrugsheet
      */
     public function setByName($name, $value, $type = TableMap::TYPE_PHPNAME)
     {
-        $pos = CareTzDiagnosisTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
+        $pos = CareEncounterDrugsheetTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
 
         return $this->setByPosition($pos, $value);
     }
@@ -1282,43 +1116,34 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
      *
      * @param  int $pos position in xml schema
      * @param  mixed $value field value
-     * @return $this|\CareMd\CareMd\CareTzDiagnosis
+     * @return $this|\CareMd\CareMd\CareEncounterDrugsheet
      */
     public function setByPosition($pos, $value)
     {
         switch ($pos) {
             case 0:
-                $this->setCaseNr($value);
+                $this->setPrescrNr($value);
                 break;
             case 1:
-                $this->setParentCaseNr($value);
+                $this->setChartDate($value);
                 break;
             case 2:
-                $this->setPid($value);
+                $this->setChartTime($value);
                 break;
             case 3:
-                $this->setEncounterNr($value);
+                $this->setAmount($value);
                 break;
             case 4:
-                $this->setTimestamp($value);
+                $this->setStatus($value);
                 break;
             case 5:
-                $this->setIcd10Code($value);
+                $this->setCreateTime($value);
                 break;
             case 6:
-                $this->setIcd10Description($value);
+                $this->setCreateId($value);
                 break;
             case 7:
-                $this->setType($value);
-                break;
-            case 8:
-                $this->setComment($value);
-                break;
-            case 9:
-                $this->setDoctorName($value);
-                break;
-            case 10:
-                $this->setDiagnosisType($value);
+                $this->setModifyId($value);
                 break;
         } // switch()
 
@@ -1344,40 +1169,31 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
      */
     public function fromArray($arr, $keyType = TableMap::TYPE_PHPNAME)
     {
-        $keys = CareTzDiagnosisTableMap::getFieldNames($keyType);
+        $keys = CareEncounterDrugsheetTableMap::getFieldNames($keyType);
 
         if (array_key_exists($keys[0], $arr)) {
-            $this->setCaseNr($arr[$keys[0]]);
+            $this->setPrescrNr($arr[$keys[0]]);
         }
         if (array_key_exists($keys[1], $arr)) {
-            $this->setParentCaseNr($arr[$keys[1]]);
+            $this->setChartDate($arr[$keys[1]]);
         }
         if (array_key_exists($keys[2], $arr)) {
-            $this->setPid($arr[$keys[2]]);
+            $this->setChartTime($arr[$keys[2]]);
         }
         if (array_key_exists($keys[3], $arr)) {
-            $this->setEncounterNr($arr[$keys[3]]);
+            $this->setAmount($arr[$keys[3]]);
         }
         if (array_key_exists($keys[4], $arr)) {
-            $this->setTimestamp($arr[$keys[4]]);
+            $this->setStatus($arr[$keys[4]]);
         }
         if (array_key_exists($keys[5], $arr)) {
-            $this->setIcd10Code($arr[$keys[5]]);
+            $this->setCreateTime($arr[$keys[5]]);
         }
         if (array_key_exists($keys[6], $arr)) {
-            $this->setIcd10Description($arr[$keys[6]]);
+            $this->setCreateId($arr[$keys[6]]);
         }
         if (array_key_exists($keys[7], $arr)) {
-            $this->setType($arr[$keys[7]]);
-        }
-        if (array_key_exists($keys[8], $arr)) {
-            $this->setComment($arr[$keys[8]]);
-        }
-        if (array_key_exists($keys[9], $arr)) {
-            $this->setDoctorName($arr[$keys[9]]);
-        }
-        if (array_key_exists($keys[10], $arr)) {
-            $this->setDiagnosisType($arr[$keys[10]]);
+            $this->setModifyId($arr[$keys[7]]);
         }
     }
 
@@ -1398,7 +1214,7 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
      * @param string $data The source data to import from
      * @param string $keyType The type of keys the array uses.
      *
-     * @return $this|\CareMd\CareMd\CareTzDiagnosis The current object, for fluid interface
+     * @return $this|\CareMd\CareMd\CareEncounterDrugsheet The current object, for fluid interface
      */
     public function importFrom($parser, $data, $keyType = TableMap::TYPE_PHPNAME)
     {
@@ -1418,40 +1234,31 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
      */
     public function buildCriteria()
     {
-        $criteria = new Criteria(CareTzDiagnosisTableMap::DATABASE_NAME);
+        $criteria = new Criteria(CareEncounterDrugsheetTableMap::DATABASE_NAME);
 
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_CASE_NR)) {
-            $criteria->add(CareTzDiagnosisTableMap::COL_CASE_NR, $this->case_nr);
+        if ($this->isColumnModified(CareEncounterDrugsheetTableMap::COL_PRESCR_NR)) {
+            $criteria->add(CareEncounterDrugsheetTableMap::COL_PRESCR_NR, $this->prescr_nr);
         }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_PARENT_CASE_NR)) {
-            $criteria->add(CareTzDiagnosisTableMap::COL_PARENT_CASE_NR, $this->parent_case_nr);
+        if ($this->isColumnModified(CareEncounterDrugsheetTableMap::COL_CHART_DATE)) {
+            $criteria->add(CareEncounterDrugsheetTableMap::COL_CHART_DATE, $this->chart_date);
         }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_PID)) {
-            $criteria->add(CareTzDiagnosisTableMap::COL_PID, $this->pid);
+        if ($this->isColumnModified(CareEncounterDrugsheetTableMap::COL_CHART_TIME)) {
+            $criteria->add(CareEncounterDrugsheetTableMap::COL_CHART_TIME, $this->chart_time);
         }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_ENCOUNTER_NR)) {
-            $criteria->add(CareTzDiagnosisTableMap::COL_ENCOUNTER_NR, $this->encounter_nr);
+        if ($this->isColumnModified(CareEncounterDrugsheetTableMap::COL_AMOUNT)) {
+            $criteria->add(CareEncounterDrugsheetTableMap::COL_AMOUNT, $this->amount);
         }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_TIMESTAMP)) {
-            $criteria->add(CareTzDiagnosisTableMap::COL_TIMESTAMP, $this->timestamp);
+        if ($this->isColumnModified(CareEncounterDrugsheetTableMap::COL_STATUS)) {
+            $criteria->add(CareEncounterDrugsheetTableMap::COL_STATUS, $this->status);
         }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_ICD_10_CODE)) {
-            $criteria->add(CareTzDiagnosisTableMap::COL_ICD_10_CODE, $this->icd_10_code);
+        if ($this->isColumnModified(CareEncounterDrugsheetTableMap::COL_CREATE_TIME)) {
+            $criteria->add(CareEncounterDrugsheetTableMap::COL_CREATE_TIME, $this->create_time);
         }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_ICD_10_DESCRIPTION)) {
-            $criteria->add(CareTzDiagnosisTableMap::COL_ICD_10_DESCRIPTION, $this->icd_10_description);
+        if ($this->isColumnModified(CareEncounterDrugsheetTableMap::COL_CREATE_ID)) {
+            $criteria->add(CareEncounterDrugsheetTableMap::COL_CREATE_ID, $this->create_id);
         }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_TYPE)) {
-            $criteria->add(CareTzDiagnosisTableMap::COL_TYPE, $this->type);
-        }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_COMMENT)) {
-            $criteria->add(CareTzDiagnosisTableMap::COL_COMMENT, $this->comment);
-        }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_DOCTOR_NAME)) {
-            $criteria->add(CareTzDiagnosisTableMap::COL_DOCTOR_NAME, $this->doctor_name);
-        }
-        if ($this->isColumnModified(CareTzDiagnosisTableMap::COL_DIAGNOSIS_TYPE)) {
-            $criteria->add(CareTzDiagnosisTableMap::COL_DIAGNOSIS_TYPE, $this->diagnosis_type);
+        if ($this->isColumnModified(CareEncounterDrugsheetTableMap::COL_MODIFY_ID)) {
+            $criteria->add(CareEncounterDrugsheetTableMap::COL_MODIFY_ID, $this->modify_id);
         }
 
         return $criteria;
@@ -1469,8 +1276,10 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
      */
     public function buildPkeyCriteria()
     {
-        $criteria = ChildCareTzDiagnosisQuery::create();
-        $criteria->add(CareTzDiagnosisTableMap::COL_CASE_NR, $this->case_nr);
+        $criteria = ChildCareEncounterDrugsheetQuery::create();
+        $criteria->add(CareEncounterDrugsheetTableMap::COL_PRESCR_NR, $this->prescr_nr);
+        $criteria->add(CareEncounterDrugsheetTableMap::COL_CHART_DATE, $this->chart_date);
+        $criteria->add(CareEncounterDrugsheetTableMap::COL_CHART_TIME, $this->chart_time);
 
         return $criteria;
     }
@@ -1483,7 +1292,9 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
      */
     public function hashCode()
     {
-        $validPk = null !== $this->getCaseNr();
+        $validPk = null !== $this->getPrescrNr() &&
+            null !== $this->getChartDate() &&
+            null !== $this->getChartTime();
 
         $validPrimaryKeyFKs = 0;
         $primaryKeyFKs = [];
@@ -1498,23 +1309,31 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
     }
 
     /**
-     * Returns the primary key for this object (row).
-     * @return string
+     * Returns the composite primary key for this object.
+     * The array elements will be in same order as specified in XML.
+     * @return array
      */
     public function getPrimaryKey()
     {
-        return $this->getCaseNr();
+        $pks = array();
+        $pks[0] = $this->getPrescrNr();
+        $pks[1] = $this->getChartDate();
+        $pks[2] = $this->getChartTime();
+
+        return $pks;
     }
 
     /**
-     * Generic method to set the primary key (case_nr column).
+     * Set the [composite] primary key.
      *
-     * @param       string $key Primary key.
+     * @param      array $keys The elements of the composite key (order must match the order in XML file).
      * @return void
      */
-    public function setPrimaryKey($key)
+    public function setPrimaryKey($keys)
     {
-        $this->setCaseNr($key);
+        $this->setPrescrNr($keys[0]);
+        $this->setChartDate($keys[1]);
+        $this->setChartTime($keys[2]);
     }
 
     /**
@@ -1523,7 +1342,7 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
      */
     public function isPrimaryKeyNull()
     {
-        return null === $this->getCaseNr();
+        return (null === $this->getPrescrNr()) && (null === $this->getChartDate()) && (null === $this->getChartTime());
     }
 
     /**
@@ -1532,26 +1351,23 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
      * If desired, this method can also make copies of all associated (fkey referrers)
      * objects.
      *
-     * @param      object $copyObj An object of \CareMd\CareMd\CareTzDiagnosis (or compatible) type.
+     * @param      object $copyObj An object of \CareMd\CareMd\CareEncounterDrugsheet (or compatible) type.
      * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
      * @param      boolean $makeNew Whether to reset autoincrement PKs and make the object new.
      * @throws PropelException
      */
     public function copyInto($copyObj, $deepCopy = false, $makeNew = true)
     {
-        $copyObj->setParentCaseNr($this->getParentCaseNr());
-        $copyObj->setPid($this->getPid());
-        $copyObj->setEncounterNr($this->getEncounterNr());
-        $copyObj->setTimestamp($this->getTimestamp());
-        $copyObj->setIcd10Code($this->getIcd10Code());
-        $copyObj->setIcd10Description($this->getIcd10Description());
-        $copyObj->setType($this->getType());
-        $copyObj->setComment($this->getComment());
-        $copyObj->setDoctorName($this->getDoctorName());
-        $copyObj->setDiagnosisType($this->getDiagnosisType());
+        $copyObj->setPrescrNr($this->getPrescrNr());
+        $copyObj->setChartDate($this->getChartDate());
+        $copyObj->setChartTime($this->getChartTime());
+        $copyObj->setAmount($this->getAmount());
+        $copyObj->setStatus($this->getStatus());
+        $copyObj->setCreateTime($this->getCreateTime());
+        $copyObj->setCreateId($this->getCreateId());
+        $copyObj->setModifyId($this->getModifyId());
         if ($makeNew) {
             $copyObj->setNew(true);
-            $copyObj->setCaseNr(NULL); // this is a auto-increment column, so set to default value
         }
     }
 
@@ -1564,7 +1380,7 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
      * objects.
      *
      * @param  boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-     * @return \CareMd\CareMd\CareTzDiagnosis Clone of current object.
+     * @return \CareMd\CareMd\CareEncounterDrugsheet Clone of current object.
      * @throws PropelException
      */
     public function copy($deepCopy = false)
@@ -1584,17 +1400,14 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
      */
     public function clear()
     {
-        $this->case_nr = null;
-        $this->parent_case_nr = null;
-        $this->pid = null;
-        $this->encounter_nr = null;
-        $this->timestamp = null;
-        $this->icd_10_code = null;
-        $this->icd_10_description = null;
-        $this->type = null;
-        $this->comment = null;
-        $this->doctor_name = null;
-        $this->diagnosis_type = null;
+        $this->prescr_nr = null;
+        $this->chart_date = null;
+        $this->chart_time = null;
+        $this->amount = null;
+        $this->status = null;
+        $this->create_time = null;
+        $this->create_id = null;
+        $this->modify_id = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->applyDefaultValues();
@@ -1625,7 +1438,7 @@ abstract class CareTzDiagnosis implements ActiveRecordInterface
      */
     public function __toString()
     {
-        return (string) $this->exportTo(CareTzDiagnosisTableMap::DEFAULT_STRING_FORMAT);
+        return (string) $this->exportTo(CareEncounterDrugsheetTableMap::DEFAULT_STRING_FORMAT);
     }
 
     /**

@@ -273,6 +273,13 @@ abstract class CareTzDrugsandservices implements ActiveRecordInterface
     protected $unit_cost;
 
     /**
+     * The value for the nhif_item_code field.
+     *
+     * @var        string
+     */
+    protected $nhif_item_code;
+
+    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
@@ -812,6 +819,16 @@ abstract class CareTzDrugsandservices implements ActiveRecordInterface
     public function getUnitCost()
     {
         return $this->unit_cost;
+    }
+
+    /**
+     * Get the [nhif_item_code] column value.
+     *
+     * @return string
+     */
+    public function getNhifItemCode()
+    {
+        return $this->nhif_item_code;
     }
 
     /**
@@ -1375,6 +1392,26 @@ abstract class CareTzDrugsandservices implements ActiveRecordInterface
     } // setUnitCost()
 
     /**
+     * Set the value of [nhif_item_code] column.
+     *
+     * @param string $v new value
+     * @return $this|\CareMd\CareMd\CareTzDrugsandservices The current object (for fluent API support)
+     */
+    public function setNhifItemCode($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->nhif_item_code !== $v) {
+            $this->nhif_item_code = $v;
+            $this->modifiedColumns[CareTzDrugsandservicesTableMap::COL_NHIF_ITEM_CODE] = true;
+        }
+
+        return $this;
+    } // setNhifItemCode()
+
+    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -1561,6 +1598,9 @@ abstract class CareTzDrugsandservices implements ActiveRecordInterface
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 27 + $startcol : CareTzDrugsandservicesTableMap::translateFieldName('UnitCost', TableMap::TYPE_PHPNAME, $indexType)];
             $this->unit_cost = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 28 + $startcol : CareTzDrugsandservicesTableMap::translateFieldName('NhifItemCode', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->nhif_item_code = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -1569,7 +1609,7 @@ abstract class CareTzDrugsandservices implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 28; // 28 = CareTzDrugsandservicesTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 29; // 29 = CareTzDrugsandservicesTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\CareMd\\CareMd\\CareTzDrugsandservices'), 0, $e);
@@ -1854,6 +1894,9 @@ abstract class CareTzDrugsandservices implements ActiveRecordInterface
         if ($this->isColumnModified(CareTzDrugsandservicesTableMap::COL_UNIT_COST)) {
             $modifiedColumns[':p' . $index++]  = 'unit_cost';
         }
+        if ($this->isColumnModified(CareTzDrugsandservicesTableMap::COL_NHIF_ITEM_CODE)) {
+            $modifiedColumns[':p' . $index++]  = 'nhif_item_code';
+        }
 
         $sql = sprintf(
             'INSERT INTO care_tz_drugsandservices (%s) VALUES (%s)',
@@ -1948,6 +1991,9 @@ abstract class CareTzDrugsandservices implements ActiveRecordInterface
                         break;
                     case 'unit_cost':
                         $stmt->bindValue($identifier, $this->unit_cost, PDO::PARAM_STR);
+                        break;
+                    case 'nhif_item_code':
+                        $stmt->bindValue($identifier, $this->nhif_item_code, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -2095,6 +2141,9 @@ abstract class CareTzDrugsandservices implements ActiveRecordInterface
             case 27:
                 return $this->getUnitCost();
                 break;
+            case 28:
+                return $this->getNhifItemCode();
+                break;
             default:
                 return null;
                 break;
@@ -2152,6 +2201,7 @@ abstract class CareTzDrugsandservices implements ActiveRecordInterface
             $keys[25] => $this->getUnitPrice10(),
             $keys[26] => $this->getUnitPrice11(),
             $keys[27] => $this->getUnitCost(),
+            $keys[28] => $this->getNhifItemCode(),
         );
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
@@ -2275,6 +2325,9 @@ abstract class CareTzDrugsandservices implements ActiveRecordInterface
             case 27:
                 $this->setUnitCost($value);
                 break;
+            case 28:
+                $this->setNhifItemCode($value);
+                break;
         } // switch()
 
         return $this;
@@ -2384,6 +2437,9 @@ abstract class CareTzDrugsandservices implements ActiveRecordInterface
         }
         if (array_key_exists($keys[27], $arr)) {
             $this->setUnitCost($arr[$keys[27]]);
+        }
+        if (array_key_exists($keys[28], $arr)) {
+            $this->setNhifItemCode($arr[$keys[28]]);
         }
     }
 
@@ -2510,6 +2566,9 @@ abstract class CareTzDrugsandservices implements ActiveRecordInterface
         if ($this->isColumnModified(CareTzDrugsandservicesTableMap::COL_UNIT_COST)) {
             $criteria->add(CareTzDrugsandservicesTableMap::COL_UNIT_COST, $this->unit_cost);
         }
+        if ($this->isColumnModified(CareTzDrugsandservicesTableMap::COL_NHIF_ITEM_CODE)) {
+            $criteria->add(CareTzDrugsandservicesTableMap::COL_NHIF_ITEM_CODE, $this->nhif_item_code);
+        }
 
         return $criteria;
     }
@@ -2623,6 +2682,7 @@ abstract class CareTzDrugsandservices implements ActiveRecordInterface
         $copyObj->setUnitPrice10($this->getUnitPrice10());
         $copyObj->setUnitPrice11($this->getUnitPrice11());
         $copyObj->setUnitCost($this->getUnitCost());
+        $copyObj->setNhifItemCode($this->getNhifItemCode());
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setItemId(NULL); // this is a auto-increment column, so set to default value
@@ -2686,6 +2746,7 @@ abstract class CareTzDrugsandservices implements ActiveRecordInterface
         $this->unit_price_10 = null;
         $this->unit_price_11 = null;
         $this->unit_cost = null;
+        $this->nhif_item_code = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->applyDefaultValues();

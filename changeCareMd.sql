@@ -34,8 +34,13 @@ TRUNCATE care_nhif_claims;
 ALTER TABLE `care_tz_drugsandservices` ADD `nhif_item_code` VARCHAR(20) NULL DEFAULT NULL AFTER `unit_cost`;
 
 
-ALTER TABLE `care_person` ADD `employee_id` VARCHAR(255) NOT NULL AFTER `insurance_ceiling_for_families`;
+ALTER TABLE `care_person` ADD `national_id` VARCHAR(255) NULL DEFAULT NULL AFTER `insurance_ceiling_for_families`, ADD `employee_Id` VARCHAR(255) NULL DEFAULT NULL AFTER `national_id`;
+
 
 INSERT INTO `care_config_global` (`type`, `value`, `notes`, `status`, `history`, `modify_id`, `modify_time`, `create_id`, `create_time`) VALUES ('nhif_acreditation', NULL, NULL, '', '', '', CURRENT_TIMESTAMP, '', '0000-00-00 00:00:00.000000');
 
 ALTER TABLE `care_tz_diagnosis` ADD `diagnosis_type` ENUM('final','preliminary') NOT NULL DEFAULT 'final' AFTER `doctor_name`;
+
+
+ALTER TABLE `care_tz_diagnosis` ADD INDEX(`encounter_nr`);
+ALTER TABLE `care_tz_diagnosis` ADD INDEX(`type`);

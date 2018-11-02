@@ -68,6 +68,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareEncounterQuery orderByRoomHistory($order = Criteria::ASC) Order by the room_history column
  * @method     ChildCareEncounterQuery orderByCurrentDeptHistory($order = Criteria::ASC) Order by the current_dept_history column
  * @method     ChildCareEncounterQuery orderByMedicalService($order = Criteria::ASC) Order by the medical_service column
+ * @method     ChildCareEncounterQuery orderByReferrerNumber($order = Criteria::ASC) Order by the referrer_number column
  *
  * @method     ChildCareEncounterQuery groupByEncounterNr() Group by the encounter_nr column
  * @method     ChildCareEncounterQuery groupByEncounterNrPrev() Group by the encounter_nr_prev column
@@ -118,6 +119,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareEncounterQuery groupByRoomHistory() Group by the room_history column
  * @method     ChildCareEncounterQuery groupByCurrentDeptHistory() Group by the current_dept_history column
  * @method     ChildCareEncounterQuery groupByMedicalService() Group by the medical_service column
+ * @method     ChildCareEncounterQuery groupByReferrerNumber() Group by the referrer_number column
  *
  * @method     ChildCareEncounterQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildCareEncounterQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -178,7 +180,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareEncounter findOneByRoom(string $room) Return the first ChildCareEncounter filtered by the room column
  * @method     ChildCareEncounter findOneByRoomHistory(string $room_history) Return the first ChildCareEncounter filtered by the room_history column
  * @method     ChildCareEncounter findOneByCurrentDeptHistory(string $current_dept_history) Return the first ChildCareEncounter filtered by the current_dept_history column
- * @method     ChildCareEncounter findOneByMedicalService(string $medical_service) Return the first ChildCareEncounter filtered by the medical_service column *
+ * @method     ChildCareEncounter findOneByMedicalService(string $medical_service) Return the first ChildCareEncounter filtered by the medical_service column
+ * @method     ChildCareEncounter findOneByReferrerNumber(string $referrer_number) Return the first ChildCareEncounter filtered by the referrer_number column *
 
  * @method     ChildCareEncounter requirePk($key, ConnectionInterface $con = null) Return the ChildCareEncounter by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildCareEncounter requireOne(ConnectionInterface $con = null) Return the first ChildCareEncounter matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -232,6 +235,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareEncounter requireOneByRoomHistory(string $room_history) Return the first ChildCareEncounter filtered by the room_history column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildCareEncounter requireOneByCurrentDeptHistory(string $current_dept_history) Return the first ChildCareEncounter filtered by the current_dept_history column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildCareEncounter requireOneByMedicalService(string $medical_service) Return the first ChildCareEncounter filtered by the medical_service column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildCareEncounter requireOneByReferrerNumber(string $referrer_number) Return the first ChildCareEncounter filtered by the referrer_number column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildCareEncounter[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildCareEncounter objects based on current ModelCriteria
  * @method     ChildCareEncounter[]|ObjectCollection findByEncounterNr(string $encounter_nr) Return ChildCareEncounter objects filtered by the encounter_nr column
@@ -283,6 +287,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareEncounter[]|ObjectCollection findByRoomHistory(string $room_history) Return ChildCareEncounter objects filtered by the room_history column
  * @method     ChildCareEncounter[]|ObjectCollection findByCurrentDeptHistory(string $current_dept_history) Return ChildCareEncounter objects filtered by the current_dept_history column
  * @method     ChildCareEncounter[]|ObjectCollection findByMedicalService(string $medical_service) Return ChildCareEncounter objects filtered by the medical_service column
+ * @method     ChildCareEncounter[]|ObjectCollection findByReferrerNumber(string $referrer_number) Return ChildCareEncounter objects filtered by the referrer_number column
  * @method     ChildCareEncounter[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -381,7 +386,7 @@ abstract class CareEncounterQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT encounter_nr, encounter_nr_prev, pid, encounter_date, encounter_class_nr, encounter_type, encounter_status, referrer_diagnosis, referrer_recom_therapy, referrer_dr, referrer_dept, referrer_institution, referrer_notes, financial_class_nr, insurance_nr, insurance_firm_id, insurance_class_nr, insurance_2_nr, insurance_2_firm_id, guarantor_pid, contact_pid, contact_relation, current_ward_nr, current_room_nr, in_ward, current_dept_nr, pharmacy, in_dept, current_firm_nr, current_att_dr_nr, consulting_dr, extra_service, form_nr, is_discharged, discharge_date, discharge_time, followup_date, followup_responsibility, post_encounter_notes, status, history, modify_id, modify_time, create_id, create_time, room, room_history, current_dept_history, medical_service FROM care_encounter WHERE encounter_nr = :p0';
+        $sql = 'SELECT encounter_nr, encounter_nr_prev, pid, encounter_date, encounter_class_nr, encounter_type, encounter_status, referrer_diagnosis, referrer_recom_therapy, referrer_dr, referrer_dept, referrer_institution, referrer_notes, financial_class_nr, insurance_nr, insurance_firm_id, insurance_class_nr, insurance_2_nr, insurance_2_firm_id, guarantor_pid, contact_pid, contact_relation, current_ward_nr, current_room_nr, in_ward, current_dept_nr, pharmacy, in_dept, current_firm_nr, current_att_dr_nr, consulting_dr, extra_service, form_nr, is_discharged, discharge_date, discharge_time, followup_date, followup_responsibility, post_encounter_notes, status, history, modify_id, modify_time, create_id, create_time, room, room_history, current_dept_history, medical_service, referrer_number FROM care_encounter WHERE encounter_nr = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_INT);
@@ -2016,6 +2021,31 @@ abstract class CareEncounterQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(CareEncounterTableMap::COL_MEDICAL_SERVICE, $medicalService, $comparison);
+    }
+
+    /**
+     * Filter the query on the referrer_number column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByReferrerNumber('fooValue');   // WHERE referrer_number = 'fooValue'
+     * $query->filterByReferrerNumber('%fooValue%', Criteria::LIKE); // WHERE referrer_number LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $referrerNumber The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildCareEncounterQuery The current query, for fluid interface
+     */
+    public function filterByReferrerNumber($referrerNumber = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($referrerNumber)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(CareEncounterTableMap::COL_REFERRER_NUMBER, $referrerNumber, $comparison);
     }
 
     /**

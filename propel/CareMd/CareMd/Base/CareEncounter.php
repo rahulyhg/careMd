@@ -440,6 +440,13 @@ abstract class CareEncounter implements ActiveRecordInterface
     protected $medical_service;
 
     /**
+     * The value for the referrer_number field.
+     *
+     * @var        string
+     */
+    protected $referrer_number;
+
+    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
@@ -1296,6 +1303,16 @@ abstract class CareEncounter implements ActiveRecordInterface
     public function getMedicalService()
     {
         return $this->medical_service;
+    }
+
+    /**
+     * Get the [referrer_number] column value.
+     *
+     * @return string
+     */
+    public function getReferrerNumber()
+    {
+        return $this->referrer_number;
     }
 
     /**
@@ -2309,6 +2326,26 @@ abstract class CareEncounter implements ActiveRecordInterface
     } // setMedicalService()
 
     /**
+     * Set the value of [referrer_number] column.
+     *
+     * @param string $v new value
+     * @return $this|\CareMd\CareMd\CareEncounter The current object (for fluent API support)
+     */
+    public function setReferrerNumber($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->referrer_number !== $v) {
+            $this->referrer_number = $v;
+            $this->modifiedColumns[CareEncounterTableMap::COL_REFERRER_NUMBER] = true;
+        }
+
+        return $this;
+    } // setReferrerNumber()
+
+    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -2641,6 +2678,9 @@ abstract class CareEncounter implements ActiveRecordInterface
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 48 + $startcol : CareEncounterTableMap::translateFieldName('MedicalService', TableMap::TYPE_PHPNAME, $indexType)];
             $this->medical_service = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 49 + $startcol : CareEncounterTableMap::translateFieldName('ReferrerNumber', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->referrer_number = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -2649,7 +2689,7 @@ abstract class CareEncounter implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 49; // 49 = CareEncounterTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 50; // 50 = CareEncounterTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\CareMd\\CareMd\\CareEncounter'), 0, $e);
@@ -2997,6 +3037,9 @@ abstract class CareEncounter implements ActiveRecordInterface
         if ($this->isColumnModified(CareEncounterTableMap::COL_MEDICAL_SERVICE)) {
             $modifiedColumns[':p' . $index++]  = 'medical_service';
         }
+        if ($this->isColumnModified(CareEncounterTableMap::COL_REFERRER_NUMBER)) {
+            $modifiedColumns[':p' . $index++]  = 'referrer_number';
+        }
 
         $sql = sprintf(
             'INSERT INTO care_encounter (%s) VALUES (%s)',
@@ -3154,6 +3197,9 @@ abstract class CareEncounter implements ActiveRecordInterface
                         break;
                     case 'medical_service':
                         $stmt->bindValue($identifier, $this->medical_service, PDO::PARAM_STR);
+                        break;
+                    case 'referrer_number':
+                        $stmt->bindValue($identifier, $this->referrer_number, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -3364,6 +3410,9 @@ abstract class CareEncounter implements ActiveRecordInterface
             case 48:
                 return $this->getMedicalService();
                 break;
+            case 49:
+                return $this->getReferrerNumber();
+                break;
             default:
                 return null;
                 break;
@@ -3442,6 +3491,7 @@ abstract class CareEncounter implements ActiveRecordInterface
             $keys[46] => $this->getRoomHistory(),
             $keys[47] => $this->getCurrentDeptHistory(),
             $keys[48] => $this->getMedicalService(),
+            $keys[49] => $this->getReferrerNumber(),
         );
         if ($result[$keys[3]] instanceof \DateTimeInterface) {
             $result[$keys[3]] = $result[$keys[3]]->format('c');
@@ -3652,6 +3702,9 @@ abstract class CareEncounter implements ActiveRecordInterface
             case 48:
                 $this->setMedicalService($value);
                 break;
+            case 49:
+                $this->setReferrerNumber($value);
+                break;
         } // switch()
 
         return $this;
@@ -3824,6 +3877,9 @@ abstract class CareEncounter implements ActiveRecordInterface
         }
         if (array_key_exists($keys[48], $arr)) {
             $this->setMedicalService($arr[$keys[48]]);
+        }
+        if (array_key_exists($keys[49], $arr)) {
+            $this->setReferrerNumber($arr[$keys[49]]);
         }
     }
 
@@ -4013,6 +4069,9 @@ abstract class CareEncounter implements ActiveRecordInterface
         if ($this->isColumnModified(CareEncounterTableMap::COL_MEDICAL_SERVICE)) {
             $criteria->add(CareEncounterTableMap::COL_MEDICAL_SERVICE, $this->medical_service);
         }
+        if ($this->isColumnModified(CareEncounterTableMap::COL_REFERRER_NUMBER)) {
+            $criteria->add(CareEncounterTableMap::COL_REFERRER_NUMBER, $this->referrer_number);
+        }
 
         return $criteria;
     }
@@ -4147,6 +4206,7 @@ abstract class CareEncounter implements ActiveRecordInterface
         $copyObj->setRoomHistory($this->getRoomHistory());
         $copyObj->setCurrentDeptHistory($this->getCurrentDeptHistory());
         $copyObj->setMedicalService($this->getMedicalService());
+        $copyObj->setReferrerNumber($this->getReferrerNumber());
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setEncounterNr(NULL); // this is a auto-increment column, so set to default value
@@ -4231,6 +4291,7 @@ abstract class CareEncounter implements ActiveRecordInterface
         $this->room_history = null;
         $this->current_dept_history = null;
         $this->medical_service = null;
+        $this->referrer_number = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->applyDefaultValues();

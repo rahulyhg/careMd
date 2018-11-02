@@ -1,7 +1,6 @@
 <?php
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
-$pageName = 'Registration';
 /**
  * CARE2X Integrated Hospital Information System beta 2.0.0 - 2004-05-16
  * GNU General Public License

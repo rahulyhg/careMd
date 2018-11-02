@@ -4,7 +4,6 @@ require('./roots.php');
 
 require($root_path . 'include/inc_environment_global.php');
 
-$pageName = "Inpatient";
 
 if (empty($_REQUEST['key'])) {
   $_REQUEST['key']='';

@@ -41,10 +41,10 @@ function openpopup(URL, target,content,id)
 	  <tr  class="titlebar" >
 	  	<td>&nbsp;&nbsp;<font color="#330066"><?php echo $LDICD10Description; ?>
 (<?php echo $_SESSION['sess_en']; ?>)</font></td>
-	  	<td align="right"><a href="<?php echo $_SESSION['backpath_diag'];?>"><img src="../../gui/img/control/default/en/en_back2.gif" border=0 width="110" height="24" alt="" style="filter:alpha(opacity=70)"></a><?php if($_SESSION['ispopup']=="true")
-	  		$closelink='javascript:window.close();';
+	  	<td align="right"><a href="javascript:history.back()"><img src="../../gui/img/control/default/en/en_back2.gif" border=0 width="110" height="24" alt="" style="filter:alpha(opacity=70)"></a><?php if($_SESSION['ispopup']=="true")
+	  		$closelink=  ($_SESSION['ChartFolder'])?$_SESSION['ChartFolder']: 'javascript:history.back();';
 	  	else
-	  		$closelink='javascript:window.close();';
+	  		$closelink=  ($_SESSION['ChartFolder'])?$_SESSION['ChartFolder']: 'javascript:history.back();';
 	  	?>
 	  	<a href="javascript:gethelp('diagnoses.php','Patient&acute;s chart folder :: Diagnoses')"><img src="../../gui/img/control/default/en/en_hilfe-r.gif" border=0 width="75" height="24" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this,1)" onMouseOut="hilite(this,0)"></a>
 	  	<a href="<?php echo $closelink; ?>"><img src="../../gui/img/control/default/en/en_close2.gif" border=0 width="103" height="24" alt="" style="filter:alpha(opacity=70)"></a>

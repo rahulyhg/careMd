@@ -792,6 +792,7 @@ CREATE TABLE `care_encounter`
     `room_history` TEXT NOT NULL,
     `current_dept_history` TEXT NOT NULL,
     `medical_service` VARCHAR(50) NOT NULL,
+    `referrer_number` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`encounter_nr`),
     INDEX `pid` (`pid`),
     INDEX `encounter_date` (`encounter_date`),
@@ -884,6 +885,25 @@ CREATE TABLE `care_encounter_drg_intern`
     PRIMARY KEY (`nr`),
     INDEX `encounter_nr` (`encounter_nr`)
 ) ENGINE=MyISAM;
+
+-- ---------------------------------------------------------------------
+-- care_encounter_drugsheet
+-- ---------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `care_encounter_drugsheet`;
+
+CREATE TABLE `care_encounter_drugsheet`
+(
+    `prescr_nr` INTEGER NOT NULL,
+    `chart_date` DATE NOT NULL,
+    `chart_time` VARCHAR(6) NOT NULL,
+    `amount` DECIMAL(4,0) NOT NULL,
+    `status` TINYINT DEFAULT 0 NOT NULL,
+    `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `create_id` VARCHAR(100) NOT NULL,
+    `modify_id` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`prescr_nr`,`chart_date`,`chart_time`)
+) ENGINE=InnoDB;
 
 -- ---------------------------------------------------------------------
 -- care_encounter_event_signaller
@@ -1488,6 +1508,31 @@ CREATE TABLE `care_icd10_pt_br`
 ) ENGINE=MyISAM;
 
 -- ---------------------------------------------------------------------
+-- care_icd9_en
+-- ---------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `care_icd9_en`;
+
+CREATE TABLE `care_icd9_en`
+(
+    `diagnosis_code` VARCHAR(12) DEFAULT '' NOT NULL,
+    `description` TEXT NOT NULL,
+    `class_sub` VARCHAR(5) DEFAULT '' NOT NULL,
+    `type` VARCHAR(10) DEFAULT '' NOT NULL,
+    `inclusive` TEXT NOT NULL,
+    `exclusive` TEXT NOT NULL,
+    `notes` TEXT NOT NULL,
+    `std_code` CHAR DEFAULT '' NOT NULL,
+    `sub_level` TINYINT DEFAULT 0 NOT NULL,
+    `remarks` TEXT NOT NULL,
+    `extra_codes` TEXT NOT NULL,
+    `extra_subclass` TEXT NOT NULL,
+    `show` TINYINT(2) DEFAULT 0 NOT NULL,
+    PRIMARY KEY (`diagnosis_code`),
+    INDEX `diagnosis_code` (`diagnosis_code`)
+) ENGINE=InnoDB;
+
+-- ---------------------------------------------------------------------
 -- care_img_diagnostic
 -- ---------------------------------------------------------------------
 
@@ -1893,6 +1938,30 @@ CREATE TABLE `care_news_article`
 ) ENGINE=MyISAM;
 
 -- ---------------------------------------------------------------------
+-- care_nhif_claims
+-- ---------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `care_nhif_claims`;
+
+CREATE TABLE `care_nhif_claims`
+(
+    `FolioID` VARCHAR(200),
+    `ClaimYear` INTEGER(4),
+    `ClaimMonth` INTEGER(2),
+    `FolioNo` INTEGER(50),
+    `SerialNo` VARCHAR(50),
+    `CardNo` VARCHAR(50),
+    `Age` INTEGER(3),
+    `TelephoneNo` VARCHAR(50),
+    `encounter_nr` BIGINT(11),
+    `claim_status` VARCHAR(50),
+    `CreatedBy` VARCHAR(50) NOT NULL,
+    `DateCreated` DATETIME NOT NULL,
+    `LastModifiedBy` VARCHAR(50),
+    `LastModified` VARCHAR(50)
+) ENGINE=InnoDB;
+
+-- ---------------------------------------------------------------------
 -- care_op_med_doc
 -- ---------------------------------------------------------------------
 
@@ -2056,6 +2125,8 @@ CREATE TABLE `care_person`
     `insurance_ceiling_by_family` TINYINT DEFAULT 0 NOT NULL,
     `insurance_ceiling_amount` INTEGER DEFAULT 0 NOT NULL,
     `insurance_ceiling_for_families` INTEGER DEFAULT 0 NOT NULL,
+    `national_id` VARCHAR(255),
+    `employee_Id` VARCHAR(255),
     PRIMARY KEY (`pid`),
     UNIQUE INDEX `selian_pid` (`selian_pid`),
     INDEX `name_last` (`name_last`),
@@ -4845,6 +4916,7 @@ CREATE TABLE `care_tz_company`
     `prepaid_amount` INTEGER NOT NULL,
     `modify_id` VARCHAR(25) NOT NULL,
     `enable_member_expiry` TINYINT(2) NOT NULL,
+    `company_code` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=MyISAM;
 
@@ -4903,11 +4975,14 @@ CREATE TABLE `care_tz_diagnosis`
     `type` VARCHAR(25) DEFAULT '' NOT NULL,
     `comment` VARCHAR(255),
     `doctor_name` VARCHAR(200),
+    `diagnosis_type` enum('final','preliminary') DEFAULT 'final' NOT NULL,
     PRIMARY KEY (`case_nr`),
     INDEX `parent_case_nr` (`parent_case_nr`, `PID`, `encounter_nr`, `timestamp`),
     INDEX `ICD_10_code` (`ICD_10_code`),
     INDEX `encounter_nr_2` (`encounter_nr`),
-    INDEX `PID_2` (`PID`)
+    INDEX `PID_2` (`PID`),
+    INDEX `encounter_nr` (`encounter_nr`),
+    INDEX `type` (`type`)
 ) ENGINE=MyISAM;
 
 -- ---------------------------------------------------------------------
@@ -5028,6 +5103,7 @@ CREATE TABLE `care_tz_drugsandservices`
     `unit_price_10` INTEGER(10) NOT NULL,
     `unit_price_11` INTEGER(10) NOT NULL,
     `unit_cost` VARCHAR(50) NOT NULL,
+    `nhif_item_code` VARCHAR(20),
     PRIMARY KEY (`item_id`),
     INDEX `IX_ITEM_NUMBER` (`item_number`)
 ) ENGINE=MyISAM;

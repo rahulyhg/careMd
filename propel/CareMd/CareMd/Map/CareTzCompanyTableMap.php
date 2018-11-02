@@ -59,7 +59,7 @@ class CareTzCompanyTableMap extends TableMap
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 16;
+    const NUM_COLUMNS = 17;
 
     /**
      * The number of lazy-loaded columns
@@ -69,7 +69,7 @@ class CareTzCompanyTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 16;
+    const NUM_HYDRATE_COLUMNS = 17;
 
     /**
      * the column name for the id field
@@ -152,6 +152,11 @@ class CareTzCompanyTableMap extends TableMap
     const COL_ENABLE_MEMBER_EXPIRY = 'care_tz_company.enable_member_expiry';
 
     /**
+     * the column name for the company_code field
+     */
+    const COL_COMPANY_CODE = 'care_tz_company.company_code';
+
+    /**
      * The default string format for model objects of the related table
      */
     const DEFAULT_STRING_FORMAT = 'YAML';
@@ -163,11 +168,11 @@ class CareTzCompanyTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('Id', 'Name', 'Contact', 'Email', 'PhoneCode', 'PhoneNr', 'PoBox', 'City', 'StartDate', 'EndDate', 'InvoiceFlag', 'CreditPreselectionFlag', 'HideCompanyFlag', 'PrepaidAmount', 'ModifyId', 'EnableMemberExpiry', ),
-        self::TYPE_CAMELNAME     => array('id', 'name', 'contact', 'email', 'phoneCode', 'phoneNr', 'poBox', 'city', 'startDate', 'endDate', 'invoiceFlag', 'creditPreselectionFlag', 'hideCompanyFlag', 'prepaidAmount', 'modifyId', 'enableMemberExpiry', ),
-        self::TYPE_COLNAME       => array(CareTzCompanyTableMap::COL_ID, CareTzCompanyTableMap::COL_NAME, CareTzCompanyTableMap::COL_CONTACT, CareTzCompanyTableMap::COL_EMAIL, CareTzCompanyTableMap::COL_PHONE_CODE, CareTzCompanyTableMap::COL_PHONE_NR, CareTzCompanyTableMap::COL_PO_BOX, CareTzCompanyTableMap::COL_CITY, CareTzCompanyTableMap::COL_START_DATE, CareTzCompanyTableMap::COL_END_DATE, CareTzCompanyTableMap::COL_INVOICE_FLAG, CareTzCompanyTableMap::COL_CREDIT_PRESELECTION_FLAG, CareTzCompanyTableMap::COL_HIDE_COMPANY_FLAG, CareTzCompanyTableMap::COL_PREPAID_AMOUNT, CareTzCompanyTableMap::COL_MODIFY_ID, CareTzCompanyTableMap::COL_ENABLE_MEMBER_EXPIRY, ),
-        self::TYPE_FIELDNAME     => array('id', 'name', 'contact', 'email', 'phone_code', 'phone_nr', 'po_box', 'city', 'start_date', 'end_date', 'invoice_flag', 'credit_preselection_flag', 'hide_company_flag', 'prepaid_amount', 'modify_id', 'enable_member_expiry', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, )
+        self::TYPE_PHPNAME       => array('Id', 'Name', 'Contact', 'Email', 'PhoneCode', 'PhoneNr', 'PoBox', 'City', 'StartDate', 'EndDate', 'InvoiceFlag', 'CreditPreselectionFlag', 'HideCompanyFlag', 'PrepaidAmount', 'ModifyId', 'EnableMemberExpiry', 'CompanyCode', ),
+        self::TYPE_CAMELNAME     => array('id', 'name', 'contact', 'email', 'phoneCode', 'phoneNr', 'poBox', 'city', 'startDate', 'endDate', 'invoiceFlag', 'creditPreselectionFlag', 'hideCompanyFlag', 'prepaidAmount', 'modifyId', 'enableMemberExpiry', 'companyCode', ),
+        self::TYPE_COLNAME       => array(CareTzCompanyTableMap::COL_ID, CareTzCompanyTableMap::COL_NAME, CareTzCompanyTableMap::COL_CONTACT, CareTzCompanyTableMap::COL_EMAIL, CareTzCompanyTableMap::COL_PHONE_CODE, CareTzCompanyTableMap::COL_PHONE_NR, CareTzCompanyTableMap::COL_PO_BOX, CareTzCompanyTableMap::COL_CITY, CareTzCompanyTableMap::COL_START_DATE, CareTzCompanyTableMap::COL_END_DATE, CareTzCompanyTableMap::COL_INVOICE_FLAG, CareTzCompanyTableMap::COL_CREDIT_PRESELECTION_FLAG, CareTzCompanyTableMap::COL_HIDE_COMPANY_FLAG, CareTzCompanyTableMap::COL_PREPAID_AMOUNT, CareTzCompanyTableMap::COL_MODIFY_ID, CareTzCompanyTableMap::COL_ENABLE_MEMBER_EXPIRY, CareTzCompanyTableMap::COL_COMPANY_CODE, ),
+        self::TYPE_FIELDNAME     => array('id', 'name', 'contact', 'email', 'phone_code', 'phone_nr', 'po_box', 'city', 'start_date', 'end_date', 'invoice_flag', 'credit_preselection_flag', 'hide_company_flag', 'prepaid_amount', 'modify_id', 'enable_member_expiry', 'company_code', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, )
     );
 
     /**
@@ -177,11 +182,11 @@ class CareTzCompanyTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('Id' => 0, 'Name' => 1, 'Contact' => 2, 'Email' => 3, 'PhoneCode' => 4, 'PhoneNr' => 5, 'PoBox' => 6, 'City' => 7, 'StartDate' => 8, 'EndDate' => 9, 'InvoiceFlag' => 10, 'CreditPreselectionFlag' => 11, 'HideCompanyFlag' => 12, 'PrepaidAmount' => 13, 'ModifyId' => 14, 'EnableMemberExpiry' => 15, ),
-        self::TYPE_CAMELNAME     => array('id' => 0, 'name' => 1, 'contact' => 2, 'email' => 3, 'phoneCode' => 4, 'phoneNr' => 5, 'poBox' => 6, 'city' => 7, 'startDate' => 8, 'endDate' => 9, 'invoiceFlag' => 10, 'creditPreselectionFlag' => 11, 'hideCompanyFlag' => 12, 'prepaidAmount' => 13, 'modifyId' => 14, 'enableMemberExpiry' => 15, ),
-        self::TYPE_COLNAME       => array(CareTzCompanyTableMap::COL_ID => 0, CareTzCompanyTableMap::COL_NAME => 1, CareTzCompanyTableMap::COL_CONTACT => 2, CareTzCompanyTableMap::COL_EMAIL => 3, CareTzCompanyTableMap::COL_PHONE_CODE => 4, CareTzCompanyTableMap::COL_PHONE_NR => 5, CareTzCompanyTableMap::COL_PO_BOX => 6, CareTzCompanyTableMap::COL_CITY => 7, CareTzCompanyTableMap::COL_START_DATE => 8, CareTzCompanyTableMap::COL_END_DATE => 9, CareTzCompanyTableMap::COL_INVOICE_FLAG => 10, CareTzCompanyTableMap::COL_CREDIT_PRESELECTION_FLAG => 11, CareTzCompanyTableMap::COL_HIDE_COMPANY_FLAG => 12, CareTzCompanyTableMap::COL_PREPAID_AMOUNT => 13, CareTzCompanyTableMap::COL_MODIFY_ID => 14, CareTzCompanyTableMap::COL_ENABLE_MEMBER_EXPIRY => 15, ),
-        self::TYPE_FIELDNAME     => array('id' => 0, 'name' => 1, 'contact' => 2, 'email' => 3, 'phone_code' => 4, 'phone_nr' => 5, 'po_box' => 6, 'city' => 7, 'start_date' => 8, 'end_date' => 9, 'invoice_flag' => 10, 'credit_preselection_flag' => 11, 'hide_company_flag' => 12, 'prepaid_amount' => 13, 'modify_id' => 14, 'enable_member_expiry' => 15, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, )
+        self::TYPE_PHPNAME       => array('Id' => 0, 'Name' => 1, 'Contact' => 2, 'Email' => 3, 'PhoneCode' => 4, 'PhoneNr' => 5, 'PoBox' => 6, 'City' => 7, 'StartDate' => 8, 'EndDate' => 9, 'InvoiceFlag' => 10, 'CreditPreselectionFlag' => 11, 'HideCompanyFlag' => 12, 'PrepaidAmount' => 13, 'ModifyId' => 14, 'EnableMemberExpiry' => 15, 'CompanyCode' => 16, ),
+        self::TYPE_CAMELNAME     => array('id' => 0, 'name' => 1, 'contact' => 2, 'email' => 3, 'phoneCode' => 4, 'phoneNr' => 5, 'poBox' => 6, 'city' => 7, 'startDate' => 8, 'endDate' => 9, 'invoiceFlag' => 10, 'creditPreselectionFlag' => 11, 'hideCompanyFlag' => 12, 'prepaidAmount' => 13, 'modifyId' => 14, 'enableMemberExpiry' => 15, 'companyCode' => 16, ),
+        self::TYPE_COLNAME       => array(CareTzCompanyTableMap::COL_ID => 0, CareTzCompanyTableMap::COL_NAME => 1, CareTzCompanyTableMap::COL_CONTACT => 2, CareTzCompanyTableMap::COL_EMAIL => 3, CareTzCompanyTableMap::COL_PHONE_CODE => 4, CareTzCompanyTableMap::COL_PHONE_NR => 5, CareTzCompanyTableMap::COL_PO_BOX => 6, CareTzCompanyTableMap::COL_CITY => 7, CareTzCompanyTableMap::COL_START_DATE => 8, CareTzCompanyTableMap::COL_END_DATE => 9, CareTzCompanyTableMap::COL_INVOICE_FLAG => 10, CareTzCompanyTableMap::COL_CREDIT_PRESELECTION_FLAG => 11, CareTzCompanyTableMap::COL_HIDE_COMPANY_FLAG => 12, CareTzCompanyTableMap::COL_PREPAID_AMOUNT => 13, CareTzCompanyTableMap::COL_MODIFY_ID => 14, CareTzCompanyTableMap::COL_ENABLE_MEMBER_EXPIRY => 15, CareTzCompanyTableMap::COL_COMPANY_CODE => 16, ),
+        self::TYPE_FIELDNAME     => array('id' => 0, 'name' => 1, 'contact' => 2, 'email' => 3, 'phone_code' => 4, 'phone_nr' => 5, 'po_box' => 6, 'city' => 7, 'start_date' => 8, 'end_date' => 9, 'invoice_flag' => 10, 'credit_preselection_flag' => 11, 'hide_company_flag' => 12, 'prepaid_amount' => 13, 'modify_id' => 14, 'enable_member_expiry' => 15, 'company_code' => 16, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, )
     );
 
     /**
@@ -217,6 +222,7 @@ class CareTzCompanyTableMap extends TableMap
         $this->addColumn('prepaid_amount', 'PrepaidAmount', 'INTEGER', true, null, null);
         $this->addColumn('modify_id', 'ModifyId', 'VARCHAR', true, 25, null);
         $this->addColumn('enable_member_expiry', 'EnableMemberExpiry', 'TINYINT', true, 2, null);
+        $this->addColumn('company_code', 'CompanyCode', 'VARCHAR', true, 255, null);
     } // initialize()
 
     /**
@@ -383,6 +389,7 @@ class CareTzCompanyTableMap extends TableMap
             $criteria->addSelectColumn(CareTzCompanyTableMap::COL_PREPAID_AMOUNT);
             $criteria->addSelectColumn(CareTzCompanyTableMap::COL_MODIFY_ID);
             $criteria->addSelectColumn(CareTzCompanyTableMap::COL_ENABLE_MEMBER_EXPIRY);
+            $criteria->addSelectColumn(CareTzCompanyTableMap::COL_COMPANY_CODE);
         } else {
             $criteria->addSelectColumn($alias . '.id');
             $criteria->addSelectColumn($alias . '.name');
@@ -400,6 +407,7 @@ class CareTzCompanyTableMap extends TableMap
             $criteria->addSelectColumn($alias . '.prepaid_amount');
             $criteria->addSelectColumn($alias . '.modify_id');
             $criteria->addSelectColumn($alias . '.enable_member_expiry');
+            $criteria->addSelectColumn($alias . '.company_code');
         }
     }
 

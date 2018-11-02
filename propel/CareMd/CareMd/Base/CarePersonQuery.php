@@ -98,6 +98,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCarePersonQuery orderByInsuranceCeilingByFamily($order = Criteria::ASC) Order by the insurance_ceiling_by_family column
  * @method     ChildCarePersonQuery orderByInsuranceCeilingAmount($order = Criteria::ASC) Order by the insurance_ceiling_amount column
  * @method     ChildCarePersonQuery orderByInsuranceCeilingForFamilies($order = Criteria::ASC) Order by the insurance_ceiling_for_families column
+ * @method     ChildCarePersonQuery orderByNationalId($order = Criteria::ASC) Order by the national_id column
+ * @method     ChildCarePersonQuery orderByEmployeeId($order = Criteria::ASC) Order by the employee_Id column
  *
  * @method     ChildCarePersonQuery groupByPid() Group by the pid column
  * @method     ChildCarePersonQuery groupBySelianPid() Group by the selian_pid column
@@ -178,6 +180,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCarePersonQuery groupByInsuranceCeilingByFamily() Group by the insurance_ceiling_by_family column
  * @method     ChildCarePersonQuery groupByInsuranceCeilingAmount() Group by the insurance_ceiling_amount column
  * @method     ChildCarePersonQuery groupByInsuranceCeilingForFamilies() Group by the insurance_ceiling_for_families column
+ * @method     ChildCarePersonQuery groupByNationalId() Group by the national_id column
+ * @method     ChildCarePersonQuery groupByEmployeeId() Group by the employee_Id column
  *
  * @method     ChildCarePersonQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildCarePersonQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -268,7 +272,9 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCarePerson findOneByInsuranceCeilingByIndividual(int $insurance_ceiling_by_individual) Return the first ChildCarePerson filtered by the insurance_ceiling_by_individual column
  * @method     ChildCarePerson findOneByInsuranceCeilingByFamily(int $insurance_ceiling_by_family) Return the first ChildCarePerson filtered by the insurance_ceiling_by_family column
  * @method     ChildCarePerson findOneByInsuranceCeilingAmount(int $insurance_ceiling_amount) Return the first ChildCarePerson filtered by the insurance_ceiling_amount column
- * @method     ChildCarePerson findOneByInsuranceCeilingForFamilies(int $insurance_ceiling_for_families) Return the first ChildCarePerson filtered by the insurance_ceiling_for_families column *
+ * @method     ChildCarePerson findOneByInsuranceCeilingForFamilies(int $insurance_ceiling_for_families) Return the first ChildCarePerson filtered by the insurance_ceiling_for_families column
+ * @method     ChildCarePerson findOneByNationalId(string $national_id) Return the first ChildCarePerson filtered by the national_id column
+ * @method     ChildCarePerson findOneByEmployeeId(string $employee_Id) Return the first ChildCarePerson filtered by the employee_Id column *
 
  * @method     ChildCarePerson requirePk($key, ConnectionInterface $con = null) Return the ChildCarePerson by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildCarePerson requireOne(ConnectionInterface $con = null) Return the first ChildCarePerson matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -352,6 +358,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCarePerson requireOneByInsuranceCeilingByFamily(int $insurance_ceiling_by_family) Return the first ChildCarePerson filtered by the insurance_ceiling_by_family column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildCarePerson requireOneByInsuranceCeilingAmount(int $insurance_ceiling_amount) Return the first ChildCarePerson filtered by the insurance_ceiling_amount column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildCarePerson requireOneByInsuranceCeilingForFamilies(int $insurance_ceiling_for_families) Return the first ChildCarePerson filtered by the insurance_ceiling_for_families column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildCarePerson requireOneByNationalId(string $national_id) Return the first ChildCarePerson filtered by the national_id column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildCarePerson requireOneByEmployeeId(string $employee_Id) Return the first ChildCarePerson filtered by the employee_Id column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildCarePerson[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildCarePerson objects based on current ModelCriteria
  * @method     ChildCarePerson[]|ObjectCollection findByPid(int $pid) Return ChildCarePerson objects filtered by the pid column
@@ -433,6 +441,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCarePerson[]|ObjectCollection findByInsuranceCeilingByFamily(int $insurance_ceiling_by_family) Return ChildCarePerson objects filtered by the insurance_ceiling_by_family column
  * @method     ChildCarePerson[]|ObjectCollection findByInsuranceCeilingAmount(int $insurance_ceiling_amount) Return ChildCarePerson objects filtered by the insurance_ceiling_amount column
  * @method     ChildCarePerson[]|ObjectCollection findByInsuranceCeilingForFamilies(int $insurance_ceiling_for_families) Return ChildCarePerson objects filtered by the insurance_ceiling_for_families column
+ * @method     ChildCarePerson[]|ObjectCollection findByNationalId(string $national_id) Return ChildCarePerson objects filtered by the national_id column
+ * @method     ChildCarePerson[]|ObjectCollection findByEmployeeId(string $employee_Id) Return ChildCarePerson objects filtered by the employee_Id column
  * @method     ChildCarePerson[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -531,7 +541,7 @@ abstract class CarePersonQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT pid, selian_pid, date_reg, name_first, name_2, name_3, name_middle, name_last, name_maiden, name_others, education, date_birth, blood_group, rh, addr_str, addr_str_nr, addr_zip, addr_citytown_nr, addr_is_valid, citizenship, phone_1_code, phone_1_nr, phone_2_code, phone_2_nr, cellphone_1_nr, cellphone_2_nr, fax, email, civil_status, sex, title, photo, photo_filename, ethnic_orig, org_id, sss_nr, nat_id_nr, religion, is_first_reg, region, district, ward, mother_pid, father_pid, contact_person, contact_pid, contact_relation, death_date, death_encounter_nr, death_cause, death_cause_code, date_update, status, history, allergy, modify_id, modify_time, create_id, create_time, addr_citytown_name, is_transmit2ERP, insurance_ID, insurance_head_pid, membership_nr, form_nr, nhif_nr, insurance_silver, insurance_gold, insurance_friedkin, insurance_selian_stuff, insurance_premium_for_adults, insurance_premium_for_childs, insurance_premium_for_senior, insurance_copayment_OPD, insurance_copayment_IPD, insurance_ceiling_by_individual, insurance_ceiling_by_family, insurance_ceiling_amount, insurance_ceiling_for_families FROM care_person WHERE pid = :p0';
+        $sql = 'SELECT pid, selian_pid, date_reg, name_first, name_2, name_3, name_middle, name_last, name_maiden, name_others, education, date_birth, blood_group, rh, addr_str, addr_str_nr, addr_zip, addr_citytown_nr, addr_is_valid, citizenship, phone_1_code, phone_1_nr, phone_2_code, phone_2_nr, cellphone_1_nr, cellphone_2_nr, fax, email, civil_status, sex, title, photo, photo_filename, ethnic_orig, org_id, sss_nr, nat_id_nr, religion, is_first_reg, region, district, ward, mother_pid, father_pid, contact_person, contact_pid, contact_relation, death_date, death_encounter_nr, death_cause, death_cause_code, date_update, status, history, allergy, modify_id, modify_time, create_id, create_time, addr_citytown_name, is_transmit2ERP, insurance_ID, insurance_head_pid, membership_nr, form_nr, nhif_nr, insurance_silver, insurance_gold, insurance_friedkin, insurance_selian_stuff, insurance_premium_for_adults, insurance_premium_for_childs, insurance_premium_for_senior, insurance_copayment_OPD, insurance_copayment_IPD, insurance_ceiling_by_individual, insurance_ceiling_by_family, insurance_ceiling_amount, insurance_ceiling_for_families, national_id, employee_Id FROM care_person WHERE pid = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_INT);
@@ -3093,6 +3103,56 @@ abstract class CarePersonQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(CarePersonTableMap::COL_INSURANCE_CEILING_FOR_FAMILIES, $insuranceCeilingForFamilies, $comparison);
+    }
+
+    /**
+     * Filter the query on the national_id column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByNationalId('fooValue');   // WHERE national_id = 'fooValue'
+     * $query->filterByNationalId('%fooValue%', Criteria::LIKE); // WHERE national_id LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $nationalId The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildCarePersonQuery The current query, for fluid interface
+     */
+    public function filterByNationalId($nationalId = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($nationalId)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(CarePersonTableMap::COL_NATIONAL_ID, $nationalId, $comparison);
+    }
+
+    /**
+     * Filter the query on the employee_Id column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByEmployeeId('fooValue');   // WHERE employee_Id = 'fooValue'
+     * $query->filterByEmployeeId('%fooValue%', Criteria::LIKE); // WHERE employee_Id LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $employeeId The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildCarePersonQuery The current query, for fluid interface
+     */
+    public function filterByEmployeeId($employeeId = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($employeeId)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(CarePersonTableMap::COL_EMPLOYEE_ID, $employeeId, $comparison);
     }
 
     /**

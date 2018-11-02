@@ -188,7 +188,7 @@ class smarty_care extends Smarty {
         # By default the toolbar title is empty
         //$this->assign('sToolbarTitle','');
         # By default the window title is Care2x
-        $this->assign('title', 'Care2x');
+        $this->assign('title', 'CareMd');
 
         # For the dhtml effects
 

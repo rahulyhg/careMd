@@ -644,6 +644,7 @@
     <column name="room_history" phpName="RoomHistory" type="LONGVARCHAR" required="true"/>
     <column name="current_dept_history" phpName="CurrentDeptHistory" type="LONGVARCHAR" required="true"/>
     <column name="medical_service" phpName="MedicalService" type="VARCHAR" size="50" required="true"/>
+    <column name="referrer_number" phpName="ReferrerNumber" type="VARCHAR" size="255" required="true"/>
     <index name="pid">
       <index-column name="pid"/>
     </index>
@@ -732,6 +733,19 @@
     </index>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="care_encounter_drugsheet" idMethod="native" phpName="CareEncounterDrugsheet" namespace="CareMd">
+    <column name="prescr_nr" phpName="PrescrNr" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="chart_date" phpName="ChartDate" type="DATE" primaryKey="true" required="true"/>
+    <column name="chart_time" phpName="ChartTime" type="VARCHAR" size="6" primaryKey="true" required="true"/>
+    <column name="amount" phpName="Amount" type="DECIMAL" size="4" scale="0" required="true"/>
+    <column name="status" phpName="Status" type="TINYINT" required="true" defaultValue="0"/>
+    <column name="create_time" phpName="CreateTime" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="create_id" phpName="CreateId" type="VARCHAR" size="100" required="true"/>
+    <column name="modify_id" phpName="ModifyId" type="VARCHAR" size="255" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
     </vendor>
   </table>
   <table name="care_encounter_event_signaller" idMethod="native" phpName="CareEncounterEventSignaller" namespace="CareMd">
@@ -1294,6 +1308,27 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
+  <table name="care_icd9_en" idMethod="native" phpName="CareIcd9En" namespace="CareMd">
+    <column name="diagnosis_code" phpName="DiagnosisCode" type="VARCHAR" size="12" primaryKey="true" required="true" defaultValue=""/>
+    <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
+    <column name="class_sub" phpName="ClassSub" type="VARCHAR" size="5" required="true" defaultValue=""/>
+    <column name="type" phpName="Type" type="VARCHAR" size="10" required="true" defaultValue=""/>
+    <column name="inclusive" phpName="Inclusive" type="LONGVARCHAR" required="true"/>
+    <column name="exclusive" phpName="Exclusive" type="LONGVARCHAR" required="true"/>
+    <column name="notes" phpName="Notes" type="LONGVARCHAR" required="true"/>
+    <column name="std_code" phpName="StdCode" type="CHAR" required="true" defaultValue=""/>
+    <column name="sub_level" phpName="SubLevel" type="TINYINT" required="true" defaultValue="0"/>
+    <column name="remarks" phpName="Remarks" type="LONGVARCHAR" required="true"/>
+    <column name="extra_codes" phpName="ExtraCodes" type="LONGVARCHAR" required="true"/>
+    <column name="extra_subclass" phpName="ExtraSubclass" type="LONGVARCHAR" required="true"/>
+    <column name="show" phpName="Show" type="TINYINT" size="2" required="true" defaultValue="0"/>
+    <index name="diagnosis_code">
+      <index-column name="diagnosis_code"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
   <table name="care_img_diagnostic" idMethod="native" phpName="CareImgDiagnostic" namespace="CareMd">
     <column name="nr" phpName="Nr" type="BIGINT" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="pid" phpName="Pid" type="INTEGER" required="true" defaultValue="0"/>
@@ -1641,6 +1676,25 @@
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
   </table>
+  <table name="care_nhif_claims" idMethod="native" phpName="CareNhifClaims" namespace="CareMd">
+    <column name="FolioID" phpName="Folioid" type="VARCHAR" size="200"/>
+    <column name="ClaimYear" phpName="Claimyear" type="INTEGER" size="4"/>
+    <column name="ClaimMonth" phpName="Claimmonth" type="INTEGER" size="2"/>
+    <column name="FolioNo" phpName="Foliono" type="INTEGER" size="50"/>
+    <column name="SerialNo" phpName="Serialno" type="VARCHAR" size="50"/>
+    <column name="CardNo" phpName="Cardno" type="VARCHAR" size="50"/>
+    <column name="Age" phpName="Age" type="INTEGER" size="3"/>
+    <column name="TelephoneNo" phpName="Telephoneno" type="VARCHAR" size="50"/>
+    <column name="encounter_nr" phpName="EncounterNr" type="BIGINT" size="11"/>
+    <column name="claim_status" phpName="ClaimStatus" type="VARCHAR" size="50"/>
+    <column name="CreatedBy" phpName="Createdby" type="VARCHAR" size="50" required="true"/>
+    <column name="DateCreated" phpName="Datecreated" type="TIMESTAMP" required="true"/>
+    <column name="LastModifiedBy" phpName="Lastmodifiedby" type="VARCHAR" size="50"/>
+    <column name="LastModified" phpName="Lastmodified" type="VARCHAR" size="50"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
   <table name="care_op_med_doc" idMethod="native" phpName="CareOpMedDoc" namespace="CareMd">
     <column name="nr" phpName="Nr" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="op_date" phpName="OpDate" type="VARCHAR" size="12" required="true" defaultValue=""/>
@@ -1788,6 +1842,8 @@
     <column name="insurance_ceiling_by_family" phpName="InsuranceCeilingByFamily" type="TINYINT" required="true" defaultValue="0"/>
     <column name="insurance_ceiling_amount" phpName="InsuranceCeilingAmount" type="INTEGER" required="true" defaultValue="0"/>
     <column name="insurance_ceiling_for_families" phpName="InsuranceCeilingForFamilies" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="national_id" phpName="NationalId" type="VARCHAR" size="255"/>
+    <column name="employee_Id" phpName="EmployeeId" type="VARCHAR" size="255"/>
     <index name="name_last">
       <index-column name="name_last"/>
     </index>
@@ -4016,6 +4072,7 @@
     <column name="prepaid_amount" phpName="PrepaidAmount" type="INTEGER" required="true"/>
     <column name="modify_id" phpName="ModifyId" type="VARCHAR" size="25" required="true"/>
     <column name="enable_member_expiry" phpName="EnableMemberExpiry" type="TINYINT" size="2" required="true"/>
+    <column name="company_code" phpName="CompanyCode" type="VARCHAR" size="255" required="true"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
@@ -4062,6 +4119,7 @@
     <column name="type" phpName="Type" type="VARCHAR" size="25" required="true" defaultValue=""/>
     <column name="comment" phpName="Comment" type="VARCHAR" size="255"/>
     <column name="doctor_name" phpName="DoctorName" type="VARCHAR" size="200"/>
+    <column name="diagnosis_type" phpName="DiagnosisType" type="CHAR" sqlType="enum('final','preliminary')" required="true" defaultValue="final"/>
     <index name="parent_case_nr">
       <index-column name="parent_case_nr"/>
       <index-column name="PID"/>
@@ -4076,6 +4134,12 @@
     </index>
     <index name="PID_2">
       <index-column name="PID"/>
+    </index>
+    <index name="encounter_nr">
+      <index-column name="encounter_nr"/>
+    </index>
+    <index name="type">
+      <index-column name="type"/>
     </index>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
@@ -4168,6 +4232,7 @@
     <column name="unit_price_10" phpName="UnitPrice10" type="INTEGER" size="10" required="true"/>
     <column name="unit_price_11" phpName="UnitPrice11" type="INTEGER" size="10" required="true"/>
     <column name="unit_cost" phpName="UnitCost" type="VARCHAR" size="50" required="true"/>
+    <column name="nhif_item_code" phpName="NhifItemCode" type="VARCHAR" size="20"/>
     <index name="IX_ITEM_NUMBER">
       <index-column name="item_number"/>
     </index>
