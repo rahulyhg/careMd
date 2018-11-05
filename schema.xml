@@ -5242,6 +5242,8 @@
     <column name="create_id" phpName="CreateId" type="VARCHAR" size="35" required="true" defaultValue=""/>
     <column name="create_time" phpName="CreateTime" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
     <column name="theme_name" phpName="ThemeName" type="VARCHAR" size="40" required="true"/>
+    <column name="occupation" phpName="Occupation" type="VARCHAR" size="255"/>
+    <column name="tel_no" phpName="TelNo" type="VARCHAR" size="255"/>
     <index name="login_id">
       <index-column name="login_id"/>
     </index>

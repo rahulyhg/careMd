@@ -118,8 +118,8 @@ if ($mode != '') {
                            modify_id,
                            create_id,
                            create_time,
-                           'occupation',
-                           'tel_no',
+                           occupation,
+                           tel_no
                          )
                          VALUES
                          (
@@ -137,6 +137,7 @@ if ($mode != '') {
                            '".$occupation."',
                            '".$tel_no."'
                          )";
+
             } else if ($mode == 'update') {
                 //Check if a new password is entered
                 if (!isset($pass) || $pass == '' || $pass == ' ') {
