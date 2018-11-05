@@ -654,9 +654,9 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                 <?php else: ?>
                 <?php 
                 $doctor = $claims_obj->GetDignosisDocName($encounter_nr);
-                $personelNumber = $claims_obj->GetDocPersonelNumber($doctor);
-                $patientId = $claims_obj->GetPersonel($personelNumber);
-                $person = $claims_obj->GetPerson($patientId);
+                $docUser = $claims_obj->GetDocUser($doctor);
+                // $patientId = $claims_obj->GetPersonel($personelNumber);
+                // $person = $claims_obj->GetPerson($patientId);
                  ?>
                 <tr>
                     <td>
@@ -675,7 +675,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                     <table class="table-lebel" >
                                         <tr>
                                             <td>Qualification:</td>
-                                            <td><strong><?php echo ($person)?$person['Title']:"" ?></strong></td>
+                                            <td><strong><?php echo ($docUser)?$docUser['occupation']:"" ?></strong></td>
                                         </tr>
                                     </table>
                                 </td>
@@ -710,7 +710,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                     </table>
                                 </td>
                                 <td><table class="table-lebel" ><tr><td>Signature:</td> <td></td></tr></table></td>
-                                <td><table class="table-lebel" ><tr><td>Tel. No:</td> <td><strong><?= ($person)?$person['Phone1Nr']:"" ?></strong></td></tr></table></td>
+                                <td><table class="table-lebel" ><tr><td>Tel. No:</td> <td><strong><?= ($docUser)?$docUser['tel_no']:"" ?></strong></td></tr></table></td>
                             </tr>
                         </table>
                     </td>

@@ -3273,6 +3273,8 @@ class Encounter extends Notes {
 //            return $result->FetchRow();
 //        }
 //    }
+//    
+
 }
 
 ?>

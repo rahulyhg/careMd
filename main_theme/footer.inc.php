@@ -56,7 +56,7 @@
 
   <script src="<?php echo $root_path ?>/js/care_md/plugins/idle-timer.js"></script>
 
-  <?php if ($_COOKIE['PageName'] == "NHIF Claims"): ?>
+  <?php if ($_COOKIE['PageName'] == "NHIF Claims" || $_COOKIE['PageName'] == "Discharge"): ?>
       <!--datatables-->
     <script src="<?php echo $root_path; ?>assets/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="<?php echo $root_path; ?>assets/datatables/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
