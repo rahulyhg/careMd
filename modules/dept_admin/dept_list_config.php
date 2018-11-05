@@ -52,6 +52,7 @@ $smarty->assign('breakfile', $breakfile);
 
 # Window bar title
 $smarty->assign('sWindowTitle', "$LDDepartment :: $LDList");
+$smarty->assign('closeSysAdmin', TRUE);
 
 # Buffer page output
 ob_start();

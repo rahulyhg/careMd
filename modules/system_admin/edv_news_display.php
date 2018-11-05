@@ -99,6 +99,7 @@ $smarty->assign('breakfile', $breakfile);
 
 # Window bar title
 $smarty->assign('sWindowTitle', $LDNewsDisplay);
+$smarty->assign('closeSysAdmin', TRUE);
 
 # Collect javascript code
 

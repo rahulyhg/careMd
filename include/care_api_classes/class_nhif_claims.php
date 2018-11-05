@@ -101,12 +101,10 @@ class Nhif_claims extends Nhif {
         return $name;        
     }
 
-    public function GetDocPersonelNumber($name)
+    public function GetDocUser($name)
     {
         $user = CareUsersQuery::create()->filterbyLoginId($name)->findOne()->toArray();
-
-        $personelId = ($user)?$user['PersonellNr']:0;
-        return $personelId;
+        return $user;
 
     }
 

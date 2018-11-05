@@ -70,6 +70,7 @@ $smarty->assign('breakfile', $breakfile);
 
 # Window bar title
 $smarty->assign('sWindowTitle', $LDDataEntryForms);
+$smarty->assign('closeSysAdmin', TRUE);
 
 if ($rows) {
     $smarty->append('JavaScript', '<script language="javascript" src="' . $root_path . 'js/check_menu_item_same_item.js"></script>');

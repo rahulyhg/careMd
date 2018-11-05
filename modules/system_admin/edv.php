@@ -58,6 +58,7 @@ $smarty->assign('breakfile', $breakfile);
 
 # Window bar title
 $smarty->assign('title', $LDEDP);
+$smarty->assign('closeSysAdmin', TRUE);
 
 # Prepare the submenu icons
 
@@ -108,11 +109,14 @@ while (list($x, $v) = each($aSubMenuItem)) {
 # Assign the submenu to the mainframe center block
 
 $smarty->assign('sMainBlockIncludeFile', 'system_admin/submenu_edv.tpl');
+
+$smarty->assign('closeSysAdmin', TRUE);
+$smarty->assign('backToApp', TRUE);
 /**
  * show Template
  */
 
-  require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/head.inc.php');
 require_once($root_path . 'main_theme/header.inc.php');
 require_once($root_path . 'main_theme/topHeader.inc.php');
 

@@ -29,8 +29,10 @@ if ($mode == 'update') {
     if (!isset($_REQUEST['role_id']) || $_REQUEST['role_id'] == '') {
         $error = 1;
     } else {
-        $sql = "UPDATE care_users SET role_id =" . $_REQUEST['role_id'] . ", "
-                . "modify_id='" . $_COOKIE[$local_user . $sid] . "'  WHERE login_id='" . $itemname . "'";
+        $sql = "UPDATE care_users SET role_id =" . $_REQUEST['role_id'] . ", " 
+        . "occupation ='" . $_REQUEST['occupation'] . "',"
+        . "tel_no ='" . $_REQUEST['tel_no'] . "',"
+        . "modify_id='" . $_COOKIE[$local_user . $sid] . "'  WHERE login_id='" . $itemname . "'";
     }
     $db->BeginTrans();
     $ok = $db->Execute($sql);
@@ -192,10 +194,28 @@ if ($mode == 'update') {
 
                             </td>
                             <td>
-                                <select name="role_id">
+                                <select name="role_id" class="selectedRole">
                                     <option value="">--Select--</option>
 <?php echo isset($select_role) ? $select_role : ""; ?>
                                 </select>
+                            </td>
+                        </tr>
+
+                           <tr bgcolor="#dddddd" class="roleInputs">
+                            <td>
+                                Occupation
+                            </td>
+                            <td colspan="2">
+                                <input type="text" name="occupation">
+                            </td>
+                        </tr>
+
+                        <tr bgcolor="#dddddd" class="roleInputs">
+                            <td>
+                                Tel. No
+                            </td>
+                            <td colspan="2">
+                                <input type="text" name="tel_no">
                             </td>
                         </tr>
                     </table>
@@ -246,3 +266,25 @@ $smarty->assign('sMainFrameBlockData', $sTemp);
  */
 $smarty->display('common/mainframe.tpl');
 ?>
+
+<?php require_once($root_path . 'main_theme/footer.inc.php'); ?>
+
+<script>
+    
+    $('.roleInputs').hide();
+
+
+$('.selectedRole').change(function(){
+
+    var selectedRole = $(".selectedRole").val();
+    if (selectedRole == 1 || selectedRole == 3) 
+    {
+        $('.roleInputs').show();
+
+    }else
+    {
+        $('.roleInputs').hide();
+    }
+})
+
+</script>

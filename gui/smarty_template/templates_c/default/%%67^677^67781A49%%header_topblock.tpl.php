@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2018-03-09 11:34:33
+<?php /* Smarty version 2.6.22, created on 2018-11-05 08:32:01
          compiled from common/header_topblock.tpl */ ?>
 <table cellspacing="0"  class="titlebar" border=0>
     <tr valign=top  class="titlebar" >
@@ -34,21 +34,51 @@
                 href="<?php echo $this->_tpl_vars['pbAux1']; ?>
 "><img <?php echo $this->_tpl_vars['gifAux1']; ?>
  alt="" <?php echo $this->_tpl_vars['dhtml']; ?>
- ></a><?php endif; ?><?php if ($this->_tpl_vars['pbBack']): ?>
-            <!-- // make back button universal for consistence || dennis.mollel@yahoo.com @ 2010 -->   <a
+ ></a><?php endif; ?>
+
+            <?php if ($this->_tpl_vars['pbBack']): ?>
+            <!-- // make back button universal for consistence || dennis.mollel@yahoo.com @ 2010 --> 
+
+            <?php if ($this->_tpl_vars['backToApp']): ?>
+              <a
+                href="javascript:window.top.close();"><img <?php echo $this->_tpl_vars['gifBack2']; ?>
+ alt="" <?php echo $this->_tpl_vars['dhtml']; ?>
+ ></a>
+            <?php endif; ?>
+
+            <?php if (! $this->_tpl_vars['backToApp']): ?>
+              <a
                 href="javascript:window.history.back();"><img <?php echo $this->_tpl_vars['gifBack2']; ?>
  alt="" <?php echo $this->_tpl_vars['dhtml']; ?>
- ></a><?php endif; ?><?php if ($this->_tpl_vars['pbHelp']): ?><a
+ ></a>
+            <?php endif; ?>
+
+            <?php endif; ?>
+                <?php if ($this->_tpl_vars['pbHelp']): ?><a
                 href="<?php echo $this->_tpl_vars['pbHelp']; ?>
 "><img <?php echo $this->_tpl_vars['gifHilfeR']; ?>
  alt="" <?php echo $this->_tpl_vars['dhtml']; ?>
-></a><?php endif; ?><?php if ($this->_tpl_vars['breakfile']): ?><a
-                href="<?php echo $this->_tpl_vars['breakfile']; ?>
+></a><?php endif; ?><?php if ($this->_tpl_vars['breakfile']): ?>
+
+                <?php if ($this->_tpl_vars['closeSysAdmin']): ?>
+                <a href="javascript:top.close();"  <?php echo $this->_tpl_vars['sCloseTarget']; ?>
+><img <?php echo $this->_tpl_vars['gifClose2']; ?>
+ alt="<?php echo $this->_tpl_vars['LDCloseAlt']; ?>
+" <?php echo $this->_tpl_vars['dhtml']; ?>
+></a>
+                <?php endif; ?>
+
+                <?php if (! $this->_tpl_vars['closeSysAdmin']): ?>
+                <a href="<?php echo $this->_tpl_vars['breakfile']; ?>
 " <?php echo $this->_tpl_vars['sCloseTarget']; ?>
 ><img <?php echo $this->_tpl_vars['gifClose2']; ?>
  alt="<?php echo $this->_tpl_vars['LDCloseAlt']; ?>
 " <?php echo $this->_tpl_vars['dhtml']; ?>
-></a><?php endif; ?><?php endif; ?>
+></a>
+                <?php endif; ?>
+
+                <?php endif; ?>
+                <?php endif; ?>
             <?php if ($this->_tpl_vars['disableButton']): ?><a
                 href="<?php echo $this->_tpl_vars['pbHelp']; ?>
 "><img <?php echo $this->_tpl_vars['gifHilfeR']; ?>

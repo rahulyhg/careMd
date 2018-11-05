@@ -38,9 +38,10 @@ $count = @$_GET['count']?$_GET['count']:10;
 
 
 $topDiseases = array();
-
-for ($i=0; $i < $count; $i++) { 
-	array_push($topDiseases, $diseases[$i]);
+if (@$diseases) {
+	for ($i=0; $i < $count; $i++) { 
+		array_push($topDiseases, $diseases[$i]);
+	}
 }
 
 foreach ($topDiseases as $topDisease) {

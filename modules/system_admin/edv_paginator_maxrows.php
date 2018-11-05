@@ -53,6 +53,8 @@ $smarty->assign('breakfile', $breakfile);
 
 # Window bar title
 $smarty->assign('sWindowTitle', $LDPaginatorMaxRows);
+$smarty->assign('closeSysAdmin', TRUE);
+
 
 # Buffer page output
 

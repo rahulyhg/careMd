@@ -5,6 +5,14 @@ require($root_path . 'include/inc_environment_global.php');
 
 $pageName = "System Admin";
 
+define('LANG_FILE', 'edp.php');
+require_once($root_path . 'include/inc_front_chain_lang.php');
+require($root_path . 'include/inc_2level_reset.php');
+require_once($root_path . 'gui/smarty_template/smarty_care.class.php');
+$smarty = new smarty_care('common');
+
+$smarty->assign('closeSysAdmin', TRUE);
+
 
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.1 - 2004-10-02
@@ -51,6 +59,7 @@ if ($lang == 'ar' || $lang == 'fa') {
                         }
                         ?>
                         </html>
+
 
 <?php require_once($root_path . 'main_theme/footer.inc.php'); ?>
                         

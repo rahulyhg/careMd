@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2017-07-21 16:12:03
+<?php /* Smarty version 2.6.22, created on 2018-11-03 10:24:51
          compiled from system_admin/quick_informer.tpl */ ?>
 
 <ul>

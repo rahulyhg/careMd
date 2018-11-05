@@ -166,6 +166,7 @@ $smarty->assign('breakfile', $breakfile);
 
 # Window bar title
 $smarty->assign('sWindowTitle', $sTitle);
+$smarty->assign('closeSysAdmin', TRUE);
 
 # Collect javascript code
 ob_start();

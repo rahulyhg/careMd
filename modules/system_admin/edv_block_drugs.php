@@ -85,7 +85,7 @@ if ($GLOBAL_CONFIG['auto_out_of_stock'] == "") {
                                 <td bgcolor="#99ccff" align=right>
                                     <a  href="edv_generally_management.php?sid=<?php echo $sid . "&lang=" . $lang; ?>73&ntid=false"><img src="../../gui/img/control/blue_aqua/en/en_back2.gif" border=0 width="76" height="21" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)" ></a><a
                                         href="javascript:gethelp('edp.php','access','')"><img src="../../gui/img/control/blue_aqua/en/en_hilfe-r.gif" border=0 width="76" height="21" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)"></a><a
-                                        href="edv-system-admi-welcome.php?sid=<?php echo $sid . "&lang=" . $lang; ?>&ntid=false" ><img src="../../gui/img/control/blue_aqua/en/en_close2.gif" border=0 width="76" height="21" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)"></a>     
+                                        href="javascript:window.top.close()" ><img src="../../gui/img/control/blue_aqua/en/en_close2.gif" border=0 width="76" height="21" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)"></a>     
                                 </td>
                             </tr>
 
