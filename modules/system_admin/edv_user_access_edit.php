@@ -57,6 +57,8 @@ if ($pass != '' && $mode == 'edit') {
     $pers_obj->ResetPassword($userid, $pass);
 }
 
+$occupation = $_REQUEST['occupation'];
+$tel_no = $_REQUEST['tel_no'];
 
 
 if ($mode != '') {
@@ -104,40 +106,44 @@ if ($mode != '') {
             if ($mode == 'save') {
 
                 $sql = "INSERT INTO care_users
-						(
-						   name,
-						   login_id,
-						   password,
-						   role_id,
-						   personell_nr,
-						   s_date,
-						   s_time,
-						   status,
-						   modify_id,
-						   create_id,
-						   create_time
-						 )
-						 VALUES
-						 (
-						   '" . addslashes($username) . "',
-						   '" . addslashes($userid) . "',
-						   '" . md5($pass) . "',
-						   '" . $role_id . "',
-						   '" . $personell_nr . "',
-						   '" . date('Y-m-d') . "',
-						   '" . date('H:i:s') . "',
-						   'normal',
-						   '',
-						   '" . $_SESSION['sess_user_name'] . "',
-						   '" . date('YmdHis') . "'
-						 )";
+                        (
+                           name,
+                           login_id,
+                           password,
+                           role_id,
+                           personell_nr,
+                           s_date,
+                           s_time,
+                           status,
+                           modify_id,
+                           create_id,
+                           create_time,
+                           'occupation',
+                           'tel_no',
+                         )
+                         VALUES
+                         (
+                           '" . addslashes($username) . "',
+                           '" . addslashes($userid) . "',
+                           '" . md5($pass) . "',
+                           '" . $role_id . "',
+                           '" . $personell_nr . "',
+                           '" . date('Y-m-d') . "',
+                           '" . date('H:i:s') . "',
+                           'normal',
+                           '',
+                           '" . $_SESSION['sess_user_name'] . "',
+                           '" . date('YmdHis') . "',
+                           '".$occupation."',
+                           '".$tel_no."'
+                         )";
             } else if ($mode == 'update') {
                 //Check if a new password is entered
                 if (!isset($pass) || $pass == '' || $pass == ' ') {
-                    $sql = "UPDATE care_users SET name='$username', role_id ='$role_id', "
+                    $sql = "UPDATE care_users SET name='$username', role_id ='$role_id', occupation = '$occupation' tel_no = '$tel_no' "
                             . "modify_id='" . $_COOKIE[$local_user . $sid] . "'  WHERE login_id='$userid'";
                 } else {
-                    $sql = "UPDATE care_users SET name='$username', password = '" . md5($pass) . "', role_id ='$role_id', "
+                    $sql = "UPDATE care_users SET name='$username', password = '" . md5($pass) . "', role_id ='$role_id', occupation = '$occupation' tel_no = '$tel_no' "
                             . "modify_id='" . $_COOKIE[$local_user . $sid] . "'  WHERE login_id='$userid'";
                 }
             }
@@ -419,12 +425,31 @@ ob_start();
                                 ?>
                             </td>
                             <td colspan="2">
-                                <select name="role_id">
+                                <select name="role_id" class="selectedRole">
                                     <option value="">--Select--</option>
                                     <?php echo isset($select_role) ? $select_role : ""; ?>
                                 </select>
                             </td>
                         </tr>
+
+                        <tr bgcolor="#dddddd" class="roleInputs">
+                            <td>
+                                Occupation
+                            </td>
+                            <td colspan="2">
+                                <input type="text" name="occupation" value="<?php echo $user['occupation']; ?>">
+                            </td>
+                        </tr>
+
+                        <tr bgcolor="#dddddd" class="roleInputs">
+                            <td>
+                                Tel. No
+                            </td>
+                            <td colspan="2">
+                                <input type="text" name="tel_no" value="<?php echo $user['tel_no']; ?>">
+                            </td>
+                        </tr>
+
                         <tr bgcolor="#dddddd">
                             <td colspan=3>
                                 <p>
@@ -467,3 +492,26 @@ $smarty->assign('sMainFrameBlockData', $sTemp);
  */
 $smarty->display('common/mainframe.tpl');
 ?>
+
+<?php require_once($root_path . 'main_theme/footer.inc.php'); ?>
+
+<script>
+    
+    $('.roleInputs').hide();
+
+
+$('.selectedRole').change(function(){
+
+    var selectedRole = $(".selectedRole").val();
+
+    if (selectedRole == 1 || selectedRole == 3) 
+    {
+        $('.roleInputs').show();
+
+    }else
+    {
+        $('.roleInputs').hide();
+    }
+})
+
+</script>

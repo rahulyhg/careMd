@@ -97,6 +97,7 @@ function setSelectedOption(diagnosisType) {
 }
 
 
+
 </script>
 
 <div class="modal" id="diagnosisTypeModal" tabindex="-1" role="dialog">

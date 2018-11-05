@@ -44,3 +44,10 @@ ALTER TABLE `care_tz_diagnosis` ADD `diagnosis_type` ENUM('final','preliminary')
 
 ALTER TABLE `care_tz_diagnosis` ADD INDEX(`encounter_nr`);
 ALTER TABLE `care_tz_diagnosis` ADD INDEX(`type`);
+
+
+
+-- 05/11
+
+ALTER TABLE `care_users` ADD `occupation` VARCHAR(255) NULL DEFAULT NULL AFTER `theme_name`, ADD `tel_no` VARCHAR(255) NULL DEFAULT NULL AFTER `occupation`;
+
