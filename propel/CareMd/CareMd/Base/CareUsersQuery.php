@@ -37,6 +37,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareUsersQuery orderByCreateId($order = Criteria::ASC) Order by the create_id column
  * @method     ChildCareUsersQuery orderByCreateTime($order = Criteria::ASC) Order by the create_time column
  * @method     ChildCareUsersQuery orderByThemeName($order = Criteria::ASC) Order by the theme_name column
+ * @method     ChildCareUsersQuery orderByOccupation($order = Criteria::ASC) Order by the occupation column
+ * @method     ChildCareUsersQuery orderByTelNo($order = Criteria::ASC) Order by the tel_no column
  *
  * @method     ChildCareUsersQuery groupByName() Group by the name column
  * @method     ChildCareUsersQuery groupByLoginId() Group by the login_id column
@@ -56,6 +58,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareUsersQuery groupByCreateId() Group by the create_id column
  * @method     ChildCareUsersQuery groupByCreateTime() Group by the create_time column
  * @method     ChildCareUsersQuery groupByThemeName() Group by the theme_name column
+ * @method     ChildCareUsersQuery groupByOccupation() Group by the occupation column
+ * @method     ChildCareUsersQuery groupByTelNo() Group by the tel_no column
  *
  * @method     ChildCareUsersQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildCareUsersQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -85,7 +89,9 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareUsers findOneByModifyTime(string $modify_time) Return the first ChildCareUsers filtered by the modify_time column
  * @method     ChildCareUsers findOneByCreateId(string $create_id) Return the first ChildCareUsers filtered by the create_id column
  * @method     ChildCareUsers findOneByCreateTime(string $create_time) Return the first ChildCareUsers filtered by the create_time column
- * @method     ChildCareUsers findOneByThemeName(string $theme_name) Return the first ChildCareUsers filtered by the theme_name column *
+ * @method     ChildCareUsers findOneByThemeName(string $theme_name) Return the first ChildCareUsers filtered by the theme_name column
+ * @method     ChildCareUsers findOneByOccupation(string $occupation) Return the first ChildCareUsers filtered by the occupation column
+ * @method     ChildCareUsers findOneByTelNo(string $tel_no) Return the first ChildCareUsers filtered by the tel_no column *
 
  * @method     ChildCareUsers requirePk($key, ConnectionInterface $con = null) Return the ChildCareUsers by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildCareUsers requireOne(ConnectionInterface $con = null) Return the first ChildCareUsers matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -108,6 +114,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareUsers requireOneByCreateId(string $create_id) Return the first ChildCareUsers filtered by the create_id column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildCareUsers requireOneByCreateTime(string $create_time) Return the first ChildCareUsers filtered by the create_time column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildCareUsers requireOneByThemeName(string $theme_name) Return the first ChildCareUsers filtered by the theme_name column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildCareUsers requireOneByOccupation(string $occupation) Return the first ChildCareUsers filtered by the occupation column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildCareUsers requireOneByTelNo(string $tel_no) Return the first ChildCareUsers filtered by the tel_no column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildCareUsers[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildCareUsers objects based on current ModelCriteria
  * @method     ChildCareUsers[]|ObjectCollection findByName(string $name) Return ChildCareUsers objects filtered by the name column
@@ -128,6 +136,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildCareUsers[]|ObjectCollection findByCreateId(string $create_id) Return ChildCareUsers objects filtered by the create_id column
  * @method     ChildCareUsers[]|ObjectCollection findByCreateTime(string $create_time) Return ChildCareUsers objects filtered by the create_time column
  * @method     ChildCareUsers[]|ObjectCollection findByThemeName(string $theme_name) Return ChildCareUsers objects filtered by the theme_name column
+ * @method     ChildCareUsers[]|ObjectCollection findByOccupation(string $occupation) Return ChildCareUsers objects filtered by the occupation column
+ * @method     ChildCareUsers[]|ObjectCollection findByTelNo(string $tel_no) Return ChildCareUsers objects filtered by the tel_no column
  * @method     ChildCareUsers[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -226,7 +236,7 @@ abstract class CareUsersQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT name, login_id, password, personell_nr, lockflag, role_id, exc, s_date, s_time, expire_date, expire_time, status, history, modify_id, modify_time, create_id, create_time, theme_name FROM care_users WHERE login_id = :p0';
+        $sql = 'SELECT name, login_id, password, personell_nr, lockflag, role_id, exc, s_date, s_time, expire_date, expire_time, status, history, modify_id, modify_time, create_id, create_time, theme_name, occupation, tel_no FROM care_users WHERE login_id = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_STR);
@@ -922,6 +932,56 @@ abstract class CareUsersQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(CareUsersTableMap::COL_THEME_NAME, $themeName, $comparison);
+    }
+
+    /**
+     * Filter the query on the occupation column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByOccupation('fooValue');   // WHERE occupation = 'fooValue'
+     * $query->filterByOccupation('%fooValue%', Criteria::LIKE); // WHERE occupation LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $occupation The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildCareUsersQuery The current query, for fluid interface
+     */
+    public function filterByOccupation($occupation = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($occupation)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(CareUsersTableMap::COL_OCCUPATION, $occupation, $comparison);
+    }
+
+    /**
+     * Filter the query on the tel_no column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByTelNo('fooValue');   // WHERE tel_no = 'fooValue'
+     * $query->filterByTelNo('%fooValue%', Criteria::LIKE); // WHERE tel_no LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $telNo The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildCareUsersQuery The current query, for fluid interface
+     */
+    public function filterByTelNo($telNo = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($telNo)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(CareUsersTableMap::COL_TEL_NO, $telNo, $comparison);
     }
 
     /**

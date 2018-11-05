@@ -6408,6 +6408,8 @@ CREATE TABLE `care_users`
     `create_id` VARCHAR(35) DEFAULT '' NOT NULL,
     `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `theme_name` VARCHAR(40) NOT NULL,
+    `occupation` VARCHAR(255),
+    `tel_no` VARCHAR(255),
     PRIMARY KEY (`login_id`),
     INDEX `login_id` (`login_id`)
 ) ENGINE=MyISAM;

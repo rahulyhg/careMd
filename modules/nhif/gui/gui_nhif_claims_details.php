@@ -675,7 +675,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                     <table class="table-lebel" >
                                         <tr>
                                             <td>Qualification:</td>
-                                            <td><strong><?php echo ($docUser)?$docUser['occupation']:"" ?></strong></td>
+                                            <td><strong><?php echo ($docUser)?ucfirst($docUser['Occupation']):"" ?></strong></td>
                                         </tr>
                                     </table>
                                 </td>
@@ -710,7 +710,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                     </table>
                                 </td>
                                 <td><table class="table-lebel" ><tr><td>Signature:</td> <td></td></tr></table></td>
-                                <td><table class="table-lebel" ><tr><td>Tel. No:</td> <td><strong><?= ($docUser)?$docUser['tel_no']:"" ?></strong></td></tr></table></td>
+                                <td><table class="table-lebel" ><tr><td>Tel. No:</td> <td><strong><?= ($docUser)?$docUser['TelNo']:"" ?></strong></td></tr></table></td>
                             </tr>
                         </table>
                     </td>
@@ -729,7 +729,7 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                     <td>
                         <table border="0" width="100%" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td><table class="table-lebel" ><tr><td>I certify that I provided the above service.  Name:</td> <td><?= $claims_details['doctor_name'] ?></td></tr></table></td>
+                                <td><table class="table-lebel" ><tr><td>I certify that I provided the above service.  Name:</td> <td><?= ucfirst($doctor) ?></td></tr></table></td>
                                 <td><table class="table-lebel" ><tr><td>Signature:</td> <td</td></tr></table></td>
                                 <td><table class="table-lebel" ><tr><td>Official Stamp:</td> <td></td></tr></table></td>
                             </tr>
