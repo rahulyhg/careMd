@@ -62,9 +62,9 @@ $TP_care_logo=createLogo($root_path,'care_logo.gif','0','right');
 
 $date_checker='onBlur="IsValidDate(this,\''.$date_format.'\')" onKeyUp="setDate(this,\''.$date_format.'\',\''.$lang.'\')"';
 
-$TP_date_end='<input type="text" name="date_end" size=10 maxlength=10 '.$date_checker.'>';
+$TP_date_end='<input type="text" class="datepicker1" name="date_end" size=10 maxlength=10 '.$date_checker.'>';
 $TP_href_des='<a href="javascript:show_calendar(\'sickform.date_end\',\''.$date_format.'\')">';
-$TP_date_start='<input type="text" name="date_start" size=10 maxlength=10 '.$date_checker.'>';
+$TP_date_start='<input type="text" name="date_start" class="datepicker" size=10 maxlength=10 '.$date_checker.'>';
 $TP_href_dss='<a href="javascript:show_calendar(\'sickform.date_start\',\''.$date_format.'\')">';
 $TP_date_confirm='<input type="text" name="date_confirm" size=10 maxlength=10 '.$date_checker.'>';
 $TP_href_dcs='<a href="javascript:show_calendar(\'sickform.date_confirm\',\''.$date_format.'\')">';

@@ -11,7 +11,6 @@ $(function() {
     $.getJSON("<?php echo $root_path ?>modules/sessionSetting.php", function(data) {
         
         timeOut = data.timeout;
-        console.log(data.timeout)
 
         $( document ).idleTimer( {
             timeout: timeOut, 
@@ -63,19 +62,6 @@ $(document).ready(function () {
         ]
     });
 
-     // var date_from = $('input[name="date_from"]'); //our date input has the name "date"
-     //    var date_to = $('input[name="date_to"]'); //our date input has the name "date"
-     //    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-     //    var options = {
-     //        format: 'yyyy-mm-dd',
-     //        container: container,
-     //        todayHighlight: true,
-     //        autoclose: true,
-     //        showDropdowns: true,
-     //    };
-     //    date_from.datepicker(options);
-     //    date_to.datepicker(options);
-
 });
 <?php endif ?>
 
@@ -109,6 +95,8 @@ function setSelectedOption(diagnosisType) {
     createCookie('DiagnosisType', diagnosisType, '10');
     window.location.href = window.diagnosisUrl;
 }
+
+
 </script>
 
 <div class="modal" id="diagnosisTypeModal" tabindex="-1" role="dialog">

@@ -227,6 +227,7 @@ $smarty->assign('breakfile', $breakfile);
 $smarty->assign('sWindowTitle', $LDManageAccess);
 
 # Buffer page output
+$smarty->assign('closeSysAdmin', TRUE);
 
 ob_start();
 ?>

@@ -60,6 +60,7 @@ $smarty->assign('breakfile', $breakfile);
 
 # Window bar title
 $smarty->assign('sWindowTitle', $LDListRoles);
+$smarty->assign('closeSysAdmin', TRUE);
 
 # Buffer page output
 

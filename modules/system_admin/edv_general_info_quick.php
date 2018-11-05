@@ -110,5 +110,8 @@ $smarty->assign('sMainBlockIncludeFile', 'system_admin/quick_informer.tpl');
 /**
  * show Template
  */
+
+$smarty->assign('closeSysAdmin', TRUE);
+
 $smarty->display('common/mainframe.tpl');
 ?>

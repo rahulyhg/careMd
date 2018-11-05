@@ -96,6 +96,7 @@ $smarty->assign('breakfile', $breakfile);
 
 # Window bar title
 $smarty->assign('sWindowTitle', $LDTimeOut);
+$smarty->assign('closeSysAdmin', TRUE);
 
 # Buffer page output
 

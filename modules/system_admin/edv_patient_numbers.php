@@ -11,6 +11,8 @@ error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('roots.php');
 require($root_path . 'include/inc_environment_global.php');
 
+// $smarty->assign('closeSysAdmin', TRUE);
+
 define('LANG_FILE', 'edp.php');
 define('NO_2LEVEL_CHK', 1);
 require_once($root_path . 'include/inc_front_chain_lang.php');
@@ -109,7 +111,7 @@ if (!$cfg['dhtml']) {
         <tr><td bgcolor="<?php echo $cfg['top_bgcolor']; ?>" valign='bottom' class="botline">
                 <FONT  COLOR="<?php echo $cfg['top_txtcolor']; ?>"  SIZE=+2  FACE="Arial"><STRONG>&nbsp;&nbsp;&nbsp;<?php echo $LDPatientNumber; ?></STRONG></FONT></td>
             <td bgcolor="<?php echo $cfg['top_bgcolor']; ?>" height="10" align='right' style='padding-top:5px;' class="botline">
-                <?php if ($cfg['dhtml']) echo'<a href="javascript:window.history.back()"><img ' . createLDImgSrc($root_path, 'back2.gif', '0') . '  style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?></a><a href="javascript:gethelp('dental.php')"><img <?php echo createLDImgSrc($root_path, 'hilfe-r.gif', '0') ?>  <?php if ($cfg['dhtml']) echo'style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?></a><a href="<?php echo $breakfile; ?>"><img <?php echo createLDImgSrc($root_path, 'close2.gif', '0') ?> alt="<?php echo $LDCloseAlt ?>"  <?php if ($cfg['dhtml']) echo'style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?></a></td>
+                <?php if ($cfg['dhtml']) echo'<a href="javascript:window.history.back()"><img ' . createLDImgSrc($root_path, 'back2.gif', '0') . '  style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?></a><a href="javascript:gethelp('dental.php')"><img <?php echo createLDImgSrc($root_path, 'hilfe-r.gif', '0') ?>  <?php if ($cfg['dhtml']) echo'style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?></a><a href="javascript:top.close()"><img <?php echo createLDImgSrc($root_path, 'close2.gif', '0') ?> alt="<?php echo $LDCloseAlt ?>"  <?php if ($cfg['dhtml']) echo'style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?></a></td>
         </tr>
 
         <tr  valign=top>

@@ -139,6 +139,7 @@ $smarty->assign('breakfile', $breakfile);
 
 # Window bar title
 $smarty->assign('sWindowTitle', $LDCurrencyAdmin);
+$smarty->assign('closeSysAdmin', TRUE);
 
 # Body OnLoad Javascript
 if (!$item_no)

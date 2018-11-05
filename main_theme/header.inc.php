@@ -385,7 +385,7 @@ $userNavigations = array_unique($userNavigationMenus, SORT_REGULAR);
 
             <?php elseif ($menu['name'] == "System Admin"): ?>
             <li class="nav-item <?php if($PageName == "System Admin") echo 'active'; ?> ">
-              <a class="nav-link" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('System Admin')">
+              <a class="nav-link" target="_blank" href="<?php echo $menu['url'] ?>" onclick="SetSelectedPage('System Admin')">
                 <i class="material-icons colorOne">settings</i>
                 <p class="colorOne"><?php echo $menu['name'] ?></p>
               </a>

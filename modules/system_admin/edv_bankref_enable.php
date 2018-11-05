@@ -9,7 +9,7 @@ global $db;
 $debug = false;
 ($debug) ? $db->debug = true : $db->debug = FALSE;
 
-if ($_REQUEST['change'] == true) {
+if (@$_REQUEST['change'] && $_REQUEST['change'] == true) {
     $sql = 'UPDATE care_config_global SET `value` = \'' . $_REQUEST['bankref'] . '\', `modify_time` = NOW() WHERE CONVERT(`care_config_global`.`type` USING utf8) = \'enable_bank_ref\' LIMIT 1;';
     $db->Execute($sql);
 }
@@ -81,7 +81,7 @@ if ($GLOBAL_CONFIG['enable_bank_ref'] == "") {
                                 <td bgcolor="#99ccff" align=right>
                                     <a  href="edv_generally_management.php?sid=<?php echo $sid . "&lang=" . $lang; ?>73&ntid=false"><img src="../../gui/img/control/blue_aqua/en/en_back2.gif" border=0 width="76" height="21" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)" ></a><a
                                         href="javascript:gethelp('edp.php','access','')"><img src="../../gui/img/control/blue_aqua/en/en_hilfe-r.gif" border=0 width="76" height="21" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)"></a><a
-                                        href="edv-system-admi-welcome.php?sid=<?php echo $sid . "&lang=" . $lang; ?>&ntid=false" ><img src="../../gui/img/control/blue_aqua/en/en_close2.gif" border=0 width="76" height="21" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)"></a>     
+                                        href="javascript:window.top.close()" ><img src="../../gui/img/control/blue_aqua/en/en_close2.gif" border=0 width="76" height="21" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)"></a>     
                                 </td>
                             </tr>
 

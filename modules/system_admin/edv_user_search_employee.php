@@ -96,6 +96,7 @@ $smarty->assign('sWindowTitle', "$LDPersonellData :: $LDSearch");
 
 # Body onLoad Javascript
 $smarty->assign('sOnLoadJs', 'onLoad="document.searchform.searchkey.select()"');
+$smarty->assign('closeSysAdmin', TRUE);
 
 # Buffer page output
 
