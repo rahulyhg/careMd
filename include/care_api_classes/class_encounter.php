@@ -2658,7 +2658,8 @@ class Encounter extends Notes {
         $this->sql.= "history =" . $this->ConcatHistory("Update (discharged): " . date('Y-m-d H:i:s') . " " . $_SESSION['sess_user_name'] . "\n") . ",";
         $this->sql.=" modify_id='" . $_SESSION['sess_user_name'] . "'
 							WHERE encounter_nr=$enr AND type_nr IN ($loc_types) AND date_to ='$dbf_nodate'";
-        //echo $this->sql;
+        // echo $this->sql;
+        // die();
         if ($this->Transact($this->sql)) {
             return true;
         } else {
