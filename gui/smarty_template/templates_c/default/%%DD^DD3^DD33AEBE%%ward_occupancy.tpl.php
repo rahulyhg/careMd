@@ -16,6 +16,8 @@
 <div style="width:100%; padding:3px; text-align:center; background:lime; border-bottom:5px solid white;" class="adm_item">
     <input type='button' value="Refresh Patient List" name = 'btn' class="mimHover" onclick="window.location.href = '<?php echo $this->_tpl_vars['sReloadBtn']; ?>
 '" >
+    <input type="button" value="Un Discharge Patient" class="mimHover" onClick="showDischargedPatients()">
+
 </div>
 <table cellspacing="0" cellpadding="0" width="100%">
     <tbody>
@@ -33,7 +35,10 @@ unset($_smarty_tpl_vars);
 
 <div style="width:100%; padding:3px; text-align:center; background:lime; border-top:5px solid white;" class="adm_item">
     <input type='button' value="Refresh Patient List" name = 'btn' class="mimHover" onclick="window.location.href = '<?php echo $this->_tpl_vars['sReloadBtn']; ?>
+
 '" >
+    <input type="button" value="Un Discharge Patient" class="mimHover" onClick="showDischargedPatients()">
+
 </div>
 <p>
     <?php echo $this->_tpl_vars['pDiagnosis']; ?>
@@ -55,4 +60,4 @@ unset($_smarty_tpl_vars);
     <br>
     <?php echo $this->_tpl_vars['sOpenWardMngmt']; ?>
 
-</p>
+</p>

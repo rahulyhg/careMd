@@ -504,10 +504,16 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                                             <tr>
                                                                 <td>No. of Days</td>
                                                                  <td><strong><?php
-
+                                                                if ($claims_details['encounter_class_nr'] == 1) {
+                                                                    
+                                                                 }
                                                                 $encounter = strtotime($claims_details['encounter_date']);
                                                                 $datediff = strtotime($claims_details['discharge_date']) - $encounter;
-                                                                echo round($datediff / (60 * 60 * 24))+1;
+                                                                $days = round($datediff / (60 * 60 * 24))+1;
+                                                                if ($days == 0) {
+                                                                    $days = 1;
+                                                                }
+                                                                echo $days;
                                                                 ?></strong></td>
                                                             </tr>
                                                         </table>
