@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2017-07-20 18:37:13
+<?php /* Smarty version 2.6.22, created on 2018-11-06 15:50:08
          compiled from nursing/discharge_patient_form.tpl */ ?>
 
 <ul>

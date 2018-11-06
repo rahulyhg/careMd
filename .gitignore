@@ -1,4 +1,5 @@
 /vendor
+/propel
 composer.lock
 
 include/inc_init_main.php

@@ -10,7 +10,7 @@ use  CareMd\CareMd\CareEncounterLocationQuery;
 $encounterNr = $_GET['encounterNr'];
 
 $in_ward = 0;
-$in_dept = 1;
+$in_dept = 0;
 
 $patientRow = CareEncounterQuery::create()->filterByEncounterNr($encounterNr)->findOne()->toArray();
 

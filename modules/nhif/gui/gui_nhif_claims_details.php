@@ -482,13 +482,14 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                        
                                         ?>
                                         <table cellpadding=5 cellspacing=0 border=1 height="100%" style="width:100% !important;">
+                                           
+                                                <?php if($claims_details['encounter_class_nr'] == 1): ?>
                                             <THEAD>
                                                 <tr style="height:10mm;">
                                                     <th colspan="2" class="center">Admission (Date)</th>
                                                 </tr>
                                             </THEAD>
                                             <tbody>
-
                                                <tr>
                                                     <td colspan="2">
                                                         <table class="table-lebel" >
@@ -504,23 +505,31 @@ $claims_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
                                                             <tr>
                                                                 <td>No. of Days</td>
                                                                  <td><strong><?php
-
+                                                                
                                                                 $encounter = strtotime($claims_details['encounter_date']);
                                                                 $datediff = strtotime($claims_details['discharge_date']) - $encounter;
-                                                                echo round($datediff / (60 * 60 * 24))+1;
+                                                                $days = round($datediff / (60 * 60 * 24))+1;
+                                                                if ($days == 0) {
+                                                                    $days = 1;
+                                                                }
+                                                                echo $days;
                                                                 ?></strong></td>
                                                             </tr>
                                                         </table>
                                                     </td>
-                                               </tr>
+                                                </tr>
+                                                
                                                 <tr>
                                                     <td>Costs</td>
                                                     <td class="right"><?php echo $displayBedAmount ?></td>
                                                 </tr>
-                                               <tr class="" >
+                                                  <tr class="" >
                                                     <th  class="center">SUB TOTAL</th>
                                                     <th class="right shade-light"><strong><?php echo $displayBedAmount ?></strong></th>                                                
                                                 </tr>
+                                                 <?php endif; ?>
+                                               
+                                             
                                             </tbody>
                                         </table>
                                     </td>
