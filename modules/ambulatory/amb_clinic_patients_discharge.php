@@ -3,9 +3,6 @@ error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
 
-
-
-$pageName = "Discharge";
 /**
  * CARE2X Integrated Hospital Information System version deployment 1.1 (mysql) 2004-01-11
  * GNU General Public License
@@ -31,6 +28,7 @@ $curpath .= "://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
 
 
 $local_user = 'ck_pflege_user';
+define('NO_2LEVEL_CHK', 1);
 require_once($root_path . 'include/inc_front_chain_lang.php');
 
 
