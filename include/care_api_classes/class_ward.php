@@ -961,7 +961,8 @@ class Ward extends Encounter {
 					LEFT JOIN $this->tb_person AS p ON e.pid=p.pid
 					LEFT JOIN $this->tb_ward AS w ON e.current_ward_nr=w.nr
 				WHERE e.encounter_class_nr='1' AND  e.is_discharged IN ('',0) $cond AND  in_ward IN ('',0)";
-        //echo 'waiting list: '.$this->sql;
+        // echo 'waiting list: '.$this->sql;
+        // die();
 
         if ($this->res['_cwil'] = $db->Execute($this->sql)) {
             if ($this->rec_count = $this->res['_cwil']->RecordCount()) {
@@ -972,6 +973,7 @@ class Ward extends Encounter {
         } else {
             return false;
         }
+        
     }
 
     /**

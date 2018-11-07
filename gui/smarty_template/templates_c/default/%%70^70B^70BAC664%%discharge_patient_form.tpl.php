@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2018-11-06 15:50:08
+<?php /* Smarty version 2.6.22, created on 2018-11-07 11:55:08
          compiled from nursing/discharge_patient_form.tpl */ ?>
 
 <ul>
@@ -25,7 +25,7 @@
             </tr>
             <td class="adm_item"><?php echo $this->_tpl_vars['LDDate']; ?>
 :</td>
-            <td class="adm_input">
+            <td class="adm_input datepicker">
                 <?php if ($this->_tpl_vars['released']): ?>
                 <?php echo $this->_tpl_vars['x_date']; ?>
 

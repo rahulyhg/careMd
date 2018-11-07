@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2017-07-16 21:08:29
+<?php /* Smarty version 2.6.22, created on 2018-11-07 12:07:47
          compiled from nursing/ward_occupancy.tpl */ ?>
 
 <?php echo $this->_tpl_vars['sWarningPrompt']; ?>
@@ -35,10 +35,9 @@ unset($_smarty_tpl_vars);
 
 <div style="width:100%; padding:3px; text-align:center; background:lime; border-top:5px solid white;" class="adm_item">
     <input type='button' value="Refresh Patient List" name = 'btn' class="mimHover" onclick="window.location.href = '<?php echo $this->_tpl_vars['sReloadBtn']; ?>
-
 '" >
     <input type="button" value="Un Discharge Patient" class="mimHover" onClick="showDischargedPatients()">
-
+    
 </div>
 <p>
     <?php echo $this->_tpl_vars['pDiagnosis']; ?>
@@ -60,4 +59,4 @@ unset($_smarty_tpl_vars);
     <br>
     <?php echo $this->_tpl_vars['sOpenWardMngmt']; ?>
 
-</p>
+</p>

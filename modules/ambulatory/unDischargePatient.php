@@ -15,7 +15,7 @@ $in_dept = 1;
 $patientRow = CareEncounterQuery::create()->filterByEncounterNr($encounterNr)->findOne()->toArray();
 
 if ($patientRow['EncounterClassNr'] == 1) {
-	$in_ward = 1;
+	$in_ward = 0;
 }else{
 	$in_dept = 1;
 }
