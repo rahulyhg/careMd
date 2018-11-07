@@ -44,7 +44,7 @@ $(function() {
         mode: 'date',
         format: 'dd/MM/yyyy'
     });
-<?php if($_COOKIE['PageName'] == "NHIF Claims" || $_COOKIE['PageName'] == "Discharge" || $_COOKIE['PageName'] == "System Admin"): ?>
+<?php if($_COOKIE['PageName'] == "NHIF Claims" || $_COOKIE['PageName'] == "Discharge" || $_COOKIE['PageName'] == "System Admin" || $_COOKIE['PageName'] == "Inpatient"  || $_COOKIE['PageName'] == "Ambulatory" ): ?>
 $(document).ready(function () {
     $('.datatable').DataTable(
     {

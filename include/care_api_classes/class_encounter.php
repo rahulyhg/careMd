@@ -2741,6 +2741,8 @@ class Encounter extends Notes {
      * @return boolean
      */
     function Discharge($enr, $d_type_nr, $date = '', $time = '') {
+         // echo "<pre>"; print_r($enr);echo "</pre>";
+         // die();
         if ($this->_discharge($enr, "'1','2','3','4','5','6'", $d_type_nr, $date, $time)) {
             if ($this->setIsDischarged($enr, $date, $time)) {
                 return true;
@@ -2750,6 +2752,7 @@ class Encounter extends Notes {
         } else {
             return FALSE;
         }
+        
     }
 
     /**

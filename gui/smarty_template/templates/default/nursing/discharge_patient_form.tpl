@@ -18,7 +18,7 @@
                 <td class="adm_input">{{$sLocation}}</td>
             </tr>
             <td class="adm_item">{{$LDDate}}:</td>
-            <td class="adm_input">
+            <td class="adm_input datepicker">
                 {{if $released}}
                 {{$x_date}}
                 {{else}}
