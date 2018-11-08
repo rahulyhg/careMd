@@ -185,7 +185,9 @@ if (($mode == '') || ($mode == 'fresh')) {
     }
     #### End of routine to fetch doctors on duty
 }
+$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
+$_SESSION['PatientListUrl'] = $actual_link;
 
 # load config options
 include_once($root_path . 'include/care_api_classes/class_multi.php');
