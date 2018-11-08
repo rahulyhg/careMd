@@ -536,5 +536,6 @@ require_once($root_path . 'main_theme/header.inc.php');
 require_once($root_path . 'main_theme/topHeader.inc.php');
 
 $smarty->display('common/mainframe.tpl');
+$_SESSION['backToPatientList'] = false;
 ?>
  <?php require_once($root_path . 'main_theme/footer.inc.php'); ?>
