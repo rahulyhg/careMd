@@ -103,7 +103,10 @@ class Nhif_claims extends Nhif {
 
     public function GetDocUser($name)
     {
-        $user = CareUsersQuery::create()->filterbyLoginId($name)->findOne()->toArray();
+        $user = CareUsersQuery::create()->filterbyLoginId($name)->limit(1)->find()->toArray();
+        if (@$user) {
+            $user = $user[0];
+        }
         return $user;
 
     }
