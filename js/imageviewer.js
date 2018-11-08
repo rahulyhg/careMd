@@ -490,6 +490,7 @@
 
                 //assign event on close button
                 container.find('.iv-close').on('click' + eventSuffix, function () {
+                    window.history.go(-1);
                     viewer.hide();
                 });
             }

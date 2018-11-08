@@ -71,19 +71,28 @@ array_push($images, $imgpath);  //Add image path to array
     <style>
         .gallery-items{
             float: left;
-            height: 150px;
+            height: 200px;
         }
     </style>
 
 </HEAD>
 <BODY topmargin=0 leftmargin=0  marginwidth=0 marginheight=0><font face="Verdana, Arial" size=1><?php
+
+
+
     if (isset($pop_only) && $pop_only) {
+
         ?>
-        <a href="javascript:window.close()">&nbsp;>> <?php echo $LDClose ?> <<</a>
+        <a href="javascript:history.back()">&nbsp;>> <?php echo $LDClose ?> <<</a>
         <?php
     } else {
+
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+
         ?>
-        <a href="upload.php<?php echo URL_APPEND . "&saved=1&mode=show&pid=$pid&nr=$img_nr"; ?>"><font size=1>&nbsp;<< <?php echo $LDBack ?></font></a>
+        <a href="javascript:history.back()"><font size=1>&nbsp;<< <?php echo $LDBack ?></font></a>
         <?php
     }
     ?></font>

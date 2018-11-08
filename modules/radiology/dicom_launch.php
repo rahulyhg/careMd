@@ -100,8 +100,11 @@ if ($NUM) {
         <?php
     } else {
         if (isset($saved) && $saved) {
+            require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
             ?>
-            <a href="upload.php<?php echo URL_APPEND . "&saved=1&mode=show&pid=$pid&nr=$img_nr"; ?>"><font size=1>&nbsp;<< <?php echo $LDBack ?></font></a>
+            <a href="javascript:history.back()"><font size=1>&nbsp;<< <?php echo $LDBack ?></font></a>
             <?php
         } else {
             ?>
