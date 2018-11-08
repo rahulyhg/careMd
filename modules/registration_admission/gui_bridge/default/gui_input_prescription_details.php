@@ -200,12 +200,12 @@ for ($i = 0; $i < count($item_array); $i++) {
     if ($caption_dosage == 'Single dose(per intake)') {
         if ($sub_class == 'tabs' || $sub_class == 'caps' || $sub_class == 'capsules' || $sub_class == 'injections') {
 
-            echo '<select id="dosage' . $i . '" name="arr_dosage[' . $i . ']" onChange=reCalculate(total_dosage' . $i . ',dosage' . $i . ',timesperday' . $i . ',days' . $i . ')>';
+            echo '<select class="presptionSelect" class="presptionSelect" id="dosage' . $i . '" name="arr_dosage[' . $i . ']" onChange=reCalculate(total_dosage' . $i . ',dosage' . $i . ',timesperday' . $i . ',days' . $i . ')>';
         } else
 
         if ($sub_class == 'syrups' || $sub_class == 'suspensions') {
 
-            echo '<select id="dosage' . $i . '" name="arr_dosage[' . $i . ']"> ';
+            echo '<select class="presptionSelect" class="presptionSelect" id="dosage' . $i . '" name="arr_dosage[' . $i . ']"> ';
         } else
 
         if ($sub_class == 'injections1111') {
@@ -278,10 +278,10 @@ for ($i = 0; $i < count($item_array); $i++) {
 
                         if ($sub_class == 'tabs' || $sub_class == 'caps' || $sub_class == 'capsules' || $sub_class == 'injections') {
 
-                            echo '<select id="timesperday' . $i . '" name="arr_timesperday[' . $i . ']" onChange=reCalculate(total_dosage' . $i . ',dosage' . $i . ',timesperday' . $i . ',days' . $i . ')>';
+                            echo '<select class="presptionSelect" class="presptionSelect" id="timesperday' . $i . '" name="arr_timesperday[' . $i . ']" onChange=reCalculate(total_dosage' . $i . ',dosage' . $i . ',timesperday' . $i . ',days' . $i . ')>';
                         } else {
 
-                            echo '<select id="timesperday' . $i . '" name="arr_timesperday[' . $i . ']">';
+                            echo '<select class="presptionSelect" class="presptionSelect" id="timesperday' . $i . '" name="arr_timesperday[' . $i . ']">';
                         }
 
                         $timesperdayUnits = array('', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10');
@@ -316,10 +316,10 @@ for ($i = 0; $i < count($item_array); $i++) {
 
                         if ($sub_class == 'tabs' || $sub_class == 'caps' || $sub_class == 'capsules' || $sub_class == 'injections') {
 
-                            echo '<select id="days' . $i . '" name="arr_days[' . $i . ']" onChange=reCalculate(total_dosage' . $i . ',dosage' . $i . ',timesperday' . $i . ',days' . $i . ')>';
+                            echo '<select class="presptionSelect" id="days' . $i . '" name="arr_days[' . $i . ']" onChange=reCalculate(total_dosage' . $i . ',dosage' . $i . ',timesperday' . $i . ',days' . $i . ')>';
                         } else {
 
-                            echo '<select id="days' . $i . '" name="arr_days[' . $i . ']">';
+                            echo '<select class="presptionSelect" id="days' . $i . '" name="arr_days[' . $i . ']">';
                         }
 
                         $dayUnits[0] = '';
@@ -361,7 +361,7 @@ for ($i = 0; $i < count($item_array); $i++) {
                             echo '<input type="text" id="total_dosage' . $i . '" name="arr_total_dosage[' . $i . ']" size=5 readonly=true>';
                         } else {
 
-                            echo '<select id="total_dosage' . $i . '" name="arr_total_dosage[' . $i . ']">';
+                            echo '<select class="presptionSelect" id="total_dosage' . $i . '" name="arr_total_dosage[' . $i . ']">';
 
 
                             $totalDoseUnits[0] = '';
@@ -388,7 +388,7 @@ for ($i = 0; $i < count($item_array); $i++) {
 
                         if ($caption_dosage == 'Total Amount/Items') {
 
-                            echo '<select id="total_dosage' . $i . '" name="arr_total_dosage[' . $i . ']">';
+                            echo '<select class="presptionSelect" id="total_dosage' . $i . '" name="arr_total_dosage[' . $i . ']">';
 
 
                             $totalDoseUnits[0] = '';

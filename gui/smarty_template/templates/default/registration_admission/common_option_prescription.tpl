@@ -1,6 +1,12 @@
 {{* Frame template for displaying admission data *}}
 {{* Used by  *}}
 {{* Elpidio Latorilla 2004-06-07 *}}
+
+<style>
+    .presptionSelect{
+        width: 80px;
+    }
+</style>
 <table width="100%" cellspacing="0" cellpadding="0" border="1">
     <tbody>
         <tr>
