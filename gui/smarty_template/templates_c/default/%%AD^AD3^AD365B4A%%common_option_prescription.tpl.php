@@ -1,5 +1,11 @@
-<?php /* Smarty version 2.6.22, created on 2018-10-24 13:07:01
+<?php /* Smarty version 2.6.22, created on 2018-11-08 15:33:24
          compiled from registration_admission/common_option_prescription.tpl */ ?>
+
+<style>
+    .presptionSelect{
+        width: 80px;
+    }
+</style>
 <table width="100%" cellspacing="0" cellpadding="0" border="1">
     <tbody>
         <tr>

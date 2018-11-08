@@ -7,7 +7,12 @@ $returnfile = $_SESSION['sess_file_return'];
 $_SESSION['sess_file_return'] = $thisfile;
 
 if (empty($externalcall)) {
-    $breakfile = 'javascript:window.close()';
+
+    if ($_SESSION['ChartFolder']) {
+        $breakfile = $_SESSION['ChartFolder'];
+    }else{
+        $breakfile = 'javascript:history.back()';    
+    }
 } else
 
 if ($_COOKIE["ck_login_logged" . $sid]) {
@@ -15,8 +20,7 @@ if ($_COOKIE["ck_login_logged" . $sid]) {
         $breakfile = $root_path . "modules/nursing/nursing-station-patientdaten.php" . URL_APPEND .
                 "&edit=$edit&station=$station&pn=$pn";
     } else {
-        $breakfile = $root_path . "main/startframe.php" . URL_APPEND .
-                "&edit=$edit&station=$station&pn=$pn";
+        $breakfile = $root_path . "javascript:history.back()";
     }
 } else {
     $breakfile = $breakfile . URL_APPEND . "&target=entry";
@@ -454,9 +458,13 @@ $sTemp = ob_get_contents();
 ob_end_clean();
 
 $smarty->assign('sBottomControls', $sTemp);
+$bottomLink = "javascript:window.history.back();";
+if (@$_SESSION['ChartFolder']) {
+    $bottomLink = $_SESSION['ChartFolder'];
+}
 
 if (empty($externalcall)) {
-    $smarty->assign('pbBottomClose', '<a href="javascript:window.history.back();"><img ' . createLDImgSrc($root_path, 'close2.gif', '0') . '  title="' . $LDCancel . '"  align="absmiddle"></a>');
+    $smarty->assign('pbBottomClose', '<a href="'.$bottomLink.'"><img ' . createLDImgSrc($root_path, 'close2.gif', '0') . '  title="' . $LDCancel . '"  align="absmiddle"></a>');
 }
 
 $smarty->assign('sMainBlockIncludeFile', 'registration_admission/common_option_prescription.tpl');
