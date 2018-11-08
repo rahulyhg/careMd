@@ -277,7 +277,7 @@ if ($mode == 'show') {
             <?php
         }
         ?>
-        <td <?php echo $tbg; ?>><nobr><?php echo "$LDViewInWindow ($LDSingleImage)" ?></nobr></td>
+        <!-- <td <?php echo $tbg; ?>><nobr><?php echo "$LDViewInWindow ($LDSingleImage)" ?></nobr></td> -->
         </tr>
         <?php
         $i = 1;
@@ -291,15 +291,14 @@ if ($mode == 'show') {
             if (!$pop_only)
                 echo '
     			<td class="v12" align=center><a href="dicom_launch_single.php' . URL_APPEND . '&pid=' . $pid . '&img_nr=' . $nr . '&fn=' . $v . '" title="' . $LDViewInFrame . '"><img ' . $img_torso . '></a></td>';
-            echo '
-    			<td class="v12" align=center><a href="javascript:popDicomSingle(\'' . $v . '\')" title="' . $LDFullScreen . '"><img ' . $img_torsowin . '></a></td>
+            echo  '
   			</tr>
   			';
             $i++;
         }
         ?>
         </table>
-
+<!-- <td class="v12" align=center><a href="javascript:popDicomSingle(\'' . $v . '\')" title="' . $LDFullScreen . '"><img ' . $img_torsowin . '></a></td> -->
         <?php
     }else {
         ?>
