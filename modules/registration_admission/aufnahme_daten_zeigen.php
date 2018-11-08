@@ -35,10 +35,19 @@ $insurance_obj = new Insurance;
 
 $thisfile = basename($_SERVER['PHP_SELF']);
 
-if ($_COOKIE['ck_login_logged' . $sid])
-    $breakfile = $root_path . 'modules/news/start_page.php' . URL_APPEND;
-else
+if ($_COOKIE['ck_login_logged' . $sid]){
+    if ($_SESSION['backToPatientList'] && $_SESSION['PatientListUrl']) {
+        
+        $breakfile = $_SESSION['PatientListUrl'];    
+       
+    }else{
+        
+        $breakfile = "javascript:history.back()";    
+    }
+}
+else{
     $breakfile = 'aufnahme_pass.php' . URL_APPEND . '&target=entry';
+}
 
 //$breakfile='aufnahme_pass.php'.URL_APPEND;
 

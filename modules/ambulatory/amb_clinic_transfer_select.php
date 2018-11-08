@@ -17,6 +17,9 @@ $local_user = 'ck_pflege_user';
 require_once($root_path . 'include/inc_front_chain_lang.php');
 
 require_once($root_path . 'include/care_api_classes/class_department.php');
+
+$_SESSION['backToPatientList'] = TRUE;
+
 ## Load all wards info
 $dept_obj = new Department;
 $allmed = &$dept_obj->getAllMedical();
