@@ -5,7 +5,7 @@ require($root_path . 'include/inc_environment_global.php');
 include_once($root_path . 'include/care_api_classes/class_person.php');
 $img_vema = 'check1.gif';
 $img_kosa = 'delete2.gif';
-$pid = $_REQUEST['pid'];
+$pid = @($_REQUEST['pid'])?$_REQUEST['pid']:0;
 $file_nr = $_REQUEST['file_nr'];
 
 $person_obj = new Person($pid);

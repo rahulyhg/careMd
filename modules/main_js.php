@@ -30,7 +30,7 @@ $(function() {
 
     $('#datepicker').dateTimePicker({
         mode: 'date',
-        format: 'dd/MM/yyyy'
+        format: 'dd/MM/yyyy',
     });
 
 
@@ -125,6 +125,14 @@ function unDischargePatient(encounterNr, name) {
 
    
 
+}
+
+function showDatepicker(){
+    $('#datepicker10').dateTimePicker({
+        mode: 'date',
+        format: 'dd/MM/yyyy',
+        constrainInput: false
+    });
 }
 
 </script>

@@ -44,8 +44,6 @@ require('./gui_bridge/default/gui_std_tags.php');
 echo StdHeader();
 echo setCharSet();
 
-$pageName = "Patient";
-
 ?>
 
 <TITLE><?php echo $LDPatientRegister ?></TITLE>
