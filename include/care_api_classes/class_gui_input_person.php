@@ -1018,7 +1018,7 @@ return false;
                             </td>
                             <td class="reg_input">
                                 <FONT SIZE=-1  FACE="Arial">
-                                <input name="date_birth" id="datepicker" type="text" size="15" maxlength=10 value="<?php
+                                <input name="date_birth" type="text" size="15" maxlength=10 value="<?php
                                 if ($date_birth) {
                                     if ($mode == 'save' || $error || $error_person_exists)
                                         echo $date_birth;
@@ -1034,8 +1034,7 @@ return false;
                                        onFocus="this.select();"
                                        onBlur="IsValidDate(this, '<?php echo $date_format ?>')"
                                        onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>');">
-                                <a href="javascript:show_calendar('aufnahmeform.date_birth','<?php echo $date_format ?>')">
-                                   <!--  <img <?php //echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>> --></a>
+                                <a href="javascript:show_calendar('aufnahmeform.date_birth','<?php echo $date_format ?>')"> <i class="fa fa-calendar"></i> </a>
 
 
                                 <font size=1>[
