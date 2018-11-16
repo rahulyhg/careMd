@@ -1,12 +1,16 @@
 <?php
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
-$pageName = "Inpatient";
 
 if (empty($_SESSION['sess_login_userid'])) {
     header("location: " . $root_path . "?is_logged_out=1");
     exit;
 }
+
+$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+$_SESSION['patientList'] = $actual_link;
+
 
 require_once($root_path . 'main_theme/head.inc.php');
 require_once($root_path . 'main_theme/header.inc.php');

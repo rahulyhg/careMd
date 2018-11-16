@@ -9,8 +9,6 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 
 $_SESSION['ChartFolder'] = $actual_link;
 
-$pageName = "Inpatient";
-
 
 $lang_tables[] = 'departments.php';
 $lang_tables[] = 'pharmacy.php';
@@ -281,8 +279,9 @@ $smarty->assign('pbBack', FALSE);
 # href for help button
 $smarty->assign('pbHelp', "javascript:gethelp('patient_charts.php','Patient&acute;s chart folder :: Overview','','$station','Main folder')");
 
+$backUrl = @($_SESSION['patientList'])? $_SESSION['patientList']:"javascript:history.back()";
 # href for close button
-$smarty->assign('breakfile', 'javascript:history.back()');
+$smarty->assign('breakfile', $backUrl);
 
 # Window bar title
 $smarty->assign('sWindowTitle', ucfirst($result[name_last]) . "," . ucwords($result[name_first]) . " " . $result[date_birth] . " " . $LDPatDataFolder);

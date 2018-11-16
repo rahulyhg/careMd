@@ -18,7 +18,8 @@ require_once($root_path . 'include/inc_front_chain_lang.php');
 require($root_path . 'include/inc_2level_reset.php');
 
 $thisfile = basename($_SERVER['PHP_SELF']);
-$breakfile = $root_path . 'main/startframe.php' . URL_APPEND;
+// $breakfile = $root_path . 'main/startframe.php' . URL_APPEND;
+$breakfile = 'javascript:history.back()';
 $_SESSION['sess_path_referer'] = $top_dir . $thisfile;
 
 # Start Smarty templating here
