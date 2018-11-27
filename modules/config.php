@@ -1,7 +1,6 @@
 <?php
-
-require_once("../include/inc_init_main.php");
-
+require_once("./roots.php");
+require_once($root_path."include/inc_init_main.php");
 $serviceContainer = \Propel\Runtime\Propel::getServiceContainer();
 $serviceContainer->checkVersion('2.0.0-dev');
 $serviceContainer->setAdapterClass('default', 'mysql');
