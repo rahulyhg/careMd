@@ -81,7 +81,6 @@ $userId = $_SESSION['sess_login_userid'];
 
 $user = CareUsersQuery::create()->filterByLoginId($userId)->findOne()->toArray();
 $roleId = $user['RoleId'];
-// $roleId = 13;
 
 $userRole = CareUserRolesQuery::create()->filterByRoleId($roleId)->findOne()->toArray();
 $themeName = $user['ThemeName'];
@@ -93,6 +92,7 @@ $userPermissions = str_replace('_a_1_', '', $userPermissions);
 $userPermissions = str_replace('_a_2_', '', $userPermissions);
 $userPermissions = str_replace('_a_3_', '', $userPermissions);
 $userPermissions = str_replace('_a_4_', '', $userPermissions);
+
 
 if ($userPermissions[0] == "System_Admin" || $userPermissions[0] == "_a_0_all " || $userPermissions[0] == "_a_0_all")  {
   $userNavigationMenus = $navigationMenus;
@@ -171,6 +171,14 @@ if ($userPermissions[0] == "System_Admin" || $userPermissions[0] == "_a_0_all " 
      if ($navigationMenu['name'] == "Pharmacy") {
       foreach ($userPermissions as $userPermission) { 
         if ($userPermission == "pharmadbadmin" || $userPermission == "pharmareception" || $userPermission == "pharmaorder" || $userPermission == "pharmaread")  {
+          array_push($userNavigationMenus, $navigationMenu);
+        }
+      }
+    }
+
+    if ($navigationMenu['name'] == "Laboratories") {
+      foreach ($userPermissions as $userPermission) { 
+        if ($userPermission == "labresultsreadwrite" || $userPermission == "labrequest" || $userPermission == "labresultswrite" || $userPermission == "labresultsread" || $userPermission == "labbloodwrite" || $userPermission == "labbloodread" )  {
           array_push($userNavigationMenus, $navigationMenu);
         }
       }
