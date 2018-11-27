@@ -5,9 +5,6 @@ require($root_path . 'include/inc_environment_global.php');
 require($root_path . 'language/en/lang_en_date_time.php');
 require($root_path . 'include/inc_date_format_functions.php');
 
-$pageName = "Reporting";
-
-
 
 //BLOCK PAYMENT IS WRITTEN BY ISRAEL PASCAL
 //ELCT ICT UNIT 
@@ -18,6 +15,44 @@ $pageName = "Reporting";
 require_once($root_path . 'main_theme/head.inc.php');
 require_once($root_path . 'main_theme/header.inc.php');
 require_once($root_path . 'main_theme/topHeader.inc.php');
+  
+require('./roots.php');
+require_once $root_path.'vendor/autoload.php';
+require_once $root_path.'generated-conf/config.php';
+
+use  CareMd\CareMd\CareUsersQuery;
+use  CareMd\CareMd\CareUserRolesQuery;
+
+$userId = $_SESSION['sess_login_userid'];
+
+$user = CareUsersQuery::create()->filterByLoginId($userId)->findOne()->toArray();
+$roleId = $user['RoleId'];
+// $roleId = 13;
+
+$userRole = CareUserRolesQuery::create()->filterByRoleId($roleId)->findOne()->toArray();
+$themeName = $user['ThemeName'];
+
+$userPermissions = explode(" ", $userRole['Permission']);
+
+
+$userPermissions = str_replace('_a_1_', '', $userPermissions);
+$userPermissions = str_replace('_a_2_', '', $userPermissions);
+$userPermissions = str_replace('_a_3_', '', $userPermissions);
+$userPermissions = str_replace('_a_4_', '', $userPermissions);
+
+$showFinancialReport = false;
+
+foreach ($userPermissions as $permission) {
+
+    if ($permission == "financialreportingread" || $permission == "allreportingread" ) {
+        $showFinancialReport = true;
+    }
+}
+
+
+if ($userPermissions[0] == "System_Admin" || $userPermissions[0] == "_a_0_all " || $userPermissions[0] == "_a_0_all")  {
+    $showFinancialReport = true;
+}
  ?>
 
 <script language="javascript" src="../../js/datetimepicker.js"></script>
@@ -41,7 +76,14 @@ require_once($root_path . 'main_theme/topHeader.inc.php');
                         </td>
                     </tr>
                 </table>
- <?php require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
+ <?php 
+ require_once($root_path . 'main_theme/reportingNav.inc.php');
+  if (!$showFinancialReport) {
+    echo "<h2>You don't have access to access this report.</h2>";
+    die();
+} 
+
+  ?>
                 
                 <p>&nbsp; </p>
 

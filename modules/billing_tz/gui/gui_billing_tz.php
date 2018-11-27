@@ -22,22 +22,31 @@
                 <TD valign="middle">
                     <TABLE cellSpacing=1 cellPadding=3 width=600 valign="middle">
                         <TBODY class="submenu" valign="middle">
+
+                            <?php if (@$createOutpatientQuotation && $createOutpatientQuotation): ?>
                             <TR valign="middle">
                                 <td align=center><img src="../../gui/img/common/default/showdata.gif" border=0></td>
                                 <TD class="submenu_item"><nobr><a href="billing_tz_pass.php?patient=outpatient&sid=<?php echo "$sid&target=outpatient&lang=$lang" ?>"><?php echo "Create Outpatient Quotation" ?></a></nobr></TD>
-                <TD><?php echo $LDShowPendingQuot; ?></TD>
-            </tr>
-            <TR>
-                <td align=center><img src="../../gui/img/common/default/showdata.gif" border=0></td>
-                <TD class="submenu_item"><nobr><a href="billing_tz_pass.php?patient=inpatient&sid=<?php echo "$sid&target=inpatient&lang=$lang" ?>"><?php echo "Create Inpatient Quotation" ?></a></nobr></TD>
-    <TD><?php echo $LDShowPendingQuot; ?></TD>
-</tr>
+                                <TD><?php echo $LDShowPendingQuot; ?></TD>
+                            </tr>
+                            <?php endif ?>
 
-<TR>
-    <td align=center><img src="../../gui/img/common/default/showdata.gif" border=0></td>
-    <TD class="submenu_item"><nobr><a href="billing_tz_pass.php?patient=artndental&sid=<?php echo "$sid&target=artndental&lang=$lang" ?>"><?php echo "Create ART and Dental Quotation" ?></a></nobr></TD>
-<TD><?php echo $LDShowPendingQuot; ?></TD>
-</tr>
+
+                            <?php if (@$createInpatientQuotation && $createInpatientQuotation): ?>
+                                <TR>
+                                    <td align=center><img src="../../gui/img/common/default/showdata.gif" border=0></td>
+                                    <TD class="submenu_item"><nobr><a href="billing_tz_pass.php?patient=inpatient&sid=<?php echo "$sid&target=inpatient&lang=$lang" ?>"><?php echo "Create Inpatient Quotation" ?></a></nobr></TD>
+                                    <TD><?php echo $LDShowPendingQuot; ?></TD>
+                                </tr>
+                            <?php endif ?>
+
+                            <?php if ($createARTQuotation): ?>
+                                <TR>
+                                    <td align=center><img src="../../gui/img/common/default/showdata.gif" border=0></td>
+                                    <TD class="submenu_item"><nobr><a href="billing_tz_pass.php?patient=artndental&sid=<?php echo "$sid&target=artndental&lang=$lang" ?>"><?php echo "Create ART and Dental Quotation" ?></a></nobr></TD>
+                                    <TD><?php echo $LDShowPendingQuot; ?></TD>
+                                </tr>
+                            <?php endif ?>
 
 <TR  height=1>
     <TD colSpan=3 class="vspace"><IMG height=1 src="../../gui/img/common/default/pixel.gif" width=5></TD>
@@ -66,7 +75,8 @@
 <TD><?php echo $LDShowPendingnewBill; ?></TD>
 </tr>
 
-<TR>
+<?php if (@$billingReport && $billingReport): ?>
+    <TR>
     <td height="26" align=center><img src="../../gui/img/common/default/bestell.gif" border=0 width="16" height="16"></td>
     <TD class="submenu_item"><nobr><a href="billing_tz_pass.php?page=1&sid=<?php echo "$sid&target=archive&lang=$lang" ?>"><?php echo $LDBillingArchive ?></a></nobr></TD>
 <TD><?php echo $LDShowsArchiveBills; ?></TD>
@@ -76,6 +86,7 @@
     <TD class="submenu_item"><nobr><a href="billing_tz_pass.php?page=1&sid=<?php echo "$sid&target=archiverep&lang=$lang" ?>"><?php echo $LDBillingArchiveReport ?></a></nobr></TD>
 <TD><?php echo $LDShowsArchiveBillsReport; ?></TD>
 </tr>
+<?php endif ?>
 
 <TR  height=1>
     <TD colSpan=3 class="vspace"><IMG height=1 src="../../gui/img/common/default/pixel.gif" width=5></TD>

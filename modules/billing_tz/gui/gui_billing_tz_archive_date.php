@@ -1,4 +1,12 @@
-<?php $billing_tz->Display_Header($LDBillingArchive,'',''); ?>
+
+<?php
+
+if (!$billingReport) {
+    echo "<h2>You do not have permission</h2>";
+    die();
+}
+$billing_tz->Display_Header($LDBillingArchive,'',''); 
+?>
 
 <BODY bgcolor="#ffffff" link="#000066" alink="#cc0000" vlink="#000066" onLoad="setBallon('BallonTip');" >
 

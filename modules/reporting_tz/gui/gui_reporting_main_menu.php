@@ -286,7 +286,8 @@ function getARV(path) {
 
  </div>
 
-
+  
+<?php if ($showFinancialReport): ?>  
 
   <div class="col-md-6">
      
@@ -387,7 +388,7 @@ function getARV(path) {
     </div>
   </div>
 
-
+<?php endif ?>
 
 
    <div class="col-md-6">

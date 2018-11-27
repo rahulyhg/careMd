@@ -1,7 +1,25 @@
 
 <?php
 $bat_nr=(isset($bat_nr) ? $bat_nr : null); 
-$bill_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), ''); 
+$bill_obj->Display_Header($LDNewQuotation, $enc_obj->ShowPID($bat_nr), '');
+
+$billtype = $_GET['patient'];
+
+if ($billtype == "inpatient" && !$createInpatientQuotation) {
+    echo "<h2>You do not have permission</h2>";
+    die();
+}
+
+if ($billtype == "outpatient" && !$createOutpatientQuotation) {
+    echo "<h2>You do not have permission</h2>";
+    die();
+}
+
+if ($billtype == "artndental" && !$createARTQuotation) {
+    echo "<h2>You do not have permission</h2>";
+    die();
+}
+
 ?>
 
 <BODY bgcolor="#ffffff" link="#000066" alink="#cc0000" vlink="#000066" onLoad="javascript:setBallon('BallonTip', '', '');">

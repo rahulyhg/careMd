@@ -51,3 +51,10 @@ ALTER TABLE `care_tz_diagnosis` ADD INDEX(`type`);
 
 ALTER TABLE `care_users` ADD `occupation` VARCHAR(255) NULL DEFAULT NULL AFTER `theme_name`, ADD `tel_no` VARCHAR(255) NULL DEFAULT NULL AFTER `occupation`;
 
+
+
+--27/11
+
+ALTER TABLE care_person ENGINE=InnoDB;
+ALTER TABLE care_encounter ENGINE=InnoDB
+ALTER TABLE `care_encounter` CHANGE `pid` `pid` INT(11) UNSIGNED NOT NULL DEFAULT '0';
