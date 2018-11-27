@@ -1,4 +1,12 @@
 
+<?php
+
+if (!$billingReport) {
+    echo "<h2>You do not have permission</h2>";
+    die();
+}
+
+?>
 
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.0//EN" "html.dtd">
 <HTML>

@@ -86,7 +86,6 @@ if ($mode != '') {
         }
     }
 
-
     if (($mode == 'save' && !$error ) || ($mode == 'update' && !$erroruser)) {
 
         /* Prepare the permission codes */
@@ -141,13 +140,14 @@ if ($mode != '') {
             } else if ($mode == 'update') {
                 //Check if a new password is entered
                 if (!isset($pass) || $pass == '' || $pass == ' ') {
-                    $sql = "UPDATE care_users SET name='$username', role_id ='$role_id', occupation = '$occupation' tel_no = '$tel_no' "
-                            . "modify_id='" . $_COOKIE[$local_user . $sid] . "'  WHERE login_id='$userid'";
+                    $sql = "UPDATE care_users SET name='$username', role_id ='$role_id', occupation = '$occupation', tel_no = '$tel_no', modify_id = '" . $_COOKIE[$local_user . $sid] . "'  WHERE login_id='$userid'";
+
+
                 } else {
-                    $sql = "UPDATE care_users SET name='$username', password = '" . md5($pass) . "', role_id ='$role_id', occupation = '$occupation' tel_no = '$tel_no' "
-                            . "modify_id='" . $_COOKIE[$local_user . $sid] . "'  WHERE login_id='$userid'";
+                    $sql = "UPDATE care_users SET name='$username', password = '" . md5($pass) . "', role_id ='$role_id', occupation = '$occupation', tel_no = '$tel_no', modify_id='" . $_COOKIE[$local_user . $sid] . "'  WHERE login_id='$userid'";
                 }
             }
+
             //echo $sql;
             /* Do the query */
             $db->BeginTrans();

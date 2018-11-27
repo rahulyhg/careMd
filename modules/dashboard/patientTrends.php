@@ -1,11 +1,15 @@
 <?php
 
+ini_set("memory_limit", "-1");
+set_time_limit(0);
+
 require_once('./roots.php');
 require_once('./colorHelper.php');
 require_once $root_path.'vendor/autoload.php';
 require_once $root_path.'generated-conf/config.php';
 
 use  CareMd\CareMd\CarePersonQuery;
+use  CareMd\CareMd\CareEncounterQuery;
 use  CareMd\CareMd\CareTzInsuranceQuery;
 use  CareMd\CareMd\CareTzCompanyQuery;
 
@@ -194,11 +198,16 @@ foreach ($activeProviders as $activeProvider) {
 		foreach ($months as $keyMonth => $month) {
 			$minDate = $year."-".$keyMonth.'-01';
 			$maxDate = $year."-".$keyMonth.'-31';
+			$pids = CareEncounterQuery::create()
+			->filterByEncounterDate(array("min" => $minDate." 00:00:00", "max" => $maxDate." 23:59:59"))
+			->orderBy('CareEncounter.EncounterDate', 'desc')
+			->select('pid')
+			->find()
+			->toArray();
+
 			$totalPatients = CarePersonQuery::create()
-			->filterByCreateTime(array("min" => $minDate." 00:00:00", "max" => $maxDate." 23:59:59"))
+			->filterByPid($pids)
 			->filterByInsuranceId($activeProvider['Id'])
-			->orderBy('CarePerson.CreateTime', 'desc')
-			->limit(2500)
 			->find()
 			->count();
 
@@ -210,11 +219,17 @@ foreach ($activeProviders as $activeProvider) {
 		foreach ($months as $keyMonth => $month) {
 			$minDate = $lastYear."-".$keyMonth.'-01';
 			$maxDate = $lastYear."-".$keyMonth.'-31';
+
+			$pids = CareEncounterQuery::create()
+			->filterByEncounterDate(array("min" => $minDate." 00:00:00", "max" => $maxDate." 23:59:59"))
+			->orderBy('CareEncounter.EncounterDate', 'desc')
+			->select('pid')
+			->find()
+			->toArray();
+
 			$totalPatients = CarePersonQuery::create()
-			->filterByCreateTime(array("min" => $minDate." 00:00:00", "max" => $maxDate." 23:59:59"))
+			->filterByPid($pids)
 			->filterByInsuranceId($activeProvider['Id'])
-			->orderBy('CarePerson.CreateTime', 'desc')
-			->limit(2500)
 			->find()
 			->count();
 
@@ -224,11 +239,17 @@ foreach ($activeProviders as $activeProvider) {
 
 	if($period == "ThisWeek"){
 		foreach ($weekdays as $keyDay => $weekDay) {
+			
+			$pids = CareEncounterQuery::create()
+			->filterByEncounterDate(array("min" => $weekDay['date']." 00:00:00", "max" => $weekDay['date']." 23:59:59"))
+			->orderBy('CareEncounter.EncounterDate', 'desc')
+			->select('pid')
+			->find()
+			->toArray();
+
 			$totalPatients = CarePersonQuery::create()
-			->filterByCreateTime(array("min" => $weekDay['date']." 00:00:00", "max" => $weekDay['date']." 23:59:59"))
+			->filterByPid($pids)
 			->filterByInsuranceId($activeProvider['Id'])
-			->orderBy('CarePerson.CreateTime', 'desc')
-			->limit(1000)
 			->find()
 			->count();
 
@@ -238,11 +259,17 @@ foreach ($activeProviders as $activeProvider) {
 
 	if($period == "LastWeek"){
 		foreach ($lastWeekDays as $keyDay => $weekDay) {
+			
+			$pids = CareEncounterQuery::create()
+			->filterByEncounterDate(array("min" => $weekDay['date']." 00:00:00", "max" => $weekDay['date']." 23:59:59"))
+			->orderBy('CareEncounter.EncounterDate', 'desc')
+			->select('pid')
+			->find()
+			->toArray();
+
 			$totalPatients = CarePersonQuery::create()
-			->filterByCreateTime(array("min" => $weekDay['date']." 00:00:00", "max" => $weekDay['date']." 23:59:59"))
+			->filterByPid($pids)
 			->filterByInsuranceId($activeProvider['Id'])
-			->orderBy('CarePerson.CreateTime', 'desc')
-			->limit(1000)
 			->find()
 			->count();
 
@@ -252,11 +279,18 @@ foreach ($activeProviders as $activeProvider) {
 
 	if($period == "ThisMonth"){
 		foreach ($thisMonthDays as $keyDay => $monthDay) {
-			$totalPatients = CarePersonQuery::create()
-			->filterByCreateTime(array("min" => $monthDay['date']." 00:00:00", "max" => $monthDay['date']." 23:59:59"))
-			->filterByInsuranceId($activeProvider['Id'])
-			->orderBy('CarePerson.CreateTime', 'desc')
+			
+			$pids = CareEncounterQuery::create()
+			->filterByEncounterDate(array("min" => $monthDay['date']." 00:00:00", "max" => $monthDay['date']." 23:59:59"))
+			->orderBy('CareEncounter.EncounterDate', 'desc')
 			->limit(800)
+			->select('pid')
+			->find()
+			->toArray();
+
+			$totalPatients = CarePersonQuery::create()
+			->filterByPid($pids)
+			->filterByInsuranceId($activeProvider['Id'])
 			->find()
 			->count();
 
@@ -266,12 +300,20 @@ foreach ($activeProviders as $activeProvider) {
 
 	if($period == "LastMonth"){
 		foreach ($lastMonthDays as $keyDay => $lastMonthDay) {
+			
+			$pids = CareEncounterQuery::create()
+			->filterByEncounterDate(array("min" => $lastMonthDay['date']." 00:00:00", "max" => $lastMonthDay['date']." 23:59:59"))
+			->orderBy('CareEncounter.CreateTime', 'desc')
+			->select('pid')
+			->find()
+			->toArray();
+
 			$totalPatients = CarePersonQuery::create()
-			->filterByCreateTime(array("min" => $lastMonthDay['date']." 00:00:00", "max" => $lastMonthDay['date']." 23:59:59"))
+			->filterByPid($pids)
 			->filterByInsuranceId($activeProvider['Id'])
-			->orderBy('CarePerson.CreateTime', 'desc')
-			->limit(800)
+			->find()
 			->count();
+
 			array_push($row, $totalPatients);
 		}
 	}

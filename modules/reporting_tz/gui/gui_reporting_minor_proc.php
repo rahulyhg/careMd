@@ -183,7 +183,17 @@ echo '</table>';
                                 </td>
                             </tr>
                         </table>	
- <?php require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
+ <?php 
+
+ require_once($root_path . 'main_theme/reportingNav.inc.php');
+ 
+  if (!$showFinancialReport) {
+    echo "<h2>You don't have access to access this report.</h2>";
+    die();
+} 
+
+
+ ?>
 
                         <!-- END HEAD OF HTML CONTENT -->
 

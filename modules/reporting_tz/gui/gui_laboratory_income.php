@@ -137,7 +137,14 @@ $rep_obj->Laboratory_Revenue($_GET['start'], $_GET['end'], $_GET['company'], $_G
                                 </td>
                             </tr>
                         </table>
- <?php require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
+ <?php
+ require_once($root_path . 'main_theme/reportingNav.inc.php'); 
+if (!$showFinancialReport) {
+    echo "<h2>You don't have access to access this report.</h2>";
+    die();
+} 
+
+ ?>
 
 
                         <form name="form1" method="post" action="" onSubmit="javascript:validate()">        
