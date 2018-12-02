@@ -582,10 +582,6 @@ class dental extends Core {
 
 
 
-            
-
-
-
 
             
 

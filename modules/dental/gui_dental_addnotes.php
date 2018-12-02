@@ -63,13 +63,13 @@ textarea {
                         <tr align="center" valign="top" bgcolor="#FFFFFF">
                             <td align="right" valign="middle" bgcolor="#E7EEE6"><strong>Short Notes:</strong></td>
                             <td colspan="2" align="left" bgcolor="#FFFFFF" class="style7">
-                                <input name="short" type="text" id="short" value="<?php print $yy[4] ?>" size="35" maxlength="100">
+                                <input name="short"  style="font-size: 15pt" type="text" id="short" value="<?php print $yy[4] ?>" size="35" maxlength="100">
                             </td>
                         </tr>
                         <tr align="center" valign="top" bgcolor="#FFFFFF">
                             <td align="right" valign="top" nowrap bgcolor="#E7EEE6"><strong>Full Description:</strong></td>
                             <td width="265" align="left" nowrap bgcolor="#FFFFFF" class="style7">
-                                <textarea name="notes" cols="50" rows="10" id="notes"><?php print $yy[3]; ?></textarea>
+                                <textarea name="notes"  style="font-size: 15pt" cols="50" rows="10" id="notes"><?php print $yy[3]; ?></textarea>
                             </td>
                             <td width="66" align="left" nowrap bgcolor="#FFFFFF" class="style7">*Required</td>
                         </tr>
