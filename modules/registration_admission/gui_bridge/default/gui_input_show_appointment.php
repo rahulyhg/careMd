@@ -220,7 +220,7 @@ $('#time').clockpicker({
 
         <tr bgcolor="#f6f6f6">
             <td><font color="red"><b>*</b><FONT SIZE=-1  FACE="Arial" color="#000066"><?php echo $LDPurpose; ?></td>
-            <td><textarea name="purpose" cols=40 rows=6 wrap="physical"><?php if (isset($purpose)) echo $purpose; ?></textarea>
+            <td><textarea name="purpose"  style="font-size: 15pt" cols=40 rows=6 wrap="physical"><?php if (isset($purpose)) echo $purpose; ?></textarea>
             </td>
         </tr>
         <tr bgcolor="#f6f6f6">
