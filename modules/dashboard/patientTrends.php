@@ -7,6 +7,8 @@ require_once('./roots.php');
 require_once('./colorHelper.php');
 require_once $root_path.'vendor/autoload.php';
 require_once $root_path.'generated-conf/config.php';
+include_once($root_path . 'include/inc_environment_global.php');
+global $db;
 
 use  CareMd\CareMd\CarePersonQuery;
 use  CareMd\CareMd\CareEncounterQuery;
@@ -156,7 +158,8 @@ if ($period == "LastMonth") {
 	
 	$lastmonth = date('m')-1;
 	$start_date = date('Y-'.$lastmonth.'-01');
-	$end_date = date('Y-'.$lastmonth.'-t');
+
+	$end_date = date('Y-m-t', strtotime($start_date));
 
 	$lastMonthPeriod = CarbonPeriod::create($start_date, $end_date);
 
@@ -196,42 +199,30 @@ foreach ($activeProviders as $activeProvider) {
 
 	if($period == "ThisYear"){
 		foreach ($months as $keyMonth => $month) {
-			$minDate = $year."-".$keyMonth.'-01';
-			$maxDate = $year."-".$keyMonth.'-31';
-			$pids = CareEncounterQuery::create()
-			->filterByEncounterDate(array("min" => $minDate." 00:00:00", "max" => $maxDate." 23:59:59"))
-			->orderBy('CareEncounter.EncounterDate', 'desc')
-			->select('pid')
-			->find()
-			->toArray();
 
-			$totalPatients = CarePersonQuery::create()
-			->filterByPid($pids)
-			->filterByInsuranceId($activeProvider['Id'])
-			->find()
-			->count();
+			$totalPatients = 0;
+			$dateValue = $year."-".$keyMonth.'-%';
 
+			$sql = "SELECT ce.pid FROM care_encounter ce INNER JOIN care_person cp ON cp.pid=ce.pid WHERE cp.insurance_ID = {$activeProvider['Id']} and encounter_date like '$dateValue'"; 
+        	$patientsResult = $db->Execute($sql);
+        	if ($patientsResult->RecordCount()) {
+        		$totalPatients = $patientsResult->RecordCount();
+        	}
+        	
 			array_push($row, $totalPatients);
 		}
 	}
 
 	if($period == "LastYear"){
 		foreach ($months as $keyMonth => $month) {
-			$minDate = $lastYear."-".$keyMonth.'-01';
-			$maxDate = $lastYear."-".$keyMonth.'-31';
+			$totalPatients = 0;
+			$dateValue = $lastYear."-".$keyMonth.'-%';
 
-			$pids = CareEncounterQuery::create()
-			->filterByEncounterDate(array("min" => $minDate." 00:00:00", "max" => $maxDate." 23:59:59"))
-			->orderBy('CareEncounter.EncounterDate', 'desc')
-			->select('pid')
-			->find()
-			->toArray();
-
-			$totalPatients = CarePersonQuery::create()
-			->filterByPid($pids)
-			->filterByInsuranceId($activeProvider['Id'])
-			->find()
-			->count();
+			$sql = "SELECT ce.pid FROM care_encounter ce INNER JOIN care_person cp ON cp.pid=ce.pid WHERE cp.insurance_ID = {$activeProvider['Id']} and encounter_date like '$dateValue'"; 
+        	$patientsResult = $db->Execute($sql);
+        	if ($patientsResult->RecordCount()) {
+        		$totalPatients = $patientsResult->RecordCount();
+        	}
 
 			array_push($row, $totalPatients);
 		}
@@ -240,18 +231,15 @@ foreach ($activeProviders as $activeProvider) {
 	if($period == "ThisWeek"){
 		foreach ($weekdays as $keyDay => $weekDay) {
 			
-			$pids = CareEncounterQuery::create()
-			->filterByEncounterDate(array("min" => $weekDay['date']." 00:00:00", "max" => $weekDay['date']." 23:59:59"))
-			->orderBy('CareEncounter.EncounterDate', 'desc')
-			->select('pid')
-			->find()
-			->toArray();
+			$totalPatients = 0;
 
-			$totalPatients = CarePersonQuery::create()
-			->filterByPid($pids)
-			->filterByInsuranceId($activeProvider['Id'])
-			->find()
-			->count();
+			$dateValue = $weekDay['date']." %";
+
+			$sql = "SELECT ce.pid FROM care_encounter ce INNER JOIN care_person cp ON cp.pid=ce.pid WHERE cp.insurance_ID = {$activeProvider['Id']} and encounter_date like '$dateValue'"; 
+        	$patientsResult = $db->Execute($sql);
+        	if ($patientsResult->RecordCount()) {
+        		$totalPatients = $patientsResult->RecordCount();
+        	}
 
 			array_push($row, $totalPatients);
 		}
@@ -259,19 +247,16 @@ foreach ($activeProviders as $activeProvider) {
 
 	if($period == "LastWeek"){
 		foreach ($lastWeekDays as $keyDay => $weekDay) {
-			
-			$pids = CareEncounterQuery::create()
-			->filterByEncounterDate(array("min" => $weekDay['date']." 00:00:00", "max" => $weekDay['date']." 23:59:59"))
-			->orderBy('CareEncounter.EncounterDate', 'desc')
-			->select('pid')
-			->find()
-			->toArray();
 
-			$totalPatients = CarePersonQuery::create()
-			->filterByPid($pids)
-			->filterByInsuranceId($activeProvider['Id'])
-			->find()
-			->count();
+			$totalPatients = 0;
+			
+			$dateValue = $weekDay['date']." %";
+
+			$sql = "SELECT ce.pid FROM care_encounter ce INNER JOIN care_person cp ON cp.pid=ce.pid WHERE cp.insurance_ID = {$activeProvider['Id']} and encounter_date like '$dateValue'"; 
+        	$patientsResult = $db->Execute($sql);
+        	if ($patientsResult->RecordCount()) {
+        		$totalPatients = $patientsResult->RecordCount();
+        	}
 
 			array_push($row, $totalPatients);
 		}
@@ -280,19 +265,16 @@ foreach ($activeProviders as $activeProvider) {
 	if($period == "ThisMonth"){
 		foreach ($thisMonthDays as $keyDay => $monthDay) {
 			
-			$pids = CareEncounterQuery::create()
-			->filterByEncounterDate(array("min" => $monthDay['date']." 00:00:00", "max" => $monthDay['date']." 23:59:59"))
-			->orderBy('CareEncounter.EncounterDate', 'desc')
-			->limit(800)
-			->select('pid')
-			->find()
-			->toArray();
+			
+			$totalPatients = 0;
+			
+			$dateValue = $monthDay['date']." %";
 
-			$totalPatients = CarePersonQuery::create()
-			->filterByPid($pids)
-			->filterByInsuranceId($activeProvider['Id'])
-			->find()
-			->count();
+			$sql = "SELECT ce.pid FROM care_encounter ce INNER JOIN care_person cp ON cp.pid=ce.pid WHERE cp.insurance_ID = {$activeProvider['Id']} and encounter_date like '$dateValue'"; 
+        	$patientsResult = $db->Execute($sql);
+        	if ($patientsResult->RecordCount()) {
+        		$totalPatients = $patientsResult->RecordCount();
+        	}
 
 			array_push($row, $totalPatients);
 		}
@@ -300,20 +282,17 @@ foreach ($activeProviders as $activeProvider) {
 
 	if($period == "LastMonth"){
 		foreach ($lastMonthDays as $keyDay => $lastMonthDay) {
+
+			$totalPatients = 0;
 			
-			$pids = CareEncounterQuery::create()
-			->filterByEncounterDate(array("min" => $lastMonthDay['date']." 00:00:00", "max" => $lastMonthDay['date']." 23:59:59"))
-			->orderBy('CareEncounter.CreateTime', 'desc')
-			->select('pid')
-			->find()
-			->toArray();
+			$dateValue = $lastMonthDay['date']." %";
 
-			$totalPatients = CarePersonQuery::create()
-			->filterByPid($pids)
-			->filterByInsuranceId($activeProvider['Id'])
-			->find()
-			->count();
-
+			$sql = "SELECT ce.pid FROM care_encounter ce INNER JOIN care_person cp ON cp.pid=ce.pid WHERE cp.insurance_ID = {$activeProvider['Id']} and encounter_date like '$dateValue'"; 
+        	$patientsResult = $db->Execute($sql);
+        	if ($patientsResult->RecordCount()) {
+        		$totalPatients = $patientsResult->RecordCount();
+        	}
+        	
 			array_push($row, $totalPatients);
 		}
 	}
