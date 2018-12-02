@@ -139,7 +139,7 @@ require_once($root_path . 'include/inc_front_chain_lang.php'); ///* invoke the s
 
 $thisfile = 'nursing-station-patientdaten-doconsil-chemlabor.php';
 
-$bgc1 = '#fff3f3'; /* The main background color of the form */
+$bgc1 = '#FFFFFF'; /* The main background color of the form */
 $abtname = get_meta_tags($root_path . "global_conf/$lang/konsil_tag_dept.pid");
 $edit_form = 0;
 $read_form = 0;
@@ -807,7 +807,7 @@ if (!$noresize) {
                                 </table>
 
                                 <!--  The test parameters begin  -->
-
+                                  
                                 <table border=0 cellpadding=0 cellspacing=0 width=745
                                        bgcolor="<?php echo $bgc1 ?>">
                                            <?php
@@ -817,7 +817,8 @@ if (!$noresize) {
                                                echo '<tr class="lab">';
                                                for ($j = 0; $j <= $column; $j++) {
                                                    if ($LD_Elements[$j][$i]['type'] == 'top') {
-                                                       echo '<td bgcolor="lightgrey" colspan="2" onclick="selectAllParams(\'' . $LD_Elements[$j][$i]['id'] . '\');"><font color="black" style="cursor : pointer;">&nbsp;<b>' . $LD_Elements[$j][$i]['value'] . '</b></font></td>';
+                                                    //top label (heading for test)
+                                                       echo '<td bgcolor="" colspan="2" onclick="selectAllParams(\'' . $LD_Elements[$j][$i]['id'] . '\');"><font color="black" style="cursor : pointer;" font size="3">&nbsp;<b>' . $LD_Elements[$j][$i]['value'] . '</b></font></td>';
                                                    } else {
                                                        if ($LD_Elements[$j][$i]['value']) {
                                                            echo '<td>';
@@ -833,13 +834,15 @@ if (!$noresize) {
                                                            if (isset($stored_param[$LD_Elements[$j][$i]['id']]) && !empty($stored_param[$LD_Elements[$j][$i]['id']])) {
                                                                echo '<img src="f.gif" border=0 width=18 height=6 id="' . $LD_Elements[$j][$i]['id'] . '">';
                                                            } else {
-                                                               echo '<img src="b.gif" border=0 width=18 height=6 id="' . $LD_Elements[$j][$i]['id'] . '">';
+                                                            //test selection radio
+                                                               echo '<img src="b.gif" border=0 width=36 height=12 id="' . $LD_Elements[$j][$i]['id'] . '">';
                                                            } if ($edit) {
                                                                echo '</a>';
                                                            }
                                                            echo '</td><td>';
                                                            if ($edit)
-                                                               echo '<a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\')">' . $LD_Elements[$j][$i]['value'] . '</a>';
+                                                            //test label
+echo '<a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\')">' .'<font size="2">'. $LD_Elements[$j][$i]['value'] . '</a>';
                                                            else
                                                                echo $LD_Elements[$j][$i]['value'];
                                                            echo '</td>';
