@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>jQuery UI Datepicker - Default functionality</title>
                 
-<link rel="stylesheet" type="text/css" href="../../js/time_picker/assets/css/bootstrap.min.css">
- 
+<!-- <link rel="stylesheet" type="text/css" href="../../js/time_picker/assets/css/bootstrap.min.css">
+ --> 
 <link rel="stylesheet" type="text/css" href="../../js/time_picker/dist/bootstrap-clockpicker.min.css">
 
 <script type="text/javascript" src="../../js/time_picker/assets/js/bootstrap.min.js"></script>
