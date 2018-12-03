@@ -204,8 +204,13 @@ $glob_obj = new GlobalConfig($GLOBAL_CONFIG);
             <!--  The test parameters begin  -->
             <table border=0 cellpadding=0 cellspacing=0 width=750 bgcolor="<?php echo $bgc1 ?>">
                 <?php
+
                 //Get config value for restricting not billed here 
                 $hide_not_billed = $glob_obj->getConfigValue("restrict_unbilled_items");
+
+                              
+
+                 
 # Start buffering output
                 ob_start();
                 for ($i = 0; $i <= $max_row; $i++) {
@@ -264,10 +269,14 @@ $glob_obj = new GlobalConfig($GLOBAL_CONFIG);
                                     if ($lab_bill > 0) {
                                         echo '<font color="green">' . $LDLabRequestBilled . ' ' . $lab_bill . '</font>';
                                     } else {
-                                        if ($hide_not_billed !== "1") {
+                                        if ($hide_not_billed !== "1" ) {
                                             echo '<img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)"> <font color="red">' . $LDLabRequestNotBilled . '</font> <img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)">';
                                         } else if ($hide_not_billed === "1" && $h_encounter_class_nr !== "2") {
                                             echo '<img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)"> <font color="red">' . $LDLabRequestNotBilled . '</font> <img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)">';
+                                        }else if($h_HealthFundName!=='CASH'){
+                                            echo '<img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)"> <font color="red">' . $LDLabRequestNotBilled . '</font> <img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)">';
+
+
                                         }
                                     }
                                 }
