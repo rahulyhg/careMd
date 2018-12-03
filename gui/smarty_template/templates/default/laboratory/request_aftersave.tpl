@@ -29,11 +29,11 @@
 <table border=0>
     <tr valign="top">
         <td>{{$gifMascot}}</td>
-        <td><FONT    SIZE=4  FACE="verdana,Arial" color="#990000">
+        <td><FONT    SIZE=6  FACE="verdana,Arial" color="#990000">
             {{$sAfterSavePrompt}}<br>
             {{$LDWhatToDo}}
             <p>
-                <FONT    SIZE=2  FACE="verdana,Arial" color="#990000">
+                <FONT    SIZE=5  FACE="verdana,Arial" color="#990000">
                 <a href="{{$pbPrintOut}}"> {{$gifGrnArrow}} {{$LDPrintForm}}</a><br>
                 <a href="{{$pbEditForm}}"> {{$gifGrnArrow}} {{$LDEditForm}}</a><br>
                 <a href="{{$pbNewSamePatient}}"> {{$gifGrnArrow}}  {{$LDNewFormSamePatient}}</a><br>

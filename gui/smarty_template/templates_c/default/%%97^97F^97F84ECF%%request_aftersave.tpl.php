@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2017-07-16 12:15:18
+<?php /* Smarty version 2.6.22, created on 2018-12-03 21:31:01
          compiled from laboratory/request_aftersave.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'config_load', 'laboratory/request_aftersave.tpl', 8, false),)), $this); ?>
@@ -38,13 +38,13 @@ unset($_smarty_tpl_vars);
     <tr valign="top">
         <td><?php echo $this->_tpl_vars['gifMascot']; ?>
 </td>
-        <td><FONT    SIZE=4  FACE="verdana,Arial" color="#990000">
+        <td><FONT    SIZE=6  FACE="verdana,Arial" color="#990000">
             <?php echo $this->_tpl_vars['sAfterSavePrompt']; ?>
 <br>
             <?php echo $this->_tpl_vars['LDWhatToDo']; ?>
 
             <p>
-                <FONT    SIZE=2  FACE="verdana,Arial" color="#990000">
+                <FONT    SIZE=5  FACE="verdana,Arial" color="#990000">
                 <a href="<?php echo $this->_tpl_vars['pbPrintOut']; ?>
 "> <?php echo $this->_tpl_vars['gifGrnArrow']; ?>
  <?php echo $this->_tpl_vars['LDPrintForm']; ?>
