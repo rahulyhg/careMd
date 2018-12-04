@@ -23,6 +23,8 @@ define('LANG_FILE', 'konsil_chemlabor.php');
 
 //$db->debug=1;
 
+$user_origin=isset($user_origin) ? $user_origin : $user_origin='';
+
 if ($user_origin == 'lab') {
     $local_user = 'ck_lab_user';
     $breakfile = $root_path . "modules/laboratory/labor.php" . URL_APPEND;
