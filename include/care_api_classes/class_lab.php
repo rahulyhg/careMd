@@ -1098,6 +1098,7 @@ WHERE encounter_nr='$this->enc_nr' AND status NOT IN
     function TestActiveGroups() {
         global $db;
         $this->sql = "SELECT * FROM $this->tb_test_param WHERE group_id = '-1' AND status NOT IN ($this->dead_stat) ORDER BY sort_nr";
+        
         if ($this->tgroups = $db->Execute($this->sql)) {
             if ($this->rec_count = $this->tgroups->RecordCount()) {
                 return $this->tgroups;

@@ -315,8 +315,9 @@ class DrugsAndServices extends Encounter {
      * @param array data in associative array 
      * @return boolean
      */
-    function insertLabTest(&$data_array) {
+    function insertLabTest($data_array) {
         global $db;
+
 
         $this->setRefArray($this->fld_drugsandservices);
         $this->data_array['is_labtest'] = '1';
@@ -327,6 +328,14 @@ class DrugsAndServices extends Encounter {
         $this->data_array['unit_price_1'] = $data_array['unit_price_1'];
         $this->data_array['unit_price_2'] = $data_array['unit_price_2'];
         $this->data_array['unit_price_3'] = $data_array['unit_price_3'];
+        $this->data_array['unit_price_4'] = $data_array['unit_price_4'];
+        $this->data_array['unit_price_5'] = $data_array['unit_price_5'];
+        $this->data_array['unit_price_6'] = $data_array['unit_price_6'];
+        $this->data_array['unit_price_7'] = $data_array['unit_price_7'];
+        $this->data_array['unit_price_8'] = $data_array['unit_price_8'];
+        $this->data_array['unit_price_9'] = $data_array['unit_price_9'];
+        $this->data_array['unit_price_10'] = $data_array['unit_price_10'];
+        $this->data_array['unit_price_11'] = $data_array['unit_price_11'];
         $this->data_array['purchasing_class'] = 'labtest';
 
         return $this->insertDataFromInternalArray($this->data_array);
@@ -336,8 +345,9 @@ class DrugsAndServices extends Encounter {
       Update labtest
      */
 
-    function updateLabTest($item_no, &$data_array) {
+    function updateLabTest($item_no, $data_array) {
         global $db;
+        
 
         $this->setRefArray($this->fld_drugsandservices);
 
@@ -347,6 +357,15 @@ class DrugsAndServices extends Encounter {
         $this->data_array['unit_price_1'] = $data_array['unit_price_1'];
         $this->data_array['unit_price_2'] = $data_array['unit_price_2'];
         $this->data_array['unit_price_3'] = $data_array['unit_price_3'];
+        $this->data_array['unit_price_4'] = $data_array['unit_price_4'];
+        $this->data_array['unit_price_5'] = $data_array['unit_price_5'];
+        $this->data_array['unit_price_6'] = $data_array['unit_price_6'];
+        $this->data_array['unit_price_7'] = $data_array['unit_price_7'];
+        $this->data_array['unit_price_8'] = $data_array['unit_price_8'];
+        $this->data_array['unit_price_9'] = $data_array['unit_price_9'];
+        $this->data_array['unit_price_10'] = $data_array['unit_price_10'];
+        $this->data_array['unit_price_11'] = $data_array['unit_price_11'];
+
 
         return $this->updateDrugsAndServices($item_no, $this->data_array);
     }
@@ -359,7 +378,7 @@ class DrugsAndServices extends Encounter {
      * @param array data in associative array*
      * @return boolean
      */
-    function insertConsumable(&$data_array) {
+    function insertConsumable($data_array) {
         global $db;
 
         $this->setRefArray($this->fld_drugsandservices);

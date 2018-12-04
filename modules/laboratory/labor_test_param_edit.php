@@ -99,6 +99,12 @@ if (isset($mode) && !empty($mode)) {
             </script>
 
             <?php
+            // labor_test_param_edit.php?sid=kcph48umoqqjkgis8c68n7aki2&lang=en&nr=81editparam_kcph48umoqqjkgis8c68n7aki2
+
+
+
+            header('Location: labor_test_param_admin.php?sid='.$sid.'&lang=' . $lang.'&checkintern='."1");
+       
             exit;
         } else
             echo $lab_obj->getLastQuery();
@@ -538,7 +544,7 @@ if (!$cfg['dhtml']) {
                             ?>
                             </script>
 
-                            <input type=hidden name="nr" value="<?php echo $nr; ?>">
+                            <input type=hidden name="nr" value="<?php echo $tp['nr']; ?>">
                             <input type=hidden name="sid" value="<?php echo $sid; ?>">
                             <input type=hidden name="lang" value="<?php echo $lang; ?>">
 <?php if ($mode == 'new') { ?>
