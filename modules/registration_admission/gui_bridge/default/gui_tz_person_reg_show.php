@@ -26,7 +26,9 @@ echo setCharSet();
             timeout: 10000
         }).done(function (data) {
             accessToken = data.access_token;
-            authorize_card(cardno, accessToken);
+            var visitType=1;
+            var referralNo='';
+            authorize_card(cardno,visitType,referralNo, accessToken);
         }).fail(function (data) {
             ProgressDestroy();
             if (data.status === 400) {
@@ -40,9 +42,9 @@ echo setCharSet();
         //End of login
     }
 
-    function authorize_card(cardno, accessToken) {
+    function authorize_card(cardno, visitType,referralNo,accessToken) {
 
-        $.ajax("<?php echo $nhif_base; ?>/breeze/Verification/AuthorizeCard?CardNo=" + cardno,
+        $.ajax("<?php echo $nhif_base; ?>/breeze/Verification/AuthorizeCard?CardNo=" + cardno+"&VisitTypeID="+visitType+"&ReferralNo="+referralNo,
                 {
                     headers: {"Authorization": "Bearer " + accessToken},
                     xhrFields: {
@@ -50,8 +52,9 @@ echo setCharSet();
                     }
                 }
         ).done(function (data) {
+
             ProgressDestroy();
-//            alert(JSON.stringify(data));
+          //  alert(JSON.stringify(data));
             if (data.CardStatus === 'Invalid') {
                 alert(data.Remarks);
             } else {
