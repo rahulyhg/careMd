@@ -495,6 +495,13 @@ class Diagnostics extends Encounter {
     if (empty($pid) || empty($encounter_nr) || empty( $ICD10_code) || empty( $ICD10_description))
       return FALSE;
     $this->timestamp = time();
+
+    $series = 0;
+    $this->sql="SELECT series FROM care_icd10_en WHERE diagnosis_code ='".$ICD10_code."'";
+    $diagQuery = $db->Execute($this->sql);
+    while ($d_row=$diagQuery->FetchRow()) {
+     $series = $d_row['series'];
+    }
   
     $this->sql = "INSERT INTO `$this->tbl_diagnosis` (
                       `$this->tbl_diagnosis_casenr` ,
@@ -507,7 +514,8 @@ class Diagnostics extends Encounter {
                       `$this->tbl_diagnosis_type`,
                       `$this->tbl_diagnosis_comment`,
 					           `$this->tbl_diagnosis_doctor_name`,
-                     `diagnosis_type`
+                     `diagnosis_type`,
+                     `series`
                   ) VALUES (
                       '',
                       '-1',
@@ -519,7 +527,8 @@ class Diagnostics extends Encounter {
                       '$type',
                       '$comment',
 					           '$doctor',
-                     '$diagnosisType'
+                     '$diagnosisType',
+                     '$series'
                   );";
     $db->Execute($this->sql);
     if ($db->Affected_Rows())
@@ -537,6 +546,13 @@ class Diagnostics extends Encounter {
 
     $diagnosisType = ($_COOKIE['DiagnosisType'])?$_COOKIE['DiagnosisType']:"";
 
+    $series = 0;
+    $this->sql="SELECT series FROM care_icd10_en WHERE diagnosis_code ='".$ICD10_code."'";
+    $diagQuery = $db->Execute($this->sql);
+    while ($d_row=$diagQuery->FetchRow()) {
+     $series = $d_row['series'];
+    }
+
     if (empty($parent_case_nr) || empty($pid) || empty($encounter_nr) || empty( $ICD10_code) || empty( $ICD10_description))
       return FALSE;
 
@@ -553,7 +569,8 @@ class Diagnostics extends Encounter {
                       `$this->tbl_diagnosis_type`,
                       `$this->tbl_diagnosis_comment`,
 					            `$this->tbl_diagnosis_doctor_name`,
-                      `diagnosis_type`
+                      `diagnosis_type`,
+                      `series`
                   ) VALUES (
                       '',
                       '$parent_case_nr',
@@ -565,7 +582,8 @@ class Diagnostics extends Encounter {
                       '$type',
                       '$comment',
 					           '$doctor',
-                     '$diagnosisType'
+                     '$diagnosisType',
+                     '$series'
                   );";
     $db->Execute($this->sql);
     if ($db->Affected_Rows())

@@ -21,7 +21,7 @@ require($root_path . 'include/inc_2level_reset.php');
 
 if (!$_SESSION['sess_path_referer'])
     $_SESSION['sess_path_referer'];
-$breakfile = $root_path . 'main/startframe.php' . URL_APPEND;
+$breakfile = $root_path . 'modules/dashboard/dashboard.php' . URL_APPEND;
 $_SESSION['sess_path_referer'] = $top_dir . basename(__FILE__);
 $_SESSION['sess_user_origin'] = 'amb';
 $_SESSION['sess_parent_mod'] = '';
