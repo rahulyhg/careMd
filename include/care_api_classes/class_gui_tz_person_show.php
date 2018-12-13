@@ -58,6 +58,29 @@ class GuiPersonShow extends Person {
     /**
      * Constructor
      */
+    
+    public function updateNHIFAuthorization($encounter_nr)              
+    {
+        global $db;
+        $refNo = $_COOKIE['referralNo'];
+        $cardStatus = $_COOKIE['CardStatus'];
+        $authStatus = $_COOKIE['AuthorizationStatus'];
+        $authNumber = $_COOKIE['AuthorizationNo'];
+        $latestAuth = $_COOKIE['LatestAuthorization'];
+        $visitType = $_COOKIE['visitType'];
+
+        $sql= "UPDATE care_encounter SET  
+        nhif_card_status = '$cardStatus', 
+        nhif_authorization_status = '$authStatus',
+        nhif_authorization_number = '$authNumber',
+        nhif_latest_authorization = '$latestAuth',
+        nhif_visit_type = '$visitType', 
+        referrer_number = '$refNo' 
+        WHERE encounter_nr ='".$encounter_nr."'";
+        $result = $db->Execute($sql);
+
+    }
+
     function GuiPersonShow($pid = 0, $filename = '', $fallbackfile = '') {
         global $thisfile, $root_path;
 
@@ -238,7 +261,7 @@ class GuiPersonShow extends Person {
             include_once($root_path . 'include/care_api_classes/class_multi.php');
             $multi = new multi;
             ?>
-            <table border=0 cellspacing=1 cellpadding=3>
+            <table border=0 cellspacing=1 cellpadding=3 width="600">
                 <tr>
                     <td bgColor="#eeeeee">
                         <FONT SIZE=-1  FACE="Arial"><?php echo $LDRegistryNr ?>:
@@ -453,14 +476,83 @@ class GuiPersonShow extends Person {
                                 if ($insurance_ID == 12 && $glob_obj->getConfigValue("validate_nhif") === "1") {
 //                                    echo '<script type="text/javascript">'
 //                                    . 'hide_links(); </script>';
-                                    echo "<td rowspan=7><div><input id=\"authorize_btn\" type=\"button\" value=\"Authorize NHIF Card\" onClick = \"verify_card('$membership_nr')\"/>"
-                                    . "<p class=\"card_fname\"><b FONT SIZE=-1  FACE=\"Arial\" color=\"#990000\">First Name:  </b></p>"
-                                    . "<p class=\"card_mname\"><b FONT SIZE=-1  FACE=\"Arial\" color=\"#990000\">Middle Name:  </b></p>"
-                                    . "<p class=\"card_lname\"><b FONT SIZE=-1  FACE=\"Arial\" color=\"#990000\">Last Name:  </b></p>"
-                                    . "<p class=\"card_status\"><b FONT SIZE=-1  FACE=\"Arial\" color=\"#990000\">Card Status:  </b></p>"
-                                    . "<p class=\"authorization\"><b FONT SIZE=-1  FACE=\"Arial\" color=\"#990000\">Authorization: </b></p>"
-                                    . "<p class=\"authorization_no\"><b FONT SIZE=-1  FACE=\"Arial\" color=\"#990000\">Authorization No: </b></p>"
-                                    . "<p class=\"latest_authorization\"><b FONT SIZE=-1  FACE=\"Arial\" color=\"#990000\">Latest Authorization: </b></p></div></td>";
+//                                    
+                                    if (isset($this->current_encounter) && $this->current_encounter){
+                                        if ($this->current_encounter > 0 && @$_COOKIE['AuthorizationNo']) {
+
+                                            $this->sql="SELECT nhif_card_status, nhif_authorization_status, nhif_authorization_number, nhif_latest_authorization, nhif_visit_type FROM care_encounter WHERE encounter_nr ='".$this->current_encounter."'";
+                                            $encounterRow = $db->Execute($this->sql);
+
+                                            while ($d_row=$encounterRow->FetchRow()) {
+                                                 $nhif_card_status = $d_row['nhif_card_status'];
+                                                 $nhif_authorization_status = $d_row['nhif_authorization_status'];
+                                                 $nhif_authorization_number = $d_row['nhif_authorization_number'];
+                                                 $nhif_latest_authorization = $d_row['nhif_latest_authorization'];
+                                                 $nhif_visit_type = $d_row['nhif_visit_type'];
+                                            }
+
+                                            if (empty($nhif_authorization_number)) {
+
+                                                $this->updateNHIFAuthorization($this->current_encounter);
+
+                                            }
+                                            
+                                        }
+                                    }
+                                   
+                                    if (empty($nhif_authorization_number)) {
+
+                                    ?>
+                                    <td rowspan=7>
+                                    <table>
+                                        
+                                        <tr>
+                                            <td class="adm_item">Visit Type</td>
+
+                                            <td colspan="2" class="uVisitType adm_input">
+                                                <input name="uVisitType"  type="radio" value="1">Normal&nbsp;&nbsp;
+                                                <input name="uVisitType"  type="radio" value="2">Emergency&nbsp;&nbsp;
+                                                <input name="uVisitType"  type="radio" value="3">Referral&nbsp;&nbsp;
+                                            </td>
+                                        </tr>
+
+                                        <tr class="referalInputs">
+                                            <td>&nbsp;</td>
+                                        </tr>
+
+                                        <tr  class="referalInputs">
+                                            <td class="adm_item">
+                                                Referrer Number:
+                                            </td>
+                                            <td colspan=2 class="adm_input">
+
+                                                <input name="referrer_number" class="referrer_number" type="text" size="20" value="">
+                                            </td>
+                                        </tr>
+
+                                    </table>
+
+                                    <br>
+                                    <?php
+                                       echo "<div><input id=\"authorize_btn\" type=\"button\" value=\"Authorize NHIF Card\" onClick = \"verify_card('$membership_nr')\"/>"
+                                        . "<p class=\"card_fname\"><b FONT SIZE=-1  FACE=\"Arial\" color=\"#990000\">First Name:  </b></p>"
+                                        . "<p class=\"card_mname\"><b FONT SIZE=-1  FACE=\"Arial\" color=\"#990000\">Middle Name:  </b></p>"
+                                        . "<p class=\"card_lname\"><b FONT SIZE=-1  FACE=\"Arial\" color=\"#990000\">Last Name:  </b></p>"
+                                        . "<p class=\"card_status\"><b FONT SIZE=-1  FACE=\"Arial\" color=\"#990000\">Card Status:  </b></p>"
+                                        . "<p class=\"authorization\"><b FONT SIZE=-1  FACE=\"Arial\" color=\"#990000\">Authorization: </b></p>"
+                                        . "<p class=\"authorization_no\"><b FONT SIZE=-1  FACE=\"Arial\" color=\"#990000\">Authorization No: </b></p>"
+                                        . "<p class=\"latest_authorization\"><b FONT SIZE=-1  FACE=\"Arial\" color=\"#990000\">Latest Authorization: </b></p></div></td>";
+
+                                    }else {
+
+                                        echo "<td rowspan=7><div>"
+                                        . "<p><b FONT SIZE=-1  FACE=\"Arial\" color=\"#990000\">Card Status: $nhif_card_status </b></p>"
+                                        . "<p><b FONT SIZE=-1  FACE=\"Arial\" color=\"#990000\">Authorization: $nhif_authorization_status </b></p>"
+                                        . "<p><b FONT SIZE=-1  FACE=\"Arial\" color=\"#990000\">Authorization No: $nhif_authorization_number </b></p>"
+                                        . "<p><b FONT SIZE=-1  FACE=\"Arial\" color=\"#990000\">Latest Authorization: $nhif_latest_authorization </b></p></div></td>";  
+                                    }
+                                   
+                                   
                                 }
                                 ?>
                             </tr>

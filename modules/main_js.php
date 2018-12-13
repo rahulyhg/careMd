@@ -88,6 +88,22 @@ $('.visitType').change(function(){
     }
 })
 
+$('.uVisitType').change(function(){
+
+    var uVisitType = $('input[name=uVisitType]:checked').val();
+
+    if (uVisitType == 3) 
+    {
+        $('.referalInputs').show();
+
+    }else
+    {
+        $('.referalInputs').hide();
+    }
+})
+
+
+
 // Diagnosis types
 function chooseDiagnosisType(url) {
     window.diagnosisUrl = url;

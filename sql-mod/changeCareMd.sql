@@ -58,3 +58,9 @@ ALTER TABLE `care_users` ADD `occupation` VARCHAR(255) NULL DEFAULT NULL AFTER `
 ALTER TABLE care_person ENGINE=InnoDB;
 ALTER TABLE care_encounter ENGINE=InnoDB
 ALTER TABLE `care_encounter` CHANGE `pid` `pid` INT(11) UNSIGNED NOT NULL DEFAULT '0';
+
+
+--13/12
+
+ALTER TABLE `care_encounter` ADD `nhif_card_status` VARCHAR(255)  NULL AFTER `referrer_number`, ADD `nhif_authorization_status` VARCHAR(255)  NULL AFTER `nhif_card_status`, ADD `nhif_authorization_number` VARCHAR(255)  NULL AFTER `nhif_authorization_status`, ADD `nhif_latest_authorization` VARCHAR(255)  NULL AFTER `nhif_authorization_number`, ADD `nhif_visit_type` VARCHAR(255)  NULL AFTER `nhif_latest_authorization`;
+

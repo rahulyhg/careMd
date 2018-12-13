@@ -2,8 +2,6 @@
 error_reporting(-1);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
-$pageName = "Patient";
-
 
 /**
  * CARE2X Integrated Hospital Information System beta 2.0.1 - 2004-07-04
@@ -85,6 +83,7 @@ $patregtable = 'care_person';  // The table of the patient registration data
 
 $dbtable = 'care_encounter'; // The table of admission data
 
+
 /* Create new person's insurance object */
 $pinsure_obj = new PersonInsurance($pid);
 /* Get the insurance classes */
@@ -98,6 +97,7 @@ $encounter_obj = new Encounter($encounter_nr);
 $bill_obj = new Bill;
 /* Get all encounter classes */
 $encounter_classes = $encounter_obj->AllEncounterClassesObject();
+
 
 if ($pid != '' || $encounter_nr != '') {
 
