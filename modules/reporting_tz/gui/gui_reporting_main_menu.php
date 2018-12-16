@@ -122,8 +122,12 @@ function getARV(path) {
               </tr>
 
                <tr>
-                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/mtuha_icd10_report.php">MTUHA ICD10 Report</a></td>
-                <td><small class="font-sm"></small></td>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/mtuha_icd10_report.php">MTUHA BOOK 5 AND 14</a></td>
+                <td><small class="font-sm">BOOK 5 IS OPD AND 14 IS IPD. MAKE SELECTION ACCORDINGLY</small></td>
+              </tr>
+               <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/mtuha_opd_summary.php">MTUHA BOOK 5 AND 14 VISITS</a></td>
+                <td><small class="font-sm">THIS REPORT SHOWS ATTENDANCE</small></td>
               </tr>
                <tr>
                 <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/mtuha_detailed.php">Detailed MTUHA Report</a></td>
@@ -134,10 +138,7 @@ function getARV(path) {
                 <td><small class="font-sm"></small></td>
               </tr>
               
-                <tr>
-                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/mtuha_opd_summary.php">MTUHA OPD SUMMARY REPORT</a></td>
-                <td><small class="font-sm"></small></td>
-              </tr>
+               
 
                 <tr>
                 <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/OPD_Admissions.php">OPD Admission Summary</a></td>

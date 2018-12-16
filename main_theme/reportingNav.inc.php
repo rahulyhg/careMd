@@ -20,10 +20,10 @@
           <a class="dropdown-item"  href="<?php echo $root_path ?>modules/reporting_tz/OPD_summary_withoutdiagnosis.php<?php echo URL_APPEND ?>">OPD - Summary <small>&nbsp;  - All visits (without diagnostic) to this clinic </small></a>
           <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/OPD_infections.php<?php echo URL_APPEND ?>">OPD - Infections-Summary</a>
           <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/mtuha_icd10.php<?php echo URL_APPEND ?>">Mtuha-ICD10-Summary</a>
-          <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/mtuha_icd10_report.php<?php echo URL_APPEND ?>">MTUHA ICD10 Report</a>
+          <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/mtuha_icd10_report.php<?php echo URL_APPEND ?>">MTUHA BOOK 5 AND 14</a>
+           <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/mtuha_opd_summary.php<?php echo URL_APPEND ?>">MTUHA BOOK 5 AND 14 VISITS</a>
           <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/mtuha_detailed.php<?php echo URL_APPEND ?>">Detailed MTUHA Report</a>
-          <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/mtuha_visits.php<?php echo URL_APPEND ?>">New and Return Patients</a>
-          <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/mtuha_opd_summary.php<?php echo URL_APPEND ?>">MTUHA OPD SUMMARY REPORT</a>
+          <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/mtuha_visits.php<?php echo URL_APPEND ?>">New and Return Patients</a>         
           <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/OPD_Admissions.php<?php echo URL_APPEND ?>">OPD Admission Summary</a>
           <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/OPD_new_return.php<?php echo URL_APPEND ?>">New and Return with Gender</a>
           <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/OPD_Department_Admissions.php<?php echo URL_APPEND ?>">OPD Departments Admission Summary</a>
