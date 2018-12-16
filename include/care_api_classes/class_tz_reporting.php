@@ -324,7 +324,7 @@ class selianreport extends report {
 //echo 'PUT INDEX IN THE ICD_10_code IF THIS REPORT IS SLOW';
 //Total OPD under month male
 //count all
-            $sql_count = "SELECT diag.ICD_10_code, DATE_FORMAT(cp.date_birth, '%Y') AS TAREHE,  diag.ICD_10_description, count(*) AS TOTAL FROM care_tz_diagnosis diag INNER JOIN care_person cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr  WHERE $sql_timeframe  $hf $idara  GROUP BY  diag.`ICD_10_description` ORDER BY diag.`ICD_10_code`";
+            $sql_count = "SELECT diag.ICD_10_code, DATE_FORMAT(cp.date_birth, '%Y') AS TAREHE,  diag.ICD_10_description, count(*) AS TOTAL FROM care_tz_diagnosis diag INNER JOIN care_person cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr  WHERE $sql_timeframe  $hf $idara  GROUP BY  diag.`ICD_10_description` ORDER BY diag.`series` ASC";
 
             //echo $sql_count;
             $count_result = $db->Execute($sql_count);
@@ -349,29 +349,29 @@ class selianreport extends report {
 
 
 //under one month male
-                $sql_under_month_male = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_UNDER_MONTH_MALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr WHERE timestampdiff(DAY,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) <$d AND $sql_timeframe $hf $idara AND cp.sex='m' AND diag.ICD_10_code='$diagnostic_code' ORDER BY ICD_10_code ";
+                $sql_under_month_male = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_UNDER_MONTH_MALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr WHERE timestampdiff(DAY,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) <$d AND $sql_timeframe $hf $idara AND cp.sex='m' AND diag.ICD_10_code='$diagnostic_code' ORDER BY series ASC";
 
 
                 $under_month_male_result = $db->Execute($sql_under_month_male);
 
 //under one month female
-                $sql_under_month_female = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_UNDER_MONTH_FEMALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr  WHERE timestampdiff(DAY,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) <$d AND $sql_timeframe $hf $idara AND cp.sex='f' AND diag.ICD_10_code='" . $diagnostic_code . "' ORDER BY ICD_10_code";
+                $sql_under_month_female = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_UNDER_MONTH_FEMALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr  WHERE timestampdiff(DAY,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) <$d AND $sql_timeframe $hf $idara AND cp.sex='f' AND diag.ICD_10_code='" . $diagnostic_code . "' ORDER BY series ASC";
                 $under_month_female_result = $db->Execute($sql_under_month_female);
 
 //one month to under year male
-                $sql_month_to_under_yr_male = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_MONTH_TO_UNDER_YR_MALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr WHERE timestampdiff(MONTH,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) >=1 AND timestampdiff(MONTH,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) <12 AND $sql_timeframe $hf $idara AND cp.sex='m' AND diag.ICD_10_code='" . $diagnostic_code . "' ORDER BY ICD_10_code";
+                $sql_month_to_under_yr_male = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_MONTH_TO_UNDER_YR_MALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr WHERE timestampdiff(MONTH,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) >=1 AND timestampdiff(MONTH,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) <12 AND $sql_timeframe $hf $idara AND cp.sex='m' AND diag.ICD_10_code='" . $diagnostic_code . "' ORDER BY series ASC";
                 $month_to_under_yr_male_result = $db->Execute($sql_month_to_under_yr_male);
 
 //one month to under year female
-                $sql_month_to_under_yr_female = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_MONTH_TO_UNDER_YR_FEMALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr WHERE timestampdiff(MONTH,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) >=1 AND timestampdiff(MONTH,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) <12 AND $sql_timeframe $hf $idara AND cp.sex='f' AND diag.ICD_10_code='" . $diagnostic_code . "' ORDER BY ICD_10_code";
+                $sql_month_to_under_yr_female = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_MONTH_TO_UNDER_YR_FEMALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr WHERE timestampdiff(MONTH,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) >=1 AND timestampdiff(MONTH,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) <12 AND $sql_timeframe $hf $idara AND cp.sex='f' AND diag.ICD_10_code='" . $diagnostic_code . "' ORDER BY series ASC";
                 $month_to_under_yr_female_result = $db->Execute($sql_month_to_under_yr_female);
 
 //year to under 5years male
-                $sql_yr_to_under_5yrs_male = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_YR_TO_UNDER_5YRS_MALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr WHERE timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) >=1 AND timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) <5  AND $sql_timeframe $hf $idara AND cp.sex='m' AND diag.ICD_10_code='" . $diagnostic_code . "' ORDER BY ICD_10_code"; 
+                $sql_yr_to_under_5yrs_male = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_YR_TO_UNDER_5YRS_MALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr WHERE timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) >=1 AND timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) <5  AND $sql_timeframe $hf $idara AND cp.sex='m' AND diag.ICD_10_code='" . $diagnostic_code . "' ORDER BY series ASC"; 
                 $yr_to_under_5yrs_male_result = $db->Execute($sql_yr_to_under_5yrs_male);
 
 //year to under 5years female
-                $sql_yr_to_under_5yrs_female = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_YR_TO_UNDER_5YRS_FEMALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr WHERE timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) >=1 AND timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) <5 AND $sql_timeframe $hf $idara AND cp.sex='f' AND diag.ICD_10_code='" . $diagnostic_code . "' ORDER BY ICD_10_code";
+                $sql_yr_to_under_5yrs_female = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_YR_TO_UNDER_5YRS_FEMALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr WHERE timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) >=1 AND timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) <5 AND $sql_timeframe $hf $idara AND cp.sex='f' AND diag.ICD_10_code='" . $diagnostic_code . "' ORDER BY series ASC";
                 $yr_to_under_5yrs_female_result = $db->Execute($sql_yr_to_under_5yrs_female);
 
 //5 yrs and above male
@@ -381,21 +381,21 @@ class selianreport extends report {
                 //$sql_5yrs_and_above_female = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_5YRS_AND_ABOVE_FEMALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid WHERE timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) >=5 AND $sql_timeframe AND cp.sex='f' AND diag.ICD_10_code='" . $diagnostic_code . "' ORDER BY ICD_10_code";
                 //$over_or_equal_to_5yrs_female_result = $db->Execute($sql_5yrs_and_above_female);
 //60 yrs and above male
-                $sql_60yrs_and_above_male = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_60YRS_AND_ABOVE_MALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr WHERE timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) >=60 AND $sql_timeframe $hf $idara AND cp.sex='m' AND diag.ICD_10_code='" . $diagnostic_code . "' ORDER BY ICD_10_code"; 
+                $sql_60yrs_and_above_male = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_60YRS_AND_ABOVE_MALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr WHERE timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) >=60 AND $sql_timeframe $hf $idara AND cp.sex='m' AND diag.ICD_10_code='" . $diagnostic_code . "' ORDER BY series ASC"; 
 
 
                 $over_or_equal_to_60yrs_male_result = $db->Execute($sql_60yrs_and_above_male);
 
 //60 yrs and above female
-                $sql_60yrs_and_above_female = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_60YRS_AND_ABOVE_FEMALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr WHERE timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) >=60 AND $sql_timeframe $hf $idara AND cp.sex='f' AND diag.ICD_10_code='" . $diagnostic_code . "' ORDER BY ICD_10_code";
+                $sql_60yrs_and_above_female = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_60YRS_AND_ABOVE_FEMALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr WHERE timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) >=60 AND $sql_timeframe $hf $idara AND cp.sex='f' AND diag.ICD_10_code='" . $diagnostic_code . "' ORDER BY ICD_10_code ASC";
                 $over_or_equal_to_60yrs_female_result = $db->Execute($sql_60yrs_and_above_female);
 
 //5years to under 60years male
-                $sql_5yrs_to_under_60yrs_male = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_5YRS_TO_UNDER_60YRS_MALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr WHERE timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) >=5 AND timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) <60  AND $sql_timeframe $hf $idara AND cp.sex='m' AND diag.ICD_10_code='" . $diagnostic_code . "' ORDER BY ICD_10_code";
+                $sql_5yrs_to_under_60yrs_male = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_5YRS_TO_UNDER_60YRS_MALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr WHERE timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) >=5 AND timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) <60  AND $sql_timeframe $hf $idara AND cp.sex='m' AND diag.ICD_10_code='" . $diagnostic_code . "' ORDER BY series ASC";
                 $yrs5_to_under_60yrs_male_result = $db->Execute($sql_5yrs_to_under_60yrs_male);
 
 //5years to under 60years female
-                $sql_5yrs_to_under_60yrs_female = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_5YRS_TO_UNDER_60YRS_FEMALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr WHERE timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) >=5 AND timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) <60 AND $sql_timeframe $hf $idara AND cp.sex='f' AND diag.ICD_10_code='" . $diagnostic_code . "' ORDER BY ICD_10_code";
+                $sql_5yrs_to_under_60yrs_female = "SELECT diag.ICD_10_code,  diag.ICD_10_description, count(*) AS TOTAL_5YRS_TO_UNDER_60YRS_FEMALE FROM care_tz_diagnosis AS diag INNER JOIN care_person AS cp   ON diag.PID=cp.pid INNER JOIN care_encounter ce ON ce.encounter_nr=diag.encounter_nr WHERE timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) >=5 AND timestampdiff(YEAR,DATE_FORMAT(cp.date_birth,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d')) <60 AND $sql_timeframe $hf $idara AND cp.sex='f' AND diag.ICD_10_code='" . $diagnostic_code . "' ORDER BY series ASC";
                 $yrs5_to_under_60yrs_female_result = $db->Execute($sql_5yrs_to_under_60yrs_female);
 
 
