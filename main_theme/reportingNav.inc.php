@@ -41,11 +41,11 @@
           Laboratory Reports
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/laboratory_summary.php<?php echo URL_APPEND ?>">Laboratory Summary</a>
+          <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/laboratory_summary.php<?php echo URL_APPEND ?>">NUMBER OF LAB TEST PER EACH DAY IN A MONTH</a>
 
-           <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/detailed_lab.php<?php echo URL_APPEND ?>">Detailed Laboratory</a>
+           <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/detailed_lab.php<?php echo URL_APPEND ?>"> POSITIVE AND NEGATIVE RESULTS BY GENDER</a>
 
-           <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/lab_mtuha.php<?php echo URL_APPEND ?>">Laboratory NTUHA</a>
+           <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/lab_mtuha.php<?php echo URL_APPEND ?>">NUMBER OF ALL LAB RESULT BY GENDER</a>
 
           <div class="dropdown-divider"></div>
         </div>
