@@ -9254,6 +9254,10 @@ $sum_all=$total_lab+$total_drugs+$total_xray+$total_dental+$total_eye_service+$t
 
             if (isset($_POST['show']) || !empty($_POST['show'])) {
 
+               // print_r($_POST);
+
+                //echo 'start date'. $_POST['date_from'].'<br>'.'end date'. $_POST['date_to'];
+
                 if ($_POST['date_from'] <= $_POST['date_to']) {
                     if (isset($_POST['admission_id']) || !empty($_POST['admission_id'])) {
                         if ($_POST['admission_id'] == 'all_opd_ipd') {
@@ -9279,10 +9283,14 @@ $sum_all=$total_lab+$total_drugs+$total_xray+$total_dental+$total_eye_service+$t
                                         $dept_ward = ' AND current_dept_nr=' . $_POST['dept_nr'];
                                 }
                             }
+
+
                         }//end dept ward validation
 
 
                        //Get health fund
+
+                        
                         if ($_POST['insurance']=="-2") {
                             $hf="";
                             
@@ -9327,6 +9335,8 @@ $sum_all=$total_lab+$total_drugs+$total_xray+$total_dental+$total_eye_service+$t
 
                             $TABLE2 = '';
                             $TABLE2.='<TR>';
+
+
 
                             $sql_lab_tmp = "CREATE TEMPORARY TABLE IF NOT EXISTS labresult AS 
 							                 (SELECT ce.current_ward_nr,ce.current_dept_nr,chemsub.paramater_name,chemsub.parameter_value,cp.sex,(DATE_FORMAT(NOW(),'%Y')-DATE_FORMAT( cp.date_birth, '%Y' )) AS age,chemsub.create_time
@@ -9403,13 +9413,19 @@ $sum_all=$total_lab+$total_drugs+$total_xray+$total_dental+$total_eye_service+$t
                     }//end admission_id validation
                 }//end date validation
             }//end show
+
+
             ?>
             <form name="form1" method="post" action="" onsubmit="return inputvalue()">
                 <table width="100%" border="0" align="center">
                     <tr>
                            <!--  <a href="javascript:show_calendar('form1.date_from','<?php echo $date_format ?>')">
                                 <img <?php // echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+
+
  -->
+                            <?php echo $LDDateFrom; ?>
+                            <input name="date_from" type="text" size=10 maxlength=10 id="datepicker" value="<?php echo $_POST['date_from'] ?>" >
 
                             <?php echo $LDDateTo; ?>
                             <input name="date_to" type="text" size=10 maxlength=10 id="datepicker1" value="<?php echo $_POST['date_to'] ?>" >
