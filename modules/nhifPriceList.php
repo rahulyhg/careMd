@@ -41,7 +41,7 @@ foreach ($nhifPrices as $nhifPrice) {
 		$drugResult = $db->Execute($existSQL);
 
 		if ($drugResult->RecordCount() > 0) {
-			$sql = "UPDATE care_tz_drugsandservices SET $columnPrice = '$UnitPrice', is_restricted = '$IsRestricted', maximum_quantity = '$MaximumQuantity' WHERE  nhif_item_code = '$ItemCode'";
+			$sql = "UPDATE care_tz_drugsandservices SET $columnPrice = '$UnitPrice', is_restricted = '$IsRestricted', maximum_quantity = '$MaximumQuantity', nhif_item_code = '$ItemCode' WHERE  nhif_item_code = '$ItemCode'";
 			$db->Execute($sql);
 		}else{
 

@@ -237,6 +237,23 @@ function GetAndUpdatedNHIFPrices(accessToken) {
 <?php endif ?>
 
 
+function deletePrescription(url) {
+  $('#deletePrescriptionModal').modal('show');
+  window.deletePrescriptionUrl = url;
+}
+
+$("document").ready(function(){
+  $( ".deletePrescriptionForm" ).submit(function( event ) {
+
+    var deleteReason = $("#deleteReasons").val();
+    url = window.deletePrescriptionUrl + "&delete_reason="+deleteReason;
+    window.location.href = url;
+
+    event.preventDefault();
+  });
+
+})
+
 </script>
 
 <div class="modal" id="diagnosisTypeModal" tabindex="-1" role="dialog">
@@ -332,5 +349,33 @@ function GetAndUpdatedNHIFPrices(accessToken) {
         <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
+  </div>
+</div>
+
+
+<div class="modal" id="deletePrescriptionModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <form name="deletePrescriptionForm" class="deletePrescriptionForm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Prescription</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <label for="deleteReasons">Delete Reasons</label><br><br>
+        <textarea name="deleteReasons" minlength="10" required="" class="" autofocus="" id="deleteReasons" cols="60" rows="8"></textarea>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-sm btn-primary" >Delete</button>
+      </div>
+
+    </div>
+      </form>
+
   </div>
 </div>

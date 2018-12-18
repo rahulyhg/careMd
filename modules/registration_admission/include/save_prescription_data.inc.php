@@ -173,10 +173,11 @@ $presc_obj->GetClassOfItem($article_item_number) == 'surgical_op')
 			 $sql="UPDATE care_encounter_prescription  SET
 			 					`status`='deleted',
 								`is_disabled`='1',
-								`disable_id`='".$_SESSION['sess_user_name']."',
+                `disable_id`='".$_SESSION['sess_user_name']."',
+								`reason`='".$_GET['delete_reason']."',
 								`disable_date`=NOW(),
 								`history`= concat(history,'$reason')
-			 			WHERE nr=$nr";
+			 			     WHERE nr=$nr";
                   $db->Execute($sql);
 
 								  //if (isset($externalcall))

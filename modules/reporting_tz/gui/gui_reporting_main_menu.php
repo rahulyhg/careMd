@@ -270,9 +270,14 @@ function getARV(path) {
                 <td><small class="font-sm">Pharmacy Report (with stock information and cost)</small></td>
               </tr>
 
-               <tr>
+              <tr>
                 <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/reporting_consumables.php">Consumables/Supplies Report</a></td>
                 <td><small class="font-sm">Monthly Utilization of consumables and supplies</small></td>
+              </tr>
+
+              <tr>
+                <td><a class="report-link" href="<?php echo $root_path ?>modules/reporting_tz/deleted_prescription.php">Deleted Prescriptions Report</a></td>
+                <td><small class="font-sm">Deleted Prescriptions</small></td>
               </tr>
 
             </tbody>

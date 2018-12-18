@@ -109,6 +109,8 @@
           <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/reporting_pharmacy_stock.php<?php echo URL_APPEND ?>">Pharmacy with stock information</a>
           <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/reporting_consumables.php<?php echo URL_APPEND ?>">Consumables/Supplies Report</a>
           <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="<?php echo $root_path ?>modules/reporting_tz/deleted_prescription.php<?php echo URL_APPEND ?>">Deleted Prescription Report</a>
+          <div class="dropdown-divider"></div>
         </div>
       </li>
 
