@@ -141,9 +141,16 @@
                 <?php
                 if ($row['is_disabled'] || $row['bill_number'] > 0 || $row['issuer']) {
                     echo '<font color="#D4D4D4">' . $LDdelete . '</font>';
-                } else
-                    echo '<a href="' . $thisfile . URL_APPEND . '&mode=delete&nr=' . $row['nr'] . '&show=insert&backpath=' . urlencode($backpath) . '&prescrServ=' . $_GET['prescrServ'] . '&externalcall=' . $externalcall . '&disablebuttons=' . $disablebuttons . '">' . $LDdelete . '</a>'
-                    ?></td>
+                } else{
+                    $deleteUrl = $thisfile . URL_APPEND . '&mode=delete&nr=' . $row['nr'] . '&show=insert&backpath=' . urlencode($backpath) . '&prescrServ=' . $_GET['prescrServ'] . '&externalcall=' . $externalcall . '&disablebuttons=' . $disablebuttons;
+                ?>
+                <a href="#" onClick="deletePrescription('<?php echo $deleteUrl ?>')"><?php echo $LDdelete ?></a>
+                <?php 
+                }
+                ?>
+                
+
+            </td>
             <td><FONT SIZE=-1  FACE="Arial">Prescribed by:</td>
             <td colspan=2><FONT SIZE=-1  FACE="Arial"><?php echo $row['prescriber']; ?></td>
         </tr>
