@@ -64,3 +64,7 @@ ALTER TABLE `care_encounter` CHANGE `pid` `pid` INT(11) UNSIGNED NOT NULL DEFAUL
 
 ALTER TABLE `care_encounter` ADD `nhif_card_status` VARCHAR(255)  NULL AFTER `referrer_number`, ADD `nhif_authorization_status` VARCHAR(255)  NULL AFTER `nhif_card_status`, ADD `nhif_authorization_number` VARCHAR(255)  NULL AFTER `nhif_authorization_status`, ADD `nhif_latest_authorization` VARCHAR(255)  NULL AFTER `nhif_authorization_number`, ADD `nhif_visit_type` VARCHAR(255)  NULL AFTER `nhif_latest_authorization`;
 
+
+
+--18/12
+ALTER TABLE `care_tz_drugsandservices` ADD `is_restricted` BOOLEAN NULL DEFAULT NULL AFTER `nhif_item_code`, ADD `maximum_quantity` INT NULL DEFAULT NULL AFTER `is_restricted`;

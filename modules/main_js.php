@@ -44,7 +44,7 @@ $(function() {
         mode: 'date',
         format: 'dd/MM/yyyy'
     });
-<?php if($_COOKIE['PageName'] == "NHIF Claims" || $_COOKIE['PageName'] == "Discharge" || $_COOKIE['PageName'] == "System Admin" || $_COOKIE['PageName'] == "Inpatient"  || $_COOKIE['PageName'] == "Ambulatory" ): ?>
+<?php if($_COOKIE['PageName'] == "NHIF Claims" || $_COOKIE['PageName'] == "Discharge" || $_COOKIE['PageName'] == "Pharmacy" ||  $_COOKIE['PageName'] == "System Admin" || $_COOKIE['PageName'] == "Inpatient"  || $_COOKIE['PageName'] == "Ambulatory" ): ?>
 $(document).ready(function () {
     $('.datatable').DataTable(
     {
@@ -63,6 +63,10 @@ $(document).ready(function () {
     });
 
     $('.datatable2').DataTable();
+
+    $('.datatable3').DataTable( {
+      "pageLength": 15
+    } );
 
 });
 <?php endif ?>
@@ -150,6 +154,88 @@ function showDatepicker(){
         constrainInput: false
     });
 }
+<?php if($hospitalCode): ?>
+function updateNHIFPrices() {
+    
+    $(".updateNHIFBtn").prop("disabled",true);
+    $(".updateNHIFBtn").html('Updating Prices Please Wait')
+    var accessToken = null;
+
+    var logindata = {
+      grant_type: "password",
+      username: "<?php echo $nhif_user; ?>",
+      password: "<?php echo $nhif_pwd; ?>"
+    };
+    var url = "<?php echo $nhif_claim_server; ?>/Token";
+    $.ajax(url, {
+      type: "POST",
+      data: logindata,
+      timeout: 10000
+    })
+    .done(function(data) {
+        accessToken = data.access_token;
+        GetAndUpdatedNHIFPrices(accessToken);
+      })
+    .fail(function(data) {
+        ProgressDestroy();
+        if (data.status === 400) {
+          alert(
+            "Error Login in to NHIF Server!\n" +
+              JSON.stringify(data.responseJSON.error_description)
+          );
+        } else {
+          alert(
+            "Error Login in to NHIF Server!\n\nPlease check your network connection\nor contact your administrator!"
+          );
+        }
+    });
+
+}
+
+function GetAndUpdatedNHIFPrices(accessToken) {
+
+    $.ajax(
+        "<?php echo $nhif_claim_url; ?>?FacilityCode=" + <?php echo $hospitalCode ?>,
+        {
+          headers: { Authorization: "Bearer " + accessToken },
+          xhrFields: {
+            withCredentials: true
+          }
+        }
+    )
+    .done(function(nhifData) {
+
+        $.post("<?php echo $root_path ?>modules/nhifPriceList.php",
+        {formdata: JSON.stringify(nhifData)},
+        function(data, status){
+            if (data.success == 1) {
+                 if (confirm('Prices were Successfully updated')) {
+                   window.location.reload();
+                }
+            }
+           
+        });
+
+    })
+    .fail(function(data) {
+      ProgressDestroy();
+      if (data.status === 0) {
+        alert(
+          "Error Connecting to NHIF Server!\n\nPlease check your network connection!"
+        );
+      } else {
+        if (data.status === 404) {
+          $(".card_status").append("Card Not Found!");
+          $(".authorization").append("REJECTED");
+        } else {
+          alert(JSON.stringify(data.responseText));
+        }
+      }
+    });
+}
+
+<?php endif ?>
+
 
 </script>
 

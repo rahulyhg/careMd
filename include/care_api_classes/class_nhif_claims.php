@@ -189,7 +189,6 @@ class Nhif_claims extends Nhif {
     {
         $investigations = array();
         $itemNumbers = $this->GetInvestigationDrugItems();
-        //echo "<pre>"; print_r($itemNumbers); echo "</pre>";
         $billingAchives = CareTzBillingArchiveQuery::create()->filterByEncounterNr($encounterNumber)->find()->toArray();
         foreach ($billingAchives as $archive) {
             $items = CareTzBillingArchiveElemQuery::create()->filterbyNr($archive['Nr'])->filterByItemNumber($itemNumbers)->find()->toArray();

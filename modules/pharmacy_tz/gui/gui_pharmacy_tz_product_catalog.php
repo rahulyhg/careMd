@@ -84,11 +84,18 @@ function popPic(pid,nm){
 
 	<TD><?php echo $LDEnterNewPharmacyProduct; ?></TD>
 </tr>
-<TR>
+<tr>
 	<td align=center><img src="../../gui/img/common/default/settings_tree.gif" border=0 width="16" height="17"></td>
 	<TD class="submenu_item"><nobr><a href="edit_pricesettings.php"><?php echo $LDAdminSellingPrice; ?></a></nobr></TD>
 
 	<TD><?php echo $LDAdminSellingPriceDescription; ?></TD>
+</tr>
+
+<tr>
+	<td align=center><img src="../../gui/img/common/default/settings_tree.gif" border=0 width="16" height="17"></td>
+	<TD class="submenu_item"><nobr><a href="pharmacy_tz_nhif_prices.php">NHIF Prices</a></nobr></TD>
+
+	<TD>Manage NHIF Price Catalog</TD>
 </tr>
 
 <TR  height=1>

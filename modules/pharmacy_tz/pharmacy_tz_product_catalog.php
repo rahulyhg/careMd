@@ -5,8 +5,6 @@ require('./roots.php');
 
 require($root_path . 'include/inc_environment_global.php');
 
-$pageName = "Pharmacy";
-
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.1 - 2004-10-02
  * GNU General Public License
