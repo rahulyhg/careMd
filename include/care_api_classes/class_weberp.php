@@ -97,7 +97,7 @@ class weberp {
 
 	function weberp() {
 		$this->DebugLevel = 0;
-		$this->ServerURL = "http://localhost/weberp_aicc/api/api_xml-rpc.php";
+		$this->ServerURL = "http://localhost/webERP_4.15/webERP/api/api_xml-rpc.php";
 
 
 			$this->user = php_xmlrpc_encode("admin");

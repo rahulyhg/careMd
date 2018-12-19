@@ -868,8 +868,7 @@ if (!isset($pid) || !$pid) {
 							<option value=""></option>';
 
 
-    $sql_con = "SELECT  item_description FROM care_tz_drugsandservices WHERE item_number like 'C%' and
-						 item_description LIKE '%CONS%'";
+    $sql_con = "SELECT  item_description FROM care_tz_drugsandservices WHERE item_number LIKE 'CONS%' AND purchasing_class='service'";
     $db_con = $db->Execute($sql_con);
     while ($conrow = $db_con->FetchRow()) {
         $cTemp = $cTemp . '<option value="' . $conrow['item_description'] . '" ';

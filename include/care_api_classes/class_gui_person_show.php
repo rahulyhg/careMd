@@ -346,6 +346,8 @@ class GuiPersonShow {
 			$this->smarty->assign('sCSSingleInput',$sCSBuffer);
 		}
 
+		
+
 		$this->smarty->assign('LDAddress',"$LDAddress:");
 
 		$this->smarty->assign('LDStreet',"$LDStreet:");

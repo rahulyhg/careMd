@@ -476,11 +476,17 @@ class GuiPersonShow extends Person {
                                 if ($insurance_ID == 12 && $glob_obj->getConfigValue("validate_nhif") === "1") {
 //                                    echo '<script type="text/javascript">'
 //                                    . 'hide_links(); </script>';
+
+
 //                                    
                                     if (isset($this->current_encounter) && $this->current_encounter){
                                         if ($this->current_encounter > 0 && @$_COOKIE['AuthorizationNo']) {
 
                                             $this->sql="SELECT nhif_card_status, nhif_authorization_status, nhif_authorization_number, nhif_latest_authorization, nhif_visit_type FROM care_encounter WHERE encounter_nr ='".$this->current_encounter."'";
+
+                                            //echo $this->sql;
+
+
                                             $encounterRow = $db->Execute($this->sql);
 
                                             while ($d_row=$encounterRow->FetchRow()) {

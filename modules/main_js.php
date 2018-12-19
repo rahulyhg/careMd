@@ -161,11 +161,14 @@ function updateNHIFPrices() {
     $(".updateNHIFBtn").html('Updating Prices Please Wait')
     var accessToken = null;
 
+
+
     var logindata = {
       grant_type: "password",
       username: "<?php echo $nhif_user; ?>",
       password: "<?php echo $nhif_pwd; ?>"
     };
+    
     var url = "<?php echo $nhif_claim_server; ?>/Token";
     $.ajax(url, {
       type: "POST",
