@@ -69,3 +69,7 @@ ALTER TABLE `care_encounter` ADD `nhif_card_status` VARCHAR(255)  NULL AFTER `re
 --18/12
 ALTER TABLE `care_tz_drugsandservices` ADD `is_restricted` BOOLEAN NULL DEFAULT NULL AFTER `nhif_item_code`, ADD `maximum_quantity` INT NULL DEFAULT NULL AFTER `is_restricted`;
 ALTER TABLE `care_encounter_prescription` ADD `reason` TEXT NULL DEFAULT NULL AFTER `practitioner_nr`;
+
+--19/12
+ALTER TABLE `care_tz_drugsandservices` ADD `nhif_item_type_id` INT NOT NULL DEFAULT '0' AFTER `maximum_quantity`;
+

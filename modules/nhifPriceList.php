@@ -37,16 +37,22 @@ foreach ($nhifPrices as $nhifPrice) {
 			$columnPrice = "unit_price_2";
 		}
 
+		if ($IsRestricted) {
+			$IsRestricted = 1;
+		}else{
+			$IsRestricted = 0;
+		}
+
 		$existSQL = "SELECT item_description FROM care_tz_drugsandservices WHERE  nhif_item_code = '$ItemCode'"; 
 		$drugResult = $db->Execute($existSQL);
 
 		if ($drugResult->RecordCount() > 0) {
-			$sql = "UPDATE care_tz_drugsandservices SET $columnPrice = '$UnitPrice', is_restricted = '$IsRestricted', maximum_quantity = '$MaximumQuantity', nhif_item_code = '$ItemCode' WHERE  nhif_item_code = '$ItemCode'";
+			$sql = "UPDATE care_tz_drugsandservices SET $columnPrice = '$UnitPrice', is_restricted = '$IsRestricted', maximum_quantity = '$MaximumQuantity', nhif_item_code = '$ItemCode', 'nhif_item_type_id' = '$ItemTypeID' WHERE  nhif_item_code = '$ItemCode'";
 			$db->Execute($sql);
 		}else{
 
-			$sql = "INSERT INTO care_tz_drugsandservices (item_description, item_full_description,  $columnPrice, nhif_item_code, is_restricted, maximum_quantity)
-						VALUES ('$ItemName', '$ItemName', '$UnitPrice', $ItemCode, $IsRestricted, $MaximumQuantity)";
+			$sql = "INSERT INTO care_tz_drugsandservices (item_description, item_full_description,  $columnPrice, nhif_item_code, is_restricted, maximum_quantity, nhif_item_type_id)
+						VALUES ('$ItemName', '$ItemName', '$UnitPrice', $ItemCode, $IsRestricted, $MaximumQuantity, $ItemTypeID)";
 			$db->Execute($sql);
 		}
 		
