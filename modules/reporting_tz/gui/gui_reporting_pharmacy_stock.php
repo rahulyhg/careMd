@@ -207,7 +207,7 @@ border-collapse:collapse;
 
                                 
                             </tr>
-                        </TABLE>
+                        </table>
                 </TR>
             </TBODY>
         </TABLE>

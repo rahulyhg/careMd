@@ -88,6 +88,9 @@ $themeName = $user['ThemeName'];
 
 $userPermissions = explode(" ", $userRole['Permission']);
 
+ // echo "<pre>"; print_r($userPermissions);echo "</pre>";
+ // die();
+
 
 $userPermissions = str_replace('_a_1_', '', $userPermissions);
 $userPermissions = str_replace('_a_2_', '', $userPermissions);
@@ -147,15 +150,7 @@ if ($userPermissions[0] == "System_Admin" || $userPermissions[0] == "_a_0_all " 
 
     if ($navigationMenu['name'] == "Radiology") {
       foreach ($userPermissions as $userPermission) { 
-        if ($userPermission == "photowrite" || $userPermission == "photoread")  {
-          array_push($userNavigationMenus, $navigationMenu);
-        }
-      }
-    }
-
-    if ($navigationMenu['name'] == "Radiology") {
-      foreach ($userPermissions as $userPermission) { 
-        if ($userPermission == "photowrite" || $userPermission == "photoread" || $userPermission == "diagnosticsreceptionwrite" || $userPermission == "diagnosticsrequest")  {
+        if ($userPermission == "photowrite" || $userPermission == "photoread" || $userPermission == "diagnosticsreceptionwrite" || $userPermission == "diagnosticsrequest" || $userPermission == "radioread" || $userPermission == "radiowrite")  {
           array_push($userNavigationMenus, $navigationMenu);
         }
       }

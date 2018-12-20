@@ -157,10 +157,10 @@ $drugQuery = $db->Execute($drugSQL);
             <tr>
                 <td>SN</td>
                 <td>Item Number</td>
+                <td>Item Code</td>
                 <td>Item Description</td>
                 <td>Standard NHIF Price</td>
                 <td>Bunge NHIF Price</td>
-                <td>Item Code</td>
             </tr>
         </thead>
         <tbody>
@@ -171,10 +171,10 @@ $drugQuery = $db->Execute($drugSQL);
                     echo "<tr>
                         <td>". $drug['item_id']."</td>
                         <td>". $drug['item_number']."</td>
+                        <td class='text-right'>". $drug['nhif_item_code']."</td>
                         <td>". $drug['item_description']."</td>
                         <td class='text-right'>". number_format($drug['unit_price_1'], 2)."</td>
                         <td class='text-right'>". number_format($drug['unit_price_2'], 2)."</td>
-                        <td class='text-right'>". $drug['nhif_item_code']."</td>
                     </tr>";
 
                 }

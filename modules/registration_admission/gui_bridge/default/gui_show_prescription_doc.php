@@ -109,6 +109,12 @@
             </td>
             <!--stock balance from weberp will be here-->
         </tr>
+        <?php 
+
+        if ($row['is_disabled']) {
+            $bgc = "yellow";
+        }
+         ?>
         <tr bgcolor="<?php echo $bgc; ?>" valign="top">
             <td><FONT SIZE=-1  FACE="Arial"></td>
             <td rowspan=2><FONT SIZE=-1  FACE="Arial">
@@ -182,6 +188,8 @@
                 <?php
                 if (!$row['is_disabled']) {
                     echo 'Issued By:';
+                }else {
+                    echo "Deletion Reason:";
                 }
                 ?>
             </td>
@@ -194,6 +202,8 @@
                 echo $row['issuer'];
             }
             
+        }else {
+            echo $row['reason'];
         }
         ?>
             </td>  

@@ -12,6 +12,182 @@ require_once($root_path . 'main_theme/head.inc.php');
 require_once($root_path . 'main_theme/header.inc.php');
 require_once($root_path . 'main_theme/topHeader.inc.php');
 
+
+require_once $root_path.'vendor/autoload.php';
+require_once $root_path.'generated-conf/config.php';
+
+require_once($root_path . 'include/care_api_classes/class_tz_reporting.php');
+
+require_once($root_path . 'include/care_api_classes/class_tz_insurance.php');
+require_once($root_path . 'include/care_api_classes/class_ward.php');
+
+$ward_obj = new Ward;
+$rep_obj = new selianreport();
+$insurance_obj = new Insurance_tz;
+
+$items = 'nr,name';
+$TP_SELECT_BLOCK_IN = '';
+$ward_info = $ward_obj->getAllWardsItemsObject($items);
+
+$TP_SELECT_BLOCK_IN.='<select name="current_ward_nr" size="1"><option value="all_ipd">all</option>';
+if (!empty($ward_info) && $ward_info->RecordCount()) {
+    while ($station = $ward_info->FetchRow()) {
+        $TP_SELECT_BLOCK_IN.='
+                                <option value="' . $station['nr'] . '" ';
+        if (isset($current_ward_nr) && ($current_ward_nr == $station['nr']))
+            $TP_SELECT_BLOCK.='selected';
+        $TP_SELECT_BLOCK_IN.='>' . $station['name'] . '</option>';
+    }
+}
+$TP_SELECT_BLOCK_IN .= '</select>';
+
+require_once($root_path . 'include/care_api_classes/class_department.php');
+$dept_obj = new Department;
+$medical_depts = $dept_obj->getAllMedical();
+$TP_SELECT_BLOCK = '<select name="dept_nr" size="1"><option value="all_opd">all</option>';
+$later_depts = $medical_depts;
+
+while (list($x, $v) = each($medical_depts)) {
+    $TP_SELECT_BLOCK.='
+    <option value="' . $v['nr'] . '">';
+    $buffer = $v['LD_var'];
+    if (isset($$buffer) && !empty($$buffer))
+        $TP_SELECT_BLOCK.=$$buffer;
+    else
+        $TP_SELECT_BLOCK.=$v['name_formal'];
+    $TP_SELECT_BLOCK.='</option>';
+}
+$TP_SELECT_BLOCK.='</select>';
+
+
+
+use  CareMd\CareMd\CareUsersQuery;
+use  CareMd\CareMd\CareUserRolesQuery;
+
+$userId = $_SESSION['sess_login_userid'];
+
+$user = CareUsersQuery::create()->filterByLoginId($userId)->findOne()->toArray();
+$roleId = $user['RoleId'];
+// $roleId = 13;
+
+$userRole = CareUserRolesQuery::create()->filterByRoleId($roleId)->findOne()->toArray();
+$themeName = $user['ThemeName'];
+
+$userPermissions = explode(" ", $userRole['Permission']);
+
+
+$userPermissions = str_replace('_a_1_', '', $userPermissions);
+$userPermissions = str_replace('_a_2_', '', $userPermissions);
+$userPermissions = str_replace('_a_3_', '', $userPermissions);
+$userPermissions = str_replace('_a_4_', '', $userPermissions);
+
+$showFinancialReport = false;
+
+foreach ($userPermissions as $permission) {
+
+    if ($permission == "financialreportingread" || $permission == "allreportingread" ) {
+        $showFinancialReport = true;
+    }
+}
+
+
+if ($userPermissions[0] == "System_Admin" || $userPermissions[0] == "_a_0_all " || $userPermissions[0] == "_a_0_all")  {
+    $showFinancialReport = true;
+}
+
+
+$debug = FALSE;
+$PRINTOUT = FALSE;
+$EXPORT = FALSE;
+
+if(isset($_POST['show'])){
+    $msg="";
+    $error=FALSE;
+    if($_POST['date_from']=="" || $_POST['date_to']==""){
+
+       $msg="PLEASE ENTER DATE";
+       $error=TRUE;
+       
+
+    } else if($_POST['date_from']>$_POST['date_to']){
+        $msg="DATE FROM MUST BE GREATER";
+        $error=TRUE;
+
+    }else{
+
+       $MysqlDateFrom= @formatDate2STD($_POST['date_from'],$date_format);
+       $MysqlDateTo=@formatDate2STD($_POST['date_to'],$date_format);
+       
+
+       switch ($_POST['insurance']) {
+           case '-2':
+               $insurance="";
+               $ins_name='All Insurance Companies';
+               break;
+           case '-1':
+               $insurance="AND insurance_id=".'0'; 
+               $ins_name='CASH';   
+                   break; 
+
+           
+           default:
+               $insurance="AND insurance_id=".$_POST['insurance'];
+               $sql_insurancename = "SELECT name FROM care_tz_company where id='".$_POST['insurance']."'";
+                $insurance_name = $db->Execute($sql_insurancename);
+                $sql_insurancename = $insurance_name->FetchRow();
+                $ins_name = $sql_insurancename['name'];
+               break;
+       }
+
+     switch ($_POST['admission_id']) {
+         case 'all_opd_ipd':
+             $admission="";
+             $admissionname='All OPD and IPD';
+             break;
+         case '1':
+         if($_POST['current_ward_nr']=='all_ipd'){
+            $admission="AND encounter_class_nr=".'1';
+            $admissionname='All IPD';
+         }else{
+            $admission="AND current_ward_nr =".$_POST['current_ward_nr']; 
+            $sql_ward_name="SELECT name FROM care_ward WHERE nr=".$_POST['current_ward_nr'];
+            $result=$db->Execute($sql_ward_name);
+            if($wname=$result->FetchRow()){
+                $admissionname=$wname['name'];
+                
+            }
+            
+         }  
+         break;
+
+         case '2':
+            if ($_POST['dept_nr']=='all_opd') {
+                $admission="AND encounter_class_nr=".'2';
+                $admissionname='All OPD';
+              }else{
+                $admission="AND current_dept_nr=".$_POST['dept_nr'];
+                $sql_dept_name="SELECT name_formal FROM care_department WHERE nr=".$_POST['dept_nr'];
+                $result=$db->Execute($sql_dept_name);
+                if($row_deptname=$result->FetchRow()){
+                  $admissionname=$row_deptname['name_formal'];
+
+                }
+
+              }  
+               break;  
+         
+         default:
+             $admission="";
+             break;
+     }
+
+
+
+    }
+
+}
+
+
 ?>
 
  <table cellspacing="0"  class="titlebar" border=0>
@@ -160,17 +336,7 @@ require_once($root_path . 'main_theme/footer.inc.php');
                         </table>
                         <?php  require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
 
-                              <?php
-                              $msg=(isset($msg) ? $msg : null);
-                              if($msg!=""){
-                                ?>
-                                <div style="color:red; font-size: 16px; font-weight: bold; "><?php echo $msg;?></div>
-                             <?php
-                              }
-                              ?>
-                              sdfdsfdsfs
-                              <h4>skdfjsdkl lsdfskd</h4>
-                        <form name="form1" method="post" action="" onSubmit="return validate();">
+                         <form name="form1" method="post" action="" onSubmit="return validate();">
 
 
                             <?php require_once($root_path . $top_dir . 'include/inc_gui_timeframe_cash_credit.php'); ?>
@@ -193,17 +359,10 @@ require_once($root_path . 'main_theme/footer.inc.php');
                                 //$rep_obj->drug_consumption($selected_date_from, $selected_date_to, $company, $_POST['admission_id']);
                             }
                             ?>
-                         
+                            <!-- &nbsp;&nbsp;
+                             <a href="./gui/downloads/detailed_revenue.csv"><img border=0 src=<?php //echo $root_path;                 ?>/gui/img/common/default/savedisk.gif></a>-->
                         </form>
-                        <table width=100% border=0 cellspacing=0 height="30">
-                            <tr valign=top>
-                                <td width="408" align=center bgcolor="#99ccff">
-                                   <a href="./gui/downloads/drug_consumption.csv"><img border=0 src="../../gui/img/common/default/savedisk.gif"></a>    
-                                </td>
 
-                                
-                            </tr>
-                        </TABLE>
                 </TR>
             </TBODY>
         </TABLE>
