@@ -1,5 +1,5 @@
- <footer class="footer">
-       <!--  <div class="container-fluid">
+ <!-- <footer class="footer">
+        <div class="container-fluid">
           <nav class="float-left">
             <ul>
               <li>
@@ -31,8 +31,8 @@
             </script>, made with <i class="material-icons">favorite</i> by
             <a href="#" target="_blank">Entice</a> for a better Hospital.
           </div>
-        </div> -->
-      </footer>
+        </div>
+      </footer> -->
     </div>
   </div>
   <!--   Core JS Files   -->
