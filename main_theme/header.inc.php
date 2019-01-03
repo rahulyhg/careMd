@@ -37,9 +37,9 @@ if (empty($_SESSION['sess_login_userid'])) {
 }
 
 
-$sql="SELECT nr,sort_nr,name,LD_var AS \"LD_var\",url,is_visible FROM care_menu_main WHERE is_visible=1 OR LD_var='LDEDP' OR LD_var='LDLogin' ORDER by sort_nr";
+$menuSql="SELECT nr,sort_nr,name,LD_var AS \"LD_var\",url,is_visible FROM care_menu_main WHERE is_visible=1 OR LD_var='LDEDP' OR LD_var='LDLogin' ORDER by sort_nr";
 
-$resultMenus=$db->Execute($sql);
+$resultMenus=$db->Execute($menuSql);
 $navigationMenus = [];
 $userNavigationMenus = [];
 

@@ -334,9 +334,8 @@ require_once($root_path . 'main_theme/footer.inc.php');
                                 </td>
                             </tr>
                         </table>
-                        <?php  require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
 
-                         <form name="form1" method="post" action="" onSubmit="return validate();">
+                          <form name="form1" method="post" action="" onSubmit="return validate();">
 
 
                             <?php require_once($root_path . $top_dir . 'include/inc_gui_timeframe_cash_credit.php'); ?>
@@ -362,6 +361,10 @@ require_once($root_path . 'main_theme/footer.inc.php');
                             <!-- &nbsp;&nbsp;
                              <a href="./gui/downloads/detailed_revenue.csv"><img border=0 src=<?php //echo $root_path;                 ?>/gui/img/common/default/savedisk.gif></a>-->
                         </form>
+                        
+                        <?php  require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
+
+                       
 
                 </TR>
             </TBODY>
