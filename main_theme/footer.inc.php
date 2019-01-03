@@ -56,7 +56,7 @@
 
   <script src="<?php echo $root_path ?>/js/care_md/plugins/idle-timer.js"></script>
 
-  <?php if ($_COOKIE['PageName'] == "NHIF Claims" || $_COOKIE['PageName'] == "Discharge" || $_COOKIE['PageName'] == "Pharmacy"  || $_COOKIE['PageName'] == "Inpatient" || $_COOKIE['PageName'] == "Ambulatory" ): ?>
+  <?php if ($_COOKIE['PageName'] == "NHIF Claims" || $_COOKIE['PageName'] == "Discharge" || $_COOKIE['PageName'] == "Pharmacy"  || $_COOKIE['PageName'] == "Inpatient" || $_COOKIE['PageName'] == "Ambulatory" || $_COOKIE['PageName'] == "Reporting"  ): ?>
       <!--datatables-->
     <script src="<?php echo $root_path; ?>assets/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="<?php echo $root_path; ?>assets/datatables/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
@@ -69,8 +69,18 @@
     <script src="<?php echo $root_path; ?>assets/datatables/plugins/responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
     <!-- <script src="<?php echo $root_path; ?>assets/datatables/plugins/responsive/js/responsive.bootstrap4.min.js" type="text/javascript"></script> -->
     <!-- <script src="<?php echo $root_path; ?>assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script> -->
+
+    <script src="<?php echo $root_path ?>/js/care_md/plugins/dataTables.buttons.min.js"></script>
+    <script src="<?php echo $root_path ?>/js/care_md/plugins/buttons.flash.min.js"></script>
+    <script src="<?php echo $root_path ?>/js/care_md/plugins/jszip.min.js"></script>
+    <script src="<?php echo $root_path ?>/js/care_md/plugins/pdfmake.min.js"></script>
+    <script src="<?php echo $root_path ?>/js/care_md/plugins/vfs_fonts.js"></script>
+    <script src="<?php echo $root_path ?>/js/care_md/plugins/buttons.html5.min.js"></script>
+    <script src="<?php echo $root_path ?>/js/care_md/plugins/buttons.print.min.js"></script>
     
   <?php endif ?>
+
+ 
 
 <?php 
 

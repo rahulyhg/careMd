@@ -73,3 +73,8 @@ ALTER TABLE `care_encounter_prescription` ADD `reason` TEXT NULL DEFAULT NULL AF
 --19/12
 ALTER TABLE `care_tz_drugsandservices` ADD `nhif_item_type_id` INT NOT NULL DEFAULT '0' AFTER `maximum_quantity`;
 
+--03/01
+ALTER TABLE `care_encounter_prescription` CHANGE `reason` `comment` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+ALTER TABLE `care_tz_drugsandservices_description` ADD `company_id` INT NOT NULL DEFAULT '0' AFTER `ShowDescription`;
+
+

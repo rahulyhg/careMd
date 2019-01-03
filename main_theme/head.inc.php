@@ -1,7 +1,11 @@
 <html lang="en">
     <head>
         <title>
-        <?php echo @($PageName)?$PageName:"" ?> - CareMd
+            <?php if ($_COOKIE['PageName'] == "Reporting"): ?>
+                Deleted Prescriptions
+            <?php else: ?>
+                <?php echo @($_COOKIE['PageName'])?$_COOKIE['PageName']:"" ?> - CareMd
+            <?php endif ?>
         </title>
         <meta charset="utf-8"/>
         <link href="img/apple-icon.png" rel="apple-touch-icon" sizes="76x76">
@@ -19,6 +23,7 @@
             <link href="<?php echo $root_path ?>css/themes/care_md/font-awesome.min.css" rel="stylesheet"/>
             <link href="<?php echo $root_path ?>css/themes/care_md/jquery.Wload.css" rel="stylesheet"/>
             <link href="<?php echo $root_path ?>css/themes/care_md/main.css" rel="stylesheet"/>
+            <link href="<?php echo $root_path ?>css/themes/care_md/buttons.dataTables.min.css" rel="stylesheet"/>
 
             <?php if ($_COOKIE['PageName'] == "NHIF Claims"): ?>
                 

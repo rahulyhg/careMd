@@ -25,41 +25,57 @@ $ward_obj = new Ward;
 $rep_obj = new selianreport();
 $insurance_obj = new Insurance_tz;
 
-$items = 'nr,name';
-$TP_SELECT_BLOCK_IN = '';
-$ward_info = $ward_obj->getAllWardsItemsObject($items);
+$sql = "SELECT ID, ShowDescription, company_id, Fieldname FROM care_tz_drugsandservices_description";
+$insurance_info = $db->Execute($sql);
 
-$TP_SELECT_BLOCK_IN.='<select name="current_ward_nr" size="1"><option value="all_ipd">all</option>';
-if (!empty($ward_info) && $ward_info->RecordCount()) {
-    while ($station = $ward_info->FetchRow()) {
-        $TP_SELECT_BLOCK_IN.='
-                                <option value="' . $station['nr'] . '" ';
-        if (isset($current_ward_nr) && ($current_ward_nr == $station['nr']))
-            $TP_SELECT_BLOCK.='selected';
-        $TP_SELECT_BLOCK_IN.='>' . $station['name'] . '</option>';
+if (!empty($insurance_info) && $insurance_info->RecordCount()) {
+    $insurances = $insurance_info->GetArray();
+}
+
+$lastMonth = date('Y-m-d', strtotime('first day of last month'));
+
+
+$datefrom = $_GET['from_date']?date('Y-m-d', strtotime($_GET['from_date'])):$lastMonth;
+$dateto = $_GET['to_date']?date('Y-m-d', strtotime($_GET['to_date'])):"";
+$company = $_GET['company']?$_GET['company']:"";
+$doctor = $_GET['doctor']?$_GET['doctor']:"";
+
+
+$sqlQuery = "SELECT p.article, d.unit_price, d.unit_price_1, d.unit_price_2, d.unit_price_3, d.unit_price_4, d.unit_price_5, d.unit_price_6, d.unit_price_7, d.unit_price_8, d.unit_price_9, d.unit_price_10, d.unit_price_11, p.modify_time, p.prescriber, p.prescribe_date, p.disable_id, p.comment FROM care_encounter_prescription p LEFT JOIN care_tz_drugsandservices d ON d.item_number = p.article_item_number WHERE p.status = 'deleted'";
+
+if (@$datefrom) {
+    $sqlQuery .= " AND p.modify_time >= '$datefrom' " ;
+}
+
+if (@$dateto) {
+    $sqlQuery .= " AND p.modify_time <= '$dateto' " ;
+}
+
+if (@$doctor) {
+    $sqlQuery .= " AND p.disable_id LIKE '%$doctor%' " ;
+}
+
+$sqlQuery .= " ORDER BY modify_time DESC";
+
+$prescriptions = array();
+$prescription_info = $db->Execute($sqlQuery);
+
+if (!empty($prescription_info) && $prescription_info->RecordCount()) {
+    $prescriptions = $prescription_info->GetArray();
+}
+
+if (@$company) {
+
+    foreach ($insurances as $insurance) {
+        if ($insurance['company_id'] == $company) {
+            $priceColumn = $insurance['Fieldname'];
+
+            foreach ($prescriptions as $key => $prescription) {
+                $prescriptions[$key]['unit_price'] = $prescriptions[$priceColumn];
+            }
+        }
     }
 }
-$TP_SELECT_BLOCK_IN .= '</select>';
-
-require_once($root_path . 'include/care_api_classes/class_department.php');
-$dept_obj = new Department;
-$medical_depts = $dept_obj->getAllMedical();
-$TP_SELECT_BLOCK = '<select name="dept_nr" size="1"><option value="all_opd">all</option>';
-$later_depts = $medical_depts;
-
-while (list($x, $v) = each($medical_depts)) {
-    $TP_SELECT_BLOCK.='
-    <option value="' . $v['nr'] . '">';
-    $buffer = $v['LD_var'];
-    if (isset($$buffer) && !empty($$buffer))
-        $TP_SELECT_BLOCK.=$$buffer;
-    else
-        $TP_SELECT_BLOCK.=$v['name_formal'];
-    $TP_SELECT_BLOCK.='</option>';
-}
-$TP_SELECT_BLOCK.='</select>';
-
-
 
 use  CareMd\CareMd\CareUsersQuery;
 use  CareMd\CareMd\CareUserRolesQuery;
@@ -68,7 +84,6 @@ $userId = $_SESSION['sess_login_userid'];
 
 $user = CareUsersQuery::create()->filterByLoginId($userId)->findOne()->toArray();
 $roleId = $user['RoleId'];
-// $roleId = 13;
 
 $userRole = CareUserRolesQuery::create()->filterByRoleId($roleId)->findOne()->toArray();
 $themeName = $user['ThemeName'];
@@ -95,102 +110,9 @@ if ($userPermissions[0] == "System_Admin" || $userPermissions[0] == "_a_0_all " 
     $showFinancialReport = true;
 }
 
-
-$debug = FALSE;
-$PRINTOUT = FALSE;
-$EXPORT = FALSE;
-
-if(isset($_POST['show'])){
-    $msg="";
-    $error=FALSE;
-    if($_POST['date_from']=="" || $_POST['date_to']==""){
-
-       $msg="PLEASE ENTER DATE";
-       $error=TRUE;
-       
-
-    } else if($_POST['date_from']>$_POST['date_to']){
-        $msg="DATE FROM MUST BE GREATER";
-        $error=TRUE;
-
-    }else{
-
-       $MysqlDateFrom= @formatDate2STD($_POST['date_from'],$date_format);
-       $MysqlDateTo=@formatDate2STD($_POST['date_to'],$date_format);
-       
-
-       switch ($_POST['insurance']) {
-           case '-2':
-               $insurance="";
-               $ins_name='All Insurance Companies';
-               break;
-           case '-1':
-               $insurance="AND insurance_id=".'0'; 
-               $ins_name='CASH';   
-                   break; 
-
-           
-           default:
-               $insurance="AND insurance_id=".$_POST['insurance'];
-               $sql_insurancename = "SELECT name FROM care_tz_company where id='".$_POST['insurance']."'";
-                $insurance_name = $db->Execute($sql_insurancename);
-                $sql_insurancename = $insurance_name->FetchRow();
-                $ins_name = $sql_insurancename['name'];
-               break;
-       }
-
-     switch ($_POST['admission_id']) {
-         case 'all_opd_ipd':
-             $admission="";
-             $admissionname='All OPD and IPD';
-             break;
-         case '1':
-         if($_POST['current_ward_nr']=='all_ipd'){
-            $admission="AND encounter_class_nr=".'1';
-            $admissionname='All IPD';
-         }else{
-            $admission="AND current_ward_nr =".$_POST['current_ward_nr']; 
-            $sql_ward_name="SELECT name FROM care_ward WHERE nr=".$_POST['current_ward_nr'];
-            $result=$db->Execute($sql_ward_name);
-            if($wname=$result->FetchRow()){
-                $admissionname=$wname['name'];
-                
-            }
-            
-         }  
-         break;
-
-         case '2':
-            if ($_POST['dept_nr']=='all_opd') {
-                $admission="AND encounter_class_nr=".'2';
-                $admissionname='All OPD';
-              }else{
-                $admission="AND current_dept_nr=".$_POST['dept_nr'];
-                $sql_dept_name="SELECT name_formal FROM care_department WHERE nr=".$_POST['dept_nr'];
-                $result=$db->Execute($sql_dept_name);
-                if($row_deptname=$result->FetchRow()){
-                  $admissionname=$row_deptname['name_formal'];
-
-                }
-
-              }  
-               break;  
-         
-         default:
-             $admission="";
-             break;
-     }
-
-
-
-    }
-
-}
-
-
 ?>
 
- <table cellspacing="0"  class="titlebar" border=0>
+ <table cellspacing="0"  class="titlebar" border=0 width="100%">
     <tr valign=top  class="titlebar" >
         <td width="202" bgcolor="#99ccff" >
             &nbsp;&nbsp;<font color="#330066"><?php echo $LDConsumption; ?></font></td>
@@ -203,174 +125,114 @@ if(isset($_POST['show'])){
 </table>
 <?php  require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
 
+<style>
+    .form-control:disabled, .form-control[readonly] {
+        background-color: transparent;
+    }
+    .container {
+        background-color: #fff;
+        padding-top: 20px;
+    }
+
+    .dataTables_filter {
+       width: 500%;
+       float: right;
+       text-align: right;
+       padding-right: 10px;
+    }
+
+    .btn-right {
+       float: right;
+       text-align: right;
+       padding-right: 10px;
+    }
+</style>
+
+<div class="container" style="">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-inline">
+               
+                <div class="row">
+                    <div class="col">
+                      <div class="form-group bmd-form-group">
+                        <label class="bmd-label-floating">From</label>
+                        <input type="text"  name="from_date" value="<?php echo $datefrom ?>" class="form-control" id="datepicker" />
+                      </div>
+                    </div>
+
+                    <div class="col">
+                      <div class="form-group bmd-form-group">
+                        <label class="bmd-label-floating">To</label>
+                        <input type="text" name="to_date" value="<?php echo $dateto ?>" class="form-control" id="datepicker1" />
+                      </div>
+                    </div>
+
+                    <div class="col">
+                      <div class="form-group bmd-form-group">
+                        <select name="company" class="form-control" id="company">
+                            <option value="">Company</option>
+                            <?php foreach ($insurances as $insurance): ?>
+                                <option <?php if($insurance['company_id'] == $company){ echo 'selected';} ?> value="<?php echo $insurance['company_id'] ?>"><?php echo $insurance['ShowDescription'] ?></option>   
+                            <?php endforeach ?>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col">
+                      <div class="form-group bmd-form-group">
+                        <label class="bmd-label-floating">Doctor's Name</label>
+                        <input type="text" name="doctor" value="<?php echo $doctor ?>" class="form-control" />
+                      </div>
+                    </div>
+                </div>
+
+              <button type="submit" class="btn btn-primary mb-2 mx-auto">Search</button>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <table class="table table-striped table-bordered table-condensed datatable2 " width="100%">
+            <thead>
+
+                <tr>
+                    <th>SN</th>
+                    <th>Prescription Name</th>
+                    <th>Prescriber</th>
+                    <th>Price</th>
+                    <th>Prescribe Date</th>
+                    <th>Deleted By</th>
+                    <th>Comment</th>
+                    <th>Deleted Date</th>
+                 </tr>
+                
+            </thead>
+            <tbody>
+                <?php foreach ($prescriptions as $key => $prescription): ?>
+                    <tr>
+                        <td><?php echo ++$key ?></td>
+                        <td><?php echo $prescription['article'] ?></td>
+                        <td><?php echo $prescription['prescriber'] ?></td>
+                        <td class="text-right"><?php echo number_format($prescription['unit_price'], 2) ?></td>
+                        <td><?php echo date('d/m/Y', strtotime($prescription['prescribe_date'])) ?></td>
+                        <td><?php echo $prescription['disable_id'] ?></td>
+                        <td><?php echo $prescription['comment'] ?></td>
+                        <td><?php echo date('d/m/Y', strtotime($prescription['modify_time'])) ?></td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 <?php
 
 require_once($root_path . 'main_theme/footer.inc.php');
 ?>
 
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.0//EN" "html.dtd">
-<HTML>
-    <HEAD>
-        <meta name="Description" content="Hospital and Healthcare Integrated Information System - CARE2x">
-        <meta name="Author" content="Robert Meggle">
-        <meta name="Generator" content="various: Quanta, AceHTML 4 Freeware, NuSphere, PHP Coder">
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
-        <script language="javascript" >
-<!-- 
-            function gethelp(x, s, x1, x2, x3, x4)
-            {
-                if (!x)
-                    x = "";
-                urlholder = "../../main/help-router.php?sid=<?php echo sid; ?>&lang=$lang&helpidx=" + x + "&src=" + s + "&x1=" + x1 + "&x2=" + x2 + "&x3=" + x3 + "&x4=" + x4;
-                helpwin = window.open(urlholder, "helpwin", "width=790,height=540,menubar=no,resizable=yes,scrollbars=yes");
-                window.helpwin.moveTo(0, 0);
-            }
-            function printOut(admission_id, dept, insurance)
-            {
-                urlholder = "./DetailedRevenue.php?printout=TRUE&start=<?php echo $selected_date_from; ?>&end=<?php echo $selected_date_to; ?>&company=<?php echo $company; ?>&in_out_patient=" + admission_id + "&dept_nr=" + dept + "&insurance=" + insurance;
-                testprintout = window.open(urlholder, "printout", "width=800,height=600,menubar=no,resizable=yes,scrollbars=yes");
-                window.testprintout.moveTo(0, 0);
-            }
-
-        </script> 
-
-        <script language="javascript" src="<?php echo $root_path; ?>js/setdatetime.js"></script>
-        <script language="javascript" src="<?php echo $root_path; ?>js/checkdate.js"></script>
-        <script language="javascript" src="<?php echo $root_path; ?>js/dtpick_care2x.js"></script>
-        <script src="<?php print $root_path; ?>/include/_jquery.js" language="javascript"></script> 
-
-        <link rel="stylesheet" href="../../css/themes/default/default.css" type="text/css">
-        <script language="javascript" src="../../js/hilitebu.js"></script>
-
-        <STYLE TYPE="text/css">
-            A:link  {color: #000066;}
-            A:hover {color: #cc0033;}
-            A:active {color: #cc0000;}
-            A:visited {color: #000066;}
-            A:visited:active {color: #cc0000;}
-            A:visited:hover {color: #cc0033;}
-
-            .report{
-                font-size: 10px;
-                border-collapse:collapse;
-            }
-
-
-        </style>
-        <script language="JavaScript">
-            <!--
-        function popPic(pid, nm) {
-
-                if (pid != "")
-                    regpicwindow = window.open("../../main/pop_reg_pic.php?sid=<?php echo sid; ?>&lang=$lang&pid=" + pid + "&nm=" + nm, "regpicwin", "toolbar=no,scrollbars,width=180,height=250");
-
-            }
-            // -->
-        </script>
-
-        <script language="JavaScript">
-            function popdepts() {
-                var x = document.getElementById("admission_id").value;
-                if (x == 1) {
-                    document.getElementById("dept").innerHTML =<?php echo json_encode($TP_SELECT_BLOCK_IN); ?>
-
-                } else if (x == 2) {
-                    document.getElementById("dept").innerHTML =<?php echo json_encode($TP_SELECT_BLOCK); ?>
-                } else if (x == "all_opd_ipd") {
-
-                    document.getElementById("dept").innerHTML = "all_opd_ipd";
-                }
-            }
-        </script>	
-        <script type="text/javascript">
-        function popcomp(){
-            var compvalue=document.getElementById("comp").value;
-            if(compvalue=="1"){
-                document.getElementById("comp_show").innerHTML="";
-
-            }else if(compvalue=="2"){
-                document.getElementById("comp_show").innerHTML=<?php echo json_encode($insurance_obj->ShowAllInsurancesForQuotatuion()); ?>
-            }
-        }
-            
-        </script>	 
-        <script language="JavaScript">
-            
-            function validate() {
-                var datefrom=document.getElementById("date_from").value;
-                var dateto=document.getElementById("date_to").value;
-                var healthfund=document.getElementById("insurance").value;
-                var comp=document.getElementById("comp").value;
-
-                
-                if(datefrom==""){
-                    alert("INCORRECT DATE");
-                    return false;
-                }
-
-
-            }
-
-        </script>
-    </HEAD>
-
-    <BODY bgcolor=#ffffff link=#000066 alink=#cc0000 vlink=#000066  >
-
-        <!-- START HEAD OF HTML CONTENT -->
-        <table width=100% border=0 cellspacing=0>
-            <tbody class="main">
-
-                <tr>
-                    <td  valign="top" align="middle" height="35">
-                        <table cellspacing="0"  class="titlebar" border=0>
-                            <tr valign=top  class="titlebar" >
-                                <td width="202" bgcolor="#99ccff" >
-                                    &nbsp;&nbsp;<font color="#330066"><?php echo $LDConsumption; ?></font></td>
-                                <td width="408" align=right bgcolor="#99ccff">
-                                    <a href="javascript: history.back();"><img src="../../gui/img/control/default/en/en_back2.gif" border=0 width="110" height="24" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)" ></a>
-                                    <a href="javascript:gethelp('reporting_overview.php','Reporting :: Overview')"><img src="../../gui/img/control/default/en/en_hilfe-r.gif" border=0 width="75" height="24" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)"></a>
-                                    <a href="<?php echo $root_path; ?>modules/reporting_tz/reporting_main_menu.php" ><img src="../../gui/img/control/default/en/en_close2.gif" border=0 width="103" height="24" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this, 1)" onMouseOut="hilite(this, 0)"></a>  
-                                </td>
-                            </tr>
-                        </table>
-
-                          <form name="form1" method="post" action="" onSubmit="return validate();">
-
-
-                            <?php require_once($root_path . $top_dir . 'include/inc_gui_timeframe_cash_credit.php'); ?>
-                            <?php
-                            if (isset($_POST['show'])) {           
-                                if($error==FALSE){
-
-                                   $rep_obj->drug_consumption($MysqlDateFrom,$MysqlDateTo,$insurance,$admission);
-
-                                    
-                                    
-
-                                }
-
-
-                                
-                                                          
-                                
-
-                                //$rep_obj->drug_consumption($selected_date_from, $selected_date_to, $company, $_POST['admission_id']);
-                            }
-                            ?>
-                            <!-- &nbsp;&nbsp;
-                             <a href="./gui/downloads/detailed_revenue.csv"><img border=0 src=<?php //echo $root_path;                 ?>/gui/img/common/default/savedisk.gif></a>-->
-                        </form>
-                        
-                        <?php  require_once($root_path . 'main_theme/reportingNav.inc.php'); ?>
-
-                       
-
-                </TR>
-            </TBODY>
-        </TABLE>
-    </body>
-</html>
 
 
 

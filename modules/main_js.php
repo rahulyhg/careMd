@@ -44,7 +44,7 @@ $(function() {
         mode: 'date',
         format: 'dd/MM/yyyy'
     });
-<?php if($_COOKIE['PageName'] == "NHIF Claims" || $_COOKIE['PageName'] == "Discharge" || $_COOKIE['PageName'] == "Pharmacy" ||  $_COOKIE['PageName'] == "System Admin" || $_COOKIE['PageName'] == "Inpatient"  || $_COOKIE['PageName'] == "Ambulatory" ): ?>
+<?php if($_COOKIE['PageName'] == "NHIF Claims" || $_COOKIE['PageName'] == "Discharge" || $_COOKIE['PageName'] == "Pharmacy" ||  $_COOKIE['PageName'] == "System Admin" || $_COOKIE['PageName'] == "Inpatient"  || $_COOKIE['PageName'] == "Ambulatory" || $_COOKIE['PageName'] == "Reporting" ): ?>
 $(document).ready(function () {
     $('.datatable').DataTable(
     {
@@ -62,7 +62,12 @@ $(document).ready(function () {
         ]
     });
 
-    $('.datatable2').DataTable();
+    $('.datatable2').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
 
     $('.datatable3').DataTable( {
       "pageLength": 15
@@ -259,7 +264,7 @@ $("document").ready(function(){
 
 </script>
 
-<div class="modal" id="diagnosisTypeModal" tabindex="-1" role="dialog">
+<div class="modal" id="diagnosisTypeModal" style="display: none" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -287,7 +292,7 @@ $("document").ready(function(){
   </div>
 </div>
 
-<div class="modal" id="dischargePatientsModal" tabindex="-1" role="dialog">
+<div class="modal" id="dischargePatientsModal" style="display: none" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -356,7 +361,7 @@ $("document").ready(function(){
 </div>
 
 
-<div class="modal" id="deletePrescriptionModal" tabindex="-1" role="dialog">
+<div class="modal" id="deletePrescriptionModal" style="display: none" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <form name="deletePrescriptionForm" class="deletePrescriptionForm">
     <div class="modal-content">
