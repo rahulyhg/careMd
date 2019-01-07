@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2018-11-07 12:07:47
+<?php /* Smarty version 2.6.22, created on 2019-01-07 12:22:59
          compiled from nursing/ward_occupancy.tpl */ ?>
 
 <?php echo $this->_tpl_vars['sWarningPrompt']; ?>

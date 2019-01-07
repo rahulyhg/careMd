@@ -71,7 +71,7 @@ if (@$company) {
             $priceColumn = $insurance['Fieldname'];
 
             foreach ($prescriptions as $key => $prescription) {
-                $prescriptions[$key]['unit_price'] = $prescriptions[$priceColumn];
+                $prescriptions[$key]['unit_price'] = $prescription[$priceColumn];
             }
         }
     }

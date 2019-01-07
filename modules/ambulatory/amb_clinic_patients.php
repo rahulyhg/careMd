@@ -617,6 +617,15 @@ if ($rows) {
             $smarty->assign('sInsuranceType', substr($insurance_name, 0, 15));
         }
 
+        
+        $allerged = "";
+        if (!empty($patient['allergy'])) {
+            $allerged = '<h4><span class="badge blink badge-danger" data-toggle="popover" title="'.$patient['allergy'].'" data-content="" >Yes</span></h4>';
+        }
+
+        
+        $smarty->assign('sAllergy', $allerged);
+
     
 
 

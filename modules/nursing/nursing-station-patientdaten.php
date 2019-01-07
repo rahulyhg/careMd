@@ -114,6 +114,10 @@ if ($dblink_ok) {
             $result = &$enc_obj->encounter;
             $rows = $enc_obj->record_count;
 
+            if ($rows) {
+                $allergic = $enc_obj->getPatientAllergy($result['pid']);
+            }
+
             if ($result['is_discharged'])
                 $edit = 0;
 
@@ -578,7 +582,7 @@ ob_start();
             -->
         </style>
 
-        <table width="700px" align='center' border="0" style="min-width:700px;">
+        <table width="800px" align='center' border="0" style="min-width:700px;">
             <tr><td align="right" valign="top">
                     <table style="border:1px solid #A7A7A7;" cellpadding="1" cellspacing="0">
 
@@ -593,6 +597,11 @@ ob_start();
                                                 <td width="30px" height="28">&nbsp;</td>
                                                 <td width="340px" align="center" class="heading">
                                                     DIAGNOSIS AND PRESCRIPTIONS
+
+                                                    <?php if (@$allergic): ?>
+                                                        <span class="badge blink badge-danger" style="padding: 5px; margin-left: 70px; font-weight: bold; display: inline-block; font-size: 12px;" data-toggle="popover" title="<?php echo $allergic ?>" data-content="" >Allergic</span>
+                                                    <?php endif ?>
+                                                   
                                                 </td>
                                                 <td width="30px">
                                                     <input id="dpB" onClick="hideme('dpB', 'dpDiv', 140)" type="button" value="-" style="width:20px; float:right;border:1px solid maroon; font-weight:bold; margin:2px;">

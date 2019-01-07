@@ -694,6 +694,20 @@ class multi extends Core {
             return $this->notin;
     }
 
+    function GetPatientAllergy($id) {
+        global $db;
+        if ($id != '') {
+            $sql = "SELECT allergy FROM " . $this->tb_ward . " WHERE ward_id=" . $id . " ORDER BY ward_id desc LIMIT 1";
+            $o = $db->Execute($sql);
+            print mysql_error();
+            if ($v = $o->FetchRow())
+                return $v[0];# gat u;
+            else
+                return $this->notin;
+        } else
+            return $this->notin;
+    }
+
     function _save_nhif_status($s) {
         global $db;
 

@@ -12,6 +12,7 @@
             <td class="adm_item">{{$LDPatNr}}</td>
             <td class="adm_item">{{$LDAdmissionDate}}</td>
             <td class="adm_item">{{$LDInsuranceType}}</td>
+            <td class="adm_item">Allergic</td>
             <td class="adm_item" colspan=2>{{$LDOptions}}</td>
         </tr>
 

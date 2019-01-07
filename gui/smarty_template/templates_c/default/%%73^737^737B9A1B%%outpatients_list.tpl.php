@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2017-05-04 13:07:55
+<?php /* Smarty version 2.6.22, created on 2019-01-07 15:07:19
          compiled from ambulatory/outpatients_list.tpl */ ?>
 
 <table cellspacing="0" width="100%">
@@ -18,6 +18,7 @@
 </td>
             <td class="adm_item"><?php echo $this->_tpl_vars['LDInsuranceType']; ?>
 </td>
+            <td class="adm_item">Allergic</td>
             <td class="adm_item" colspan=2><?php echo $this->_tpl_vars['LDOptions']; ?>
 </td>
         </tr>

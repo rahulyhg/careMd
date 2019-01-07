@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2018-11-05 10:17:33
+<?php /* Smarty version 2.6.22, created on 2019-01-07 14:19:31
          compiled from ambulatory/outpatients.tpl */ ?>
 
 <?php echo $this->_tpl_vars['sWarningPrompt']; ?>
@@ -34,9 +34,10 @@ unset($_smarty_tpl_vars);
  ?>
                     <?php endif; ?>
                     <div style="width:100%; padding:3px; text-align:center; background:lime; border-top:5px solid white;" class="adm_item">
+                        
                         <input type='button' value="Refresh Patient List" name = 'btn' class="mimHover" onclick="window.location.href = '<?php echo $this->_tpl_vars['sReloadBtn']; ?>
 '" >
-    <input type="button" value="Un Discharge Patient" class="mimHover" onClick="showDischargedPatients()">
+                        <input type="button" value="Un Discharge Patient" class="mimHover" onClick="showDischargedPatients()">
 
                     </div>
                     <p>
@@ -72,4 +73,4 @@ unset($_smarty_tpl_vars);
 </form>
 
 
-
+

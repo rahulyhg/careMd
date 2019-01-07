@@ -403,6 +403,7 @@ if ($ward_ok) {
     $smarty->assign('LDPatNr', $LDPatNr);
     $smarty->assign('LDAdmissionDate', $LDAdmissionDate);
     $smarty->assign('LDInsuranceType', $LDPatListElements[6]);
+    $smarty->assign('LDAllergy', 'Allerged');
     $smarty->assign('LDOptions', $LDPatListElements[7]);
 
     # Initialize help flags
@@ -481,6 +482,7 @@ if ($ward_ok) {
                     $bed = NULL;
                 }
             }
+
 
             # set room nr change flag , toggle row color
             if ($cflag != $i) {
@@ -682,6 +684,15 @@ if ($ward_ok) {
 
                 $smarty->assign('sInsuranceType', substr($insurance_name, 0, 15));
             }
+
+            $allerged = "";
+            if (!empty($bed['allergy'])) {
+                $allerged = '<h4><span class="badge blink badge-danger" data-toggle="popover" title="'.$bed['allergy'].'" data-content="" >Yes</span></h4>';
+            }
+
+            
+            $smarty->assign('sAllergy', $allerged);
+
 
 
             $sBuffer = '';

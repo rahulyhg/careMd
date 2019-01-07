@@ -3063,7 +3063,7 @@ class Encounter extends Notes {
         else
             $cond = '';
         //$cond='';
-        $this->sql = "SELECT e.encounter_nr,e.encounter_class_nr, e.encounter_date, e.pid,e.insurance_class_nr,p.selian_pid, CONCAT(p.name_first,' ', p.name_2) AS name_first, CONCAT(UPPER(p.name_last),', ') as name_last, p.date_birth,p.insurance_ID,p.sex, p.photo_filename,
+        $this->sql = "SELECT e.encounter_nr,e.encounter_class_nr, e.encounter_date, e.pid,e.insurance_class_nr,p.selian_pid, CONCAT(p.name_first,' ', p.name_2) AS name_first, CONCAT(UPPER(p.name_last),', ') as name_last, p.date_birth,p.insurance_ID,p.sex, p.photo_filename, p.allergy,
 									a.date, a.time,a.urgency, i.LD_var AS \"LD_var\",i.name AS insurance_name,
 									n.nr AS notes
 							FROM $this->tb_enc AS e
@@ -3267,6 +3267,21 @@ class Encounter extends Notes {
             $row['personell_name'] .
             '</td>';
         }
+    }
+
+    public function getPatientAllergy($pid)
+    {
+        global $db;
+        $sql = "SELECT allergy FROM care_person where pid= {$pid}";
+        $allergyResult = $db->Execute($sql);
+        $allergy = "";
+        if($allergyResult->RecordCount()){
+            $row = $allergyResult->FetchRow();
+            if (@$row) {
+                $allergy = $row['allergy'];
+            }
+        }
+        return $allergy;
     }
 
 //    function EncounterNotes($encounter_no) {

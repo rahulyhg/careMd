@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2018-11-07 12:06:36
+<?php /* Smarty version 2.6.22, created on 2019-01-07 14:05:06
          compiled from nursing/ward_occupancy_list.tpl */ ?>
 
 <table cellspacing="0" style="width:100%;">
@@ -20,6 +20,7 @@
 </td>
             <td class="wardlisttitlerow"><?php echo $this->_tpl_vars['LDInsuranceType']; ?>
 </td>
+            <td class="wardlisttitlerow">Allergic</td>
             <td class="wardlisttitlerow"><?php echo $this->_tpl_vars['LDOptions']; ?>
 </td>
         </tr>

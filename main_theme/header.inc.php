@@ -21,6 +21,18 @@
 
 </script>
 
+<style>
+
+.blink {
+  cursor: pointer;
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0; }
+}
+</style>
+
 <?php
 
 require('./roots.php');

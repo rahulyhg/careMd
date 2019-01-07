@@ -85,15 +85,15 @@ class GuiInputPerson {
      */
     function createTR($error_handler, $input_name, $ld_text, $input_val, $colspan = 1, $input_size = 35, $red = FALSE) {
         echo '<tr>
-				<td class="reg_item"><FONT SIZE=-1  FACE="Arial,verdana,sans serif">';
+        <td class="reg_item"><FONT SIZE=-1  FACE="Arial,verdana,sans serif">';
         if ($error_handler || $red)
             echo "<font color=\"$this->error_fontcolor\">$ld_text</font>";
         else
             echo $ld_text;
         echo '</td>
-				<td  class="reg_input" colspan=' . $colspan . '><input name="' . $input_name . '" type="text" size="' . $input_size . '" value="' . $input_val . '" >
-				</td>
-			</tr>';
+        <td  class="reg_input" colspan=' . $colspan . '><input name="' . $input_name . '" type="text" size="' . $input_size . '" value="' . $input_val . '" >
+        </td>
+      </tr>';
         $this->toggle = !$this->toggle;
     }
 
@@ -259,53 +259,56 @@ class GuiInputPerson {
                     $picext = $img_obj->UploadedImageMimeType();
                 }
 //addr_citytown_nr='$addr_citytown_nr',
+//
+
                 if (($update)) {
 
                     //echo formatDate2STD($geburtsdatum,$date_format);
                     $sql = "UPDATE $dbtable SET
-                                                         title='$title',
-                                                         selian_pid='$selian_pid',
-                                                         name_last='$name_last',
-                                                         name_first='$name_first',
-                                                         name_2='$name_2',
-                                                         name_3='$name_3',
-                                                         name_middle='$name_middle',
-                                                         name_maiden='$name_maiden',
-                                                         name_others='$name_others',
-                                                         date_birth='" . formatDate2STD($date_birth, $date_format) . "',
-                                                         blood_group='" . trim($blood_group) . "',
-                                                         rh='" . trim($rh) . "',
-                                                         sex='$sex',
-                                                         addr_str='$addr_str',
-                                                         addr_str_nr='$addr_str_nr',
-                                                         addr_zip='$addr_zip',
-                                                         addr_citytown_nr='$addr_citytown_nr',
-                                                         addr_citytown_name='$addr_citytown_name',
-                                                         phone_1_nr='$phone_1_nr',
-                                                         phone_2_nr='$phone_2_nr',
-                                                         cellphone_1_nr='$cellphone_1_nr',
-                                                         cellphone_2_nr='$cellphone_2_nr',
-                                                         fax='$fax',
-                                                         email='$email',
-                                                         citizenship ='$citizenship',
-                                                         civil_status='$civil_status',
-                                                         membership_nr='$membership_nr',
-                                                         sss_nr='',
-                                                         nat_id_nr='',
-                                                         religion='$religion',
-                                                         ethnic_orig='$ethnic_orig',
-							                                           insurance_ID='$insurance_ID',
-                                                         national_id = '$national_id',
-                                                         employee_id = '$employee_id',
-                                                         date_update='" . date('Y-m-d H:i:s') . "',";
+                                                 title='$title',
+                                                 selian_pid='$selian_pid',
+                                                 name_last='$name_last',
+                                                 name_first='$name_first',
+                                                 name_2='$name_2',
+                                                 name_3='$name_3',
+                                                 name_middle='$name_middle',
+                                                 name_maiden='$name_maiden',
+                                                 name_others='$name_others',
+                                                 date_birth='" . formatDate2STD($date_birth, $date_format) . "',
+                                                 blood_group='" . trim($blood_group) . "',
+                                                 rh='" . trim($rh) . "',
+                                                 sex='$sex',
+                                                 addr_str='$addr_str',
+                                                 addr_str_nr='$addr_str_nr',
+                                                 addr_zip='$addr_zip',
+                                                 addr_citytown_nr='$addr_citytown_nr',
+                                                 addr_citytown_name='$addr_citytown_name',
+                                                 phone_1_nr='$phone_1_nr',
+                                                 phone_2_nr='$phone_2_nr',
+                                                 cellphone_1_nr='$cellphone_1_nr',
+                                                 cellphone_2_nr='$cellphone_2_nr',
+                                                 fax='$fax',
+                                                 email='$email',
+                                                 citizenship ='$citizenship',
+                                                 civil_status='$civil_status',
+                                                 membership_nr='$membership_nr',
+                                                 sss_nr='',
+                                                 nat_id_nr='',
+                                                 religion='$religion',
+                                                 ethnic_orig='$ethnic_orig',
+                                                 insurance_ID='$insurance_ID',
+                                                 national_id = '$national_id',
+                                                 employee_id = '$employee_id',
+                                                 allergy = '$allergy',
+                                                 date_update='" . date('Y-m-d H:i:s') . "',";
 
 
 
 
                     if ($region != "-1" && $district != "-1" && $ward != "-1") {
                         $sql .= "region='$region',
-							   district='$district',
-							   ward='$ward',";
+                 district='$district',
+                 ward='$ward',";
                     }
 
 
@@ -325,6 +328,7 @@ class GuiInputPerson {
                     $sql .= " history=" . $person_obj->ConcatHistory("Update " . date('Y-m-d H:i:s') . " " . $_SESSION['sess_user_name'] . " \n") . ", modify_id='" . $_SESSION['sess_user_name'] . "' WHERE pid=$pid";
                     //$db->debug=FALSE;
                     $db->BeginTrans();
+
                     $ok = $db->Execute($sql);
                     if ($ok) {
                         $db->CommitTrans();
@@ -609,7 +613,7 @@ return false;
                 alert("<?php echo 'Please Enter Insurance Or Cash'; ?>");
                         d.insurance_ID.focus();
                         return false;
-                }//else if(d.membership_nr.value==""){  			  
+                }//else if(d.membership_nr.value==""){          
                 //      alert("<?php echo 'Please Enter Membership number OR zero for Cash'; ?>");
                 //      d.membership_nr.focus();
                 //     return false; 
@@ -798,46 +802,46 @@ return false;
                                         echo "$LDSimilarData $LDPlsCheckFirst";
                                     echo "<script language=\"Javascript\" type=\"text/javascript\"> </script>"; // alert('$LDSimilarData $LDPlsCheckFirst')
                                     echo '
-				</td>
-				</tr>
-				</table>
-			</center>
-			</td>
-			</tr>
+        </td>
+        </tr>
+        </table>
+      </center>
+      </td>
+      </tr>
 
-			<tr>
-			<td colspan=3>
+      <tr>
+      <td colspan=3>
 
-				<table border=0 cellspacing=0 cellpadding=1 bgcolor="#000000" width=100%>
-				<tr>
-				<td>
-					<table border=0 cellspacing=0 width=100% bgcolor="#ffffff">';
+        <table border=0 cellspacing=0 cellpadding=1 bgcolor="#000000" width=100%>
+        <tr>
+        <td>
+          <table border=0 cellspacing=0 width=100% bgcolor="#ffffff">';
 
                                     echo '
-		 			<tr bgcolor="#66ee66" background="' . $root_path . 'gui/img/common/default/tableHeaderbg.gif">';
+          <tr bgcolor="#66ee66" background="' . $root_path . 'gui/img/common/default/tableHeaderbg.gif">';
                                     echo "
-					<td $tbg><FONT  SIZE=-1  FACE=\"Arial\" color=\"#000066\"><b>
-						$LDRegistryNr</b></td>
-					<td $tbg><FONT  SIZE=-1  FACE=\"Arial\" color=\"#000066\"><b>
-						$LDLastName</b></td>
-					<td $tbg><FONT  SIZE=-1  FACE=\"Arial\" color=\"#000066\"><b>
-						$LDFirstName</b></td>
-					<td $tbg><FONT  SIZE=-1  FACE=\"Arial\" color=\"#000066\"><b>
-						$LDBday</b></td>
-					<td $tbg><FONT  SIZE=-1  FACE=\"Arial\" color=\"#000066\"><b>
-						$LDSex</b></td>
-					<td $tbg><FONT  SIZE=-1  FACE=\"Arial\" color=\"#000066\"><b>
-						$LDOptions</b></td>
-					</tr>";
+          <td $tbg><FONT  SIZE=-1  FACE=\"Arial\" color=\"#000066\"><b>
+            $LDRegistryNr</b></td>
+          <td $tbg><FONT  SIZE=-1  FACE=\"Arial\" color=\"#000066\"><b>
+            $LDLastName</b></td>
+          <td $tbg><FONT  SIZE=-1  FACE=\"Arial\" color=\"#000066\"><b>
+            $LDFirstName</b></td>
+          <td $tbg><FONT  SIZE=-1  FACE=\"Arial\" color=\"#000066\"><b>
+            $LDBday</b></td>
+          <td $tbg><FONT  SIZE=-1  FACE=\"Arial\" color=\"#000066\"><b>
+            $LDSex</b></td>
+          <td $tbg><FONT  SIZE=-1  FACE=\"Arial\" color=\"#000066\"><b>
+            $LDOptions</b></td>
+          </tr>";
                                     # Show the probable same person
                                     while ($dup = $duperson->FetchRow()) {
                                         echo '
-					<tr>
-					<td><font face=arial color=#000000 size=2>' . $dup['pid'] . '</td>
-					<td><font face=arial color=#000000 size=2>' . $dup['name_last'] . '</td>
-					<td><font face=arial color=#000000 size=2>' . $dup['name_first'] . '</td>
-					<td><font face=arial color=#000000 size=2>' . formatDate2Local($dup['date_birth'], $date_format) . '</td>
-					<td>';
+          <tr>
+          <td><font face=arial color=#000000 size=2>' . $dup['pid'] . '</td>
+          <td><font face=arial color=#000000 size=2>' . $dup['name_last'] . '</td>
+          <td><font face=arial color=#000000 size=2>' . $dup['name_first'] . '</td>
+          <td><font face=arial color=#000000 size=2>' . formatDate2Local($dup['date_birth'], $date_format) . '</td>
+          <td>';
                                         switch ($dup['sex']) {
                                             case 'f': echo '<img ' . $img_female . '>';
                                                 break;
@@ -847,17 +851,17 @@ return false;
                                                 break;
                                         }
                                         echo '
-					</td>
-					<td><font face=arial color=#000000 size=2>:: <a href="person_reg_showdetail.php' . URL_APPEND . '&pid=' . $dup['pid'] . '&from=$from&newdata=1&target=entry" target="_blank">' . $LDShowDetails . '</a> ::
-					<a href="patient_register.php' . URL_APPEND . '&pid=' . $dup['pid'] . '&target=update&update=1">' . $LDUpdate . '</a>
-					</td>
-   					</tr>';
+          </td>
+          <td><font face=arial color=#000000 size=2>:: <a href="person_reg_showdetail.php' . URL_APPEND . '&pid=' . $dup['pid'] . '&from=$from&newdata=1&target=entry" target="_blank">' . $LDShowDetails . '</a> ::
+          <a href="patient_register.php' . URL_APPEND . '&pid=' . $dup['pid'] . '&target=update&update=1">' . $LDUpdate . '</a>
+          </td>
+            </tr>';
                                     }
                                     echo '
-					</table>
-				</td>
-				</tr>
-				</table>';
+          </table>
+        </td>
+        </tr>
+        </table>';
                                 }
                                 ?>
                             </td>
@@ -928,7 +932,7 @@ return false;
 
                                     if ($errorfilenr)
                                         echo '<font color="#ff0000">*' . $LDFileNr . '</font><br>
-					Try this one: ' . $person_obj->GetNewSelianFileNumber();
+          Try this one: ' . $person_obj->GetNewSelianFileNumber();
                                     else
                                         echo $asterik . $LDFileNr;
                                     if (!isset($selian_pid)) {
@@ -957,7 +961,7 @@ return false;
 
                                     if ($errorfilenr)
                                         echo '<font color="#ff0000">*' . $LDFileNr . '</font><br>
-					Try this one: ' . $person_obj->GetNewSelianFileNumber();
+          Try this one: ' . $person_obj->GetNewSelianFileNumber();
                                     else
                                         echo $asterik . $LDFileNr;
                                     ?>
@@ -1095,14 +1099,14 @@ return false;
                         </tr>
                         <?php
                         if (!$person_name_others_hide) {
-//			$this->createTR($errornameothers, 'name_others', $LDNameOthers,$name_others);
+//      $this->createTR($errornameothers, 'name_others', $LDNameOthers,$name_others);
                         }
                         ?>
 
                         <!--
                         TODO: Kompletly not shown, or dependig on who is editing: Doctor, Lab?
                         -->
-                                        <!--	<tr>
+                                        <!--  <tr>
                                                 <td class="reg_item">
                         <?php echo $LDBloodGroup ?>:
                                                 </td>
@@ -1139,10 +1143,10 @@ return false;
                             <td class="reg_input"> <?php
                                 // Create array of all insurances for GUI
                                 $coreObj->sql = "SELECT DISTINCT company_id,care_tz_company.name FROM care_tz_insurance
-			INNER JOIN care_tz_company ON care_tz_insurance.company_id = care_tz_company.id
-			WHERE cancel_flag='0' AND care_tz_company.name<>'CASH-PATIENT'
-			AND  ( care_tz_insurance.start_date <= UNIX_TIMESTAMP() AND care_tz_insurance.end_date >= UNIX_TIMESTAMP())
-			 order by name asc ";
+      INNER JOIN care_tz_company ON care_tz_insurance.company_id = care_tz_company.id
+      WHERE cancel_flag='0' AND care_tz_company.name<>'CASH-PATIENT'
+      AND  ( care_tz_insurance.start_date <= UNIX_TIMESTAMP() AND care_tz_insurance.end_date >= UNIX_TIMESTAMP())
+       order by name asc ";
                                 $result = $db->Execute($coreObj->sql);
 
                                 $name_insurer_array = array();
@@ -1262,22 +1266,22 @@ return false;
                         </tr>
 
 
-                                                                                                                <!--<tr>
-                                                                                                                <td class="reg_item">
-                                                                                                                        <FONT SIZE=-1  FACE="Arial"><?php echo 'Allergy' ?>:
-                                                                                                                </td>
-                                                                                                                <td class="reg_input">
-                                                                                                                        <input type="text" name="allergy" size=14 maxlength=25 value="<?php echo $title ?>" onFocus="this.select();">
-                                                                                                                </td>
-                                                                                                                </tr>
-                                                                                                                <tr>
-                                                                                                                <td class="reg_item">
-                                                                                                                        <FONT SIZE=-1  FACE="Arial"><?php echo $LDEducation ?>:
-                                                                                                                </td>
-                                                                                                                <td class="reg_input">
-                                                                                                                        <input type="text" name="name_others" size=14 maxlength=25 value="<?php echo $name_others ?>" onFocus="this.select();">
-                                                                                                                </td>
-                                                                                                                </tr> -->
+                        <!--<tr>
+                        <td class="reg_item">
+                                <FONT SIZE=-1  FACE="Arial"><?php echo 'Allergy' ?>:
+                        </td>
+                        <td class="reg_input">
+                                <input type="text" name="allergy" size=14 maxlength=25 value="<?php echo $title ?>" onFocus="this.select();">
+                        </td>
+                        </tr>
+                        <tr>
+                        <td class="reg_item">
+                                <FONT SIZE=-1  FACE="Arial"><?php echo $LDEducation ?>:
+                        </td>
+                        <td class="reg_input">
+                                <input type="text" name="name_others" size=14 maxlength=25 value="<?php echo $name_others ?>" onFocus="this.select();">
+                        </td>
+                        </tr> -->
 
                         <!--
                                                 <tr>
@@ -1304,10 +1308,10 @@ return false;
 
 
                                     echo '</td>
-				<td  class="reg_input" colspan=1>
-					<select name="region" size="1" onChange="getDistricts(this.value,\'dstr\');//redirect(this.options.selectedIndex)">
+        <td  class="reg_input" colspan=1>
+          <select name="region" size="1" onChange="getDistricts(this.value,\'dstr\');//redirect(this.options.selectedIndex)">
 
-						<option value="-1" id="-1">---select region--------</option>';
+            <option value="-1" id="-1">---select region--------</option>';
                                     print ' <option value="27" id="27" style="background:yellow; font-weight:bold;">--Unknown--</option>';
 
 
@@ -1503,11 +1507,11 @@ return false;
 
                                             for (i = 1; i < group[x].length; i++) {
                                     temp_district.options[i] = new Option(group[x][i].text)
-                                            //						if (temp_district.options[i]==MyDistrict) {
+                                            //            if (temp_district.options[i]==MyDistrict) {
                                             temp_district.options[i].selected = true
-                                            //							}
+                                            //              }
                                     }
-                                    //					if (len(MyDistrict)==0)
+                                    //          if (len(MyDistrict)==0)
                                     temp                                                        _district.options[0].selected = true;
                                             temp_district.options[0].value = - 1;
                                             redirect1(0)
@@ -1549,11 +1553,11 @@ return false;
                             }
                             ?>
 
-                                                                                            <!--<tr>
-                                                                                            <td colspan=2>
-                                                                                                    <FONT SIZE=-1  FACE="Arial"><?php if ($erroraddress) echo "<font color=red>"; ?><?php echo $LDAddress ?></font>:
-                                                                                            </td>
-                                                                                            </tr>-->
+                            <!--<tr>
+                            <td colspan=2>
+                                    <FONT SIZE=-1  FACE="Arial"><?php if ($erroraddress) echo "<font color=red>"; ?><?php echo $LDAddress ?></font>:
+                            </td>
+                            </tr>-->
 
                         <tr>
                             <td class="reg_item">
@@ -1590,19 +1594,19 @@ return false;
                             if ($insurance_show) {
                                 if (!$person_insurance_1_nr_hide) {
                                     ?>
-                                                                                                                                                            <!--<tr>
-                                                                                                                                                            <td class="reg_item">
-                                                                                                                                                                    <FONT SIZE=-1  FACE="Arial"><?php if ($errorinsurancecoid) echo '<font color="' . $error_fontcolor . '">'; ?><?php echo $LDInsuranceCo ?>:
-                                                                                                                                                            </td>
-                                                                                                                                                            <td colspan=2 class="reg_input"><FONT SIZE=-1  FACE="Arial"><?php if ($errorinsuranceclass) echo '<font color="' . $error_fontcolor . '">'; ?>
+                                    <!--<tr>
+                                    <td class="reg_item">
+                                            <FONT SIZE=-1  FACE="Arial"><?php if ($errorinsurancecoid) echo '<font color="' . $error_fontcolor . '">'; ?><?php echo $LDInsuranceCo ?>:
+                                    </td>
+                                    <td colspan=2 class="reg_input"><FONT SIZE=-1  FACE="Arial"><?php if ($errorinsuranceclass) echo '<font color="' . $error_fontcolor . '">'; ?>
 
-                                                                                                                                                                            <input name="insurance_category" type="radio"  value="silver"  <?php if ($insurance_category == "silver") echo 'checked'; ?>> <?php echo $LDInsuranceSilver; ?>
-                                                                                                                                                                            <input name="insurance_category" type="radio"  value="gold"  <?php if ($insurance_category == "gold") echo 'checked'; ?>> <?php echo $LDInsuranceGold; ?>
-                                                                                                                                                                            <input name="insurance_category" type="radio"  value="friedkin"  <?php if ($insurance_category == "friedkin") echo 'checked'; ?>> <?php echo $LDInsuranceFriedkin; ?>
-                                                                                                                                                                            <input name="insurance_category" type="radio"  value="selian"  <?php if ($insurance_category == "selian") echo 'checked'; ?>> <?php echo $LDInsuranceSelianstuff; ?>
+                                                    <input name="insurance_category" type="radio"  value="silver"  <?php if ($insurance_category == "silver") echo 'checked'; ?>> <?php echo $LDInsuranceSilver; ?>
+                                                    <input name="insurance_category" type="radio"  value="gold"  <?php if ($insurance_category == "gold") echo 'checked'; ?>> <?php echo $LDInsuranceGold; ?>
+                                                    <input name="insurance_category" type="radio"  value="friedkin"  <?php if ($insurance_category == "friedkin") echo 'checked'; ?>> <?php echo $LDInsuranceFriedkin; ?>
+                                                    <input name="insurance_category" type="radio"  value="selian"  <?php if ($insurance_category == "selian") echo 'checked'; ?>> <?php echo $LDInsuranceSelianstuff; ?>
 
-                                                                                                                                                            </td>
-                                                                                                                                                            </tr>-->
+                                    </td>
+                                    </tr>-->
                                     <?php
                                 }
                             } else {
@@ -1659,6 +1663,16 @@ return false;
                         ?>
         </td>
         </tr>-->
+
+
+        <tr>
+          <td class="reg_item">
+            <font SIZE=-1  FACE="Arial" >Allergy</font>
+          </td>
+          <td colspan=2 class="reg_input">
+            <textarea name="allergy" id="" cols="50" rows="4"><?php echo $allergy; ?></textarea>
+          </td>
+        </tr>
                         <tr>
                             <td class="reg_item">
                                 <FONT SIZE=-1  FACE="Arial" ><FONT  SIZE=2  FACE="Arial"><font color=#ff0000><?php echo $LDRegBy ?></font>

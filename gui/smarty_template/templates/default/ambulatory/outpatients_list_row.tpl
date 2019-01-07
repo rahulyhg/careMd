@@ -16,10 +16,10 @@
     <td>&nbsp;{{$sPatNr}}</td>
     <td>&nbsp;{{$sAdmissionDate}}</td>
     <td>&nbsp;{{$sInsuranceType}}</td>
+    <td>&nbsp;{{$sAllergy}}</td>
     <td>&nbsp;{{$sAdmitDataIcon}} {{$vitalSigns}} {{$sDischargeInfoIcon}} {{$sARVIcon}} {{$sChartFolderIcon}} {{$sNotesIcon}} {{$sTransferIcon}} {{$sDischargeIcon}} {{$sNoDiag}}</td>
     <td>&nbsp;{{$sCheckBox}}</td>
-
 </tr>
 <tr>
-    <td colspan="10" class="thinrow_vspacer">{{$sOnePixel}}</td>
+    <td colspan="15" class="thinrow_vspacer">{{$sOnePixel}}</td>
 </tr>

@@ -12,6 +12,7 @@
             <td class="wardlisttitlerow">{{$LDPatNr}}</td>
             <td class="wardlisttitlerow">{{$LDAdmissionDate}}</td>
             <td class="wardlisttitlerow">{{$LDInsuranceType}}</td>
+            <td class="wardlisttitlerow">Allergic</td>
             <td class="wardlisttitlerow">{{$LDOptions}}</td>
         </tr>
 

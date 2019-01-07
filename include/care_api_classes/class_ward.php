@@ -383,6 +383,7 @@ class Ward extends Encounter {
 									CONCAT(p.name_first, ' ', p.name_2) AS name_first,
 									p.date_birth,
 									p.title,
+                                    p.allergy,
 									p.sex,
 									p.insurance_ID,
 									p.photo_filename,

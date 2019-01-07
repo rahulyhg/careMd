@@ -15,8 +15,9 @@
     <td>&nbsp;{{$sPatNr}}</td>
     <td>&nbsp;{{$sAdmDate}}</td>
     <td>&nbsp;{{$sInsuranceType}}</td>
+    <td>&nbsp;{{$sAllergy}}</td>
     <td>&nbsp;{{$sAdmitDataIcon}} {{$vitalSigns}} {{$sChartFolderIcon}} {{$sNotesIcon}} {{$sTransferIcon}} {{$sDischargeInfoIcon}} {{$sDischargeIcon}}{{$sTreatmentSheet}} {{$sNoDiag}} </td>
 </tr>
 <tr>
-    <td colspan="9" class="thinrow_vspacer">{{$sOnePixel}}</td>
+    <td colspan="15" class="thinrow_vspacer">{{$sOnePixel}}</td>
 </tr>

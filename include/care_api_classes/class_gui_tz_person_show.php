@@ -638,6 +638,15 @@ class GuiPersonShow extends Person {
                                 </td>
                             </tr>
 
+                             <tr>
+                                <td bgColor="#eeeeee">
+                                    <FONT SIZE=-1  FACE="Arial">Allergy: </FONT>
+                                </td>
+                                <td bgcolor="#ffffee" colspan=2>
+                                    <FONT SIZE=-1  FACE="Arial" color="#990000">
+                                    <b><?php echo $allergy ?></b>
+                                </td>
+                            </tr>
 
                             <?php
                             if (!$GLOBAL_CONFIG['person_insurance_1_nr_hide'] && $insurance_show && $insurance_nr) {
@@ -702,6 +711,7 @@ class GuiPersonShow extends Person {
                                 <td bgcolor="#eeeeee">
                             <nobr><FONT  SIZE=2  FACE="Arial"><?php echo $LDRegBy ?>:</nobr>
                     </td>
+
                     <td colspan=2 bgcolor="#ffffee">
                         <FONT  SIZE=2  FACE="Arial" color="#990000"><b><?php echo $modifyid ?> </b></FONT>
                     </td>

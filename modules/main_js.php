@@ -262,6 +262,10 @@ $("document").ready(function(){
 
 })
 
+$(function () {
+  $('[data-toggle="popover"]').popover({'trigger': 'hover'})
+})
+
 </script>
 
 <div class="modal" id="diagnosisTypeModal" style="display: none" tabindex="-1" role="dialog">

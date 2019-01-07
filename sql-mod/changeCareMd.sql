@@ -78,3 +78,6 @@ ALTER TABLE `care_encounter_prescription` CHANGE `reason` `comment` TEXT CHARACT
 ALTER TABLE `care_tz_drugsandservices_description` ADD `company_id` INT NOT NULL DEFAULT '0' AFTER `ShowDescription`;
 
 
+--07-01
+ALTER TABLE `care_person` CHANGE `allergy` `allergy` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
