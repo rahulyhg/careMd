@@ -81,3 +81,6 @@ ALTER TABLE `care_tz_drugsandservices_description` ADD `company_id` INT NOT NULL
 --07-01
 ALTER TABLE `care_person` CHANGE `allergy` `allergy` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
 
+--08/01
+ALTER TABLE `care_person` ADD `allergic` TINYINT NOT NULL DEFAULT '0' AFTER `history`;
+

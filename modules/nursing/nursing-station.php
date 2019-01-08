@@ -687,7 +687,7 @@ if ($ward_ok) {
 
             $allerged = "";
             if (!empty($bed['allergy'])) {
-                $allerged = '<h4><span class="badge blink badge-danger" data-toggle="popover" title="'.$bed['allergy'].'" data-content="" >Yes</span></h4>';
+                $allerged = '<h4><span class="badge blink badge-danger" data-toggle="popover" title="'.$bed['allergy'].'" data-content="" >Allergic</span></h4>';
             }
 
             

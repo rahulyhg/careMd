@@ -620,7 +620,7 @@ if ($rows) {
         
         $allerged = "";
         if (!empty($patient['allergy'])) {
-            $allerged = '<h4><span class="badge blink badge-danger" data-toggle="popover" title="'.$patient['allergy'].'" data-content="" >Yes</span></h4>';
+            $allerged = '<h4><span class="badge blink badge-danger" data-toggle="popover" title="'.$patient['allergy'].'" data-content="" >Allergic</span></h4>';
         }
 
         

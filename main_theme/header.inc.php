@@ -28,6 +28,10 @@
   animation: blinker 1s linear infinite;
 }
 
+.no-blink {
+  animation: none;
+}
+
 @keyframes blinker {  
   50% { opacity: 0; }
 }

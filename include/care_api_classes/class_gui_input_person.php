@@ -299,6 +299,7 @@ class GuiInputPerson {
                                                  insurance_ID='$insurance_ID',
                                                  national_id = '$national_id',
                                                  employee_id = '$employee_id',
+                                                 allergic = '$allergic',
                                                  allergy = '$allergy',
                                                  date_update='" . date('Y-m-d H:i:s') . "',";
 
@@ -1665,12 +1666,25 @@ return false;
         </tr>-->
 
 
-        <tr>
+         <tr>
+            <td class="reg_item">
+                <FONT SIZE=-1  FACE="Arial">Allergic</td>
+            <td>
+               &nbsp;&nbsp; <input name="allergic" class="allergic" type="radio" value="1"  <?php if ($allergic == "1") echo "checked"; ?>><?php echo $LDYes ?>&nbsp;&nbsp;
+                <input name="allergic" class="allergic" type="radio" value="0"  <?php if ($allergic == "0") echo "checked"; ?>>
+                <?php
+                echo $LDNo;
+                ?>
+            </td>
+        </tr>
+
+
+        <tr class="allergydetails">
           <td class="reg_item">
-            <font SIZE=-1  FACE="Arial" >Allergy</font>
+            <font SIZE=-1  FACE="Arial" >Allergy Details</font>
           </td>
           <td colspan=2 class="reg_input">
-            <textarea name="allergy" id="" cols="50" rows="4"><?php echo $allergy; ?></textarea>
+            <textarea name="allergy" id="allergicd" cols="50" rows="4"><?php echo $allergy; ?></textarea>
           </td>
         </tr>
                         <tr>

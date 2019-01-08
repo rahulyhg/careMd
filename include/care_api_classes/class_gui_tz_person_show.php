@@ -416,17 +416,55 @@ class GuiPersonShow extends Person {
                                         ?>
                                 </td>
                             </tr>
-                            <tr>
-                                <td bgColor="#eeeeee">
-                                    <FONT SIZE=-1  FACE="Arial">
-                                    <?php echo 'Allergy' ?>:
-                                </td>
-                                <td bgcolor="#ffffee">
-                                    <FONT SIZE=-1  FACE="Arial" color="#990000">
-                                    <b><?php echo $allergy; ?></b>
-                                </td>
-                            </tr>
+                            <?php if ($allergy): ?>
 
+                                <style>
+                                    
+                                    .alergic {
+                                        -webkit-animation: alergic-anim 1s infinite;  /* Safari 4+ */
+                                        -moz-animation: alergic-anim 1s infinite;  /* Fx 5+ */
+                                        -o-animation: alergic-anim 1s infinite;  /* Opera 12+ */
+                                        animation: alergic-anim 1s infinite;  /* IE 10+, Fx 29+ */
+                                    }
+
+                                    @-webkit-keyframes alergic-anim {
+                                        0%, 49% {
+                                            background-color: #FFFFEE;
+                                            color: #990000;
+                                            padding: 5px;
+                                        }
+
+                                        50%, 100% {
+                                            background-color: #e50000;
+                                            color: #fff;
+                                            padding: 5px;
+                                        }
+                                    }
+
+                                </style>
+                                <tr>
+                                    <td bgColor="#eeeeee" >
+                                        <FONT  FACE="Arial">
+                                        <?php echo 'Allergy' ?>:
+                                    </td>
+                                    <td bgcolor="#ffffee" class="alergic">
+                                        <FONT SIZE=-1  FACE="Arial">
+                                        <b><?php echo $allergy; ?></b>
+                                    </td>
+                                </tr>
+                            <?php else: ?>
+                                <tr>
+                                    <td bgColor="#eeeeee">
+                                        <FONT SIZE=-1  FACE="Arial">
+                                        <?php echo 'Allergy' ?>:
+                                    </td>
+                                    <td bgcolor="#ffffee">
+                                        <FONT SIZE=-1  FACE="Arial" color="#990000">
+                                        <b><?php echo $allergy; ?></b>
+                                    </td>
+                                </tr>
+                            <?php endif ?>
+                           
                             <tr>
                                 <td bgColor="#eeeeee">
                                     <FONT SIZE=-1  FACE="Arial">
@@ -635,16 +673,6 @@ class GuiPersonShow extends Person {
                                 <td bgcolor="#ffffee" colspan=2>
                                     <FONT SIZE=-1  FACE="Arial" color="#990000">
                                     <b><?php echo ($ward > 0) ? $multi->GetWardName($ward) : $ward; ?>
-                                </td>
-                            </tr>
-
-                             <tr>
-                                <td bgColor="#eeeeee">
-                                    <FONT SIZE=-1  FACE="Arial">Allergy: </FONT>
-                                </td>
-                                <td bgcolor="#ffffee" colspan=2>
-                                    <FONT SIZE=-1  FACE="Arial" color="#990000">
-                                    <b><?php echo $allergy ?></b>
                                 </td>
                             </tr>
 

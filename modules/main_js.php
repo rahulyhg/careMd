@@ -81,6 +81,7 @@ $(document).ready(function () {
 
 
 $('.referalInputs').hide();
+$('.allergydetails').hide();
 
 
 $('.visitType').change(function(){
@@ -111,6 +112,28 @@ $('.uVisitType').change(function(){
     }
 })
 
+
+$('.allergic').change(function(){
+
+    var isAllergic = $('input[name=allergic]:checked').val();
+    if (isAllergic ==1) 
+    {
+      $('.allergydetails').show();
+
+    }else{
+      $('#allergicd').val('');
+      $('.allergydetails').hide();
+    }
+})
+
+var isAllergic = $('input[name=allergic]:checked').val();
+if (isAllergic ==1) 
+{
+  $('.allergydetails').show();
+
+}else{
+  $('.allergydetails').hide();
+}
 
 
 // Diagnosis types

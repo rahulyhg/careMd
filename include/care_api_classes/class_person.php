@@ -182,6 +182,7 @@ class Person extends Core {
         'create_id',
         'create_time',
         'addr_citytown_name',
+        'allergic',
         'allergy',
         'insurance_ID',
         'membership_nr',
