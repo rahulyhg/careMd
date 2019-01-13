@@ -6598,6 +6598,8 @@ A:visited:hover {color: #cc0033;}
                                                                 <input onkeyup="javascript:calc_article(\'' . $row['nr'] . '\');" type="hidden" name="showprice_' . $row['nr'] . '" id="showprice_' . $row['nr'] . '" value="' . $unitPrice . '">SHOWPRICE: ' . $unitPrice;
                 echo '</tr>';
 
+                
+
                 if ($row['purchasing_class'] == 'labtest') {
                     echo '<input readonly onkeyup="javascript:calc_article(\'' . $row['nr'] . '\');" type="hidden" size="4" value="1" name="dosage_' . $row['nr'] . '"><br><br>';
                 } else {

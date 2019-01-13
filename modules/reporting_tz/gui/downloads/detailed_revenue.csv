@@ -1,11 +1,29 @@
-FROM:,"01.Jan.1970 02:00:00",TO:,"01.Jan.1970 02:00:00","ALL CUSTOMERS"
+FROM:,"01.Jan.2019 00:00:00",TO:,"09.Jan.2019 23:59:59","ALL CUSTOMERS"
 "Billed Date","Admission date",Patient/ID,"Birth Date","File NR",Membership_NR,Form_NR,,Description,Category,"No.Of Items",Price,Deposit
+09.Jan.2019,09.Jan.2019,"Mbwana Mbwana",01.Jul.1987,2,,,,CONS-GENERAL,SERVICE,1,10000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+09.Jan.2019,09.Jan.2019,"Mbwana Mbwana",01.Jul.1987,2,,,DRG0227,"Acetylsalicylic Acid Tabs (Low-Dose Aspirin) 75mg",DRUG,4,800,Null
+09.Jan.2019,09.Jan.2019,"Mbwana Mbwana",01.Jul.1987,2,,,,HVS,"LAB TEST",1,10000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+09.Jan.2019,09.Jan.2019,"Mboya Aika",01.Jul.1986,3,456565454,,,CONS-GENERAL,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+09.Jan.2019,09.Jan.2019,"Mboya Aika",01.Jul.1986,3,456565454,,DRG0021,"Artemether Lumefantrine tabs(ALU CATII) 20/120",DRUG,30,36000,Null
+09.Jan.2019,09.Jan.2019,"Mboya Aika",01.Jul.1986,3,456565454,,DRG0412,"paracetamol IV 10mg/ml (100ml)",DRUG,3,45000,Null
+09.Jan.2019,09.Jan.2019,"Mboya Aika",01.Jul.1986,3,456565454,,,B/S,"LAB TEST",1,2000,Null
+09.Jan.2019,09.Jan.2019,"Mboya Aika",01.Jul.1986,3,456565454,,,"mRDT Test","LAB TEST",1,2000,Null
+09.Jan.2019,09.Jan.2019,"Mboya Aika",01.Jul.1986,3,456565454,,,"Urine analysis","LAB TEST",1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+09.Jan.2019,09.Jan.2019,"Mboya Aika",01.Jul.1986,3,456565454,,,CHEST,RADIOLOGY,1,10000,Null
+09.Jan.2019,09.Jan.2019,"Mboya Aika",01.Jul.1986,3,456565454,,,CONS-GENERAL,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+09.Jan.2019,09.Jan.2019,"Mbwana Mbwana",01.Jul.1987,2,,,,CONS-GENERAL,SERVICE,1,10000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
 "PATIENTS WITH DEPOSITS"
 "PATIENTS WITH DEPOSIT BUT NO FINAL BILL YET"
 "PATIENTS WITH TOPUP"
 Lab,Drugs,Radio,Dental,Eye,Min.Proc,Major.proc,"Consult and services",Supplies.,"Laboratory Supplies",Other,"TOTAL WITH DEPOSIT ITEMS"
-0,0,0,0,0,0,0,0,0,0,0,0
-"GRAND TOTAL:",0
+"16,000","81,800","10,000",0,0,0,0,"24,000",0,0,0,"131,800"
+"GRAND TOTAL:","131,800"
 "MAIN SUMMARY"
 "TOTAL DEPOSIT:",0
 "TOTAL TOPUP:",0

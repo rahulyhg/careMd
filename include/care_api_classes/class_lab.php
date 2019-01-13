@@ -631,6 +631,7 @@ job_id='$job_id' AND group_id='$grp_id' AND status NOT IN
         else
             $cond = "group_id='$group_id'";
         $this->sql = "SELECT * FROM $this->tb_test_param WHERE $cond ORDER BY name";
+       // echo $this->sql;
         if ($this->tparams = $db->Execute($this->sql)) {
             if ($this->rec_count = $this->tparams->RecordCount()) {
                 return $this->tparams;
