@@ -105,7 +105,7 @@ if (!$mode) /* Get the pending test requests with no specimen/sample collected *
 						         WHERE (tr.status='pending' OR tr.status='')  AND
 						         tr.encounter_nr = care_encounter.encounter_nr AND
 						         care_encounter.pid = care_person.pid
-                                                         AND care_encounter.is_discharged = 0
+                                                         
                                                          AND tr.specimen_collected = 0
 						         ORDER BY  tr.send_date DESC";
 

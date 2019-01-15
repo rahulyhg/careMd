@@ -31,6 +31,7 @@ function calc_article(id)
 		 	echo 'for(var i=0;i<=3;i++){ ';
 		 	while($row=$result->FetchRow())
 		 	{
+		 		
 				echo "if(id==".$row['nr'].") { ";
 				echo "	if (document.forms[0].elements['modepres_".$row['nr']."'][i].checked==true){ ";
 				echo "if(document.forms[0].elements['insurance_' + id]) {";

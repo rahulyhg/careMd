@@ -130,6 +130,7 @@ $toggle = 0;
 
 if (is_object($tparams)) {
     while ($tp = $tparams->FetchRow()) {
+        
 
         //if($toggle) $bgc='#ffffee'; else $bgc='#efefef';
         if ($toggle)
