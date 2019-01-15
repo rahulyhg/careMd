@@ -444,7 +444,7 @@ class GuiPersonShow extends Person {
                                 </style>
                                 <tr>
                                     <td bgColor="#eeeeee" >
-                                        <FONT  FACE="Arial">
+                                        <FONT  FACE="Arial" > 
                                         <?php echo 'Allergy' ?>:
                                     </td>
                                     <td bgcolor="#ffffee" class="alergic">

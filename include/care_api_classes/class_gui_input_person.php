@@ -561,6 +561,7 @@ class GuiInputPerson {
         ?>
         <script  language="javascript">
             <!--
+
             function test() {
             document.aufnahmeform.action = "<?php $_SERVER['PHP_SELF'] ?>";
                     document.aufnahmeform.submit();
@@ -598,6 +599,8 @@ return false;
 }else';
         }
         ?>
+                var isAllergic = $('input[name=allergic]:checked').val();
+
                 if (d.name_last.value == "") {
                 alert("<?php echo $LDPlsEnterLastName; ?>");
                         d.name_last.focus();
@@ -626,6 +629,18 @@ return false;
                 } else if (d.sex[0] && d.sex[1] && !d.sex[0].checked && !d.sex[1].checked) {
                 alert("<?php echo $LDPlsSelectSex; ?>");
                         return false;
+                }else if (!isAllergic) {
+                  alert('Please check whether the patient is allergic or not');
+                  return false;
+                  
+                } else if(isAllergic == 1 && d.allergy.value == "" ){
+
+                    alert('Please enter allergy details')
+                    return false;
+
+                }else if(isAllergic == 1 && d.allergy.value.length <6 ){
+                    alert('Please enter allergy details with lengh greater than 6 characters');
+                    return false;
                 } else if (d.is_first_reg[0] && d.is_first_reg[1] && !d.is_first_reg[0].checked && !d.is_first_reg[1].checked) {
                 alert("<?php echo $LDPlsSelectIsFirst; ?>");
                         return false;
