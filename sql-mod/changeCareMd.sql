@@ -84,3 +84,6 @@ ALTER TABLE `care_person` CHANGE `allergy` `allergy` TEXT CHARACTER SET latin1 C
 --08/01
 ALTER TABLE `care_person` ADD `allergic` TINYINT NOT NULL DEFAULT '0' AFTER `history`;
 
+--17-01
+ALTER TABLE `care_tz_diagnosis` ADD INDEX(`timestamp`);
+

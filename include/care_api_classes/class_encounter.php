@@ -3225,8 +3225,8 @@ class Encounter extends Notes {
         if ($debug)
             echo "class_encounter::getEncounterBillNo($encounter_nr)<br>";
         if (!empty($encounter_nr)) {
-            $this->sql = "SELECT bill_number FROM $this->tb_enc_prescr WHERE "
-                    . " encounter_nr='" . $encounter_nr . "' AND (article like '%cons%' OR article like '%Cons%') AND isnull(is_disabled)";
+            $this->sql = "SELECT bill_number FROM $this->tb_enc_prescr INNER JOIN care_tz_drugsandservices WHERE "
+                    . " encounter_nr='" . $encounter_nr . "' AND (article like '%cons%' OR item_number like '%cons%'  ) AND isnull(is_disabled)";
             if ($debug)
                 echo $this->sql . "<br>";
             if ($this->result = $db->Execute($this->sql)) {

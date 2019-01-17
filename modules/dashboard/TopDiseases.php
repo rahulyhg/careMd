@@ -6,12 +6,57 @@ require_once $root_path.'vendor/autoload.php';
 require_once $root_path.'generated-conf/config.php';
 
 use  CareMd\CareMd\CareTzDiagnosisQuery;
+use  CareMd\CareMd\CareTzDiagnosis;
+
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 
 $diseases = array();
 $labels = array();
 $diseaseData = array();
 $background = array();
 $colorHelper = new ColorHelper();
+
+$period = @$_GET['period']?$_GET['period']:"ThisYear";
+
+if ($period == "ThisWeek") {
+	$startDate = Carbon::now()->startOfWeek()->format('Y-m-d');
+	$endDate =  Carbon::now()->endOfWeek()->format('Y-m-d');
+
+}
+
+if ($period == "ThisMonth") {
+	$startDate = date('Y-m-01');
+	$endDate = date('Y-m-t');
+}
+
+if ($period == "ThisYear") {
+	$year = date('Y');
+	$startDate = $year . "-01-01";
+	$endDate = $year . "-12-31";
+}
+
+if ($period == "LastYear") {
+	$year = date('Y')-1;
+	$startDate = $year . "-01-01";
+	$endDate = $year . "-12-31";	
+}
+
+if ($period == "LastMonth") {
+	$lastmonth = date('m', strtotime("last month"));
+	$startDate = date('Y-'.$lastmonth.'-01');
+	$endDate = date('Y-'.$lastmonth.'-t');
+}
+
+if ($period == "LastWeek") {
+	$previous_week = strtotime("-1 week +1 day");
+	$start_week = strtotime("last monday midnight",$previous_week);
+	$end_week = strtotime("next sunday",$start_week);
+
+	$startDate = date("Y-m-d",$start_week);
+	$endDate = date("Y-m-d",$end_week);
+}
+
 
 $diseaseCodes = CareTzDiagnosisQuery::create()
 				->select(array('ICD_10_code', 'ICD_10_description'))
@@ -20,7 +65,12 @@ $diseaseCodes = CareTzDiagnosisQuery::create()
 				->toArray();
 
 foreach ($diseaseCodes as $code) {
-	$disease = CareTzDiagnosisQuery::create()->filterByIcd10Code($code['ICD_10_code'])->count();
+	$disease = CareTzDiagnosisQuery::create()
+	->filterByIcd10Code($code['ICD_10_code'])
+	->where("CareTzDiagnosis.timestamp >=?", strtotime($startDate))
+	->where("CareTzDiagnosis.timestamp <=?", strtotime($endDate))
+	->count();
+
 	array_push($diseases, 
 		array(
 			'name' => $code['ICD_10_description'],
@@ -47,9 +97,13 @@ if (@$diseases) {
 }
 
 foreach ($topDiseases as $topDisease) {
-	array_push($labels, $topDisease['name']);
-	array_push($diseaseData, $topDisease['total']);
-	array_push($background, $colorHelper->rand_color());
+	if ($topDisease['total'] > 0) {
+		array_push($labels, $topDisease['name']);
+		array_push($diseaseData, $topDisease['total']);
+		array_push($background, $colorHelper->rand_color());	
+	}else {
+		$labels = ['NO DATA'];
+	}
 }
 
 $data['labels'] = $labels;

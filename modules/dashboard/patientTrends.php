@@ -156,7 +156,7 @@ if ($period == "ThisMonth") {
 
 if ($period == "LastMonth") {
 	
-	$lastmonth = date('m')-1;
+	$lastmonth = date('m', strtotime("last month"));
 	$start_date = date('Y-'.$lastmonth.'-01');
 
 	$end_date = date('Y-m-t', strtotime($start_date));

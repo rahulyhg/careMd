@@ -183,15 +183,34 @@ require_once($root_path . 'main_theme/header.inc.php');
                     <div class="col-md-6 d-flex justify-content-start">
                       <h4 class="card-title">Top Diseases</h4> 
                     </div>
+                    
                     <div class="col-md-6 d-flex justify-content-end">
-                        <select class="custom-select input-sm col-md-3" id="topdiseasesselect">
-                          <option >Select View</option>
-                          <option value="5">5</option>
-                          <option selected value="10">10</option>
-                          <option value="15">15</option>
-                          <option value="20">20</option>
-                          <option value="25">25</option>
-                        </select>
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <select class="custom-select input-sm col-md-12" id="topdiseaseperiod">
+                            <option >Select View</option>
+                            <option value="ThisWeek">This Week</option>
+                            <option value="ThisMonth">This Month</option>
+                            <option value="ThisYear" selected>This Year</option>
+                            <option value="LastWeek">Last Week</option>
+                            <option value="LastMonth">Last Month</option>
+                            <option value="LastYear">Last Year</option>
+                          </select>
+                        </div>
+                        
+                        <div class="col-md-6">
+                          <select class="custom-select input-sm col-md-12" id="topdiseasesselect">
+                            <option >Select View</option>
+                            <option value="5">5</option>
+                            <option selected value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                          </select>
+                        </div>
+                        
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -273,15 +292,34 @@ require_once($root_path . 'main_theme/header.inc.php');
                     <div class="col-md-6 d-flex justify-content-start">
                       <h4 class="card-title">Frequently used drugs</h4> 
                     </div>
+
                     <div class="col-md-6 d-flex justify-content-end">
-                        <select class="custom-select input-sm col-md-3" id="frequentdrugsselect">
-                          <option >Select View</option>
-                          <option value="5">5</option>
-                          <option selected value="10">10</option>
-                          <option value="15">15</option>
-                          <option value="20">20</option>
-                          <option value="25">25</option>-    
-                        </select>
+                     <div class="row">
+                        <div class="col-md-6">
+                          <select class="custom-select input-sm col-md-12" id="frequentdrugsperiod">
+                            <option >Select View</option>
+                            <option value="ThisWeek">This Week</option>
+                            <option value="ThisMonth">This Month</option>
+                            <option value="ThisYear" selected>This Year</option>
+                            <option value="LastWeek">Last Week</option>
+                            <option value="LastMonth">Last Month</option>
+                            <option value="LastYear">Last Year</option>
+                          </select>
+                        </div>
+                        
+                        <div class="col-md-6">
+                          <select class="custom-select input-sm col-md-12" id="frequentdrugsselect">
+                            <option >Select View</option>
+                            <option value="5">5</option>
+                            <option selected value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                          </select>
+                        </div>
+                        
+                      </div>
+                      
                     </div>
                   </div>
                 </div>

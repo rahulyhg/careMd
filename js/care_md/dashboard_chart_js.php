@@ -132,11 +132,12 @@ var diseaseConfig = {
  });
 
 
-    $('#topdiseasesselect').change(function(){
+    $('#topdiseasesselect, #topdiseaseperiod').change(function(){
        $('.topdiseases').Wload({text:' Loading'})
       var count = $('#topdiseasesselect').val();
+      var period = $('#topdiseaseperiod').val();
 
-      $.getJSON("<?php echo $root_path.'modules/dashboard/TopDiseases.php/?count=' ?>"+count).done(function(responseselect){
+      $.getJSON("<?php echo $root_path.'modules/dashboard/TopDiseases.php/?count=' ?>"+count +"&period=" + period).done(function(responseselect){
         var diseaseConfig = {
               type: 'doughnut',
               data: {
@@ -245,10 +246,11 @@ var drugconfig = {
 });
 
 
-$('#frequentdrugsselect').change(function(){
+$('#frequentdrugsselect, #frequentdrugsperiod').change(function(){
   $('.frequentdrugs').Wload({text:' Loading'})
    var count = $('#frequentdrugsselect').val();
-  $.getJSON("<?php echo $root_path.'modules/dashboard/FrequentDrugs.php?count=' ?>"+count).done(function(response){
+   var period = $('#frequentdrugsperiod').val();
+  $.getJSON("<?php echo $root_path.'modules/dashboard/FrequentDrugs.php?count=' ?>"+count + "&period=" + period).done(function(response){
   var drugconfig = {
       type: 'doughnut',
       data: {

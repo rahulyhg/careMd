@@ -8,12 +8,55 @@ require_once $root_path.'generated-conf/config.php';
 use  CareMd\CareMd\CareTzBillingArchiveElemQuery;
 use  CareMd\CareMd\CareTzDrugsandservicesQuery;
 
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
+
 $drugs = array();
 $labels = array();
 $drugData = array();
 $background = array();
 $colorHelper = new ColorHelper();
-$startTime = strtotime(date('Y-' .'01-01'));
+
+
+$period = @$_GET['period']?$_GET['period']:"ThisYear";
+
+if ($period == "ThisWeek") {
+	$startDate = Carbon::now()->startOfWeek()->format('Y-m-d');
+	$endDate =  Carbon::now()->endOfWeek()->format('Y-m-d');
+
+}
+
+if ($period == "ThisMonth") {
+	$startDate = date('Y-m-01');
+	$endDate = date('Y-m-t');
+}
+
+if ($period == "ThisYear") {
+	$year = date('Y');
+	$startDate = $year . "-01-01";
+	$endDate = $year . "-12-31";
+}
+
+if ($period == "LastYear") {
+	$year = date('Y')-1;
+	$startDate = $year . "-01-01";
+	$endDate = $year . "-12-31";	
+}
+
+if ($period == "LastMonth") {
+	$lastmonth = date('m', strtotime("last month"));
+	$startDate = date('Y-'.$lastmonth.'-01');
+	$endDate = date('Y-'.$lastmonth.'-t');
+}
+
+if ($period == "LastWeek") {
+	$previous_week = strtotime("-1 week +1 day");
+	$start_week = strtotime("last monday midnight",$previous_week);
+	$end_week = strtotime("next sunday",$start_week);
+
+	$startDate = date("Y-m-d",$start_week);
+	$endDate = date("Y-m-d",$end_week);
+}
 
 
 $drugCodes = CareTzDrugsandservicesQuery::create()
@@ -27,7 +70,8 @@ $drugCodes = CareTzDrugsandservicesQuery::create()
 
 foreach ($drugCodes as $code) {
 	$drug = CareTzBillingArchiveElemQuery::create()->filterByItemNumber($code['item_id'])
-	// ->where("CareTzBillingArchiveElem.date_change >=?", $startTime)
+	->where("CareTzBillingArchiveElem.date_change >=?", strtotime($startDate))
+	->where("CareTzBillingArchiveElem.date_change <=?", strtotime($endDate))
 	->count();
 	array_push($drugs, 
 		array(
@@ -51,9 +95,14 @@ for ($i=0; $i < $count; $i++) {
 }
 
 foreach ($topDiseases as $topDisease) {
-	array_push($labels, $topDisease['name']);
-	array_push($drugData, $topDisease['total']);
-	array_push($background, $colorHelper->rand_color());
+	if ( $topDisease['total'] > 0) {
+		array_push($labels, $topDisease['name']);
+		array_push($drugData, $topDisease['total']);
+		array_push($background, $colorHelper->rand_color());
+	}else {
+		$labels = ['NO DATA'];
+	}
+	
 }
 
 $data['labels'] = $labels;
