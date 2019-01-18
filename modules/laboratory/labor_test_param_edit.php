@@ -1,7 +1,6 @@
 <?php
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
-$pageName = "Laboratories";
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.2 - 2006-07-10
  * GNU General Public License
@@ -115,7 +114,7 @@ if (isset($mode) && !empty($mode)) {
         # Save the nr	
 
 
-        echo 'is this the right page';
+        echo 'adding new plan';
          
         
         
@@ -164,14 +163,20 @@ if (isset($mode) && !empty($mode)) {
 
              <script language="JavaScript">
             <!-- Script Begin
-                window.opener.location.reload();
-                window.close();
+                // window.location.reload();
+                // window.close();
+                // alert('Successfully added new plan');
             //  Script End -->
             </script>
 
 
+
+
             <?php
-           exit;
+
+            header('Location: '.$_SESSION['testParameterurl']);
+            die;
+
         } else
             echo $lab_obj->getLastQuery();
         # end of if(mode==new)		

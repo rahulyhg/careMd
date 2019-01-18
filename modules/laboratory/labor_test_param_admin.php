@@ -21,6 +21,11 @@ require_once($root_path . 'include/inc_front_chain_lang.php');
 
 $thisfile = basename($_SERVER['PHP_SELF']);
 
+
+$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+$_SESSION['testParameterurl'] = $actual_link;
+
 ///$db->debug=FALSE;
 # Create lab object
 require_once($root_path . 'include/care_api_classes/class_lab.php');
@@ -88,7 +93,7 @@ ob_start();
     function newParam()
     {
         urlholder = "<?php echo $root_path ?>modules/laboratory/labor_test_param_edit.php?sid=<?php echo "$sid&lang=$lang" ?>&mode=new";
-        editparam_<?php echo $sid ?> = window.open(urlholder+"?editparam_<?php echo $sid ?>", "_self");
+        editparam_<?php echo $sid ?> = window.open(urlholder+"&editparam_<?php echo $sid ?>", "_self")
     }
 // -->
 </script>

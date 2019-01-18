@@ -166,7 +166,10 @@ class Lab extends Encounter {
         'create_time',
         'add_type',
         'add_label',
-        'sort_nr');
+        'sort_nr',
+        'block_selection',
+        'enable_upload'
+    );
 
     /**
      * Field names for care_tz_laboratory_param_type table

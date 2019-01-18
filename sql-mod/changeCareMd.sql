@@ -86,4 +86,6 @@ ALTER TABLE `care_person` ADD `allergic` TINYINT NOT NULL DEFAULT '0' AFTER `his
 
 --17-01
 ALTER TABLE `care_tz_diagnosis` ADD INDEX(`timestamp`);
+ALTER TABLE `care_tz_laboratory_param` ADD `block_selection` ENUM('yes','no') NOT NULL DEFAULT 'yes' AFTER `price_1`, ADD `enable_upload` ENUM('yes','no') NOT NULL DEFAULT 'yes' AFTER `block_selection`;
+
 
