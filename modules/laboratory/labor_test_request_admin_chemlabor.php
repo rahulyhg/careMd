@@ -323,8 +323,9 @@ $smarty->assign('pbHelp', "javascript:gethelp('lab_pending_requests.php','Labora
 # hide return  button
 $smarty->assign('pbBack', FALSE);
 
+$breakFile = @($_SESSION['laborurl'])?$_SESSION['laborurl']:"javascript:history.back()";
 # href for close button
-$smarty->assign('breakfile', "javascript:window.close()");
+$smarty->assign('breakfile', $breakFile);
 
 # Window bar title
 $smarty->assign('sWindowTitle', $sTitle);

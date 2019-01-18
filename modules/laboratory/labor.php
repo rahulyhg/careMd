@@ -16,6 +16,10 @@ define('LANG_FILE', 'lab.php');
 define('NO_2LEVEL_CHK', 1);
 require_once($root_path . 'include/inc_front_chain_lang.php');
 
+$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+$_SESSION['laborurl'] = $actual_link;
+
 // $breakfile = $root_path . 'modules/news/start_page.php' . URL_APPEND;
 $breakfile = "javascript:history.back()";
 // reset all 2nd level lock cookies

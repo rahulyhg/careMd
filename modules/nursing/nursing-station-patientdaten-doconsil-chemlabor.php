@@ -7,7 +7,6 @@ require_once($root_path . 'include/care_api_classes/class_weberp.php');
 require_once($root_path . 'include/care_api_classes/class_core.php');
 require_once($root_path . 'include/care_api_classes/class_prescription.php');
 $pres_obj = new Prescription;
-$pageName = "Laboratories";
 
 //require_once($root_path.'include/care_api_classes/class_tz_drugsandservices.php');
 //$drg_obj = new DrugsAndServices;
@@ -52,7 +51,7 @@ function prepareTestElements() {
      *  otherwise, the user sent a form without setting any test parameter.
      *  In such a case, do not save data and show the form again.
      */
-//	echo 'param='.$paramlist;
+//  echo 'param='.$paramlist;
     if ($paramlist != '') {
         /* Prepare the sampling minutes */
         for ($i = 15; $i < 46; $i = $i + 15) {
@@ -273,7 +272,7 @@ switch ($mode) {
                     echo 'pin and id '.$pn.'------'.$item_id;
 
                     $pres_obj->insert_prescription($pn, $item_id, 1);
-//				 echo 'x'.$item_id.'x';
+//               echo 'x'.$item_id.'x';
 
                     while (list($u, $v) = each($param_array)) {
                         // Get for each lab-request-id the item_id of this lab-test out of drugsandservices-table
@@ -444,19 +443,19 @@ ob_start();
 ?>
 
 <style type="text/css">
-    .lab {
-        font-family: arial;
-        font-size: 9;
-        color: purple;
-    }
+.lab {
+    font-family: arial;
+    font-size: 9;
+    color: purple;
+}
 
-    .lmargin {
-        margin-left: 5;
-    }
+.lmargin {
+    margin-left: 5;
+}
 </style>
 
 <script language="javascript">
-<!--
+    <!--
 
     function chkForm(d) {
         return true
@@ -480,17 +479,19 @@ ob_start();
         form_name = fn;
     }
 
-    function setM(m) {
+    function setM(m, editable) {
         eval("marker=document.images." + m);
         eval("element=document." + form_name + "." + m);
-        if (marker.src != mFilled.src) {
-            marker.src = mFilled.src;
-            element.value = 1;
-            //alert(element.name+element.value);
-        } else {
-            marker.src = mBlank.src;
-            element.value = 0;
-            //alert(element.name+element.value);
+        if (editable == 'yes') {
+            if (marker.src != mFilled.src) {
+                marker.src = mFilled.src;
+                element.value = 1;
+                //alert(element.name+element.value);
+            } else {
+                marker.src = mBlank.src;
+                element.value = 0;
+                //alert(element.name+element.value);
+            }
         }
     }
 
@@ -526,7 +527,7 @@ ob_start();
                     if (a = x.id) {
                         param = a.substr(-(group_id.length), group_id.length);
                         if (param == group_id) {
-                            setM(a);
+                            setM(a, 'yes');
                         }
                     }
                 }
@@ -535,10 +536,8 @@ ob_start();
 
 //-->
 </script>
-<script
-language="javascript" src="<?php echo $root_path; ?>js/setdatetime.js"></script>
-<script
-language="javascript" src="<?php echo $root_path; ?>js/checkdate.js"></script>
+<script language="javascript" src="<?php echo $root_path; ?>js/setdatetime.js"></script>
+<script language="javascript" src="<?php echo $root_path; ?>js/checkdate.js"></script>
 
 <?php
 $sTemp = ob_get_contents();
@@ -555,11 +554,11 @@ ob_start();
 if (!$noresize) {
     ?>
 
-    <script>
-                window.moveTo(0, 0);
+<script>
+    window.moveTo(0, 0);
                 window.resizeTo(1000, 740);</script>
 
-    <?php
+<?php
 }
 ?>
 
@@ -567,8 +566,8 @@ if (!$noresize) {
     <?php
     if ($edit) {
         ?>
-        <form name="form_test_request" id="form_test_request" method="post"
-              action="<?php echo $thisfile ?>"><?php
+    <form name="form_test_request" id="form_test_request" method="post" action="<?php echo $thisfile ?>">
+        <?php
     /* If in edit mode display the control buttons */
 
     $controls_table_width = 745;
@@ -577,93 +576,103 @@ if (!$noresize) {
 } elseif (!$read_form && !$no_proc_assist) {
         ?>
 
-            <table border=0 align="left" width="">
-                <tr>
-                    <td><img
-                            <?php echo createMascot($root_path, 'mascot1_r.gif', '0', 'absmiddle') ?>></td>
-                    <td class="prompt"><?php echo $LDPlsSelectPatientFirst ?></td>
-                    <td valign="bottom"><img
-                            <?php echo createComIcon($root_path, 'angle_down_r.gif', '0', '', TRUE) ?>></td>
-                </tr>
-            </table>
-            <?php
+        <table border=0 align="left" width="">
+            <tr>
+                <td><img <?php echo createMascot($root_path, 'mascot1_r.gif' , '0' , 'absmiddle' ) ?>></td>
+                <td class="prompt">
+                    <?php echo $LDPlsSelectPatientFirst ?>
+                </td>
+                <td valign="bottom"><img <?php echo createComIcon($root_path, 'angle_down_r.gif' , '0' , '' , TRUE) ?>></td>
+            </tr>
+        </table>
+        <?php
         }
         ?> <br>
 
         <!-- outermost table for the form -->
-        <table border=0 cellpadding=1 cellspacing=0 id="table_param"
-               bgcolor="#606060">
+        <table border=0 cellpadding=1 cellspacing=0 id="table_param" bgcolor="#606060">
             <tr>
-                <td><!-- table for the form simulating the border -->
+                <td>
+                    <!-- table for the form simulating the border -->
                     <table border=0 cellspacing=0 cellpadding=0 bgcolor="white">
                         <tr>
-                            <td><!-- Here begins the table for the form  -->
+                            <td>
+                                <!-- Here begins the table for the form  -->
 
                                 <table cellpadding=0 cellspacing=0 border=0 width=745>
                                     <tr valign="top">
 
                                         <td bgcolor="<?php echo $bgc1 ?>">
-                                            <div class="lmargin"><font size=3 color="#990000" face="arial"> <?php
+                                            <div class="lmargin">
+                                                <font size=3 color="#990000" face="arial">
+                                                    <?php
         if ($edit) {
             /*
               ?>
-              <input type="text" name="room_nr" size=10 maxlength=10
-              value="<?php
+                                                    <input type="text" name="room_nr" size=10 maxlength=10 value="<?php
               if($edit_form||$read_form) echo stripslashes($stored_request['room_nr']);
               else   echo $_COOKIE['ck_thispc_room']
               ?>">
-              <?php
+                                                    <?php
              */
         } else {
             if ($edit_form || $read_form)
                 echo stripslashes($stored_request['room_nr']);
         }
-        ?> <!--  Table for the day and month code -->
+        ?>
+                                                    <!--  Table for the day and month code -->
 
 
-                                                <table border=0 cellspacing=0 cellpadding=0 width="1">
-                                                    <tr align="center">
+                                                    <table border=0 cellspacing=0 cellpadding=0 width="1">
+                                                        <tr align="center">
 
-                                                    </tr>
-                                                    <tr align="center">
+                                                        </tr>
+                                                        <tr align="center">
 
-                                                    </tr>
+                                                        </tr>
 
-                                                    <tr align="center">
-                                                    </tr>
-                                                    <tr align="center">
-                                                    </tr>
-                                                    <!-- Input blocks for 10, 20 Time row -->
-                                                    <tr align="center">
-                                                        <td><font size=1 face="arial" color="purple"></font></td>
-                                                        <td colspan=8><font size=1 face="arial" color="purple"></font></td>
+                                                        <tr align="center">
+                                                        </tr>
+                                                        <tr align="center">
+                                                        </tr>
+                                                        <!-- Input blocks for 10, 20 Time row -->
+                                                        <tr align="center">
+                                                            <td>
+                                                                <font size=1 face="arial" color="purple"></font>
+                                                            </td>
+                                                            <td colspan=8>
+                                                                <font size=1 face="arial" color="purple"></font>
+                                                            </td>
 
-                                                    </tr>
+                                                        </tr>
 
-                                                    <tr align="center">
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                    </tr>
-                                                </table></font></div>
+                                                        <tr align="center">
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                        </tr>
+                                                    </table>
+                                                </font>
+                                            </div>
                                         </td>
 
                                         <!-- Middle block of first row -->
                                         <td bgcolor="<?php echo $bgc1 ?>">
                                             <table border=1 cellpadding=0 bgcolor="">
                                                 <tr>
-                                                    <td><?php
+                                                    <td>
+                                                        <?php
                                                 if ($edit) {
                                                     $sql_headline = "SELECT     care_person.pid,
-								  care_person.selian_pid,
-								  CONCAT(name_first, ' ', name_2) AS name_first,
-								  UPPER(name_last) AS name_last,
-								  sex,
-								  care_encounter.encounter_nr,
-								  date_birth
- 					   FROM care_person, care_encounter
-					   WHERE care_encounter.pid = care_person.pid AND care_encounter.encounter_nr ='" . $pn . "'";
+                                  care_person.selian_pid,
+                                  CONCAT(name_first, ' ', name_2) AS name_first,
+                                  UPPER(name_last) AS name_last,
+                                  sex,
+                                  care_encounter.encounter_nr,
+                                  date_birth
+                       FROM care_person, care_encounter
+                       WHERE care_encounter.pid = care_person.pid AND care_encounter.encounter_nr ='" . $pn . "'";
 
                                                     if ($h_requests = $db->Execute($sql_headline)) {
                                                         if ($test_request_headline = $h_requests->FetchRow()) {
@@ -683,29 +692,29 @@ if (!$noresize) {
                                                     } // end of if($h_requests=$db->Execute($sql_headline))
                                                     echo '
 
-					</td>
-					<td width="25%">
-					<font color="purple">' . $LDHospitalFileNr . '</font>
-						<font color="#ffffee" class="vi_data"><b>' . $h_selian_file_number . '</font>
-					</td>
-					<td width="25%">
+                    </td>
+                    <td width="25%">
+                    <font color="purple">' . $LDHospitalFileNr . '</font>
+                        <font color="#ffffee" class="vi_data"><b>' . $h_selian_file_number . '</font>
+                    </td>
+                    <td width="25%">
 
-					<font color="purple">' . $LDPatientID . '</font>
-						<font color="#ffffee" class="vi_data"><b>' . $h_pid . '</font>
-					</td>
-					<td width="25%">
-						<font color="purple">	' . $LDSurnameUkoo . '</font>
-					 	<font color="#ffffee" class="vi_data"><b>
-						' . $h_name_last . '</b></font>
-					</td>
+                    <font color="purple">' . $LDPatientID . '</font>
+                        <font color="#ffffee" class="vi_data"><b>' . $h_pid . '</font>
+                    </td>
+                    <td width="25%">
+                        <font color="purple">   ' . $LDSurnameUkoo . '</font>
+                        <font color="#ffffee" class="vi_data"><b>
+                        ' . $h_name_last . '</b></font>
+                    </td>
 
-					<td width="25%">
-					<font color="purple"> ' . $LDFirstName . '</font>
-					<font color="#ffffee" class="vi_data"><b>
-						' . $h_name_first . ' </b></font>
-					</td>
-				</tr>
-				<tr>';
+                    <td width="25%">
+                    <font color="purple"> ' . $LDFirstName . '</font>
+                    <font color="#ffffee" class="vi_data"><b>
+                        ' . $h_name_first . ' </b></font>
+                    </td>
+                </tr>
+                <tr>';
                                                     //echo '<img src="'.$root_path.'main/imgcreator/barcode_label_single_large.php?sid='.$sid.'&lang='.$lang.'&fen='.$full_en.'&en='.$pn.'" width=282 height=178>';
                                                 }
                                                 elseif (empty($pn)) {
@@ -718,7 +727,8 @@ if (!$noresize) {
                                         </td>
 
 
-                                        <td bgcolor="<?php echo $bgc1 ?>" align="right"><!--  Block for the casenumber codes -->
+                                        <td bgcolor="<?php echo $bgc1 ?>" align="right">
+                                            <!--  Block for the casenumber codes -->
                                             <table border=0 cellspacing=0 cellpadding=0>
                                                 <tr align="center">
                                                 </tr>
@@ -727,7 +737,8 @@ if (!$noresize) {
                                                 </tr>
 
                                                 <tr>
-                                                    <td colspan=10 align="right"><?php
+                                                    <td colspan=10 align="right">
+                                                        <?php
                                                         /* Barcode for the batch nr */
 
                                                         //echo '<font size=1 color="#990000" face="verdana,arial">'.$batch_nr.'</font>&nbsp;&nbsp;<br>';
@@ -755,7 +766,8 @@ if (!$noresize) {
                                                           echo "<img src='".$root_path."classes/barcode/image.php?code=".$batch_nr."&style=68&type=I25&width=145&height=60&xres=1&font=5&label=1&form_file=lab' border=0 width=0 height=0>";
                                                           }
                                                          */
-        ?></td>
+        ?>
+                                                    </td>
                                                 </tr>
 
                                             </table>
@@ -771,29 +783,60 @@ if (!$noresize) {
                                                 <tbody>
                                                     <tr>
                                                         <td>&nbsp;</td>
-                                                        <td><FONT SIZE=1 FACE="Arial" color="#000066"><?php echo 'Urgency : '; ?></FONT></td>
-                                                        <td><FONT SIZE=1 FACE="Arial" color="#000066"> <input
-                                                                type="radio" name="urgency" value="0"
-                                                                <?php if ($urgency == 0) echo 'checked'; ?>><?php echo 'Normal'; ?></FONT></td>
-                                                        <td><FONT SIZE=1 FACE="Arial" color="#000066"><input type="radio" name="urgency" value="3"
-                                                                                                             <?php if ($urgency == 3) echo 'checked'; ?>><?php echo 'Priority'; ?></FONT></td>
-                                                        <td><FONT SIZE=1 FACE="Arial" color="#000066"><input type="radio" name="urgency" value="5"
-                                                                                                             <?php if ($urgency == 5) echo 'checked'; ?>><?php echo 'Urgent'; ?></FONT></td>
-                                                        <td><FONT SIZE=1 FACE="Arial" color="#000066"><input type="radio" name="urgency" value="7"
-                                                                                                             <?php if ($urgency == 7) echo 'checked'; ?>><?php echo 'Emergency'; ?></FONT></td>
+                                                        <td>
+                                                            <FONT SIZE=1 FACE="Arial" color="#000066">
+                                                                <?php echo 'Urgency : '; ?>
+                                                            </FONT>
+                                                        </td>
+                                                        <td>
+                                                            <FONT SIZE=1 FACE="Arial" color="#000066"> <input type="radio"
+                                                                    name="urgency" value="0" <?php if ($urgency==0)
+                                                                    echo 'checked' ; ?>>
+                                                                <?php echo 'Normal'; ?>
+                                                            </FONT>
+                                                        </td>
+                                                        <td>
+                                                            <FONT SIZE=1 FACE="Arial" color="#000066"><input type="radio"
+                                                                    name="urgency" value="3" <?php if ($urgency==3)
+                                                                    echo 'checked' ; ?>>
+                                                                <?php echo 'Priority'; ?>
+                                                            </FONT>
+                                                        </td>
+                                                        <td>
+                                                            <FONT SIZE=1 FACE="Arial" color="#000066"><input type="radio"
+                                                                    name="urgency" value="5" <?php if ($urgency==5)
+                                                                    echo 'checked' ; ?>>
+                                                                <?php echo 'Urgent'; ?>
+                                                            </FONT>
+                                                        </td>
+                                                        <td>
+                                                            <FONT SIZE=1 FACE="Arial" color="#000066"><input type="radio"
+                                                                    name="urgency" value="7" <?php if ($urgency==7)
+                                                                    echo 'checked' ; ?>>
+                                                                <?php echo 'Emergency'; ?>
+                                                            </FONT>
+                                                        </td>
                                                         <td width=10%>&nbsp;</td>
                                                         <td align="left"></td>
-                                                        <td width=20% align="left"><font size=1
-                                                                                         color="purple" face="verdana,arial"><?php echo $LDBatchNumber ?></font><font
-                                                                                         color="#000000" size=2> <?php echo $batch_nr ?></font></td>
+                                                        <td width=20% align="left">
+                                                            <font size=1 color="purple" face="verdana,arial">
+                                                                <?php echo $LDBatchNumber ?>
+                                                            </font>
+                                                            <font color="#000000" size=2>
+                                                                <?php echo $batch_nr ?>
+                                                            </font>
+                                                        </td>
 
                                                     </tr>
 
                                                     <tr bgcolor="<?php echo $bgc1 ?>">
-                                                        <td><font size=1 color="purple" face="verdana,arial"><?php echo $LDDoctorRequest ?> 
+                                                        <td>
+                                                            <font size=1 color="purple" face="verdana,arial">
+                                                                <?php echo $LDDoctorRequest ?>
                                                         </td>
                                                         <td>
-                                                            <input type="text" name="send_doctor" size=25 readonly maxlength=25 value="<?php echo $_SESSION['sess_user_name']; ?>" >
+                                                            <input type="text" name="send_doctor" size=25 readonly
+                                                                maxlength=25 value="<?php echo $_SESSION['sess_user_name']; ?>">
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -807,15 +850,27 @@ if (!$noresize) {
                                 </table>
 
                                 <!--  The test parameters begin  -->
-                                  
-                                <table border=0 cellpadding=0 cellspacing=0 width=745
-                                       bgcolor="<?php echo $bgc1 ?>">
-                                           <?php
+
+                                <table border=0 cellpadding=0 cellspacing=0 width=745 bgcolor="<?php echo $bgc1 ?>">
+                                    <?php
 # Start buffering the output
                                            ob_start();
                                            for ($i = 0; $i <= $max_row; $i++) {
                                                echo '<tr class="lab">';
                                                for ($j = 0; $j <= $column; $j++) {
+                                                 // echo "<pre>"; print_r($LD_Elements[$j][$i]);echo "</pre>";
+                                                 // die();
+                                                 // 
+                                                    $category = $LD_Elements[$j][$i]['id'];
+                                                    $blockQuery = "SELECT block_selection FROM care_tz_laboratory_param WHERE id = '$category' AND group_id = -1";
+                                                    $blockSlectionType = $db->Execute($blockQuery);
+
+                                                    if (!empty($blockSlectionType) && $blockSlectionType->RecordCount()) {
+                                                        $blockEditableRow = $blockSlectionType->FetchRow();
+                                                        $editable = $blockEditableRow['block_selection'];
+
+                                                    }
+
                                                    if ($LD_Elements[$j][$i]['type'] == 'top') {
                                                     //top label (heading for test)
                                                        echo '<td bgcolor="" colspan="2" onclick="selectAllParams(\'' . $LD_Elements[$j][$i]['id'] . '\');"><font color="black" style="cursor : pointer;" font size="3">&nbsp;<b>' . $LD_Elements[$j][$i]['value'] . '</b></font></td>';
@@ -823,12 +878,13 @@ if (!$noresize) {
                                                        if ($LD_Elements[$j][$i]['value']) {
                                                            echo '<td>';
                                                            if ($edit) {
+
                                                                if (isset($stored_param[$LD_Elements[$j][$i]['id']]) && !empty($stored_param[$LD_Elements[$j][$i]['id']])) {
                                                                    echo '<input type="hidden" name="' . $LD_Elements[$j][$i]['id'] . '" value="1">
-							<a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\')">';
+                                                                    <a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\', \''.$editable.'\' )">';
                                                                } else {
                                                                    echo '<input type="hidden" name="' . $LD_Elements[$j][$i]['id'] . '" value="0">
-							<a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\')">';
+                                                                    <a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\', \''.$editable.'\')">';
                                                                }
                                                            }
                                                            if (isset($stored_param[$LD_Elements[$j][$i]['id']]) && !empty($stored_param[$LD_Elements[$j][$i]['id']])) {
@@ -842,7 +898,7 @@ if (!$noresize) {
                                                            echo '</td><td>';
                                                            if ($edit)
                                                             //test label
-echo '<a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\')">' .'<font size="2">'. $LD_Elements[$j][$i]['value'] . '</a>';
+                                                            echo '<a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\', \''.$editable.'\')">' .'<font size="2">'. $LD_Elements[$j][$i]['value'] . '</a>';
                                                            else
                                                                echo $LD_Elements[$j][$i]['value'];
                                                            echo '</td>';
@@ -866,49 +922,52 @@ echo '<a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\')">' .'<fon
 //echo $sTemp;
                                            ?>
                                 </table>
-                                <table border=0 cellpadding=0 cellspacing=0 width=745
-                                       bgcolor="<?php echo $bgc1 ?>">
+                                <table border=0 cellpadding=0 cellspacing=0 width=745 bgcolor="<?php echo $bgc1 ?>">
                                     <tr>
-                                        <td colspan=9><!-- deleted 4th of july 2006 --> &nbsp;</td>
-                                        <td colspan=11><!-- deleted 4th of july 2006 --> &nbsp;</td>
+                                        <td colspan=9>
+                                            <!-- deleted 4th of july 2006 --> &nbsp;</td>
+                                        <td colspan=11>
+                                            <!-- deleted 4th of july 2006 --> &nbsp;</td>
                                     </tr>
                                     <tr>
-                                            <!--<td colspan=20><font size=2 face="verdana,arial" color="purple">&nbsp;<?php echo $LDEmergencyProgram . ' &nbsp;&nbsp;&nbsp;<img ' . createComIcon($root_path, 'violet_phone.gif', '0', 'absmiddle', TRUE) . '> ' . $LDPhoneOrder ?></td>-->
+                                        <!--<td colspan=20><font size=2 face="verdana,arial" color="purple">&nbsp;<?php echo $LDEmergencyProgram . ' &nbsp;&nbsp;&nbsp;<img ' . createComIcon($root_path, 'violet_phone.gif', '0', 'absmiddle', TRUE) . '> ' . $LDPhoneOrder ?></td>-->
                                     </tr>
 
                                 </table>
-                                <!-- End of the main table holding the form --></td>
+                                <!-- End of the main table holding the form -->
+                            </td>
 
                             <?php
                             if ($edit) {
                                 ?>
-                            <table border=0 cellpadding=0 cellspacing=0 width=745
-                                   bgcolor="<?php echo $bgc1 ?>">
+                            <table border=0 cellpadding=0 cellspacing=0 width=745 bgcolor="<?php echo $bgc1 ?>">
                                 <tr>
-                                    <td colspan=2><font size=2 weight="bold" face="verdana,arial" color="purple">&nbsp;
-                                        Notes: </font>
+                                    <td colspan=2>
+                                        <font size=2 weight="bold" face="verdana,arial" color="purple">&nbsp;
+                                            Notes: </font>
                                     </td>
                                     <td colspan=6>
-                                      <!--<input type="text" name="send_doctor" size=25 readonly maxlength=25 value="<?php // echo $_SESSION['sess_user_name'];                     ?>" >-->  
+                                        <!--<input type="text" name="send_doctor" size=25 readonly maxlength=25 value="<?php // echo $_SESSION['sess_user_name'];                     ?>" >-->
                                         <textarea rows="2" cols="85" name="notes" form="form_test_request"><?php if ($stored_request['notes']) echo stripslashes($stored_request['notes']) ?></textarea>
                                     </td>
                                 </tr>
-                                <tr></tr><tr></tr>
+                                <tr></tr>
+                                <tr></tr>
                             </table>
                             <?php
                         }
 //                        echo 'lklklklkl';
                         ?>
-            </tr>
-        </table>
-        <!-- End of table simulating the border --> 
-        <!--                </td>
+                        </tr>
+                    </table>
+                    <!-- End of table simulating the border -->
+                    <!--                </td>
                 </tr>
                 </table>-->
 
-        <!--  End of the outermost table bordering the form -->
-        <p>
-            <?php
+                    <!--  End of the outermost table bordering the form -->
+                    <p>
+                        <?php
             if ($edit) {
 
                 /* If in edit mode display the control buttons */
@@ -916,10 +975,10 @@ echo '<a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\')">' .'<fon
 
                 require($root_path . 'include/inc_test_request_hiddenvars.php');
                 ?>
-            </p>
-        </form>
+                    </p>
+    </form>
 
-        <?php
+    <?php
     }
     ?>
 
