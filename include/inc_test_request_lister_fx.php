@@ -125,7 +125,7 @@ while ($test_request = $requests->FetchRow()) {
         
         
         echo "<img src=\"" . $root_path . "gui/img/common/default/pixel.gif\" border=0 width=4 height=7>
-        <a onmouseover=\"showBallon('" . $test_request['name_last'] . ", " . ucwords($test_request['name_first']) . " encounter: " . $test_request['encounter_nr'] . " Hospital file nr: " . $test_request['selian_pid'] . "',0,150,'#99ccff'); window.status='Care2x Tooltip'; return true;\"
+        <a onmouseover=\"showBallon('" . $test_request['name_last'] . ", " . ucwords($test_request['name_first']) . " encounter: " . $test_request['encounter_nr'] . " Hospital file nr: " . $test_request['selian_pid']  . " Batch nr: " . $test_request['batch_nr']. "',0,150,'#99ccff'); window.status='Care2x Tooltip'; return true;\"
 	onmouseout=\"hideBallon(); return true;\" href=\"" . $thisfile . URL_APPEND . "&refreshed=".'TRUE'."&target=" . $target . "&subtarget=" . $subtarget . "&pn=" . $test_request['encounter_nr'] . "&batch_nr=" . $test_request['batch_nr'] . "&user_origin=" . $user_origin . "&tracker=" . $tracker . "\">";
         if ($test_request['batch_nr']) {
             if (IS_TANZANIAN) {

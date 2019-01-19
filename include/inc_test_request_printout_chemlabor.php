@@ -127,7 +127,16 @@ $glob_obj = new GlobalConfig($GLOBAL_CONFIG);
                                                 echo '<font size=2 color="#ffffee" class="vi_data"><b>'
                                                 . date('d-M-Y  H:i:s', strtotime($h_request_date))
                                                 . '</b></font>';
-                                                ?></td>
+                                                ?>
+                                            </td>
+
+                                              <td>
+                                                <font size=2 color="purple" face="verdana,arial" >Batch Nr</font>
+                                                <?php
+                                                echo '<font size=2 color="#ffffee" class="vi_data"><b>'.$h_batch_nr
+                                                . '</b></font>';
+                                                ?>
+                                            </td>
 
                                         </tr>
                                     </table>
