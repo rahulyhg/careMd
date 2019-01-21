@@ -37,7 +37,7 @@
                                 <td colspan="2" style="color: white; background-color: red; font-weight: bold;">{{$sParamGroup}}</td>
                             </tr>
                             <tr>
-                                <td colspan="2">
+                                <td colspan="1">
 
                                     {{* Table block for the parameters *}}
                                     <table cellpadding=0 cellspacing=1>
@@ -47,6 +47,9 @@
                                         </tbody>
                                     </table>
 
+                                </td>
+                                <td>
+                                    {{$resultFormUpload}}
                                 </td>
                             </tr>
                             <tr>
@@ -110,3 +113,7 @@
         </tr>
     </tbody>
 </table>
+
+<script>
+    alert('eyor')
+</script>

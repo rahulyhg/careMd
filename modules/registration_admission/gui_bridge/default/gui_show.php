@@ -429,7 +429,7 @@ if ($mode == 'show' /* && !isset($externalcall) */) {
 
 
 
-    include('./gui_bridge/default/gui_input_' . $thisfile); //gui_input_show_prescription.php
+    include('./gui_bridge/default/gui_input_' . "$thisfile"); //gui_input_show_prescription.php
 
 
 

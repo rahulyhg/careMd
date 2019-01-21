@@ -224,13 +224,16 @@ if ($tg ['status'] == 'deleted')
 echo '>' . $LDDelete . '</option>';
 echo '</select>
             </td></tr>';
+
 ?>
+
+
 <tr>
     <td class="a12_b" bgcolor="#fefefe" >BLOCK ELEMENT SELECTION </td>
     <td bgcolor="<?php echo $bgcolor ?>"  class="a12_b">
         <select name="block_selection" id="">
-            <option value="yes">Yes</option>
-            <option value="No">No</option>
+            <option value="yes" <?php if($tg['block_selection'] == 'yes'){ echo "selected"; } ?>>Yes</option>
+            <option value="No" <?php if($tg['block_selection'] == 'no'){ echo "selected"; } ?>>No</option>
         </select>
     </td>
 </tr>
@@ -239,8 +242,8 @@ echo '</select>
     <td class="a12_b" bgcolor="#fefefe" >ENABLE UPLOAD RESULT FROM MACHINE</td>
     <td bgcolor="<?php echo $bgcolor ?>"  class="a12_b">
         <select name="enable_upload" id="">
-            <option value="yes">Yes</option>
-            <option value="No">No</option>
+            <option value="yes"  <?php if($tg['enable_upload'] == 'yes'){ echo "selected"; } ?>>Yes</option>
+            <option value="No"  <?php if($tg['enable_upload'] == 'no'){ echo "selected"; } ?>>No</option>
         </select>
     </td>
 </tr>

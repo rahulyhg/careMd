@@ -89,3 +89,5 @@ ALTER TABLE `care_tz_diagnosis` ADD INDEX(`timestamp`);
 ALTER TABLE `care_tz_laboratory_param` ADD `block_selection` ENUM('yes','no') NOT NULL DEFAULT 'yes' AFTER `price_1`, ADD `enable_upload` ENUM('yes','no') NOT NULL DEFAULT 'yes' AFTER `block_selection`;
 
 
+--21-01
+composer require phpoffice/phpspreadsheet

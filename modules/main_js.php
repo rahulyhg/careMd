@@ -289,6 +289,26 @@ $(function () {
   $('[data-toggle="popover"]').popover({'trigger': 'hover'})
 })
 
+ $(".resultfileform").submit(function(evt){   
+  alert('bumtititng')
+      evt.preventDefault();
+      var formData = new FormData($(this)[0]);
+   $.ajax({
+       url: 'fileUpload',
+       type: 'POST',
+       data: formData,
+       async: false,
+       cache: false,
+       contentType: false,
+       enctype: 'multipart/form-data',
+       processData: false,
+       success: function (response) {
+         alert(response);
+       }
+   });
+   return false;
+ });
+
 </script>
 
 <div class="modal" id="diagnosisTypeModal" style="display: none" tabindex="-1" role="dialog">

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2017-07-21 16:52:17
+<?php /* Smarty version 2.6.22, created on 2019-01-21 10:50:46
          compiled from laboratory/chemlab_data_results.tpl */ ?>
 <table width="100%" border="0">
     <tbody>
@@ -52,7 +52,7 @@
 </td>
                             </tr>
                             <tr>
-                                <td colspan="2">
+                                <td colspan="1">
 
                                                                         <table cellpadding=0 cellspacing=1>
                                         <tbody>
@@ -60,6 +60,10 @@
 
                                         </tbody>
                                     </table>
+
+                                </td>
+                                <td>
+                                    <?php echo $this->_tpl_vars['resultFormUpload']; ?>
 
                                 </td>
                             </tr>
@@ -144,3 +148,7 @@
         </tr>
     </tbody>
 </table>
+
+<script>
+    alert('eyor')
+</script>

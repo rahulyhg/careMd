@@ -3,7 +3,6 @@ define("COL_MAX", 6); # define here the maximum number of rows for displaying th
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require ('./roots.php');
 require ($root_path . 'include/inc_environment_global.php');
-$pageName = "Laboratories";
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.1 - 2004-10-02
  * GNU General Public License
@@ -598,6 +597,15 @@ $sTemp = ob_get_contents();
 ob_end_clean();
 
 $smarty->assign('sParameters', $sTemp);
+
+$formUpload = '<div>
+                <FORM action="#" class="resultfileform">
+                <input type="file" required name="resultfile">
+                <button class="btn btn-primary btn-sm" type="submit">Upload</button>
+              </form>
+              </div>';
+
+$smarty->assign('resultFormUpload', $formUpload);
 
 # Collect hidden inputs for the parameters form
 
