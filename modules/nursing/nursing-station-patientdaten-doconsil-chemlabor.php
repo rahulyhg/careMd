@@ -527,7 +527,7 @@ ob_start();
                     if (a = x.id) {
                         param = a.substr(-(group_id.length), group_id.length);
                         if (param == group_id) {
-                            setM(a, 'yes');
+                            setM(a, 'no');
                         }
                     }
                 }
