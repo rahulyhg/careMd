@@ -598,14 +598,24 @@ ob_end_clean();
 
 $smarty->assign('sParameters', $sTemp);
 
-$formUpload = '<div>
-                <FORM action="#" class="resultfileform">
-                <input type="file" required name="resultfile">
-                <button class="btn btn-primary btn-sm" type="submit">Upload</button>
-              </form>
-              </div>';
+$formUpload = '<form action="labReportFile.php" method="post"  enctype="multipart/form-data">
+                    <table>
+                        <tbody>
+                           
+                            <tr>
+                               <div>
+                                    <input type="file" required name="resultfile">
+                                    <button class="btn btn-primary btn-sm" type="submit">Upload</button>
+                                  </div>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>';
 
-$smarty->assign('resultFormUpload', $formUpload);
+if (@$pName && $pName->fields['enable_upload'] == 'yes') {
+    $smarty->assign('resultFormUpload', $formUpload);
+}
+
 
 # Collect hidden inputs for the parameters form
 
@@ -618,7 +628,7 @@ ob_start();
 <input type=hidden name="lang" value="<?php echo $lang; ?>">
 <input type=hidden name="update" value="<?php echo $update; ?>">
 <input type=hidden name="allow_update" 	value="<?php if (isset($allow_update)) echo $allow_update; ?>">
-<input type=hidden name="batch_nr" value="<?php if (isset($row ['batch_nr'])) echo $row ['batch_nr']; ?>">
+<input type=hidden name="batch_nr" value="<?php if (isset($row ['batch_nr'])) echo $row['batch_nr']; ?>">
 <input type=hidden name="newid" value="<?php echo $newid; ?>">
 <input type=hidden name="user_origin" value="<?php echo $user_origin; ?>">
 <input type=hidden name="mode" value="save">

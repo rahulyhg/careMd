@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2019-01-21 11:37:36
+<?php /* Smarty version 2.6.22, created on 2019-01-21 12:17:28
          compiled from laboratory/chemlab_data_results.tpl */ ?>
 <table width="100%" border="0">
     <tbody>
@@ -62,10 +62,6 @@
                                     </table>
 
                                 </td>
-                                <td>
-                                    <?php echo $this->_tpl_vars['resultFormUpload']; ?>
-
-                                </td>
                             </tr>
                             <tr>
                                 <td><?php echo $this->_tpl_vars['pbSave']; ?>
@@ -79,6 +75,10 @@
                     <?php echo $this->_tpl_vars['sSaveParamHiddenInputs']; ?>
 
                 </form>
+
+               <?php echo $this->_tpl_vars['resultFormUpload']; ?>
+
+
 
                                 <form <?php echo $this->_tpl_vars['sFormAction']; ?>
  method=post onSubmit="return chkselect(this)" name="paramselect">

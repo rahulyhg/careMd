@@ -48,9 +48,6 @@
                                     </table>
 
                                 </td>
-                                <td>
-                                    {{$resultFormUpload}}
-                                </td>
                             </tr>
                             <tr>
                                 <td>{{$pbSave}}</td>
@@ -60,6 +57,9 @@
                     </table>
                     {{$sSaveParamHiddenInputs}}
                 </form>
+
+               {{$resultFormUpload}}
+
 
                 {{* Block for parameter group select box *}}
                 <form {{$sFormAction}} method=post onSubmit="return chkselect(this)" name="paramselect">
