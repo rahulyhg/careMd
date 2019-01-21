@@ -482,7 +482,7 @@ ob_start();
     function setM(m, editable) {
         eval("marker=document.images." + m);
         eval("element=document." + form_name + "." + m);
-        if (editable == 'yes') {
+        if (editable == 'no') {
             if (marker.src != mFilled.src) {
                 marker.src = mFilled.src;
                 element.value = 1;

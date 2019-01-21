@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2019-01-21 10:50:46
+<?php /* Smarty version 2.6.22, created on 2019-01-21 11:37:36
          compiled from laboratory/chemlab_data_results.tpl */ ?>
 <table width="100%" border="0">
     <tbody>
@@ -148,7 +148,3 @@
         </tr>
     </tbody>
 </table>
-
-<script>
-    alert('eyor')
-</script>
