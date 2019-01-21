@@ -113,7 +113,3 @@
         </tr>
     </tbody>
 </table>
-
-<script>
-    alert('eyor')
-</script>

@@ -203,7 +203,7 @@
             }
             
         }else {
-            echo $row['reason'];
+            echo $row['comment'];
         }
         ?>
             </td>  
