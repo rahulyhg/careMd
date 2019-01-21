@@ -339,6 +339,7 @@ class Prescription extends Core {
 // end of function getDrugList($class, $is_pediatric, $is_adult, $is_other, $is_consumable )
 
     function insert_prescription($encounter_nr, $drug_list_id, $type) {
+ 
         global $db;
         global $is_transmit_to_weberp_enable;
         if ($type == 1) {

@@ -90,7 +90,7 @@ if (!isset($mode)) {
     // there was the requirement that there should be no restrictions given...
     //include('./include/save_admission_data.inc.php');
 
-    // include('./include/save_prescription_data.inc.php');
+    include('./include/save_prescription_data.inc.php');
 }
 
 /* For external call, there is no encounter number given. This can be determined if we have the encounter no in the $pn variable */
