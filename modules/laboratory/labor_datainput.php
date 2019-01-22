@@ -3,6 +3,13 @@ define("COL_MAX", 6); # define here the maximum number of rows for displaying th
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require ('./roots.php');
 require ($root_path . 'include/inc_environment_global.php');
+
+require_once('./roots.php');
+
+require_once $root_path.'vendor/autoload.php';
+
+use PhpOffice\PhpSpreadsheet\IOFactory;
+
 /**
  * CARE2X Integrated Hospital Information System Deployment 2.1 - 2004-10-02
  * GNU General Public License
@@ -119,6 +126,7 @@ if ($mode == 'save') {
         $dbuf['modify_time'] = date('YmdHis');
         $lab_obj_sub->deleteOldValues($batch_nr, $encounter_nr);
 //print_r($nbuf_old['__brucella_test__screening__serology_old']);
+
         foreach ($nbuf as $key => $value) {
             if (isset($value) && !empty($value)) {
                 //get the old value from array
@@ -183,7 +191,7 @@ if ($mode == 'save') {
                     $parsedParamList['job_id'] = $job_id;
                     $parsedParamList['paramater_name'] = $key;
                     $parsedParamList['parameter_value'] = $value;
-                    //now save it via sub object					
+                    //now save it via sub object                    
                     $lab_obj_sub->setDataArray($parsedParamList);
                     $lab_obj_sub->insertDataFromInternalArray();
                 }
@@ -299,99 +307,92 @@ ob_start();
 ?>
 
 <style type="text/css" name="1">
-    .va12_n {
-        font-family: verdana, arial;
-        font-size: 12;
-        color: #000099
-    }
+.va12_n {
+    font-family: verdana, arial;
+    font-size: 12;
+    color: #000099
+}
 
-    .a10_b {
-        font-family: arial;
-        font-size: 10;
-        color: #000000
-    }
+.a10_b {
+    font-family: arial;
+    font-size: 10;
+    color: #000000
+}
 
-    .a10_n {
-        font-family: arial;
-        font-size: 10;
-        color: #000099
-    }
+.a10_n {
+    font-family: arial;
+    font-size: 10;
+    color: #000099
+}
 </style>
 
 <script language="javascript" name="j1">
 <!--
-    function pruf(d)
-    {
-        if (!d.job_id.value)
-        {
-            alert("<?php echo $LDAlertJobId ?>");
-            d.job_id.focus();
-            return false;
-        }
-        else
-        {
-            if (d.test_date) {
-                if (!d.test_date.value)
-                {
-                    alert("<?php echo $LDAlertTestDate ?>");
-                    d.test_date.focus();
-                    return false;
-                }
-                else
-                    return true;
-            }
+function pruf(d) {
+    if (!d.job_id.value) {
+        alert("<?php echo $LDAlertJobId ?>");
+        d.job_id.focus();
+        return false;
+    } else {
+        if (d.test_date) {
+            if (!d.test_date.value) {
+                alert("<?php echo $LDAlertTestDate ?>");
+                d.test_date.focus();
+                return false;
+            } else
+                return true;
         }
     }
+}
 
-    function posneg(f)
-    {
-        //if(d."<?php echo $adddata [$tp ['id']] ?>[0].checked || d."<?php echo $adddata [$tp ['id']] ?>"[1].checked)
-        //{
-        // alert(<?php
-echo $_POST ['_add' . $x . '_'];
-?>);
-        //return false;
-        //}
-        //else return true;
+function posneg(f) {
+    //if(d."<?php echo $adddata [$tp ['id']] ?>[0].checked || d."<?php echo $adddata [$tp ['id']] ?>"[1].checked)
+    //{
+    // alert(<?php
+    echo $_POST['_add'.$x.'_']; ?> );
+//return false;
+//}
+//else return true;
 
-    }
+}
 
-    function limitedInput(inputId, range) {
-        var inputElement = document.getElementById(inputId);
-        var rangeArray = range.split("-");
-        if (inputElement.value != '') {
-            if (Number(inputElement.value).toFixed(6) < Number(rangeArray[0]).toFixed(6) ||
-                    Number(inputElement.value).toFixed(6) > Number(rangeArray[1]).toFixed(6)) {
-                alert('Value must be between ranges : ' + rangeArray[0] + ' and ' + rangeArray[1] + '!');
-                inputElement.value = '';
-            }
-        }
-
-    }
-
-
-    function chkselect(d)
-    {
-        if (d.parameterselect.value == "<?php echo $parameterselect ?>") {
-            return false;
+function limitedInput(inputId, range) {
+    var inputElement = document.getElementById(inputId);
+    var rangeArray = range.split("-");
+    if (inputElement.value != '') {
+        if (Number(inputElement.value).toFixed(6) < Number(rangeArray[0]).toFixed(6) ||
+            Number(inputElement.value).toFixed(6) > Number(rangeArray[1]).toFixed(6)) {
+            alert('Value must be between ranges : ' + rangeArray[0] + ' and ' + rangeArray[1] + '!');
+            inputElement.value = '';
         }
     }
-    function labReport() {
-        window.location.replace("<?php
-echo 'labor_datalist_noedit.php' . URL_REDIRECT_APPEND . '&encounter_nr=' . $encounter_nr . '&noexpand=1&from=input&job_id=' . $job_id . '&parameterselect=' . $parameterselect . '&allow_update=' . $allow_update . '&nostat=1&user_origin=lab';
-?>");
+
+}
+
+
+function chkselect(d) {
+    if (d.parameterselect.value == "<?php echo $parameterselect ?>") {
+        return false;
     }
-<?php
+}
+
+function labReport() {
+    window.location.replace("<?php
+        echo 'labor_datalist_noedit.php'.URL_REDIRECT_APPEND.
+        '&encounter_nr='.$encounter_nr.
+        '&noexpand=1&from=input&job_id='.$job_id.
+        '&parameterselect='.$parameterselect.
+        '&allow_update='.$allow_update.
+        '&nostat=1&user_origin=lab'; ?> ");
+    }
+    <?php
 require ($root_path . 'include/inc_checkdate_lang.php');
 ?>
-// -->
+    // -->
 </script>
-<script language="javascript"
-src="<?php echo $root_path ?>js/checkdate.js" type="text/javascript"></script>
-<script language="javascript"
-src="<?php echo $root_path ?>js/setdatetime.js"></script>
-<script language="javascript"
-src="<?php echo $root_path; ?>js/dtpick_care2x.js"></script>
+<script language="javascript" src="<?php echo $root_path ?>js/checkdate.js" type="text/javascript"></script>
+<script language="javascript" src="<?php echo $root_path ?>js/setdatetime.js"></script>
+<script language="javascript" src="<?php echo $root_path; ?>js/dtpick_care2x.js"></script>
 
 <?php
 
@@ -445,15 +446,17 @@ ob_start();
 <?php
 if ($tickerror > 0) :
     ?>
-    <tr bgcolor=#ffffee>
-        <td colspan=4>
-    <center><font face=arial color=#7700ff size=4> An error occured! Please
-        be sure to insert valid values and also fill out the text boxes right
-        beside the checkboxes! </center>
+<tr bgcolor=#ffffee>
+    <td colspan=4>
+        <center>
+            <font face=arial color=#7700ff size=4> An error occured! Please
+                be sure to insert valid values and also fill out the text boxes right
+                beside the checkboxes!
+        </center>
     </td>
-    </tr>
+</tr>
 
-    <?php
+<?php
 endif;
 
 //* Get the global config for billing item*/
@@ -468,12 +471,12 @@ echo '<tr>';
 
 for ($j = 0; $j < $pcols; $j++) {
     echo '
-		<td class="a10_n">&nbsp;' . $LDParameter . '</td>
-		<td  class="a10_n">&nbsp;' . $LDValue . '</td>';
+        <td class="a10_n">&nbsp;' . $LDParameter . '</td>
+        <td  class="a10_n">&nbsp;' . $LDValue . '</td>';
 }
 
 echo '
-	</tr>';
+    </tr>';
 //order the params according to groups
 $rowlimit = 0;
 $requestData = array();
@@ -490,20 +493,33 @@ $pcols = COL_MAX / 2;
 reset($requestData);
 //print_r($requestData);
 $collimit = 0;
+
+$testMeasures = [];
+$data = $requestData;
+foreach ($data as $testArray) {
+    foreach ($testArray as $key => $value) {
+        array_push($testMeasures, $key);
+    }
+}
+
+$_COOKIE['testMeasures'] = $testMeasures;
+
 while (list($group, $pm) = each($requestData)) {
 
     $gName = $lab_obj->getGroupName($group);
 
     echo '
-	<tr>';
+    <tr>';
     echo '<td colspan="' . COL_MAX . '" bgcolor="#ffffee" class="a10_a"><b>';
     echo $gName->fields['name'];
     echo '</b></td></tr><tr>';
+
     while (list($pId, $not) = each($pm)) {
-//        echo $enc_obj->EncounterClass();
-//Get the encounter class
+
+
         //Check if item is billed
-        if ($glob_obj->getConfigValue("restrict_unbilled_items") === "1" && $enc_obj->EncounterClass() === "2" &&  $patient['insurance_ID']==='0') { //Check the restriction status
+        if ($glob_obj->getConfigValue("restrict_unbilled_items") === "1" && $enc_obj->EncounterClass() === "2" &&  $patient['insurance_ID']==='0') { 
+            //Check the restriction status
             if ($lab_obj->getLabBillNoByBatch($job_id, $pId) > 0 ) {
                 $pName = $lab_obj->TestParamsDetails($pId);
                 echo '<td bgcolor="#ffffee" class="a10_b"><b>';
@@ -528,69 +544,53 @@ while (list($group, $pm) = each($requestData)) {
                     $inputValue = '<input name="' . $pId . '" type="text" size="8" value="' . $pdata[$pId]['value'] . '">';
                 }
 
-                //remove the following comment if you want to deny the user
-                //the ability to update results
-                //if(isset($pdata[$pId])&&!empty($pdata[$pId])) {
-                //	echo trim($pdata[$pId]) . "\" readonly >";
                 echo $inputValue;
-                //Hidden input value for edit mode
-            echo '<input name="' . $pId . '_old" type="hidden" size="8" value="' . $pdata[$pId]['value'] . '">';    
+                echo '<input name="' . $pId . '_old" type="hidden" size="8" value="' . $pdata[$pId]['value'] . '">';    
                 echo '&nbsp;';
             }
-//            else {
-////            $inputValue = '<input name="' . $pId . '" type="text" size="8" value="' . $pdata[$pId]['value'] . ' readonly">';
-//                echo '<td> &nbsp<font face=arial color=red size=2>This item is not yet billed!</font></td>';
-//            }
-        } else {
-
-            $pName = $lab_obj->TestParamsDetails($pId);
-            echo '<td bgcolor="#ffffee" class="a10_b"><b>';
-            echo $pName->fields['name'] . '</b></td>';
-            echo '<td>';
-            //it's a dropdown
-            if ($pName->fields['field_type'] == 'drop_down') {
-                $inputValue = '<select name="' . $pId . '" size="1">';
-                do {
-                    $inputValue .= '<option value=' . $pDropDown['input_value'];
-                    if ($pDropDown['input_value'] == $pdata[$pId]['value'])
-                        $inputValue .= ' selected="selected" ';
-                    $inputValue .= '>' . $pDropDown['input_value'] . '</option>';
-                } while ($pDropDown = $pName->FetchRow());
-                $inputValue .= '</select>';
-                //it has margins in the set of values so activate js
-            } elseif ($pName->fields['field_type'] == 'limited') {
-                $inputValue = '<input name="' . $pId . '" type="text" size="8" value="' . $pdata[$pId]['value'] . '" id="' . $pId . '" ';
-                $inputValue .= 'onBlur="javascript:limitedInput(\'' . $pId . '\',\'' . $pName->fields['input_value'] . '\')">';
-                //standard input box
+    
             } else {
 
-                $inputValue = '<input name="' . $pId . '" type="text" size="8" value="' . $pdata[$pId]['value'] . '">';
+                $pName = $lab_obj->TestParamsDetails($pId);
+                echo '<td bgcolor="#ffffee" class="a10_b"><b>';
+                echo $pName->fields['name'] . '</b></td>';
+                echo '<td>';
+                //it's a dropdown
+                if ($pName->fields['field_type'] == 'drop_down') {
+                    $inputValue = '<select name="' . $pId . '" size="1">';
+                    do {
+                        $inputValue .= '<option value=' . $pDropDown['input_value'];
+                        if ($pDropDown['input_value'] == $pdata[$pId]['value'])
+                            $inputValue .= ' selected="selected" ';
+                        $inputValue .= '>' . $pDropDown['input_value'] . '</option>';
+                    } while ($pDropDown = $pName->FetchRow());
+                    $inputValue .= '</select>';
+                    //it has margins in the set of values so activate js
+                } elseif ($pName->fields['field_type'] == 'limited') {
+                    $inputValue = '<input name="' . $pId . '" type="text" size="8" value="' . $pdata[$pId]['value'] . '" id="' . $pId . '" ';
+                    $inputValue .= 'onBlur="javascript:limitedInput(\'' . $pId . '\',\'' . $pName->fields['input_value'] . '\')">';
+                    //standard input box
+                } else {
+
+                    $inputValue = '<input name="' . $pId . '" type="text" size="8" value="' . $pdata[$pId]['value'] . '">';
+                }
+                echo $inputValue;
+                 //Hidden input value for edit mode
+                echo '<input name="' . $pId . '_old" type="hidden" size="8" value="' . $pdata[$pId]['value'] . '">';
+                echo '&nbsp;';
             }
 
-            //remove the following comment if you want to deny the user
-            //the ability to update results
-            //if(isset($pdata[$pId])&&!empty($pdata[$pId])) {
-            //	echo trim($pdata[$pId]) . "\" readonly >";
-            echo $inputValue;
-             //Hidden input value for edit mode
-            echo '<input name="' . $pId . '_old" type="hidden" size="8" value="' . $pdata[$pId]['value'] . '">';
-            echo '&nbsp;';
-        }
-//TODO: work out data entry on the individual test results	
-//	echo '<input name="'.$pId.'_test_date" type="text" size="14" value="'. formatDate2Local($pdata[$pId]['test_date'],$date_format).'" onBlur="IsValidDate(this,\'' . $date_format . '\')")  onKeyUp="setDate(this,\'' . $date_format . '\',\'' . $lang . '\')">';	
-//	echo '<input name="'.$pId.'test_time" type="text" size="5" value="' . convertTimeToLocal($pdata[$pId]['test_time']) . '" >';
-//	echo "<a href=\"javascript:show_calendar('datain.".$pId."_test_date','$date_format')\"><img " . createComIcon ( $root_path, 'show-calendar.gif', '0', 'absmiddle' ) . "></a>";
-//	echo '&nbsp;'.formatDate2Local($pdata[$pId]['test_date'],$date_format).'&nbsp;'.convertTimeToLocal($pdata[$pId]['test_time']);
-//	echo '</td>';
-        $collimit++;
-        if ($collimit == (COL_MAX / 2)) {
-            echo '
-		</tr>';
+            $collimit++;
+            if ($collimit == (COL_MAX / 2)) {
+                echo '
+            </tr>';
+
             $collimit = 0;
         }
     }
 }
 # Assign parameter output
+$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 
 $sTemp = ob_get_contents();
@@ -598,12 +598,13 @@ ob_end_clean();
 
 $smarty->assign('sParameters', $sTemp);
 
-$formUpload = '<form action="labReportFile.php" method="post"  enctype="multipart/form-data">
+$formUpload = '<form action="'.$actual_link.'" method="post"  enctype="multipart/form-data">
                     <table>
                         <tbody>
                            
                             <tr>
                                <div>
+                                    
                                     <input type="file" required name="resultfile">
                                     <button class="btn btn-primary btn-sm" type="submit">Upload</button>
                                   </div>
@@ -627,7 +628,7 @@ ob_start();
 <input type=hidden name="sid" value="<?php echo $sid; ?>">
 <input type=hidden name="lang" value="<?php echo $lang; ?>">
 <input type=hidden name="update" value="<?php echo $update; ?>">
-<input type=hidden name="allow_update" 	value="<?php if (isset($allow_update)) echo $allow_update; ?>">
+<input type=hidden name="allow_update" value="<?php if (isset($allow_update)) echo $allow_update; ?>">
 <input type=hidden name="batch_nr" value="<?php if (isset($row ['batch_nr'])) echo $row['batch_nr']; ?>">
 <input type=hidden name="newid" value="<?php echo $newid; ?>">
 <input type=hidden name="user_origin" value="<?php echo $user_origin; ?>">
@@ -649,6 +650,70 @@ $smarty->assign('LDImDone', "<a href=\"Javascript:gethelp('lab.php','input','don
 
 
 $smarty->assign('sMainBlockIncludeFile', 'laboratory/chemlab_data_results.tpl');
+
+// Upload test results
+
+if(isset($_FILES)) {
+    $errors= array();
+    $file_name = $_FILES['resultfile']['name'];
+    $file_size =$_FILES['resultfile']['size'];
+    $file_tmp =$_FILES['resultfile']['tmp_name'];
+    $file_type=$_FILES['resultfile']['type'];
+    $file_ext=strtolower(end(explode('.', $file_name)));
+
+    $extensions= array("xls","xlsx","csv", 'xlsm', 'xlsb', 'xltx', 'xltm', 'xlt', 'xml', 'xlam', 'xla', 'xlw', 'xlr');
+
+    if(in_array($file_ext,$extensions)=== false){
+     $errors[]="The Selected file isn't an excel file. Please select excel file.";
+    }
+
+    if(empty($errors)==true){
+
+        $uploadDirectory = "uploads/";
+        if (!file_exists($uploadDirectory)) {
+            $oldmask = umask(0);
+            mkdir($uploadDirectory, 0777, true);
+            umask($oldmask);
+        }
+
+        $filePath = $uploadDirectory.$file_name;
+        move_uploaded_file($file_tmp, $filePath);
+
+        $inputFileType = IOFactory::identify($filePath);;
+        
+        $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileType);
+        $spreadsheet = $reader->load($filePath);
+        
+        $sheetData = $spreadsheet->getActiveSheet();
+        $sheetData->getCell('A1')->setValue('');
+        $rows = $sheetData->toArray();
+        $values = $rows[1][0];
+
+        $values = str_replace("", '', $values);
+        $values = str_replace(PHP_EOL, ',', $values);
+        $tests = explode(',', $values);
+         echo "<pre>"; print_r($tests);echo "</pre>";
+
+        $reqTests = $_COOKIE['testMeasures'];
+
+        foreach ($reqTests as $reqTest) {
+            $reqTest = substr($reqTest, 0, strpos($reqTest, "__"));
+            $reqTest = str_replace("_", "", $reqTest);
+            foreach ($variable as $key => $value) {
+                # code...
+            }
+            echo "<pre>"; print_r($reqTest);echo "</pre>";   
+        }
+
+
+
+
+         die();
+    }else{
+     print_r($errors);
+    }
+
+}
 
 /**
  * show Template

@@ -1,12 +1,13 @@
 <?php
 
 require_once('./roots.php');
+
+require ($root_path . 'include/inc_environment_global.php');
+
 require_once $root_path.'vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
-ini_set("display_errors",1);
-ini_set("memory_limit","1024M");
 
 if(isset($_FILES)) {
     $errors= array();
@@ -35,12 +36,22 @@ if(isset($_FILES)) {
 	 	move_uploaded_file($file_tmp, $filePath);
 
 		$inputFileType = IOFactory::identify($filePath);;
-		//  echo "<pre>"; print_r($filePath);echo "</pre>";
-		//  die();
-		// $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileType);
-		// $spreadsheet = $reader->load($filePath);
 		
-	 	
+		$reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileType);
+		$spreadsheet = $reader->load($filePath);
+		
+		$sheetData = $spreadsheet->getActiveSheet();
+		$sheetData->getCell('A1')->setValue('');
+		$rows = $sheetData->toArray();
+		$values = $rows[1][0];
+
+		$values = str_replace("", '', $values);
+		$values = str_replace(PHP_EOL, ',', $values);
+		$tests = explode(',', $values);
+
+		 echo "<pre>"; print_r($_COOKIE);echo "</pre>";
+
+		 die();
 	}else{
 	 print_r($errors);
 	}

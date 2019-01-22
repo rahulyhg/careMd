@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2019-01-21 12:17:28
+<?php /* Smarty version 2.6.22, created on 2019-01-22 09:53:19
          compiled from laboratory/chemlab_data_results.tpl */ ?>
 <table width="100%" border="0">
     <tbody>

@@ -90,4 +90,4 @@ ALTER TABLE `care_tz_laboratory_param` ADD `block_selection` ENUM('yes','no') NO
 
 
 --21-01
-composer require phpoffice/phpspreadsheet
+composer require phpoffice/phpspreadsheet:1.1.0
