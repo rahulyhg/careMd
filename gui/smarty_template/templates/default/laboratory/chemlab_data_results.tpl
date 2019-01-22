@@ -58,6 +58,17 @@
                     {{$sSaveParamHiddenInputs}}
                 </form>
 
+                
+                {{if $batchMismatch}}
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <i class="material-icons">close</i>
+                    </button>
+                    <span>
+                      <b> Mismatch - </b> The file's batch number doesn't match patients batch number. Please try again.</span>
+                </div>
+                {{/if}}
+
                {{$resultFormUpload}}
 
 

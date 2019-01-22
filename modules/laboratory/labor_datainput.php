@@ -504,6 +504,81 @@ foreach ($data as $testArray) {
 
 $_COOKIE['testMeasures'] = $testMeasures;
 
+
+
+if(isset($_FILES)) {
+    $errors= array();
+    $file_name = $_FILES['resultfile']['name'];
+    $file_size =$_FILES['resultfile']['size'];
+    $file_tmp =$_FILES['resultfile']['tmp_name'];
+    $file_type=$_FILES['resultfile']['type'];
+    $file_ext=strtolower(end(explode('.', $file_name)));
+
+    $extensions= array("xls","xlsx","csv", 'xlsm', 'xlsb', 'xltx', 'xltm', 'xlt', 'xml', 'xlam', 'xla', 'xlw', 'xlr');
+
+    if(in_array($file_ext,$extensions)=== false){
+     $errors[] = "The Selected file isn't an excel file. Please select excel file.";
+    }
+
+    if(empty($errors)==true){
+
+        $uploadDirectory = "uploads/";
+        if (!file_exists($uploadDirectory)) {
+            $oldmask = umask(0);
+            mkdir($uploadDirectory, 0777, true);
+            umask($oldmask);
+        }
+
+        $filePath = $uploadDirectory.$file_name;
+        move_uploaded_file($file_tmp, $filePath);
+
+        $inputFileType = IOFactory::identify($filePath);;
+        
+        $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileType);
+        $spreadsheet = $reader->load($filePath);
+        
+        $sheetData = $spreadsheet->getActiveSheet();
+        $sheetData->getCell('A1')->setValue('');
+        $rows = $sheetData->toArray();
+        $values = $rows[1][0];
+
+        $values = str_replace("", '', $values);
+        $values = str_replace(PHP_EOL, ',', $values);
+        $tests = $reqTest = explode(',', $values);
+
+        $fileBatchNr = $reqTest[0];
+
+        $labResults = [];
+
+        $reqTests = $_COOKIE['testMeasures'];
+
+        foreach ($reqTests as $reqTest) {
+            $reqtest = substr($reqTest, 0, strpos($reqTest, "__"));
+            $reqtest = str_replace("_", "", $reqtest);
+            foreach ($tests as $test) {
+                if (\strpos(strtolower($test), $reqtest) !== false) {
+
+                    $testResult = preg_replace("!\s+!", ",", $test);
+                    $testResult = explode(',', $testResult);
+                    if (@$testResult[1]) {
+                        $labresult = array(
+                            'name' => $testResult[0],
+                            'amount' => $testResult[1],
+                            'description' => $reqTest
+                        );
+                        $labResults[] = $labresult;
+                    }
+                }
+            }
+        }
+
+
+    }else{
+     // print_r($errors);
+    }
+
+}
+
 while (list($group, $pm) = each($requestData)) {
 
     $gName = $lab_obj->getGroupName($group);
@@ -572,7 +647,19 @@ while (list($group, $pm) = each($requestData)) {
                     //standard input box
                 } else {
 
-                    $inputValue = '<input name="' . $pId . '" type="text" size="8" value="' . $pdata[$pId]['value'] . '">';
+                    $labTestResult = $pdata[$pId]['value'];
+                       
+                    // if ($fileBatchNr == $batch_nr) {
+                        foreach ($labResults as $lab_result) {
+                            if ($lab_result['description'] == $pName->fields[5]) {
+                               $labTestResult = $lab_result['amount'];
+
+                            }
+                        }
+  
+                    // }
+
+                    $inputValue = '<input name="' . $pId . '" type="text" size="8" value="' . $labTestResult . '">';
                 }
                 echo $inputValue;
                  //Hidden input value for edit mode
@@ -589,6 +676,11 @@ while (list($group, $pm) = each($requestData)) {
         }
     }
 }
+
+if ($fileBatchNr != $batch_nr && !empty($_FILES)) {
+    $smarty->assign('batchMismatch', "Mismatch");
+}
+
 # Assign parameter output
 $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
@@ -616,6 +708,8 @@ $formUpload = '<form action="'.$actual_link.'" method="post"  enctype="multipart
 if (@$pName && $pName->fields['enable_upload'] == 'yes') {
     $smarty->assign('resultFormUpload', $formUpload);
 }
+
+
 
 
 # Collect hidden inputs for the parameters form
@@ -651,69 +745,6 @@ $smarty->assign('LDImDone', "<a href=\"Javascript:gethelp('lab.php','input','don
 
 $smarty->assign('sMainBlockIncludeFile', 'laboratory/chemlab_data_results.tpl');
 
-// Upload test results
-
-if(isset($_FILES)) {
-    $errors= array();
-    $file_name = $_FILES['resultfile']['name'];
-    $file_size =$_FILES['resultfile']['size'];
-    $file_tmp =$_FILES['resultfile']['tmp_name'];
-    $file_type=$_FILES['resultfile']['type'];
-    $file_ext=strtolower(end(explode('.', $file_name)));
-
-    $extensions= array("xls","xlsx","csv", 'xlsm', 'xlsb', 'xltx', 'xltm', 'xlt', 'xml', 'xlam', 'xla', 'xlw', 'xlr');
-
-    if(in_array($file_ext,$extensions)=== false){
-     $errors[]="The Selected file isn't an excel file. Please select excel file.";
-    }
-
-    if(empty($errors)==true){
-
-        $uploadDirectory = "uploads/";
-        if (!file_exists($uploadDirectory)) {
-            $oldmask = umask(0);
-            mkdir($uploadDirectory, 0777, true);
-            umask($oldmask);
-        }
-
-        $filePath = $uploadDirectory.$file_name;
-        move_uploaded_file($file_tmp, $filePath);
-
-        $inputFileType = IOFactory::identify($filePath);;
-        
-        $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileType);
-        $spreadsheet = $reader->load($filePath);
-        
-        $sheetData = $spreadsheet->getActiveSheet();
-        $sheetData->getCell('A1')->setValue('');
-        $rows = $sheetData->toArray();
-        $values = $rows[1][0];
-
-        $values = str_replace("", '', $values);
-        $values = str_replace(PHP_EOL, ',', $values);
-        $tests = explode(',', $values);
-         echo "<pre>"; print_r($tests);echo "</pre>";
-
-        $reqTests = $_COOKIE['testMeasures'];
-
-        foreach ($reqTests as $reqTest) {
-            $reqTest = substr($reqTest, 0, strpos($reqTest, "__"));
-            $reqTest = str_replace("_", "", $reqTest);
-            foreach ($variable as $key => $value) {
-                # code...
-            }
-            echo "<pre>"; print_r($reqTest);echo "</pre>";   
-        }
-
-
-
-
-         die();
-    }else{
-     print_r($errors);
-    }
-
-}
 
 /**
  * show Template

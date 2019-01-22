@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2019-01-22 09:53:19
+<?php /* Smarty version 2.6.22, created on 2019-01-22 15:57:47
          compiled from laboratory/chemlab_data_results.tpl */ ?>
 <table width="100%" border="0">
     <tbody>
@@ -75,6 +75,17 @@
                     <?php echo $this->_tpl_vars['sSaveParamHiddenInputs']; ?>
 
                 </form>
+
+                
+                <?php if ($this->_tpl_vars['batchMismatch']): ?>
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <i class="material-icons">close</i>
+                    </button>
+                    <span>
+                      <b> Mismatch - </b> The file's batch number doesn't match patients batch number. Please try again.</span>
+                </div>
+                <?php endif; ?>
 
                <?php echo $this->_tpl_vars['resultFormUpload']; ?>
 
