@@ -77,7 +77,6 @@ if ($result = $lab_obj->getResult($job_id, $parameterselect)) {
         $pdata[$row['paramater_name']]['test_time'] = $row['test_time'];
     }
 }
-
 if (!empty($pdata))
     $allow_update = TRUE;
 else
@@ -417,6 +416,7 @@ $smarty->assign('sLastName', $patient['name_last']);
 $smarty->assign('sName', ucwords($patient['name_first']));
 $smarty->assign('sBday', formatDate2Local($patient['date_birth'], $date_format));
 $smarty->assign('sJobIdNr', $job_id . '<input type=hidden name=job_id value="' . $job_id . '">');
+$batchNumber = $job_id;
 $smarty->assign('sExamDate', '<input name="test_date" type="text" size="14" value="' . formatDate2Local($exam_date, $date_format) . '" onBlur="IsValidDate(this,\'' . $date_format . '\')")  onKeyUp="setDate(this,\'' . $date_format . '\',\'' . $lang . '\')">');
 $smarty->assign('sExamTime', '<input name="test_time" type="text" size="5" value="' . convertTimeToLocal($exam_time) . '" ">');
 //$smarty->assign('sSampleTime', '<input name="test_time" type="text" size="5" value="' . convertTimeToLocal($sample_time) . '" ">');
@@ -504,6 +504,21 @@ foreach ($data as $testArray) {
 
 $_COOKIE['testMeasures'] = $testMeasures;
 
+function array_flatten($array) { 
+  if (!is_array($array)) { 
+    return FALSE; 
+  } 
+  $result = array(); 
+  foreach ($array as $key => $value) { 
+    if (is_array($value)) { 
+      $result = array_merge($result, array_flatten($value)); 
+    } 
+    else { 
+      $result[$key] = $value; 
+    } 
+  } 
+  return $result; 
+} 
 
 
 if(isset($_FILES)) {
@@ -534,24 +549,31 @@ if(isset($_FILES)) {
 
         $inputFileType = IOFactory::identify($filePath);;
         
-        $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileType);
+        $reader = IOFactory::createReader($inputFileType);
         $spreadsheet = $reader->load($filePath);
         
         $sheetData = $spreadsheet->getActiveSheet();
         $sheetData->getCell('A1')->setValue('');
         $rows = $sheetData->toArray();
         $values = $rows[1][0];
-
-        $values = str_replace("", '', $values);
-        $values = str_replace(PHP_EOL, ',', $values);
-        $tests = $reqTest = explode(',', $values);
-
-        $fileBatchNr = $reqTest[0];
-
+            
         $labResults = [];
-
         $reqTests = $_COOKIE['testMeasures'];
 
+
+        if (gettype($values) == 'string') {
+            $values = str_replace("", '', $values);
+            $values = str_replace(PHP_EOL, ',', $values);
+            $tests = $reqTest = explode(',', $values);
+
+            $fileBatchNr = $reqTest[0];
+
+        }else{
+
+            $fileBatchNr = $rows[1][0];
+            $tests = array_flatten($rows);
+        }
+  
         foreach ($reqTests as $reqTest) {
             $reqtest = substr($reqTest, 0, strpos($reqTest, "__"));
             $reqtest = str_replace("_", "", $reqtest);
@@ -572,6 +594,7 @@ if(isset($_FILES)) {
             }
         }
 
+        unlink($filePath);
 
     }else{
      // print_r($errors);
@@ -648,8 +671,7 @@ while (list($group, $pm) = each($requestData)) {
                 } else {
 
                     $labTestResult = $pdata[$pId]['value'];
-                       
-                    // if ($fileBatchNr == $batch_nr) {
+                    if ($fileBatchNr == $batchNumber) {
                         foreach ($labResults as $lab_result) {
                             if ($lab_result['description'] == $pName->fields[5]) {
                                $labTestResult = $lab_result['amount'];
@@ -657,7 +679,7 @@ while (list($group, $pm) = each($requestData)) {
                             }
                         }
   
-                    // }
+                    }
 
                     $inputValue = '<input name="' . $pId . '" type="text" size="8" value="' . $labTestResult . '">';
                 }
@@ -677,7 +699,7 @@ while (list($group, $pm) = each($requestData)) {
     }
 }
 
-if ($fileBatchNr != $batch_nr && !empty($_FILES)) {
+if ($fileBatchNr != $batchNumber && !empty($_FILES)) {
     $smarty->assign('batchMismatch', "Mismatch");
 }
 
@@ -705,7 +727,20 @@ $formUpload = '<form action="'.$actual_link.'" method="post"  enctype="multipart
                     </table>
                 </form>';
 
-if (@$pName && $pName->fields['enable_upload'] == 'yes') {
+$enableUpload = "no";
+$testId = $pName->fields['group_id'];
+$testSQL = "SELECT enable_upload FROM care_tz_laboratory_param WHERE id = '$testId' AND group_id = -1";
+
+$testQuery = $db->Execute($testSQL);
+
+if (@$testQuery && $testQuery->RecordCount()) {
+    $enableUpoadRow = $testQuery->FetchRow();
+    $enableUpload = $enableUpoadRow['enable_upload'];
+}
+
+
+
+if ($enableUpload == 'yes') {
     $smarty->assign('resultFormUpload', $formUpload);
 }
 
