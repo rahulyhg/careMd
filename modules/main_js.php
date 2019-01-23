@@ -135,6 +135,22 @@ if (isAllergic ==1)
   $('.allergydetails').hide();
 }
 
+$(".acceptBtn").click(function(e){
+    e.preventDefault();
+
+    $(".acceptBtn").hide();
+    $(".rejectBtn").hide();
+    $(".sendBtn").show();
+
+})
+
+$(".rejectBtn").click(function(e){
+    e.preventDefault();
+    var url = $(".rejectBtn").attr("href");
+    url += "&rejected=1";
+    window.location.href = url;
+})
+
 
 // Diagnosis types
 function chooseDiagnosisType(url) {

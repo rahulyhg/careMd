@@ -1,11 +1,11 @@
-<?php /* Smarty version 2.6.22, created on 2019-01-23 10:58:04
+<?php /* Smarty version 2.6.22, created on 2019-01-23 13:32:05
          compiled from laboratory/chemlab_data_results.tpl */ ?>
 <table width="100%" border="0">
     <tbody>
         <tr valign="top">
             <td>
                                 <form method="post" <?php echo $this->_tpl_vars['sFormAction']; ?>
- onSubmit="return pruf(this)" name="datain">
+ onSubmit="return pruf(this)" name="datain" style="position: relative;">
                     <table>
                         <tbody>
                             <tr>
@@ -47,12 +47,37 @@
 
                     <table width="100%"  bgcolor=#ffdddd  class="table table-condensed">
                         <tbody>
+                            
+                            <?php if ($this->_tpl_vars['batchMismatch']): ?>
                             <tr>
-                                <td colspan="2" style="color: white; background-color: red; font-weight: bold;"><?php echo $this->_tpl_vars['sParamGroup']; ?>
+                                <td colspan="2">
+
+                                    <div class="alert alert-danger">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                          <i class="material-icons">close</i>
+                                        </button>
+                                        <span>
+                                          <b> Mismatch - </b> The file's batch number doesn't match patients batch number. Please try again.</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php else: ?>
+                            <tr>
+                                <td colspan="2" style="color: white; background-color: lightgreen; font-weight: bold;"><?php echo $this->_tpl_vars['sParamGroup']; ?>
 </td>
                             </tr>
+                            <?php endif; ?>
+
                             <tr>
                                 <td colspan="1">
+
+                                    <style>
+                                       .a10_b {
+                                            font-size: 14px;
+                                       }
+                                        input[type="text"]{ padding: 0 auto; line-height: 22px; font-size: 14px; }
+                                    </style>
+
 
                                                                         <table   class="table table-condensed table-bordered" >
                                         <tbody>
@@ -65,6 +90,8 @@
                             </tr>
                             <tr>
                                 <td><?php echo $this->_tpl_vars['pbSave']; ?>
+ <?php echo $this->_tpl_vars['pbAccept']; ?>
+ <?php echo $this->_tpl_vars['pbReject']; ?>
 </td>
                                 <td align="right"><?php echo $this->_tpl_vars['pbShowReport']; ?>
  <?php echo $this->_tpl_vars['pbCancel']; ?>
@@ -77,18 +104,12 @@
                 </form>
 
                 
-                <?php if ($this->_tpl_vars['batchMismatch']): ?>
-                <div class="alert alert-danger">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <i class="material-icons">close</i>
-                    </button>
-                    <span>
-                      <b> Mismatch - </b> The file's batch number doesn't match patients batch number. Please try again.</span>
+
+                <div style="position: absolute; top:50%; right: 10%; ">
+
+                     <?php echo $this->_tpl_vars['resultFormUpload']; ?>
+
                 </div>
-                <?php endif; ?>
-
-               <?php echo $this->_tpl_vars['resultFormUpload']; ?>
-
 
 
                                 <form <?php echo $this->_tpl_vars['sFormAction']; ?>

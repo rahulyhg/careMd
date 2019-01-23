@@ -4,7 +4,7 @@
         <tr valign="top">
             <td>
                 {{* table block for the patient basic data *}}
-                <form method="post" {{$sFormAction}} onSubmit="return pruf(this)" name="datain">
+                <form method="post" {{$sFormAction}} onSubmit="return pruf(this)" name="datain" style="position: relative;">
                     <table>
                         <tbody>
                             <tr>
@@ -33,11 +33,36 @@
 
                     <table width="100%"  bgcolor=#ffdddd  class="table table-condensed">
                         <tbody>
+                            
+                            {{if $batchMismatch}}
                             <tr>
-                                <td colspan="2" style="color: white; background-color: red; font-weight: bold;">{{$sParamGroup}}</td>
+                                <td colspan="2">
+
+                                    <div class="alert alert-danger">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                          <i class="material-icons">close</i>
+                                        </button>
+                                        <span>
+                                          <b> Mismatch - </b> The file's batch number doesn't match patients batch number. Please try again.</span>
+                                    </div>
+                                </td>
                             </tr>
+                            {{else}}
+                            <tr>
+                                <td colspan="2" style="color: white; background-color: lightgreen; font-weight: bold;">{{$sParamGroup}}</td>
+                            </tr>
+                            {{/if}}
+
                             <tr>
                                 <td colspan="1">
+
+                                    <style>
+                                       .a10_b {
+                                            font-size: 14px;
+                                       }
+                                        input[type="text"]{ padding: 0 auto; line-height: 22px; font-size: 14px; }
+                                    </style>
+
 
                                     {{* Table block for the parameters *}}
                                     <table   class="table table-condensed table-bordered" >
@@ -50,7 +75,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>{{$pbSave}}</td>
+                                <td>{{$pbSave}} {{$pbAccept}} {{$pbReject}}</td>
                                 <td align="right">{{$pbShowReport}} {{$pbCancel}}</td>
                             </tr>
                         </tbody>
@@ -59,17 +84,11 @@
                 </form>
 
                 
-                {{if $batchMismatch}}
-                <div class="alert alert-danger">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <i class="material-icons">close</i>
-                    </button>
-                    <span>
-                      <b> Mismatch - </b> The file's batch number doesn't match patients batch number. Please try again.</span>
-                </div>
-                {{/if}}
 
-               {{$resultFormUpload}}
+                <div style="position: absolute; top:50%; right: 10%; ">
+
+                     {{$resultFormUpload}}
+                </div>
 
 
                 {{* Block for parameter group select box *}}

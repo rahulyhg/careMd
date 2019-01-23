@@ -422,7 +422,7 @@ $smarty->assign('sExamTime', '<input name="test_time" type="text" size="5" value
 //$smarty->assign('sSampleTime', '<input name="test_time" type="text" size="5" value="' . convertTimeToLocal($sample_time) . '" ">');
 $smarty->assign('sMiniCalendar', "<a href=\"javascript:show_calendar('datain.test_date','$date_format')\"><img " . createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle') . "></a>");
 
-$smarty->assign('pbSave', '<input  type="image" ' . createLDImgSrc($root_path, 'send.gif', '0') . ' >');
+
 $smarty->assign('pbShowReport', '<a href="labor_datalist_noedit.php' . URL_APPEND . '&encounter_nr=' . $encounter_nr . '&noexpand=1&from=input&job_id=' . $job_id . '&parameterselect=' . $parameterselect . '&allow_update=' . $allow_update . '&nostat=1&user_origin=' . $user_origin . '"><img ' . createLDImgSrc($root_path, 'showreport.gif', '0', 'absmiddle') . ' alt="' . $LDClk2See . '"></a>');
 
 if ($saved || $update)
@@ -575,19 +575,27 @@ if(isset($_FILES)) {
         }
   
         foreach ($reqTests as $reqTest) {
-            $reqtest = substr($reqTest, 0, strpos($reqTest, "__"));
-            $reqtest = str_replace("_", "", $reqtest);
-            foreach ($tests as $test) {
-                if (\strpos(strtolower($test), $reqtest) !== false) {
+            $requestTypes = explode('__', $reqTest);
+            $reqestType = @($requestTypes[1])?$requestTypes[1]:"";
+            str_replace("_", "", $reqestType);
 
+            if (@$reqestType) {
+                $reqtest = substr($reqTest, 0, strpos($reqTest, "__"));
+                $reqtest = str_replace("_", "", $reqtest);
+                foreach ($tests as $test) {
                     $testResult = preg_replace("!\s+!", ",", $test);
                     $testResult = explode(',', $testResult);
                     if (@$testResult[1]) {
-                        $labresult = array(
-                            'name' => $testResult[0],
-                            'amount' => $testResult[1],
-                            'description' => $reqTest
-                        );
+
+                        $tempName = strtolower(str_replace(".", "", $testResult[0]));
+                        $testName = "_" .$tempName . "__" . $reqestType;  
+                        if ($testName == $reqTest) {
+                            $labresult = array(
+                                'name' => $testResult[0],
+                                'amount' => $testResult[1],
+                                'description' => $reqTest
+                            );
+                        }
                         $labResults[] = $labresult;
                     }
                 }
@@ -600,6 +608,32 @@ if(isset($_FILES)) {
      // print_r($errors);
     }
 
+}
+if ($fileBatchNr == $batchNumber) {
+    foreach ($pdata as $pdataKey => $value) {
+        foreach ($labResults as $lab_result) {
+            if ($lab_result['description'] == $pdataKey) {
+                $pdata[$pdataKey]['value'] = $lab_result['amount'];
+            }
+            
+        }
+        
+    }
+}else {
+    foreach ($pdata as $pdataKey => $value) {
+        $pdata[$pdataKey]['value'] = "";
+        
+    }  
+}
+
+$rejected = $_GET['rejected'];
+
+if (@$rejected && $rejected == 1) {
+     
+    foreach ($pdata as $pdataKey => $value) {
+        $pdata[$pdataKey]['value'] = "";
+        
+    }
 }
 
 while (list($group, $pm) = each($requestData)) {
@@ -651,7 +685,7 @@ while (list($group, $pm) = each($requestData)) {
   
                     }
 
-                    $inputValue = '<input name="' . $pId . '" type="text" size="8" value="' . $labTestResult . '">';
+                    $inputValue = '<input name="' . $pId . '" type="text" size="8" value="' . $pdata[$pId]['value'] . '">';
                 }
 
                 echo $inputValue;
@@ -682,18 +716,7 @@ while (list($group, $pm) = each($requestData)) {
                     //standard input box
                 } else {
 
-                    $labTestResult = $pdata[$pId]['value'];
-                    if ($fileBatchNr == $batchNumber) {
-                        foreach ($labResults as $lab_result) {
-                            if ($lab_result['description'] == $pName->fields[5]) {
-                               $labTestResult = $lab_result['amount'];
-
-                            }
-                        }
-  
-                    }
-
-                    $inputValue = '<input name="' . $pId . '" type="text" size="8" value="' . $labTestResult . '">';
+                    $inputValue = '<input name="' . $pId . '" type="text" size="8" value="' . $pdata[$pId]['value'] . '">';
                 }
                 echo $inputValue;
                  //Hidden input value for edit mode
@@ -724,12 +747,14 @@ ob_end_clean();
 
 $smarty->assign('sParameters', $sTemp);
 
-$formUpload = '<form action="'.$actual_link.'" method="post"  enctype="multipart/form-data">
+$uploadURL = $actual_link ."&rejected=0";
+
+$formUpload = '<form action="'.$uploadURL.'" method="post"  enctype="multipart/form-data">
                     <table>
                         <tbody>
                            
                             <tr>
-                               <div>
+                               <div style="width: 170px">
                                     
                                     <input type="file" required name="resultfile">
                                     <button class="btn btn-primary btn-sm" type="submit">Upload</button>
@@ -753,7 +778,12 @@ if (@$testQuery && $testQuery->RecordCount()) {
 
 
 if ($enableUpload == 'yes') {
+    $smarty->assign('pbSave', '<input class="sendBtn" style="display: none"  type="image" ' . createLDImgSrc($root_path, 'send.gif', '0') . ' >');
+    $smarty->assign('pbAccept', '<button class="btn acceptBtn btn-success btn-sm">Accept</button>');
+    $smarty->assign('pbReject', '<button href="'.$actual_link.'" type="reset" class="btn rejectBtn btn-danger btn-sm">Reject</button>');
     $smarty->assign('resultFormUpload', $formUpload);
+}else{
+    $smarty->assign('pbSave', '<input class="sendBtn"  type="image" ' . createLDImgSrc($root_path, 'send.gif', '0') . ' >');
 }
 
 
