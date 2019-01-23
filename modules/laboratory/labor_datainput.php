@@ -687,7 +687,7 @@ while (list($group, $pm) = each($requestData)) {
   
                     }
 
-                    $inputValue = '<input name="' . $pId . '" type="text" size="8" value="' . $pdata[$pId]['value'] . '">';
+                    $inputValue = '<input name="' . $pId . '" type="text" size="8" value="' . $labTestResult . '">';
                 }
 
                 echo $inputValue;
@@ -718,7 +718,19 @@ while (list($group, $pm) = each($requestData)) {
                     //standard input box
                 } else {
 
-                    $inputValue = '<input name="' . $pId . '" type="text" size="8" value="' . $pdata[$pId]['value'] . '">';
+                    $labTestResult = $pdata[$pId]['value'];
+                    if ($fileBatchNr == $batchNumber) {
+                        foreach ($labResults as $lab_result) {
+                            if ($lab_result['description'] == $pName->fields[5]) {
+                               $labTestResult = $lab_result['amount'];
+
+                            }
+                        }
+  
+                    }
+
+
+                    $inputValue = '<input name="' . $pId . '" type="text" size="8" value="' . $labTestResult . '">';
                 }
                 echo $inputValue;
                  //Hidden input value for edit mode
