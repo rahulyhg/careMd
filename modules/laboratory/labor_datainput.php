@@ -556,22 +556,22 @@ if(isset($_FILES)) {
         $sheetData->getCell('A1')->setValue('');
         $rows = $sheetData->toArray();
         $values = $rows[1][0];
-            
+
         $labResults = [];
         $reqTests = $_COOKIE['testMeasures'];
 
 
-        if (gettype($values) == 'string') {
+        if ((int)$values == 0) {
             $values = str_replace("", '', $values);
             $values = str_replace(PHP_EOL, ',', $values);
             $tests = $reqTest = explode(',', $values);
-
             $fileBatchNr = $reqTest[0];
 
         }else{
 
             $fileBatchNr = $rows[1][0];
             $tests = array_flatten($rows);
+
         }
   
         foreach ($reqTests as $reqTest) {
@@ -639,7 +639,19 @@ while (list($group, $pm) = each($requestData)) {
                     $inputValue .= 'onBlur="javascript:limitedInput(\'' . $pId . '\',\'' . $pName->fields['input_value'] . '\')">';
                     //standard input box
                 } else {
-                    $inputValue = '<input name="' . $pId . '" type="text" size="8" value="' . $pdata[$pId]['value'] . '">';
+
+                    $labTestResult = $pdata[$pId]['value'];
+                    if ($fileBatchNr == $batchNumber) {
+                        foreach ($labResults as $lab_result) {
+                            if ($lab_result['description'] == $pName->fields[5]) {
+                               $labTestResult = $lab_result['amount'];
+
+                            }
+                        }
+  
+                    }
+
+                    $inputValue = '<input name="' . $pId . '" type="text" size="8" value="' . $labTestResult . '">';
                 }
 
                 echo $inputValue;
