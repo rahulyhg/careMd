@@ -31,7 +31,7 @@
                         </tbody>
                     </table>
 
-                    <table cellspacing=1 cellpadding=1 width="100%"  bgcolor=#ffdddd >
+                    <table width="100%"  bgcolor=#ffdddd  class="table table-condensed">
                         <tbody>
                             <tr>
                                 <td colspan="2" style="color: white; background-color: red; font-weight: bold;">{{$sParamGroup}}</td>
@@ -40,7 +40,7 @@
                                 <td colspan="1">
 
                                     {{* Table block for the parameters *}}
-                                    <table cellpadding=0 cellspacing=1>
+                                    <table   class="table table-condensed table-bordered" >
                                         <tbody>
                                             {{* Rows of parameters *}}
                                             {{$sParameters}}

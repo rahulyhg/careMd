@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2019-01-23 09:16:43
+<?php /* Smarty version 2.6.22, created on 2019-01-23 10:58:04
          compiled from laboratory/chemlab_data_results.tpl */ ?>
 <table width="100%" border="0">
     <tbody>
@@ -45,7 +45,7 @@
                         </tbody>
                     </table>
 
-                    <table cellspacing=1 cellpadding=1 width="100%"  bgcolor=#ffdddd >
+                    <table width="100%"  bgcolor=#ffdddd  class="table table-condensed">
                         <tbody>
                             <tr>
                                 <td colspan="2" style="color: white; background-color: red; font-weight: bold;"><?php echo $this->_tpl_vars['sParamGroup']; ?>
@@ -54,7 +54,7 @@
                             <tr>
                                 <td colspan="1">
 
-                                                                        <table cellpadding=0 cellspacing=1>
+                                                                        <table   class="table table-condensed table-bordered" >
                                         <tbody>
                                                                                         <?php echo $this->_tpl_vars['sParameters']; ?>
 
