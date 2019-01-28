@@ -111,6 +111,7 @@ class GuiInputPerson {
      * Displays the GUI input form
      */
     function display() {
+
         global $db, $sid, $lang, $root_path, $pid, $insurance_show, $user_id, $mode, $dbtype, $no_tribe, $no_region, $membership_nr,
         $update, $photo_filename, $name_maiden, $religion, $name_others, $citizenship, $town_array, $addr_zip, $title, $national_id, $employee_id ; #, $_FILES $_POST, $_SESSION;
 
@@ -161,6 +162,7 @@ class GuiInputPerson {
         # Check whether config foto path exists, else use default path
         $photo_path = (is_dir($root_path . $GLOBAL_CONFIG['person_foto_path'])) ? $GLOBAL_CONFIG['person_foto_path'] : $this->default_photo_path;
         //echo 'path is here '.$photo_path;
+        
 
         if (($mode == 'save') || ($mode == 'forcesave')) {
             $search_obj = new advanced_search();
@@ -545,6 +547,7 @@ class GuiInputPerson {
          */
 
         ########  Here starts the GUI output #######################################################
+
 
         $img_male = createComIcon($root_path, 'spm.gif', '0');
         $img_female = createComIcon($root_path, 'spf.gif', '0');
@@ -947,8 +950,7 @@ return false;
                                         $asterik = ' ';
 
                                     if ($errorfilenr)
-                                        echo '<font color="#ff0000">*' . $LDFileNr . '</font><br>
-          Try this one: ' . $person_obj->GetNewSelianFileNumber();
+                                        echo '<font color="#ff0000">*' . $LDFileNr . '</font><br> Try this one: ' . $person_obj->GetNewSelianFileNumber();
                                     else
                                         echo $asterik . $LDFileNr;
                                     if (!isset($selian_pid)) {
@@ -976,8 +978,7 @@ return false;
                                         $asterik = ' ';
 
                                     if ($errorfilenr)
-                                        echo '<font color="#ff0000">*' . $LDFileNr . '</font><br>
-          Try this one: ' . $person_obj->GetNewSelianFileNumber();
+                                        echo '<font color="#ff0000">*' . $LDFileNr . '</font><br> Try this one: ' . $person_obj->GetNewSelianFileNumber();
                                     else
                                         echo $asterik . $LDFileNr;
                                     ?>

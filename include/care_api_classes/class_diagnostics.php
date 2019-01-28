@@ -99,7 +99,8 @@ class Diagnostics extends Core {
         'modify_time',
         'create_id',
         'create_time',
-        'priority');
+        'priority',
+        'sort_order');
     var $radio = array('batch_nr',
         'encounter_nr',
         'dept_nr',
@@ -146,7 +147,8 @@ class Diagnostics extends Core {
         'item_id',
         'paramater_name',
         'parameter_value',
-        'status');
+        'status',
+        'sort_order');
 
     /**
       /* Constructor */

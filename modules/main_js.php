@@ -198,6 +198,44 @@ function showDatepicker(){
         constrainInput: false
     });
 }
+
+function setSelectedBloodGroup() {
+  var selectedBgroup = $('#blood_group_id').find(":selected").text();
+
+   $.get(
+        'bloodGroupOrder.php',
+        {group_id: selectedBgroup},
+        function(result) {
+          $("#order_test_group").empty();
+          $("#order_test_group").append('<option value="0">-- Select --</option>');
+          if(result.relatedGroups.length)
+          {
+              for(var i=0, len=result.relatedGroups.length; i<len; i++) 
+              {
+                  $("#order_test_group").append('<option value="' + result.relatedGroups[i]['nr'] + '">' + result.relatedGroups[i]['name'] +'</option>'); 
+              }
+          }                       
+        },
+        "json");
+
+}
+var selectedBgroup = $('#blood_group_id').find(":selected").text();
+$.get(
+  'bloodGroupOrder.php',
+  {group_id: selectedBgroup},
+  function(result) {
+    $("#order_test_group").empty();
+    $("#order_test_group").append('<option value="0">-- Select --</option>');
+    if(result.relatedGroups.length)
+    {
+        for(var i=0, len=result.relatedGroups.length; i<len; i++) 
+        {
+            $("#order_test_group").append('<option value="' + result.relatedGroups[i]['nr'] + '">' + result.relatedGroups[i]['name'] +'</option>'); 
+        }
+    }                       
+  },
+  "json");
+
 <?php if($hospitalCode): ?>
 function updateNHIFPrices() {
     

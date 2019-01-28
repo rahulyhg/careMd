@@ -555,22 +555,22 @@ if(isset($_FILES)) {
         $sheetData = $spreadsheet->getActiveSheet();
         $sheetData->getCell('A1')->setValue('');
         $rows = $sheetData->toArray();
-        $values = $rows[1][0];
+        $values = $rows[1][10];
 
         $labResults = [];
         $reqTests = $_COOKIE['testMeasures'];
 
 
-        if ((int)$values == 0) {
+        if ($rows[10][0] > 0) {
+
+            $fileBatchNr = $rows[10][0];
+            $tests = array_flatten($rows);
+           
+        }else{
             $values = str_replace("", '', $values);
             $values = str_replace(PHP_EOL, ',', $values);
             $tests = $reqTest = explode(',', $values);
-            $fileBatchNr = $reqTest[0];
-
-        }else{
-
-            $fileBatchNr = $rows[1][0];
-            $tests = array_flatten($rows);
+            $fileBatchNr = $reqTest[10];
 
         }
   

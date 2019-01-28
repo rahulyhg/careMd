@@ -168,7 +168,8 @@ class Lab extends Encounter {
         'add_label',
         'sort_nr',
         'block_selection',
-        'enable_upload'
+        'enable_upload',
+        'sort_order'
     );
 
     /**
@@ -201,7 +202,8 @@ class Lab extends Encounter {
         'modify_id',
         'modify_time',
         'create_id',
-        'create_time');
+        'create_time',
+        'sort_order');
     /* Field names for care_test_request_chemlab_sub table */
     var $fld_req_chemlab_sub = array(
         'sub_id',
@@ -633,7 +635,7 @@ job_id='$job_id' AND group_id='$grp_id' AND status NOT IN
             $cond = '';
         else
             $cond = "group_id='$group_id'";
-        $this->sql = "SELECT * FROM $this->tb_test_param WHERE $cond ORDER BY name";
+        $this->sql = "SELECT * FROM $this->tb_test_param WHERE $cond ORDER BY sort_order, nr";
        // echo $this->sql;
         if ($this->tparams = $db->Execute($this->sql)) {
             if ($this->rec_count = $this->tparams->RecordCount()) {
@@ -653,7 +655,7 @@ job_id='$job_id' AND group_id='$grp_id' AND status NOT IN
         else
             $cond = "batch_nr='$id'";
         $sub = "_sub";
-        $this->sql = "SELECT paramater_name, parameter_value FROM $this->tb_req_chemlab$sub  WHERE $cond";
+        $this->sql = "SELECT paramater_name, parameter_value FROM $this->tb_req_chemlab$sub  WHERE $cond ORDER BY sort_order";
         if ($this->tparams = $db->Execute($this->sql)) {
             if ($this->rec_count = $this->tparams->RecordCount()) {
                 return $this->tparams;
@@ -738,7 +740,7 @@ job_id='$job_id' AND group_id='$grp_id' AND status NOT IN
             $cond .= '';
         else
             $cond .= "AND nr='$nr'";
-        $this->sql = "SELECT * FROM $this->tb_test_param $cond ORDER BY sort_nr";
+        $this->sql = "SELECT * FROM $this->tb_test_param $cond ORDER BY sort_order, nr";
         if ($this->tgroups = $db->Execute($this->sql)) {
             if ($this->rec_count = $this->tgroups->RecordCount()) {
                 return $this->tgroups;
@@ -1102,6 +1104,21 @@ WHERE encounter_nr='$this->enc_nr' AND status NOT IN
     function TestActiveGroups() {
         global $db;
         $this->sql = "SELECT * FROM $this->tb_test_param WHERE group_id = '-1' AND status NOT IN ($this->dead_stat) ORDER BY sort_nr";
+        
+        if ($this->tgroups = $db->Execute($this->sql)) {
+            if ($this->rec_count = $this->tgroups->RecordCount()) {
+                return $this->tgroups;
+            } else {
+                return FALSE;
+            }
+        } else {
+            return FALSE;
+        }
+    }
+
+    function AllActiveTestGroups() {
+        global $db;
+        $this->sql = "SELECT * FROM $this->tb_test_param WHERE status NOT IN ($this->dead_stat) ORDER BY sort_nr";
         
         if ($this->tgroups = $db->Execute($this->sql)) {
             if ($this->rec_count = $this->tgroups->RecordCount()) {

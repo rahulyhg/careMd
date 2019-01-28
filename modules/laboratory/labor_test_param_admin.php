@@ -157,7 +157,6 @@ if (is_object($tparams)) {
 	<td ><nobr>&nbsp;';
         }
 
-
         if (isset($parameters[$tp['id']]) && !empty($parameters[$tp['id']]))
             echo $parameters[$tp['id']];
         else

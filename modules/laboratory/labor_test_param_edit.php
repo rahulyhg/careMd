@@ -192,6 +192,9 @@ if ($tparam = &$lab_obj->getTestParam($nr)) {
 }
 //gjergji : i get the groups here...
 $tgroups = &$lab_obj->TestActiveGroups();
+
+
+
 //moye : get the pricelists 
 $pricelist = $das_obj->GetAllPriceLists();
 ?>
@@ -331,7 +334,7 @@ if (!$cfg['dhtml']) {
                                 echo '</select>
 			</td></tr>';
                                 echo '<tr><td  class="a12_b" bgcolor="#fefefe">&nbsp;' . $LDGroup . '</td><td>';
-                                echo '<select name="group_id" size=1>';
+                                echo '<select name="group_id" id="blood_group_id" onchange="setSelectedBloodGroup()" size=1>';
 
                                 while ($tg = $tgroups->FetchRow()) {
                                     $sTemp = $sTemp . '<option value="' . $tg['id'] . '"';
@@ -348,6 +351,20 @@ if (!$cfg['dhtml']) {
                                 $sTemp = $sTemp . '</select>';
                                 echo $sTemp;
                                 echo '</td></tr>';
+                     // echo "<pre>"; print_r($allTestGroups->GetArray());echo "</pre>";
+
+                                ?>
+                                    <tr>
+                                        <td   class="a12_b" bgcolor="#fefefe">
+                                            Show After
+                                        </td>
+                                        <td>
+                                            <select name="sort_order" style="min-width: 120px;" id="order_test_group" size=1>
+                                            </select>
+                                        </td>
+                                    </tr>
+
+                                <?php
 
                                 if ($pricelist) {
 

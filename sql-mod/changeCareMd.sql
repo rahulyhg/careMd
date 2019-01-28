@@ -91,3 +91,10 @@ ALTER TABLE `care_tz_laboratory_param` ADD `block_selection` ENUM('yes','no') NO
 
 --21-01
 composer require phpoffice/phpspreadsheet:1.1.0
+
+
+--28-01
+ALTER TABLE `care_tz_laboratory_param` ADD `sort_order` INT NOT NULL DEFAULT '0' AFTER `enable_upload`;
+ALTER TABLE `care_test_request_chemlabor_sub` ADD `sort_order` INT NOT NULL DEFAULT '0' AFTER `history`;
+
+

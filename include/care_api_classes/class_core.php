@@ -232,7 +232,6 @@ class Core {
 		# Check if  "create_time" key has a value, if no, create a new value
 		//if(!isset($this->buffer_array['create_time'])||empty($this->buffer_array['create_time'])) $this->buffer_array['create_time']=date('YmdHis');
 		//print_r($this->buffer_array);
-
 		return $this->insertDataFromArray($this->buffer_array);
 	}
 	/**
@@ -378,6 +377,7 @@ class Core {
 		reset($array);
 		$index=substr_replace($index,'',(strlen($index))-1);
 		$values=substr_replace($values,'',(strlen($values))-1);
+
         $this->sql="INSERT INTO $this->coretable ($index) VALUES ($values)";
         //echo $this->sql;
 		reset($array);

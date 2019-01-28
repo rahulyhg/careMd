@@ -215,6 +215,7 @@ switch ($mode) {
             $data['create_time'] = date('Y-m-d H:i:s');
             $data['priority'] = $urgency;
             $diag_obj->setDataArray($data);
+
             if ($diag_obj->insertDataFromInternalArray()) {
                 //gjergji : new lab handlign code
                 //sub values management
@@ -230,9 +231,26 @@ switch ($mode) {
                     $parsedParamList['paramater_name'] = $tmpParam[0];
                     $parsedParamList['parameter_value'] = $tmpParam[1];
                     $parsedParamList['status'] = 'pending';
+                    $parsedParamList['sort_order'] = 100;
+
+                     $sqlInner1 = "SELECT * from care_tz_laboratory_param WHERE id='" . $parsedParamList['paramater_name'] . "'";
+
+                  //  echo $sqlInner1;
+
+                    $resultInner1 = $db->Execute($sqlInner1);
+                    $row1 = $resultInner1->FetchRow();
+
+                    if ($row1['sort_order'] > 0) {
+                        $parsedParamList['sort_order'] = $row1['sort_order'];
+                    }else{
+                        $parsedParamList['sort_order'] = $row1['nr'];
+                    }
+                    
+
                     $diag_obj_sub->setDataArray($parsedParamList);
                     //echo 'Name: '.$tmpParam[0];
                     //echo $diag_obj_sub->getLastQuery();
+                    
                     $diag_obj_sub->insertDataFromInternalArray();
 //echo 'z'.$diag_obj->getItemNrByParamName($tmpParam[0]).'z';
                     $item_id = $pres_obj->GetItemIDByNumber($diag_obj->getItemNrByParamName($tmpParam[0]));
@@ -245,13 +263,6 @@ switch ($mode) {
                     //new code:
 
 
-
-                    $sqlInner1 = "SELECT * from care_tz_laboratory_param WHERE id='" . $parsedParamList['paramater_name'] . "'";
-
-                  //  echo $sqlInner1;
-
-                    $resultInner1 = $db->Execute($sqlInner1);
-                    $row1 = $resultInner1->FetchRow();
                     //echo 'id='.$row1['id'];
                     $testname = str_replace("'", "\'", $row1['name']);
 

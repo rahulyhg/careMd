@@ -86,7 +86,7 @@ if (IS_TANZANIAN) {
             $LD_Elements[$column][$row]['type'] = 'top';
             $LD_Elements[$column][$row]['value'] = strtoupper($categories['name']);
             $LD_Elements[$column][$row]['id'] = $categories['id'];
-            $SQLStatementParam = "SELECT id,name,status FROM care_tz_laboratory_param WHERE group_id = '" . $categories['id'] . "' AND status NOT IN ('deleted','hidden') ORDER BY name";
+            $SQLStatementParam = "SELECT id,name,status FROM care_tz_laboratory_param WHERE group_id = '" . $categories['id'] . "' AND status NOT IN ('deleted','hidden') ORDER BY sort_order, nr, sort_nr";
             $row_rs = $db->Execute($SQLStatementParam);
             if (!empty($row_rs) && isset($row_rs)) {
                 while ($parameters = $row_rs->FetchRow()) {
