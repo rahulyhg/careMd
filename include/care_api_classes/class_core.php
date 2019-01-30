@@ -379,6 +379,7 @@ class Core {
 		$values=substr_replace($values,'',(strlen($values))-1);
 
         $this->sql="INSERT INTO $this->coretable ($index) VALUES ($values)";
+         // echo "<pre>"; print_r($this->sql);echo "</pre>";die();
         //echo $this->sql;
 		reset($array);
 		return $this->Transact();

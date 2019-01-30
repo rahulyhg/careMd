@@ -108,14 +108,14 @@ if ($mode == 'save') {
         if ($result_tests = $lab_obj->GetTestsToDo($job_id, $encounter_nr))
             while ($row_tests = $result_tests->FetchRow()) {
                 if ($z == $row_tests['paramater_name']) {
-                    $nbuf[$z] = $y;
+                    $nbuf[$z]['amount'] = $y;
+                    $nbuf[$z]['sort_order'] = $row_tests['sort_order'];
                 }
                 if ($z == $row_tests['paramater_name'].'_old') {
                     $nbuf_old[$z] = $y;
                 }
             }
     }
-
     $dbuf['job_id'] = $job_id;
     $dbuf['encounter_nr'] = $encounter_nr;
     if ($allow_update == TRUE) {
@@ -127,7 +127,8 @@ if ($mode == 'save') {
 //print_r($nbuf_old['__brucella_test__screening__serology_old']);
 
         foreach ($nbuf as $key => $value) {
-            if (isset($value) && !empty($value)) {
+            if (isset($value) && !empty($value['amount'])) {
+
                 //get the old value from array
                 $parsedParamList['old_param_value']=$nbuf_old[$key.'_old'];
                 $parsedParamList['is_updated']=1;   //Set updated status to 1
@@ -137,7 +138,8 @@ if ($mode == 'save') {
                 $parsedParamList['job_id'] = $job_id;
                 $parsedParamList['encounter_nr'] = $encounter_nr;
                 $parsedParamList['paramater_name'] = $key;
-                $parsedParamList['parameter_value'] = addslashes($value);
+                $parsedParamList['parameter_value'] = addslashes($value['amount']);
+                $parsedParamList['sort_order'] = addslashes($value['sort_order']);
                 $parsedParamList['history'] = "Modified: " . date('Y-m-d H:i:s') . " " . $_SESSION['sess_user_name'] . "\n";
                 $parsedParamList['create_id'] = $_SESSION['sess_user_name'];
                 $parsedParamList['create_time'] = date('YmdHis');
@@ -182,15 +184,18 @@ if ($mode == 'save') {
             $parsedParamList['create_time'] = date('YmdHis');
             $parsedParamList['test_date'] = $exam_date;
             $parsedParamList['test_time'] = $exam_time;
-
             foreach ($nbuf as $key => $value) {
-                if (isset($value) && !empty($value)) {
+
+                if (isset($value) && !empty($value['amount'])) {
+
                     $parsedParamList['batch_nr'] = $batch_nr;
                     $parsedParamList['encounter_nr'] = $encounter_nr;
                     $parsedParamList['job_id'] = $job_id;
                     $parsedParamList['paramater_name'] = $key;
-                    $parsedParamList['parameter_value'] = $value;
-                    //now save it via sub object                    
+                    $parsedParamList['parameter_value'] = $value['amount'];
+                    $parsedParamList['sort_order'] = $value['sort_order'];
+                    //now save it via sub object
+                                        
                     $lab_obj_sub->setDataArray($parsedParamList);
                     $lab_obj_sub->insertDataFromInternalArray();
                 }
@@ -619,11 +624,6 @@ if ($fileBatchNr == $batchNumber) {
         }
         
     }
-}else {
-    foreach ($pdata as $pdataKey => $value) {
-        $pdata[$pdataKey]['value'] = "";
-        
-    }  
 }
 
 $rejected = $_GET['rejected'];
