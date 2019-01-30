@@ -134,6 +134,7 @@ if ($encounter = $enc_obj->getBasic4Data($encounter_nr)) {
         $dt = array();
         while ($buffer = $recs->FetchRow()) {
             # Prepare the values
+            
             $tmp = array($buffer['paramater_name'] => $buffer['parameter_value']);
             $records[$buffer['job_id']][] = $tmp;
             $tdate[$buffer['job_id']] = $buffer['test_date'];
@@ -150,7 +151,6 @@ if ($encounter = $enc_obj->getBasic4Data($encounter_nr)) {
     echo "<p>" . $lab_obj->getLastQuery() . "sql$LDDbNoRead";
     exit;
 }
-
 # Start Smarty templating here
 /**
  * LOAD Smarty
@@ -362,10 +362,12 @@ if ($records) {
         foreach ($paramgroupvalue as $paramgroup_a => $paramvalue_a) {
             foreach ($paramvalue_a as $paramgroup => $paramvalue) {
                 $ext = substr(stristr($paramgroup, '__'), 2);
+                $ext = str_replace("_", "", $paramgroup);
                 $requestData[$ext][$paramgroup][$job_id] = $paramvalue;
             }
         }
     }
+
 
 //display the values
     $class = 'wardlistrow1';
