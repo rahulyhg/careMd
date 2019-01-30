@@ -362,8 +362,7 @@ if ($records) {
         foreach ($paramgroupvalue as $paramgroup_a => $paramvalue_a) {
             foreach ($paramvalue_a as $paramgroup => $paramvalue) {
                 $ext = substr(stristr($paramgroup, '__'), 2);
-                $ext = str_replace("_", "", $paramgroup);
-                $requestData[$ext][$paramgroup][$job_id] = $paramvalue;
+                $requestData[str_replace("_", "", $ext) ][$paramgroup][$job_id] = $paramvalue;
             }
         }
     }
