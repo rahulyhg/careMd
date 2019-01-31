@@ -490,7 +490,7 @@ if ($result_tests = $lab_obj->GetTestsToDo($job_id, $encounter_nr)) {
     do {
         if (isset($result_tests->fields['paramater_name'])) {
             $ext = substr(stristr($result_tests->fields['paramater_name'], '__'), 2);
-            $requestData[$ext][$result_tests->fields['paramater_name']] = $result_tests->fields['parameter_value'];
+            $requestData[str_replace("_", "", $ext)][$result_tests->fields['paramater_name']] = $result_tests->fields['parameter_value'];
         }
     } while ($result_tests->MoveNext());
 }
