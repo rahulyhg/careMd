@@ -18,7 +18,8 @@ if (@$allTestGroups->FetchRow()) {
 foreach ($groups as $group) {
 	$value = [
 		'nr' => $group['nr'],
-		'name' => $group['name']
+		'name' => $group['name'],
+		'sort_order' => $group['sort_order']
 	];
 	if ($group['group_id'] == $group_id) {
 		$relatedGroups[] = $value;

@@ -555,7 +555,7 @@ job_id='$job_id' AND group_id='$grp_id' AND status NOT IN
             return FALSE;
         $this->sql = "SELECT * FROM $this->tb_find_chemlab INNER JOIN $this->tb_find_chemlab_sub ";
         $this->sql .= "ON ($this->tb_find_chemlab.job_id = $this->tb_find_chemlab_sub.job_id) ";
-        $this->sql .= "WHERE $this->tb_find_chemlab.encounter_nr='$this->enc_nr' AND $this->tb_find_chemlab.job_id='$job_id' AND $this->tb_find_chemlab.group_id='$grp_id' AND $this->tb_find_chemlab.status<>'hidden'";
+        $this->sql .= "WHERE $this->tb_find_chemlab.encounter_nr='$this->enc_nr' AND $this->tb_find_chemlab.job_id='$job_id' AND $this->tb_find_chemlab.group_id='$grp_id' AND $this->tb_find_chemlab.status<>'hidden' ORDER BY $this->tb_find_chemlab_sub.sort_order";
         if ($this->result = $db->Execute($this->sql)) {
             if ($this->rec_count = $this->result->RecordCount()) {
                 return $this->result;
@@ -659,7 +659,7 @@ job_id='$job_id' AND group_id='$grp_id' AND status NOT IN
         else
             $cond = "batch_nr='$id'";
         $sub = "_sub";
-        $this->sql = "SELECT paramater_name, parameter_value, sort_order FROM $this->tb_req_chemlab$sub  WHERE $cond ORDER BY sort_order";
+        $this->sql = "SELECT * FROM $this->tb_req_chemlab$sub  WHERE $cond ORDER BY sort_order";
         if ($this->tparams = $db->Execute($this->sql)) {
             if ($this->rec_count = $this->tparams->RecordCount()) {
                 return $this->tparams;

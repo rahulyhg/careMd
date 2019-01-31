@@ -62,6 +62,18 @@ if (isset($mode) && !empty($mode)) {
         # Set to use the test params
         $lab_obj->useTestParams();
         # Point to the data array
+        
+
+        $prevSQL = " SELECT * from care_tz_laboratory_param where nr = {$_POST['sort_order']}";
+        $prevTestResult = $db->Execute($prevSQL);
+        $prevTestSortOrder = 0;
+        if (@$prevTestResult && $prevTestResult->RecordCount() > 0) {
+            $prevTestRow = $prevTestResult->FetchRow();
+            $prevTestSortOrder = $prevTestRow['sort_order'];
+        }
+        $sortOrder = $prevTestSortOrder +1;
+        $_POST['sort_order'] = $sortOrder;
+
         $lab_obj->setDataArray($_POST);
         if ($lab_obj->updateDataFromInternalArray($_POST['nr'])) {
             $item_no = $pres_obj->GetItemIDByNumber('LAB' . $_POST['nr']);
@@ -135,6 +147,18 @@ if (isset($mode) && !empty($mode)) {
         # Set to use the test params
         $lab_obj->useTestParams();
         # Point to the data array
+        
+        $prevSQL = " SELECT * from care_tz_laboratory_param where nr = {$_POST['sort_order']}";
+        $prevTestResult = $db->Execute($prevSQL);
+        $prevTestSortOrder = 0;
+        if (@$prevTestResult && $prevTestResult->RecordCount() > 0) {
+            $prevTestRow = $prevTestResult->FetchRow();
+            $prevTestSortOrder = $prevTestRow['sort_order'];
+        }
+
+        $sortOrder = $prevTestSortOrder +1;
+        $_POST['sort_order'] = $sortOrder;
+
         $lab_obj->setDataArray($_POST);
         if ($lab_obj->insertDataFromInternalArray()) {
             //gjergji:insert the drugs and services item
@@ -255,7 +279,15 @@ if (!$cfg['dhtml']) {
                     ?>
                 </STRONG></FONT>
             </td>
-            <td bgcolor="<?php echo $cfg['top_bgcolor']; ?>" height="10" align=right ><nobr><a href="javascript:gethelp('lab_param_edit.php')"><img <?php echo createLDImgSrc($root_path, 'hilfe-r.gif', '0') ?>  <?php if ($cfg['dhtml']) echo'style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?>></img></a><a href="javascript:history.back()" ><img <?php echo createLDImgSrc($root_path, 'close2.gif', '0') ?>  <?php if ($cfg['dhtml']) echo'style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?>></img></a></nobr></td>
+            <td bgcolor="<?php echo $cfg['top_bgcolor']; ?>" height="10" align=right >
+                <nobr>
+                    <a href="javascript:gethelp('lab_param_edit.php')">
+                        <img <?php echo createLDImgSrc($root_path, 'hilfe-r.gif', '0') ?>  <?php if ($cfg['dhtml']) echo'style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?>></img>
+                    </a>
+                    <a href="<?php echo $_SESSION['testGroupAdminURL'] ?>" ><img <?php echo createLDImgSrc($root_path, 'close2.gif', '0') ?>  <?php if ($cfg['dhtml']) echo'style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?>></img>
+                    </a>
+                </nobr>
+            </td>
 </tr>
 <tr align="center">
     <td  bgcolor=#dde1ec colspan=2>

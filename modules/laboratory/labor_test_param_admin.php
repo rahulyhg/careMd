@@ -43,7 +43,13 @@ include_once($root_path . 'include/inc_date_format_functions.php');
 $tgroups = $lab_obj->TestActiveGroups();
 
 # Get the test parameter values
+# care_tz_laboratory_param
 $tparams = $lab_obj->TestParamsAdmin($parameterselect);
+// $Tparamsarray = $tparams->GetArray();
+// foreach ($Tparamsarray as $key => $value) {
+//      echo "<pre>"; print_r($value['name']." ".$value['sort_order']);echo "</pre>";
+// }
+//  die();
 $breakfile = "labor.php" . URL_APPEND;
 
 # Start Smarty templating here
@@ -222,6 +228,9 @@ $smarty->assign('sSubmitSelect', '<input type=hidden name="sid" value="' . $sid 
 	<input  type="image" ' . createLDImgSrc($root_path, 'auswahl2.gif', '0') . '>');
 
 $smarty->assign('sMainBlockIncludeFile', 'laboratory/test_params.tpl');
+
+$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$_SESSION['testGroupAdminURL'] = $actual_link;
 
 /**
  * show Template
