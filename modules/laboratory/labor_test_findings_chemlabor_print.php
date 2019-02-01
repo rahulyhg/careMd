@@ -177,7 +177,8 @@ $notShow = explode("-", $skipme);
 //Start appending output to table
 $cache .= '<table class="report_tbl">';
 
-$logo = $root_path . $GLOBAL_CONFIG['main_info_logo'];
+// $logo = $root_path . $GLOBAL_CONFIG['main_info_logo'];
+$logo = $root_path.$logoDirectory.$hospital_logo;
 
 if ($records) {
 
@@ -204,7 +205,7 @@ if ($records) {
     //End of Facility Details
     //Patient details
     $cache.='<td width="auto" align="right" class="no_border_left" rowspan="2">';
-    $cache.='<img src="' . $root_path . 'main/imgcreator/barcode_label_single_large.php?sid=' . $sid . '&lang=' . $lang . '&fen=' . $full_en . '&en=' . $encounter_nr . '" width=282 height=178">';
+    // $cache.='<img src="' . $root_path . 'main/imgcreator/barcode_label_single_large.php?sid=' . $sid . '&lang=' . $lang . '&fen=' . $full_en . '&en=' . $encounter_nr . '" width=282 height=178">';
     $cache.='</td>';
     $cache.='</tr>';
 

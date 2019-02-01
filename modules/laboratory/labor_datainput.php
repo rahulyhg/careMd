@@ -642,11 +642,23 @@ while (list($group, $pm) = each($requestData)) {
 
     $gName = $lab_obj->getGroupName($group);
 
-    echo '
-    <tr>';
+if ($glob_obj->getConfigValue("restrict_unbilled_items") === "1" && $enc_obj->EncounterClass() === "2" &&  $patient['insurance_ID']==='0') { 
+    
+    if ($lab_obj->getLabBillNoByBatch($job_id, $pId) > 0 ) {
+        echo '<tr>';
+        echo '<td colspan="' . COL_MAX . '" bgcolor="#ffffee" class="a10_a"><b>';
+        echo $gName->fields['name'];
+        echo '</b></td></tr>';
+    }
+}else{
+    echo '<tr>';
     echo '<td colspan="' . COL_MAX . '" bgcolor="#ffffee" class="a10_a"><b>';
     echo $gName->fields['name'];
-    echo '</b></td></tr><tr>';
+    echo '</b></td></tr>';
+}
+
+
+    echo '<tr>';
 
     while (list($pId, $not) = each($pm)) {
 
@@ -655,6 +667,12 @@ while (list($group, $pm) = each($requestData)) {
         if ($glob_obj->getConfigValue("restrict_unbilled_items") === "1" && $enc_obj->EncounterClass() === "2" &&  $patient['insurance_ID']==='0') { 
             //Check the restriction status
             if ($lab_obj->getLabBillNoByBatch($job_id, $pId) > 0 ) {
+
+                echo '<tr>';
+                echo '<td colspan="' . COL_MAX . '" bgcolor="#ffffee" class="a10_a"><b>';
+                echo $gName->fields['name'];
+                echo '</b></td></tr>';
+
                 $pName = $lab_obj->TestParamsDetails($pId);
                 echo '<td bgcolor="#ffffee" class="a10_b"><b>';
                 echo $pName->fields['name'] . '</b></td>';

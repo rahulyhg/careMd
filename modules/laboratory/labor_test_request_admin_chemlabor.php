@@ -440,8 +440,7 @@ if ($edit) {
     ob_start();
 
 # If pending request available, show list and actual form
-
-    if ($batchrows) {
+    // if ($batchrows) {
         ?>
 
         <table border=0>
@@ -498,13 +497,13 @@ if ($edit) {
         </table>
 
         <?php
-    } else {
+    // } else {
         ?>
-        <img <?php echo createMascot($root_path, 'mascot1_r.gif', '0', 'absmiddle') ?> ><font size=3 face="verdana,arial" color="#990000"><b><?php echo $LDNoPendingRequest ?></b></font>
-        <p>
-            <a href="<?php echo $breakfile ?>"><img <?php echo createLDImgSrc($root_path, 'back2.gif', '0') ?>></a>
+        <!-- <img <?php echo createMascot($root_path, 'mascot1_r.gif', '0', 'absmiddle') ?> ><font size=3 face="verdana,arial" color="#990000"><b><?php echo $LDNoPendingRequest ?></b></font> -->
+        <!-- <p> -->
+            <!-- <a href="<?php echo $breakfile ?>"><img <?php echo createLDImgSrc($root_path, 'back2.gif', '0') ?>></a> -->
             <?php
-        }
+        // }
 
         $sTemp = ob_get_contents();
         ob_end_clean();
