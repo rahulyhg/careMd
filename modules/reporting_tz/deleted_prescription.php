@@ -93,7 +93,7 @@ foreach ($prescriptions as $key => $prescription) {
             $prescriptions[$key]['unit_price'] = $prescription[$priceColumn];
         }
         if (!empty($company) || $company_id == 0) {
-            if ($company != $insurance_id) {
+            if ($company != $insurance_id && $company !="All") {
                 unset($prescriptions[$key]);
             }
         }
@@ -194,7 +194,7 @@ if ($userPermissions[0] == "System_Admin" || $userPermissions[0] == "_a_0_all " 
                     <div class="col">
                       <div class="form-group bmd-form-group">
                         <select name="company" class="form-control" id="company">
-                            <option value="">Company</option>
+                            <option value="All">Company</option>
                             <?php foreach ($insurances as $insurance): ?>
                                 <option <?php if($insurance['company_id'] == $company){ echo 'selected';} ?> value="<?php echo $insurance['company_id'] ?>"><?php echo $insurance['ShowDescription'] ?></option>   
                             <?php endforeach ?>

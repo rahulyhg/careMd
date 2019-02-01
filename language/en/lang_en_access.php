@@ -34,6 +34,7 @@ $_a_1_labresultsreadwrite = 'Laboratory Administation/Read, Write,Edit';
 $_a_2_labparametersedit = 'Laboratory Paremeters Edit';
 $_a_2_labbloodwrite = 'Blood Request Read & Create';
 $_a_3_labbloodread = 'Blood Request Read Only';
+$_a_2_labparametersedit = 'Lab Paremeters Administation';
 
 // Group start
 $title5 = 'OP-Room';

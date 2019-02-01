@@ -51,7 +51,7 @@ $area_opt = array(
     '_a_3_labresultsread' => $_a_3_labresultsread,
     '_a_2_labbloodwrite' => $_a_2_labbloodwrite,
     '_a_3_labbloodread' => $_a_3_labbloodread,
-//    '_a_2_labparametersedit' => $_a_2_labparametersedit,
+   '_a_2_labparametersedit' => $_a_2_labparametersedit,
     /*
      *  Group start 
      */

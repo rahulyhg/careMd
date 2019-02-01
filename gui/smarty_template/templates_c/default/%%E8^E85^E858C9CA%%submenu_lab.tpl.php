@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.22, created on 2017-07-17 00:03:50
+<?php /* Smarty version 2.6.22, created on 2019-02-01 13:20:53
          compiled from laboratory/submenu_lab.tpl */ ?>
 <blockquote>
-    <TABLE cellSpacing=0  width=600 class="submenu_frame" cellpadding="0">
+    <TABLE cellSpacing=0 width=600 class="submenu_frame" cellpadding="0">
         <TBODY>
             <TR>
                 <TD>
@@ -11,67 +11,85 @@
                                 <TD class="submenu_title" colspan=2><?php echo $this->_tpl_vars['LDMedLab']; ?>
 </TD>
                             </tr>
+
+                            <?php if ($this->_tpl_vars['showLabRequest']): ?>
                             <TR>
-                                <TD class="submenu_item" width=35%><nobr><?php echo $this->_tpl_vars['LDMedLabTestRequest']; ?>
-</nobr></TD>
-                <TD><?php echo $this->_tpl_vars['LDTestRequestChemLabTxt']; ?>
+                                <TD class="submenu_item" width=35%>
+                                    <nobr><?php echo $this->_tpl_vars['LDMedLabTestRequest']; ?>
+</nobr>
+                                </TD>
+                                <TD><?php echo $this->_tpl_vars['LDTestRequestChemLabTxt']; ?>
 </TD>
-            </tr>
-            <?php $_smarty_tpl_vars = $this->_tpl_vars;
+                            </tr>
+                            <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "common/submenu_row_spacer.tpl", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
 
-            <TR>
-                <TD class="submenu_item" width=35%><nobr><?php echo $this->_tpl_vars['LDMedLabTestReception']; ?>
-</nobr></TD>
-        <TD><?php echo $this->_tpl_vars['LDTestReceptionTxt']; ?>
+                            <?php endif; ?>
+
+                            <?php if ($this->_tpl_vars['showLabRequest']): ?>
+                            <TR>
+                                <TD class="submenu_item" width=35%>
+                                    <nobr><?php echo $this->_tpl_vars['LDMedLabTestReception']; ?>
+</nobr>
+                                </TD>
+                                <TD><?php echo $this->_tpl_vars['LDTestReceptionTxt']; ?>
 </TD>
-        </tr>
-        <?php $_smarty_tpl_vars = $this->_tpl_vars;
+                            </tr>
+                            <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "common/submenu_row_spacer.tpl", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+                            <?php endif; ?>
 
-        <TR>
-            <TD class="submenu_item" width=35%><nobr><?php echo $this->_tpl_vars['LDSeeData']; ?>
-</nobr></TD>
-        <TD><?php echo $this->_tpl_vars['LDSeeLabData']; ?>
+                            <?php if ($this->_tpl_vars['showLabResult']): ?>
+                            <TR>
+                                <TD class="submenu_item" width=35%>
+                                    <nobr><?php echo $this->_tpl_vars['LDSeeData']; ?>
+</nobr>
+                                </TD>
+                                <TD><?php echo $this->_tpl_vars['LDSeeLabData']; ?>
 </TD>
-        </tr>
-        <?php $_smarty_tpl_vars = $this->_tpl_vars;
+                            </tr>
+                            <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "common/submenu_row_spacer.tpl", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+                            <?php endif; ?>
 
-        <!--
+
+                            <!--
                                                         <TR>
                                                                 <TD class="submenu_item" width=35%><nobr><?php echo $this->_tpl_vars['LDNewData']; ?>
 </nobr></TD>
                                                                 <TD><?php echo $this->_tpl_vars['LDEnterLabData']; ?>
 </TD>
                                                         </tr>
-        -->						
-
-        <TR>
-            <TD class="submenu_item" width=35%><nobr><?php echo $this->_tpl_vars['LDEditData']; ?>
-</nobr></TD>
-        <TD><?php echo $this->_tpl_vars['LDEditLabData']; ?>
+        -->
+                            <?php if ($this->_tpl_vars['showLabResult']): ?>
+                            <TR>
+                                <TD class="submenu_item" width=35%>
+                                    <nobr><?php echo $this->_tpl_vars['LDEditData']; ?>
+</nobr>
+                                </TD>
+                                <TD><?php echo $this->_tpl_vars['LDEditLabData']; ?>
 </TD>
-        </tr>
+                            </tr>
+                            <?php endif; ?>
 
 
+                        </TBODY>
+                    </TABLE>
+                </TD>
+            </TR>
         </TBODY>
     </TABLE>
-</TD>
-</TR>
-</TBODY>
-</TABLE>
-<p>
-    <!--			
+    <p>
+        <!--            
     MEROTECH
     Commented out for selian town clinic by Alexander Irro
     
@@ -147,81 +165,101 @@ unset($_smarty_tpl_vars);
 </TR>
 </TBODY>
 </TABLE> -->
-<p>
-<TABLE cellSpacing=0  width=600 class="submenu_frame" cellpadding="0">
-    <TBODY>
-        <TR>
-            <TD>
-                <TABLE cellSpacing=1 cellPadding=3 width=600>
-                    <TBODY class="submenu">
-                        <TR>
-                            <TD class="submenu_title" colspan=2><?php echo $this->_tpl_vars['LDBloodBank']; ?>
+        <p>
+            <TABLE cellSpacing=0 width=600 class="submenu_frame" cellpadding="0">
+                <TBODY>
+                    <TR>
+                        <TD>
+                            <TABLE cellSpacing=1 cellPadding=3 width=600>
+                                <TBODY class="submenu">
+                                    <?php if ($this->_tpl_vars['showLabBloodResult']): ?>
+                                    
+                                    <TR>
+                                        <TD class="submenu_title" colspan=2><?php echo $this->_tpl_vars['LDBloodBank']; ?>
 </TD>
-                        </tr>
-                        <TR>
-                            <TD class="submenu_item" width=35%><nobr><?php echo $this->_tpl_vars['LDBloodRequest']; ?>
-</nobr></TD>
-            <TD><?php echo $this->_tpl_vars['LDBloodRequestTxt']; ?>
+                                    </tr>
+
+                                    <TR>
+                                        <TD class="submenu_item" width=35%>
+                                            <nobr><?php echo $this->_tpl_vars['LDBloodRequest']; ?>
+</nobr>
+                                        </TD>
+                                        <TD><?php echo $this->_tpl_vars['LDBloodRequestTxt']; ?>
 </TD>
-        </tr>
-        <?php $_smarty_tpl_vars = $this->_tpl_vars;
+                                    </tr>
+                                    <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "common/submenu_row_spacer.tpl", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+                                    <?php endif; ?>
 
-        <TR>
-            <TD class="submenu_item" width=35%><nobr><?php echo $this->_tpl_vars['LDBloodTestReception']; ?>
-</nobr></TD>
-    <TD><?php echo $this->_tpl_vars['LDTestReceptionTxt']; ?>
+                                   
+                                    <?php if ($this->_tpl_vars['showLabBloodResult']): ?>
+                                    <TR>
+                                        <TD class="submenu_item" width=35%>
+                                            <nobr><?php echo $this->_tpl_vars['LDBloodTestReception']; ?>
+</nobr>
+                                        </TD>
+                                        <TD><?php echo $this->_tpl_vars['LDTestReceptionTxt']; ?>
 </TD>
-    </tr>
+                                    </tr>
+                                    <?php endif; ?>
 
-    </TBODY>
-</TABLE>
-</TD>
-</TR>
-</TBODY>
-</TABLE> 
-<p>
-<TABLE cellSpacing=0  width=600 class="submenu_frame" cellpadding="0">
-    <TBODY>
-        <TR>
-            <TD>
-                <TABLE cellSpacing=1 cellPadding=3 width=600>
-                    <TBODY class="submenu">
+                                </TBODY>
+                            </TABLE>
+                        </TD>
+                    </TR>
+                </TBODY>
+            </TABLE>
+            <p>
+                <TABLE cellSpacing=0 width=600 class="submenu_frame" cellpadding="0">
+                    <TBODY>
                         <TR>
-                            <TD class="submenu_title" colspan=2><?php echo $this->_tpl_vars['LDAdministration']; ?>
+                            <TD>
+                                <TABLE cellSpacing=1 cellPadding=3 width=600>
+                                    <TBODY class="submenu">
+
+                                        <?php if ($this->_tpl_vars['showLabParameters']): ?>
+
+                                        <TR>
+                                            <TD class="submenu_title" colspan=2><?php echo $this->_tpl_vars['LDAdministration']; ?>
 </TD>
-                        </tr>
-                        <TR>
-                            <TD class="submenu_item" width=35% ><nobr><?php echo $this->_tpl_vars['LDTestParameters']; ?>
-</nobr></TD>
-            <TD><?php echo $this->_tpl_vars['LDTestParametersTxt']; ?>
+                                        </tr>
+                                        <TR>
+                                            <TD class="submenu_item" width=35%>
+                                                <nobr><?php echo $this->_tpl_vars['LDTestParameters']; ?>
+</nobr>
+                                            </TD>
+                                            <TD><?php echo $this->_tpl_vars['LDTestParametersTxt']; ?>
 </TD>
-        </tr>
-        <?php $_smarty_tpl_vars = $this->_tpl_vars;
+                                        </tr>
+
+                                        <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "common/submenu_row_spacer.tpl", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
- ?>						
-        <TR>
-            <TD class="submenu_item" width=35% ><nobr><?php echo $this->_tpl_vars['LDTestGroups']; ?>
-</nobr></TD>
-    <TD><?php echo $this->_tpl_vars['LDTestGroupsTxt']; ?>
+ ?>
+                                        <TR>
+                                            <TD class="submenu_item" width=35%>
+                                                <nobr><?php echo $this->_tpl_vars['LDTestGroups']; ?>
+</nobr>
+                                            </TD>
+                                            <TD><?php echo $this->_tpl_vars['LDTestGroupsTxt']; ?>
 </TD>
-    </tr>
-    </TBODY>
-</TABLE>
-</TD>
-</TR>
-</TBODY>
-</TABLE>
-<p>
-    <a href="<?php echo $this->_tpl_vars['breakfile']; ?>
+                                        </tr>
+                                        <?php endif; ?>
+                                    </TBODY>
+                                </TABLE>
+                            </TD>
+                        </TR>
+                    </TBODY>
+                </TABLE>
+                <p>
+                    <a href="<?php echo $this->_tpl_vars['breakfile']; ?>
 "><img <?php echo $this->_tpl_vars['gifClose2']; ?>
  alt="<?php echo $this->_tpl_vars['LDCloseAlt']; ?>
 " <?php echo $this->_tpl_vars['dhtml']; ?>
 ></a>
-<p>
+                    <p>
 </blockquote>

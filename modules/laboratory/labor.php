@@ -55,21 +55,88 @@ require_once($root_path . 'main_theme/head.inc.php');
 require_once($root_path . 'main_theme/header.inc.php');
 require_once($root_path . 'main_theme/topHeader.inc.php');
 
+
+    
+require('./roots.php');
+require_once $root_path.'vendor/autoload.php';
+require_once $root_path.'generated-conf/config.php';
+
+use  CareMd\CareMd\CareUsersQuery;
+use  CareMd\CareMd\CareUserRolesQuery;
+
+$userId = $_SESSION['sess_login_userid'];
+
+$user = CareUsersQuery::create()->filterByLoginId($userId)->findOne()->toArray();
+$roleId = $user['RoleId'];
+// $roleId = 15;
+
+$userRole = CareUserRolesQuery::create()->filterByRoleId($roleId)->findOne()->toArray();
+
+$userPermissions = explode(" ", $userRole['Permission']);
+
+
+$userPermissions = str_replace('_a_1_', '', $userPermissions);
+$userPermissions = str_replace('_a_2_', '', $userPermissions);
+$userPermissions = str_replace('_a_3_', '', $userPermissions);
+$userPermissions = str_replace('_a_4_', '', $userPermissions);
+
+$showLabRequest = false;
+$showLabResult = false;
+$showLabBloodResult = false;
+$showLabParameters = false;
+
+
+foreach ($userPermissions as $permission) {
+
+    if ($permission == "labrequest" ) {
+        $showLabRequest = true;
+    }
+
+     if ($permission == "labparametersedit" ) {
+        $showLabParameters = true;
+    }
+
+    if ($permission == "labresultsreadwrite" || $permission == "labresultswrite" || $permission == "labresultsread"  ) {
+        $showLabResult = true;
+    }
+
+    if ($permission == "labbloodwrite" || $permission == "labbloodread") {
+        $showLabBloodResult = true;
+    }
+}
+
+
+if ($userPermissions[0] == "System_Admin" || $userPermissions[0] == "_a_0_all " || $userPermissions[0] == "_a_0_all")  {
+    $showLabRequest = true;
+    $showLabResult = true;
+    $showLabBloodResult = true;
+    $showLabParameters = true;
+}
+
 ?>
 <html>
-    <head>
-        <script language="JavaScript">
-            function open_request()
-            {
-                urlholder = ("\labor_test_request_pass.php?sid=<?php echo $sid . "&lang=" . $lang; ?>&target=admin&subtarget=chemlabor&user_origin=lab");
-                requestwin = window.open(urlholder, "_self");
-            }
 
-        </script>
-    </head>
-    <body>
-        <?php
+<head>
+    <script language="JavaScript">
+    function open_request() {
+        urlholder = ("\labor_test_request_pass.php?sid=<?php echo $sid . " & lang =
+            " . $lang; ?>&target=admin&subtarget=chemlabor&user_origin=lab");
+        requestwin = window.open(urlholder, "_self");
+    }
+    </script>
+</head>
+
+<body>
+    <?php
+
+        $smarty->assign('showLabRequest', $showLabRequest);
+        $smarty->assign('showLabResult', $showLabResult);
+        $smarty->assign('showLabBloodResult', $showLabBloodResult);
+        $smarty->assign('showLabParameters', $showLabParameters);
+
         $smarty->assign('LDMedLabTestRequest', "<a href=\"labor_test_request_pass.php?sid=$sid&lang=$lang&target=chemlabor&case=request&user_origin=lab\">$LDTestRequest</a>");
+
+
         $smarty->assign('LDTestRequestChemLabTxt', $LDTestRequestChemLabTxt);
 
         // $smarty->assign('LDMedLabTestReception',"<a href=\"labor_test_request_pass.php?sid=$sid&lang=$lang&target=admin&subtarget=chemlabor&user_origin=lab\">$LDTestReception</a>");
@@ -130,7 +197,7 @@ require_once($root_path . 'main_theme/topHeader.inc.php');
          */
         $smarty->display('common/mainframe.tpl');
         ?>
-    </body>
+</body>
+
 </html>
 <?php require_once($root_path . 'main_theme/footer.inc.php'); ?>
-
