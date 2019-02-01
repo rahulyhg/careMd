@@ -37,11 +37,12 @@ $lastMonth = date('Y-m-d', strtotime('first day of last month'));
 
 $datefrom = $_GET['from_date']?date('Y-m-d', strtotime($_GET['from_date'])):$lastMonth;
 $dateto = $_GET['to_date']?date('Y-m-d', strtotime($_GET['to_date'])):"";
-$company = $_GET['company']?$_GET['company']:"";
+$company = $_GET['company'];
 $doctor = $_GET['doctor']?$_GET['doctor']:"";
 
 
-$sqlQuery = "SELECT p.article, d.unit_price, d.unit_price_1, d.unit_price_2, d.unit_price_3, d.unit_price_4, d.unit_price_5, d.unit_price_6, d.unit_price_7, d.unit_price_8, d.unit_price_9, d.unit_price_10, d.unit_price_11, p.modify_time, p.prescriber, p.prescribe_date, p.disable_id, p.comment FROM care_encounter_prescription p LEFT JOIN care_tz_drugsandservices d ON d.item_number = p.article_item_number WHERE p.status = 'deleted'";
+$sqlQuery = "SELECT p.article, d.item_id, p.encounter_nr, p.article_item_number, d.unit_price, d.unit_price_1, d.unit_price_2, d.unit_price_3, d.unit_price_4, d.unit_price_5, d.unit_price_6, d.unit_price_7, d.unit_price_8, d.unit_price_9, d.unit_price_10, d.unit_price_11, p.modify_time, p.prescriber, p.prescribe_date, p.disable_id, p.comment FROM care_encounter_prescription p LEFT JOIN care_tz_drugsandservices d ON d.item_id = p.article_item_number WHERE p.status = 'deleted'";
+
 
 if (@$datefrom) {
     $sqlQuery .= " AND p.modify_time >= '$datefrom' " ;
@@ -64,19 +65,41 @@ if (!empty($prescription_info) && $prescription_info->RecordCount()) {
     $prescriptions = $prescription_info->GetArray();
 }
 
-if (@$company) {
+foreach ($prescriptions as $key => $prescription) {
+
+    $insurance_id = 0;
+    $careEncounterSQL = "SELECT pid from care_encounter WHERE encounter_nr = {$prescription['encounter_nr']} LIMIT 1";
+    $careEncounterRow = $db->Execute($careEncounterSQL);
+    if (!empty($careEncounterRow) && $careEncounterRow->RecordCount()) {
+        $patient = $careEncounterRow->FetchRow();
+        $patientId = $patient['pid'];
+    }
+    if (@$patientId) {
+        $carePersonSQL = "SELECT insurance_ID from care_person WHERE pid = {$patientId} LIMIT 1";
+        $carePersonRow = $db->Execute($carePersonSQL);
+
+        if (!empty($carePersonRow) && $carePersonRow->RecordCount()) {
+            $carePerson = $carePersonRow->FetchRow();
+            $insurance_id = $carePerson['insurance_ID'];
+        }
+    }
+    $prescriptions[$key]['insurance_id'] = $insurance_id;
 
     foreach ($insurances as $insurance) {
-        if ($insurance['company_id'] == $company) {
+        if ($insurance['company_id'] == $insurance_id) {
             $priceColumn = $insurance['Fieldname'];
-
-            foreach ($prescriptions as $key => $prescription) {
-                $prescriptions[$key]['unit_price'] = $prescription[$priceColumn];
+            $prescriptions[$key]['unit_price'] = $prescription[$priceColumn];
+            $prescriptions[$key]['insurance_name'] = $insurance['ShowDescription'];
+            $prescriptions[$key]['unit_price'] = $prescription[$priceColumn];
+        }
+        if (!empty($company) || $company_id == 0) {
+            if ($company != $insurance_id) {
+                unset($prescriptions[$key]);
             }
         }
     }
 }
-
+    
 use  CareMd\CareMd\CareUsersQuery;
 use  CareMd\CareMd\CareUserRolesQuery;
 
@@ -201,6 +224,7 @@ if ($userPermissions[0] == "System_Admin" || $userPermissions[0] == "_a_0_all " 
                     <th>SN</th>
                     <th>Prescription Name</th>
                     <th>Prescriber</th>
+                    <th>Insurance</th>
                     <th>Price</th>
                     <th>Prescribe Date</th>
                     <th>Deleted By</th>
@@ -215,6 +239,7 @@ if ($userPermissions[0] == "System_Admin" || $userPermissions[0] == "_a_0_all " 
                         <td><?php echo ++$key ?></td>
                         <td><?php echo $prescription['article'] ?></td>
                         <td><?php echo $prescription['prescriber'] ?></td>
+                        <td><?php echo $prescription['insurance_name'] ?></td>
                         <td class="text-right"><?php echo number_format($prescription['unit_price'], 2) ?></td>
                         <td><?php echo date('d/m/Y', strtotime($prescription['prescribe_date'])) ?></td>
                         <td><?php echo $prescription['disable_id'] ?></td>
