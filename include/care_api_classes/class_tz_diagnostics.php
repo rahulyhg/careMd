@@ -339,6 +339,21 @@ class Diagnostics extends Encounter {
     }
     return $this->rs;
   }
+
+  function GetAllDiagnosisGroupItems () {
+    global $db;
+    $debug=FALSE;
+    ($debug) ? $db->debug=TRUE : $db->debug=FALSE;
+    if ($debug) echo "calling: GetAllDiagnosisGroupItems<br>";
+    $this->sql = "SELECT $this->tbl_groups_code FROM $this->tbl_groups ORDER BY $this->tbl_groups_description ASC";
+    echo $this->sql;
+    $this->rs = $db->Execute($this->sql);
+    if($this->rs!=-1) {
+      //echo $this->rs[0];
+    }
+    return $this->rs;
+  }
+
   //------------------------------------------------------------------------------
   function AddDiagnosisGroupName($group_description) {
     global $db;
@@ -612,14 +627,22 @@ class Diagnostics extends Encounter {
   	global $LDNothingFoundSelectQuicklist,$LDNothingFoundTryFuzzySearch;
     if (empty($id) || $id==-1)
     {
-      echo '<option value="-1">'.$LDNothingFoundSelectQuicklist.'</opion>';
-      return false;
+      // echo '<option value="-1">'.$LDNothingFoundSelectQuicklist.'</opion>';
+      // return false;
+      $this->rs = $this->GetAllDiagnosisGroupItems();
+      while ($this->row_elem = $this->rs->FetchRow()) {
+        echo "<option value=\"".$this->row_elem[0]."\">".$this->get_icd10_description_from_code($this->row_elem[0])." (".$this->row_elem[0].")</option>\n";
+        $counter++;
+      }
+      
+    }else {
+      $this->rs = $this->GetDiagnosisGroupItems($id);
+      while ($this->row_elem = $this->rs->FetchRow()) {
+        echo "<option value=\"".$this->row_elem[0]."\">".$this->get_icd10_description_from_code($this->row_elem[0])." (".$this->row_elem[0].")</option>\n";
+        $counter++;
+      }
     }
-    $this->rs = $this->GetDiagnosisGroupItems($id);
-    while ($this->row_elem = $this->rs->FetchRow()) {
-      echo "<option value=\"".$this->row_elem[0]."\">".$this->get_icd10_description_from_code($this->row_elem[0])." (".$this->row_elem[0].")</option>\n";
-      $counter++;
-    }
+    
     if(!$counter) echo '<option value="-1">'.$LDNothingFoundTryFuzzySearch.'</opion>';
     return true;
   }
