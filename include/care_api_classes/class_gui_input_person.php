@@ -303,6 +303,7 @@ class GuiInputPerson {
                                                  employee_id = '$employee_id',
                                                  allergic = '$allergic',
                                                  allergy = '$allergy',
+                                                 is_foreigner = '$is_foreigner',
                                                  date_update='" . date('Y-m-d H:i:s') . "',";
 
 
@@ -644,6 +645,9 @@ return false;
                 }else if(isAllergic == 1 && d.allergy.value.length <6 ){
                     alert('Please enter allergy details with lengh greater than 6 characters');
                     return false;
+                }else if (d.is_foreigner.value == "") {
+                    alert("<?php echo 'Please Check if is foreigner or not'; ?>");
+                        return false;
                 } else if (d.is_first_reg[0] && d.is_first_reg[1] && !d.is_first_reg[0].checked && !d.is_first_reg[1].checked) {
                 alert("<?php echo $LDPlsSelectIsFirst; ?>");
                         return false;
@@ -1702,6 +1706,18 @@ return false;
           <td colspan=2 class="reg_input">
             <textarea name="allergy" id="allergicd" cols="50" rows="4"><?php echo $allergy; ?></textarea>
           </td>
+        </tr>
+
+         <tr>
+            <td class="reg_item">
+                <FONT SIZE=-1  FACE="Arial">Is Foreigner</td>
+            <td>
+               &nbsp;&nbsp; <input name="is_foreigner" class="is_foreigner" type="radio" value="1"  <?php if ($is_foreigner == "1") echo "checked"; ?>><?php echo $LDYes ?>&nbsp;&nbsp;
+                <input name="is_foreigner" class="is_foreigner" type="radio" value="0"  <?php if ($is_foreigner == "0") echo "checked"; ?>>
+                <?php
+                echo $LDNo;
+                ?>
+            </td>
         </tr>
                         <tr>
                             <td class="reg_item">

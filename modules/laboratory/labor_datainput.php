@@ -644,7 +644,7 @@ while (list($group, $pm) = each($requestData)) {
 
 if ($glob_obj->getConfigValue("restrict_unbilled_items") === "1" && $enc_obj->EncounterClass() === "2" &&  $patient['insurance_ID']==='0') { 
     
-    if ($lab_obj->getLabBillNoByBatch($job_id, $pId) > 0 ) {
+    if ($lab_obj->getPatientLabBillNoByBatch($job_id) > 0 ) {
         echo '<tr>';
         echo '<td colspan="' . COL_MAX . '" bgcolor="#ffffee" class="a10_a"><b>';
         echo $gName->fields['name'];

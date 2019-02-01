@@ -100,4 +100,7 @@ ALTER TABLE `care_test_request_chemlabor_sub` ADD `sort_order` INT NOT NULL DEFA
 --30-01
 ALTER TABLE `care_test_findings_chemlabor_sub` ADD `sort_order` INT NOT NULL DEFAULT '0' AFTER `create_time`;
 
+--01-02
+ALTER TABLE `care_person` ADD `is_foreigner` TINYINT NOT NULL DEFAULT '0' AFTER `allergic`;
+
 

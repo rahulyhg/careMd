@@ -184,6 +184,7 @@ class Person extends Core {
         'addr_citytown_name',
         'allergic',
         'allergy',
+        'is_foreigner',
         'insurance_ID',
         'membership_nr',
         'national_id',

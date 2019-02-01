@@ -1155,6 +1155,26 @@ WHERE encounter_nr='$this->enc_nr' AND status NOT IN
         } // end of if (!empty($batch_nr) && !empty($param_id))
     }
 
+    function getPatientLabBillNoByBatch($batch_nr) {
+        global $db;
+        $debug = FALSE;
+        ($debug) ? $db->debug = TRUE : $db->debug = FALSE;
+        if ($debug)
+            echo "class lab::getLabBillNoByBatch($batch_nr)<br>";
+        if (!empty($batch_nr)) {
+            $this->sql = "SELECT bill_number FROM $this->tb_req_chemlab_sub WHERE batch_nr='" . $batch_nr . "'";
+            if ($debug)
+                echo $this->sql . "<br>";
+            if ($this->result = $db->Execute($this->sql)) {
+                if ($this->row = $this->result->FetchRow()) {
+                    return $this->row['bill_number'];
+                }
+            } 
+        } else {
+            return FALSE;
+        }
+    }
+
 // end of function 
 }
 
