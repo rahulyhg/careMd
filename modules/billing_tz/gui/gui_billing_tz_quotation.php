@@ -66,8 +66,6 @@ if ($billtype == "artndental" && !$createARTQuotation) {
               <td>
               <?php
               $_POST['date_from']=(isset($_POST['date_from']) ? $_POST['date_from'] : null);
-                      
-
               ?>
               FROM DATE: <input name="date_from" class="datepicker" type="date" size=10 maxlength=10 value="<?php echo $_POST['date_from'];?>">
 

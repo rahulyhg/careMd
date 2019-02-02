@@ -119,8 +119,7 @@ if ($userPermissions[0] == "System_Admin" || $userPermissions[0] == "_a_0_all " 
 <head>
     <script language="JavaScript">
     function open_request() {
-        urlholder = ("\labor_test_request_pass.php?sid=<?php echo $sid . " & lang =
-            " . $lang; ?>&target=admin&subtarget=chemlabor&user_origin=lab");
+        urlholder = ("\labor_test_request_pass.php?sid=<?php echo $sid . " & lang =" . $lang; ?>&target=admin&subtarget=chemlabor&user_origin=lab");
         requestwin = window.open(urlholder, "_self");
     }
     </script>

@@ -560,7 +560,8 @@ if(isset($_FILES)) {
         $sheetData = $spreadsheet->getActiveSheet();
         $sheetData->getCell('A1')->setValue('');
         $rows = $sheetData->toArray();
-        $values = $rows[1][10];
+        $values = $rows[1][0];
+
 
         $labResults = [];
         $reqTests = $_COOKIE['testMeasures'];
@@ -575,7 +576,7 @@ if(isset($_FILES)) {
             $values = str_replace("", '', $values);
             $values = str_replace(PHP_EOL, ',', $values);
             $tests = $reqTest = explode(',', $values);
-            $fileBatchNr = $reqTest[10];
+            $fileBatchNr = $reqTest[9];
 
         }
   
