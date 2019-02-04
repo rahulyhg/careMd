@@ -39,8 +39,12 @@ function chkform(d) {
 
 <form name="form" method="get" action="billing_tz_quotation_create.php" onSubmit ="return chkform(this)">
 
+<?php 
+$insuranceId = base64_decode(urldecode($_REQUEST['insurance_id']));
+?>
+
 <table align="center"><tr><td>
-	<?php $bill_obj->ShowPriceList(); ?></td><tr><td align="center">
+	<?php $bill_obj->ShowPriceList($insuranceId); ?></td><tr><td align="center">
 	<input type="submit" name="ok" value="Ok">
 	<input type="hidden" name="namelast" value="<?php echo $_REQUEST['namelast']; ?>">
 	<input type="hidden" name="patient" value="<?php echo $_REQUEST['patient']; ?>">

@@ -576,7 +576,7 @@ if(isset($_FILES)) {
             $values = str_replace("", '', $values);
             $values = str_replace(PHP_EOL, ',', $values);
             $tests = $reqTest = explode(',', $values);
-            $fileBatchNr = $reqTest[9];
+            $fileBatchNr = (int)$reqTest[9];
 
         }
   

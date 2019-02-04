@@ -6059,11 +6059,19 @@ A:visited:hover {color: #cc0033;}
 
         if ($result)
             while ($row = $result->FetchRow()) {
-
                    //check bank reference
                 $sql_bank="SELECT value FROM care_config_global WHERE type='enable_bank_ref'";
                 $result_bank=$db->Execute($sql_bank);
                 $row_bank=$result_bank->FetchRow();
+
+                $isForeignerSQL = "SELECT is_foreigner FROM care_person WHERE pid = {$row['pid']} ";
+                $isForeignerResult = $db->Execute($isForeignerSQL);
+                $isForeignerRow =  $isForeignerResult->FetchRow();
+
+                if (@$isForeignerRow && $isForeignerRow['is_foreigner'] == 1) {
+                    $row['insurance_ID'] = -1;
+                }
+
                 $bank_ref=$row_bank[0];
                 //echo $bank_ref;
                 //end check bank reference 
@@ -6153,7 +6161,7 @@ A:visited:hover {color: #cc0033;}
                 '<a href="../../modules/ambulatory/amb_clinic_discharge_info.php' . URL_APPEND . '&ntid=false&lang=en&target=search&pn=' . $row['encounter_nr'] . '" target="_blank" title="Admission data : Click to show data"><img src="../../gui/img/common/default/pdata.gif" alt="Admission data : Click to show data" width="20" border="0" height="20"></a>'
                 . '</div></td>
 
-                                        <td ' . $BGCOLOR . ' class="td_content"><div align="center"><input type="hidden" name="namelast" value="' . $row['name_last'] . '"><input type="hidden" name="patient" value="' . $_REQUEST['patient'] . '"><input type="hidden" name="namefirst" value="' . ucwords($row['name_first']) . '"><input type="hidden" name="createmode" value="' . $createmode . '"><input type="hidden" name="countpres" value="' . $row['anzahl'] . '"><input type="hidden" name="countrad" value="' . $row['anzahl_rad'] . '"><input type="hidden" name="countlab" value="' . $row['anzahl_lab'] . '"><input type="hidden" value="' . $row['encounter_nr'] . '" name="encounter_nr"><input type="hidden" value="' . $row['pid'] . '" name="pid"><input type="hidden" name="bankref" value="'.$bank_ref.'"><input type="hidden" name="insrname" value="' . $ins_name . '"><input type="hidden" name="insurance_id" value="' . $row['insurance_ID'] . '"><input type="submit" value=">>"></div></td>
+                                        <td ' . $BGCOLOR . ' class="td_content"><div align="center"><input type="hidden" name="namelast" value="' . $row['name_last'] . '"><input type="hidden" name="patient" value="' . $_REQUEST['patient'] . '"><input type="hidden" name="namefirst" value="' . ucwords($row['name_first']) . '"><input type="hidden" name="createmode" value="' . $createmode . '"><input type="hidden" name="countpres" value="' . $row['anzahl'] . '"><input type="hidden" name="countrad" value="' . $row['anzahl_rad'] . '"><input type="hidden" name="countlab" value="' . $row['anzahl_lab'] . '"><input type="hidden" value="' . $row['encounter_nr'] . '" name="encounter_nr"><input type="hidden" value="' . $row['pid'] . '" name="pid"><input type="hidden" name="bankref" value="'.$bank_ref.'"><input type="hidden" name="insrname" value="' . $ins_name . '"><input type="hidden" name="insurance_id" value="' . urlencode(base64_encode($row['insurance_ID'])) . '"><input type="submit" value=">>"></div></td>
                                     </form>
                                     </tr>';
                 $alreadyshown[$row['encounter_nr']] = $row['encounter_nr'];
@@ -7806,23 +7814,29 @@ A:visited:hover {color: #cc0033;}
         }
     }
 
-    function ShowPriceList() {
+    function ShowPriceList($insuranceId) {
         global $db;
         $this->debug = false;
         ($this->debug) ? $db->debug = TRUE : $db->debug = FALSE;
 
         $result = $db->Execute('SELECT * FROM care_tz_drugsandservices_description');
 
-        echo '<table border="0" cellpadding="0" cellspacing="0" width="200"  class="table_content" align="center" >
-                                                                            <tr class="tr_content">
-                                                                                <td colspan="2" align="center" bgcolor="#CC9933" ><font size="2" class="submenu_item">Select Pricelist</font></td></tr>';
-        while ($pricelist = $result->FetchRow()) {
-            
-            echo'<tr><td bgcolor="#FFFF88" >' . $pricelist['ShowDescription'] . ' </td>
-                                                                                <td bgcolor="#FFFF88"><input type="radio" name="unit_price" value="' . $pricelist['ID'] . '"';
-            echo'></td></tr>';
-        }
-        echo '</table></p>';
+        echo '<table border="0" cellpadding="0" cellspacing="0" width="200" class="table_content" align="center">
+            <tr class="tr_content">
+                <td colspan="2" align="center" bgcolor="#CC9933">
+                    <font size="2" class="submenu_item">Select Pricelist</font>
+                </td>
+            </tr>';
+            while ($pricelist = $result->FetchRow()) {
+            $checked = ($insuranceId == $pricelist['company_id'])?"checked":"";
+            echo'<tr>
+                <td bgcolor="#FFFF88">' . $pricelist['ShowDescription'] . ' </td>
+                <td bgcolor="#FFFF88"><input type="radio" '.$checked.' disabled name="unit_price"
+                        value="' . $pricelist['ID'] . '"';
+                    echo'></td>
+            </tr>';
+            }
+            echo '</table></p>';
     }
 
     function ShowPriceListDropDown() {

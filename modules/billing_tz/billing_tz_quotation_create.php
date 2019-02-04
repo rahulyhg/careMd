@@ -39,7 +39,7 @@ Global $company_id;
 $user_origin = 'quotation';
 $clear_bill = $_POST['clear_bill'];
 $balance = $_POST['balance'];
-
+$_POST['insurance'] = base64_decode(urldecode($_POST['insurance']));
 $debug = FALSE;
 ($debug) ? $db->debug = TRUE : $db->debug = FALSE;
 
@@ -61,8 +61,6 @@ if ($task == "insert") {
     if ($debug)
         echo "TASK:INSERT";
     $deletecounter = 0;
-
-
 
     while (list($x, $v) = each($_POST)) {
         
@@ -163,7 +161,6 @@ if ($task == "insert") {
             $comment = $_POST['notes_' . $labtest_nr];
             $user = $_SESSION['sess_user_name'];
 
-
             if ($_POST['modelab_' . $labtest_nr] == 'bill') {
                 $billcounter++;
                 //Okay, this one has to be billed!
@@ -190,6 +187,7 @@ if ($task == "insert") {
                 if ($_POST['insurance'] != 0)
                     $insurance_obj->allocateLaboratoryItemsToinsurance($new_bill_number, $labtest_nr, $_POST['showprice_' . $labtest_nr], $_POST['insurance']);
             }
+
             elseif ($_POST['modelab_' . $labtest_nr] == 'delete') {
                 $deletecounter++;
                 //Hmm, lets kick this one out!
