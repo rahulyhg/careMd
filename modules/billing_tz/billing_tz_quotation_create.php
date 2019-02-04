@@ -39,7 +39,6 @@ Global $company_id;
 $user_origin = 'quotation';
 $clear_bill = $_POST['clear_bill'];
 $balance = $_POST['balance'];
-$_POST['insurance'] = base64_decode(urldecode($_POST['insurance']));
 $debug = FALSE;
 ($debug) ? $db->debug = TRUE : $db->debug = FALSE;
 

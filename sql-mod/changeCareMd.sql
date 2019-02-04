@@ -104,3 +104,6 @@ ALTER TABLE `care_test_findings_chemlabor_sub` ADD `sort_order` INT NOT NULL DEF
 ALTER TABLE `care_person` ADD `is_foreigner` TINYINT NOT NULL DEFAULT '0' AFTER `allergic`;
 ALTER TABLE `care_user_roles` CHANGE `permission` `permission` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
 
+--04-02
+ALTER TABLE `care_test_request_chemlabor_sub` ADD `deleted` TINYINT NOT NULL DEFAULT '0' AFTER `sort_order`;
+

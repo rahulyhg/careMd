@@ -5807,7 +5807,7 @@ A:visited:hover {color: #cc0033;}
                     "		AND (isnull(care_test_request_chemlabor_sub.is_disabled)" .
                     "			OR care_test_request_chemlabor_sub.is_disabled='')" .
                     "			$where_encounter" .
-                    "			ORDER BY care_encounter.encounter_date DESC , care_test_request_chemlabor.encounter_nr ASC";
+                    "			ORDER BY  care_encounter.encounter_date DESC , care_test_request_chemlabor.encounter_nr ASC";
         } else {
             $this->sql = "SELECT $anzahl  	care_test_request_chemlabor.*, " .
                     "							care_test_request_chemlabor_sub.paramater_name, " .

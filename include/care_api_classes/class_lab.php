@@ -659,7 +659,7 @@ job_id='$job_id' AND group_id='$grp_id' AND status NOT IN
         else
             $cond = "batch_nr='$id'";
         $sub = "_sub";
-        $this->sql = "SELECT * FROM $this->tb_req_chemlab$sub  WHERE $cond ORDER BY sort_order";
+        $this->sql = "SELECT * FROM $this->tb_req_chemlab$sub  WHERE $cond AND $this->tb_req_chemlab$sub.deleted = 0 ORDER BY sort_order";
         if ($this->tparams = $db->Execute($this->sql)) {
             if ($this->rec_count = $this->tparams->RecordCount()) {
                 return $this->tparams;
