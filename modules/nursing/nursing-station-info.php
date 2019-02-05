@@ -33,7 +33,6 @@ $rows = 0;
 /* Load the date formatter */
 include_once($root_path . 'include/inc_date_format_functions.php');
 
-
 switch ($mode) {
 
     case 'show': {
@@ -78,6 +77,7 @@ switch ($mode) {
 
                     $ward_obj->updateRoomNumberBeds($dataArrRoomAnzahl);
                 }
+                 // echo "<pre>"; print_r($roomInfoArr);echo "</pre>";die;
                 //update room info
                 foreach ($roomInfoArr as $careRoom => $info) {
 
@@ -98,8 +98,8 @@ switch ($mode) {
                 }
 
                 $breakfile = 'nursing-station-info.php' . URL_APPEND;
-
-                break;
+                header('location:nursing-station-info.php' . URL_REDIRECT_APPEND);
+                exit;
 
                 //exit;
             } else {
@@ -444,9 +444,52 @@ if ($rows == 1) {
         /**
          * show Template
          */
+ ob_start();
+?>
+ <form name="addWardRooms" class="addWardRooms" method="post" action="#">
+            <input type="hidden" name="last_room" value="<?php echo $ward['room_nr_end'] ?>">
+            <input type="hidden" name="ward_nr" value="<?php echo $ward['nr'] ?>">
+            <input type="hidden" name="sid" value="<?php echo $_SESSION['sess_login_userid'] ?>">
+            <input type="hidden" name="ward_id" value="<?php echo $ward['ward_id'] ?>">
+            <input type="number" name="num_rooms" placeholder="Enter No of Rooms" required class="form-control">
+            <button class="btn btn-primary btn-sm" type="submit">Add Room(s)</button>
+        </form>
+        <?php
+        $wardTemp = ob_get_contents();
+        ob_end_clean();
+
+        $smarty->assign('addWardForm', $wardTemp);
+
+
         require_once($root_path . 'main_theme/head.inc.php');
 require_once($root_path . 'main_theme/header.inc.php');
 require_once($root_path . 'main_theme/topHeader.inc.php');
         $smarty->display('common/mainframe.tpl');
         ?>
 <?php require_once($root_path . 'main_theme/footer.inc.php'); ?>
+
+<script>
+
+$(".addWardRooms").submit(function(evt){
+    alert("submitting")
+    evt.preventDefault();
+    var formData = new FormData($(this)[0]);
+    $.ajax({
+       url: 'addWardRooms.php',
+       type: 'POST',
+       data: formData,
+       async: false,
+       cache: false,
+       contentType: false,
+       enctype: 'multipart/form-data',
+       processData: false,
+       success: function (response) {
+         if (response.updated) {
+            window.location.reload();
+         }
+       }
+   });
+   return false;
+ });
+
+</script>

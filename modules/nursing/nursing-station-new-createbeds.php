@@ -110,6 +110,12 @@ if (isset($mode) && $mode == 'save_beds') {
 
 </HEAD>
 
+<?php 
+require_once($root_path . 'main_theme/head.inc.php');
+require_once($root_path . 'main_theme/header.inc.php');
+require_once($root_path . 'main_theme/topHeader.inc.php');
+ ?>
+
 <BODY bgcolor=<?php echo $cfg['body_bgcolor']; ?> onLoad="if (window.focus) window.focus()" topmargin=0 leftmargin=0 marginwidth=0 marginheight=0 
 <?php if (!$cfg['dhtml']) {
     echo 'link=' . $cfg['idx_txtcolor'] . ' alink=' . $cfg['body_alink'] . ' vlink=' . $cfg['idx_txtcolor'];
@@ -205,5 +211,6 @@ if (isset($mode) && $mode == 'save_beds') {
 <?php
 require($root_path . 'include/inc_load_copyrite.php');
 ?>
+<?php require_once($root_path . 'main_theme/footer.inc.php'); ?>
 </BODY>
 </HTML>
