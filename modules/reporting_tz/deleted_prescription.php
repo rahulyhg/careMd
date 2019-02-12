@@ -72,31 +72,40 @@ foreach ($prescriptions as $key => $prescription) {
     $careEncounterRow = $db->Execute($careEncounterSQL);
     if (!empty($careEncounterRow) && $careEncounterRow->RecordCount()) {
         $patient = $careEncounterRow->FetchRow();
+        $prescriptions[$key]['pid'] = $patient['pid'];
         $patientId = $patient['pid'];
     }
     if (@$patientId) {
-        $carePersonSQL = "SELECT insurance_ID from care_person WHERE pid = {$patientId} LIMIT 1";
+        $carePersonSQL = "SELECT insurance_ID, name_first, name_2, name_last, sub_insurance_id from care_person WHERE pid = {$patientId} LIMIT 1";
         $carePersonRow = $db->Execute($carePersonSQL);
 
         if (!empty($carePersonRow) && $carePersonRow->RecordCount()) {
             $carePerson = $carePersonRow->FetchRow();
+            $prescriptions[$key]['patient_name'] = $carePerson['name_first'] . " " . $carePerson['name_2'] . " " . $carePerson['name_last'];
+            $prescriptions[$key]['sub_insurance_id'] = $carePerson['sub_insurance_id'];
             $insurance_id = $carePerson['insurance_ID'];
         }
     }
     $prescriptions[$key]['insurance_id'] = $insurance_id;
 
     foreach ($insurances as $insurance) {
-        if ($insurance['company_id'] == $insurance_id) {
-            $priceColumn = $insurance['Fieldname'];
-            $prescriptions[$key]['unit_price'] = $prescription[$priceColumn];
-            $prescriptions[$key]['insurance_name'] = $insurance['ShowDescription'];
-            $prescriptions[$key]['unit_price'] = $prescription[$priceColumn];
-        }
-        if (!empty($company) || $company_id == 0) {
-            if ($company != $insurance_id && $company !="All") {
-                unset($prescriptions[$key]);
+        if ($prescriptions[$key]['sub_insurance_id'] > 0) {
+            if ($insurance['ID'] == $prescriptions[$key]['sub_insurance_id']) {
+                $priceColumn = $insurance['Fieldname'];
+                $prescriptions[$key]['unit_price'] = $prescription[$priceColumn];
+                $prescriptions[$key]['insurance_name'] = $insurance['ShowDescription'];
+                $prescriptions[$key]['unit_price'] = $prescription[$priceColumn];
+            }
+            
+        }else{
+            if ($insurance['company_id'] == $insurance_id) {
+                $priceColumn = $insurance['Fieldname'];
+                $prescriptions[$key]['unit_price'] = $prescription[$priceColumn];
+                $prescriptions[$key]['insurance_name'] = $insurance['ShowDescription'];
+                $prescriptions[$key]['unit_price'] = $prescription[$priceColumn];
             }
         }
+        
     }
 }
     
@@ -222,6 +231,7 @@ if ($userPermissions[0] == "System_Admin" || $userPermissions[0] == "_a_0_all " 
 
                 <tr>
                     <th>SN</th>
+                    <th>Patient</th>
                     <th>Prescription Name</th>
                     <th>Prescriber</th>
                     <th>Insurance</th>
@@ -237,6 +247,7 @@ if ($userPermissions[0] == "System_Admin" || $userPermissions[0] == "_a_0_all " 
                 <?php foreach ($prescriptions as $key => $prescription): ?>
                     <tr>
                         <td><?php echo ++$key ?></td>
+                        <td><?php echo $prescription['patient_name'] ?></td>
                         <td><?php echo $prescription['article'] ?></td>
                         <td><?php echo $prescription['prescriber'] ?></td>
                         <td><?php echo $prescription['insurance_name'] ?></td>

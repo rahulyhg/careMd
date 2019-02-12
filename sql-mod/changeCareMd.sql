@@ -109,5 +109,4 @@ ALTER TABLE `care_test_request_chemlabor_sub` ADD `deleted` TINYINT NOT NULL DEF
 
 --12-02
 ALTER TABLE `care_person` ADD `sub_insurance_id` INT NOT NULL DEFAULT '0' AFTER `insurance_ID`;
-UPDATE `care_person` SET sub_insurance_id = insurance_ID;
 ALTER TABLE `care_person` DROP `is_foreigner`;
