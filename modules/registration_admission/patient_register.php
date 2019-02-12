@@ -142,3 +142,35 @@ require_once($root_path . 'main_theme/topHeader.inc.php');
         echo StdFooter();
         require_once($root_path . 'main_theme/footer.inc.php');
         ?>
+
+        <script>
+        $('.fundSubCategory').hide();
+
+         var insuranceId = document.getElementById("insurance_ID").value;
+            $.get(
+              "insuranceSubCategories.php",
+              {insuranceId: insuranceId },
+              function(result) {
+                $("#sub_insurance_id").empty();
+                $("#sub_insurance_id").append('<option value="0">-- Select --</option>');
+                if (result.insuranceSubCategories.length >1) {
+                  $('.fundSubCategory').show();
+                  window.showFundSub = true
+                  for (var i = 0, len = result.insuranceSubCategories.length; i < len; i++) {
+                    $("#sub_insurance_id").append(
+                      '<option value="' +
+                        result.insuranceSubCategories[i]["id"] +
+                        '">' +
+                        result.insuranceSubCategories[i]["name"] +
+                        "</option>"
+                    );
+                  }
+                }else{
+                  window.showFundSub = false;
+                  $('.fundSubCategory').hide();
+                }
+              },
+              "json"
+            );
+    
+        </script>

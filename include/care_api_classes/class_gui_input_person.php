@@ -303,7 +303,7 @@ class GuiInputPerson {
                                                  employee_id = '$employee_id',
                                                  allergic = '$allergic',
                                                  allergy = '$allergy',
-                                                 is_foreigner = '$is_foreigner',
+                                                 sub_insurance_id = '$sub_insurance_id',
                                                  date_update='" . date('Y-m-d H:i:s') . "',";
 
 
@@ -618,8 +618,13 @@ return false;
                         d.name_2.focus();
                         return false;
                 } else if (d.insurance_ID.value == "-1") {
-                alert("<?php echo 'Please Enter Insurance Or Cash'; ?>");
+                        alert("<?php echo 'Please Enter Insurance Or Cash'; ?>");
                         d.insurance_ID.focus();
+                        return false;
+                }
+                else if (window.showFundSub && d.sub_insurance_id.value == "0") {
+                        alert("<?php echo 'Please Select Health Sub Fund'; ?>");
+                        d.sub_insurance_id.focus();
                         return false;
                 }//else if(d.membership_nr.value==""){          
                 //      alert("<?php echo 'Please Enter Membership number OR zero for Cash'; ?>");
@@ -645,10 +650,7 @@ return false;
                 }else if(isAllergic == 1 && d.allergy.value.length <6 ){
                     alert('Please enter allergy details with lengh greater than 6 characters');
                     return false;
-                }else if (d.is_foreigner.value == "") {
-                    alert("<?php echo 'Please Check if is foreigner or not'; ?>");
-                        return false;
-                } else if (d.is_first_reg[0] && d.is_first_reg[1] && !d.is_first_reg[0].checked && !d.is_first_reg[1].checked) {
+                }else if (d.is_first_reg[0] && d.is_first_reg[1] && !d.is_first_reg[0].checked && !d.is_first_reg[1].checked) {
                 alert("<?php echo $LDPlsSelectIsFirst; ?>");
                         return false;
         <?php
@@ -1184,7 +1186,7 @@ return false;
                                     }
                                 }
 
-                                echo '<SELECT name="insurance_ID" id="insurance_ID" onChange="check_contract()">';
+                                echo '<SELECT name="insurance_ID" id="insurance_ID" onChange="check_contract(); checkFundSubCategories()">';
                                 echo '<OPTION value="-1" >--select insurance--</OPTION>';
                                 echo '<OPTION value="0" >Cash-Patient</OPTION>';
 
@@ -1202,6 +1204,12 @@ return false;
                                 ?></td>
 
                             <!-- ******************************************expire date start here*****************************************************************************-->
+                        <tr class="fundSubCategory">
+                          <td class="reg_item"><font SIZE=-1  FACE="Arial"> Health Sub Fund:</font></td>
+                          <td class="reg_input">
+                            <SELECT name="sub_insurance_id" id="sub_insurance_id">
+                          </td>
+                        </tr>
 
                         <tr id="expired_row" style="display: none;">
 
@@ -1708,17 +1716,6 @@ return false;
           </td>
         </tr>
 
-         <tr>
-            <td class="reg_item">
-                <FONT SIZE=-1  FACE="Arial">Is Foreigner</td>
-            <td>
-               &nbsp;&nbsp; <input name="is_foreigner" class="is_foreigner" type="radio" value="1"  <?php if ($is_foreigner == "1") echo "checked"; ?>><?php echo $LDYes ?>&nbsp;&nbsp;
-                <input name="is_foreigner" class="is_foreigner" type="radio" value="0"  <?php if ($is_foreigner == "0") echo "checked"; ?>>
-                <?php
-                echo $LDNo;
-                ?>
-            </td>
-        </tr>
                         <tr>
                             <td class="reg_item">
                                 <FONT SIZE=-1  FACE="Arial" ><FONT  SIZE=2  FACE="Arial"><font color=#ff0000><?php echo $LDRegBy ?></font>
@@ -1787,3 +1784,38 @@ return false;
 
 // end of class
             ?>
+
+
+<script>
+  window.showFundSub = false;
+
+  function checkFundSubCategories() {
+    var insuranceId = document.getElementById("insurance_ID").value;
+    $.get(
+      "insuranceSubCategories.php",
+      {insuranceId: insuranceId },
+      function(result) {
+        $("#sub_insurance_id").empty();
+        $("#sub_insurance_id").append('<option value="0">-- Select --</option>');
+        if (result.insuranceSubCategories.length >1) {
+          $('.fundSubCategory').show();
+          window.showFundSub = true
+          for (var i = 0, len = result.insuranceSubCategories.length; i < len; i++) {
+            $("#sub_insurance_id").append(
+              '<option value="' +
+                result.insuranceSubCategories[i]["id"] +
+                '">' +
+                result.insuranceSubCategories[i]["name"] +
+                "</option>"
+            );
+          }
+        }else{
+          window.showFundSub = false;
+          $('.fundSubCategory').hide();
+        }
+      },
+      "json"
+    );
+  }
+
+</script>

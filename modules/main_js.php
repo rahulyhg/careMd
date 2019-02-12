@@ -202,9 +202,7 @@ function showDatepicker(){
 function setSelectedBloodGroup() {
   var selectedBgroup = $('#blood_group_id').find(":selected").text();
 
-   $.get(
-        'bloodGroupOrder.php',
-        {group_id: selectedBgroup},
+   $.get('bloodGroupOrder.php', {group_id: selectedBgroup},
         function(result) {
           $("#order_test_group").empty();
           $("#order_test_group").append('<option value="0">-- Select --</option>');
