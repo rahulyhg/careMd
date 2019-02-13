@@ -32,7 +32,6 @@ $rows = 0;
 
 /* Load the date formatter */
 include_once($root_path . 'include/inc_date_format_functions.php');
-
 switch ($mode) {
 
     case 'show': {

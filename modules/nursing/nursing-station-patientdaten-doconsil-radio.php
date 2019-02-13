@@ -4,8 +4,6 @@ error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
 
-$pageName = "Radiology";
-
 /**
  * CARE2X Integrated Hospital Information System version deployment 1.1 (mysql) 2004-01-11
  * GNU General Public License
@@ -115,6 +113,9 @@ if ($enc_obj->getEncounterNotes($pn)) {
 //    print_r($enc_notes);
 }
 
+if (@$_POST['clinical_info1']) {
+    $_POST['clinical_info'] = $_POST['clinical_info1'];
+}
 
 switch ($mode) {
     case 'save':
@@ -194,7 +195,8 @@ switch ($mode) {
 			history,
 			create_id,
 			create_time,
-			results)
+			results,
+            clinical_info)
 			VALUES
 			(
 			'" . $batch_nr . "','" . $pn . "','" . $dept_nr . "',
@@ -205,7 +207,8 @@ switch ($mode) {
 			'Create: " . date('Y-m-d H:i:s') . " = " . $_SESSION['sess_user_name'] . "\n',
 			'" . $_SESSION['sess_user_name'] . "',
 			'" . date('YmdHis') . "',
-			''
+			'',
+            '".$_POST['clinical_info']."'
 			)";
 
 
@@ -239,9 +242,7 @@ switch ($mode) {
 										  mammograph='" . $mammograph . "', mrt='" . $mrt . "', nuclear='" . $nuclear . "',
 										  if_patmobile='" . $if_patmobile . "', if_allergy='" . $if_allergy . "',
 										  if_hyperten='" . $if_hyperten . "', if_pregnant='" . $if_pregnant . "',
-										  clinical_info='', "
-                . "                                                                   test_request='" . htmlspecialchars($test_request) . "',
-										  send_date='" . formatDate2Std($send_date, $date_format) . "',
+										  clinical_info='".$_POST['clinical_info']."', " . "test_request='" . htmlspecialchars($test_request) . "', send_date='" . formatDate2Std($send_date, $date_format) . "',
 										  send_doctor='" . htmlspecialchars($send_doctor) . "', status='" . $status . "',
 										  history=" . $core->ConcatHistory('Update: ' . date('Y-m-d H:i:s') . ' = ' . $_SESSION['sess_user_name'] . '\n') . ",
 											bill_number='" . $bill_nr . "',
@@ -414,12 +415,11 @@ ob_start();
             d.number_of_tests.focus();
             return false;
         }
-//        else if ((d.clinical_info.value == '') || (d.clinical_info.value == ' '))
-//        {
-//            alert("<?php // echo $LDPlsEnterClinicalInfo   ?>");
-//            d.clinical_info.focus();
-//            return false;
-//        } 
+       else if ((d.clinical_info.value == ''))
+       {
+           alert("<?php echo $LDPlsEnterClinicalInfo   ?>");
+           return false;
+       } 
         else if ((d.send_doctor.value == '') || (d.send_doctor.value == ' '))
         {
             alert("<?php echo $LDPlsEnterDoctorName ?>");
@@ -506,7 +506,7 @@ ob_start();
             <?php
         }
         ?> <!--  outermost table creating form border -->
-        <table border=0 bgcolor="#000000" cellpadding=1 cellspacing=0>
+        <table border=0 bgcolor="#000000" cellpadding=1 cellspacing=0 style="position: relative" >
             <tr>
                 <td>
 
@@ -514,7 +514,7 @@ ob_start();
                         <tr>
                             <td>
 
-                                <table cellpadding=0 cellspacing=1 border=0 width=760>
+                                <table cellpadding=0 cellspacing=1 border=0 width=760 >
                                     <tr valign="top">
                                         <td bgcolor="#ffffff"><?php
                                             /* echo '
@@ -646,19 +646,51 @@ ob_start();
                                                 </tr>
                                             </table>							</td>
                                     </tr>
-                                    <tr bgcolor="<?php echo $bgc1 ?>">
-                                        <td colspan=2>
-                                            <div class=fva2_ml10><?php echo $LDClinicalInfo ?>:<br>
-                                                <textarea name="clinical_info" cols=110 rows=12 wrap="physical" readonly="readonly"><?php
-//                                                    if (!($edit_form || $read_form) && !$stored_request['clinical_info']) {
-                                                    echo stripslashes($enc_notes['notes']);
-//                                                    } else {
-//                                                        echo stripslashes($stored_request['clinical_info']);
-//                                                    }
-                                                    ?></textarea>
 
-                                            </div>							</td>
-                                    </tr>
+                                    <?php 
+                                    $enableUpdate = 0;
+                                    global $db;
+                                     $sql = "Select `value` FROM `care_config_global` WHERE `type` = 'hospital_numbers_to_display'";
+                                        $dc = $db->Execute($sql);
+
+                                        # if have data
+                                        if ($row = $dc->FetchRow())
+                                        $numbers = explode("|", $row[0]);
+                                        $enableUpdate = $numbers[12];
+
+                                    ?>
+                                    <?php if ($enableUpdate == 1): ?>
+                                        <tr bgcolor="<?php echo $bgc1 ?>">
+                                            <td colspan=2>
+                                                <div class=fva2_ml10><?php echo $LDClinicalInfo ?>:<br>
+                                                    <span id="defaultdata" style="display: none;" >
+                                                        <textarea name="clinical_info" cols=110 rows=12 wrap="physical" ><?php                              
+                                                        echo stripslashes($enc_notes['notes']);
+                                                        ?></textarea>
+                                                   </span>
+                                                    <span id="nodefaultdata">
+                                                        <textarea name="clinical_info1" cols=110 rows=12 wrap="physical" ></textarea>
+
+                                                    </span>
+                                                   
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                    <?php else: ?>
+                                        <tr bgcolor="<?php echo $bgc1 ?>">
+                                            <td colspan=2>
+                                                <div class=fva2_ml10><?php echo $LDClinicalInfo ?>:<br>
+                                                    <textarea name="clinical_info" cols=110 rows=12 wrap="physical" readonly="readonly"><?php                              
+                                                        echo stripslashes($enc_notes['notes']);
+                                                        ?></textarea>
+
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        
+                                    <?php endif ?>
+                                    
 
                                     <!-- 
 echo '<tr bgcolor="<?php echo $bgc1 ?>">
@@ -726,7 +758,6 @@ echo '<tr bgcolor="<?php echo $bgc1 ?>">
 
 
 
-
         <?php
         if ($edit) {
 
@@ -740,7 +771,11 @@ echo '<tr bgcolor="<?php echo $bgc1 ?>">
         <?php
     }
     ?>
+
 </ul>
+<?php if ($enableUpdate == 1): ?>
+   <button class="btn btn-primary btn-sm" onclick="copyPatientNote()" style="position: absolute; top: 420px; right: 30px;">Copy from patient history</button> 
+<?php endif ?>
 
 <?php
 $sTemp = ob_get_contents();
@@ -760,3 +795,11 @@ require_once($root_path . 'main_theme/topHeader.inc.php');
 $smarty->display('common/mainframe.tpl');
 ?>
 <?php require_once($root_path . 'main_theme/footer.inc.php'); ?>
+
+<script>
+    function copyPatientNote() {
+        $("#defaultdata").show()
+        $("#nodefaultdata").remove()
+    }
+    
+</script>

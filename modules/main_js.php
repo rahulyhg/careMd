@@ -217,7 +217,11 @@ function setSelectedBloodGroup() {
         "json");
 
 }
+
+
 var selectedBgroup = $('#blood_group_id').find(":selected").text();
+
+if (selectedBgroup) {
 $.get(
   'bloodGroupOrder.php',
   {group_id: selectedBgroup},
@@ -233,6 +237,8 @@ $.get(
     }                       
   },
   "json");
+  
+}
 
 <?php if($hospitalCode): ?>
 function updateNHIFPrices() {
