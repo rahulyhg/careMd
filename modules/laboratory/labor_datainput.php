@@ -639,6 +639,7 @@ if (@$rejected && $rejected == 1) {
 
 // MINOR cHANGES
 
+
 while (list($group, $pm) = each($requestData)) {
 
     $gName = $lab_obj->getGroupName($group);

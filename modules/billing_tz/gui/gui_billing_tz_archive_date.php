@@ -1,3 +1,4 @@
+<?php $billing_tz->Display_Header($LDBillingArchive,'',''); ?>
 
 <?php
 

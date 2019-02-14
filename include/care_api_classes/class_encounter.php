@@ -789,7 +789,7 @@ class Encounter extends Notes {
             return FALSE;
         $this->sql = "SELECT e.*, p.pid, p.selian_pid,lc.locationname as location, p.title, UPPER(p.name_last) as name_last, CONCAT(p.name_first,' ', p.name_2) AS name_first, p.date_birth, p.sex,
 									p.addr_str,p.addr_str_nr,p.addr_zip, p.blood_group,p.name_maiden,
-									p.photo_filename, t.name AS citytown_name,p.death_date
+									p.photo_filename, t.name AS citytown_name,p.death_date, p.insurance_ID
 							FROM $this->tb_enc AS e LEFT JOIN $this->tb_locations AS lc
                              ON e.pharmacy=lc.loccode,
 									 $this->tb_person AS p
