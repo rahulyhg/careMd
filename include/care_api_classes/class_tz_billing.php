@@ -6037,7 +6037,6 @@ A:visited:hover {color: #cc0033;}
     //------------------------------------------------------------------------------
 
     function ShowNewQuotations($in_outpatient, $sid,$date_from,$date_to) {
-
         global $db;
         $counter = 0;
         $color_change = FALSE;
@@ -6064,13 +6063,6 @@ A:visited:hover {color: #cc0033;}
                 $result_bank=$db->Execute($sql_bank);
                 $row_bank=$result_bank->FetchRow();
 
-                $isForeignerSQL = "SELECT is_foreigner FROM care_person WHERE pid = {$row['pid']} ";
-                $isForeignerResult = $db->Execute($isForeignerSQL);
-                $isForeignerRow =  $isForeignerResult->FetchRow();
-
-                if (@$isForeignerRow && $isForeignerRow['is_foreigner'] == 1) {
-                    $row['insurance_ID'] = -1;
-                }
 
                 $bank_ref=$row_bank[0];
                 //echo $bank_ref;
@@ -7814,12 +7806,12 @@ A:visited:hover {color: #cc0033;}
         }
     }
 
-    function ShowPriceList($insuranceId) {
+    function ShowPriceList($insuranceId, $pid) {
         global $db;
         $this->debug = false;
         ($this->debug) ? $db->debug = TRUE : $db->debug = FALSE;
 
-        $result = $db->Execute('SELECT * FROM care_tz_drugsandservices_description');
+        $result = $db->Execute('SELECT * FROM care_tz_drugsandservices_description ORDER BY ID desc');
 
         echo '<table border="0" cellpadding="0" cellspacing="0" width="200" class="table_content" align="center">
             <tr class="tr_content">
@@ -7828,7 +7820,17 @@ A:visited:hover {color: #cc0033;}
                 </td>
             </tr>';
             while ($pricelist = $result->FetchRow()) {
-            $checked = ($insuranceId == $pricelist['company_id'])?"checked":"";
+
+                $multiInsuranceSQL = "SELECT sub_insurance_id FROM care_person WHERE pid = {$pid}";
+                $multiInsuranceResult = $db->Execute($multiInsuranceSQL);
+                $multiInsuranceRow =  $multiInsuranceResult->FetchRow();
+
+                if (@$multiInsuranceRow && $multiInsuranceRow['sub_insurance_id'] > 0) {
+                    $checked = ($multiInsuranceRow['sub_insurance_id'] == $pricelist['ID'])?"checked":"";
+                }else{
+                    $checked = ($insuranceId == $pricelist['company_id'])?"checked":"";
+                }
+
             echo'<tr>
                 <td bgcolor="#FFFF88">' . $pricelist['ShowDescription'] . ' </td>
                 <td bgcolor="#FFFF88"><input type="radio" '.$checked.' disabled name="unit_price"

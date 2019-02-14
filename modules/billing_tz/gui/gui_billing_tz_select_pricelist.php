@@ -41,10 +41,11 @@ function chkform(d) {
 
 <?php 
 $insuranceId = base64_decode(urldecode($_REQUEST['insurance_id']));
+
 ?>
 
 <table align="center"><tr><td>
-	<?php $bill_obj->ShowPriceList($insuranceId); ?></td><tr><td align="center">
+	<?php $bill_obj->ShowPriceList($insuranceId, $_REQUEST['pid']); ?></td><tr><td align="center">
 	<input type="submit" name="ok" value="Ok">
 	<input type="hidden" name="namelast" value="<?php echo $_REQUEST['namelast']; ?>">
 	<input type="hidden" name="patient" value="<?php echo $_REQUEST['patient']; ?>">
@@ -58,7 +59,6 @@ $insuranceId = base64_decode(urldecode($_REQUEST['insurance_id']));
 	<input type="hidden" name="pid" value="<?php echo $_REQUEST['pid']; ?>"></td></tr>
 </table>
 </form>
-
 <?php $billing_tz->Display_Footer('Select Pricelist', '', '','billing_create2.php','Billing :: Create Quotation'); ?>
 		
 <?php $billing_tz->Display_Credits(); ?>
