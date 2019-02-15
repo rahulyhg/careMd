@@ -7827,18 +7827,29 @@ A:visited:hover {color: #cc0033;}
 
                 if (@$multiInsuranceRow && $multiInsuranceRow['sub_insurance_id'] > 0) {
                     $checked = ($multiInsuranceRow['sub_insurance_id'] == $pricelist['ID'])?"checked":"";
+                    $checkedPriceList = $pricelist['ID'];
                 }else{
                     $checked = ($insuranceId == $pricelist['company_id'])?"checked":"";
+                    $checkedPriceList = $pricelist['ID'];
                 }
+
 
             echo'<tr>
                 <td bgcolor="#FFFF88">' . $pricelist['ShowDescription'] . ' </td>
                 <td bgcolor="#FFFF88"><input type="radio" '.$checked.' disabled name="unit_price"
                         value="' . $pricelist['ID'] . '"';
-                    echo'></td>
-            </tr>';
+                    echo'></td>';
+                    if ($checked == "checked") {
+                        echo '';
+                    }
+            echo '</tr>';
             }
-            echo '</table></p>';
+            echo '</table>';
+
+            echo  '<input type="hidden" name="unit_price" value="'.$checkedPriceList.'"';
+
+           echo '</p>';
+           
     }
 
     function ShowPriceListDropDown() {
