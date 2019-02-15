@@ -1,29 +1,863 @@
-FROM:,"01.Jan.2019 00:00:00",TO:,"09.Jan.2019 23:59:59","ALL CUSTOMERS"
+FROM:,"01.Jan.2019 00:00:00",TO:,"01.Feb.2019 23:59:59","ALL CUSTOMERS"
 "Billed Date","Admission date",Patient/ID,"Birth Date","File NR",Membership_NR,Form_NR,,Description,Category,"No.Of Items",Price,Deposit
-09.Jan.2019,09.Jan.2019,"Mbwana Mbwana",01.Jul.1987,2,,,,CONS-GENERAL,SERVICE,1,10000,Null
+21.Jan.2019,18.Jan.2019,"MATHIAS PASCHALINA",10.Oct.1985,10724,102801171394,,,"NEW FILE",SERVICE,1,5000,Null
 " "," "," "," "," "," "," "," "," "," "," "," "," "
-09.Jan.2019,09.Jan.2019,"Mbwana Mbwana",01.Jul.1987,2,,,DRG0227,"Acetylsalicylic Acid Tabs (Low-Dose Aspirin) 75mg",DRUG,4,800,Null
-09.Jan.2019,09.Jan.2019,"Mbwana Mbwana",01.Jul.1987,2,,,,HVS,"LAB TEST",1,10000,Null
+21.Jan.2019,21.Jan.2019,"LUKUMAY SIFAEL",01.Jul.1931,1077,,,,cons-marudio,SERVICE,1,2000,Null
 " "," "," "," "," "," "," "," "," "," "," "," "," "
-09.Jan.2019,09.Jan.2019,"Mboya Aika",01.Jul.1986,3,456565454,,,CONS-GENERAL,SERVICE,1,2000,Null
+21.Jan.2019,21.Jan.2019,"MOLLEL NESERIAN",01.Jul.1984,10745,,,,"NEW FILE",SERVICE,1,5000,Null
 " "," "," "," "," "," "," "," "," "," "," "," "," "
-09.Jan.2019,09.Jan.2019,"Mboya Aika",01.Jul.1986,3,456565454,,DRG0021,"Artemether Lumefantrine tabs(ALU CATII) 20/120",DRUG,30,36000,Null
-09.Jan.2019,09.Jan.2019,"Mboya Aika",01.Jul.1986,3,456565454,,DRG0412,"paracetamol IV 10mg/ml (100ml)",DRUG,3,45000,Null
-09.Jan.2019,09.Jan.2019,"Mboya Aika",01.Jul.1986,3,456565454,,,B/S,"LAB TEST",1,2000,Null
-09.Jan.2019,09.Jan.2019,"Mboya Aika",01.Jul.1986,3,456565454,,,"mRDT Test","LAB TEST",1,2000,Null
-09.Jan.2019,09.Jan.2019,"Mboya Aika",01.Jul.1986,3,456565454,,,"Urine analysis","LAB TEST",1,2000,Null
+21.Jan.2019,21.Jan.2019,"LAIZER REHEMA",01.Mar.1960,10746,402401255953,,,"NEW FILE",SERVICE,1,5000,Null
 " "," "," "," "," "," "," "," "," "," "," "," "," "
-09.Jan.2019,09.Jan.2019,"Mboya Aika",01.Jul.1986,3,456565454,,,CHEST,RADIOLOGY,1,10000,Null
-09.Jan.2019,09.Jan.2019,"Mboya Aika",01.Jul.1986,3,456565454,,,CONS-GENERAL,SERVICE,1,2000,Null
+21.Jan.2019,21.Jan.2019,"SEOK KIM",01.Jul.1984,3175,,,,cons-marudio,SERVICE,1,2000,Null
 " "," "," "," "," "," "," "," "," "," "," "," "," "
-09.Jan.2019,09.Jan.2019,"Mbwana Mbwana",01.Jul.1987,2,,,,CONS-GENERAL,SERVICE,1,10000,Null
+21.Jan.2019,21.Jan.2019,"LAIZER LOMNYAKI",01.Jul.1983,7058,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"PARK YESEO",11.Aug.2015,6357,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"KIVUYO BARAKA",20.Oct.2010,10747,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"MOLLEL JOYCE",16.Apr.1968,10748,4032009483359,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"MOLLEL JOYCE",16.Apr.1968,10748,4032009483359,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"WASHIMA BELINDA",21.Sep.2011,10749,302500550418,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"LUKUMAY NASERIAN",01.Jul.1979,6290,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"MSENGI ARON",30.May.1986,6824,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"RAMADHANI KURUSUMU ",07.Dec.1997,10743,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"KURUBONE THEODOLA",23.Dec.1998,10744,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"MOLLEL JOHN",01.Jul.1956,6103,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"MWENDA YUSUPH",18.Jul.1999,10460,,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"LYIMO GIFT",23.Jan.1982,10750,01-10132838,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"MOLLEL NATANGAMWAKI",01.Jul.1974,10751,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"MMBWAMBO MARY",17.Dec.1992,10752,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"SAITOBIZK ESTHER",24.Apr.1996,10753,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"MELEJI REBEKA",15.Apr.1995,10754,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"MKWIZU TRIFONIA",24.Dec.1968,10265,11400778,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"MOLLEL AMINIEL",05.Apr.2014,10756,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"HAUN ESTHER",21.Jul.2012,10757,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"KASHINDI ELVIS",01.Jan.1993,9243,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"BAKUNDA OMEGA",28.May.2018,9979,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+21.Jan.2019,21.Jan.2019,"NYERERE AGNES",21.Nov.1994,10758,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"NANYARO JAILETH",12.Aug.1992,10759,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"NANYARO CAROLINE",30.Jun.2000,10017,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"BAHERANA SUZIE",24.Dec.1999,10258,05-8057907,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"KATUBA THELEZA",07.Aug.1999,10760,305400521981,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"OGUNYA LETICIA",12.Feb.1999,10761,03-11229559,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"ISSA ASIA",29.Nov.1999,10762,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"LYIMO SIAH",12.Dec.2000,10763,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"SARAKNYA MARY",02.Feb.1983,10764,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"BAYO CHRISTOPHER",25.Dec.1988,10765,,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"LAIZERE MALTINA",02.Aug.1978,10766,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"KINGU UPENDO",01.Jul.1965,5297,,,,cons-investigation-only,SERVICE,1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"LAIZER JOSEPH",01.Jan.1942,9787,,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"MOLLEL TOIPOI",01.Jul.1995,10767,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"LAIZER BAHATI",01.Jul.2000,8120,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"GEYASH AHLAM",18.Jan.1995,10768,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"MUSHI IVAN",28.Aug.2018,10769,305500754052,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"SENGO DENICE",13.Mar.2012,10770,303100155113,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"LOTHA ELIZABETH",28.Dec.1990,10771,,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"MOLLEL LONINGO",01.Jul.1959,10772,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"PHILEMON MARY ",01.Jan.1980,3590,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"RINGI LEONARD",07.Jan.1990,10697,,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"LUKUMAY SAIKOYANI",01.Jul.1930,1000,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"PALANJO EKAEL",22.May.1954,7541,,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+22.Jan.2019,22.Jan.2019,"BAHERANA SUZIE",24.Dec.1999,10258,05-8057907,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"KISILA ZAINAB",24.Jun.1966,450,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"FUSA SALIM ",23.Mar.1993,10775,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"TESHA ANOLD",06.Jun.1999,10776,,,," CBC","LAB TEST",1,6000,Null
+23.Jan.2019,23.Jan.2019,"TESHA ANOLD",06.Jun.1999,10776,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+23.Jan.2019,23.Jan.2019,"TESHA ANOLD",06.Jun.1999,10776,,,,"mRDT Test","LAB TEST",1,0,Null
+23.Jan.2019,23.Jan.2019,"TESHA ANOLD",06.Jun.1999,10776,,,PMJ212,"Griseofulvin tabs 500mg",DRUG,28,8400,Null
+23.Jan.2019,23.Jan.2019,"TESHA ANOLD",06.Jun.1999,10776,,,PMJ164,"WHITIFIELD (Benzoic Acid 6% and Salicyclic acid 3% )",DRUG,3,6000,Null
+23.Jan.2019,23.Jan.2019,"TESHA ANOLD",06.Jun.1999,10776,,,PMJ448,"(amoxicillin500mg+clavulanate125mg) (RAPICLAV)",DRUG,14,11200,Null
+23.Jan.2019,23.Jan.2019,"TESHA ANOLD",06.Jun.1999,10776,,,," HIV  SCREENING","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"TESHA ANOLD",06.Jun.1999,10776,,,,"mRDT Test","LAB TEST",1,2000,Null
+23.Jan.2019,23.Jan.2019,"TESHA ANOLD",06.Jun.1999,10776,,,," CBC","LAB TEST",1,6000,Null
+23.Jan.2019,23.Jan.2019,"TESHA ANOLD",06.Jun.1999,10776,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+23.Jan.2019,23.Jan.2019,"TESHA ANOLD",06.Jun.1999,10776,,,," HIV  SCREENING","LAB TEST",1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"TESHA ANOLD",06.Jun.1999,10776,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"FUSA SALIM ",23.Mar.1993,10775,,,,"KNEE XRAY",RADIOLOGY,1,20000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"FUSA SALIM ",23.Mar.1993,10775,,,,"KNEE XRAY",RADIOLOGY,1,20000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"FUSA SALIM ",23.Mar.1993,10775,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"KISILA ZAINAB",24.Jun.1966,450,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"KISILA ZAINAB",24.Jun.1966,450,,,,"GLUCOSE FASTING","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"KISILA ZAINAB",24.Jun.1966,450,,,,"GLUCOSE FASTING","LAB TEST",1,2500,Null
+23.Jan.2019,23.Jan.2019,"KISILA ZAINAB",24.Jun.1966,450,,,PMJ290,"Omeprazole Caps 20mg",DRUG,30,3000,Null
+23.Jan.2019,23.Jan.2019,"KISILA ZAINAB",24.Jun.1966,450,,,PMJ178,"Captopril tabs 25mg",DRUG,60,12000,Null
+23.Jan.2019,23.Jan.2019,"KISILA ZAINAB",24.Jun.1966,450,,,PMJ190,"Chlorpropamide tabs (DIABENESE) 250mg",DRUG,30,4500,Null
+23.Jan.2019,23.Jan.2019,"KISILA ZAINAB",24.Jun.1966,450,,,PMJ234,"Metformin Tabs 500mg",DRUG,60,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"TEMU ROSE",01.Jul.1974,10777,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"TEMU ROSE",01.Jul.1974,10777,,,,"GLUCOSE RANDOM","LAB TEST",1,2500,Null
+23.Jan.2019,23.Jan.2019,"TEMU ROSE",01.Jul.1974,10777,,,," UPT","LAB TEST",1,2500,Null
+23.Jan.2019,23.Jan.2019,"TEMU ROSE",01.Jul.1974,10777,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+23.Jan.2019,23.Jan.2019,"TEMU ROSE",01.Jul.1974,10777,,,," CBC","LAB TEST",1,6000,Null
+23.Jan.2019,23.Jan.2019,"TEMU ROSE",01.Jul.1974,10777,,,," BRUCELLA TEST  SCREENING","LAB TEST",1,5000,Null
+23.Jan.2019,23.Jan.2019,"TEMU ROSE",01.Jul.1974,10777,,,,"WIDAL TEST ","LAB TEST",1,5000,Null
+23.Jan.2019,23.Jan.2019,"TEMU ROSE",01.Jul.1974,10777,,,," STOOL MICROSCOPY","LAB TEST",1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"TEST TEST",01.Jul.1967,101,,,,"ANKLE XRAY",RADIOLOGY,1,20000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"TEST TEST",01.Jul.1967,101,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"HAMOUD HEMED",01.Jul.1943,10778,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MUSHI PENDO",29.Feb.1996,10779,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MUSHI PENDO",29.Feb.1996,10779,,,," CBC","LAB TEST",1,6000,Null
+23.Jan.2019,23.Jan.2019,"MUSHI PENDO",29.Feb.1996,10779,,,,"mRDT Test","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MUSHI PENDO",29.Feb.1996,10779,,,PMJ280,"Amoxicilline Caps 250mg",DRUG,30,3000,Null
+23.Jan.2019,23.Jan.2019,"MUSHI PENDO",29.Feb.1996,10779,,,PMJ116,"Mucolyn cough syrup (Adult) ",DRUG,2,7000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"KIVUYO CLARA",01.Jul.2010,6362,,,," CBC","LAB TEST",1,6000,Null
+23.Jan.2019,23.Jan.2019,"KIVUYO CLARA",01.Jul.2010,6362,,,,"mRDT Test","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"KIVUYO CLARA",01.Jul.2010,6362,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"KIVUYO CLARA",01.Jul.2010,6362,,,PMJ369,"Ciprofloxacin Eye Drops (bottle) 5mls",DRUG,3,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MADODO SUZAN",01.Jan.1998,9389,,,PMJ202,"Diclofenac Tabs 50mg",DRUG,15,1500,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MADODO SUZAN",01.Jan.1998,9389,,,,"mRDT Test","LAB TEST",1,0,Null
+23.Jan.2019,23.Jan.2019,"MADODO SUZAN",01.Jan.1998,9389,,,," CBC","LAB TEST",1,6000,Null
+23.Jan.2019,23.Jan.2019,"MADODO SUZAN",01.Jan.1998,9389,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MADODO SUZAN",01.Jan.1998,9389,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MOLLEL JOSEPH",24.Oct.1963,10676,402601731039,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MINDE MARY",01.Jul.1980,684,,,,"mRDT Test","LAB TEST",1,0,Null
+23.Jan.2019,23.Jan.2019,"MINDE MARY",01.Jul.1980,684,,,," CBC","LAB TEST",1,6000,Null
+23.Jan.2019,23.Jan.2019,"MINDE MARY",01.Jul.1980,684,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+23.Jan.2019,23.Jan.2019,"MINDE MARY",01.Jul.1980,684,,,,"WIDAL TEST ","LAB TEST",1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MINDE MARY",01.Jul.1980,684,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MOLLEL CHERRY",04.Nov.2016,9052,,,,"mRDT Test","LAB TEST",1,0,Null
+23.Jan.2019,23.Jan.2019,"MOLLEL CHERRY",04.Nov.2016,9052,,,," CBC","LAB TEST",1,6000,Null
+23.Jan.2019,23.Jan.2019,"MOLLEL CHERRY",04.Nov.2016,9052,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MOLLEL CHERRY",04.Nov.2016,9052,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MOHAMED AZIGAND",19.Nov.2009,10780,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MOHAMED AZIGAND",19.Nov.2009,10780,,,," CBC","LAB TEST",1,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MOHAMED EZGAND",01.Jul.1952,10666,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MOHAMED EZGAND",01.Jul.1952,10666,,,PMJ290,"Omeprazole Caps 20mg",DRUG,14,1400,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"LUKUMAY BARICK",23.Jan.2001,10781,,,," HIV  SCREENING","LAB TEST",1,0,Null
+23.Jan.2019,23.Jan.2019,"LUKUMAY BARICK",23.Jan.2001,10781,,,," BRUCELLA TEST  SCREENING","LAB TEST",1,5000,Null
+23.Jan.2019,23.Jan.2019,"LUKUMAY BARICK",23.Jan.2001,10781,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+23.Jan.2019,23.Jan.2019,"LUKUMAY BARICK",23.Jan.2001,10781,,,,"mRDT Test","LAB TEST",1,0,Null
+23.Jan.2019,23.Jan.2019,"LUKUMAY BARICK",23.Jan.2001,10781,,,," CBC","LAB TEST",1,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"LUKUMAY BARICK",23.Jan.2001,10781,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"KIVUYO NAMAYANI",01.Jul.1936,4538,,,,cons-investigation-only,SERVICE,1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"KIVUYO NAMAYANI",01.Jul.1936,4538,,,,"mRDT Test","LAB TEST",1,0,Null
+23.Jan.2019,23.Jan.2019,"KIVUYO NAMAYANI",01.Jul.1936,4538,,,," CBC","LAB TEST",1,6000,Null
+23.Jan.2019,23.Jan.2019,"KIVUYO NAMAYANI",01.Jul.1936,4538,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+23.Jan.2019,23.Jan.2019,"KIVUYO NAMAYANI",01.Jul.1936,4538,,,," BRUCELLA TEST  SCREENING","LAB TEST",1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"KIVUYO NAMAYANI",01.Jul.1936,4538,,,PMJ237,"Multi vitamin Tabs",DRUG,21,2100,Null
+23.Jan.2019,23.Jan.2019,"KIVUYO NAMAYANI",01.Jul.1936,4538,,,PMJ243,"Paracetamol Tabs 500mg",DRUG,15,750,Null
+23.Jan.2019,23.Jan.2019,"KIVUYO NAMAYANI",01.Jul.1936,4538,,,PMJ585,"calcium tab",DRUG,3,1800,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"ELIAS BRIGHTNESS",27.Jun.2016,9666,303500968107,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MOLLEL NEEMA",01.Jul.1996,10782,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MUSHI CATHERINE",20.Jun.2014,1212,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MUSHI CATHERINE",20.Jun.2014,1212,,,PMJ107,"Mucolyn cough syrup (Paediatric) ",DRUG,2,7000,Null
+23.Jan.2019,23.Jan.2019,"MUSHI CATHERINE",20.Jun.2014,1212,,,PMJ138,"Paracetamol Syrup (bottle) 125mg/5ml",DRUG,2,4000,Null
+23.Jan.2019,23.Jan.2019,"MUSHI CATHERINE",20.Jun.2014,1212,,,PMJ072,"azithromycin suspension 200mg/5ml (15ml)",DRUG,2,10000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MUSHI CATHERINE",20.Jun.2014,1212,,,,"WIDAL TEST ","LAB TEST",1,5000,Null
+23.Jan.2019,23.Jan.2019,"MUSHI CATHERINE",20.Jun.2014,1212,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+23.Jan.2019,23.Jan.2019,"MUSHI CATHERINE",20.Jun.2014,1212,,,," CBC","LAB TEST",1,6000,Null
+23.Jan.2019,23.Jan.2019,"MUSHI CATHERINE",20.Jun.2014,1212,,,,"mRDT Test","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"LUKUMAY MAGDALENA",01.Jul.1942,2231,,,PMJ028,"albendazole 400mg",DRUG,1,600,Null
+23.Jan.2019,23.Jan.2019,"LUKUMAY MAGDALENA",01.Jul.1942,2231,,,PMJ236,"Metronidazole Tabs 200mg",DRUG,30,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"LUKUMAY MAGDALENA",01.Jul.1942,2231,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"LUKUMAY MAGDALENA",01.Jul.1942,2231,,,," STOOL MICROSCOPY","LAB TEST",1,2000,Null
+23.Jan.2019,23.Jan.2019,"LUKUMAY MAGDALENA",01.Jul.1942,2231,,,,"WIDAL TEST ","LAB TEST",1,5000,Null
+23.Jan.2019,23.Jan.2019,"LUKUMAY MAGDALENA",01.Jul.1942,2231,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+23.Jan.2019,23.Jan.2019,"LUKUMAY MAGDALENA",01.Jul.1942,2231,,,," CBC","LAB TEST",1,6000,Null
+23.Jan.2019,23.Jan.2019,"LUKUMAY MAGDALENA",01.Jul.1942,2231,,,,"mRDT Test","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MOLLEL RAPHAEL",29.Sep.1990,10783,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MARANDU OLIVER",22.Jun.1970,9922,01-8999577,,," CALCIUM","LAB TEST",1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"MARANDU OLIVER",22.Jun.1970,9922,01-8999577,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"LEGELA JAMILA",16.Jul.1982,10784,01-11652474,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+23.Jan.2019,23.Jan.2019,"LEGELA JAMILA",16.Jul.1982,10784,01-11652474,,,"GLUCOSE RANDOM","LAB TEST",1,2000,Null
+23.Jan.2019,23.Jan.2019,"LEGELA JAMILA",16.Jul.1982,10784,01-11652474,,,"URINE ANALYSIS","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MBOGO JANE",21.May.2012,10008,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MBOGO JANE",21.May.2012,10008,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+24.Jan.2019,24.Jan.2019,"MBOGO JANE",21.May.2012,10008,,,,"mRDT Test","LAB TEST",1,0,Null
+24.Jan.2019,24.Jan.2019,"MBOGO JANE",21.May.2012,10008,,,," CBC","LAB TEST",1,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MOHAMED TATU",26.Jul.1977,10785,402301642608,,,"CHEST XRAY",RADIOLOGY,1,10000,Null
+24.Jan.2019,24.Jan.2019,"MOHAMED TATU",26.Jul.1977,10785,402301642608,,," HIV  SCREENING","LAB TEST",1,0,Null
+24.Jan.2019,24.Jan.2019,"MOHAMED TATU",26.Jul.1977,10785,402301642608,,," CBC","LAB TEST",1,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MOHAMED TATU",26.Jul.1977,10785,402301642608,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MNDEME RECHO",16.Oct.1991,10786,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MNDEME RECHO",16.Oct.1991,10786,,,," VDRL","LAB TEST",1,5000,Null
+24.Jan.2019,24.Jan.2019,"MNDEME RECHO",16.Oct.1991,10786,,,," HIV  SCREENING","LAB TEST",1,0,Null
+24.Jan.2019,24.Jan.2019,"MNDEME RECHO",16.Oct.1991,10786,,,,"BLOOD GROUPING","LAB TEST",1,3000,Null
+24.Jan.2019,24.Jan.2019,"MNDEME RECHO",16.Oct.1991,10786,,,," HB","LAB TEST",1,2000,Null
+24.Jan.2019,24.Jan.2019,"MNDEME RECHO",16.Oct.1991,10786,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+24.Jan.2019,24.Jan.2019,"MNDEME RECHO",16.Oct.1991,10786,,,,"mRDT Test","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"TITU BIHUSI",01.Jul.1973,10787,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MOLLEL NOELA",13.Jun.2010,10789,,,PMJ243,"Paracetamol Tabs 500mg",DRUG,15,750,Null
+24.Jan.2019,24.Jan.2019,"MOLLEL NOELA",13.Jun.2010,10789,,,PMJ182,"Cephalexine tabs 250mg",DRUG,10,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MOLLEL NOELA",13.Jun.2010,10789,,,," CBC","LAB TEST",1,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MOLLEL NOELA",13.Jun.2010,10789,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MOLLEL NOSIM",21.Sep.2006,10790,,,PMJ243,"Paracetamol Tabs 500mg",DRUG,15,750,Null
+24.Jan.2019,24.Jan.2019,"MOLLEL NOSIM",21.Sep.2006,10790,,,PMJ182,"Cephalexine tabs 250mg",DRUG,10,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MOLLEL NOSIM",21.Sep.2006,10790,,,," CBC","LAB TEST",1,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MOLLEL NOSIM",21.Sep.2006,10790,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MWENDO ELICE",28.Sep.2017,10791,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MOLLEL ROSE",05.May.1993,10792,,,," VDRL","LAB TEST",1,5000,Null
+24.Jan.2019,24.Jan.2019,"MOLLEL ROSE",05.May.1993,10792,,,," HIV  SCREENING","LAB TEST",1,0,Null
+24.Jan.2019,24.Jan.2019,"MOLLEL ROSE",05.May.1993,10792,,,," HB","LAB TEST",1,2000,Null
+24.Jan.2019,24.Jan.2019,"MOLLEL ROSE",05.May.1993,10792,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+24.Jan.2019,24.Jan.2019,"MOLLEL ROSE",05.May.1993,10792,,,,"mRDT Test","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MOLLEL ROSE",05.May.1993,10792,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"LUKUMA JOSEPH",08.Nov.1956,10425,04-11929516,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MOLLEL MICHAE",06.Feb.1974,10788,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"SILAMAYI ANNA",01.Jul.1948,10793,,,," HIV  SCREENING","LAB TEST",1,0,Null
+24.Jan.2019,24.Jan.2019,"SILAMAYI ANNA",01.Jul.1948,10793,,,,BILIRUBIN-D,"LAB TEST",1,6000,Null
+24.Jan.2019,24.Jan.2019,"SILAMAYI ANNA",01.Jul.1948,10793,,,,BILIRUBIN-T,"LAB TEST",1,6000,Null
+24.Jan.2019,24.Jan.2019,"SILAMAYI ANNA",01.Jul.1948,10793,,,," SGOT/ASAT","LAB TEST",1,5500,Null
+24.Jan.2019,24.Jan.2019,"SILAMAYI ANNA",01.Jul.1948,10793,,,," SGPT/ALAT","LAB TEST",1,5500,Null
+24.Jan.2019,24.Jan.2019,"SILAMAYI ANNA",01.Jul.1948,10793,,,," ESR","LAB TEST",1,5000,Null
+24.Jan.2019,24.Jan.2019,"SILAMAYI ANNA",01.Jul.1948,10793,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+24.Jan.2019,24.Jan.2019,"SILAMAYI ANNA",01.Jul.1948,10793,,,," CBC","LAB TEST",1,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"SILAMAYI ANNA",01.Jul.1948,10793,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"IBRAHIM AISHA",01.Jul.2015,10794,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"SWAI NORAH",01.Jan.1980,9638,102101440911,,,"URINE ANALYSIS","LAB TEST",1,0,Null
+24.Jan.2019,24.Jan.2019,"SWAI NORAH",01.Jan.1980,9638,102101440911,,," CBC","LAB TEST",1,6000,Null
+24.Jan.2019,24.Jan.2019,"SWAI NORAH",01.Jan.1980,9638,102101440911,,,"mRDT Test","LAB TEST",1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"SWAI NORAH",01.Jan.1980,9638,102101440911,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"SWAY NEEMA",19.Sep.1970,10634,103501442415,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"SWAY NEEMA",19.Sep.1970,10634,103501442415,,,"URINE ANALYSIS","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"KIDUNDA AMINA",01.Jul.1980,506,,,,"GLUCOSE RANDOM","LAB TEST",1,2500,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"KIDUNDA AMINA",01.Jul.1980,506,,,PMJ243,"Paracetamol Tabs 500mg",DRUG,30,1500,Null
+24.Jan.2019,24.Jan.2019,"KIDUNDA AMINA",01.Jul.1980,506,,,PMJ182,"Cephalexine tabs 250mg",DRUG,30,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"KIDUNDA AMINA",01.Jul.1980,506,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"KIDUNDA AMINA",01.Jul.1980,506,,,,"WIDAL TEST ","LAB TEST",1,5000,Null
+24.Jan.2019,24.Jan.2019,"KIDUNDA AMINA",01.Jul.1980,506,,,," STOOL MICROSCOPY","LAB TEST",1,2000,Null
+24.Jan.2019,24.Jan.2019,"KIDUNDA AMINA",01.Jul.1980,506,,,," HIV  SCREENING","LAB TEST",1,0,Null
+24.Jan.2019,24.Jan.2019,"KIDUNDA AMINA",01.Jul.1980,506,,,," BRUCELLA TEST  SCREENING","LAB TEST",1,5000,Null
+24.Jan.2019,24.Jan.2019,"KIDUNDA AMINA",01.Jul.1980,506,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+24.Jan.2019,24.Jan.2019,"KIDUNDA AMINA",01.Jul.1980,506,,,," CBC","LAB TEST",1,6000,Null
+24.Jan.2019,24.Jan.2019,"KIDUNDA AMINA",01.Jul.1980,506,,,,"mRDT Test","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"ONDEREU ERICK",01.Jul.2000,800,,,PMJ601,"carbamazepine 200mg",DRUG,3,750,Null
+24.Jan.2019,24.Jan.2019,"ONDEREU ERICK",01.Jul.2000,800,,,PMJ243,"Paracetamol Tabs 500mg",DRUG,30,1500,Null
+24.Jan.2019,24.Jan.2019,"ONDEREU ERICK",01.Jul.2000,800,,,PMJ280,"Amoxicilline Caps 250mg",DRUG,30,3000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"ONDEREU ERICK",01.Jul.2000,800,,,," HIV  SCREENING","LAB TEST",1,0,Null
+24.Jan.2019,24.Jan.2019,"ONDEREU ERICK",01.Jul.2000,800,,,," CBC","LAB TEST",1,6000,Null
+24.Jan.2019,24.Jan.2019,"ONDEREU ERICK",01.Jul.2000,800,,,,"mRDT Test","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"ONDEREU ERICK",01.Jul.2000,800,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MOLLEL MONICA",25.Oct.1960,10795,106100216661,,,"URINE ANALYSIS","LAB TEST",1,0,Null
+24.Jan.2019,24.Jan.2019,"MOLLEL MONICA",25.Oct.1960,10795,106100216661,,," CBC","LAB TEST",1,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MOLLEL MONICA",25.Oct.1960,10795,106100216661,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"GINANA MARIA",01.Jul.1948,10796,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"GINANA MARIA",01.Jul.1948,10796,,,PMJ290,"Omeprazole Caps 20mg",DRUG,30,3000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"GINANA MARIA",01.Jul.1948,10796,,,,"H. PYLORI","LAB TEST",1,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MATENDELE AMBUROS",15.Jan.1986,10797,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"PANGA AGRICOLA",18.Feb.1986,9651,101900909159,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"LUKUMAY BARICK",23.Jan.2001,10781,,,PMJ243,"Paracetamol Tabs 500mg",DRUG,15,750,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"LUKUMAY BARICK",23.Jan.2001,10781,,,,"WIDAL TEST ","LAB TEST",1,5000,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY BARICK",23.Jan.2001,10781,,,,"GLUCOSE RANDOM","LAB TEST",1,2500,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY BARICK",23.Jan.2001,10781,,,,"H. PYLORI","LAB TEST",1,6000,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY BARICK",23.Jan.2001,10781,,,," CALCIUM","LAB TEST",1,5500,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"LUKUMAY BARICK",23.Jan.2001,10781,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"KIVUYO RICHARD",01.Jul.2008,10799,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"ABDI ASHA",01.Jul.1955,10798,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MINJA UPENDO",01.Jul.1990,6697,204101209532,,," CBC","LAB TEST",1,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"MINJA UPENDO",01.Jul.1990,6697,204101209532,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,PMJ194,"Ciprofloxacin tabs 500mg",DRUG,14,2100,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,PMJ028,"albendazole 400mg",DRUG,1,600,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,PMJ290,"Omeprazole Caps 20mg",DRUG,30,3000,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,PMJ243,"Paracetamol Tabs 500mg",DRUG,30,1500,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,PMJ103,"Hydrochlorthiazide+Losartan 12.5mg/50mg Tablets",DRUG,30,24000,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,PMJ271,"Amlodipine tabs 5mg",DRUG,30,4500,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,,"WIDAL TEST ","LAB TEST",1,5000,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,," STOOL MICROSCOPY","LAB TEST",1,2000,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,,"mRDT Test","LAB TEST",1,0,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,," CBC","LAB TEST",1,6000,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,,"H. PYLORI","LAB TEST",1,6000,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,,"GLUCOSE RANDOM","LAB TEST",1,2500,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,," CBC","LAB TEST",1,6000,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,,"mRDT Test","LAB TEST",1,0,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,,"GLUCOSE RANDOM","LAB TEST",1,2500,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,," HIV  SCREENING","LAB TEST",1,0,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,,"H. PYLORI","LAB TEST",1,6000,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,,"WIDAL TEST ","LAB TEST",1,5000,Null
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,," STOOL MICROSCOPY","LAB TEST",1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"LUKUMAY LEAH",01.Jul.1951,5524,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"LUKUMAY MAGDALENA",09.Nov.1991,10800,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"LAIZER AGNES",30.Sep.1991,10563,202100801356,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+24.Jan.2019,24.Jan.2019,"KONDOWE HELBERT",11.Nov.2007,10801,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"MUNISI BEATRICE",22.Nov.1951,10802,107200248794,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"LAIZER ESTER",01.Jan.2002,10803,101501677329,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"WAITE DAPHINE",27.Feb.1974,10804,101701690146,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"SATU SHARON",27.Jul.2018,10805,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"MOLLEL LOMAYAN",01.Jan.1980,9112,,,PMJ473,"haema caps ",DRUG,10,10000,Null
+25.Jan.2019,25.Jan.2019,"MOLLEL LOMAYAN",01.Jan.1980,9112,,,PMJ473,"haema caps ",DRUG,10,10000,Null
+25.Jan.2019,25.Jan.2019,"MOLLEL LOMAYAN",01.Jan.1980,9112,,,PMJ473,"haema caps ",DRUG,10,10000,Null
+25.Jan.2019,25.Jan.2019,"MOLLEL LOMAYAN",01.Jan.1980,9112,,,PMJ243,"Paracetamol Tabs 500mg",DRUG,30,1500,Null
+25.Jan.2019,25.Jan.2019,"MOLLEL LOMAYAN",01.Jan.1980,9112,,,PMJ028,"albendazole 400mg",DRUG,1,600,Null
+25.Jan.2019,25.Jan.2019,"MOLLEL LOMAYAN",01.Jan.1980,9112,,,PMJ194,"Ciprofloxacin tabs 500mg",DRUG,20,3000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"MOLLEL LOMAYAN",01.Jan.1980,9112,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"TEMBA YOHANA",01.Jul.1975,6554,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"LUCIAN RITHA",29.Jun.1996,10806,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"LUCIAN RITHA",29.Jun.1996,10806,,,," CBC","LAB TEST",1,6000,Null
+25.Jan.2019,25.Jan.2019,"LUCIAN RITHA",29.Jun.1996,10806,,,," HIV  SCREENING","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"LUCIAN RITHA",29.Jun.1996,10806,,,PMJ131,"Calamine Lotion",DRUG,3,9000,Null
+25.Jan.2019,25.Jan.2019,"LUCIAN RITHA",29.Jun.1996,10806,,,PMJ182,"Cephalexine tabs 250mg",DRUG,60,12000,Null
+25.Jan.2019,25.Jan.2019,"LUCIAN RITHA",29.Jun.1996,10806,,,PMJ184,"Cetrizine tabs 10mg",DRUG,7,700,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"MOLLEL REGAN",08.Apr.2017,10807,,,,"mRDT Test","LAB TEST",1,0,Null
+25.Jan.2019,25.Jan.2019,"MOLLEL REGAN",08.Apr.2017,10807,,,," CBC","LAB TEST",1,6000,Null
+25.Jan.2019,25.Jan.2019,"MOLLEL REGAN",08.Apr.2017,10807,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"MOLLEL REGAN",08.Apr.2017,10807,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"MOLLEL REGAN",08.Apr.2017,10807,,,PMJ233,"Hemovit syrup 200ml",DRUG,1,5000,Null
+25.Jan.2019,25.Jan.2019,"MOLLEL REGAN",08.Apr.2017,10807,,,,"mRDT Test","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"MRUMA FIRISI",28.Feb.1972,10808,01-9796108,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"MACHA DAUDI",28.Aug.1974,10809,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"MBWAMBO ABRAMANI",12.Oct.2018,9933,,,PMJ131,"Calamine Lotion",DRUG,2,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"MBWAMBO ABRAMANI",12.Oct.2018,9933,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"NNKO AIKA",01.Jul.1992,5172,,,," CBC","LAB TEST",1,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"NNKO AIKA",01.Jul.1992,5172,,,PMJ448,"(amoxicillin500mg+clavulanate125mg) (RAPICLAV)",DRUG,10,8000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"NNKO AIKA",01.Jul.1992,5172,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"KIVUYO ILETH",23.Sep.1992,10810,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"KIVUYO ILETH",23.Sep.1992,10810,,,PMJ262,"Tinidazole Tabs 500mg",DRUG,12,4800,Null
+25.Jan.2019,25.Jan.2019,"KIVUYO ILETH",23.Sep.1992,10810,,,PMJ150,"Albendazole tabs 200mg",DRUG,2,600,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"KIVUYO ILETH",23.Sep.1992,10810,,,," STOOL MICROSCOPY","LAB TEST",1,2000,Null
+25.Jan.2019,25.Jan.2019,"KIVUYO ILETH",23.Sep.1992,10810,,,,"WIDAL TEST ","LAB TEST",1,5000,Null
+25.Jan.2019,25.Jan.2019,"KIVUYO ILETH",23.Sep.1992,10810,,,," UPT","LAB TEST",1,2500,Null
+25.Jan.2019,25.Jan.2019,"KIVUYO ILETH",23.Sep.1992,10810,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+25.Jan.2019,25.Jan.2019,"KIVUYO ILETH",23.Sep.1992,10810,,,,"mRDT Test","LAB TEST",1,0,Null
+25.Jan.2019,25.Jan.2019,"KIVUYO ILETH",23.Sep.1992,10810,,,," CBC","LAB TEST",1,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"MASANJA HELLENA",10.Mar.2016,10811,304300497216,,,"mRDT Test","LAB TEST",1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"MASANJA HELLENA",10.Mar.2016,10811,304300497216,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"MASANJA HELLENA",10.Mar.2016,10811,304300497216,,," CBC","LAB TEST",1,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"MASANJA HELLENA",10.Mar.2016,10811,304300497216,,," CBC","LAB TEST",1,6000,Null
+25.Jan.2019,25.Jan.2019,"MASANJA HELLENA",10.Mar.2016,10811,304300497216,,,"URINE ANALYSIS","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"MASANJA AFRIKA",30.Nov.2012,10812,303300497216,,,"URINE ANALYSIS","LAB TEST",1,0,Null
+25.Jan.2019,25.Jan.2019,"MASANJA AFRIKA",30.Nov.2012,10812,303300497216,,,"mRDT Test","LAB TEST",1,2000,Null
+25.Jan.2019,25.Jan.2019,"MASANJA AFRIKA",30.Nov.2012,10812,303300497216,,," CBC","LAB TEST",1,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"MASANJA AFRIKA",30.Nov.2012,10812,303300497216,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"LAIZER GLORY",22.Nov.1999,10813,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+25.Jan.2019,25.Jan.2019,"LAIZER GLORY",22.Nov.1999,10813,,,,"WIDAL TEST ","LAB TEST",1,5000,Null
+25.Jan.2019,25.Jan.2019,"LAIZER GLORY",22.Nov.1999,10813,,,," BRUCELLA TEST  SCREENING","LAB TEST",1,5000,Null
+25.Jan.2019,25.Jan.2019,"LAIZER GLORY",22.Nov.1999,10813,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+25.Jan.2019,25.Jan.2019,"LAIZER GLORY",22.Nov.1999,10813,,,,"mRDT Test","LAB TEST",1,0,Null
+25.Jan.2019,25.Jan.2019,"LAIZER GLORY",22.Nov.1999,10813,,,," CBC","LAB TEST",1,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"MOLLEL NAFTAL",02.Feb.1974,8226,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"MUNISI ASHA",18.Aug.1993,10814,101300787256,,," STOOL MICROSCOPY","LAB TEST",1,2000,Null
+26.Jan.2019,26.Jan.2019,"MUNISI ASHA",18.Aug.1993,10814,101300787256,,,"WIDAL TEST ","LAB TEST",1,5000,Null
+26.Jan.2019,26.Jan.2019,"MUNISI ASHA",18.Aug.1993,10814,101300787256,,,"URINE ANALYSIS","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"MUNISI ASHA",18.Aug.1993,10814,101300787256,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"SAID SAIDA ",03.May.1965,10146,404200486424,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"TALIBU ALLY",17.Sep.1954,10371,403200486424,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"UISO BRIXIUS",12.Feb.2017,10815,302100723146,,," STOOL MICROSCOPY","LAB TEST",1,2000,Null
+26.Jan.2019,26.Jan.2019,"UISO BRIXIUS",12.Feb.2017,10815,302100723146,,,"WIDAL TEST ","LAB TEST",1,5000,Null
+26.Jan.2019,26.Jan.2019,"UISO BRIXIUS",12.Feb.2017,10815,302100723146,,," HIV  SCREENING","LAB TEST",1,0,Null
+26.Jan.2019,26.Jan.2019,"UISO BRIXIUS",12.Feb.2017,10815,302100723146,,,"GLUCOSE RANDOM","LAB TEST",1,2000,Null
+26.Jan.2019,26.Jan.2019,"UISO BRIXIUS",12.Feb.2017,10815,302100723146,,,"URINE ANALYSIS","LAB TEST",1,0,Null
+26.Jan.2019,26.Jan.2019,"UISO BRIXIUS",12.Feb.2017,10815,302100723146,,," CBC","LAB TEST",1,6000,Null
+26.Jan.2019,26.Jan.2019,"UISO BRIXIUS",12.Feb.2017,10815,302100723146,,,"mRDT Test","LAB TEST",1,2000,Null
+26.Jan.2019,26.Jan.2019,"UISO BRIXIUS",12.Feb.2017,10815,302100723146,,," STOOL MICROSCOPY","LAB TEST",1,2000,Null
+26.Jan.2019,26.Jan.2019,"UISO BRIXIUS",12.Feb.2017,10815,302100723146,,,"WIDAL TEST ","LAB TEST",1,5000,Null
+26.Jan.2019,26.Jan.2019,"UISO BRIXIUS",12.Feb.2017,10815,302100723146,,," HIV  SCREENING","LAB TEST",1,0,Null
+26.Jan.2019,26.Jan.2019,"UISO BRIXIUS",12.Feb.2017,10815,302100723146,,,"GLUCOSE RANDOM","LAB TEST",1,2000,Null
+26.Jan.2019,26.Jan.2019,"UISO BRIXIUS",12.Feb.2017,10815,302100723146,,," CBC","LAB TEST",1,6000,Null
+26.Jan.2019,26.Jan.2019,"UISO BRIXIUS",12.Feb.2017,10815,302100723146,,,"URINE ANALYSIS","LAB TEST",1,0,Null
+26.Jan.2019,26.Jan.2019,"UISO BRIXIUS",12.Feb.2017,10815,302100723146,,,"mRDT Test","LAB TEST",1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"UISO BRIXIUS",12.Feb.2017,10815,302100723146,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"LAIZER NEEMA",01.Jul.1999,7099,,,PMJ426,"phenobarbitone 30mg ",DRUG,60,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"LAIZER NEEMA",01.Jul.1999,7099,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"NNKO LIDYA",14.Dec.1983,10816,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"SADIKI ABUBAKAR",31.Jul.2008,10817,04-11528942,,PMJ451,"cetrizine syrup 30ml",DRUG,1,2000,Null
+26.Jan.2019,26.Jan.2019,"SADIKI ABUBAKAR",31.Jul.2008,10817,04-11528942,,PMJ107,"Mucolyn cough syrup (Paediatric) ",DRUG,2,5200,Null
+26.Jan.2019,26.Jan.2019,"SADIKI ABUBAKAR",31.Jul.2008,10817,04-11528942,,PMJ164,"WHITIFIELD (Benzoic Acid 6% and Salicyclic acid 3% )",DRUG,4,4000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"SADIKI ABUBAKAR",31.Jul.2008,10817,04-11528942,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"TARIMO HEAVENLIGHT",01.Jan.2016,10818,,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"TARIMO HEAVENLIGHT",01.Jan.2016,10818,,,,"URINE ANALYSIS","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"MLAY AMANI",04.Aug.1997,10819,,,,"mRDT Test","LAB TEST",1,0,Null
+26.Jan.2019,26.Jan.2019,"MLAY AMANI",04.Aug.1997,10819,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"MLAY AMANI",04.Aug.1997,10819,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"NADE VAILETH",14.Jul.1999,10820,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"NADE VAILETH",14.Jul.1999,10820,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"LUKUMAY GLORIA",24.Feb.1987,10821,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+26.Jan.2019,26.Jan.2019,"LUKUMAY GLORIA",24.Feb.1987,10821,,,,"mRDT Test","LAB TEST",1,0,Null
+26.Jan.2019,26.Jan.2019,"LUKUMAY GLORIA",24.Feb.1987,10821,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"LAIZER MATHAYO",01.Jul.1992,7634,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+28.Jan.2019,28.Jan.2019,"LAIZER MATHAYO",01.Jul.1992,7634,,,," BRUCELLA TEST  SCREENING","LAB TEST",1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"LAIZER MATHAYO",01.Jul.1992,7634,,,PMJ202,"Diclofenac Tabs 50mg",DRUG,15,1500,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"LAIZER MATHAYO",01.Jul.1992,7634,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"SHAYO IDA",04.Apr.1986,10587,101300631634,,,"GLUCOSE FASTING","LAB TEST",1,2000,Null
+28.Jan.2019,28.Jan.2019,"SHAYO IDA",04.Apr.1986,10587,101300631634,,,"URINE ANALYSIS","LAB TEST",1,0,Null
+28.Jan.2019,28.Jan.2019,"SHAYO IDA",04.Apr.1986,10587,101300631634,,,"mRDT Test","LAB TEST",1,2000,Null
+28.Jan.2019,28.Jan.2019,"SHAYO IDA",04.Apr.1986,10587,101300631634,,," CBC","LAB TEST",1,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"SHAYO IDA",04.Apr.1986,10587,101300631634,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MWINULA EDITH",03.Oct.2014,10822,,,,"GLUCOSE RANDOM","LAB TEST",1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MWINULA EDITH",03.Oct.2014,10822,,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MWINULA EDITH",03.Oct.2014,10822,,,,"URINE ANALYSIS","LAB TEST",1,0,Null
+28.Jan.2019,28.Jan.2019,"MWINULA EDITH",03.Oct.2014,10822,,,," CBC","LAB TEST",1,6000,Null
+28.Jan.2019,28.Jan.2019,"MWINULA EDITH",03.Oct.2014,10822,,,,"mRDT Test","LAB TEST",1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MNDEME LEAH",20.Jan.1968,9904,,,PMJ169,"Atorvastatin tabs 20mg",DRUG,30,24000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MNDEME LEAH",20.Jan.1968,9904,,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"TEST TEST",01.Jul.1967,101,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"SIRIKWA JUSTINE",11.Oct.1952,10823,107600169208,,PMJ474,"castoir oil 100ml",DRUG,1,8000,Null
+28.Jan.2019,28.Jan.2019,"SIRIKWA JUSTINE",11.Oct.1952,10823,107600169208,,PMJ290,"Omeprazole Caps 20mg",DRUG,10,1000,Null
+28.Jan.2019,28.Jan.2019,"SIRIKWA JUSTINE",11.Oct.1952,10823,107600169208,,PMJ162,"Aceclofenac tabs 100mg",DRUG,20,7000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"SIRIKWA JUSTINE",11.Oct.1952,10823,107600169208,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MOLLEL ROBART",01.Jul.1960,7420,02-7337206,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MOLLEL ROBART",01.Jul.1960,7420,02-7337206,,PMJ126,"Diclofenac Gel (diclokant)",DRUG,1,2000,Null
+28.Jan.2019,28.Jan.2019,"MOLLEL ROBART",01.Jul.1960,7420,02-7337206,,PMJ162,"Aceclofenac tabs 100mg",DRUG,20,7000,Null
+28.Jan.2019,28.Jan.2019,"MOLLEL ROBART",01.Jul.1960,7420,02-7337206,,PMJ290,"Omeprazole Caps 20mg",DRUG,10,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"SIRIKWA NDENIMRINGI",24.Apr.1960,10824,208600169208,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"SIRIKWA NDENIMRINGI",24.Apr.1960,10824,208600169208,,PMJ162,"Aceclofenac tabs 100mg",DRUG,20,7000,Null
+28.Jan.2019,28.Jan.2019,"SIRIKWA NDENIMRINGI",24.Apr.1960,10824,208600169208,,PMJ290,"Omeprazole Caps 20mg",DRUG,10,1000,Null
+28.Jan.2019,28.Jan.2019,"SIRIKWA NDENIMRINGI",24.Apr.1960,10824,208600169208,,PMJ275,"Diclofenac gel (diclomol)",DRUG,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"ISMAIL MARIAM",10.Jul.2004,9794,,,PMJ428,"azithromycin 250mg ",DRUG,7,7000,Null
+28.Jan.2019,28.Jan.2019,"ISMAIL MARIAM",10.Jul.2004,9794,,,PMJ243,"Paracetamol Tabs 500mg",DRUG,15,750,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"ISMAIL MARIAM",10.Jul.2004,9794,,,," UPT","LAB TEST",1,2500,Null
+28.Jan.2019,28.Jan.2019,"ISMAIL MARIAM",10.Jul.2004,9794,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+28.Jan.2019,28.Jan.2019,"ISMAIL MARIAM",10.Jul.2004,9794,,,," STOOL MICROSCOPY","LAB TEST",1,2000,Null
+28.Jan.2019,28.Jan.2019,"ISMAIL MARIAM",10.Jul.2004,9794,,,,"mRDT Test","LAB TEST",1,0,Null
+28.Jan.2019,28.Jan.2019,"ISMAIL MARIAM",10.Jul.2004,9794,,,,"WIDAL TEST ","LAB TEST",1,5000,Null
+28.Jan.2019,28.Jan.2019,"ISMAIL MARIAM",10.Jul.2004,9794,,,," CBC","LAB TEST",1,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"ISMAIL MARIAM",10.Jul.2004,9794,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MOLLEL LAZARO",01.Jul.1954,10825,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"SAKAYA RICHARD",01.Jul.1968,2245,,,PMJ103,"Hydrochlorthiazide+Losartan 12.5mg/50mg Tablets",DRUG,14,11200,Null
+28.Jan.2019,28.Jan.2019,"SAKAYA RICHARD",01.Jul.1968,2245,,,PMJ271,"Amlodipine tabs 5mg",DRUG,14,2100,Null
+28.Jan.2019,28.Jan.2019,"SAKAYA RICHARD",01.Jul.1968,2245,,,PMJ234,"Metformin Tabs 500mg",DRUG,120,12000,Null
+28.Jan.2019,28.Jan.2019,"SAKAYA RICHARD",01.Jul.1968,2245,,,PMJ211,"Glibenclamide Tabs 5mg",DRUG,30,3000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"SAKAYA RICHARD",01.Jul.1968,2245,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"SAKAYA RICHARD",01.Jul.1968,2245,,,,"GLUCOSE RANDOM","LAB TEST",1,2500,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MOHAMED AMINA",17.Aug.1972,10826,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"KAYOKA LUCY",24.Aug.2008,10827,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"KAYOKA LUCY",24.Aug.2008,10827,,,,"ELBOW XRAY",RADIOLOGY,1,20000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"KURWA MARY",01.Sep.2009,3224,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"KURWA MARY",01.Sep.2009,3224,,,PMJ369,"Ciprofloxacin Eye Drops (bottle) 5mls",DRUG,2,4000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"KURWA MARY",01.Sep.2009,3224,,,PMJ166,"Sodium Cromogylcate Eye Drops 10ml (bottle) 2%",DRUG,2,7000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"SAGALA JOYCE",23.Jun.1954,10828,05-9860483,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"KAMBAY EMMANUEL",24.Jul.1984,10829,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"KAMBAY EMMANUEL",24.Jul.1984,10829,,,PMJ489,"CITAL LIQUID 100MLS",DRUG,1,6500,Null
+28.Jan.2019,28.Jan.2019,"KAMBAY EMMANUEL",24.Jul.1984,10829,,,PMJ027,"azithromycin 500mg  ",DRUG,7,7000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"KAMBAY EMMANUEL",24.Jul.1984,10829,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MOLLEL STELLA",22.Jun.1994,10830,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"CHINYAMA BRITYNEY",26.Aug.2001,2779,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+28.Jan.2019,28.Jan.2019,"CHINYAMA BRITYNEY",26.Aug.2001,2779,,,," STOOL OCCULT","LAB TEST",1,4000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"CHINYAMA BRITYNEY",26.Aug.2001,2779,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"KIBINDA ADRIAN",08.Sep.1979,10831,,,," CBC","LAB TEST",1,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"KIBINDA ADRIAN",08.Sep.1979,10831,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MWAKIGAMBILE VAILETH",14.Jul.1994,10832,,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MWAKIGAMBILE VAILETH",14.Jul.1994,10832,,,," CBC","LAB TEST",1,6000,Null
+28.Jan.2019,28.Jan.2019,"MWAKIGAMBILE VAILETH",14.Jul.1994,10832,,,,"WIDAL TEST ","LAB TEST",1,5000,Null
+28.Jan.2019,28.Jan.2019,"MWAKIGAMBILE VAILETH",14.Jul.1994,10832,,,," STOOL MICROSCOPY","LAB TEST",1,2000,Null
+28.Jan.2019,28.Jan.2019,"MWAKIGAMBILE VAILETH",14.Jul.1994,10832,,,,"URINE ANALYSIS","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MADUKA REGINA",05.Feb.2001,10669,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MADUKA REGINA",05.Feb.2001,10669,,,," UPT","LAB TEST",1,2500,Null
+28.Jan.2019,28.Jan.2019,"MADUKA REGINA",05.Feb.2001,10669,,,,"WIDAL TEST ","LAB TEST",1,5000,Null
+28.Jan.2019,28.Jan.2019,"MADUKA REGINA",05.Feb.2001,10669,,,," STOOL MICROSCOPY","LAB TEST",1,2000,Null
+28.Jan.2019,28.Jan.2019,"MADUKA REGINA",05.Feb.2001,10669,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MADUKA REGINA",05.Feb.2001,10669,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MADUKA REGINA",05.Feb.2001,10669,,,PMJ150,"Albendazole tabs 200mg",DRUG,2,600,Null
+28.Jan.2019,28.Jan.2019,"MADUKA REGINA",05.Feb.2001,10669,,,PMJ243,"Paracetamol Tabs 500mg",DRUG,30,1500,Null
+28.Jan.2019,28.Jan.2019,"MADUKA REGINA",05.Feb.2001,10669,,,PMJ027,"azithromycin 500mg  ",DRUG,7,7000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MLEMWA NATHAN",09.Apr.2018,8784,303800969558,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MLEMWA NATHAN",09.Apr.2018,8784,303800969558,,PMJ050,"metoclopramide solution 100ml",DRUG,1,2600,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MOLLEL NARIVI",01.Jul.1980,10833,,,,"LUMBER SPINE XRAY",RADIOLOGY,1,20000,Null
+28.Jan.2019,28.Jan.2019,"MOLLEL NARIVI",01.Jul.1980,10833,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+28.Jan.2019,28.Jan.2019,"MOLLEL NARIVI",01.Jul.1980,10833,,,," HIV  SCREENING","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MOLLEL NARIVI",01.Jul.1980,10833,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+29.Jan.2019,28.Jan.2019,"MFINANGA FRANCISCA",04.Sep.1993,10501,,,PMJ041,"toff plus (pcm+dextromethorphan+chlorpheniramine+phenylephri",DRUG,10,8000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MFINANGA FRANCISCA",04.Sep.1993,10501,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MOSHI MARY",12.Mar.1998,935,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MOSHI MARY",12.Mar.1998,935,,,,"GLUCOSE RANDOM","LAB TEST",1,2500,Null
+28.Jan.2019,28.Jan.2019,"MOSHI MARY",12.Mar.1998,935,,,PMJ194,"Ciprofloxacin tabs 500mg",DRUG,1,150,Null
+28.Jan.2019,28.Jan.2019,"MOSHI MARY",12.Mar.1998,935,,,PMJ283,"Doxycyline 100mg caps",DRUG,28,2800,Null
+28.Jan.2019,28.Jan.2019,"MOSHI MARY",12.Mar.1998,935,,,PMJ236,"Metronidazole Tabs 200mg",DRUG,56,11200,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"MOSHI MARY",12.Mar.1998,935,,,,"URINE ANALYSIS","LAB TEST",1,3000,Null
+28.Jan.2019,28.Jan.2019,"MOSHI MARY",12.Mar.1998,935,,,," UPT","LAB TEST",1,2500,Null
+28.Jan.2019,28.Jan.2019,"MOSHI MARY",12.Mar.1998,935,,,,HVSURETHRALSWAB,"LAB TEST",1,4000,Null
+28.Jan.2019,28.Jan.2019,"MOSHI MARY",12.Mar.1998,935,,,," VDRL","LAB TEST",1,5000,Null
+28.Jan.2019,28.Jan.2019,"MOSHI MARY",12.Mar.1998,935,,,," HIV  SCREENING","LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"ZONGO PAULSON",03.Mar.2016,10834,305301679673,,PMJ009,"miconazole cream topical 15mg",DRUG,2,11600,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"ZONGO PAULSON",03.Mar.2016,10834,305301679673,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"TAKINGO EDITH",10.Jan.1991,10835,101701194354,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"TAKINGO EDITH",10.Jan.1991,10835,101701194354,,," UPT","LAB TEST",1,0,Null
+28.Jan.2019,28.Jan.2019,"TAKINGO EDITH",10.Jan.1991,10835,101701194354,,,"URINE ANALYSIS","LAB TEST",1,0,Null
+28.Jan.2019,28.Jan.2019,"TAKINGO EDITH",10.Jan.1991,10835,101701194354,,,"mRDT Test","LAB TEST",1,2000,Null
+28.Jan.2019,28.Jan.2019,"TAKINGO EDITH",10.Jan.1991,10835,101701194354,,,"WIDAL TEST ","LAB TEST",1,5000,Null
+28.Jan.2019,28.Jan.2019,"TAKINGO EDITH",10.Jan.1991,10835,101701194354,,," BRUCELLA TEST  SCREENING","LAB TEST",1,0,Null
+28.Jan.2019,28.Jan.2019,"TAKINGO EDITH",10.Jan.1991,10835,101701194354,,," CBC","LAB TEST",1,6000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+28.Jan.2019,28.Jan.2019,"YOHANES ZAKAYO",04.Jan.2002,10836,303900891683,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+29.Jan.2019,28.Jan.2019,"YOHANES ZAKAYO",04.Jan.2002,10836,303900891683,,,"WIDAL TEST ","LAB TEST",1,5000,Null
+29.Jan.2019,28.Jan.2019,"YOHANES ZAKAYO",04.Jan.2002,10836,303900891683,,," HIV  SCREENING","LAB TEST",1,0,Null
+29.Jan.2019,28.Jan.2019,"YOHANES ZAKAYO",04.Jan.2002,10836,303900891683,,PMJ221,"Ibuprofen Tabs 200mg ",DRUG,30,1500,Null
+29.Jan.2019,28.Jan.2019,"YOHANES ZAKAYO",04.Jan.2002,10836,303900891683,,," CBC","LAB TEST",1,6000,Null
+29.Jan.2019,28.Jan.2019,"YOHANES ZAKAYO",04.Jan.2002,10836,303900891683,,PMJ448,"(amoxicillin500mg+clavulanate125mg) (RAPICLAV)",DRUG,14,17500,Null
+29.Jan.2019,28.Jan.2019,"YOHANES ZAKAYO",04.Jan.2002,10836,303900891683,,PMJ445,"DNS 500ml",DRUG,1,1300,Null
+29.Jan.2019,28.Jan.2019,"YOHANES ZAKAYO",04.Jan.2002,10836,303900891683,,PMJ482,"Normal saline ",DRUG,1,2600,Null
+29.Jan.2019,28.Jan.2019,"YOHANES ZAKAYO",04.Jan.2002,10836,303900891683,,PMJ315,"Diclofenac Injection  75mg/3ml",DRUG,1,1000,Null
+29.Jan.2019,28.Jan.2019,"YOHANES ZAKAYO",04.Jan.2002,10836,303900891683,,PMJ266,"Vitamin C Tabs 100mg",DRUG,14,700,Null
+29.Jan.2019,28.Jan.2019,"YOHANES ZAKAYO",04.Jan.2002,10836,303900891683,,,"mRDT Test","LAB TEST",1,2000,Null
+29.Jan.2019,28.Jan.2019,"YOHANES ZAKAYO",04.Jan.2002,10836,303900891683,,,"GLUCOSE RANDOM","LAB TEST",1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+29.Jan.2019,29.Jan.2019,"MBOYA MICHAEL",01.Jan.1948,5455,405700085929,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+30.Jan.2019,29.Jan.2019,"NYAKI GLORY",22.Feb.2000,8812,,,,RDW,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"NYAKI GLORY",22.Feb.2000,8812,,,,MCHC,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"NYAKI GLORY",22.Feb.2000,8812,,,,MCH,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"NYAKI GLORY",22.Feb.2000,8812,,,,Hct,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"NYAKI GLORY",22.Feb.2000,8812,,,,MCV,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"NYAKI GLORY",22.Feb.2000,8812,,,,RBC,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"NYAKI GLORY",22.Feb.2000,8812,,,,Ba.,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"NYAKI GLORY",22.Feb.2000,8812,,,,Eo.,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"NYAKI GLORY",22.Feb.2000,8812,,,,Mon.,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"NYAKI GLORY",22.Feb.2000,8812,,,,WBC,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"NYAKI GLORY",22.Feb.2000,8812,,,,Neu.,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"NYAKI GLORY",22.Feb.2000,8812,,,,Lym.,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"NYAKI GLORY",22.Feb.2000,8812,,,,BILL,"LAB TEST",1,6000,Null
+30.Jan.2019,29.Jan.2019,"NYAKI GLORY",22.Feb.2000,8812,,,,PDW,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"NYAKI GLORY",22.Feb.2000,8812,,,,Pct,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"NYAKI GLORY",22.Feb.2000,8812,,,,MPV,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"NYAKI GLORY",22.Feb.2000,8812,,,,THR,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"NYAKI GLORY",22.Feb.2000,8812,,,,Hb,"LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+29.Jan.2019,29.Jan.2019,"NYAKI GLORY",22.Feb.2000,8812,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+29.Jan.2019,29.Jan.2019,"MANJIRA JUDITH",24.Jul.1985,10838,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+31.Jan.2019,29.Jan.2019,"OSOGO OPA",02.Apr.2000,10839,03-11424815,,,Hct,"LAB TEST",1,0,Null
+31.Jan.2019,29.Jan.2019,"OSOGO OPA",02.Apr.2000,10839,03-11424815,,,MCV,"LAB TEST",1,0,Null
+31.Jan.2019,29.Jan.2019,"OSOGO OPA",02.Apr.2000,10839,03-11424815,,,RBC,"LAB TEST",1,0,Null
+31.Jan.2019,29.Jan.2019,"OSOGO OPA",02.Apr.2000,10839,03-11424815,,,Ba.,"LAB TEST",1,0,Null
+31.Jan.2019,29.Jan.2019,"OSOGO OPA",02.Apr.2000,10839,03-11424815,,,Eo.,"LAB TEST",1,0,Null
+31.Jan.2019,29.Jan.2019,"OSOGO OPA",02.Apr.2000,10839,03-11424815,,,Mon.,"LAB TEST",1,0,Null
+31.Jan.2019,29.Jan.2019,"OSOGO OPA",02.Apr.2000,10839,03-11424815,,,WBC,"LAB TEST",1,0,Null
+31.Jan.2019,29.Jan.2019,"OSOGO OPA",02.Apr.2000,10839,03-11424815,,,Neu.,"LAB TEST",1,0,Null
+31.Jan.2019,29.Jan.2019,"OSOGO OPA",02.Apr.2000,10839,03-11424815,,,BILL,"LAB TEST",1,6000,Null
+31.Jan.2019,29.Jan.2019,"OSOGO OPA",02.Apr.2000,10839,03-11424815,,,Lym.,"LAB TEST",1,0,Null
+31.Jan.2019,29.Jan.2019,"OSOGO OPA",02.Apr.2000,10839,03-11424815,,,PDW,"LAB TEST",1,0,Null
+31.Jan.2019,29.Jan.2019,"OSOGO OPA",02.Apr.2000,10839,03-11424815,,,Pct,"LAB TEST",1,0,Null
+31.Jan.2019,29.Jan.2019,"OSOGO OPA",02.Apr.2000,10839,03-11424815,,,MPV,"LAB TEST",1,0,Null
+31.Jan.2019,29.Jan.2019,"OSOGO OPA",02.Apr.2000,10839,03-11424815,,,THR,"LAB TEST",1,0,Null
+31.Jan.2019,29.Jan.2019,"OSOGO OPA",02.Apr.2000,10839,03-11424815,,,MCH,"LAB TEST",1,0,Null
+31.Jan.2019,29.Jan.2019,"OSOGO OPA",02.Apr.2000,10839,03-11424815,,,MCHC,"LAB TEST",1,0,Null
+31.Jan.2019,29.Jan.2019,"OSOGO OPA",02.Apr.2000,10839,03-11424815,,,RDW,"LAB TEST",1,0,Null
+31.Jan.2019,29.Jan.2019,"OSOGO OPA",02.Apr.2000,10839,03-11424815,,,Hb,"LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+29.Jan.2019,29.Jan.2019,"OSOGO OPA",02.Apr.2000,10839,03-11424815,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+29.Jan.2019,29.Jan.2019,"LUKUMAY SHARON",04.Jan.2012,2050,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+30.Jan.2019,29.Jan.2019,"ISSA FAUZIA",28.Sep.1993,6503,,,,RDW,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"ISSA FAUZIA",28.Sep.1993,6503,,,,Hb,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"ISSA FAUZIA",28.Sep.1993,6503,,,,THR,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"ISSA FAUZIA",28.Sep.1993,6503,,,,MPV,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"ISSA FAUZIA",28.Sep.1993,6503,,,,Pct,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"ISSA FAUZIA",28.Sep.1993,6503,,,,PDW,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"ISSA FAUZIA",28.Sep.1993,6503,,,,BILL,"LAB TEST",1,6000,Null
+30.Jan.2019,29.Jan.2019,"ISSA FAUZIA",28.Sep.1993,6503,,,,WBC,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"ISSA FAUZIA",28.Sep.1993,6503,,,,Lym.,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"ISSA FAUZIA",28.Sep.1993,6503,,,,Mon.,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"ISSA FAUZIA",28.Sep.1993,6503,,,,Neu.,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"ISSA FAUZIA",28.Sep.1993,6503,,,,Eo.,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"ISSA FAUZIA",28.Sep.1993,6503,,,,Ba.,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"ISSA FAUZIA",28.Sep.1993,6503,,,,RBC,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"ISSA FAUZIA",28.Sep.1993,6503,,,,MCV,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"ISSA FAUZIA",28.Sep.1993,6503,,,,Hct,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"ISSA FAUZIA",28.Sep.1993,6503,,,,MCH,"LAB TEST",1,0,Null
+30.Jan.2019,29.Jan.2019,"ISSA FAUZIA",28.Sep.1993,6503,,,,MCHC,"LAB TEST",1,0,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+29.Jan.2019,29.Jan.2019,"ISSA FAUZIA",28.Sep.1993,6503,,,,cons-marudio,SERVICE,1,2000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+29.Jan.2019,29.Jan.2019,"STEPHANO NATHAN",29.Sep.2014,9819,304700543832,,,CONS-NHIF,SERVICE,1,1000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,"NEW FILE",SERVICE,1,5000,Null
+" "," "," "," "," "," "," "," "," "," "," "," "," "
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,THR,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,Hb,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,MCHC,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,RDW,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,MCH,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,Hct,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,RBC,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,MCV,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,Ba.,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,Mon.,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,Eo.,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,WBC,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,Lym.,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,Neu.,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,BILL,"LAB TEST",1,6000,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,Pct,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,PDW,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,MPV,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,THR,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,PMJ245,"Paracetamol Suppositories 250g tabs",DRUG,12,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,PMJ244,"Paracetamol Suppositories 125mg tabs",DRUG,4,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,MPV,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,Pct,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,PDW,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,BILL,"LAB TEST",1,6000,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,Lym.,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,Neu.,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,WBC,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,Mon.,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,Eo.,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,Ba.,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,RBC,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,MCV,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,Hct,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,MCH,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,MCHC,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,RDW,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,Hb,"LAB TEST",1,0,Null
+31.Jan.2019,31.Jan.2019,"Block Block",01.Jul.1987,5444,,,,"ELBOW XRAY",RADIOLOGY,1,20000,Null
 " "," "," "," "," "," "," "," "," "," "," "," "," "
 "PATIENTS WITH DEPOSITS"
 "PATIENTS WITH DEPOSIT BUT NO FINAL BILL YET"
 "PATIENTS WITH TOPUP"
 Lab,Drugs,Radio,Dental,Eye,Min.Proc,Major.proc,"Consult and services",Supplies.,"Laboratory Supplies",Other,"TOTAL WITH DEPOSIT ITEMS"
-"16,000","81,800","10,000",0,0,0,0,"24,000",0,0,0,"131,800"
-"GRAND TOTAL:","131,800"
+"678,000","444,450","130,000",0,0,0,0,"485,000",0,0,0,"1,737,450"
+"GRAND TOTAL:","1,737,450"
 "MAIN SUMMARY"
 "TOTAL DEPOSIT:",0
 "TOTAL TOPUP:",0
