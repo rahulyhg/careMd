@@ -448,7 +448,7 @@ if ($edit) {
 
     if ($glob_obj->getConfigValue("restrict_unbilled_items") == "1" && $patient['encounter_class_nr'] == "2" &&  $patient['insurance_ID']==='0') { 
     
-        if ($lab_obj->getPatientLabBillNoByBatch($job_id) > 0 ) {
+        if ($lab_obj->getPatientLabBillNoByBatch($batch_nr) > 0 ) {
             $enablePrint = true;
         }
     }else{
