@@ -7825,9 +7825,12 @@ A:visited:hover {color: #cc0033;}
                 $multiInsuranceResult = $db->Execute($multiInsuranceSQL);
                 $multiInsuranceRow =  $multiInsuranceResult->FetchRow();
 
+                $checked = "";
                 if (@$multiInsuranceRow && $multiInsuranceRow['sub_insurance_id'] > 0) {
-                    $checked = ($multiInsuranceRow['sub_insurance_id'] == $pricelist['ID'])?"checked":"";
-                    $checkedPriceList = $pricelist['ID'];
+                    if ($multiInsuranceRow['sub_insurance_id'] == $pricelist['ID']) {
+                        $checked = "checked";
+                        $checkedPriceList = $pricelist['ID'];
+                    }
                 }else{
                     $checked = ($insuranceId == $pricelist['company_id'])?"checked":"";
                     $checkedPriceList = $pricelist['ID'];
