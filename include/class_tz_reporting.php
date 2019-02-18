@@ -2926,6 +2926,7 @@ care_person.pid
 				ON care_test_request_chemlabor_sub.item_id=care_tz_drugsandservices.item_id
 			
 			WHERE care_test_request_chemlabor_sub.bill_number = 0 $and_admission 
+            AND care_test_request_chemlabor_sub.deleted = 0
 
 AND unix_timestamp(care_encounter.encounter_date)>='" . $start_timeframe . "' AND unix_timestamp(care_encounter.encounter_date)<='" . $end_timeframe . "'
 			

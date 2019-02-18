@@ -4063,7 +4063,7 @@ paramater_name as id
 				INNER JOIN care_encounter ON care_test_request_chemlabor.encounter_nr = care_encounter.encounter_nr
 				WHERE $sql_admission
 				AND UNIX_TIMESTAMP(care_test_request_chemlabor.create_time)>='" . $start_timeframe . "' 
-				AND UNIX_TIMESTAMP(care_test_request_chemlabor.create_time)<='" . $end_timeframe . "' AND (care_test_request_chemlabor_sub.is_disabled!='1' OR care_test_request_chemlabor_sub.status!='deleted'))";
+				AND UNIX_TIMESTAMP(care_test_request_chemlabor.create_time)<='" . $end_timeframe . "' AND care_test_request_chemlabor_sub.deleted = 0 AND (care_test_request_chemlabor_sub.is_disabled!='1' OR care_test_request_chemlabor_sub.status!='deleted'))";
 
             if ($db_ptr = $db->Execute($sql_s))
                 return TRUE;

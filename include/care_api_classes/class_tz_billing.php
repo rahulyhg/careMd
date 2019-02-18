@@ -745,7 +745,8 @@ class Bill extends Encounter {
 		ON care_test_request_chemlabor_sub.item_id = care_tz_drugsandservices.item_id
 		INNER JOIN care_encounter 
 		ON care_encounter.encounter_nr=care_test_request_chemlabor.encounter_nr
-		WHERE care_test_request_chemlabor_sub.sub_id=" . $labtest_nr;
+		WHERE care_test_request_chemlabor_sub.sub_id=" . $labtest_nr . 
+        " AND care_test_request_chemlabor_sub.deleted = 0";
 
         if ($this->debug)
             echo $this->sql;
@@ -5375,7 +5376,7 @@ A:visited:hover {color: #cc0033;}
                                     INNER JOIN care_tz_drugsandservices
                                     ON care_test_request_chemlabor_sub.item_id=care_tz_drugsandservices.item_id
 
-                                    WHERE care_test_request_chemlabor_sub.bill_number = 0 $and_in_outpatient AND encounter_date BETWEEN '$date_from' AND '$date_to'
+                                    WHERE care_test_request_chemlabor_sub.bill_number = 0 $and_in_outpatient AND care_test_request_chemlabor_sub.deleted = 0 AND encounter_date BETWEEN '$date_from' AND '$date_to'
                                     AND     (isnull(care_test_request_chemlabor_sub.is_disabled) OR care_test_request_chemlabor_sub.is_disabled='')
 
                                     UNION
