@@ -245,13 +245,13 @@ switch ($mode) {
                     }else{
                         $parsedParamList['sort_order'] = $row1['nr'];
                     }
-                    
 
                     $diag_obj_sub->setDataArray($parsedParamList);
                     //echo 'Name: '.$tmpParam[0];
                     //echo $diag_obj_sub->getLastQuery();
                     
                     $diag_obj_sub->insertDataFromInternalArray();
+                    
 //echo 'z'.$diag_obj->getItemNrByParamName($tmpParam[0]).'z';
                     $item_id = $pres_obj->GetItemIDByNumber($diag_obj->getItemNrByParamName($tmpParam[0]));
                     $diag_obj->setItemID($item_id, $batch_nr);
@@ -280,7 +280,7 @@ switch ($mode) {
 
                     $pres_obj = new Prescription;
 
-                    echo 'pin and id '.$pn.'------'.$item_id;
+                    // echo 'pin and id '.$pn.'------'.$item_id;
 
                     $pres_obj->insert_prescription($pn, $item_id, 1);
 //               echo 'x'.$item_id.'x';

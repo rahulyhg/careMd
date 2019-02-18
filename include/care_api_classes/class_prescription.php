@@ -344,7 +344,7 @@ class Prescription extends Core {
         global $is_transmit_to_weberp_enable;
         if ($type == 1) {
             $sql = 'select item_id from care_tz_drugsandservices where item_number="' . $drug_list_id . '"';
-            echo $sql;
+            // echo $sql;
             $result = $db->Execute($sql);
             $row = $result->FetchRow();
             $item = $row['item_id'];
@@ -427,7 +427,7 @@ class Prescription extends Core {
 		)";
 //echo $this->sql;
         if ($debug)
-            echo $this->sql;
+            // echo $this->sql;
         $db->Execute($this->sql);
         if ($is_transmit_to_weberp_enable) {
             $this->sql = 'select partcode from ' . $this->tb_drugsandservices . ' where item_id="' . $drug_list_id . '"';

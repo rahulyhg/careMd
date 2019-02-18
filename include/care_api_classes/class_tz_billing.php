@@ -5804,10 +5804,11 @@ A:visited:hover {color: #cc0033;}
                     "	INNER JOIN care_tz_drugsandservices
                                     ON care_test_request_chemlabor_sub.item_id=care_tz_drugsandservices.item_id" .
                     "		WHERE care_test_request_chemlabor_sub.bill_number = 0 $and_in_outpatient" .
+                    " AND care_test_request_chemlabor_sub.deleted = 0".
                     "		AND (isnull(care_test_request_chemlabor_sub.is_disabled)" .
                     "			OR care_test_request_chemlabor_sub.is_disabled='')" .
                     "			$where_encounter" .
-                    "			ORDER BY  care_encounter.encounter_date DESC , care_test_request_chemlabor.encounter_nr ASC";
+                    "			ORDER BY care_test_request_chemlabor_sub.sort_order, care_encounter.encounter_date DESC , care_test_request_chemlabor.encounter_nr ASC";
         } else {
             $this->sql = "SELECT $anzahl  	care_test_request_chemlabor.*, " .
                     "							care_test_request_chemlabor_sub.paramater_name, " .
@@ -5846,10 +5847,11 @@ A:visited:hover {color: #cc0033;}
                                     ON care_test_request_chemlabor.item_id=care_tz_drugsandservices.item_id
 
                                     WHERE care_test_request_chemlabor_sub.bill_number = 0 $and_in_outpatient
+                                    AND care_test_request_chemlabor_sub.deleted = 0
                                     AND (isnull(care_test_request_chemlabor_sub.is_disabled)
                                     OR care_test_request_chemlabor_sub.is_disabled='')
                                     $where_encounter
-                                    order by $_REQUEST[sort] $_REQUEST[sorttyp]";
+                                    order by care_test_request_chemlabor_sub.sort_order, $_REQUEST[sort] $_REQUEST[sorttyp]";
         }
 
 
