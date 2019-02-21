@@ -22,7 +22,7 @@
   }
   .main-panel > .navbar {
     display: block;
-    width: 700px;
+    min-width: 600px;
   }
 
   .sidebar{
