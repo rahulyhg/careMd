@@ -35,6 +35,15 @@
 @keyframes blinker {  
   50% { opacity: 0; }
 }
+
+@media only screen and (max-width: 1000px) {
+  .main-panel {
+    width: 100%;
+  }
+  html, body {
+    overflow-x: auto;
+  }
+}
 </style>
 
 <?php
@@ -265,13 +274,13 @@ $userNavigations = array_unique($userNavigationMenus, SORT_REGULAR);
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo">
+      <div class="logo" style="background-color: white;">
         <a href="#" class="simple-text logo-normal" style="text-transform: none;">
           <img style="height: 38px; "src="<?php echo $root_path  ?>img/caremd.png" alt="CareMd">
           
         </a>
       </div>
-      <div class="sidebar-wrapper nav-scroll backgroundOne " >
+      <div class="sidebar-wrapper nav-scroll backgroundOne" style="background-color: white;" >
         <ul class="nav" >
 
           <?php foreach ($userNavigations as $menu): ?>

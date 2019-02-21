@@ -112,8 +112,23 @@ require_once($root_path . 'main_theme/header.inc.php');
 
  ?>
 
-
- <div class="main-panel" style="margin-left: 400px;" >
+<style>
+  .mobileNav {
+    margin-left: 400px;
+  }
+  .showMobileBar {
+    display: none;
+  }
+  @media only screen and (max-width: 600px) {
+  .mobileNav {
+    margin-left: 0;
+  }
+  .showMobileBar {
+    display: block;
+  }
+}
+</style>
+ <div class="main-panel mobileNav" style="" >
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
@@ -190,9 +205,9 @@ require_once($root_path . 'main_theme/header.inc.php');
                         <div class="col-md-6">
                           <select class="custom-select input-sm col-md-12" id="topdiseaseperiod">
                             <option >Select View</option>
-                            <option value="ThisWeek">This Week</option>
+                            <option value="ThisWeek" selected>This Week</option>
                             <option value="ThisMonth">This Month</option>
-                            <option value="ThisYear" selected>This Year</option>
+                            <option value="ThisYear" >This Year</option>
                             <option value="LastWeek">Last Week</option>
                             <option value="LastMonth">Last Month</option>
                             <option value="LastYear">Last Year</option>
@@ -298,9 +313,9 @@ require_once($root_path . 'main_theme/header.inc.php');
                         <div class="col-md-6">
                           <select class="custom-select input-sm col-md-12" id="frequentdrugsperiod">
                             <option >Select View</option>
-                            <option value="ThisWeek">This Week</option>
+                            <option value="ThisWeek" selected>This Week</option>
                             <option value="ThisMonth">This Month</option>
-                            <option value="ThisYear" selected>This Year</option>
+                            <option value="ThisYear">This Year</option>
                             <option value="LastWeek">Last Week</option>
                             <option value="LastMonth">Last Month</option>
                             <option value="LastYear">Last Year</option>
