@@ -223,77 +223,85 @@ $glob_obj = new GlobalConfig($GLOBAL_CONFIG);
 # Start buffering output
                 ob_start();
                 for ($i = 0; $i <= $max_row; $i++) {
+
+
                     echo '<tr class="lab">';
                     for ($j = 0; $j <= $column; $j++) {
-                        if ($LD_Elements[$j][$i]['type'] == 'top') {
-                            echo '<td bgcolor="#ee6666" colspan="3"><font color="white">&nbsp;<b>' . $LD_Elements[$j][$i]['value'] . '</b></font></td>';
-                        } else {
-                            if ($LD_Elements[$j][$i]['value']) {
-                                echo '<td>';
-                                if ($edit) {
-                                    if (isset($stored_param[$LD_Elements[$j][$i]['id']]) && !empty($stored_param[$LD_Elements[$j][$i]['id']])) {
-                                        echo '<input type="hidden" name="' . $LD_Elements[$j][$i]['id'] . '" value="1">
-							<a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\')">';
-                                    } else {
-                                        echo '<input type="hidden" name="' . $LD_Elements[$j][$i]['id'] . '" value="0">
-							<a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\')">';
+                        $labDeleted = $lab_obj->checkIfLabTestDeleted($batch_nr, $LD_Elements[$j][$i]['id']);
+                        if ($labDeleted == 0) {
+                                
+                            if ($LD_Elements[$j][$i]['type'] == 'top') {
+                                echo '<td bgcolor="#ee6666" colspan="3"><font color="white">&nbsp;<b>' . $LD_Elements[$j][$i]['value'] . '</b></font></td>';
+                            } else {
+                                if ($LD_Elements[$j][$i]['value']) {
+                                    echo '<td>';
+                                    if ($edit) {
+                                        if (isset($stored_param[$LD_Elements[$j][$i]['id']]) && !empty($stored_param[$LD_Elements[$j][$i]['id']])) {
+                                            echo '<input type="hidden" name="' . $LD_Elements[$j][$i]['id'] . '" value="1">
+                                <a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\')">';
+                                        } else {
+                                            echo '<input type="hidden" name="' . $LD_Elements[$j][$i]['id'] . '" value="0">
+                                <a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\')">';
+                                        }
                                     }
-                                }
-                                //Check if item is billed for outpatient
-                                if ($hide_not_billed === "1" && $h_encounter_class_nr == "2" && $h_HealthFundName=="CASH") { //Check the restriction status
-                                    if ($lab_obj->getLabBillNoByBatch($batch_nr, $LD_Elements[$j][$i]['id']) > 0) {
+                                    //Check if item is billed for outpatient
+                                    if ($hide_not_billed === "1" && $h_encounter_class_nr == "2" && $h_HealthFundName=="CASH") { //Check the restriction status
+                                        if ($lab_obj->getLabBillNoByBatch($batch_nr, $LD_Elements[$j][$i]['id']) > 0) {
+                                            if (isset($stored_param[$LD_Elements[$j][$i]['id']]) && !empty($stored_param[$LD_Elements[$j][$i]['id']])) {
+                                                echo '<img src="f.gif" border=0 width=18 height=6 id="' . $LD_Elements[$j][$i]['id'] . '">';
+                                            } else {
+                                                echo '<img src="b.gif" border=0 width=18 height=6 id="' . $LD_Elements[$j][$i]['id'] . '">';
+                                            }
+                                        } else {
+                                            echo '<img src="b.gif" border=0 width=18 height=6 id="' . $LD_Elements[$j][$i]['id'] . '">';
+                                        }
+                                    } else if ($hide_not_billed === "1" && $h_encounter_class_nr != "2") {
                                         if (isset($stored_param[$LD_Elements[$j][$i]['id']]) && !empty($stored_param[$LD_Elements[$j][$i]['id']])) {
                                             echo '<img src="f.gif" border=0 width=18 height=6 id="' . $LD_Elements[$j][$i]['id'] . '">';
                                         } else {
                                             echo '<img src="b.gif" border=0 width=18 height=6 id="' . $LD_Elements[$j][$i]['id'] . '">';
                                         }
                                     } else {
-                                        echo '<img src="b.gif" border=0 width=18 height=6 id="' . $LD_Elements[$j][$i]['id'] . '">';
-                                    }
-                                } else if ($hide_not_billed === "1" && $h_encounter_class_nr != "2") {
-                                    if (isset($stored_param[$LD_Elements[$j][$i]['id']]) && !empty($stored_param[$LD_Elements[$j][$i]['id']])) {
-                                        echo '<img src="f.gif" border=0 width=18 height=6 id="' . $LD_Elements[$j][$i]['id'] . '">';
-                                    } else {
-                                        echo '<img src="b.gif" border=0 width=18 height=6 id="' . $LD_Elements[$j][$i]['id'] . '">';
-                                    }
-                                } else {
-                                    if (isset($stored_param[$LD_Elements[$j][$i]['id']]) && !empty($stored_param[$LD_Elements[$j][$i]['id']])) {
-                                        echo '<img src="f.gif" border=0 width=18 height=6 id="' . $LD_Elements[$j][$i]['id'] . '">';
-                                    } else {
-                                        echo '<img src="b.gif" border=0 width=18 height=6 id="' . $LD_Elements[$j][$i]['id'] . '">';
-                                    }
-                                }
-                                if ($edit) {
-                                    echo '</a>';
-                                }
-                                echo '</td><td>';
-                                if ($edit)
-                                    echo '<a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\')">' . $LD_Elements[$j][$i]['value'] . '</a>';
-                                else
-                                    echo $LD_Elements[$j][$i]['value'];
-
-                                echo '</td><td>';
-                                if (isset($stored_param[$LD_Elements[$j][$i]['id']]) && !empty($stored_param[$LD_Elements[$j][$i]['id']])) {
-                                    $lab_bill = $lab_obj->getLabBillNoByBatch($batch_nr, $LD_Elements[$j][$i]['id']);
-                                    if ($lab_bill > 0) {
-                                        echo '<font color="green">' . $LDLabRequestBilled . ' ' . $lab_bill . '</font>';
-                                    } else {
-                                        if ($hide_not_billed !== "1" ) {
-                                            echo '<img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)"> <font color="red">' . $LDLabRequestNotBilled . '</font> <img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)">';
-                                        } else if ($hide_not_billed === "1" && $h_encounter_class_nr !== "2") {
-                                            echo '<img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)"> <font color="red">' . $LDLabRequestNotBilled . '</font> <img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)">';
-                                        }else if($h_HealthFundName!=='CASH'){
-                                            echo '<img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)"> <font color="red">' . $LDLabRequestNotBilled . '</font> <img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)">';
-
-
+                                        if (isset($stored_param[$LD_Elements[$j][$i]['id']]) && !empty($stored_param[$LD_Elements[$j][$i]['id']])) {
+                                            echo '<img src="f.gif" border=0 width=18 height=6 id="' . $LD_Elements[$j][$i]['id'] . '">';
+                                        } else {
+                                            echo '<img src="b.gif" border=0 width=18 height=6 id="' . $LD_Elements[$j][$i]['id'] . '">';
                                         }
                                     }
+                                    if ($edit) {
+                                        echo '</a>';
+                                    }
+                                    echo '</td><td>';
+                                    if ($edit)
+                                        echo '<a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\')">' . $LD_Elements[$j][$i]['value'] . '</a>';
+                                    else{
+                                        echo $LD_Elements[$j][$i]['value'];
+                                    }
+
+                                    echo '</td><td>';
+                                    if (isset($stored_param[$LD_Elements[$j][$i]['id']]) && !empty($stored_param[$LD_Elements[$j][$i]['id']])) {
+                                        $lab_bill = $lab_obj->getLabBillNoByBatch($batch_nr, $LD_Elements[$j][$i]['id']);
+                                        if ($lab_bill > 0) {
+                                            echo '<font color="green">' . $LDLabRequestBilled . ' ' . $lab_bill . '</font>';
+                                        } else {
+                                            if ($hide_not_billed !== "1" ) {
+                                                echo '<img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)"> <font color="red">' . $LDLabRequestNotBilled . '</font> <img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)">';
+                                            } else if ($hide_not_billed === "1" && $h_encounter_class_nr !== "2") {
+                                                echo '<img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)"> <font color="red">' . $LDLabRequestNotBilled . '</font> <img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)">';
+                                            }else if($h_HealthFundName!=='CASH'){
+                                                echo '<img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)"> <font color="red">' . $LDLabRequestNotBilled . '</font> <img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)">';
+
+
+                                            }
+                                        }
+                                    }
+                                    echo '</td>';
+                                } else {
+                                    echo '<td colspan=3>&nbsp;</td>';
                                 }
-                                echo '</td>';
-                            } else {
-                                echo '<td colspan=3>&nbsp;</td>';
                             }
                         }
+
                     }
 
                     echo '</tr><tr>';

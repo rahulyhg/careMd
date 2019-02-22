@@ -1155,6 +1155,26 @@ WHERE encounter_nr='$this->enc_nr' AND status NOT IN
         } // end of if (!empty($batch_nr) && !empty($param_id))
     }
 
+    function checkIfLabTestDeleted($batch_nr, $param_id) {
+        global $db;
+        $debug = FALSE;
+        ($debug) ? $db->debug = TRUE : $db->debug = FALSE;
+        if ($debug)
+            echo "class lab::getLabBillNoByBatch($batch_nr,$param_id)<br>";
+        if (!empty($batch_nr) && !empty($param_id)) {
+            $this->sql = "SELECT deleted FROM $this->tb_req_chemlab_sub WHERE batch_nr='" . $batch_nr . "' AND paramater_name='" . $param_id ."'" ;
+            if ($debug)
+                echo $this->sql . "<br>";
+            if ($this->result = $db->Execute($this->sql)) {
+                if ($this->row = $this->result->FetchRow()) {
+                    return $this->row['deleted'];
+                }
+            } // end of if ($this->result=$db->Execute($this->sql))
+        } else {
+            return FALSE;
+        } // end of if (!empty($batch_nr) && !empty($param_id))
+    }
+
     function getPatientLabBillNoByBatch($batch_nr) {
         global $db;
         $debug = FALSE;
