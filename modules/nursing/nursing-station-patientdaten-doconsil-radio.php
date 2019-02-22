@@ -116,7 +116,6 @@ if ($enc_obj->getEncounterNotes($pn)) {
 if (@$_POST['clinical_info1']) {
     $_POST['clinical_info'] = $_POST['clinical_info1'];
 }
-
 switch ($mode) {
     case 'save':
         /* 			
@@ -415,7 +414,7 @@ ob_start();
             d.number_of_tests.focus();
             return false;
         }
-       else if ((d.clinical_info.value == ''))
+       else if ((d.clinical_info.value == '') && (d.clinical_info1.value == ''))
        {
            alert("<?php echo $LDPlsEnterClinicalInfo   ?>");
            return false;

@@ -583,7 +583,7 @@ job_id='$job_id' AND group_id='$grp_id' AND status NOT IN
         $this->sql = "SELECT * FROM $this->tb_find_chemlab INNER JOIN $this->tb_find_chemlab_sub ";
         $this->sql .= "ON ($this->tb_find_chemlab.job_id = $this->tb_find_chemlab_sub.job_id) ";
         // $this->sql .= " INNER JOIN care_test_request_chemlabor_sub ON care_test_findings_chemlabor_sub.encounter_nr = care_test_request_chemlabor_sub.encounter_nr";
-        $this->sql .= "WHERE $this->tb_find_chemlab.encounter_nr='$this->enc_nr' AND $this->tb_find_chemlab_sub.deleted = 0 AND $this->tb_find_chemlab.status NOT IN ($this->dead_stat) ORDER BY $this->tb_find_chemlab_sub.sort_order, $this->tb_find_chemlab_sub.test_date";
+        $this->sql .= "WHERE $this->tb_find_chemlab.encounter_nr='$this->enc_nr' AND $this->tb_find_chemlab.status NOT IN ($this->dead_stat) ORDER BY $this->tb_find_chemlab_sub.sort_order, $this->tb_find_chemlab_sub.test_date";
         if ($this->result = $db->Execute($this->sql)) {
             if ($this->rec_count = $this->result->RecordCount()) {
                 return $this->result;
