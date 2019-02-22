@@ -32,7 +32,6 @@ $gc = new GlobalConfig($GLOBALCONFIG);
 
 if (isset($mode) && ($mode == 'save')) {
 
-
     /* 	$db->Execute("REPLACE INTO care_config_global (type,value) VALUES ('gui_frame_left_nav_resize','$bg_resize')";
 
       if(!empty($bg_width)){
@@ -48,6 +47,7 @@ if (isset($mode) && ($mode == 'save')) {
     $gc->saveConfigItem('gui_frame_left_nav_bdcolor', $bg_bdcolor);
     $gc->saveConfigItem('language_single', $multilang);
     $gc->saveConfigItem('language_default', $deflang);
+    $gc->saveConfigItem('start_index_page', $start_index_page);
 
     header('location:' . $thisfile . URL_REDIRECT_APPEND . '&mode=0');
     exit;
@@ -55,6 +55,7 @@ if (isset($mode) && ($mode == 'save')) {
 
 $gc->getConfig('gui_frame_left_nav_%');
 $gc->getConfig('language_%');
+$gc->getConfig('start_index_page%');
 
 # Start Smarty templating here
 /**
@@ -133,6 +134,20 @@ ob_start();
                     </select>
                 </td>
             </tr>
+
+            <tr>
+                <td><FONT  color="#000099" FACE="verdana,arial" size=2></td>
+                <td class="wardlisttitlerow"><FONT  color="#000099" FACE="verdana,arial" size=2><b>Default Start Page</b></td>
+                <td><select name="start_index_page">
+
+                       <option value="">Select</option>
+                       <option <?php if($GLOBALCONFIG['start_index_page'] == "dashboard"){ echo "selected"; } ?> value="dashboard">Dashboard</option>
+                       <option <?php if($GLOBALCONFIG['start_index_page'] == "registration"){ echo "selected"; } ?> value="registration">Registration</option>
+
+                    </select>
+                </td>
+            </tr>
+
         </tbody>
     </table>
     <p>

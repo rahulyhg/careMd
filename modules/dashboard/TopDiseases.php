@@ -17,7 +17,7 @@ $diseaseData = array();
 $background = array();
 $colorHelper = new ColorHelper();
 
-$period = @$_GET['period']?$_GET['period']:"ThisYear";
+$period = @$_GET['period']?$_GET['period']:"ThisWeek";
 
 if ($period == "ThisWeek") {
 	$startDate = Carbon::now()->startOfWeek()->format('Y-m-d');

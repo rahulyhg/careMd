@@ -1,16 +1,55 @@
+<style>
+  
+  .showMobileBar {
+    display: none;
+  }
+  .responsivePadding {
+    margin-top: -20px !important;   
+  }
+  .main-panel > .navbar {
+    display: none;
+  }
+  @media only screen and (max-width: 991px) {
+  .showMobileBar {
+    display: block;
+    font-size: 20px;
+    line-height: 2rem;
+    margin-right: 25rem;
+  }
+
+  .responsivePadding {
+    margin-top: 40px !important;
+  }
+  .main-panel > .navbar {
+    display: block;
+    min-width: 600px;
+  }
+
+  .sidebar{
+  width: 260px;
+}
+.sidebar .sidebar-wrapper{
+  width: 260px;
+}
+
+}
+</style>
+
 <div class="main-panel">
-      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top ">
         <div class="container-fluid">
           <!-- <div class="navbar-wrapper">
             <a class="navbar-brand" href="#pablo"><?php echo @($pageName)?$pageName: ""; ?></a>
           </div> -->
-          <button class="navbar-toggler float-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler float-left" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon icon-bar"></span>
             <span class="navbar-toggler-icon icon-bar"></span>
             <span class="navbar-toggler-icon icon-bar"></span>
           </button>
-          <div class="collapse navbar-collapse justify-content-end">
+            <!-- <h4 class="showMobileBar">CareMD</h4> -->
+          
+          <div class="collapse navbar-collapse justify-content-start">
            
            <!--  <ul class="navbar-nav">
               <li class="nav-item dropdown">
@@ -38,7 +77,7 @@
         </div>
       </nav>
 
-  <div class="content" style="margin-top: -10px;">
+  <div class="content responsivePadding">
 
 <!-- 
 <div class="" style="margin-left: 270px; mar">

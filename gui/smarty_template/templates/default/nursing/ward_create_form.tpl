@@ -11,7 +11,7 @@
         <table>
             <tbody>
                 <tr>
-                    <td class="adm_item">{{$LDStation}}</td>
+                    <td class="adm_item ">{{$LDStation}}</td>
                     <td class="adm_input"><input type="text" name="name" size=20 maxlength=40 value="{{$name}}"></td>
                 </tr>
                 <tr>

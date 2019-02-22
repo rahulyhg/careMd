@@ -2,6 +2,10 @@
 error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR);
 require('./roots.php');
 require($root_path . 'include/inc_environment_global.php');
+
+define('LANG_FILE', 'startframe.php');
+define('NO_CHAIN', 1);
+
 $PageName = "Registration";
 
 if (empty($_SESSION['sess_login_userid'])) {
@@ -48,7 +52,7 @@ $smarty = new smarty_care('common');
 
 # Added for the common header top block
 
-$smarty->assign('sToolbarTitle', $LDPatientRegister . " - " . $LDSearch);
+$smarty->assign('sToolbarTitle', "Registration Search");
 
 # Added for the common header top block
 $smarty->assign('pbHelp', "javascript:gethelp('registration_overview.php','Person Registration :: Overview')");

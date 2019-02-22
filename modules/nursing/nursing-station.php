@@ -80,6 +80,7 @@ $vct = $multi_obj->__genNumbers();
 require_once($root_path . 'include/inc_date_format_functions.php');
 require_once($root_path . 'global_conf/inc_remoteservers_conf.php');
 
+
 if (($mode == '') || ($mode == 'fresh')) {
     if ($ward_info = &$ward_obj->getWardInfo($ward_nr)) {
         $room_obj = &$ward_obj->getRoomInfo($ward_nr, $ward_info['room_nr_start'], $ward_info['room_nr_end']);

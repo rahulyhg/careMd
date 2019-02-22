@@ -656,6 +656,7 @@ class Nhif_claims extends Nhif {
                 . " FROM care_test_request_chemlabor_sub,care_test_findings_chemlabor_sub,care_tz_drugsandservices"
                 . " WHERE care_test_request_chemlabor_sub.item_id = care_tz_drugsandservices.item_id "
                 . " AND care_test_findings_chemlabor_sub.encounter_nr = care_test_request_chemlabor_sub.encounter_nr "
+                . " AND care_test_findings_chemlabor_sub.deleted = 0"
                 . " AND care_test_findings_chemlabor_sub.paramater_name = care_test_request_chemlabor_sub.paramater_name ";
 
         if (isset($filter_data['encounter_nr'])) {

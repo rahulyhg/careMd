@@ -45,7 +45,6 @@ if ($billtype == "artndental" && !$createARTQuotation) {
        }
 
     }
-        
     </script>
     <form name="form1" action="" method="POST" onSubmit=" return CheckTarehe();">
     <script type="text/javascript"><?php require($root_path.'include/inc_checkdate_lang.php'); ?>

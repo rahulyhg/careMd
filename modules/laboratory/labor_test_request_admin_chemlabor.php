@@ -441,6 +441,19 @@ if ($edit) {
 
 # If pending request available, show list and actual form
     // if ($batchrows) {
+    // 
+    
+    $enablePrint = false;
+    $patient = $enc_obj->encounter;
+
+    if ($glob_obj->getConfigValue("restrict_unbilled_items") == "1" && $patient['encounter_class_nr'] == "2" &&  $patient['insurance_ID']==='0') { 
+    
+        if ($lab_obj->getPatientLabBillNoByBatch($batch_nr) > 0 ) {
+            $enablePrint = true;
+        }
+    }else{
+        $enablePrint = true;
+    }
         ?>
 
         <table border=0>
@@ -458,7 +471,10 @@ if ($edit) {
 
                     <!-- Here begins the form  -->
 
-                    <a href="javascript:printOut()"><img <?php echo createLDImgSrc($root_path, 'printout.gif', '0', 'absmiddle') ?> alt="<?php echo $LDPrintOut ?>"></a>
+                    <?php if ($enablePrint): ?>
+                       <a href="javascript:printOut()"><img <?php echo createLDImgSrc($root_path, 'printout.gif', '0', 'absmiddle') ?> alt="<?php echo $LDPrintOut ?>"></a>    
+                    <?php endif ?>
+
 
                     <!-- Hide Enter and Done buttons if the specimen is not collected-->
                     <?php if ($h_specimen_collected == 1) { ?>
@@ -477,7 +493,11 @@ if ($edit) {
                     require_once($root_path . 'include/inc_test_request_printout_chemlabor.php');
                     ?>
 
-                    <a href="javascript:printOut()"><img <?php echo createLDImgSrc($root_path, 'printout.gif', '0', 'absmiddle') ?> alt="<?php echo $LDPrintOut ?>"></a>
+
+                    <?php if ($enablePrint): ?>
+                        <a href="javascript:printOut()"><img <?php echo createLDImgSrc($root_path, 'printout.gif', '0', 'absmiddle') ?> alt="<?php echo $LDPrintOut ?>"></a>
+                    <?php endif ?>
+                    
                     <a href="<?php echo 'labor_datainput.php' . URL_APPEND . '&encounter_nr=' . $pn . '&job_id=' . $batch_nr . '&mode=' . $mode . '&update=1&user_origin=lab_mgmt'; ?>"><img <?php echo createLDImgSrc($root_path, 'enter.gif', '0', 'absmiddle') ?> alt="<?php echo $LDEnterResult ?>"></a>
                     <a href="<?php echo $thisfile . URL_APPEND . "&edit=" . $edit . "&mode=done&target=" . $target . "&subtarget=" . $subtarget . "&batch_nr=" . $batch_nr . "&pn=" . $pn . "&formtitle=" . $formtitle . "&user_origin=" . $user_origin . "&noresize=" . $noresize; ?>"><img <?php echo createLDImgSrc($root_path, 'done.gif', '0', 'absmiddle') ?> alt="<?php echo $LDDone ?>"></a>
                     <a href="labor_test_request_pass.php"><img <?php echo createLDImgSrc($root_path, 'new.gif', '0', 'absmiddle') ?></a>

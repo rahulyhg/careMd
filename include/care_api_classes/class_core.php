@@ -208,12 +208,12 @@ class Core {
 		$x='';
 		$v='';
 		while(list($x,$v)=each($this->ref_array)) {
-			if(isset($this->data_array[$v])&&($this->data_array[$v]!='')) {
+
+			if((!empty($this->data_array[$v])&&($this->data_array[$v]!='')) || $this->data_array[$v] === 0) {
 				$this->buffer_array[$v]=$this->data_array[$v];
 				if($v=='create_time' && !empty($this->data['create_time'])) $this->buffer_array[$v] = date('YmdHis');
 			}
 		}
-		
 		# Reset the source array index to start
 		reset($this->ref_array);
 		return sizeof($this->buffer_array);

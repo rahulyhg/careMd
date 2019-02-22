@@ -101,7 +101,6 @@ class GlobalConfig extends Core {
      */
     function saveConfigItem($type = '', $value = '') {
 
- echo "<pre>"; print_r($type);echo "</pre>";
         global $db;
         //$db->debug=1;
         if (empty($type))

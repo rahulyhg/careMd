@@ -19,10 +19,10 @@ function createDataBlock($param) {
 
     if ($edit) {
         echo '
-	<textarea name="' . $param . '" cols=82 rows=10 wrap="physical">' . stripslashes($stored_findings[$param]) . '</textarea>';
+    <textarea name="' . $param . '" cols=82 rows=10 wrap="physical">' . stripslashes($stored_findings[$param]) . '</textarea>';
     } else {
         echo '
-			         <blockquote><font face="verdana,arial" color="#000000" size=2>' . nl2br(stripslashes($stored_findings[$param])) . '</font></blockquote>';
+                     <blockquote><font face="verdana,arial" color="#000000" size=2>' . nl2br(stripslashes($stored_findings[$param])) . '</font></blockquote>';
     }
 }
 
@@ -43,11 +43,11 @@ function createInputBlock($param, $value) {
     }
     else {
         echo '&nbsp;
-			         <font face="verdana,arial" color="#000000" size=2>' . $value . '</font><br>&nbsp;';
+                     <font face="verdana,arial" color="#000000" size=2>' . $value . '</font><br>&nbsp;';
     }
 }
 ?>
-<table  border=0 cellpadding=1 cellspacing=0 bgcolor="#000000">
+<table border=0 cellpadding=1 cellspacing=0 bgcolor="#000000">
     <tr>
         <td>
 
@@ -56,12 +56,13 @@ function createInputBlock($param, $value) {
                 <tr>
                     <td>
 
-                        <table   cellpadding="0" cellspacing=1 border="0" width=700>
+                        <table cellpadding="0" cellspacing=1 border="0" width=700>
 
                             <tr bgcolor="<?php echo $bgc1 ?>">
-                                <td  valign="top" align="left"><font color="#000099" size=2 face="verdana,arial">	
+                                <td valign="top" align="left">
+                                    <font color="#000099" size=2 face="verdana,arial">
 
-                                    <?php
+                                        <?php
                                     echo $addr_line[0] . '<br>';
                                     echo $addr_line[1];
                                     echo $addr_line[2];
@@ -69,169 +70,196 @@ function createInputBlock($param, $value) {
 
                                 </td>
 
-                                <td  valign="top" align="right">
-                                    <div class="fva0_ml10"><font color="#000099" size=2 face="verdana,arial">	
-                                        <?php
+                                <td valign="top" align="right">
+                                    <div class="fva0_ml10">
+                                        <font color="#000099" size=2 face="verdana,arial">
+                                            <?php
                                         echo $LDCaseNr . '<br>' . $LDPatNr . '<br>' . $LDFamilyName . '<br>' . $LDNames . '<br>' . $LDSex . '<br>' . $LDBDay;
                                         ?>
-                                    </div> 		 </td>
+                                    </div>
+                                </td>
 
-                                <td  valign="top">
-                                    <div class="fva0_ml10"><font color="#000000" size=2 face="verdana,arial">	
-                                        <?php
+                                <td valign="top">
+                                    <div class="fva0_ml10">
+                                        <font color="#000000" size=2 face="verdana,arial">
+                                            <?php
                                         echo $full_en . '<br>' . $result['selian_pid'] . '<br>' . $result['name_last'] . '<br>' . ucwords(ucwords($result['name_first'])) . '<br>' . strtoupper($result['sex']) . '<br>' . formatDate2Local($result['date_birth'], $date_format);
                                         ?>
-                                    </div> 		 </td>
+                                    </div>
+                                </td>
                             </tr>
 
                             <tr bgcolor="<?php echo $bgc1 ?>">
 
-                                <td  valign="top" colspan=3  align="center"><div class=fva0_ml10>
+                                <td valign="top" colspan=3 align="center">
+                                    <div class=fva0_ml10>
 
                                 </td>
                             </tr>
 
                             <tr bgcolor="<?php echo $bgc1 ?>">
 
-                                <td  valign="top" colspan=3  align="center"><div class=fva0_ml10>
+                                <td valign="top" colspan=3 align="center">
+                                    <div class=fva0_ml10>
 
                                         <p>
 
-                                            </td>
-                                            </tr>
+                                </td>
+                            </tr>
 
 
-                                        <tr bgcolor="<?php echo $bgc1 ?>">
+                            <tr bgcolor="<?php echo $bgc1 ?>">
 
-                                            <td  valign="top" colspan=3  align="center"><div class=fva0_ml10><font color="#000099">	 
-                                                    <font size=3 color="#000099" face="verdana,arial"><b><?php echo $formtitle ?></b></font><br>
-                                                    <hr />
+                                <td valign="top" colspan=3 align="center">
+                                    <div class=fva0_ml10>
+                                        <font color="#000099">
+                                            <font size=3 color="#000099" face="verdana,arial">
+                                                <b><?php echo $formtitle ?></b></font><br>
+                                            <hr />
 
-                                            </td>
-                                        </tr>
+                                </td>
+                            </tr>
 
-                                        <tr bgcolor="<?php echo $bgc1 ?>">
+                            <tr bgcolor="<?php echo $bgc1 ?>">
 
-                                            <td  valign="top" colspan=3  align="left">
-                                                <div class=fva0_ml10><font color="#000099" size=2 face="verdana,arial">	
+                                <td valign="top" colspan=3 align="left">
+                                    <div class=fva0_ml10>
+                                        <font color="#000099" size=2 face="verdana,arial">
 
-                                                    <?php echo $LDRequestDate ?>
-                                                    <u><?php echo $stored_tests['send_date'] ?><p>
+                                            <?php echo $LDRequestDate ?>
+                                            <u><?php echo $stored_tests['send_date'] ?><p>
 
-                                                            </td>
-                                                            </tr>
+                                </td>
+                            </tr>
 
-                                                        <tr bgcolor="<?php echo $bgc1 ?>">
+                            <tr bgcolor="<?php echo $bgc1 ?>">
 
-                                                            <td  valign="top" colspan=3  align="left">
-                                                                <div class=fva0_ml10><font color="#000099" size=2 face="verdana,arial">	
+                                <td valign="top" colspan=3 align="left">
+                                    <div class=fva0_ml10>
+                                        <font color="#000099" size=2 face="verdana,arial">
 
-                                                                    <?php echo $LDRequestingDoc ?>
-                                                                    <u><?php echo $stored_tests['send_doctor'] ?><p>
+                                            <?php echo $LDRequestingDoc ?>
+                                            <u><?php echo $stored_tests['send_doctor'] ?><p>
 
-                                                                            </td>
-                                                                            </tr>
+                                </td>
+                            </tr>
 
-                                                                        <tr bgcolor="<?php echo $bgc1 ?>">
+                            <tr bgcolor="<?php echo $bgc1 ?>">
 
-                                                                            <td  valign="top" colspan=3  align="left">
-                                                                                <div class=fva0_ml10><font color="#000099" size=2 face="verdana,arial">	
+                                <td valign="top" colspan=3 align="left">
+                                    <div class=fva0_ml10>
+                                        <font color="#000099" size=2 face="verdana,arial">
 
-                                                                                    <?php echo $LDClinicalSum ?>
-                                                                                    <u><?php echo $stored_tests['clinical_info'] ?><p>
+                                            <?php echo $LDClinicalSum ?>
+                                            <u><?php echo $stored_tests['clinical_info'] ?><p>
 
-                                                                                            </td>
-                                                                                            </tr>
+                                </td>
+                            </tr>
 
-                                                                                        <tr bgcolor="<?php echo $bgc1 ?>">
+                            <tr bgcolor="<?php echo $bgc1 ?>">
 
-                                                                                            <td  valign="top" colspan=3  align="left">
-                                                                                                <div class=fva0_ml10><font color="#000099" size=2 face="verdana,arial">	
+                                <td valign="top" colspan=3 align="left">
+                                    <div class=fva0_ml10>
+                                        <font color="#000099" size=2 face="verdana,arial">
 
-                                                                                                    <?php echo $LDDiagnosticTest ?>
+                                            <?php echo $LDDiagnosticTest ?>
 
-                                                                                                    <?php
-                                                                                                    $sql = 'select item_description from care_tz_drugsandservices where item_id=' . $stored_tests['test_request'];
-                                                                                                    $requests = $db->Execute($sql);
-                                                                                                    if ($requests)
-                                                                                                        $test_request = $requests->FetchRow();
-                                                                                                    ?>
-                                                                                                    <u><?php echo $test_request[0] ?><p>
+                                            <?php
+                                                $sql = 'select item_description from care_tz_drugsandservices where item_id=' . $stored_tests['test_request'];
+                                                $requests = $db->Execute($sql);
+                                                if ($requests)
+                                                    $test_request = $requests->FetchRow();
+                                                ?>
+                                            <u><?php echo $test_request[0] ?><p>
 
-                                                                                                            </div></td>
-                                                                                                            </tr>
+                                    </div>
+                                </td>
+                            </tr>
 
-                                                                                                        <tr bgcolor="<?php echo $bgc1 ?>">
+                            <tr bgcolor="<?php echo $bgc1 ?>">
 
-                                                                                                        <tr bgcolor="<?php echo $bgc1 ?>">
-                                                                                                            <td  valign="top" colspan=3><div class=fva0_ml10><font color="#000099" size=2 face="verdana,arial">	 
-                                                                                                                    <?php echo $LDTestFindings ?><br>
-                                                                                                                    <?php createDataBlock('findings') ?>
-                                                                                                                    </td>
-                                                                                                                    </tr>
+                            <tr bgcolor="<?php echo $bgc1 ?>">
+                                <td valign="top" colspan=3>
+                                    <div class=fva0_ml10>
+                                        <font color="#000099" size=2 face="verdana,arial">
+                                            <?php echo $LDTestFindings ?><br>
+                                            <?php createDataBlock('findings') ?>
+                                </td>
+                            </tr>
 
-                                                                                                                    <tr bgcolor="<?php echo $bgc1 ?>">
-                                                                                                                        <td  valign="top" colspan=3 ><div class=fva0_ml10><font color="#000099" size=2 face="verdana,arial">		 
-                                                                                                                                <?php echo $LDDiagnosis ?><br>
-                                                                                                                                <?php createDataBlock('diagnosis') ?>
-                                                                                                                            </div></td>
+                            <tr bgcolor="<?php echo $bgc1 ?>">
+                                <td valign="top" colspan=3>
+                                    <div class=fva0_ml10>
+                                        <font color="#000099" size=2 face="verdana,arial">
+                                            <?php echo $LDDiagnosis ?><br>
+                                            <?php createDataBlock('diagnosis') ?>
+                                    </div>
+                                </td>
 
-                                                                                                                    </tr>
+                            </tr>
 
-                                                                                                                    <tr bgcolor="<?php echo $bgc1 ?>">
-                                                                                                                        <td ><div class=fva2_ml10><font color="#000099">
-                                                                                                                                <?php echo $LDDate ?>:
-                                                                                                                                <?php
-                                                                                                                                /* 		           if($mode=="edit") $fdate=formatDate2Local($stored_findings['findings_date'],$date_format);
-                                                                                                                                  else $fdate=formatDate2Local(date("Y-m-d"),$date_format);
-                                                                                                                                 */
-                                                                                                                                /* 				 
-                                                                                                                                  if($mode=='edit' && $stored_findings['findings_date']) $fdate=formatDate2Local($stored_findings['findings_date'],$date_format);
-                                                                                                                                  else $fdate=formatDate2Local(date('Y-m-d'),$date_format);
-                                                                                                                                 */
-                                                                                                                                if ($stored_findings['findings_date'])
-                                                                                                                                    $fdate = formatDate2Local($stored_findings['findings_date'], $date_format);
-                                                                                                                                else
-                                                                                                                                    $fdate = formatDate2Local(date('Y-m-d'), $date_format);
+                            <tr bgcolor="<?php echo $bgc1 ?>">
+                                <td>
+                                    <div class=fva2_ml10>
+                                        <font color="#000099">
+                                            <?php echo $LDDate ?>:
+                                            <?php
+                                                /*                 if($mode=="edit") $fdate=formatDate2Local($stored_findings['findings_date'],$date_format);
+                                                    else $fdate=formatDate2Local(date("Y-m-d"),$date_format);
+                                                    */
+                                                /*               
+                                                    if($mode=='edit' && $stored_findings['findings_date']) $fdate=formatDate2Local($stored_findings['findings_date'],$date_format);
+                                                    else $fdate=formatDate2Local(date('Y-m-d'),$date_format);
+                                                    */
+                                                if ($stored_findings['findings_date'])
+                                                    $fdate = formatDate2Local($stored_findings['findings_date'], $date_format);
+                                                else
+                                                    $fdate = formatDate2Local(date('Y-m-d'), $date_format);
 
-                                                                                                                                createInputBlock('findings_date', $fdate);
+                                                createInputBlock('findings_date', $fdate);
 
-                                                                                                                                if ($edit) {
-                                                                                                                                    ?>
-                                                                                                                                    <a href="javascript:show_calendar('form_test_request.findings_date','<?php echo $date_format ?>')">
-                                                                                                                                        <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
-                                                                                                                                    <?php
-                                                                                                                                }
-                                                                                                                                ?>
-                                                                                                                            </div></td>
-                                                                                                                        <td align="right" colspan=3><div class=fva2_ml10><font color="#000099">
+                                                if ($edit) {
+                                                    ?>
+                                            <a
+                                                href="javascript:show_calendar('form_test_request.findings_date','<?php echo $date_format ?>')">
+                                                <img
+                                                    <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle'); ?>></a>
+                                            <?php
+                                            }
+                                            ?>
+                                    </div>
+                                </td>
+                                <td align="right" colspan=3>
+                                    <div class=fva2_ml10>
+                                        <font color="#000099">
 
 
 
-                                                                                                                                <?php echo $LDReportingRad ?>:</font><font color="#000000"> 
+                                            <?php echo $LDReportingRad ?>:</font>
+                                        <font color="#000000">
 
-                                                                                                                                <?php
-                                                                                                                                if ($stored_findings['doctor_id'])
-                                                                                                                                    $doctor_id = $stored_findings['doctor_id'];
-                                                                                                                                else
-                                                                                                                                    $doctor_id = $_SESSION['sess_user_name'];
+                                            <?php
+                                                if ($stored_findings['doctor_id'])
+                                                    $doctor_id = $stored_findings['doctor_id'];
+                                                else
+                                                    $doctor_id = $_SESSION['sess_user_name'];
 
-                                                                                                                                createInputBlock('doctor_id', $doctor_id);
-                                                                                                                                ?>
+                                                createInputBlock('doctor_id', $doctor_id);
+                                                ?>
 
-                                                                                                                                <!-- <?php createInputBlock('doctor_id', $stored_findings['doctor_id']); ?>  -->
+                                            <!-- <?php createInputBlock('doctor_id', $stored_findings['doctor_id']); ?>  -->
 
-<!-- <input type="text" name="doctor_id" size=30 maxlength=30 value="<?php echo $_SESSION['sess_user_name']; ?>" readonly>  -->
-                                                                                                                                &nbsp;&nbsp;
-                                                                                                                            </div></td>
-                                                                                                                    </tr>
-                                                                                                                    </table>	
+                                            <!-- <input type="text" name="doctor_id" size=30 maxlength=30 value="<?php echo $_SESSION['sess_user_name']; ?>" readonly>  -->
+                                            &nbsp;&nbsp;
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
 
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        </table>
+                    </td>
+                </tr>
+            </table>
 
-                                                                                                        </td>
-                                                                                                        </tr>
-                                                                                                        </table>
-
+        </td>
+    </tr>
+</table>

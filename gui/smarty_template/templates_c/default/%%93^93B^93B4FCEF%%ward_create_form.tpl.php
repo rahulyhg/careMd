@@ -1,10 +1,10 @@
-<?php /* Smarty version 2.6.22, created on 2011-10-27 14:46:29
-  compiled from nursing/ward_create_form.tpl */ ?>
+<?php /* Smarty version 2.6.22, created on 2019-02-04 15:09:17
+         compiled from nursing/ward_create_form.tpl */ ?>
 
 <ul>
     <?php echo $this->_tpl_vars['sMascotImg']; ?>
-    <?php echo $this->_tpl_vars['sStationExists']; ?>
-    <?php echo $this->_tpl_vars['LDEnterAllFields']; ?>
+ <?php echo $this->_tpl_vars['sStationExists']; ?>
+ <?php echo $this->_tpl_vars['LDEnterAllFields']; ?>
 
     <p>
 
@@ -12,49 +12,49 @@
         <table>
             <tbody>
                 <tr>
-                    <td class="adm_item"><?php echo $this->_tpl_vars['LDStation']; ?>
-                    </td>
+                    <td class="adm_item "><?php echo $this->_tpl_vars['LDStation']; ?>
+</td>
                     <td class="adm_input"><input type="text" name="name" size=20 maxlength=40 value="<?php echo $this->_tpl_vars['name']; ?>
-                                                 "></td>
+"></td>
                 </tr>
                 <tr>
                     <td class="adm_item"><?php echo $this->_tpl_vars['LDWard_ID']; ?>
-                    </td>
+</td>
                     <td class="adm_input"><input type="text" name="ward_id" size=20 maxlength=40 value="<?php echo $this->_tpl_vars['ward_id']; ?>
-                                                 "> [a-Z,1-0] <?php echo $this->_tpl_vars['LDNoSpecChars']; ?>
-                    </td>
+"> [a-Z,1-0] <?php echo $this->_tpl_vars['LDNoSpecChars']; ?>
+</td>
                 </tr>
                 <tr>
                     <td class="adm_item"><?php echo $this->_tpl_vars['LDDept']; ?>
-                    </td>
+</td>
                     <td class="adm_input"><?php echo $this->_tpl_vars['sDeptSelectBox']; ?>
-                        <?php echo $this->_tpl_vars['sSelectIcon']; ?>
-                        <?php echo $this->_tpl_vars['LDPlsSelect']; ?>
-                    </td>
+ <?php echo $this->_tpl_vars['sSelectIcon']; ?>
+ <?php echo $this->_tpl_vars['LDPlsSelect']; ?>
+</td>
                 </tr>
                 <tr>
                     <td class="adm_item"><?php echo $this->_tpl_vars['LDDescription']; ?>
-                    </td>
+</td>
                     <td class="adm_input"><textarea name="description" cols=40 rows=8 wrap="physical"><?php echo $this->_tpl_vars['description']; ?>
-                        </textarea></td>
+</textarea></td>
                 </tr>
                 <tr>
                     <td class="adm_item"><?php echo $this->_tpl_vars['LDRoom1Nr']; ?>
-                    </td>
+</td>
                     <td class="adm_input"><input type="text" name="room_nr_start" size=4 maxlength=4 value="<?php echo $this->_tpl_vars['room_nr_start']; ?>
-                                                 "></td>
+"></td>
                 </tr>
                 <tr>
                     <td class="adm_item"><?php echo $this->_tpl_vars['LDRoom2Nr']; ?>
-                    </td>
+</td>
                     <td class="adm_input"><input type="text" name="room_nr_end" size=4 maxlength=4 value="<?php echo $this->_tpl_vars['room_nr_end']; ?>
-                                                 "></td>
+"></td>
                 </tr>
                 <tr>
                     <td class="adm_item"><?php echo $this->_tpl_vars['LDRoomPrefix']; ?>
-                    </td>
+</td>
                     <td class="adm_input"><input type="text" name="roomprefix" size=4 maxlength=4 value="<?php echo $this->_tpl_vars['roomprefix']; ?>
-                                                 "></td>
+"></td>
                 </tr>
             </tbody>
         </table>

@@ -61,6 +61,22 @@ require_once($root_path . 'include/inc_front_chain_lang.php');
 require($root_path . 'include/inc_2level_reset.php');
 
 $fileforward = $root_path . 'modules/news/start_page.php' . URL_REDIRECT_APPEND;
+
+$loginSQL = "SELECT value from care_config_global WHERE type = 'start_index_page'";
+$loginResult = $db->Execute($loginSQL);
+if (@$loginResult && $loginResult->RecordCount()) {
+    $loginRow = $loginResult->fetchRow();
+    $loginURL = $loginRow['value'];
+}
+if ($loginURL == "registration") {
+    $fileforward = $root_path . 'modules/registration_admission/patient_register_search.php' . URL_REDIRECT_APPEND;
+?>
+<script>
+      createCookie("PageName", "Registration", "10");
+</script>
+<?php
+}
+
 $thisfile = 'login.php';
 // $breakfile = 'startframe.php' . URL_APPEND;
 

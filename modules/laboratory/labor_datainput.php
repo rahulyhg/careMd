@@ -499,6 +499,7 @@ reset($requestData);
 //print_r($requestData);
 $collimit = 0;
 
+
 $testMeasures = [];
 $data = $requestData;
 foreach ($data as $testArray) {
@@ -576,7 +577,7 @@ if(isset($_FILES)) {
             $values = str_replace("", '', $values);
             $values = str_replace(PHP_EOL, ',', $values);
             $tests = $reqTest = explode(',', $values);
-            $fileBatchNr = $reqTest[9];
+            $fileBatchNr = (int)$reqTest[9];
 
         }
   
@@ -638,6 +639,7 @@ if (@$rejected && $rejected == 1) {
 }
 
 // MINOR cHANGES
+
 
 while (list($group, $pm) = each($requestData)) {
 

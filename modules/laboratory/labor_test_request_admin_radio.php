@@ -261,6 +261,22 @@ $smarty->append('JavaScript', $sTemp);
 
 ob_start();
 
+$enablePrint = false;
+$patient = $enc_obj->encounter;
+
+
+include_once $root_path . 'include/care_api_classes/class_radio.php';
+$radio_obj = new Radio;
+
+if ($glob_obj->getConfigValue("restrict_unbilled_items") == "1" && $patient['encounter_class_nr'] == "2" &&  $patient['insurance_ID']==='0') { 
+
+    if ($radio_obj->getPatientRadioBillNoByBatch($batch_nr) > 0 ) {
+        $enablePrint = true;
+    }
+}else{
+    $enablePrint = true;
+}
+
 if ($batchrows) {
     ?>
 
@@ -287,7 +303,11 @@ if ($batchrows) {
 
                 <form name="form_test_request" method="post" action="<?php echo $thisfile ?>" onSubmit="return chkForm(this)">
                     <input type="image" <?php echo createLDImgSrc($root_path, 'savedisc.gif', '0') ?>  title="<?php echo $LDSaveEntry ?>">
-                    <a href="javascript:printOut()"><img <?php echo createLDImgSrc($root_path, 'printout.gif', '0') ?> alt="<?php echo $LDPrintOut ?>"></a>
+                   
+
+                    <?php if ($enablePrint): ?>
+                         <a href="javascript:printOut()"><img <?php echo createLDImgSrc($root_path, 'printout.gif', '0') ?> alt="<?php echo $LDPrintOut ?>"></a>
+                    <?php endif ?>
 
 
 
@@ -714,7 +734,10 @@ $sql     = "select UPPER(name_last) as name_last, CONCAT(name_first,'  ', name_2
                                                                                 </table>
                                                                                 <p>
                                                                                     <input type="image" <?php echo createLDImgSrc($root_path, 'savedisc.gif', '0') ?>  title="<?php echo $LDSaveEntry ?>">
-                                                                                    <a href="javascript:printOut()"><img <?php echo createLDImgSrc($root_path, 'printout.gif', '0') ?> alt="<?php echo $LDPrintOut ?>"></a>
+                                                                                   
+                                                                                   <?php if ($enablePrint): ?>
+                                                                                        <a href="javascript:printOut()"><img <?php echo createLDImgSrc($root_path, 'printout.gif', '0') ?> alt="<?php echo $LDPrintOut ?>"></a>
+                                                                                   <?php endif ?>
                                                                                     <?php
 if ($restrict) {
 

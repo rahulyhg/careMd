@@ -58,8 +58,11 @@ if ($_POST['hospNo']) {
 
     $vc .= ($_POST['expire'] == 1) ? '1|' : '0|'; # User password Expiring Date
 
-    $vc .= ($_POST['nodisch'] == 1) ? '1' : '0'; # User password Expiring Date
+    $vc .= ($_POST['nodisch'] == 1) ? '1|' : '0|'; # User password Expiring Date
+    $vc .= ($_POST['copyhistory'] == 1) ? '1' : '0'; # User password Expiring Date
+
     # save outputs
+    #
     $nhif = ($_POST['validate_nhif'] == 1) ? '1' : '0'; # Validate NHIF No Status
 
     $nb->_save_nhif_status($nhif);
@@ -403,6 +406,20 @@ if (!$cfg['dhtml']) {
                             echo ' value="1" >
 			       </td>
 				</tr>';
+
+                // copy from patient history
+                // 
+                
+                echo '<tr>
+                        <td style="width:10%; text-align:center;"><img ' . createComIcon($root_path, 'post_discussion.gif', '0') . '></td>
+                        <td><FONT  color="#0000cc"><b>Copy from patient history</b> </FONT></td>
+                        <td  style="width:10%; text-align:center;">' .
+                            '<input type="checkbox" name="copyhistory" ';
+                            if ($val[12] == 1)
+                                print ' checked="true" ';
+                            echo ' value="1" >
+                   </td>
+                </tr>';
 
 # spacer
                             echo '<tr>

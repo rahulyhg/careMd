@@ -687,6 +687,26 @@ class Radio extends Encounter {
         }
     }
 
+     function getPatientRadioBillNoByBatch($batch_nr) {
+        global $db;
+        $debug = FALSE;
+        ($debug) ? $db->debug = TRUE : $db->debug = FALSE;
+        if ($debug)
+            echo "class lab::getRadioBillNoByBatch($batch_nr)<br>";
+        if (!empty($batch_nr)) {
+            $this->sql = "SELECT bill_number FROM care_test_request_radio WHERE batch_nr='" . $batch_nr . "'";
+            if ($debug)
+                echo $this->sql . "<br>";
+            if ($this->result = $db->Execute($this->sql)) {
+                if ($this->row = $this->result->FetchRow()) {
+                    return $this->row['bill_number'];
+                }
+            } 
+        } else {
+            return FALSE;
+        }
+    }
+
 }
 
 ?>

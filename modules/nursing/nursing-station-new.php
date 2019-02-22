@@ -109,12 +109,12 @@ ob_start();
 
     function check(d)
     {
-        if ((d.description.value == "") || (d.dept_nr.value == "") || (d.ward_id == "") || (d.roomprefix.value == ""))
+        if ((d.description.value == "") || (d.ward_id == "") || (d.roomprefix.value == ""))
         {
             alert("<?php echo $LDAlertIncomplete ?>");
             return false;
         }
-        if (parseInt(d.room_nr_start.value) >= parseInt(d.room_nr_end.value))
+        if (parseInt(d.room_nr_start.value) > parseInt(d.room_nr_end.value))
         {
             alert("<?php echo $LDAlertRoomNr ?>");
             return false;

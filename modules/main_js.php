@@ -202,9 +202,7 @@ function showDatepicker(){
 function setSelectedBloodGroup() {
   var selectedBgroup = $('#blood_group_id').find(":selected").text();
 
-   $.get(
-        'bloodGroupOrder.php',
-        {group_id: selectedBgroup},
+   $.get('bloodGroupOrder.php', {group_id: selectedBgroup},
         function(result) {
           $("#order_test_group").empty();
           $("#order_test_group").append('<option value="0">-- Select --</option>');
@@ -219,7 +217,11 @@ function setSelectedBloodGroup() {
         "json");
 
 }
+
+
 var selectedBgroup = $('#blood_group_id').find(":selected").text();
+
+if (selectedBgroup) {
 $.get(
   'bloodGroupOrder.php',
   {group_id: selectedBgroup},
@@ -235,6 +237,8 @@ $.get(
     }                       
   },
   "json");
+  
+}
 
 <?php if($hospitalCode): ?>
 function updateNHIFPrices() {
@@ -343,25 +347,7 @@ $(function () {
   $('[data-toggle="popover"]').popover({'trigger': 'hover'})
 })
 
- $(".resultfileform").submit(function(evt){   
-  alert('bumtititng')
-      evt.preventDefault();
-      var formData = new FormData($(this)[0]);
-   $.ajax({
-       url: 'fileUpload',
-       type: 'POST',
-       data: formData,
-       async: false,
-       cache: false,
-       contentType: false,
-       enctype: 'multipart/form-data',
-       processData: false,
-       success: function (response) {
-         alert(response);
-       }
-   });
-   return false;
- });
+ 
 
 </script>
 

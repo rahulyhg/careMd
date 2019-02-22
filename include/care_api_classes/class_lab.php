@@ -583,7 +583,7 @@ job_id='$job_id' AND group_id='$grp_id' AND status NOT IN
         $this->sql = "SELECT * FROM $this->tb_find_chemlab INNER JOIN $this->tb_find_chemlab_sub ";
         $this->sql .= "ON ($this->tb_find_chemlab.job_id = $this->tb_find_chemlab_sub.job_id) ";
         // $this->sql .= " INNER JOIN care_test_request_chemlabor_sub ON care_test_findings_chemlabor_sub.encounter_nr = care_test_request_chemlabor_sub.encounter_nr";
-        $this->sql .= "WHERE $this->tb_find_chemlab.encounter_nr='$this->enc_nr' AND $this->tb_find_chemlab.status NOT IN ($this->dead_stat) ORDER BY $this->tb_find_chemlab_sub.sort_order, $this->tb_find_chemlab_sub.test_date";
+        $this->sql .= "WHERE $this->tb_find_chemlab.encounter_nr='$this->enc_nr' AND $this->tb_find_chemlab_sub.deleted = 0 AND $this->tb_find_chemlab.status NOT IN ($this->dead_stat) ORDER BY $this->tb_find_chemlab_sub.sort_order, $this->tb_find_chemlab_sub.test_date";
         if ($this->result = $db->Execute($this->sql)) {
             if ($this->rec_count = $this->result->RecordCount()) {
                 return $this->result;
@@ -659,7 +659,7 @@ job_id='$job_id' AND group_id='$grp_id' AND status NOT IN
         else
             $cond = "batch_nr='$id'";
         $sub = "_sub";
-        $this->sql = "SELECT * FROM $this->tb_req_chemlab$sub  WHERE $cond ORDER BY sort_order";
+        $this->sql = "SELECT * FROM $this->tb_req_chemlab$sub  WHERE $cond AND $this->tb_req_chemlab$sub.deleted = 0 ORDER BY sort_order";
         if ($this->tparams = $db->Execute($this->sql)) {
             if ($this->rec_count = $this->tparams->RecordCount()) {
                 return $this->tparams;
@@ -1142,7 +1142,7 @@ WHERE encounter_nr='$this->enc_nr' AND status NOT IN
         if ($debug)
             echo "class lab::getLabBillNoByBatch($batch_nr,$param_id)<br>";
         if (!empty($batch_nr) && !empty($param_id)) {
-            $this->sql = "SELECT bill_number FROM $this->tb_req_chemlab_sub WHERE batch_nr='" . $batch_nr . "' AND paramater_name='" . $param_id . "'";
+            $this->sql = "SELECT bill_number FROM $this->tb_req_chemlab_sub WHERE batch_nr='" . $batch_nr . "' AND paramater_name='" . $param_id . "' AND deleted = 0";
             if ($debug)
                 echo $this->sql . "<br>";
             if ($this->result = $db->Execute($this->sql)) {
@@ -1162,7 +1162,7 @@ WHERE encounter_nr='$this->enc_nr' AND status NOT IN
         if ($debug)
             echo "class lab::getLabBillNoByBatch($batch_nr)<br>";
         if (!empty($batch_nr)) {
-            $this->sql = "SELECT bill_number FROM $this->tb_req_chemlab_sub WHERE batch_nr='" . $batch_nr . "'";
+            $this->sql = "SELECT bill_number FROM $this->tb_req_chemlab_sub WHERE batch_nr='" . $batch_nr . "' AND deleted = 0";
             if ($debug)
                 echo $this->sql . "<br>";
             if ($this->result = $db->Execute($this->sql)) {

@@ -745,7 +745,8 @@ class Bill extends Encounter {
 		ON care_test_request_chemlabor_sub.item_id = care_tz_drugsandservices.item_id
 		INNER JOIN care_encounter 
 		ON care_encounter.encounter_nr=care_test_request_chemlabor.encounter_nr
-		WHERE care_test_request_chemlabor_sub.sub_id=" . $labtest_nr;
+		WHERE care_test_request_chemlabor_sub.sub_id=" . $labtest_nr . 
+        " AND care_test_request_chemlabor_sub.deleted = 0";
 
         if ($this->debug)
             echo $this->sql;
@@ -5375,7 +5376,7 @@ A:visited:hover {color: #cc0033;}
                                     INNER JOIN care_tz_drugsandservices
                                     ON care_test_request_chemlabor_sub.item_id=care_tz_drugsandservices.item_id
 
-                                    WHERE care_test_request_chemlabor_sub.bill_number = 0 $and_in_outpatient AND encounter_date BETWEEN '$date_from' AND '$date_to'
+                                    WHERE care_test_request_chemlabor_sub.bill_number = 0 $and_in_outpatient AND care_test_request_chemlabor_sub.deleted = 0 AND encounter_date BETWEEN '$date_from' AND '$date_to'
                                     AND     (isnull(care_test_request_chemlabor_sub.is_disabled) OR care_test_request_chemlabor_sub.is_disabled='')
 
                                     UNION
@@ -5804,10 +5805,11 @@ A:visited:hover {color: #cc0033;}
                     "	INNER JOIN care_tz_drugsandservices
                                     ON care_test_request_chemlabor_sub.item_id=care_tz_drugsandservices.item_id" .
                     "		WHERE care_test_request_chemlabor_sub.bill_number = 0 $and_in_outpatient" .
+                    " AND care_test_request_chemlabor_sub.deleted = 0".
                     "		AND (isnull(care_test_request_chemlabor_sub.is_disabled)" .
                     "			OR care_test_request_chemlabor_sub.is_disabled='')" .
                     "			$where_encounter" .
-                    "			ORDER BY care_encounter.encounter_date DESC , care_test_request_chemlabor.encounter_nr ASC";
+                    "			ORDER BY care_test_request_chemlabor_sub.sort_order, care_encounter.encounter_date DESC , care_test_request_chemlabor.encounter_nr ASC";
         } else {
             $this->sql = "SELECT $anzahl  	care_test_request_chemlabor.*, " .
                     "							care_test_request_chemlabor_sub.paramater_name, " .
@@ -5846,10 +5848,11 @@ A:visited:hover {color: #cc0033;}
                                     ON care_test_request_chemlabor.item_id=care_tz_drugsandservices.item_id
 
                                     WHERE care_test_request_chemlabor_sub.bill_number = 0 $and_in_outpatient
+                                    AND care_test_request_chemlabor_sub.deleted = 0
                                     AND (isnull(care_test_request_chemlabor_sub.is_disabled)
                                     OR care_test_request_chemlabor_sub.is_disabled='')
                                     $where_encounter
-                                    order by $_REQUEST[sort] $_REQUEST[sorttyp]";
+                                    order by care_test_request_chemlabor_sub.sort_order, $_REQUEST[sort] $_REQUEST[sorttyp]";
         }
 
 
@@ -6037,7 +6040,6 @@ A:visited:hover {color: #cc0033;}
     //------------------------------------------------------------------------------
 
     function ShowNewQuotations($in_outpatient, $sid,$date_from,$date_to) {
-
         global $db;
         $counter = 0;
         $color_change = FALSE;
@@ -6059,11 +6061,12 @@ A:visited:hover {color: #cc0033;}
 
         if ($result)
             while ($row = $result->FetchRow()) {
-
                    //check bank reference
                 $sql_bank="SELECT value FROM care_config_global WHERE type='enable_bank_ref'";
                 $result_bank=$db->Execute($sql_bank);
                 $row_bank=$result_bank->FetchRow();
+
+
                 $bank_ref=$row_bank[0];
                 //echo $bank_ref;
                 //end check bank reference 
@@ -6153,7 +6156,7 @@ A:visited:hover {color: #cc0033;}
                 '<a href="../../modules/ambulatory/amb_clinic_discharge_info.php' . URL_APPEND . '&ntid=false&lang=en&target=search&pn=' . $row['encounter_nr'] . '" target="_blank" title="Admission data : Click to show data"><img src="../../gui/img/common/default/pdata.gif" alt="Admission data : Click to show data" width="20" border="0" height="20"></a>'
                 . '</div></td>
 
-                                        <td ' . $BGCOLOR . ' class="td_content"><div align="center"><input type="hidden" name="namelast" value="' . $row['name_last'] . '"><input type="hidden" name="patient" value="' . $_REQUEST['patient'] . '"><input type="hidden" name="namefirst" value="' . ucwords($row['name_first']) . '"><input type="hidden" name="createmode" value="' . $createmode . '"><input type="hidden" name="countpres" value="' . $row['anzahl'] . '"><input type="hidden" name="countrad" value="' . $row['anzahl_rad'] . '"><input type="hidden" name="countlab" value="' . $row['anzahl_lab'] . '"><input type="hidden" value="' . $row['encounter_nr'] . '" name="encounter_nr"><input type="hidden" value="' . $row['pid'] . '" name="pid"><input type="hidden" name="bankref" value="'.$bank_ref.'"><input type="hidden" name="insrname" value="' . $ins_name . '"><input type="hidden" name="insurance_id" value="' . $row['insurance_ID'] . '"><input type="submit" value=">>"></div></td>
+                                        <td ' . $BGCOLOR . ' class="td_content"><div align="center"><input type="hidden" name="namelast" value="' . $row['name_last'] . '"><input type="hidden" name="patient" value="' . $_REQUEST['patient'] . '"><input type="hidden" name="namefirst" value="' . ucwords($row['name_first']) . '"><input type="hidden" name="createmode" value="' . $createmode . '"><input type="hidden" name="countpres" value="' . $row['anzahl'] . '"><input type="hidden" name="countrad" value="' . $row['anzahl_rad'] . '"><input type="hidden" name="countlab" value="' . $row['anzahl_lab'] . '"><input type="hidden" value="' . $row['encounter_nr'] . '" name="encounter_nr"><input type="hidden" value="' . $row['pid'] . '" name="pid"><input type="hidden" name="bankref" value="'.$bank_ref.'"><input type="hidden" name="insrname" value="' . $ins_name . '"><input type="hidden" name="insurance_id" value="' . urlencode(base64_encode($row['insurance_ID'])) . '"><input type="submit" value=">>"></div></td>
                                     </form>
                                     </tr>';
                 $alreadyshown[$row['encounter_nr']] = $row['encounter_nr'];
@@ -7806,23 +7809,53 @@ A:visited:hover {color: #cc0033;}
         }
     }
 
-    function ShowPriceList() {
+    function ShowPriceList($insuranceId, $pid) {
         global $db;
         $this->debug = false;
         ($this->debug) ? $db->debug = TRUE : $db->debug = FALSE;
 
-        $result = $db->Execute('SELECT * FROM care_tz_drugsandservices_description');
+        $result = $db->Execute('SELECT * FROM care_tz_drugsandservices_description ORDER BY ID desc');
 
-        echo '<table border="0" cellpadding="0" cellspacing="0" width="200"  class="table_content" align="center" >
-                                                                            <tr class="tr_content">
-                                                                                <td colspan="2" align="center" bgcolor="#CC9933" ><font size="2" class="submenu_item">Select Pricelist</font></td></tr>';
-        while ($pricelist = $result->FetchRow()) {
-            
-            echo'<tr><td bgcolor="#FFFF88" >' . $pricelist['ShowDescription'] . ' </td>
-                                                                                <td bgcolor="#FFFF88"><input type="radio" name="unit_price" value="' . $pricelist['ID'] . '"';
-            echo'></td></tr>';
-        }
-        echo '</table></p>';
+        echo '<table border="0" cellpadding="0" cellspacing="0" width="200" class="table_content" align="center">
+            <tr class="tr_content">
+                <td colspan="2" align="center" bgcolor="#CC9933">
+                    <font size="2" class="submenu_item">Select Pricelist</font>
+                </td>
+            </tr>';
+            while ($pricelist = $result->FetchRow()) {
+
+                $multiInsuranceSQL = "SELECT sub_insurance_id FROM care_person WHERE pid = {$pid}";
+                $multiInsuranceResult = $db->Execute($multiInsuranceSQL);
+                $multiInsuranceRow =  $multiInsuranceResult->FetchRow();
+
+                $checked = "";
+                if (@$multiInsuranceRow && $multiInsuranceRow['sub_insurance_id'] > 0) {
+                    if ($multiInsuranceRow['sub_insurance_id'] == $pricelist['ID']) {
+                        $checked = "checked";
+                        $checkedPriceList = $pricelist['ID'];
+                    }
+                }else{
+                    $checked = ($insuranceId == $pricelist['company_id'])?"checked":"";
+                    $checkedPriceList = $pricelist['ID'];
+                }
+
+
+            echo'<tr>
+                <td bgcolor="#FFFF88">' . $pricelist['ShowDescription'] . ' </td>
+                <td bgcolor="#FFFF88"><input type="radio" '.$checked.' disabled name="unit_price"
+                        value="' . $pricelist['ID'] . '"';
+                    echo'></td>';
+                    if ($checked == "checked") {
+                        echo '';
+                    }
+            echo '</tr>';
+            }
+            echo '</table>';
+
+            echo  '<input type="hidden" name="unit_price" value="'.$checkedPriceList.'"';
+
+           echo '</p>';
+           
     }
 
     function ShowPriceListDropDown() {
