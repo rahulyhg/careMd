@@ -1,40 +1,66 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Datepicker - Default functionality</title>
-                
-<!-- <link rel="stylesheet" type="text/css" href="../../js/time_picker/assets/css/bootstrap.min.css">
- --> 
-<link rel="stylesheet" type="text/css" href="../../js/time_picker/dist/bootstrap-clockpicker.min.css">
+<script src="../dental/JQ.js" language="javascript"></script>
+<script src="../dental/dental_filling_.js" language="javascript"></script>
+<script language="javascript">
+<!-- Script Begin
+    function validateTime(m) {
+        var zt = $('#time').val();
+        var dt = $('#date').val();
+        var dpt = $('#to_dept_nr').val();
+        var tm = 0;
+        var u = 0;
 
-<script type="text/javascript" src="../../js/time_picker/assets/js/bootstrap.min.js"></script>
+        if (dt.length < 10) {
+            alert('Date Entered is invalid');
+            $('#date').focus();
+            return false;
+        } else {
+            if (zt.length < 1) {
+                alert('Wrong time entered');
+                $('#time').select();
+                return false;
+            } else {
+                var o = zt.split('');
+
+                // validate each item in array [max=5]
+                if ((o[1] == ':') || (o.length == 1)) {
+                    o[1] = o[0];
+                    o[0] = 0;
+                }
+
+                o[0] = ((o[0] > 0)) ? o[0] : 0;
+                o[1] = ((o[1] > 0) || (o[1] == ':')) ? o[1] : 0;
+                o[2] = ((o[2] > 0) || (o[2] == ':')) ? o[2] : 0;
+                o[3] = ((o[3] > 0)) ? o[3] : 0;
+                o[4] = ((o[4] > 0)) ? o[4] : 0;
+
+                // get first two digits
+                tm = o[0] + '' + o[1];
+
+                if ((tm * 1) > 24) {
+                    alert('Wrong time entered');
+                    $('#time').focus();
+                    return false;
+                } else {
+                    // join o[] to form valid time
+                    u = tm + ':';
+                    if (o[2] != ':')
+                        u = u + '' + o[2] + o[3];
+                    else
+                        u = u + '' + o[3] + o[4];
+
+                    $('#time').val(u); // give it a new value
+
+                    if ((m == 't') || (m == 'd')) { // use only under time validations
+                        xtarget = 'special';
+                        navigate('&tm=' + u + '&dt=' + dt + '&dpt=' + dpt, './input_show_appointment_validator.php')
+                    } else
+                        return true;
+                }
+            }
+        }
+    }
 
 
-
-
-  <link rel="stylesheet" href="../../js/date_picker/jquery-ui.css">
-  <script src="../../js/date_picker/jquery-1.12.4.js"></script>
-  <script src="../../js/date_picker/jquery-ui.js"></script>
- <script type="text/javascript" src="../../js/time_picker/dist/bootstrap-clockpicker.min.js"></script>
-
-  <script>
-    
-   $( function() {
-    $( "#date" ).datepicker({ dateFormat: 'dd/mm/yy' }).val();
-  } );
-
-     
-  </script>
-
-
-</head>
-
-
-<body>
-
-<script type="text/javascript">
     function chkForm(d) {
         var r = false;
 
@@ -73,103 +99,49 @@
                 return false;
         }
     }
+//  Script End -->
+</script>
+<?php
+#
+# If date was in the past, show error message
+#
+if ($bPastDateError)
+    echo '<font class="warnprompt">' . $LDInvalidDate . ' ' . $LDNoPastDate . '</font>';
 
-    </script>
-
-
-    <script type="text/javascript">
-        // function validateAppt(){
-        //     alert("It works! please proceed");
-        //     return false;
-            
-        // }
-        
-    </script>
-
- 
+/**
+ * check that number of allowed appointments not exceeded
+ */
+?>
 <form method="post" name="appt_form" onSubmit="return chkForm(this)">
     <table border=0 cellpadding=2 width=100%>
         <tr bgcolor="#f6f6f6">
             <td><font color="red"><b>*</b><FONT SIZE=-1  FACE="Arial" color="#000066"><?php echo $LDDate; ?></td>
-            <td><input type="text" name="date" id="datepicker"   readonly="readonly">                     
-            
+            <td><input type="text" name="date" id="date" size=10 maxlength=10  readonly="readonly"
+                       value="<?php
+                       if (!empty($date) && ($date != $dbf_nodate)) {
+                           if ($error) {
+                               echo $date;
+                           } elseif ($mode != 'update') {
+                               echo formatDate2Local($date, $date_format);
+                           }
+                       }
+                       ?>"
+                       onBlur="validateTime('d');
+                               IsValidDate(this, '<?php echo $date_format ?>')" onKeyUp="setDate(this, '<?php echo $date_format ?>', '<?php echo $lang ?>')">
+                <a href="javascript:show_calendar('appt_form.date','<?php echo $date_format ?>')">
+                    <img <?php echo createComIcon($root_path, 'show-calendar.gif', '0', 'absmiddle', TRUE); ?>></a>
+                <font size=1>[ <?php
+                $dfbuffer = "LD_" . strtr($date_format, ".-/", "phs");
+                echo $$dfbuffer;
+                ?> ] </font>
             </td>
         </tr>
         <tr bgcolor="#f6f6f6">
-            <td><font color="red"><b>*</b><FONT SIZE=-1  FACE="Arial" color="#000066"><?php echo $LDTime; ?></td>
+            <td></font><FONT SIZE=-1  FACE="Arial" color="#000066"><?php echo $LDTime; ?></td>
             <td>
-
-
-            
-
-
-
-
-
-<input id="time" name="time" readonly placeholder="Time"  />
-<div id="display"></div>
-
-
-<script type="text/javascript">
-
-$('#time').clockpicker({
-    autoclose: true 
-});
-
-
-
-</script>
-<script type="text/javascript">
-   
-
-        function validateTime(){
-
-            $(document).ready(function (){ 
-            
-            var tarehe= $("#date").val();
-            var idara=$("#to_dept_nr").val();
-            var muda =$("#time").val();            
-
-                $.ajax({
-                url: "input_show_appointment_validator.php",
-                data:{tm: muda,dt:tarehe,dpt:idara},
-                type: "GET"
-            }).done(function(data){
-                $("#display").append(data);
-
-            });  
-
-        
-
-            
-
-                      
-
-              
-
-            });
-
-            
-        }//end of validatetime
-            
-
-
-
-
-                
-
-        
-
-
-    
-</script>
-
-
-            <!--TIME PICKER END HERE-->
-                 
-
-
-                
+                <input type="text" name="time" id="time" onblur="
+                        validateTime('t');
+                       " size=10 maxlength=10 value="<?php if (!empty($time)) echo convertTimeToLocal($time); ?>">
 
                 <div id="special" style="width:87%; float:right; font:bold 14px Tahoma; color:#FF0000;">
                     <input type="hidden" id="hd" name="hd" value="0">
@@ -180,13 +152,12 @@ $('#time').clockpicker({
         <tr bgcolor="#f6f6f6">
             <td><font color="red"><b>*</b><FONT SIZE=-1  FACE="Arial" color="#000066"><?php echo $LDDepartment; ?></td>
             <td>
-                <select name="to_dept_nr" id="to_dept_nr" onchange="validateTime();">
+                <select name="to_dept_nr" id="to_dept_nr" onchange="validateTime('d');">
                     <option value="">===Select a Department===</option>
                     <?php
                     while (list($x, $v) = each($deptarray)) {
                         echo '
-                <option value="' . $v['nr'] . '" ';
-                            $to_dept_nr=(isset($to_dept_nr) ? $to_dept_nr : null);
+				<option value="' . $v['nr'] . '" ';
                         if ($v['nr'] == $to_dept_nr)
                             echo 'selected';
                         echo ' >';
@@ -202,7 +173,7 @@ $('#time').clockpicker({
         </tr>
 
         <tr bgcolor="#f6f6f6">
-            <td><font color="red"><b></b><FONT SIZE=-1  FACE="Arial" color="#000066"><?php echo "$LDPhysician/$LDClinician"; ?></td>
+            <td><font color="red"><b>*</b><FONT SIZE=-1  FACE="Arial" color="#000066"><?php echo "$LDPhysician/$LDClinician"; ?></td>
             <td><select name="to_personell_name"><option>===Select a Doctor===</option>
                     <?php
                     $sql = "select UPPER(name_last) as name_last, CONCAT(name_first,'  ', name_2) AS name_first from care_person left join care_personell on care_person.pid=care_personell.pid where care_personell.job_function_title=17";
@@ -220,13 +191,12 @@ $('#time').clockpicker({
 
         <tr bgcolor="#f6f6f6">
             <td><font color="red"><b>*</b><FONT SIZE=-1  FACE="Arial" color="#000066"><?php echo $LDPurpose; ?></td>
-            <td><textarea name="purpose"  style="font-size: 15pt" cols=40 rows=6 wrap="physical"><?php if (isset($purpose)) echo $purpose; ?></textarea>
+            <td><textarea name="purpose" cols=40 rows=6 wrap="physical"><?php if (isset($purpose)) echo $purpose; ?></textarea>
             </td>
         </tr>
         <tr bgcolor="#f6f6f6">
             <td><FONT SIZE=-1  FACE="Arial" color="#000066"><?php echo $LDUrgency; ?></td>
             <td><FONT SIZE=-1  FACE="Arial" color="#000066">
-            <?php $urgency=(isset($urgency) ? $urgency : null); ?>
                 <input type="radio" name="urgency" value="0" <?php if ($urgency == 0) echo 'checked'; ?>><?php echo $LDNormal; ?>
                 <input type="radio" name="urgency" value="3" <?php if ($urgency == 3) echo 'checked'; ?>><?php echo $LDPriority; ?>
                 <input type="radio" name="urgency" value="5" <?php if ($urgency == 5) echo 'checked'; ?>><?php echo $LDUrgent; ?>
@@ -236,15 +206,15 @@ $('#time').clockpicker({
         <tr bgcolor="#f6f6f6">
             <td><FONT SIZE=-1  FACE="Arial" color="#000066"><?php echo $LDRemindPatient; ?> ?</td>
             <td><FONT SIZE=-1  FACE="Arial" color="#000066">
-                <input type="radio" name="remind" value="1" <?php if (isset($remind)) echo 'checked'; ?>> <?php echo $LDYes; ?> <input type="radio" name="remind" value="0"   <?php if (!isset($remind)) echo 'checked'; ?>> <?php echo $LDNo; ?>
+                <input type="radio" name="remind" value="1" <?php if ($remind) echo 'checked'; ?>> <?php echo $LDYes; ?>	<input type="radio" name="remind" value="0"   <?php if (!$remind) echo 'checked'; ?>> <?php echo $LDNo; ?>
             </td>
         </tr>
         <tr bgcolor="#f6f6f6">
             <td><FONT SIZE=-1  FACE="Arial" color="#000066"><?php echo $LDRemindBy; ?></td>
             <td><FONT SIZE=-1  FACE="Arial" color="#000066">
-                <input type="checkbox" name="remind_email" value="1"   <?php if (isset($remind_email)) echo 'checked'; ?>><?php echo $LDEmail; ?>
-                <input type="checkbox" name="remind_phone" value="1"  <?php if (isset($remind_phone)) echo 'checked'; ?>><?php echo $LDPhone; ?>
-                <input type="checkbox" name="remind_mail" value="1"  <?php if (isset($remind_mail)) echo 'checked'; ?>><?php echo $LDMail; ?>
+                <input type="checkbox" name="remind_email" value="1"   <?php if ($remind_email) echo 'checked'; ?>><?php echo $LDEmail; ?>
+                <input type="checkbox" name="remind_phone" value="1"  <?php if ($remind_phone) echo 'checked'; ?>><?php echo $LDPhone; ?>
+                <input type="checkbox" name="remind_mail" value="1"  <?php if ($remind_mail) echo 'checked'; ?>><?php echo $LDMail; ?>
             </td>
         </tr>
         <tr bgcolor="#f6f6f6">
@@ -253,7 +223,6 @@ $('#time').clockpicker({
                 <?php
                 if (is_object($encounter_classes)) {
                     while ($result = $encounter_classes->FetchRow()) {
-                        $encounter_class_nr=(isset($encounter_class_nr) ? $encounter_class_nr : null);
                         ?>
                         <input name="encounter_class_nr" type="radio"  value="<?php echo $result['class_nr']; ?>" <?php if ($encounter_class_nr == $result['class_nr']) echo 'checked'; ?>>
                         <?php
@@ -290,11 +259,3 @@ $('#time').clockpicker({
     <input id="save" type="image" <?php echo createLDImgSrc($root_path, 'savedisc.gif', '0'); ?>>
 
 </form>
-
-
- 
- 
-</body>
-</html>
-
-

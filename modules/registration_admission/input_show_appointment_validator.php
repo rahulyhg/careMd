@@ -14,18 +14,32 @@ $obj = new Appointment();
 extract($_GET);
 $dz = explode('/', $dt);
 $dt2 = $dz[2] . '-' . $dz[1] . '-' . $dz[0];
-
-//echo $dt2.' '.$dpt.' '.$tm;
-
+//echo $dt2.'>'.$dpt.'<';
 if (($tm != '') && ($dt != '') && ($dpt != '')) {
-    $vk = $db->Execute(' SELECT * FROM care_appointment WHERE date="' . $dt2 . '" AND time LIKE "%' . $tm . '%" AND to_dept_nr=' . $dpt);
-    if ($vk->RecordCount() > 0) {
-        
+    $vk = $db->Execute(' SELECT * FROM care_appointment WHERE date="' . $dt2 . '"  AND to_dept_nr="' . $dpt.'" ORDER BY nr DESC LIMIT 1');
 
-        
-        print  "<font color=red size='4pt'>There is another appointment on this Time</font>";
+     //Get minutes from time and chech if is withing 15 minutes
+        $gt = explode(':', $tm);
+        $gt2 = $gt[0] . ':' . $gt[1];
+        $gth = $gt[0];
+        $gtm = $gt[1];
+
+
+
+        $chimbotime =  $vk->FetchRow();
+        $chimbotime = $chimbotime['time']; 
+        $cgt = explode(':', $chimbotime);
+        $cgth = $cgt[0];
+        $cgtm = $cgt[1];
+        $cgt2 = $cgt[0] . ':' . $cgt[1];
+        $dakikagape=$gtm-$cgtm;
+        if ($vk->RecordCount() > 0 &$gth==$cgth & $dakikagape<=15) {
+
+         //print $chimbotime.'Diff'.$gtm.'--'.$dakikagape;
+
+     
+        print 'There is another appointment on this Time <input type="hidden" id="hd" name="hd" value="1">';
     } else {
-
         print '<input type="hidden" id="hd" name="hd" value="0">';
         print mysql_error();
     }

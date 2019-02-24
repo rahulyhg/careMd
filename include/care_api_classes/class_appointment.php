@@ -175,7 +175,7 @@ class Appointment extends Core {
             $b = date('m');
         if (!$d)
             $d = date('d');
-        $this->sql = "SELECT a.*,UPPER(p.name_last) as name_last, CONCAT(p.name_first,' ', p.name_2) AS name_first,p.date_birth,p.sex,p.death_date
+        $this->sql = "SELECT a.*,UPPER(p.name_last) as name_last,p.selian_pid as file_number,encounter_nr as encounter,a.history, CONCAT(p.name_first,' ', p.name_2) AS name_first,p.date_birth,p.sex,p.death_date
 				FROM $this->tb_appt AS a LEFT JOIN $this->tb_person AS p ON a.pid=p.pid
 				WHERE a.date='$y-$m-$d'";
         switch ($by) {
@@ -185,6 +185,37 @@ class Appointment extends Core {
                 break;
         }
         $this->sql.=" AND a.status NOT IN ($this->dead_stat) ORDER BY a.date DESC,a.time ASC";
+        if ($this->res['_ga'] = $db->Execute($this->sql)) {
+            if ($this->count = $this->res['_ga']->RecordCount()) {
+                return $this->res['_ga'];
+            } else {
+                return false;
+            }
+        } else {
+            echo $this->sql;
+            return false;
+        }
+    }
+function _getAllDp($y = 0, $m = 0, $d = 0, $by = '', $val = '') {
+        global $db, $sql_LIKE;
+
+        # Set to defaults if empty
+        if (!$y)
+            $y = date('Y');
+        if (!$m)
+            $b = date('m');
+        if (!$d)
+            $d = date('d');
+        $this->sql = "SELECT a.*,UPPER(p.name_last) as name_last,p.selian_pid as file_number,encounter_nr as encounter, CONCAT(p.name_first,' ', p.name_2) AS name_first,p.date_birth,p.sex,p.death_date
+                FROM $this->tb_appt AS a LEFT JOIN $this->tb_person AS p ON a.pid=p.pid
+                WHERE a.date='$y-$m-$d'";
+        switch ($by) {
+            case '_DEPT': $this->sql.=" AND a.to_dept_nr=$val";
+                break;
+            case '_DOC': $this->sql.=" AND a.to_personell_name  $sql_LIKE '%$val%'";
+                break;
+        }
+        $this->sql.=" AND a.status NOT IN ($this->dead_stat) ORDER BY a.to_personell_name DESC,a.time ASC,a.date ASC";
         if ($this->res['_ga'] = $db->Execute($this->sql)) {
             if ($this->count = $this->res['_ga']->RecordCount()) {
                 return $this->res['_ga'];
@@ -240,7 +271,7 @@ class Appointment extends Core {
      * @return mixed
      */
     function getAllByDeptObj($y = 0, $m = 0, $d = 0, $nr) {
-        return $this->_getAll($y, $m, $d, '_DEPT', $nr);
+        return $this->_getAllDp($y, $m, $d, '_DEPT', $nr);
     }
 
     /**

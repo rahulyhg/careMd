@@ -25,6 +25,29 @@ function checkApptDate(d,e,n,pid){
 	}
 }
 
+
+
+function getinfo(pn) {
+<?php
+/* if($edit) */ {
+    echo '
+        urlholder="' . $root_path . 'modules/nursing/nursing-station-patientdaten.php' . URL_REDIRECT_APPEND;
+    echo '&pn=" + pn + "';
+    echo "&pday=$pday&pmonth=$pmonth&pyear=$pyear&edit=$edit&station=$station";
+    echo '";';
+    echo 'patientwin=window.open(urlholder,pn,"width=840,height=650,menubar=no,resizable=yes,scrollbars=yes");
+        patientwin.moveTo(0,0);
+        patientwin.resizeTo(screen.availWidth, screen.availHeight)';
+}
+/* else echo '
+  window.location.href=\'nursing-station-pass.php'.URL_APPEND.'&rt=pflege&edit=1&station='.$station.'\''; */
+?>
+            } 
+
+
+
+
+
 //  Script End -->
 </script>
 <table border=0 cellpadding=3 cellspacing=1 width=100%>
@@ -62,6 +85,7 @@ while($row=$result->FetchRow()){
 		if($row['death_date']&&$row['death_date']!=DBF_NODATE){
 			echo '&nbsp;<img '.createComIcon($root_path,'blackcross_sm.gif','0','',TRUE).'>&nbsp;'.@formatDate2Local($row['death_date'],$date_format).'</font>';
 		}
+		echo '</a>';
 
 		echo '<br>';
 		# Show sex icons
@@ -70,8 +94,18 @@ while($row=$result->FetchRow()){
 			case 'm': echo '<img '.$img_male.'>'; break;
 			default: echo '&nbsp;'; break;
 		}
+
+
+
+		echo '<br>';
+		echo "File Number:"." ".$row['file_number'];
+		echo '<br>';
+		echo'<a href="javascript:getinfo(\'' . $row['encounter'] . '\')"><img ' . createComIcon($root_path, 'open.gif', '0', '', TRUE) . ' align="absmiddle" alt="' . $LDShowPatData . '"></a>';
+		echo '<br>';
+		echo '<hr/>';
+		echo $row['history'];
 	?>
-	</a>
+	
 	</td>
     <td rowspan=4 valign="top"><FONT SIZE=-1  FACE="Arial" color="<?php echo $tc; ?>">
 	<?php
@@ -157,10 +191,7 @@ while($row=$result->FetchRow()){
 	</td>
   </tr>
 
-  <tr  class="<?php echo $bgc; ?>" >
-    <td colspan="5"><FONT SIZE=-1  FACE="Arial" color="<?php echo $tc; ?>"><?php echo $row['history']; ?></td>
-    
-  </tr>
+ 
 
 <?php
 }
