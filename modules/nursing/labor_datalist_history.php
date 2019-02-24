@@ -4,7 +4,7 @@ $pendingResults = array();
 $labResults = array();
 
 //$sql_lab="SELECT lab.test_date,lab.paramater_name,lab.parameter_value FROM care_test_findings_chemlabor_sub AS lab WHERE lab.encounter_nr IN (SELECT encounter_nr FROM care_encounter WHERE pid=".$_SESSION['sess_pid'].") ORDER BY lab.test_date ";
-$sql_lab = "SELECT DISTINCT lab.test_date, labpar.name AS paramater_name,lab.parameter_value,  lab.encounter_nr FROM care_test_findings_chemlabor_sub lab, care_tz_laboratory_param labpar"
+$sql_lab = "SELECT DISTINCT lab.test_date, labpar.name AS paramater_name,lab.parameter_value,  lab.encounter_nr, lab.job_id FROM care_test_findings_chemlabor_sub lab, care_tz_laboratory_param labpar"
         . " WHERE lab.paramater_name=labpar.id AND lab.encounter_nr IN (SELECT encounter_nr FROM care_encounter WHERE pid='" . $pid . "') ORDER BY lab.test_date DESC, lab.sort_order";
 
 $lab_result = $db->Execute($sql_lab);
@@ -14,7 +14,7 @@ if (@$lab_result && $lab_result->RecordCount() > 0) {
 
 // Pending lab requests $pn (encounter number)
 
-$pendingLabSQL = "SELECT DISTINCT labpar.name AS paramater_name, lab.status, lab.sub_id, lab.bill_number, lab.parameter_value, lab.encounter_nr FROM care_test_request_chemlabor_sub lab, care_tz_laboratory_param labpar"
+$pendingLabSQL = "SELECT DISTINCT labpar.name AS paramater_name, lab.status, lab.sub_id, lab.bill_number, lab.parameter_value, lab.encounter_nr, lab.batch_nr FROM care_test_request_chemlabor_sub lab, care_tz_laboratory_param labpar"
         . " WHERE lab.paramater_name=labpar.id AND lab.bill_number = 0 AND lab.deleted = 0 AND lab.encounter_nr IN (SELECT encounter_nr FROM care_encounter WHERE pid='" . $pid . "') ORDER BY lab.sort_order";
 $pendingLabResult = $db->Execute($pendingLabSQL);
 
@@ -24,8 +24,8 @@ if (@$pendingLabResult && $pendingLabResult->RecordCount() > 0) {
 
 foreach ($pendingResults as $key => $pendingResult) {
 	foreach ($labResults as $labResult) {
-		if ($labResult['encounter_nr'] == $pendingResult['encounter_nr']) {
-			// unset($pendingResults[$key]);
+		if ($labResult['job_id'] == $pendingResult['batch_nr'] && $labResult['paramater_name'] == $pendingResult['paramater_name']) {
+			unset($pendingResults[$key]);
 		}
 	}
 }

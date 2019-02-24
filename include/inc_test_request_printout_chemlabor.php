@@ -223,8 +223,12 @@ $glob_obj = new GlobalConfig($GLOBAL_CONFIG);
 # Start buffering output
                 ob_start();
                 for ($i = 0; $i <= $max_row; $i++) {
+
+
                     echo '<tr class="lab">';
                     for ($j = 0; $j <= $column; $j++) {
+                        
+                        $labDeleted = $lab_obj->checkIfLabTestDeleted($batch_nr, $LD_Elements[$j][$i]['id']);
                         if ($LD_Elements[$j][$i]['type'] == 'top') {
                             echo '<td bgcolor="#ee6666" colspan="3"><font color="white">&nbsp;<b>' . $LD_Elements[$j][$i]['value'] . '</b></font></td>';
                         } else {
@@ -233,10 +237,10 @@ $glob_obj = new GlobalConfig($GLOBAL_CONFIG);
                                 if ($edit) {
                                     if (isset($stored_param[$LD_Elements[$j][$i]['id']]) && !empty($stored_param[$LD_Elements[$j][$i]['id']])) {
                                         echo '<input type="hidden" name="' . $LD_Elements[$j][$i]['id'] . '" value="1">
-							<a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\')">';
+                            <a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\')">';
                                     } else {
                                         echo '<input type="hidden" name="' . $LD_Elements[$j][$i]['id'] . '" value="0">
-							<a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\')">';
+                            <a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\')">';
                                     }
                                 }
                                 //Check if item is billed for outpatient
@@ -258,7 +262,11 @@ $glob_obj = new GlobalConfig($GLOBAL_CONFIG);
                                     }
                                 } else {
                                     if (isset($stored_param[$LD_Elements[$j][$i]['id']]) && !empty($stored_param[$LD_Elements[$j][$i]['id']])) {
-                                        echo '<img src="f.gif" border=0 width=18 height=6 id="' . $LD_Elements[$j][$i]['id'] . '">';
+                                        if ($labDeleted == 1) {
+                                            echo '<img src="b.gif" border=0 width=18 height=6 id="' . $LD_Elements[$j][$i]['id'] . '">';    
+                                        }else{
+                                            echo '<img src="f.gif" border=0 width=18 height=6 id="' . $LD_Elements[$j][$i]['id'] . '">';   
+                                        }
                                     } else {
                                         echo '<img src="b.gif" border=0 width=18 height=6 id="' . $LD_Elements[$j][$i]['id'] . '">';
                                     }
@@ -269,8 +277,9 @@ $glob_obj = new GlobalConfig($GLOBAL_CONFIG);
                                 echo '</td><td>';
                                 if ($edit)
                                     echo '<a href="javascript:setM(\'' . $LD_Elements[$j][$i]['id'] . '\')">' . $LD_Elements[$j][$i]['value'] . '</a>';
-                                else
+                                else{
                                     echo $LD_Elements[$j][$i]['value'];
+                                }
 
                                 echo '</td><td>';
                                 if (isset($stored_param[$LD_Elements[$j][$i]['id']]) && !empty($stored_param[$LD_Elements[$j][$i]['id']])) {
@@ -278,14 +287,16 @@ $glob_obj = new GlobalConfig($GLOBAL_CONFIG);
                                     if ($lab_bill > 0) {
                                         echo '<font color="green">' . $LDLabRequestBilled . ' ' . $lab_bill . '</font>';
                                     } else {
-                                        if ($hide_not_billed !== "1" ) {
-                                            echo '<img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)"> <font color="red">' . $LDLabRequestNotBilled . '</font> <img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)">';
-                                        } else if ($hide_not_billed === "1" && $h_encounter_class_nr !== "2") {
-                                            echo '<img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)"> <font color="red">' . $LDLabRequestNotBilled . '</font> <img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)">';
-                                        }else if($h_HealthFundName!=='CASH'){
-                                            echo '<img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)"> <font color="red">' . $LDLabRequestNotBilled . '</font> <img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)">';
+                                        if ($labDeleted == 0) {
+                                            if ($hide_not_billed !== "1" ) {
+                                                echo '<img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)"> <font color="red">' . $LDLabRequestNotBilled . '</font> <img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)">';
+                                            } else if ($hide_not_billed === "1" && $h_encounter_class_nr !== "2") {
+                                                echo '<img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)"> <font color="red">' . $LDLabRequestNotBilled . '</font> <img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)">';
+                                            }else if($h_HealthFundName!=='CASH'){
+                                                echo '<img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)"> <font color="red">' . $LDLabRequestNotBilled . '</font> <img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)">';
 
 
+                                            }
                                         }
                                     }
                                 }
@@ -294,6 +305,7 @@ $glob_obj = new GlobalConfig($GLOBAL_CONFIG);
                                 echo '<td colspan=3>&nbsp;</td>';
                             }
                         }
+
                     }
 
                     echo '</tr><tr>';

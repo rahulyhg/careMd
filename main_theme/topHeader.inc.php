@@ -18,14 +18,14 @@
   }
 
   .responsivePadding {
-    margin-top: 40px !important;
+    margin-top: 20px !important;
   }
   .main-panel > .navbar {
     display: block;
     min-width: 600px;
   }
 
-  .sidebar{
+.sidebar{
   width: 260px;
 }
 .sidebar .sidebar-wrapper{

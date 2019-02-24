@@ -576,18 +576,25 @@ if ($restrict) {
                                     </tr>
 
     <tr bgcolor="<?php echo $bgc1 ?>">
-        <td colspan=2><div class=fva2_ml10><?php echo $LDClinicalInfo ?>:<p><img src="../../gui/img/common/default/pixel.gif" border=0 width=20 height=45 align="left">
-        <font face="courier" size=2 color="#000099">&nbsp;&nbsp;<?php
-if ($restrict) {
+        <td colspan=2>
+            <div class=fva2_ml10>
+                <?php echo $LDClinicalInfo ?>:
+                <p>
+                    <img src="../../gui/img/common/default/pixel.gif" border=0 width=20 height=45 align="left">
+                    <font face="courier" size=2 color="#000099">&nbsp;&nbsp;<?php
+                    if ($restrict) {
 
-        echo '<br><br><img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)"> <font color="red">' . $LDRadRequestNotBilled . '</font> <img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)"><br><br>';
+                            echo '<br><br><img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)"> <font color="red">' . $LDRadRequestNotBilled . '</font> <img src="../../gui/img/common/default/warn.gif" border=0 alt="" style="filter:alpha(opacity=70)"><br><br>';
 
-    } else {
-        echo stripslashes($notes['notes']);
-    }
-    ?></font>
+                        } else {
+                            // echo stripslashes($notes['notes']);
+                            echo stripslashes($stored_request['clinical_info']);
+                        }
+                        ?></font>
+                </p>
+            </div>
         </td>
-        </tr>
+    </tr>
         <?php
 $sql = 'select item_description from care_tz_drugsandservices where item_id=' . $stored_request['test_request'];
 
