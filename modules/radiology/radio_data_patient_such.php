@@ -297,21 +297,48 @@ require_once($root_path . 'main_theme/topHeader.inc.php');
                                     echo '</td>';
                                     #  if mode is edit, create the button linked to labor_data_check_arch.php 
                                     #  if mode is not edit, create button linked to labor_datalist_noedit.php (read only list)
+                                    
+
+                                    $paid = false;
+
+                                    if ($glob_obj->getConfigValue("restrict_unbilled_items") == "1" && $zeile['encounter_class_nr'] == "2" &&  $zeile['insurance_ID']==='0') { 
+
+                                        if ($lab_obj->getPatientRadioBillNoByBatch($zeile['batch_nr']) > 0 ) {
+                                            $paid = true;
+                                        }
+                                    }else{
+                                        $paid = true;
+                                    }
 
                                     echo'
-				<td>&nbsp';
+				                    <td>&nbsp';
 
                                     if ($mode == 'done') {
 
-                                        echo'
-                                        <a href=\'' . $root_path . 'modules/radiology/list_test_findings_radio.php' . URL_APPEND . '&pn=' . $zeile['encounter_nr'] . '&batch_nr=' . $zeile['batch_nr'] . '&subtarget=radio&user_origin=rad&mode=done&nostat=1\ title="' . $LDClk2See . '">
+                                       if ($paid) {
+                                            echo'
+                                            <a href=\'' . $root_path . 'modules/radiology/list_test_findings_radio.php' . URL_APPEND . '&pn=' . $zeile['encounter_nr'] . '&batch_nr=' . $zeile['batch_nr'] . '&subtarget=radio&user_origin=rad&mode=done&nostat=1\' title="' . $LDClk2See . '">
 
-                                        <button onClick="javascript:window.location.href=\'' . $root_path . 'modules/radiology/list_test_findings_radio' . URL_REDIRECT_APPEND . '&pn=' . $zeile['encounter_nr'] . '&batch_nr=' . $zeile['batch_nr'] . '&user_origin=rad&subtarget=radio&mode=done&nostat=1 \'"><img ' . createComIcon($root_path, 'update2.gif', '0', 'absmiddle', FALSE) . ' alt="' . $LDClk2See . '"><font size=1> ' . $LDRadReport;
+                                            <button onClick="javascript:window.location.href=\'' . $root_path . 'modules/radiology/list_test_findings_radio' . URL_REDIRECT_APPEND . '&pn=' . $zeile['encounter_nr'] . '&batch_nr=' . $zeile['batch_nr'] . '&user_origin=rad&subtarget=radio&mode=done&nostat=1 \'"><img ' . createComIcon($root_path, 'update2.gif', '0', 'absmiddle', FALSE) . ' alt="' . $LDClk2See . '"><font size=1> ' . $LDRadReport;
+                                       }else {
+                                         echo'
+                                            <a href="#" title="Not Yet Paid">
+
+                                            <button disabled><img ' . createComIcon($root_path, 'update2.gif', '0', 'absmiddle', FALSE) . ' alt="Not Yet Paid"><font size=1> Not Yet Paid';
+                                       }
                                     } else {
-                                        echo'
-					<a href=\'' . $root_path . 'modules/radiology/list_test_findings_radio.php' . URL_APPEND . '&pn=' . $zeile['encounter_nr'] . '&batch_nr=' . $zeile['batch_nr'] . '&subtarget=radio&user_origin=rad&edit=1&nostat=1\ title="' . $LDClk2See . '">
-					
-					<button onClick="javascript:window.location.href=\'' . $root_path . 'modules/radiology/list_test_findings_radio' . URL_REDIRECT_APPEND . '&pn=' . $zeile['encounter_nr'] . '&batch_nr=' . $zeile['batch_nr'] . '&user_origin=rad&subtarget=radio&edit=1&&nostat=1 \'"><img ' . createComIcon($root_path, 'update2.gif', '0', 'absmiddle', FALSE) . ' alt="' . $LDClk2See . '"><font size=1> ' . $LDEditRadReport;
+                                        
+                                        if ($paid) {
+                                              echo'
+                                                <a href=\'' . $root_path . 'modules/radiology/list_test_findings_radio.php' . URL_APPEND . '&pn=' . $zeile['encounter_nr'] . '&batch_nr=' . $zeile['batch_nr'] . '&subtarget=radio&user_origin=rad&edit=1&nostat=1\' title="' . $LDClk2See . '">
+                                                
+                                                <button onClick="javascript:window.location.href=\'' . $root_path . 'modules/radiology/list_test_findings_radio' . URL_REDIRECT_APPEND . '&pn=' . $zeile['encounter_nr'] . '&batch_nr=' . $zeile['batch_nr'] . '&user_origin=rad&subtarget=radio&edit=1&&nostat=1 \'"><img ' . createComIcon($root_path, 'update2.gif', '0', 'absmiddle', FALSE) . ' alt="' . $LDClk2See . '"><font size=1> ' . $LDEditRadReport;
+                                        }else {
+                                            echo'
+                                            <a href="#" title="Not Yet Paid">
+
+                                            <button disabled><img ' . createComIcon($root_path, 'update2.gif', '0', 'absmiddle', FALSE) . ' alt="Not Yet Paid"><font size=1> Not Yet Paid';
+                                        }
 
                                         /*
                                           echo'

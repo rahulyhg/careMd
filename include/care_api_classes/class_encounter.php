@@ -1784,7 +1784,7 @@ class Encounter extends Notes {
         if ($db->debug)
             echo "_searchRadAdmissionBasicInfo is called with enc_class=" . $enc_class . "<br>";
         if ($enc_class == 2) {
-            $this->sql = "SELECT DISTINCT p.selian_pid, rc.batch_nr,rc.send_date, e.encounter_nr, e.encounter_class_nr, p.pid, UPPER(p.name_last) as name_last, CONCAT(p.name_first,' ', p.name_2) AS name_first, p.date_birth, p.selian_pid, p.sex,p.blood_group
+            $this->sql = "SELECT DISTINCT p.insurance_ID, p.selian_pid, rc.batch_nr,rc.send_date, e.encounter_nr, e.encounter_class_nr, p.pid, UPPER(p.name_last) as name_last, CONCAT(p.name_first,' ', p.name_2) AS name_first, p.date_birth, p.selian_pid, p.sex,p.blood_group
 					FROM $this->tb_enc AS e LEFT JOIN $this->tb_person AS p ON e.pid=p.pid " .
                     "				INNER JOIN $this->tb_radio as rc ON e.encounter_nr=rc.encounter_nr";
         } else {

@@ -99,7 +99,6 @@ if (isset($pn) && $pn) {
     }
 }
 
-
 $sql = "SELECT * FROM care_test_request_" . $db_request_table . " WHERE batch_nr='$batch_nr'";
 
 $radtests = $db->Execute($sql);

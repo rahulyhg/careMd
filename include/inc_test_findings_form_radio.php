@@ -46,6 +46,13 @@ function createInputBlock($param, $value) {
                      <font face="verdana,arial" color="#000000" size=2>' . $value . '</font><br>&nbsp;';
     }
 }
+
+$sql = "SELECT * FROM care_test_request_" . $db_request_table . " WHERE batch_nr='$batch_nr'";
+
+$radtests = $db->Execute($sql);
+
+$stored_tests = $radtests->FetchRow();
+
 ?>
 <table border=0 cellpadding=1 cellspacing=0 bgcolor="#000000">
     <tr>
@@ -119,7 +126,7 @@ function createInputBlock($param, $value) {
 
                                 </td>
                             </tr>
-
+                           
                             <tr bgcolor="<?php echo $bgc1 ?>">
 
                                 <td valign="top" colspan=3 align="left">
@@ -143,7 +150,7 @@ function createInputBlock($param, $value) {
 
                                 </td>
                             </tr>
-
+                          
                             <tr bgcolor="<?php echo $bgc1 ?>">
 
                                 <td valign="top" colspan=3 align="left">
