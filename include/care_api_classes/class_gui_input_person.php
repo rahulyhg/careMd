@@ -1204,12 +1204,15 @@ return false;
                                 ?></td>
 
                             <!-- ******************************************expire date start here*****************************************************************************-->
+                        <input type="hidden" name="sub_insurance_id" id="singleHealthId">
+
                         <tr class="fundSubCategory">
                           <td class="reg_item"><font SIZE=-1  FACE="Arial"> Health Sub Fund:</font></td>
                           <td class="reg_input">
                             <SELECT name="sub_insurance_id" id="sub_insurance_id">
                           </td>
                         </tr>
+
 
                         <tr id="expired_row" style="display: none;">
 
@@ -1809,7 +1812,20 @@ return false;
                 "</option>"
             );
           }
-        }else{
+        }else if (result.insuranceSubCategories.length == 1) {
+
+            $('.fundSubCategory').hide();
+            
+            $("#singleHealthId").val(result.insuranceSubCategories[0]["id"])
+            $("#sub_insurance_id").append(
+              '<option selected value="' +
+                result.insuranceSubCategories[0]["id"] +
+                '">' +
+                result.insuranceSubCategories[0]["name"] +
+                "</option>"
+            );
+        }
+        else{
           window.showFundSub = false;
           $('.fundSubCategory').hide();
         }

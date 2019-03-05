@@ -7831,30 +7831,58 @@ A:visited:hover {color: #cc0033;}
                 $checked = "";
                 if (@$multiInsuranceRow && $multiInsuranceRow['sub_insurance_id'] > 0) {
                     if ($multiInsuranceRow['sub_insurance_id'] == $pricelist['ID']) {
+
+                        $prices = explode("_", $pricelist['Fieldname']);
+                        if($prices[2]){
+                            $priceRow = $prices[2] +1;
+                        }else {
+                            $priceRow = 1;
+                        }
+
                         $checked = "checked";
-                        $checkedPriceList = $pricelist['ID'];
+
+                        $checkedPriceList = $priceRow;
+
+                        if ($checked == "checked" ) {
+                            echo'<tr>
+                                <td bgcolor="#FFFF88">' . $pricelist['ShowDescription'] . ' </td>
+                                <td bgcolor="#FFFF88"><input type="radio" '.$checked.' disabled name="unit_price"
+                                    value="' . $pricelist['ID'] . '"';
+                                echo'></td>';
+                            echo '</tr>';
+                            echo '</table>';
+                            echo '</p>';
+                            echo  '<input type="hidden" name="unit_price" value="'.$checkedPriceList.'"';
+
+                        }
                     }
                 }else{
                     $checked = ($insuranceId == $pricelist['company_id'])?"checked":"";
-                    $checkedPriceList = $pricelist['ID'];
+
+                    $prices = explode("_", $pricelist['Fieldname']);
+                        if($prices[2]){
+                            $priceRow = $prices[2] + 1;
+                        }else {
+                            $priceRow = 1;
+                        }
+                    $checkedPriceList = $priceRow;
+
+                    if ($checked == "checked" ) {
+                        echo'<tr>
+                            <td bgcolor="#FFFF88">' . $pricelist['ShowDescription'] . ' </td>
+                            <td bgcolor="#FFFF88"><input type="radio" '.$checked.' disabled name="unit_price"
+                                value="' . $pricelist['ID'] . '"';
+                            echo'></td>';
+                        echo '</tr>';
+                        echo '</table>';
+                        echo '</p>';
+                        echo  '<input type="hidden" name="unit_price" value="'.$checkedPriceList.'"';
+
+                    }
                 }
 
 
-            echo'<tr>
-                <td bgcolor="#FFFF88">' . $pricelist['ShowDescription'] . ' </td>
-                <td bgcolor="#FFFF88"><input type="radio" '.$checked.' disabled name="unit_price"
-                        value="' . $pricelist['ID'] . '"';
-                    echo'></td>';
-                    if ($checked == "checked") {
-                        echo '';
-                    }
-            echo '</tr>';
             }
-            echo '</table>';
-
-            echo  '<input type="hidden" name="unit_price" value="'.$checkedPriceList.'"';
-
-           echo '</p>';
            
     }
 

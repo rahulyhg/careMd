@@ -14,7 +14,7 @@ function myprint() {
 function navigate(str, pg)
 {
 
-    alert(pg);
+    
 
 
     dd = str
