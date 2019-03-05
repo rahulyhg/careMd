@@ -296,11 +296,13 @@ class weberp {
     	}
     }
 
-    function stock_adjustment_in_webERP($StockID, $Location, $Quantity, $TranDate) {
+    function stock_adjustment_in_webERP($StockID, $Location, $Quantity, $TranDate, $description) {
     	$adjustmentData[0]=$StockID;
     	$adjustmentData[1]=$Location;
     	$adjustmentData[2]=$Quantity;
     	$adjustmentData[3]=$TranDate;
+    	$adjustmentData[4]=$description;
+
     	$transmit=$this->transfer($adjustmentData,$this->weberpcalls['stockAdjustment']);
     	if ($transmit[0]==0) {
     		return $transmit[1];

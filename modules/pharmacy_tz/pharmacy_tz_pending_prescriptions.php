@@ -112,7 +112,7 @@ $pid=$row['pid'];
 
      //}
 
-$sql_healthf="SELECT insurance_ID FROM care_person WHERE pid=".$pid;
+$sql_healthf="SELECT insurance_ID, name_first, name_2, name_last FROM care_person WHERE pid=".$pid;
 
 $result_hf=$db->Execute($sql_healthf);
 $row=$result_hf->FetchRow();
@@ -122,7 +122,10 @@ $insname='CASH';
 $insname='CREDIT';
 }
 
-
+$description = $pid;
+if (@$row) {
+  $description .=" " . $row['name_last'] . " " . $row['name_2'] . " " . $row['name_first'];
+}
 
    
       
@@ -188,6 +191,7 @@ if($transmit_to_weberp_enabled==="1"){
                                         $zero=0.00;
                                         $total_dosage=number_format($row_api['total_dosage'],2);
                                         $Quantity=$zero-$total_dosage;
+                                        $TranDate .= "_" .  $description;
                                                                                  
                                         $adjust=$weberp_obj->stock_adjustment_in_webERP($row_api['partcode'], $_SESSION['loccode'], $Quantity, $TranDate);
 
