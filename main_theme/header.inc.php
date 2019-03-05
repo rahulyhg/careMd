@@ -107,14 +107,13 @@ $userId = $_SESSION['sess_login_userid'];
 
 $user = CareUsersQuery::create()->filterByLoginId($userId)->findOne()->toArray();
 $roleId = $user['RoleId'];
+// $roleId = 9;
 
 $userRole = CareUserRolesQuery::create()->filterByRoleId($roleId)->findOne()->toArray();
 $themeName = $user['ThemeName'];
 
 $userPermissions = explode(" ", $userRole['Permission']);
 
- // echo "<pre>"; print_r($userPermissions);echo "</pre>";
- // die();
 
 
 $userPermissions = str_replace('_a_1_', '', $userPermissions);
@@ -136,6 +135,14 @@ if ($userPermissions[0] == "System_Admin" || $userPermissions[0] == "_a_0_all " 
     if ($navigationMenu['name'] == "Registration" || $navigationMenu['name'] == "Discharge") {
       foreach ($userPermissions as $userPermission) { 
         if ($userPermission == "admissionwrite" || $userPermission == "admissionread" || $userPermission == "archiveread" || $userPermission == "aarreadwrite") {
+          array_push($userNavigationMenus, $navigationMenu);
+        }
+      }
+    }
+
+    if ($navigationMenu['name'] == "Appointments") {
+      foreach ($userPermissions as $userPermission) { 
+        if ($userPermission == "appointment") {
           array_push($userNavigationMenus, $navigationMenu);
         }
       }

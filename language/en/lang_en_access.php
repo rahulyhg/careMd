@@ -10,6 +10,7 @@ $title_adm = 'Registration';
 $_a_1_admissionwrite = 'Admit patients, read & write';
 $_a_2_admissionread = 'Admit patients read only';
 $_a_2_archiveread = 'Search patients archive only';
+$_a_2_appointment = "Appointment";
 
 // Group start
 //$title2 = 'Nursing station';

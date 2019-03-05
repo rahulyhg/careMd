@@ -14,6 +14,7 @@ $area_opt = array(
     '_a_1_admissionwrite' => $_a_1_admissionwrite,
     '_a_2_admissionread' => $_a_2_admissionread,
     '_a_2_archiveread' => $_a_2_archiveread,
+    '_a_2_appointment' => $_a_2_appointment,
     /*
      *  Group start 
      */
