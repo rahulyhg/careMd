@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2019-02-22 09:57:12
+<?php /* Smarty version 2.6.22, created on 2019-03-06 11:19:51
          compiled from common/mainframe.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'config_load', 'common/mainframe.tpl', 4, false),)), $this); ?>
@@ -12,9 +12,7 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
 
-<table width=100% border=1 cellspacing=0 height=100%>
-    <tbody class="main">
-        <?php if (! $this->_tpl_vars['bHideTitleBar']): ?>
+<?php if (! $this->_tpl_vars['bHideTitleBar']): ?>
         <tr>
             <td  valign="top" align="middle" height="35">
                 <?php $_smarty_tpl_vars = $this->_tpl_vars;
@@ -25,6 +23,10 @@ unset($_smarty_tpl_vars);
             </td>
         </tr>
         <?php endif; ?>
+
+<table class="table table-bordered table-condensed table-hover" cellspacing=0 height=100%>
+    <tbody class="">
+        
 
         <tr>
             <td bgcolor=<?php echo $this->_tpl_vars['body_bgcolor']; ?>
