@@ -15,7 +15,6 @@ define('FILE_DISCRIM', '.dcm'); # define here the file discrimator string
 $thisfile = basename($_SERVER['PHP_SELF']);
 
 $returnfile = @($_SESSION['sess_file_return'])?$_SESSION['sess_file_return']:"";
-$pageName = 'Registration';
 
 //$db->debug=1;
 # Load paths und dirs
@@ -75,6 +74,7 @@ if (!isset($mode)) {
                 $_POST['doc_ref_ids']='';
                 
             }
+
 
             if (empty($_POST['encounter_nr'])) {
 

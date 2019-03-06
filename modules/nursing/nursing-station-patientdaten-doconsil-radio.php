@@ -114,7 +114,7 @@ if ($enc_obj->getEncounterNotes($pn)) {
 }
 
 if (@$_POST['clinical_info1']) {
-    $_POST['clinical_info'] = $_POST['clinical_info1'];
+    $_POST['clinical_info'] = addslashes($_POST['clinical_info1']);
 }
 switch ($mode) {
     case 'save':
@@ -207,7 +207,7 @@ switch ($mode) {
 			'" . $_SESSION['sess_user_name'] . "',
 			'" . date('YmdHis') . "',
 			'',
-            '".$_POST['clinical_info']."'
+            '".addslashes($_POST['clinical_info'])."'
 			)";
 
 
@@ -241,7 +241,7 @@ switch ($mode) {
 										  mammograph='" . $mammograph . "', mrt='" . $mrt . "', nuclear='" . $nuclear . "',
 										  if_patmobile='" . $if_patmobile . "', if_allergy='" . $if_allergy . "',
 										  if_hyperten='" . $if_hyperten . "', if_pregnant='" . $if_pregnant . "',
-										  clinical_info='".$_POST['clinical_info']."', " . "test_request='" . htmlspecialchars($test_request) . "', send_date='" . formatDate2Std($send_date, $date_format) . "',
+										  clinical_info='". addslashes($_POST['clinical_info'])."', " . "test_request='" . htmlspecialchars($test_request) . "', send_date='" . formatDate2Std($send_date, $date_format) . "',
 										  send_doctor='" . htmlspecialchars($send_doctor) . "', status='" . $status . "',
 										  history=" . $core->ConcatHistory('Update: ' . date('Y-m-d H:i:s') . ' = ' . $_SESSION['sess_user_name'] . '\n') . ",
 											bill_number='" . $bill_nr . "',
