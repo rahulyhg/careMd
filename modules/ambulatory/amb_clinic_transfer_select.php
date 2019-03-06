@@ -87,6 +87,10 @@ urlholder="amb_clinic_transfer_save.php?mode=transferdept&sid=' . $sid . '&lang=
 
 <STYLE type=text/css>
     div.box { border: double; border-width: thin; width: 100%; border-color: black; }
+
+    .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+      background-color: #9ca8a8;
+    }
 </style>
 
 <?php

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2017-05-08 17:55:49
+<?php /* Smarty version 2.6.22, created on 2019-03-06 11:55:54
          compiled from registration_admission/basic_data_in_line.tpl */ ?>
 
 <table border="0" cellspacing=1 cellpadding=0 width="100%">
