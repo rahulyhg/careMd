@@ -6,7 +6,7 @@ if (preg_match('/pageheader1.php/i',$_SERVER['PHP_SELF'])){
 
 #Get care logo
 $imgsize=GetImageSize($logo);
-$pdf->addPngFromFile($logo,20,780,$imgsize[0]);
+$pdf->addPngFromFile($logo,20,770,60);
 # Attach logo
 $pdf->selectFont($fontpath.'Helvetica.afm');
 $pdf->ezStartPageNumbers(550,25,8);

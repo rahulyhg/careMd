@@ -34,7 +34,7 @@ if($enc_obj->loadEncounterData()){
 }
 
 # Get the report data
-$notes=$enc_obj->getEncounterNotes($recnr);
+$notes=$enc_obj->getEncounterNotes($enc);
 
 
 $classpath=$root_path.'classes/phppdf/';
@@ -45,6 +45,7 @@ $pdf=& new Cezpdf();
 
 
 $logo=$root_path.'gui/img/logos/lopo/care_logo.png';
+$logo = $root_path.$logoDirectory.$hospital_logo;
 $pidbarcode=$root_path.'cache/barcodes/pn_'.$encounter['pid'].'.png';
 $encbarcode=$root_path.'cache/barcodes/en_'.$enc.'.png';
 
