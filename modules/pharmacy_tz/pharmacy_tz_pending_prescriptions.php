@@ -112,7 +112,7 @@ $pid=$row['pid'];
 
      //}
 
-$sql_healthf="SELECT insurance_ID, name_first, name_2, name_last FROM care_person WHERE pid=".$pid;
+$sql_healthf="SELECT insurance_ID, name_first, name_2, name_last, selian_pid FROM care_person WHERE pid=".$pid;
 
 $result_hf=$db->Execute($sql_healthf);
 $row=$result_hf->FetchRow();
@@ -122,9 +122,8 @@ $insname='CASH';
 $insname='CREDIT';
 }
 
-$description = $pid;
 if (@$row) {
-  $description .=" " . $row['name_last'] . " " . $row['name_2'] . " " . $row['name_first'];
+  $description = $row['selian_pid'] . " " . $row['name_last'] . " " . $row['name_2'] . " " . $row['name_first'];
 }
 
    

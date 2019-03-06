@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.22, created on 2019-03-06 11:56:01
+<?php /* Smarty version 2.6.22, created on 2019-03-06 13:50:10
          compiled from registration_admission/common_option_prescription.tpl */ ?>
 
 <style>
@@ -12,9 +12,9 @@
             <td>
                 <table cellspacing="0" cellpadding="0" width="100%" border="1" class="table table-bordered table-condensed">
                     <tr valign="top">
-                        <td>z
+                        <td>
                             <?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => "registration_admission/basasic_data_in_line.tpl", 'smarty_include_vars' => array()));
+$this->_smarty_include(array('smarty_include_tpl_file' => "registration_admission/basic_data_in_line.tpl", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
