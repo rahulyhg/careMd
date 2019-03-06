@@ -107,7 +107,7 @@ $userId = $_SESSION['sess_login_userid'];
 
 $user = CareUsersQuery::create()->filterByLoginId($userId)->findOne()->toArray();
 $roleId = $user['RoleId'];
-// $roleId = 9;
+// $roleId = 10;
 
 $userRole = CareUserRolesQuery::create()->filterByRoleId($roleId)->findOne()->toArray();
 $themeName = $user['ThemeName'];
@@ -132,7 +132,7 @@ if ($userPermissions[0] == "System_Admin" || $userPermissions[0] == "_a_0_all " 
       array_push($userNavigationMenus, $navigationMenu);
     }
 
-    if ($navigationMenu['name'] == "Registration" || $navigationMenu['name'] == "Discharge") {
+    if ($navigationMenu['name'] == "Registration" || $navigationMenu['name'] == "Discharge" || $navigationMenu['name'] == "Patient") {
       foreach ($userPermissions as $userPermission) { 
         if ($userPermission == "admissionwrite" || $userPermission == "admissionread" || $userPermission == "archiveread" || $userPermission == "aarreadwrite") {
           array_push($userNavigationMenus, $navigationMenu);

@@ -13,6 +13,8 @@ $lang_tables[] = 'emr.php';
 $lang_tables[] = 'person.php';
 $lang_tables[] = 'date_time.php';
 define('LANG_FILE', 'aufnahme.php');
+define('NO_CHAIN', 1);
+
 
 $local_user = 'aufnahme_user';
 require($root_path . 'include/inc_front_chain_lang.php');

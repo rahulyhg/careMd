@@ -16,6 +16,10 @@ $lang_tables[] = 'prompt.php';
 $lang_tables[] = 'person.php';
 define('LANG_FILE', 'aufnahme.php');
 $local_user = 'aufnahme_user';
+
+define('LANG_FILE', 'startframe.php');
+define('NO_CHAIN', 1);
+
 require_once($root_path . 'include/inc_front_chain_lang.php');
 
 
