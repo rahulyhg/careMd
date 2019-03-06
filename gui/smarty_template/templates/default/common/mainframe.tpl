@@ -5,17 +5,15 @@
 
 {{include file="common/header.tpl"}}
 
-{{if not $bHideTitleBar}}
+<table width=100% border=1 cellspacing=0 height=100%>
+    <tbody class="main">
+        {{if not $bHideTitleBar}}
         <tr>
             <td  valign="top" align="middle" height="35">
                 {{include file="common/header_topblock.tpl"}}
             </td>
         </tr>
         {{/if}}
-
-<table class="table table-bordered table-condensed table-hover" cellspacing=0 height=100%>
-    <tbody class="">
-        
 
         <tr>
             <td bgcolor={{$body_bgcolor}} valign=top>

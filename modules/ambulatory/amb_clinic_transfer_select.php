@@ -108,7 +108,7 @@ ob_start();
     </tr>
 </table>
 
-<table border=0 cellpadding=2 cellspacing=1 width=100%>
+<table border=0 cellpadding=2 cellspacing=1 width=100% class="table table-condensed table-hover table-stripped table-bordered">
     <tr bgcolor="#f6f6f6">
         <td colspan=2>&nbsp;<FONT class="prompt"><?php echo $LDTransferClinic; ?></td>
     </tr>
