@@ -873,7 +873,9 @@ if (!$noresize) {
                                                  // die();
                                                  // 
                                                     $category = $LD_Elements[$j][$i]['id'];
-                                                    $blockQuery = "SELECT block_selection FROM care_tz_laboratory_param WHERE id = '$category' AND group_id = -1";
+                                                    $categoryNames = explode("__",$category);
+                                                    $categoryName = end($categoryNames);
+                                                    $blockQuery = "SELECT block_selection FROM care_tz_laboratory_param WHERE id = '$categoryName' AND group_id = -1";
                                                     $blockSlectionType = $db->Execute($blockQuery);
 
                                                     if (!empty($blockSlectionType) && $blockSlectionType->RecordCount()) {
@@ -884,7 +886,7 @@ if (!$noresize) {
 
                                                    if ($LD_Elements[$j][$i]['type'] == 'top') {
                                                     //top label (heading for test)
-                                                       echo '<td bgcolor="" colspan="2" onclick="selectAllParams(\'' . $LD_Elements[$j][$i]['id'] . '\');"><font color="black" style="cursor : pointer;" font size="3">&nbsp;<b>' . $LD_Elements[$j][$i]['value'] . '</b></font></td>';
+                                                       echo '<td bgcolor="" colspan="2" onclick="selectAllParams(\'' . $LD_Elements[$j][$i]['id']  . '\', \''.$editable.'\' );"><font color="black" style="cursor : pointer;" font size="3">&nbsp;<b>' . $LD_Elements[$j][$i]['value'] . '</b></font></td>';
                                                    } else {
                                                        if ($LD_Elements[$j][$i]['value']) {
                                                            echo '<td>';

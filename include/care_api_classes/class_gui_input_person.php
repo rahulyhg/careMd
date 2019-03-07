@@ -1204,8 +1204,6 @@ return false;
                                 ?></td>
 
                             <!-- ******************************************expire date start here*****************************************************************************-->
-                        <input type="hidden" name="sub_insurance_id" id="singleHealthId">
-
                         <tr class="fundSubCategory">
                           <td class="reg_item"><font SIZE=-1  FACE="Arial"> Health Sub Fund:</font></td>
                           <td class="reg_input">
