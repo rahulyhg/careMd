@@ -765,6 +765,7 @@ class Diagnostics extends Encounter {
 
 						<td width="20%"><div align="center">'.$LDDate.'</div></td>
 						<td width="5%"><div align="center">'.$LDCase.'</div></td>
+            <td width="5%"><div align="center">Code</div></td>
             <td width="38%">'.$LDDiagnoses.'</td>
             <td width="7%"><div align="center">'.$LDType.'</div></td>
             <td width="30%"><div align="center">'.$LDComment.'</div></td>
@@ -792,6 +793,7 @@ class Diagnostics extends Encounter {
               '.date("Y-m-d - H:i:s",$case_arr['timestamp']).'
             </div></td>
             <td><div align="center">'.$case_arr['case_nr'].'</div></td>
+            <td><div align="center">'.$case_arr['ICD_10_code'].'</div></td>
             <td>'.$case_arr['ICD_10_description'].$oldcase_code.'</td>
             <td><div align="center">
               '.$case_arr['type'].'
@@ -811,6 +813,7 @@ class Diagnostics extends Encounter {
 
 						<td><div align="center">'.$LDDate.'</div></td>
 						<td><div align="center">'.$LDCase.'</div></td>
+            <td><div align="center">code</div></td>
             <td>'.$LDDiagnoses.'  </td>
             <td><div align="center">'.$LDType.'</div></td>
             <td><div align="center">'.$LDComment.'</div></td>

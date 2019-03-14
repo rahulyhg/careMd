@@ -97,11 +97,11 @@ class weberp {
 
 	function weberp() {
 		$this->DebugLevel = 0;
-		$this->ServerURL = "http://localhost/weberp/api/api_xml-rpc.php";
+		$this->ServerURL = "http://localhost/weberp_4.15_updated/api/api_xml-rpc.php";
 
 
-			$this->user = php_xmlrpc_encode("rayton");
-			$this->password = php_xmlrpc_encode("123456");
+			$this->user = php_xmlrpc_encode("admin");
+			$this->password = php_xmlrpc_encode("*.Kukzan11*");
 			$this->client = new xmlrpc_client($this->ServerURL);
 			$this->client->setDebug($this->DebugLevel);
 
